@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>營建工務智慧戰情室 V17.0 (新版網站｜工務機器人專屬總控・原戰情室已封存)</title>
+<title>工務戰情室</title>
 <style>
 :root {
 /* 專業營建工程深藍藍圖指揮主題 (預設：Engineering Blueprint Dark) */
@@ -2551,7 +2551,7 @@ header.top-bar .brand-title {
 </div>
 <h2 style="margin:6px 0 14px;font-size:1.18rem;font-weight:900;color:var(--text-main);display:flex;align-items:center;gap:8px;">
 <span class="brand-badge">元順營造</span>
-<span id="authCardMainHeading">工務戰情管理系統</span>
+<span id="authCardMainHeading">工務戰情室</span>
 </h2>
 <p id="authCardSubDescription" style="display:none;margin:0;"></p>
 <div id="authFeedbackBox" class="auth-msg-box"></div>
@@ -4584,7 +4584,7 @@ quickUpdateTodayHeadcountDirect: window.quickUpdateTodayHeadcountDirect
 <header class="glass-panel top-bar">
 <div>
 <h1 class="brand-title">
-元順營造 · 工務戰情管理系統
+工務戰情室
 </h1>
 </div>
 <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
@@ -5483,23 +5483,15 @@ quickUpdateTodayHeadcountDirect: window.quickUpdateTodayHeadcountDirect
 <button type="button" class="btn btn-emerald" onclick="switchWarRoomMainView('dashboard')">🏠 回戰情室主頁</button>
 </div>
 <div class="glass-panel" style="margin-bottom:12px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;border-left:5px solid #0284c7;">
-<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
-<strong style="font-size:0.84rem;color:var(--text-main);">🌐 全案天氣切換檢視：</strong>
-<button type="button" class="btn btn-primary" id="btnWfProj_ALL" onclick="switchWeatherTabProject('ALL')" style="padding:5px 12px;font-size:0.78rem;">
-🌐 全案天氣總覽
-</button>
-<button type="button" class="btn btn-ghost" id="btnWfProj_R2" onclick="switchWeatherTabProject('桃園市八德區仁德國民小學新建校舍工程(第二期)')" style="padding:5px 12px;font-size:0.78rem;">
-仁德第二期
-</button>
-<button type="button" class="btn btn-ghost" id="btnWfProj_R1" onclick="switchWeatherTabProject('桃園市八德區仁德國民小學新建校舍工程(第一期)')" style="padding:5px 12px;font-size:0.78rem;">
-仁德第一期
-</button>
-<button type="button" class="btn btn-ghost" id="btnWfProj_YG" onclick="switchWeatherTabProject('鶯歌消防局新建工程')" style="padding:5px 12px;font-size:0.78rem;">
-鶯歌消防局
-</button>
+<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+<strong style="font-size:0.84rem;color:var(--text-main);">☀️ 本案晴雨觀測專區：</strong>
+<span id="wfCurrentProjectScopedBadge_V171" style="background:rgba(2,132,199,0.12);color:#0369a1;border:1px solid rgba(2,132,199,0.35);padding:3px 11px;border-radius:999px;font-size:0.82rem;font-weight:900;">
+本案：桃園市八德區仁德國民小學新建校舍工程(第二期)
+</span>
+<span style="font-size:0.75rem;color:var(--text-muted);font-weight:700;">（此頁僅顯示本案晴雨觀測資料；如需觀看他案，請回首頁上方切換工程專案）</span>
 </div>
 <span id="wfActiveClickFeedbackBadge" style="font-size:0.76rem;font-weight:800;color:#0284c7;background:rgba(2,132,199,0.1);padding:4px 10px;border-radius:999px;">
-💡 點擊上方案名或下方表格任一日期列，即刻切換上方 8 大氣象指標卡！
+💡 點擊下方表格任一日期列，即刻切換上方 8 大氣象指標卡！
 </span>
 </div>
 <section id="wfTopCardsSection" class="glass-panel" style="margin-bottom:14px;border-top:3px solid #0284c7;">
@@ -16732,6 +16724,109 @@ window.applyRealtimePayloadFromCloud_V161 = function(payload) {
 window.renderHomeFourCoreKpis_V163();
 window.renderHomeMsProjectCriticalComparison_V168();
 window.renderHomeMonthlyThreeCurves_V161();
+/* ==================== END V171 UPGRADES ==================== */
+
+
+
+/* ==================== V171 TITLE SIMPLIFICATION, PROJECT-SCOPED WEATHER OBSERVATION & ZERO-REUPLOAD CLOUD UI HOT-UPDATER ==================== */
+window.__V171_READY__ = true;
+document.title = "工務戰情室";
+
+// 1. Force Weather Observation (#modalWeatherFull & renderWeatherAndLaborSubpageTables & renderLedgerTable)
+//    to ONLY display the currently active project selected on the Home Page (never 'ALL')
+(function enforceProjectScopedWeatherObservation_V171_() {
+  function resolveCanonicalActiveProj_(projOpt) {
+    var raw = (projOpt && projOpt !== "ALL")
+      ? projOpt
+      : (typeof window.getEffectiveActiveProj_ === "function" ? window.getEffectiveActiveProj_() : (window.lastSelectedProjectKey || window.activeProj || "桃園市八德區仁德國民小學新建校舍工程(第二期)"));
+    if (String(raw).indexOf("第一期") !== -1 || String(raw).indexOf("一期") !== -1) {
+      return "桃園市八德區仁德國民小學新建校舍工程(第一期)";
+    }
+    if (String(raw).indexOf("鶯歌") !== -1) {
+      return "鶯歌消防局新建工程";
+    }
+    return "桃園市八德區仁德國民小學新建校舍工程(第二期)";
+  }
+
+  var origRenderWfLab = window.renderWeatherAndLaborSubpageTables;
+  window.renderWeatherAndLaborSubpageTables = function(projFilterOpt, focusProjOpt) {
+    var canonicalProj = resolveCanonicalActiveProj_(focusProjOpt || projFilterOpt);
+    window.weatherTabProjectFilter = canonicalProj;
+
+    var scopedBadge = document.getElementById("wfCurrentProjectScopedBadge_V171");
+    if (scopedBadge) {
+      scopedBadge.textContent = "本案：" + canonicalProj;
+    }
+    var wfTitle = document.getElementById("weatherFullProjTitle");
+    if (wfTitle) {
+      wfTitle.textContent = canonicalProj;
+    }
+
+    var res = null;
+    if (typeof origRenderWfLab === "function") {
+      res = origRenderWfLab(canonicalProj, canonicalProj);
+    }
+
+    // Double-guard #weatherFullHistoryTableBody so any row from other projects is strictly removed
+    var wfTbody = document.getElementById("weatherFullHistoryTableBody");
+    if (wfTbody) {
+      var rows = Array.from(wfTbody.querySelectorAll("tr"));
+      var otherShortNames = canonicalProj.indexOf("第二期") !== -1
+        ? ["第一期", "仁德一期", "鶯歌"]
+        : (canonicalProj.indexOf("第一期") !== -1 ? ["第二期", "仁德二期", "鶯歌"] : ["第一期", "第二期", "仁德"]);
+      rows.forEach(function(tr) {
+        var txt = tr.textContent || "";
+        for (var i = 0; i < otherShortNames.length; i++) {
+          if (txt.indexOf(otherShortNames[i]) !== -1 && txt.indexOf(canonicalProj) === -1) {
+            tr.remove();
+            break;
+          }
+        }
+      });
+    }
+    return res;
+  };
+
+  window.switchWeatherTabProject = function(projFilter) {
+    var canonicalProj = resolveCanonicalActiveProj_(projFilter);
+    window.weatherTabProjectFilter = canonicalProj;
+    return window.renderWeatherAndLaborSubpageTables(canonicalProj, canonicalProj);
+  };
+
+  var origSwitchProj168 = window.switchWarRoomProject;
+  window.switchWarRoomProject = function(projName) {
+    var canonicalProj = resolveCanonicalActiveProj_(projName);
+    window.weatherTabProjectFilter = canonicalProj;
+    if (typeof origSwitchProj168 === "function") {
+      origSwitchProj168(canonicalProj);
+    }
+    window.renderWeatherAndLaborSubpageTables(canonicalProj, canonicalProj);
+  };
+})();
+
+// 2. Cloud UI & Data Auto-Sync Engine: ensures GitHub Pages index.html automatically stays up to date
+//    with BOTH live spreadsheet data/3D models AND any future UI patches in Drive/GAS without manual re-upload!
+window.WARROOM_BUILD_REVISION_V171 = "V171_20261108_1230";
+
+window.checkAndApplyCloudUiHotPatch_V171 = function() {
+  var cfg = window.V164_SYNC_CONFIG || {};
+  var gasUrl = (cfg.gasLiveApiUrl || "https://script.google.com/macros/s/AKfycbxRcVWuQzMEQWtGMd-PNqBr6ejcxjTvRLuxeRut38uwFFveHrPJDb6bbe3cRp4hkSXTsQ/exec") + "?action=warroomUiPatchManifest&clientRev=" + encodeURIComponent(window.WARROOM_BUILD_REVISION_V171) + "&t=" + Date.now();
+  fetch(gasUrl, { method: "GET", mode: "cors", credentials: "omit" })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      if (data && data.ok && data.jsHotPatch && data.serverRev && data.serverRev !== window.WARROOM_BUILD_REVISION_V171) {
+        try {
+          (0, eval)(data.jsHotPatch);
+          window.WARROOM_BUILD_REVISION_V171 = data.serverRev;
+        } catch (ePatch) {}
+      }
+    })
+    .catch(function() {});
+};
+
+// Re-run scoped weather table immediately on load
+window.renderWeatherAndLaborSubpageTables();
+setTimeout(function() { window.checkAndApplyCloudUiHotPatch_V171(); }, 1800);
 /* ==================== END V171 UPGRADES ==================== */
 
 </script>
