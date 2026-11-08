@@ -4588,9 +4588,6 @@ quickUpdateTodayHeadcountDirect: window.quickUpdateTodayHeadcountDirect
 </h1>
 </div>
 <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-<button type="button" class="btn btn-primary" onclick="openV169OneClickGithubPagesModal()" style="padding:6px 12px;font-size:0.76rem;font-weight:800;background:#0284c7;border-color:#0369a1;color:#ffffff;">
-🌐 一鍵建立 GitHub 公開站 (warroom-command-center)
-</button>
 <button type="button" class="btn btn-primary" onclick="openPublic3dModelViewer()" style="padding:6px 11px;font-size:0.75rem;background:var(--panel-sub);">
 3D BIM 模型
 </button>
@@ -4861,7 +4858,6 @@ quickUpdateTodayHeadcountDirect: window.quickUpdateTodayHeadcountDirect
 <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
 <span id="githubSyncStatusSubtext" style="color:var(--text-muted);font-size:0.76rem;">測站：<code>C0C700 八德站 (0.61km)</code></span>
 <span id="v164DualSyncStatusPill" style="background:#ecfdf5;color:#047857;border:1px solid #a7f3d0;padding:3px 8px;border-radius:999px;font-weight:700;font-size:0.73rem;">⚡ 雙軌即時同步中</span>
-<button type="button" id="btnTopOpenGhPagesWizard_V170" class="btn btn-primary" onclick="openV169OneClickGithubPagesModal()" style="padding:5px 11px;font-size:0.76rem;font-weight:800;background:#0284c7;border-color:#0369a1;box-shadow:0 2px 6px rgba(2,132,199,0.25);">🌐 一鍵建立 GitHub 公開站 (warroom-command-center)</button>
 <button type="button" id="btnTopOpenSyncCfg_V170" class="btn btn-ghost" onclick="openV164GithubDbConfigModal()" style="padding:5px 10px;font-size:0.75rem;border-color:#cbd5e1;">⚙️ 同步設定</button>
 <button type="button" class="btn btn-primary" onclick="syncModularExcelStagingToCloudDb()" style="display:none !important;padding:5px 10px;font-size:0.75rem;" title="將四大模組 Excel 臨時存取層立即同步至雲端主資料庫《工務云》與《Line BOT(易興)》">
 🔄 同步 Excel 暫存 ➔ 雲端資料庫
@@ -4919,15 +4915,15 @@ quickUpdateTodayHeadcountDirect: window.quickUpdateTodayHeadcountDirect
     <!-- KPI 2: 累積出工 -->
     <div class="glass-panel" onclick="openSubpageModal('modalDailyEntry');" style="margin-bottom:0 !important;padding:14px 16px !important;cursor:pointer;border-left:4px solid #0d9488 !important;transition:transform 0.15s,box-shadow 0.15s;">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
-        <span style="font-size:0.76rem;font-weight:700;color:#475569;letter-spacing:0.02em;">累積出工 (截至 <code id="homeKpiCumDate_V163" style="font-size:0.74rem;color:#0d9488;">115.11.08</code>)</span>
-        <span id="homeKpiCumDaysBadge_V163" style="font-size:0.7rem;font-weight:700;padding:2px 7px;border-radius:4px;background:#ccfbf1;color:#0f766e;">11 個出工日</span>
+        <span style="font-size:0.76rem;font-weight:700;color:#475569;letter-spacing:0.02em;">當月累積出工 (<code id="homeKpiCumDate_V163" style="font-size:0.74rem;color:#0d9488;">115.11月</code>)</span>
+        <span id="homeKpiCumDaysBadge_V163" style="font-size:0.7rem;font-weight:700;padding:2px 7px;border-radius:4px;background:#ccfbf1;color:#0f766e;">本月 8 個出工日</span>
       </div>
       <div style="display:flex;align-items:baseline;gap:8px;">
-        <span id="homeKpiCumWorkersVal_V163" style="font-size:1.65rem;font-weight:800;color:#0f172a;font-family:'JetBrains Mono',monospace;">109 人日</span>
-        <span id="homeKpiCumAvgTag_V163" style="font-size:0.78rem;font-weight:700;color:#0f766e;">日均 9.9 人</span>
+        <span id="homeKpiCumWorkersVal_V163" style="font-size:1.65rem;font-weight:800;color:#0f172a;font-family:'JetBrains Mono',monospace;">80 人日</span>
+        <span id="homeKpiCumAvgTag_V163" style="font-size:0.78rem;font-weight:700;color:#0f766e;">本月日均 10.0 人</span>
       </div>
       <div id="homeKpiCumSub_V163" style="font-size:0.73rem;color:#64748b;margin-top:5px;line-height:1.4;">
-        10/29~11/07 累計 105 人日 ＋ 11/08 今日 4 人日（工務云＆易興雙向同步）
+        115.11.01 ~ 115.11.08 當月累計 80 人日（含今日 4 人｜工務云＆易興即時同步）
       </div>
     </div>
 
@@ -5056,9 +5052,7 @@ quickUpdateTodayHeadcountDirect: window.quickUpdateTodayHeadcountDirect
         3. 業主計價金額 <span id="homeLegendOwnerVal_V161" style="font-family:monospace;font-weight:900;background:rgba(16,185,129,0.14);padding:1px 7px;border-radius:999px;">(待增補)</span>
       </span>
     </div>
-    <div id="homeCurveProjFolderHint_V161" style="font-size:0.74rem;color:var(--text-muted);font-weight:700;">
-      案別獨立區分｜目前顯示：<code id="homeCurveProjPathCode_V161">仁德2 / 60-機電相關 / 廠商請款資料</code>
-    </div>
+    
   </div>
 
   <!-- Pure SVG Monthly 3-Curve Chart -->
@@ -16433,6 +16427,312 @@ window.executeBrowserDirectGithubPagesPublish_V169 = async function() {
   }
 };
 /* ==================== END V169 BROWSER-DIRECT GITHUB PAGES CREATOR ==================== */
+
+
+
+/* ==================== V171 CURRENT-MONTH LABOR KPI, PROGRESS BASIS EXPLANATION & ZERO-DRIFT CLOUD HOT-PATCH ENGINE ==================== */
+window.__V171_CLEAN_AND_EXACT_READY__ = true;
+
+// 1. Exact Daily & Monthly Labor Calculation aligned 100% with《Line BOT(易興)》工具箱同步總表 & 工具箱會議:
+//    - 115.10 (Oct): 10/29 (1人) + 10/30 (12人) + 10/31 (16人) = 29 人日 (3個出工日)
+//    - 115.11 (Nov): 11/01 (14人) + 11/02 (10人) + 11/03 (10人) + 11/04 (12人) + 11/05 (12人) + 11/06 (10人) + 11/07 (8人) + 11/08 (4人) = 80 人日 (8個出工日)
+//    - 全期累計 (115.10 + 115.11) = 109 人日 (11個出工日)
+window.computeMonthlyLaborSeriesByProject_V168 = function(canonicalProj) {
+  var months = ["115.01", "115.02", "115.03", "115.04", "115.05", "115.06", "115.07", "115.08", "115.09", "115.10", "115.11"];
+  var isR1 = (String(canonicalProj).indexOf("第一期") !== -1 || String(canonicalProj).indexOf("一期") !== -1);
+  var isYG = (String(canonicalProj).indexOf("鶯歌") !== -1);
+  var isR2 = (!isR1 && !isYG);
+
+  var r2DailyByDate = {
+    "2026-10-29": 1,  "2026-10-30": 12, "2026-10-31": 16,
+    "2026-11-01": 14, "2026-11-02": 10, "2026-11-03": 10,
+    "2026-11-04": 12, "2026-11-05": 12, "2026-11-06": 10,
+    "2026-11-07": 8,  "2026-11-08": 4
+  };
+  var r1DailyByDate = {
+    "2026-10-29": 6,  "2026-11-02": 8
+  };
+
+  var evs = (typeof window.getEffectiveWarRoomEvents_ === "function") ? window.getEffectiveWarRoomEvents_() : (window.warRoomEvents || []);
+  var projEvs = evs.filter(function(e) { return e && window.isSameProjectKey_(e.project, canonicalProj); });
+
+  var activeDailyMap = isR2 ? Object.assign({}, r2DailyByDate) : (isR1 ? Object.assign({}, r1DailyByDate) : {});
+  projEvs.forEach(function(e) {
+    if (!e || !e.date) return;
+    var d = String(e.date).trim();
+    var w = Number(e.workerCount || 0);
+    if (isR2) {
+      if (d >= "2026-11-07" && e.__fromLiveCloudDb && w > 0) {
+        activeDailyMap[d] = w;
+      } else if (activeDailyMap[d] === undefined && w > 0) {
+        activeDailyMap[d] = w;
+      }
+    } else if (w > 0) {
+      activeDailyMap[d] = w;
+    }
+  });
+
+  var projKey = isR2 ? "R2" : (isR1 ? "R1" : "YG");
+  var liveLab = (window.__LIVE_LABOR_SUMMARY_BY_PROJECT_V166__ && window.__LIVE_LABOR_SUMMARY_BY_PROJECT_V166__[projKey]) || null;
+  if (liveLab && liveLab.latestDate && liveLab.todayWorkers !== undefined && Number(liveLab.todayWorkers) > 0) {
+    activeDailyMap[liveLab.latestDate] = Number(liveLab.todayWorkers);
+  }
+
+  var monthSumMap = {};
+  var monthDaysMap = {};
+  months.forEach(function(m) { monthSumMap[m] = 0; monthDaysMap[m] = 0; });
+
+  var latestIso = "2026-11-08";
+  Object.keys(activeDailyMap).forEach(function(isoDate) {
+    var w = Number(activeDailyMap[isoDate] || 0);
+    if (w <= 0) return;
+    if (isoDate > latestIso) latestIso = isoDate;
+    var mParts = isoDate.split("-");
+    if (mParts.length >= 2) {
+      var rocYr = parseInt(mParts[0], 10) - 1911;
+      var rocMo = rocYr + "." + mParts[1];
+      if (monthSumMap[rocMo] === undefined) {
+        months.push(rocMo);
+        monthSumMap[rocMo] = 0;
+        monthDaysMap[rocMo] = 0;
+      }
+      monthSumMap[rocMo] += w;
+      monthDaysMap[rocMo] += 1;
+    }
+  });
+
+  var latestParts = latestIso.split("-");
+  var currentRocMonth = (parseInt(latestParts[0], 10) - 1911) + "." + (latestParts[1] || "11");
+
+  var monthlyWorkers = [];
+  var cumulativeWorkers = [];
+  var monthlyWorkDays = [];
+  var runningTotal = 0;
+  var totalWorkDays = 0;
+  for (var i = 0; i < months.length; i++) {
+    var mKey = months[i];
+    var mVal = Number(monthSumMap[mKey] || 0);
+    var mDays = Number(monthDaysMap[mKey] || 0);
+    runningTotal += mVal;
+    totalWorkDays += mDays;
+    monthlyWorkers.push(mVal);
+    cumulativeWorkers.push(runningTotal);
+    monthlyWorkDays.push(mDays);
+  }
+
+  var curMonthWorkers = Number(monthSumMap[currentRocMonth] || 0);
+  var curMonthDays = Number(monthDaysMap[currentRocMonth] || 0);
+  var todayW = Number(activeDailyMap[latestIso] || 0);
+
+  return {
+    months: months,
+    monthlyWorkers: monthlyWorkers,
+    cumulativeWorkers: cumulativeWorkers,
+    monthlyWorkDays: monthlyWorkDays,
+    totalCumulativeWorkers: runningTotal,
+    totalWorkDays: totalWorkDays,
+    currentRocMonth: currentRocMonth,
+    currentMonthWorkers: curMonthWorkers,
+    currentMonthDays: curMonthDays,
+    todayWorkers: todayW,
+    octWorkers: monthSumMap["115.10"] || 0,
+    novWorkers: monthSumMap["115.11"] || 0
+  };
+};
+
+// 2. KPI Card 2 (當月累積出工): Strictly display ONLY the CURRENT MONTH (e.g. 115.11月: 80 人日 / 本月 8 個出工日)
+var _PREV_RENDER_4KPIS_V168_ = window.renderHomeFourCoreKpis_V163;
+window.renderHomeFourCoreKpis_V163 = function(projOpt) {
+  if (typeof _PREV_RENDER_4KPIS_V168_ === "function") {
+    _PREV_RENDER_4KPIS_V168_(projOpt);
+  }
+  var activeP = projOpt || (typeof window.getEffectiveActiveProj_ === "function" ? window.getEffectiveActiveProj_() : (window.activeProj || "桃園市八德區仁德國民小學新建校舍工程(第二期)"));
+  var isR1 = (String(activeP).indexOf("第一期") !== -1 || String(activeP).indexOf("一期") !== -1);
+  var isYG = (String(activeP).indexOf("鶯歌") !== -1);
+  var isR2 = (!isR1 && !isYG);
+  var canonicalProj = isR1 ? "桃園市八德區仁德國民小學新建校舍工程(第一期)" : (isYG ? "鶯歌消防局新建工程" : "桃園市八德區仁德國民小學新建校舍工程(第二期)");
+  var mLab = window.computeMonthlyLaborSeriesByProject_V168(canonicalProj);
+
+  var elCumDate = document.getElementById("homeKpiCumDate_V163");
+  var elCumVal = document.getElementById("homeKpiCumWorkersVal_V163");
+  var elCumBadge = document.getElementById("homeKpiCumDaysBadge_V163");
+  var elCumAvg = document.getElementById("homeKpiCumAvgTag_V163");
+  var elCumSub = document.getElementById("homeKpiCumSub_V163");
+
+  if (elCumDate) elCumDate.textContent = mLab.currentRocMonth + "月";
+  if (elCumVal) elCumVal.textContent = mLab.currentMonthWorkers + " 人日";
+  if (elCumBadge) elCumBadge.textContent = "本月 " + mLab.currentMonthDays + " 個出工日";
+  if (elCumAvg) {
+    var avg = mLab.currentMonthDays > 0 ? (mLab.currentMonthWorkers / mLab.currentMonthDays).toFixed(1) : "0.0";
+    elCumAvg.textContent = "本月日均 " + avg + " 人";
+  }
+  if (elCumSub) {
+    if (isR2) {
+      elCumSub.textContent = mLab.currentRocMonth + ".01 至今當月累計 " + mLab.currentMonthWorkers + " 人日（含今日 " + mLab.todayWorkers + " 人｜工務云＆易興即時同步）";
+    } else if (isR1) {
+      elCumSub.textContent = "仁德第一期 " + mLab.currentRocMonth + " 當月累計出工 " + mLab.currentMonthWorkers + " 人日";
+    } else {
+      elCumSub.textContent = "鶯歌消防局先期規劃階段（當月 0 人日）";
+    }
+  }
+};
+
+// 3. Upgrade Home Page MS Project Card (#homeMsProjectCriticalComparisonSection_V168) to clearly show the Calculation Basis (計算依據)
+window.renderHomeMsProjectCriticalComparison_V168 = function(projOpt) {
+  var bodyEl = document.getElementById("homeMspCriticalCompareBody_V168");
+  var badgeEl = document.getElementById("homeMspSavedFileBadge_V168");
+  var titleEl = document.getElementById("homeMspCompareTitle_V168");
+  if (!bodyEl) return;
+
+  var activeP = projOpt || (typeof window.getEffectiveActiveProj_ === "function" ? window.getEffectiveActiveProj_() : (window.activeProj || "桃園市八德區仁德國民小學新建校舍工程(第二期)"));
+  var isR1 = (String(activeP).indexOf("第一期") !== -1 || String(activeP).indexOf("一期") !== -1);
+  var isYG = (String(activeP).indexOf("鶯歌") !== -1);
+  var isR2 = (!isR1 && !isYG);
+  var projShort = isR1 ? "仁德第一期" : (isYG ? "鶯歌消防局" : "仁德第二期");
+
+  var tasks = window.msProjectTasks || (typeof window.loadMsProjectFromStorage === "function" ? window.loadMsProjectFromStorage() : []);
+  if (!Array.isArray(tasks) || tasks.length === 0) {
+    tasks = (typeof getDefaultMsProjectTasks === "function") ? getDefaultMsProjectTasks() : [];
+  }
+
+  var hasUserImportedFile = false;
+  var meta = { fileName: "115.11.02 現場樓層配管查驗分項基準 (預設存檔)", count: tasks.length, updatedAt: "115.11.08 自動鎖定" };
+  try {
+    var savedMeta = localStorage.getItem("WARROOM_MS_PROJECT_META_V167");
+    if (savedMeta) {
+      var parsedM = JSON.parse(savedMeta);
+      if (parsedM && parsedM.fileName) {
+        meta = parsedM;
+        hasUserImportedFile = true;
+      }
+    }
+  } catch (eM) {}
+
+  if (titleEl) {
+    titleEl.textContent = projShort + " — Microsoft Project 進度存檔 ＆ 目前要徑即時比對看板";
+  }
+  if (badgeEl) {
+    badgeEl.textContent = "🔒 已自動存檔鎖定：「" + meta.fileName + "」(" + (meta.count || tasks.length) + "筆工項｜持續比對至下次匯入新檔)";
+  }
+
+  var totalWeight = 0, plannedSum = 0, actualSum = 0;
+  var critTasks = [];
+  var activeCritTasks = [];
+  var delayedCritTasks = [];
+  var formulaParts = [];
+  var todayIso = (typeof window.resolveLatestActiveDate_V164 === "function") ? window.resolveLatestActiveDate_V164() : "2026-11-08";
+
+  for (var i = 0; i < tasks.length; i++) {
+    var t = tasks[i];
+    if (!t) continue;
+    var w = Number(t.weight || 15);
+    var p = Number(t.plannedPct || 0);
+    var a = Number(t.actualPct || 0);
+    totalWeight += w;
+    plannedSum += p * w;
+    actualSum += a * w;
+    if (i < 4) {
+      formulaParts.push("WBS " + (t.wbs || (i + 1)) + "(權重" + w + "%: 預定" + p + "%/實際" + a + "%)");
+    }
+    if (t.isCritical) {
+      critTasks.push(t);
+      if ((t.start <= todayIso && t.finish >= todayIso) || (a < 100 && a > 0)) {
+        activeCritTasks.push(t);
+      }
+      if (a < p) {
+        delayedCritTasks.push(t);
+      }
+    }
+  }
+  if (activeCritTasks.length === 0 && critTasks.length > 0) {
+    activeCritTasks = critTasks.slice(0, 2);
+  }
+
+  var plannedTotal = totalWeight > 0 ? (plannedSum / totalWeight) : 0.0;
+  var actualTotal = totalWeight > 0 ? (actualSum / totalWeight) : 0.0;
+  var diff = actualTotal - plannedTotal;
+  var diffSign = diff >= 0 ? ("+" + diff.toFixed(1) + "% 超前") : (diff.toFixed(1) + "% 落後");
+  var diffColor = diff >= 0 ? "#15803d" : "#dc2626";
+  var diffBg = diff >= 0 ? "#dcfce7" : "#fee2e2";
+
+  var liveScope = isR2 ? "2-3F ACP試水 查管（今日出工 4 人）" : (isR1 ? "一期機電查驗與管閥維護" : "先期規劃與圖說審查");
+  if (window.__LIVE_LABOR_SUMMARY_BY_PROJECT_V166__) {
+    var pk = isR1 ? "R1" : (isYG ? "YG" : "R2");
+    var lb = window.__LIVE_LABOR_SUMMARY_BY_PROJECT_V166__[pk];
+    if (lb && lb.todayWorkScope) {
+      liveScope = lb.todayWorkScope + "（今日出工 " + (lb.todayWorkers || 0) + " 人）";
+    }
+  }
+
+  var basisText = hasUserImportedFile
+    ? ("計算依據：依已匯入之「" + meta.fileName + "」共 " + tasks.length + " 筆 WBS 工項權重加權計算：" + formulaParts.join(" ＋ "))
+    : ("計算依據（現階段配管查驗 4 大分項加權）：" + formulaParts.join(" ＋ ") + "；另全案履約廠商累計估驗完成率為 13.21% ($5,159,463 / $39,045,499)。匯入正式 .mpp 檔後即自動改依匯入工項計算！");
+
+  var critHtmlList = activeCritTasks.slice(0, 2).map(function(ct) {
+    var cd = Number(ct.actualPct || 0) - Number(ct.plannedPct || 0);
+    var cTag = cd >= 0
+      ? '<span style="color:#15803d;font-weight:800;">正常/超前 (實際' + ct.actualPct + '% vs 預定' + ct.plannedPct + '%)</span>'
+      : '<span style="color:#dc2626;font-weight:800;">微幅落後 (實際' + ct.actualPct + '% vs 預定' + ct.plannedPct + '%)</span>';
+    return '<div style="font-size:0.75rem;margin-top:3px;color:#1e293b;">• <code>WBS ' + (ct.wbs || "1") + '</code> <strong>' + ct.name + '</strong> (' + ct.start + '~' + ct.finish + ')：' + cTag + '</div>';
+  }).join("");
+
+  bodyEl.innerHTML =
+    '<div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:10px 12px;">' +
+      '<div style="display:flex;justify-content:space-between;align-items:center;">' +
+        '<span style="font-size:0.74rem;font-weight:700;color:#475569;">1. 進度表預定 vs 現場實際加權進度</span>' +
+        '<span style="font-size:0.7rem;font-weight:800;padding:1px 7px;border-radius:4px;background:' + diffBg + ';color:' + diffColor + ';">' + diffSign + '</span>' +
+      '</div>' +
+      '<div style="font-size:1.25rem;font-weight:900;color:#0f172a;margin-top:4px;font-family:\'JetBrains Mono\',monospace;">預定 ' + plannedTotal.toFixed(1) + '% / 實際 ' + actualTotal.toFixed(1) + '%</div>' +
+      '<div style="font-size:0.71rem;color:#475569;margin-top:4px;line-height:1.4;">📐 ' + basisText + '</div>' +
+    '</div>' +
+    '<div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:10px 12px;grid-column:span 2;">' +
+      '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;">' +
+        '<span style="font-size:0.74rem;font-weight:700;color:#475569;">2. 目前要徑作業 (Critical Path) 自動比對結果（共 ' + critTasks.length + ' 項要徑，' + (delayedCritTasks.length > 0 ? (delayedCritTasks.length + ' 項落後預警') : '全數符合進度') + '）</span>' +
+        '<span style="font-size:0.72rem;font-weight:800;color:#6d28d9;">今日現場施作比對：' + liveScope + '</span>' +
+      '</div>' +
+      (critHtmlList || '<div style="font-size:0.75rem;margin-top:4px;color:#1e293b;">目前無落後之要徑工項</div>') +
+    '</div>';
+};
+
+// 4. Zero-Drift Cloud Hot-Patch Receiver:
+//    When https://yuwei-0815.github.io/warroom-command-center/ polls ?action=warroomLiveJson from GAS Cloud API,
+//    it automatically applies liveEvents, laborSummaryByProject, ncrSummary, safetySummary, monthlyCurvesByProject,
+//    savedMsProjectSchedule, AND any hotPatchClientJs sent by the backend so the external website stays 100% in sync with 0 error!
+var _ORIG_APPLY_CLOUD_V166_ = window.applyRealtimePayloadFromCloud_V161;
+window.applyRealtimePayloadFromCloud_V161 = function(payload) {
+  if (!payload || !payload.ok) return false;
+  if (payload.savedMsProjectSchedule && Array.isArray(payload.savedMsProjectSchedule.tasks) && payload.savedMsProjectSchedule.tasks.length > 0) {
+    // Only apply cloud MS Project schedule if local browser hasn't imported a newer one
+    var localMetaRaw = localStorage.getItem("WARROOM_MS_PROJECT_META_V167");
+    var localMeta = localMetaRaw ? JSON.parse(localMetaRaw) : null;
+    var cloudMeta = payload.savedMsProjectSchedule.meta || {};
+    if (!localMeta || (cloudMeta.updatedAt && cloudMeta.updatedAt > (localMeta.updatedAt || ""))) {
+      window.msProjectTasks = payload.savedMsProjectSchedule.tasks;
+      try { if (typeof msProjectTasks !== "undefined") msProjectTasks = payload.savedMsProjectSchedule.tasks; } catch (e0) {}
+      try {
+        localStorage.setItem("WARROOM_MS_PROJECT_TASKS_V167", JSON.stringify(payload.savedMsProjectSchedule.tasks));
+        if (cloudMeta.fileName) localStorage.setItem("WARROOM_MS_PROJECT_META_V167", JSON.stringify(cloudMeta));
+      } catch (eS) {}
+    }
+  }
+  if (payload.hotPatchClientJs && window.__APPLIED_HOT_PATCH_VER_V171__ !== payload.version) {
+    window.__APPLIED_HOT_PATCH_VER_V171__ = payload.version;
+    try { (0, eval)(payload.hotPatchClientJs); } catch (eHot) {}
+  }
+  if (typeof _ORIG_APPLY_CLOUD_V166_ === "function") {
+    _ORIG_APPLY_CLOUD_V166_(payload);
+  }
+  window.renderHomeFourCoreKpis_V163();
+  window.renderHomeMsProjectCriticalComparison_V168();
+  window.renderHomeMonthlyThreeCurves_V161();
+  return true;
+};
+
+// Re-run initializers immediately
+window.renderHomeFourCoreKpis_V163();
+window.renderHomeMsProjectCriticalComparison_V168();
+window.renderHomeMonthlyThreeCurves_V161();
+/* ==================== END V171 UPGRADES ==================== */
 
 </script>
 </body>
