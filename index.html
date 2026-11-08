@@ -5038,21 +5038,29 @@ quickUpdateTodayHeadcountDirect: window.quickUpdateTodayHeadcountDirect
 
   <!-- Dynamic Legend for the 5 Home Chart Topics -->
   <div id="homeMainChartLegendWrap_V167" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:10px;padding:8px 14px;background:var(--panel-sub);border:1px solid var(--border-std);border-radius:8px;">
-    <div id="homeMainChartLegendItems_V167" style="display:flex;gap:20px;flex-wrap:wrap;align-items:center;font-size:0.82rem;font-weight:800;">
-      <span style="display:inline-flex;align-items:center;gap:7px;color:#0284c7;">
-        <span style="display:inline-block;width:22px;height:3.5px;background:#0284c7;border-radius:2px;"></span>
-        1. 進場材料金額 <span id="homeLegendMatVal_V161" style="font-family:monospace;font-weight:900;">(NT$ 4,398,112)</span>
+    <div id="homeMainChartLegendItems_V167" style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;font-size:0.81rem;font-weight:800;">
+      <span style="display:inline-flex;align-items:center;gap:6px;color:#0284c7;">
+        <span style="display:inline-block;width:20px;height:3.5px;background:#0284c7;border-radius:2px;"></span>
+        1. 進場材料(機電) <strong id="homeLegendMatVal_V161" style="font-family:monospace;">(NT$ 4,398,112)</strong>
       </span>
-      <span style="display:inline-flex;align-items:center;gap:7px;color:#d97706;">
-        <span style="display:inline-block;width:22px;height:3.5px;background:#f59e0b;border-radius:2px;"></span>
-        2. 廠商請款金額 <span id="homeLegendBillVal_V161" style="font-family:monospace;font-weight:900;">(NT$ 7,709,481)</span>
+      <span style="display:inline-flex;align-items:center;gap:6px;color:#d97706;">
+        <span style="display:inline-block;width:20px;height:3.5px;background:#f59e0b;border-radius:2px;"></span>
+        2. 廠商請款(機電) <strong id="homeLegendBillVal_V161" style="font-family:monospace;">(NT$ 7,709,481)</strong>
       </span>
-      <span style="display:inline-flex;align-items:center;gap:7px;color:#059669;">
-        <span style="display:inline-block;width:22px;height:0;border-top:3px dashed #10b981;"></span>
-        3. 業主計價金額 <span id="homeLegendOwnerVal_V161" style="font-family:monospace;font-weight:900;background:rgba(16,185,129,0.14);padding:1px 7px;border-radius:999px;">(待增補)</span>
+      <span style="display:inline-flex;align-items:center;gap:6px;color:#059669;">
+        <span style="display:inline-block;width:20px;height:3.5px;background:#10b981;border-radius:2px;"></span>
+        3A. 業主計價－機電工程 <strong id="homeLegendOwnerMepVal_V172" style="font-family:monospace;background:rgba(16,185,129,0.14);color:#047857;padding:1px 7px;border-radius:999px;">(NT$ 7,715,654｜10.0%)</strong>
+      </span>
+      <span style="display:inline-flex;align-items:center;gap:6px;color:#6d28d9;">
+        <span style="display:inline-block;width:20px;height:0;border-top:3.5px dashed #7c3aed;"></span>
+        3B. 業主計價－全案總價 <strong id="homeLegendOwnerTotalVal_V172" style="font-family:monospace;background:rgba(124,58,237,0.12);color:#6d28d9;padding:1px 7px;border-radius:999px;">(NT$ 84,737,062｜23.25%・右軸)</strong>
+      </span>
+      <span id="homeAmountSubModeFilterWrap_V172" style="display:inline-flex;align-items:center;gap:4px;margin-left:auto;">
+        <button type="button" id="btnAmtView_ALL4" onclick="switchHomeAmountCurveView_V172('ALL4')" class="btn btn-primary" style="padding:2px 8px;font-size:0.71rem;">全顯示(雙軸4線)</button>
+        <button type="button" id="btnAmtView_MEP3" onclick="switchHomeAmountCurveView_V172('MEP3')" class="btn btn-ghost" style="padding:2px 8px;font-size:0.71rem;">僅看機電3線</button>
+        <button type="button" id="btnAmtView_OWNER2" onclick="switchHomeAmountCurveView_V172('OWNER2')" class="btn btn-ghost" style="padding:2px 8px;font-size:0.71rem;">僅看業主計價雙線</button>
       </span>
     </div>
-    
   </div>
 
   <!-- Pure SVG Monthly 3-Curve Chart -->
@@ -5806,6 +5814,114 @@ quickUpdateTodayHeadcountDirect: window.quickUpdateTodayHeadcountDirect
     </div>
   </div>
 
+  <div id="ownerValuationSummaryPanel_V172" style="background:linear-gradient(135deg,#f5f3ff 0%,#ecfdf5 100%);border:1px solid #c4b5fd;border-left:5px solid #7c3aed;border-radius:10px;padding:12px 16px;margin-bottom:14px;">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:10px;">
+      <div>
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+          <span style="background:#7c3aed;color:#fff;font-size:0.72rem;font-weight:900;padding:2px 8px;border-radius:999px;">每月月底自動同步</span>
+          <strong style="font-size:0.96rem;color:#0f172a;font-weight:900;">🏛️ 50-業主請款｜全案總價 vs 機電工程 歷期估驗計價雙線總表（第 1 期 ～ 第 5 期）</strong>
+        </div>
+        <div style="font-size:0.76rem;color:#475569;margin-top:4px;line-height:1.55;">
+          ‧ <strong>NAS 來源路徑</strong>：<code id="ovNasPathCode_V172">\\dogreatnas.synology.me\元順營造-仁德二期\50-業主請款</code>（同廠商計價於<strong>每月最後一日 23:30 / 24:00 自動增量同步</strong>）<br>
+          ‧ <strong>雲端硬碟目標路徑</strong>：<code id="ovDrivePathCode_V172">雲端硬碟\LINE BOT\01-仁德國小(第二期)\50-業主請款</code>（已同步第 1 期～第 5 期估驗計價單、物調明細與計價發票）
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <a id="btnOpenOwnerValDrive_V172" href="https://drive.google.com/drive/folders/1OWa1pfQmUAcRI81cLlV2wT2Y8tB9UDhH" target="_blank" class="btn btn-primary" style="text-decoration:none;padding:6px 12px;font-size:0.76rem;background:#7c3aed;border-color:#6d28d9;color:#fff;font-weight:800;">
+          📂 開啟 雲端硬碟 / 01-仁德國小(第二期) / 50-業主請款
+        </a>
+        <a href="https://drive.google.com/file/d/1XxFM2DxNB8QRFi9GZr8Warsi42W16q4U/view" target="_blank" class="btn btn-ghost" style="text-decoration:none;padding:6px 11px;font-size:0.75rem;border-color:#a7f3d0;background:#ecfdf5;color:#047857;font-weight:800;">
+          📊 檢視第 5 期估驗計價單 (.xls)
+        </a>
+      </div>
+    </div>
+
+    <div class="grid-4tier" style="margin-bottom:10px;">
+      <div style="background:#ffffff;border:1px solid #ddd6fe;border-radius:8px;padding:9px 12px;">
+        <div style="font-size:0.73rem;color:#6d28d9;font-weight:800;">🟣 全案契約總價（壹 發包工程費）</div>
+        <div style="font-size:1.18rem;font-weight:900;color:#0f172a;font-family:monospace;margin-top:2px;">NT$ 364,392,883</div>
+        <div style="font-size:0.71rem;color:#64748b;margin-top:2px;">直接工程費 $313,043,724＋間接費 $51,349,159</div>
+      </div>
+      <div style="background:#ffffff;border:1px solid #c4b5fd;border-radius:8px;padding:9px 12px;">
+        <div style="font-size:0.73rem;color:#6d28d9;font-weight:800;">🟣 業主計價－全案總價累計（至第5期）</div>
+        <div style="font-size:1.18rem;font-weight:900;color:#6d28d9;font-family:monospace;margin-top:2px;">NT$ 84,737,062 <small style="font-size:0.74rem;">(23.25%)</small></div>
+        <div style="font-size:0.71rem;color:#64748b;margin-top:2px;">含累計物調款 $2,051,323 總計 <strong>NT$ 86,788,385</strong> (23.82%)</div>
+      </div>
+      <div style="background:#ffffff;border:1px solid #a7f3d0;border-radius:8px;padding:9px 12px;">
+        <div style="font-size:0.73rem;color:#047857;font-weight:800;">🟢 機電工程合約總價（壹.甲.三 直接工程費）</div>
+        <div style="font-size:1.18rem;font-weight:900;color:#0f172a;font-family:monospace;margin-top:2px;">NT$ 77,517,622</div>
+        <div style="font-size:0.71rem;color:#64748b;margin-top:2px;">涵蓋 15 大機電分項系統（電氣/給排水/消防/弱電/空調）</div>
+      </div>
+      <div style="background:#ffffff;border:1px solid #6ee7b7;border-radius:8px;padding:9px 12px;">
+        <div style="font-size:0.73rem;color:#047857;font-weight:800;">🟢 業主計價－機電工程累計（至第5期）</div>
+        <div style="font-size:1.18rem;font-weight:900;color:#059669;font-family:monospace;margin-top:2px;">NT$ 7,715,654 <small style="font-size:0.74rem;">(10.0%)</small></div>
+        <div style="font-size:0.71rem;color:#64748b;margin-top:2px;">第1~4期已核章 $5,115,409 (6.60%)＋第5期 $2,600,245</div>
+      </div>
+    </div>
+
+    <div style="overflow-x:auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:8px;">
+      <table style="width:100%;border-collapse:collapse;font-size:0.76rem;text-align:right;">
+        <thead>
+          <tr style="background:#f8fafc;border-bottom:1px solid #cbd5e1;color:#334155;">
+            <th style="padding:7px 10px;text-align:left;">期別 / 計價期間</th>
+            <th style="padding:7px 10px;">🟣 全案本期估驗</th>
+            <th style="padding:7px 10px;">🟣 全案累計估驗 (比例)</th>
+            <th style="padding:7px 10px;">🟣 全案含物調累計 / 實付發票</th>
+            <th style="padding:7px 10px;">🟢 機電本期估驗</th>
+            <th style="padding:7px 10px;">🟢 機電累計估驗 (比例)</th>
+            <th style="padding:7px 10px;text-align:left;">主要機電計價工項 ＆ 雲端原始檔</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid #f1f5f9;">
+            <td style="padding:6px 10px;text-align:left;font-weight:800;">第 1 期 (114.12.01~115.02.28)</td>
+            <td style="padding:6px 10px;font-family:monospace;">$6,046,011</td>
+            <td style="padding:6px 10px;font-family:monospace;font-weight:800;color:#6d28d9;">$6,046,011 (1.66%)</td>
+            <td style="padding:6px 10px;font-family:monospace;">$6,046,011 / 實付 $5,743,710</td>
+            <td style="padding:6px 10px;font-family:monospace;">$0</td>
+            <td style="padding:6px 10px;font-family:monospace;font-weight:800;color:#059669;">$0 (0.00%)</td>
+            <td style="padding:6px 10px;text-align:left;"><a href="https://drive.google.com/file/d/1tpwahXjpOyumlQ_wqF0VlUzRk3mCQhDn/view" target="_blank" style="color:#0284c7;">📄 估驗計價1期-掃描檔.pdf</a>（整地/放樣/基礎開挖）</td>
+          </tr>
+          <tr style="border-bottom:1px solid #f1f5f9;">
+            <td style="padding:6px 10px;text-align:left;font-weight:800;">第 2 期 (115.03.01~115.04.30)</td>
+            <td style="padding:6px 10px;font-family:monospace;">$14,225,979</td>
+            <td style="padding:6px 10px;font-family:monospace;font-weight:800;color:#6d28d9;">$20,271,990 (5.56%)</td>
+            <td style="padding:6px 10px;font-family:monospace;">$20,346,474 / 實付 $13,585,440</td>
+            <td style="padding:6px 10px;font-family:monospace;">$121,072</td>
+            <td style="padding:6px 10px;font-family:monospace;font-weight:800;color:#059669;">$121,072 (0.16%)</td>
+            <td style="padding:6px 10px;text-align:left;"><a href="https://drive.google.com/file/d/1guVB64XGYUS2mu-zrAe-0rSfABS_2JSN/view" target="_blank" style="color:#0284c7;">📊 估驗計價(第2期).xls</a>｜<a href="https://drive.google.com/file/d/1gCYC02EgKTlUdCsb721D1EenC77Vz6g7/view" target="_blank" style="color:#0284c7;">🧾 發票</a>（接地銅棒/基礎接地 $16,596＋配管 $104,476）</td>
+          </tr>
+          <tr style="border-bottom:1px solid #f1f5f9;">
+            <td style="padding:6px 10px;text-align:left;font-weight:800;">第 3 期 (115.05.01~115.06.30)</td>
+            <td style="padding:6px 10px;font-family:monospace;">$18,446,874</td>
+            <td style="padding:6px 10px;font-family:monospace;font-weight:800;color:#6d28d9;">$38,718,864 (10.63%)</td>
+            <td style="padding:6px 10px;font-family:monospace;">$39,317,093 / 實付 $18,022,088</td>
+            <td style="padding:6px 10px;font-family:monospace;">$2,394,092</td>
+            <td style="padding:6px 10px;font-family:monospace;font-weight:800;color:#059669;">$2,515,164 (3.24%)</td>
+            <td style="padding:6px 10px;text-align:left;"><a href="https://drive.google.com/file/d/1dxUlGUqDFJ9p-EOK1kPh9d56NT0bKH98/view" target="_blank" style="color:#0284c7;">📄 估驗計價3期-掃描檔.pdf</a>｜<a href="https://drive.google.com/file/d/1FOnGKIo5B1okNW08wLduOv4slRKZFHaT/view" target="_blank" style="color:#0284c7;">🧾 發票</a>（1F~2F 照明電氣/給排水/弱電預埋配管）</td>
+          </tr>
+          <tr style="border-bottom:1px solid #f1f5f9;">
+            <td style="padding:6px 10px;text-align:left;font-weight:800;">第 4 期 (115.07.01~115.08.31)</td>
+            <td style="padding:6px 10px;font-family:monospace;">$23,009,099</td>
+            <td style="padding:6px 10px;font-family:monospace;font-weight:800;color:#6d28d9;">$61,727,963 (16.94%)</td>
+            <td style="padding:6px 10px;font-family:monospace;">$63,052,739 / 實付 $22,548,864</td>
+            <td style="padding:6px 10px;font-family:monospace;">$2,600,245</td>
+            <td style="padding:6px 10px;font-family:monospace;font-weight:800;color:#059669;">$5,115,409 (6.60%)</td>
+            <td style="padding:6px 10px;text-align:left;"><a href="https://drive.google.com/file/d/13ciQmmEFK_219rHh9HL9i8uS3a3qW_V0/view" target="_blank" style="color:#0284c7;">📄 第4期用印掃瞄.pdf</a>｜<a href="https://drive.google.com/file/d/1KiWEiOOD40Ip9gJfdYwymvTdvwU0dFQ3/view" target="_blank" style="color:#0284c7;">🧾 發票</a>（7月 $1,176,216＋8月 $1,424,029 管線與試水）</td>
+          </tr>
+          <tr style="background:#f0fdf4;">
+            <td style="padding:6px 10px;text-align:left;font-weight:900;color:#047857;">第 5 期 (115.09.01~115.10.31)</td>
+            <td style="padding:6px 10px;font-family:monospace;font-weight:800;">$23,009,099</td>
+            <td style="padding:6px 10px;font-family:monospace;font-weight:900;color:#6d28d9;">$84,737,062 (23.25%)</td>
+            <td style="padding:6px 10px;font-family:monospace;font-weight:800;">含物調總計 $86,788,385</td>
+            <td style="padding:6px 10px;font-family:monospace;font-weight:800;">$2,600,245</td>
+            <td style="padding:6px 10px;font-family:monospace;font-weight:900;color:#059669;">$7,715,654 (10.0%)</td>
+            <td style="padding:6px 10px;text-align:left;"><a href="https://drive.google.com/file/d/1XxFM2DxNB8QRFi9GZr8Warsi42W16q4U/view" target="_blank" style="color:#047857;font-weight:800;">📊 工程估驗計價(第5期).xls</a>（照明電氣累計 $212萬、給排水 $222萬、廣播 $92萬、電信 $78萬）</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
   <div id="vendorBillingKpiGrid_V161" class="grid-4tier" style="margin-bottom:12px;">
     <div style="background:var(--panel-sub);border:1px solid rgba(2,132,199,0.4);border-radius:10px;padding:10px 14px;">
       <div style="font-size:0.75rem;color:var(--text-muted);font-weight:700;">🏢 1. 現任履約廠商合約/採購總額 (21家｜未稅)</div>
@@ -13871,30 +13987,11 @@ window.addEventListener("DOMContentLoaded", function() {
 
 /* ==================== V162 IMPECCABLE VANTAGE ERP & INSTANT SESSION RESUME ==================== */
 (function initV162ImpeccableErp_() {
-  // 1. Instant Session Resume: if already authenticated in this session/browser, open workspace in <5ms without login modal blocking
+  // 1. V171 Fix: Always show #authLoginOverlay on page load / F5 refresh (never hide login overlay before user logs in!)
   try {
-    var savedUser = sessionStorage.getItem("WARROOM_AUTH_USER_V162") || localStorage.getItem("WARROOM_AUTH_USER_V150");
-    if (savedUser) {
-      var overlay = document.getElementById("authLoginOverlay");
-      if (overlay) overlay.style.display = "none";
-    }
+    sessionStorage.removeItem("WARROOM_AUTH_USER_V162");
+    localStorage.removeItem("WARROOM_AUTH_USER_V150");
   } catch (eSes) {}
-
-  // Hook executeWarRoomLogin to persist session smoothly
-  var origLogin = window.executeWarRoomLogin;
-  if (typeof origLogin === "function") {
-    window.executeWarRoomLogin = function() {
-      var res = origLogin.apply(this, arguments);
-      try {
-        var overlay = document.getElementById("authLoginOverlay");
-        if (overlay && overlay.style.display === "none") {
-          var uEl = document.getElementById("loginUsernameInput");
-          sessionStorage.setItem("WARROOM_AUTH_USER_V162", (uEl && uEl.value) ? uEl.value : "BIGBOSS");
-        }
-      } catch (eSaveSes) {}
-      return res;
-    };
-  }
 
   // Re-order navigation tabs logically (Overview -> Daily Ops -> Materials & Billing -> Quality/Safety -> Schedule/BI -> BIM/Drawings -> Admin)
   var navBar = document.getElementById("mainNavigationButtonsBar");
@@ -16828,6 +16925,541 @@ window.checkAndApplyCloudUiHotPatch_V171 = function() {
 window.renderWeatherAndLaborSubpageTables();
 setTimeout(function() { window.checkAndApplyCloudUiHotPatch_V171(); }, 1800);
 /* ==================== END V171 UPGRADES ==================== */
+
+</script>
+
+
+
+
+<script>
+
+/* ==================== V172 OWNER VALUATION MONTHLY SYNC (50-業主請款) & WHOLE-PROJECT VS MEP DUAL CURVES ==================== */
+window.__V172_OWNER_VALUATION_DUAL_CURVES_READY__ = true;
+window.HOME_AMOUNT_CURVE_SUBMODE_V172 = "ALL4"; // 'ALL4' | 'MEP3' | 'OWNER2'
+
+// 1. Official Owner Valuation Data (50-業主請款 Periods 1~5, Split into Whole-Project vs MEP Engineering)
+window.OWNER_VALUATION_BY_PROJECT_V172 = {
+  "桃園市八德區仁德國民小學新建校舍工程(第二期)": {
+    projectCode: "RENDE_2",
+    projectShort: "仁德第二期",
+    nasOwnerValPath: "\\\\dogreatnas.synology.me\\元順營造-仁德二期\\50-業主請款",
+    nasOwnerValPathLegacy: "\\\\dogreatnas.synology.me\\元順工程-仁德二期\\50-業主請款",
+    driveOwnerValFolderId: "1OWa1pfQmUAcRI81cLlV2wT2Y8tB9UDhH",
+    driveOwnerValPath: "雲端硬碟\\LINE BOT\\01-仁德國小(第二期)\\50-業主請款",
+    syncScheduleDesc: "每月最後一日 23:30 / 24:00 自動增量同步（同廠商計價每月月底更新一次）",
+    totalContractAmount: 364392883,
+    directEngineeringContractAmount: 313043724,
+    indirectEngineeringContractAmount: 51349159,
+    mepContractAmount: 77517622,
+    latestPeriodLabel: "第 5 期 (115.09.01~115.10.31)",
+    latestTotalCumulative: 84737062,
+    latestTotalWithPriceAdjCumulative: 86788385,
+    latestTotalPct: 23.25,
+    latestMepCumulative: 7715654,
+    latestMepApprovedP4Cumulative: 5115409,
+    latestMepPct: 9.95,
+    months: ["115.01", "115.02", "115.03", "115.04", "115.05", "115.06", "115.07", "115.08", "115.09", "115.10", "115.11"],
+    // Curve 3A: 業主計價－機電工程 (壹.甲.三 機電工程費，合約 NT$ 77,517,622)
+    ownerMepMonthly:      [0, 16596, 104476, 0, 1032120, 1361972, 1176216, 1424029, 1176216, 1424029, 0],
+    ownerMepCumulative:   [0, 16596, 121072, 121072, 1153192, 2515164, 3691380, 5115409, 6291625, 7715654, 7715654],
+    // Curve 3B: 業主計價－全案總價 (壹 發包工程費，契約總價 NT$ 364,392,883)
+    ownerTotalMonthly:    [3352205, 2693806, 11096264, 3129715, 8195551, 10251323, 12845620, 10163479, 12845620, 10163479, 0],
+    ownerTotalCumulative: [3352205, 6046011, 17142275, 20271990, 28467541, 38718864, 51564484, 61727963, 74573583, 84737062, 84737062],
+    periodTags:           ["第1期中", "第1期結算", "第2期中", "第2期結算", "第3期中", "第3期結算", "第4期中", "第4期結算", "第5期中", "第5期結算", "第6期累計中"]
+  },
+  "桃園市八德區仁德國民小學新建校舍工程(第一期)": {
+    projectCode: "RENDE_1",
+    projectShort: "仁德第一期",
+    nasOwnerValPath: "\\\\dogreatnas.synology.me\\元順營造-仁德一期\\50-業主請款",
+    driveOwnerValFolderId: "1_2kBn-TkrPNNCzXV45qkrUzjUi0QmShO",
+    driveOwnerValPath: "雲端硬碟\\LINE BOT\\01-仁德國小(第一期)\\50-業主請款",
+    totalContractAmount: 0,
+    mepContractAmount: 0,
+    latestTotalCumulative: 0,
+    latestMepCumulative: 0,
+    months: ["115.01", "115.02", "115.03", "115.04", "115.05", "115.06", "115.07", "115.08", "115.09", "115.10", "115.11"],
+    ownerMepMonthly:      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    ownerMepCumulative:   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    ownerTotalMonthly:    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    ownerTotalCumulative: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    periodTags:           ["", "", "", "", "", "", "", "", "", "", ""]
+  },
+  "鶯歌消防局新建工程": {
+    projectCode: "YINGGE",
+    projectShort: "鶯歌消防局",
+    nasOwnerValPath: "\\\\dogreatnas.synology.me\\元順營造-鶯歌消防局\\50-業主請款",
+    driveOwnerValFolderId: "1Xoo2k5C-Lc-Ek0F9BJ9q2blB7CP6UEjO",
+    driveOwnerValPath: "雲端硬碟\\LINE BOT\\鶯歌消防局\\50-業主請款",
+    totalContractAmount: 0,
+    mepContractAmount: 0,
+    latestTotalCumulative: 0,
+    latestMepCumulative: 0,
+    months: ["115.01", "115.02", "115.03", "115.04", "115.05", "115.06", "115.07", "115.08", "115.09", "115.10", "115.11"],
+    ownerMepMonthly:      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    ownerMepCumulative:   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    ownerTotalMonthly:    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    ownerTotalCumulative: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    periodTags:           ["", "", "", "", "", "", "", "", "", "", ""]
+  }
+};
+
+// Sync into window.MONTHLY_CURVES_BY_PROJECT_V161 so any legacy caller also receives both curves
+(function syncOwnerValuationIntoMonthlyCurves_V172_() {
+  if (!window.MONTHLY_CURVES_BY_PROJECT_V161) return;
+  Object.keys(window.OWNER_VALUATION_BY_PROJECT_V172).forEach(function(projKey) {
+    var ov = window.OWNER_VALUATION_BY_PROJECT_V172[projKey];
+    var mc = window.MONTHLY_CURVES_BY_PROJECT_V161[projKey];
+    if (mc && ov) {
+      mc.ownerValMepMonthly = ov.ownerMepMonthly.slice();
+      mc.ownerValMepCumulative = ov.ownerMepCumulative.slice();
+      mc.ownerValTotalMonthly = ov.ownerTotalMonthly.slice();
+      mc.ownerValTotalCumulative = ov.ownerTotalCumulative.slice();
+      mc.ownerValMonthly = ov.ownerMepMonthly.slice();
+      mc.ownerValCumulative = ov.ownerMepCumulative.slice();
+      mc.nasOwnerValPath = ov.nasOwnerValPath;
+      mc.driveOwnerValFolderId = ov.driveOwnerValFolderId;
+      mc.driveOwnerValPath = ov.driveOwnerValPath;
+      mc.totalContractAmount = ov.totalContractAmount;
+      mc.mepContractAmount = ov.mepContractAmount;
+    }
+  });
+})();
+
+window.switchHomeAmountCurveView_V172 = function(subMode) {
+  window.HOME_AMOUNT_CURVE_SUBMODE_V172 = subMode || "ALL4";
+  ["ALL4", "MEP3", "OWNER2"].forEach(function(k) {
+    var btn = document.getElementById("btnAmtView_" + k);
+    if (btn) {
+      btn.className = (k === window.HOME_AMOUNT_CURVE_SUBMODE_V172) ? "btn btn-primary" : "btn btn-ghost";
+    }
+  });
+  window.renderHomeMonthlyThreeCurves_V161();
+};
+
+// 2. Dual-Axis 4-Curve Renderer for Home Page "💰 金額" Chart:
+//    - Curve 1 (Blue #0284c7 solid, Left Y-Axis): 1. 進場材料金額 (機電)
+//    - Curve 2 (Amber #f59e0b solid, Left Y-Axis): 2. 廠商請款金額 (機電)
+//    - Curve 3A (Emerald #10b981 solid, Left Y-Axis): 3A. 業主計價－機電工程 (壹.甲.三 合約 $77,517,622)
+//    - Curve 3B (Purple #7c3aed dashed-dot, Right Y-Axis): 3B. 業主計價－全案總價 (全案契約 $364,392,883)
+window.renderHomeAmountFourCurvesDualAxis_V172 = function(projOpt) {
+  var svg = document.getElementById("homeMonthly3CurveSvg_V161");
+  if (!svg) return;
+
+  var activeP = projOpt || (typeof window.getEffectiveActiveProj_ === "function" ? window.getEffectiveActiveProj_() : (window.activeProj || "桃園市八德區仁德國民小學新建校舍工程(第二期)"));
+  var isR1 = (String(activeP).indexOf("第一期") !== -1 || String(activeP).indexOf("一期") !== -1);
+  var isYG = (String(activeP).indexOf("鶯歌") !== -1);
+  var canonicalProj = isR1
+    ? "桃園市八德區仁德國民小學新建校舍工程(第一期)"
+    : (isYG ? "鶯歌消防局新建工程" : "桃園市八德區仁德國民小學新建校舍工程(第二期)");
+
+  var cfg = window.MONTHLY_CURVES_BY_PROJECT_V161[canonicalProj] || window.MONTHLY_CURVES_BY_PROJECT_V161["桃園市八德區仁德國民小學新建校舍工程(第二期)"];
+  var ov = window.OWNER_VALUATION_BY_PROJECT_V172[canonicalProj] || window.OWNER_VALUATION_BY_PROJECT_V172["桃園市八德區仁德國民小學新建校舍工程(第二期)"];
+  var isCum = (window.HOME_CURVE_MODE_V161 !== "MONTHLY");
+  var subMode = window.HOME_AMOUNT_CURVE_SUBMODE_V172 || "ALL4";
+
+  var months = cfg.months || [];
+  var matArr = isCum ? (cfg.materialCumulative || []) : (cfg.materialMonthly || []);
+  var billArr = isCum ? (cfg.vendorBillCumulative || []) : (cfg.vendorBillMonthly || []);
+  var mepOwnArr = isCum ? (ov.ownerMepCumulative || []) : (ov.ownerMepMonthly || []);
+  var totOwnArr = isCum ? (ov.ownerTotalCumulative || []) : (ov.ownerTotalMonthly || []);
+
+  var showMat = (subMode !== "OWNER2");
+  var showBill = (subMode !== "OWNER2");
+  var showOwnerMep = true;
+  var showOwnerTotal = (subMode !== "MEP3");
+
+  var lastMat = matArr.length ? matArr[matArr.length - 1] : 0;
+  var lastBill = billArr.length ? billArr[billArr.length - 1] : 0;
+  var lastMepOwn = mepOwnArr.length ? mepOwnArr[mepOwnArr.length - 1] : 0;
+  var lastTotOwn = totOwnArr.length ? totOwnArr[totOwnArr.length - 1] : 0;
+  // For MONTHLY mode, show the latest non-zero monthly or cumulative summary in legend
+  var legMepVal = isCum ? lastMepOwn : (mepOwnArr[9] || lastMepOwn);
+  var legTotVal = isCum ? lastTotOwn : (totOwnArr[9] || lastTotOwn);
+
+  var badgeEl = document.getElementById("homeCurveActiveProjBadge");
+  if (badgeEl) {
+    badgeEl.textContent = canonicalProj + (isCum ? "｜各月累計金額曲線（全案計價 vs 機電工程雙線）" : "｜各月單月金額曲線（全案計價 vs 機電工程雙線）");
+  }
+
+  var legContainer = document.getElementById("homeMainChartLegendItems_V167");
+  if (legContainer) {
+    var mepPctStr = ov.mepContractAmount > 0 ? ((legMepVal / ov.mepContractAmount) * 100).toFixed(1) + "%" : "0.0%";
+    var totPctStr = ov.totalContractAmount > 0 ? ((legTotVal / ov.totalContractAmount) * 100).toFixed(2) + "%" : "0.00%";
+    legContainer.innerHTML =
+      '<span style="display:inline-flex;align-items:center;gap:6px;color:#0284c7;opacity:' + (showMat ? '1' : '0.35') + ';">' +
+        '<span style="display:inline-block;width:18px;height:3.5px;background:#0284c7;border-radius:2px;"></span>' +
+        '1. 進場材料(機電) <strong id="homeLegendMatVal_V161" style="font-family:monospace;">(NT$ ' + Number(lastMat || 0).toLocaleString() + ')</strong>' +
+      '</span>' +
+      '<span style="display:inline-flex;align-items:center;gap:6px;color:#d97706;opacity:' + (showBill ? '1' : '0.35') + ';">' +
+        '<span style="display:inline-block;width:18px;height:3.5px;background:#f59e0b;border-radius:2px;"></span>' +
+        '2. 廠商請款(機電) <strong id="homeLegendBillVal_V161" style="font-family:monospace;">(NT$ ' + Number(lastBill || 0).toLocaleString() + ')</strong>' +
+      '</span>' +
+      '<span style="display:inline-flex;align-items:center;gap:6px;color:#059669;">' +
+        '<span style="display:inline-block;width:18px;height:3.5px;background:#10b981;border-radius:2px;"></span>' +
+        '3A. 業主計價－機電工程 <strong id="homeLegendOwnerMepVal_V172" style="font-family:monospace;background:rgba(16,185,129,0.14);color:#047857;padding:1px 7px;border-radius:999px;">(NT$ ' + Number(legMepVal || 0).toLocaleString() + '｜' + mepPctStr + ')</strong>' +
+      '</span>' +
+      '<span style="display:inline-flex;align-items:center;gap:6px;color:#6d28d9;opacity:' + (showOwnerTotal ? '1' : '0.35') + ';">' +
+        '<span style="display:inline-block;width:18px;height:0;border-top:3.5px dashed #7c3aed;"></span>' +
+        '3B. 業主計價－全案總價 <strong id="homeLegendOwnerTotalVal_V172" style="font-family:monospace;background:rgba(124,58,237,0.12);color:#6d28d9;padding:1px 7px;border-radius:999px;">(NT$ ' + Number(legTotVal || 0).toLocaleString() + '｜' + totPctStr + '・右軸)</strong>' +
+      '</span>' +
+      '<span id="homeAmountSubModeFilterWrap_V172" style="display:inline-flex;align-items:center;gap:4px;margin-left:auto;">' +
+        '<button type="button" id="btnAmtView_ALL4" onclick="switchHomeAmountCurveView_V172(\'ALL4\')" class="' + (subMode === 'ALL4' ? 'btn btn-primary' : 'btn btn-ghost') + '" style="padding:2px 8px;font-size:0.71rem;">全顯示(雙軸4線)</button>' +
+        '<button type="button" id="btnAmtView_MEP3" onclick="switchHomeAmountCurveView_V172(\'MEP3\')" class="' + (subMode === 'MEP3' ? 'btn btn-primary' : 'btn btn-ghost') + '" style="padding:2px 8px;font-size:0.71rem;">僅看機電3線</button>' +
+        '<button type="button" id="btnAmtView_OWNER2" onclick="switchHomeAmountCurveView_V172(\'OWNER2\')" class="' + (subMode === 'OWNER2' ? 'btn btn-primary' : 'btn btn-ghost') + '" style="padding:2px 8px;font-size:0.71rem;">僅看業主計價雙線</button>' +
+      '</span>';
+  }
+
+  // Left Y-Axis scale (MEP: Material, Vendor Billing, MEP Owner Valuation)
+  var maxLeft = 1000000;
+  for (var i = 0; i < months.length; i++) {
+    if (showMat && matArr[i] > maxLeft) maxLeft = matArr[i];
+    if (showBill && billArr[i] > maxLeft) maxLeft = billArr[i];
+    if (showOwnerMep && mepOwnArr[i] > maxLeft) maxLeft = mepOwnArr[i];
+  }
+  var yMaxLeft = Math.ceil((maxLeft * 1.16) / 500000) * 500000;
+  if (yMaxLeft < 1000000) yMaxLeft = 1000000;
+
+  // Right Y-Axis scale (Whole-Project Owner Valuation: up to $8,473.7萬 -> $9,000萬)
+  var maxRight = 10000000;
+  for (var r = 0; r < months.length; r++) {
+    if (totOwnArr[r] > maxRight) maxRight = totOwnArr[r];
+  }
+  var yMaxRight = Math.ceil((maxRight * 1.06) / 5000000) * 5000000;
+  if (yMaxRight < 10000000) yMaxRight = 10000000;
+
+  var padL = 86, padR = showOwnerTotal ? 88 : 42, padT = 38, padB = 56;
+  var W = 960, H = 395;
+  var plotW = W - padL - padR;
+  var plotH = H - padT - padB;
+  var n = months.length;
+
+  function getX(idx) {
+    if (n <= 1) return padL + plotW / 2;
+    return padL + (idx * plotW) / (n - 1);
+  }
+  function getYLeft(val) {
+    var v = Number(val || 0);
+    if (isNaN(v) || v < 0) v = 0;
+    return padT + plotH - (v / yMaxLeft) * plotH;
+  }
+  function getYRight(val) {
+    var v = Number(val || 0);
+    if (isNaN(v) || v < 0) v = 0;
+    return padT + plotH - (v / yMaxRight) * plotH;
+  }
+
+  var out = [];
+  // Axis titles at top of Left & Right Y-Axes
+  out.push('<text x="' + (padL - 8) + '" y="18" text-anchor="end" fill="#047857" font-size="10.5" font-weight="900">◀ 左軸：機電工程金額</text>');
+  if (showOwnerTotal) {
+    out.push('<text x="' + (W - padR + 8) + '" y="18" text-anchor="start" fill="#6d28d9" font-size="10.5" font-weight="900">右軸：全案計價總額 ▶</text>');
+  }
+
+  // Horizontal grid lines + Left & Right Y-axis tick labels (5 steps)
+  for (var s = 0; s <= 5; s++) {
+    var yValL = (yMaxLeft / 5) * s;
+    var yPos = getYLeft(yValL);
+    out.push('<line x1="' + padL + '" y1="' + yPos.toFixed(1) + '" x2="' + (W - padR) + '" y2="' + yPos.toFixed(1) + '" stroke="rgba(15,23,42,0.10)" stroke-width="1" stroke-dasharray="' + (s === 0 ? "none" : "4,4") + '"></line>');
+    var yLabelL = (yValL === 0) ? "NT$ 0" : ("$" + (yValL / 10000).toLocaleString() + "萬");
+    out.push('<text x="' + (padL - 10) + '" y="' + (yPos + 4).toFixed(1) + '" text-anchor="end" fill="#0f172a" font-size="11" font-weight="700">' + yLabelL + '</text>');
+
+    if (showOwnerTotal) {
+      var yValR = (yMaxRight / 5) * s;
+      var yLabelR = (yValR === 0) ? "NT$ 0" : ("$" + (yValR / 10000).toLocaleString() + "萬");
+      out.push('<text x="' + (W - padR + 10) + '" y="' + (yPos + 4).toFixed(1) + '" text-anchor="start" fill="#6d28d9" font-size="11" font-weight="800">' + yLabelR + '</text>');
+    }
+  }
+
+  // X-axis month labels & vertical guides + Period settlement badges
+  var pTags = ov.periodTags || [];
+  for (var m = 0; m < n; m++) {
+    var xPos = getX(m);
+    out.push('<line x1="' + xPos.toFixed(1) + '" y1="' + padT + '" x2="' + xPos.toFixed(1) + '" y2="' + (padT + plotH) + '" stroke="rgba(15,23,42,0.05)" stroke-width="1"></line>');
+    out.push('<text x="' + xPos.toFixed(1) + '" y="' + (padT + plotH + 22) + '" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="800">' + months[m] + '</text>');
+    if (pTags[m] && pTags[m].indexOf("結算") !== -1) {
+      out.push('<text x="' + xPos.toFixed(1) + '" y="' + (padT + plotH + 38) + '" text-anchor="middle" fill="#6d28d9" font-size="9.5" font-weight="800">[' + pTags[m].replace("結算", "") + ']</text>');
+    }
+  }
+
+  // Build coordinate arrays
+  var matPts = [], billPts = [], mepOwnPts = [], totOwnPts = [];
+  var matAreaPts = [getX(0).toFixed(1) + "," + (padT + plotH).toFixed(1)];
+  var mepOwnAreaPts = [getX(0).toFixed(1) + "," + (padT + plotH).toFixed(1)];
+  var totOwnAreaPts = [getX(0).toFixed(1) + "," + (padT + plotH).toFixed(1)];
+
+  for (var k = 0; k < n; k++) {
+    var xk = getX(k);
+    var ym = getYLeft(matArr[k] || 0);
+    var yb = getYLeft(billArr[k] || 0);
+    var yMep = getYLeft(mepOwnArr[k] || 0);
+    var yTot = getYRight(totOwnArr[k] || 0);
+
+    matPts.push(xk.toFixed(1) + "," + ym.toFixed(1));
+    billPts.push(xk.toFixed(1) + "," + yb.toFixed(1));
+    mepOwnPts.push(xk.toFixed(1) + "," + yMep.toFixed(1));
+    totOwnPts.push(xk.toFixed(1) + "," + yTot.toFixed(1));
+
+    matAreaPts.push(xk.toFixed(1) + "," + ym.toFixed(1));
+    mepOwnAreaPts.push(xk.toFixed(1) + "," + yMep.toFixed(1));
+    totOwnAreaPts.push(xk.toFixed(1) + "," + yTot.toFixed(1));
+  }
+  matAreaPts.push(getX(n - 1).toFixed(1) + "," + (padT + plotH).toFixed(1));
+  mepOwnAreaPts.push(getX(n - 1).toFixed(1) + "," + (padT + plotH).toFixed(1));
+  totOwnAreaPts.push(getX(n - 1).toFixed(1) + "," + (padT + plotH).toFixed(1));
+
+  // Area fills
+  if (showOwnerTotal) {
+    out.push('<polygon points="' + totOwnAreaPts.join(" ") + '" fill="rgba(124,58,237,0.06)"></polygon>');
+  }
+  if (showOwnerMep) {
+    out.push('<polygon points="' + mepOwnAreaPts.join(" ") + '" fill="rgba(16,185,129,0.09)"></polygon>');
+  }
+  if (showMat) {
+    out.push('<polygon points="' + matAreaPts.join(" ") + '" fill="rgba(2,132,199,0.09)"></polygon>');
+  }
+
+  // Polylines for the 4 curves
+  // Curve 3B: 業主計價－全案總價 (Purple #7c3aed dashed-dot line on Right Y-Axis)
+  if (showOwnerTotal) {
+    out.push('<polyline fill="none" stroke="#7c3aed" stroke-width="3.2" stroke-dasharray="8,4" stroke-linecap="round" stroke-linejoin="round" points="' + totOwnPts.join(" ") + '"></polyline>');
+  }
+  // Curve 2: 廠商請款金額(機電) (Amber #f59e0b solid line on Left Y-Axis)
+  if (showBill) {
+    out.push('<polyline fill="none" stroke="#f59e0b" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round" points="' + billPts.join(" ") + '"></polyline>');
+  }
+  // Curve 3A: 業主計價－機電工程 (Emerald #10b981 solid line on Left Y-Axis)
+  if (showOwnerMep) {
+    out.push('<polyline fill="none" stroke="#10b981" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" points="' + mepOwnPts.join(" ") + '"></polyline>');
+  }
+  // Curve 1: 進場材料金額(機電) (Blue #0284c7 solid line on Left Y-Axis)
+  if (showMat) {
+    out.push('<polyline fill="none" stroke="#0284c7" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round" points="' + matPts.join(" ") + '"></polyline>');
+  }
+
+  // Helper to format NT$ in 萬 / M cleanly
+  function fmtWanOrM(v) {
+    var num = Number(v || 0);
+    if (num <= 0) return "$0";
+    if (num >= 10000000) return "$" + (num / 10000).toFixed(0) + "萬";
+    if (num >= 1000000) return "$" + (num / 1000000).toFixed(2) + "M";
+    if (num >= 10000) return "$" + Math.round(num / 1000) + "k";
+    return "$" + num.toLocaleString();
+  }
+
+  // Draw nodes and non-overlapping labels for all 4 curves
+  for (var j = 0; j < n; j++) {
+    var xj = getX(j);
+    var vMat = Number(matArr[j] || 0);
+    var vBill = Number(billArr[j] || 0);
+    var vMep = Number(mepOwnArr[j] || 0);
+    var vTot = Number(totOwnArr[j] || 0);
+
+    var yMat = getYLeft(vMat);
+    var yBill = getYLeft(vBill);
+    var yMep = getYLeft(vMep);
+    var yTot = getYRight(vTot);
+
+    // 3B. Whole-Project Owner Valuation Node (Purple diamond/circle)
+    if (showOwnerTotal) {
+      out.push('<circle cx="' + xj.toFixed(1) + '" cy="' + yTot.toFixed(1) + '" r="5" fill="#7c3aed" stroke="#ffffff" stroke-width="2"><title>' + months[j] + ' 業主計價(全案總價)：NT$ ' + vTot.toLocaleString() + '</title></circle>');
+      if (vTot > 0) {
+        // Avoid colliding with yBill or yMep if close in pixel Y
+        var totLblY = yTot - 11;
+        if (showBill && Math.abs(totLblY - (yBill - 10)) < 14) totLblY = yTot - 22;
+        out.push('<text x="' + xj.toFixed(1) + '" y="' + Math.max(15, totLblY).toFixed(1) + '" text-anchor="middle" fill="#6d28d9" font-size="10.2" font-weight="900">' + fmtWanOrM(vTot) + '</text>');
+      }
+    }
+
+    // 3A. MEP Owner Valuation Node (Emerald circle)
+    if (showOwnerMep) {
+      out.push('<circle cx="' + xj.toFixed(1) + '" cy="' + yMep.toFixed(1) + '" r="4.8" fill="#10b981" stroke="#ffffff" stroke-width="1.8"><title>' + months[j] + ' 業主計價(機電工程)：NT$ ' + vMep.toLocaleString() + '</title></circle>');
+      if (vMep > 0) {
+        var mepLblY = yMep + 16;
+        // At 115.10 & 115.11, vMep ($7.72M) and vBill ($7.71M) are virtually identical: place MEP label below (+16) and Bill label above (-11)
+        if (showMat && Math.abs(mepLblY - (yMat - 10)) < 12) mepLblY = yMep - 11;
+        out.push('<text x="' + xj.toFixed(1) + '" y="' + mepLblY.toFixed(1) + '" text-anchor="middle" fill="#047857" font-size="10" font-weight="900">機電' + window.formatNtShort_V161(vMep) + '</text>');
+      }
+    }
+
+    // 2. Vendor Billing Node (Amber circle)
+    if (showBill) {
+      out.push('<circle cx="' + xj.toFixed(1) + '" cy="' + yBill.toFixed(1) + '" r="4.5" fill="#f59e0b" stroke="#ffffff" stroke-width="1.8"><title>' + months[j] + ' 廠商請款金額(機電)：NT$ ' + vBill.toLocaleString() + '</title></circle>');
+      if (vBill > 0) {
+        var billLblY = yBill - 10;
+        if (showOwnerTotal && Math.abs(billLblY - (yTot - 11)) < 13) billLblY = yBill + 15;
+        out.push('<text x="' + xj.toFixed(1) + '" y="' + billLblY.toFixed(1) + '" text-anchor="middle" fill="#b45309" font-size="10" font-weight="900">' + window.formatNtShort_V161(vBill) + '</text>');
+      }
+    }
+
+    // 1. Material Arrival Node (Blue circle)
+    if (showMat) {
+      out.push('<circle cx="' + xj.toFixed(1) + '" cy="' + yMat.toFixed(1) + '" r="4.5" fill="#0284c7" stroke="#ffffff" stroke-width="1.8"><title>' + months[j] + ' 進場材料金額(機電)：NT$ ' + vMat.toLocaleString() + '</title></circle>');
+      if (vMat > 0) {
+        var matLblY = (Math.abs(yMat - yBill) < 16 && yMat >= yBill) ? (yMat + 16) : (yMat - 10);
+        if (showOwnerMep && Math.abs(matLblY - (yMep + 16)) < 12) matLblY = yMat + 17;
+        out.push('<text x="' + xj.toFixed(1) + '" y="' + matLblY.toFixed(1) + '" text-anchor="middle" fill="#0369a1" font-size="10" font-weight="900">' + window.formatNtShort_V161(vMat) + '</text>');
+      }
+    }
+  }
+
+  svg.innerHTML = out.join("");
+};
+
+// Hook renderHomeMonthlyThreeCurves_V161 so when topic === 'AMOUNT', it uses our new 4-curve Dual-Axis Renderer!
+(function hookHomeMonthlyCurvesForOwnerDualLines_V172_() {
+  var prevRender = window.renderHomeMonthlyThreeCurves_V161;
+  window.renderHomeMonthlyThreeCurves_V161 = function(projOpt) {
+    var topic = window.HOME_MAIN_CHART_TOPIC_V167 || "AMOUNT";
+    if (topic === "AMOUNT") {
+      var titleEl = document.getElementById("homeMainChartTitleText_V167");
+      var bCum = document.getElementById("btnHomeCurveCumulative");
+      var bMon = document.getElementById("btnHomeCurveMonthly");
+      var wxCard = document.getElementById("homeWeatherExtQualifiedSummaryCard_V167");
+      if (wxCard) wxCard.style.display = "none";
+      if (titleEl) titleEl.textContent = "專案月份金額趨勢曲線（全案計價 vs 機電工程雙線對照）";
+      if (bCum) bCum.textContent = "累計金額曲線";
+      if (bMon) bMon.textContent = "單月金額曲線";
+      return window.renderHomeAmountFourCurvesDualAxis_V172(projOpt);
+    }
+    if (typeof prevRender === "function") {
+      return prevRender(projOpt);
+    }
+  };
+})();
+
+// Hook renderVendorBillingByProject_V161 so #ownerValuationSummaryPanel_V172 also scopes strictly to the active project
+(function hookVendorBillingForOwnerValuationPanel_V172_() {
+  var prevRenderVB = window.renderVendorBillingByProject_V161;
+  window.renderVendorBillingByProject_V161 = function(projOpt) {
+    if (typeof prevRenderVB === "function") {
+      prevRenderVB(projOpt);
+    }
+    var activeP = projOpt || (typeof window.getEffectiveActiveProj_ === "function" ? window.getEffectiveActiveProj_() : (window.activeProj || "桃園市八德區仁德國民小學新建校舍工程(第二期)"));
+    var isR1 = (String(activeP).indexOf("第一期") !== -1 || String(activeP).indexOf("一期") !== -1);
+    var isYG = (String(activeP).indexOf("鶯歌") !== -1);
+    var isR2 = (!isR1 && !isYG);
+    var canonicalProj = isR1
+      ? "桃園市八德區仁德國民小學新建校舍工程(第一期)"
+      : (isYG ? "鶯歌消防局新建工程" : "桃園市八德區仁德國民小學新建校舍工程(第二期)");
+
+    var ovPanel = document.getElementById("ownerValuationSummaryPanel_V172");
+    if (ovPanel) {
+      if (!window._R2_OWNER_VAL_PANEL_HTML_V172_) {
+        window._R2_OWNER_VAL_PANEL_HTML_V172_ = ovPanel.innerHTML;
+      }
+      if (isR2) {
+        ovPanel.innerHTML = window._R2_OWNER_VAL_PANEL_HTML_V172_;
+      } else {
+        var ovCfg = window.OWNER_VALUATION_BY_PROJECT_V172[canonicalProj];
+        ovPanel.innerHTML =
+          '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">' +
+            '<div>' +
+              '<strong style="font-size:0.94rem;color:#0f172a;">🏛️ 50-業主請款｜' + canonicalProj + '（全案總價 vs 機電工程雙線總表）</strong>' +
+              '<div style="font-size:0.76rem;color:#475569;margin-top:4px;">' +
+                '‧ NAS 來源路徑：<code>' + (ovCfg ? ovCfg.nasOwnerValPath : '') + '</code>（每月最後一日 23:30 / 24:00 自動同步）<br>' +
+                '‧ 雲端目標路徑：<code>' + (ovCfg ? ovCfg.driveOwnerValPath : '') + '</code>（本案獨立區分，目前尚無業主估驗計價檔案，待月底自動同步）' +
+              '</div>' +
+            '</div>' +
+            '<a href="https://drive.google.com/drive/folders/' + (ovCfg ? ovCfg.driveOwnerValFolderId : '1OWa1pfQmUAcRI81cLlV2wT2Y8tB9UDhH') + '" target="_blank" class="btn btn-primary" style="text-decoration:none;padding:6px 12px;font-size:0.75rem;background:#7c3aed;border-color:#6d28d9;color:#fff;">📂 開啟本案 50-業主請款資料夾</a>' +
+          '</div>';
+      }
+    }
+  };
+})();
+
+// Immediately render updated 4-curve chart & Owner Valuation panel
+window.renderHomeMonthlyThreeCurves_V161();
+window.renderVendorBillingByProject_V161();
+/* ==================== END V172 OWNER VALUATION DUAL CURVES ==================== */
+
+
+
+/* ==================== V171 MANDATORY F5 REFRESH LOGIN OVERLAY GUARD ==================== */
+window.__V171_F5_LOGIN_GUARD_READY__ = true;
+
+window.enforceLoginGateOnRefresh_V171 = function() {
+  try {
+    sessionStorage.removeItem("WARROOM_AUTH_USER_V162");
+    localStorage.removeItem("WARROOM_AUTH_USER_V150");
+  } catch (e) {}
+  if (!window.__AUTHENTICATED_IN_THIS_PAGE_LOAD_V171__) {
+    window.isUserAuthenticated = false;
+    try { if (typeof isUserAuthenticated !== "undefined") isUserAuthenticated = false; } catch (e0) {}
+    if (document.body && document.body.classList) {
+      document.body.classList.remove("warroom-authenticated");
+    }
+    var ov = document.getElementById("authLoginOverlay");
+    if (ov) {
+      ov.classList.remove("hidden");
+      ov.style.setProperty("display", "flex", "important");
+      ov.style.setProperty("visibility", "visible", "important");
+      ov.style.setProperty("opacity", "1", "important");
+    }
+    var pub3d = document.getElementById("public3dViewerOverlay");
+    if (pub3d && !window.__USER_OPENED_3D_FROM_LOGIN__) {
+      pub3d.classList.remove("active");
+      pub3d.style.display = "none";
+    }
+  }
+};
+
+// Wrap executeWarRoomLogin & closeAuthOverlayDirect so login works smoothly when credentials are submitted
+(function wrapLoginAndCloseOverlay_V171_() {
+  var origExecLogin = window.executeWarRoomLogin;
+  window.executeWarRoomLogin = function(evt) {
+    window.__ALLOW_LOGIN_TRANSITION_V171__ = true;
+    var res = (typeof origExecLogin === "function") ? origExecLogin.apply(this, arguments) : false;
+    window.__ALLOW_LOGIN_TRANSITION_V171__ = false;
+    if (window.isUserAuthenticated || (document.body && document.body.classList.contains("warroom-authenticated"))) {
+      window.__AUTHENTICATED_IN_THIS_PAGE_LOAD_V171__ = true;
+      var ov = document.getElementById("authLoginOverlay");
+      if (ov) {
+        ov.classList.add("hidden");
+        ov.style.setProperty("display", "none", "important");
+      }
+    }
+    return res;
+  };
+
+  var origCloseAuth = window.closeAuthOverlayDirect;
+  window.closeAuthOverlayDirect = function(forceAllowFor3D) {
+    if (forceAllowFor3D && !window.__ALLOW_LOGIN_TRANSITION_V171__ && !window.__AUTHENTICATED_IN_THIS_PAGE_LOAD_V171__) {
+      window.__USER_OPENED_3D_FROM_LOGIN__ = true;
+    }
+    var res = (typeof origCloseAuth === "function") ? origCloseAuth.apply(this, arguments) : false;
+    if (window.__AUTHENTICATED_IN_THIS_PAGE_LOAD_V171__ || forceAllowFor3D) {
+      var ov = document.getElementById("authLoginOverlay");
+      if (ov) {
+        ov.classList.add("hidden");
+        ov.style.setProperty("display", "none", "important");
+      }
+    }
+    return res;
+  };
+
+  var origLogout = window.logoutWarRoom;
+  window.logoutWarRoom = function() {
+    window.__AUTHENTICATED_IN_THIS_PAGE_LOAD_V171__ = false;
+    window.__USER_OPENED_3D_FROM_LOGIN__ = false;
+    if (typeof origLogout === "function") {
+      try { origLogout.apply(this, arguments); } catch (e) {}
+    }
+    window.enforceLoginGateOnRefresh_V171();
+  };
+})();
+
+// Enforce immediately on script execution, DOMContentLoaded, and pageshow (handles F5 & browser bfcache)
+window.enforceLoginGateOnRefresh_V171();
+window.addEventListener("DOMContentLoaded", function() {
+  window.enforceLoginGateOnRefresh_V171();
+});
+window.addEventListener("pageshow", function(evt) {
+  if (evt && evt.persisted) {
+    window.__AUTHENTICATED_IN_THIS_PAGE_LOAD_V171__ = false;
+  }
+  window.enforceLoginGateOnRefresh_V171();
+});
+/* ==================== END V171 MANDATORY F5 REFRESH LOGIN OVERLAY GUARD ==================== */
 
 </script>
 </body>
