@@ -2413,10 +2413,10 @@ a[href*='drive.google.com/drive/folders'], a[href*='docs.google.com/spreadsheets
 <button type="button" class="layer-chip" id="btnSwitch3dProj_RENDE_2" onclick="switchBim3dProjectModel('RENDE_2')">
 🏗️ 1. 仁德國小(第二期)｜全棟 6 層 (BS~RF) 3D/2D BIM 整合模型
 </button>
-<button type="button" class="layer-chip" id="btnSwitch3dProj_BADE_SOCIAL" onclick="switchBim3dProjectModel('BADE_SOCIAL')">
+<button type="button" class="layer-chip on" id="btnSwitch3dProj_BADE_SOCIAL" onclick="switchBim3dProjectModel('BADE_SOCIAL')">
 🏫 2. 仁德國小(第一期)｜筏基與雙向階梯漸縮共同管溝 3D 模型
 </button>
-<button type="button" class="layer-chip on" id="btnSwitch3dProj_YINGGE_FIRE" onclick="switchBim3dProjectModel('YINGGE_FIRE')">
+<button type="button" class="layer-chip" id="btnSwitch3dProj_YINGGE_FIRE" onclick="switchBim3dProjectModel('YINGGE_FIRE')">
 🚒 3. 鶯歌消防局｜鋼構主體與消防排煙風管 3D 模型
 </button>
 </div>
@@ -2476,7 +2476,7 @@ a[href*='drive.google.com/drive/folders'], a[href*='docs.google.com/spreadsheets
 <button type="button" class="layer-chip" onclick="setBim3dCameraPreset('front')">📏 正視剖面</button>
 </div>
 </div>
-<canvas id="bim3dWebglCanvas" style="width:100%;height:100%;display:block;" width="2198" height="777"></canvas>
+<canvas id="bim3dWebglCanvas" style="width:100%;height:100%;display:block;" width="2206" height="1137"></canvas>
 <div id="rende2EmbeddedBimIframeWrap" style="display: none; position: absolute; inset: 0px; z-index: 15; background: rgb(7, 11, 20); border-radius: 10px; overflow: hidden;">
 <div style="position:absolute;top:8px;right:12px;z-index:20;display:flex;gap:6px;">
 <button type="button" class="btn btn-amber" onclick="setRende2IntegratedEngine('webgl')" style="padding:5px 10px;font-size:0.74rem;">
@@ -2514,12 +2514,12 @@ a[href*='drive.google.com/drive/folders'], a[href*='docs.google.com/spreadsheets
 </div>
 <div id="bim3dRightSidebarPanel" style="display:flex;flex-direction:column;gap:12px;">
 <div style="background:var(--panel-bg);border:1px solid var(--border-strong);border-top:3px solid var(--eng-amber);border-radius:8px;padding:14px;">
-<h3 style="margin:4px 0 8px;font-size:0.96rem;color:#f8fafc;" id="bim3dSelectedTitle">鶯歌消防局 — 鋼構主體與消防排煙風管 3D 模型</h3>
+<h3 style="margin:4px 0 8px;font-size:0.96rem;color:#f8fafc;" id="bim3dSelectedTitle">🏫 仁德國小(第一期) — 筏基與雙向階梯漸縮共同管溝 3D 模型</h3>
 <div id="bim3dPropertyDetails" style="font-size:0.8rem;line-height:1.6;color:#cbd5e1;">
-<div>• <strong>工程專案</strong>：<span style="color:var(--eng-amber);font-weight:800;">鶯歌消防局 廳舍鋼構與消防排煙風管工程</span></div>
-<div>• <strong>核心 3D 模型特徵</strong>：<code>主體 H 型鋼構柱樑 ＋ 大跨距車庫消防泡沫幹管與防排煙風管</code></div>
-<div>• <strong>樑下淨高檢核</strong>：1F 消防車庫主幹管樑下淨高 <code>4.20m (符合消防車通行淨空標準)</code></div>
-<div>• <strong>跨案切換</strong>：可隨時由上方選單切回「仁德國小(第二期)」或「仁德國小(第一期)」觀看模型</div>
+<div>• <strong>工程專案</strong>：<span style="color:var(--eng-cyan-bright);font-weight:800;">🏫 仁德國小(第一期) 校舍暨地下筏基管溝工程</span></div>
+<div>• <strong>核心 3D 模型特徵</strong>：<code>B1 筏基 (FS板) ＋ 雙向階梯漸縮共同管溝 (Row 1 上提長管省深 45cm)</code></div>
+<div>• <strong>機電系統檢核</strong>：低壓電力主幹線、給排水幹管與弱電光纖共同管架，管內佔積率 <code>26.2% (≤40% 合格)</code></div>
+<div>• <strong>跨案切換</strong>：可隨時由上方選單切回「仁德國小(第二期)」或「鶯歌消防局」觀看模型</div>
 </div>
 <div style="margin-top:10px;display:flex;gap:6px;flex-wrap:wrap;">
 <button type="button" class="btn btn-ghost" onclick="inspectSpecificBimElement('PIPE')" style="padding:5px 8px;font-size:0.73rem;">檢視消防/給排水幹管</button>
@@ -4640,7 +4640,7 @@ quickUpdateTodayHeadcountDirect: window.quickUpdateTodayHeadcountDirect
 
 
 
-<button type="button" class="launcher-btn active-view" id="navBtnDashboard" onclick="switchWarRoomMainView('dashboard')" style="border-left-color:var(--text-main);">
+<button type="button" class="launcher-btn" id="navBtnDashboard" onclick="switchWarRoomMainView('dashboard')" style="border-left-color:var(--text-main);">
 <span>總覽曲線</span>
 <small>返回四大儀表、圖表與施工月曆</small>
 </button><button type="button" class="launcher-btn" id="navBtnDailyEntry" onclick="openSubpageModal('modalDailyEntry')" style="border-left-color:#f59e0b;">
@@ -4649,7 +4649,7 @@ quickUpdateTodayHeadcountDirect: window.quickUpdateTodayHeadcountDirect
 </button><button type="button" class="launcher-btn" id="navBtnWeatherFull" onclick="openSubpageModal('modalWeatherFull')" style="border-left-color:#0284c7;">
 <span>晴雨觀測</span>
 <small>點擊顯示完整天氣資料與補登</small>
-</button><button type="button" class="launcher-btn" id="navBtnLedgers" onclick="openSubpageModal('modalMaterialBoq')" style="border-left-color:var(--eng-amber);">
+</button><button type="button" class="launcher-btn active-view" id="navBtnLedgers" onclick="openSubpageModal('modalMaterialBoq')" style="border-left-color:var(--eng-amber);">
 <span>材料與請款</span>
 <small>進料登錄・各系統金額・查驗清冊</small>
 </button><button type="button" class="launcher-btn" id="navBtnNcrSafety" onclick="openSubpageModal('modalNcrSafety')" style="border-left-color:var(--eng-crimson);">
@@ -4702,7 +4702,7 @@ quickUpdateTodayHeadcountDirect: window.quickUpdateTodayHeadcountDirect
 <button type="button" class="layer-chip" onclick="triggerWarRoomHotUpdateNow()" style="border-color:#10b981;color:#10b981;">🔄 立即同步熱更新</button>
 </div>
 </div>
-<div id="modalProjectSetup" class="subpage-modal" onclick="if(event.target===this)closeSubpageModal('modalProjectSetup')">
+<div id="modalProjectSetup" class="subpage-modal" onclick="if(event.target===this)closeSubpageModal('modalProjectSetup')" style="display: none;">
 <div class="subpage-dialog">
 <div class="subpage-header">
 <h2 class="subpage-title"> 工程標案名稱、工區地址永久記憶 ＆ 離工區最近氣象接收站設定分頁</h2>
@@ -4775,7 +4775,7 @@ quickUpdateTodayHeadcountDirect: window.quickUpdateTodayHeadcountDirect
 </section>
 </div>
 </div>
-<div id="modalSixGrid" class="subpage-modal" style="display:none !important;" onclick="if(event.target===this)closeSubpageModal('modalSixGrid')">
+<div id="modalSixGrid" class="subpage-modal" style="display: none;" onclick="if(event.target===this)closeSubpageModal('modalSixGrid')">
 <div class="subpage-dialog">
 <div class="subpage-header">
 <h2 class="subpage-title"> 防閃白 #FFFFFF 4-Tab 頂部導航 × 六宮格工務主控分頁</h2>
@@ -4838,7 +4838,7 @@ quickUpdateTodayHeadcountDirect: window.quickUpdateTodayHeadcountDirect
 </section>
 </div>
 </div>
-<div id="mainDashboardHomeView">
+<div id="mainDashboardHomeView" style="display: none;">
 <div class="glass-panel" style="padding:12px 16px !important;margin-bottom:14px !important;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;background:var(--panel-bg) !important;">
 <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
 <span style="font-size:0.82rem;font-weight:800;color:var(--text-main);">切換工程專案：</span>
@@ -4854,7 +4854,7 @@ quickUpdateTodayHeadcountDirect: window.quickUpdateTodayHeadcountDirect
 </div>
 <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
 <span id="githubSyncStatusSubtext" style="color:var(--text-muted);font-size:0.76rem;">測站：<code>C0C700 八德站 (0.61km)</code> · 雲端試算表＆GitHub 已同步 (<code>115.11.07 11:49:27</code>)</span>
-<span id="v164DualSyncStatusPill" style="background:#ecfdf5;color:#047857;border:1px solid #a7f3d0;padding:3px 8px;border-radius:999px;font-weight:700;font-size:0.73rem;">⚡ 已同步 (GAS 雲端資料庫 API · 115.11.09 13:47:55)</span>
+<span id="v164DualSyncStatusPill" style="background:#ecfdf5;color:#047857;border:1px solid #a7f3d0;padding:3px 8px;border-radius:999px;font-weight:700;font-size:0.73rem;">⚡ 已同步 (GAS 雲端資料庫 API · 115.11.09 13:48:46)</span>
 <button type="button" id="btnProjBarDirectSyncGithub_V176" class="btn btn-primary" onclick="oneClickDirectUpdateExternalWebsite_V175(false)" style="padding: 5px 12px; font-size: 0.76rem; font-weight: 900; background: rgb(2, 132, 199); border-color: rgb(3, 105, 161); color: rgb(255, 255, 255); display: inline-flex !important;">🚀 直接同步更新外部網站 (免下載)</button>
 <button type="button" id="btnTopOpenSyncCfg_V170" class="btn btn-ghost" onclick="openV164GithubDbConfigModal()" style="padding:5px 10px;font-size:0.75rem;border-color:#cbd5e1;">⚙️ 同步設定</button>
 <button type="button" class="btn btn-primary" onclick="syncModularExcelStagingToCloudDb()" style="display:none !important;padding:5px 10px;font-size:0.75rem;" title="將四大模組 Excel 臨時存取層立即同步至雲端主資料庫《工務云》與《Line BOT(易興)》">
@@ -4972,7 +4972,7 @@ quickUpdateTodayHeadcountDirect: window.quickUpdateTodayHeadcountDirect
     <div>
       <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
         <span class="sec-tag" style="margin:0;">HOME // MONTHLY 3-CURVE FINANCIAL &amp; MATERIAL TREND (BY PROJECT)</span>
-        <span id="liveCloudRealtimeBadge_V161" style="background:#dcfce7;color:#15803d;padding:2px 9px;border-radius:999px;font-weight:800;font-size:0.72rem;border:1px solid rgba(21,128,61,0.25);">最後同步：2026-11-09 13:47:47</span>
+        <span id="liveCloudRealtimeBadge_V161" style="background:#dcfce7;color:#15803d;padding:2px 9px;border-radius:999px;font-weight:800;font-size:0.72rem;border:1px solid rgba(21,128,61,0.25);">最後同步：2026-11-09 13:48:39</span>
       </div>
       <h2 style="margin:5px 0 0;font-size:1.12rem;font-weight:900;color:var(--text-main);display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
         <span id="homeMainChartTitleText_V167">曲線圖</span>
@@ -5121,7 +5121,7 @@ quickUpdateTodayHeadcountDirect: window.quickUpdateTodayHeadcountDirect
 </div>
 </section>
 </div>
-<div id="modalProductionBi" class="subpage-modal" style="display:none;">
+<div id="modalProductionBi" class="subpage-modal" style="display: none;">
 <div class="subpage-dialog">
 <div class="subpage-header">
 <h2 class="subpage-title">📊 11. 營造工務生產力 BI：工區實動率 (`&lt;20%` 停滯預警) × 未完標單在庫缺料斷鏈 (`&lt;25%` 催料預警) × 缺失柏拉圖</h2>
@@ -5380,7 +5380,7 @@ quickUpdateTodayHeadcountDirect: window.quickUpdateTodayHeadcountDirect
 </div>
 </div>
 </div>
-<div id="modalMsProjectSchedule" class="subpage-modal">
+<div id="modalMsProjectSchedule" class="subpage-modal" style="display: none;">
 <div class="subpage-dialog">
 <div class="subpage-header">
 <h2 class="subpage-title"> 工程進度排程甘特圖 ＆ 關鍵里程碑管制中心</h2>
@@ -5657,7 +5657,7 @@ quickUpdateTodayHeadcountDirect: window.quickUpdateTodayHeadcountDirect
 </div>
 </div>
 </div>
-<div id="modalWeatherFull" class="subpage-modal" style="display:none;" onclick="if(event.target===this)closeSubpageModal('modalWeatherFull')">
+<div id="modalWeatherFull" class="subpage-modal" style="display: none;" onclick="if(event.target===this)closeSubpageModal('modalWeatherFull')">
 <div class="subpage-dialog">
 <div class="subpage-header">
 <h2 class="subpage-title">☀️ 2-1. 離工區最近氣象接收站「完整天氣資料」 ＆ 晴雨展延觀測中心</h2>
@@ -5815,7 +5815,7 @@ quickUpdateTodayHeadcountDirect: window.quickUpdateTodayHeadcountDirect
 </section>
 </div>
 </div>
-<div id="modalDailyEntry" class="subpage-modal" style="display:none;" onclick="if(event.target===this)closeSubpageModal('modalDailyEntry')">
+<div id="modalDailyEntry" class="subpage-modal" style="display: none;" onclick="if(event.target===this)closeSubpageModal('modalDailyEntry')">
 <div class="subpage-dialog">
 <div class="subpage-header">
 <h2 class="subpage-title">👷 2-2. 每日出工數登錄 ＆ 廠商 15:00 施工日誌管制中心</h2>
@@ -5892,22 +5892,22 @@ quickUpdateTodayHeadcountDirect: window.quickUpdateTodayHeadcountDirect
 </section>
 </div>
 </div>
-<div id="modalLedgers" class="subpage-modal" onclick="if(event.target===this)closeSubpageModal('modalLedgers')" style="display: none;">
+<div id="modalLedgers" class="subpage-modal open" onclick="if(event.target===this)closeSubpageModal('modalLedgers')" style="display: none;">
 <div class="subpage-dialog" style="display: none;">
 <div class="subpage-header">
-<h2 class="subpage-title" id="modalLedgersHeaderTitle">🤖 1. LINE Bot 機器人管理（群組一／群組二 ＆ 13 大功能開關）</h2>
+<h2 class="subpage-title" id="modalLedgersHeaderTitle">💰 4. 材料進場查驗清冊 ＆ 二期機電標單各系統累計進場金額總表</h2>
 <button type="button" class="btn btn-danger" onclick="closeSubpageModal('modalLedgers')"> 回戰情室</button>
 </div>
 <section id="secMultiLedger" class="glass-panel orange-top">
 <div style="display:none !important;" aria-hidden="true">
 <span id="tableProjTitle">桃園市八德區仁德國民小學新建校舍工程(第二期)</span>
-<button type="button" id="btnTabLedgerWeather" onclick="SwitchLedgerView('weather')">1.晴雨・出工・材料進場總表</button>
-<button type="button" id="btnTabLedgerNcr" onclick="SwitchLedgerView('ncr')">2.品質NCR vs 勞安缺失(無改善狀態)</button>
+<button type="button" id="btnTabLedgerWeather" onclick="SwitchLedgerView('weather')" class="active-tab">1.晴雨・出工・材料進場總表</button>
+<button type="button" id="btnTabLedgerNcr" onclick="SwitchLedgerView('ncr')" class="">2.品質NCR vs 勞安缺失(無改善狀態)</button>
 <button type="button" id="btnTabLedgerDwg" onclick="SwitchLedgerView('dwg')">3.開啟圖說 (ISO 19650 最新施工版)</button>
-<button type="button" id="btnTabLedgerFlags" onclick="SwitchLedgerView('flags')" class="active-tab">4.LINE Bot 13大功能模組開關</button>
+<button type="button" id="btnTabLedgerFlags" onclick="SwitchLedgerView('flags')" class="">4.LINE Bot 13大功能模組開關</button>
 <button type="button" id="btnTabLedgerGithubAuth" onclick="SwitchLedgerView('github_auth')">5.GitHub 外部網址部署 ＆ 帳密管理</button>
 </div>
-<div id="ledgerPaneWeather" style="overflow-x: auto; margin-bottom: 16px; display: none;">
+<div id="ledgerPaneWeather" style="overflow-x: auto; margin-bottom: 16px; display: block;">
 <div class="glass-panel" style="margin-bottom:14px;border-top:3px solid var(--eng-amber);padding:12px 16px;">
 <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px;">
 <div>
@@ -7163,7 +7163,7 @@ quickUpdateTodayHeadcountDirect: window.quickUpdateTodayHeadcountDirect
 <tbody id="warroomLedgerTableBody"><tr style="cursor:pointer;" onclick="selectCalendarDate('2026-11-09')"><td><strong>2026-11-09</strong><br><span style="font-size:0.73rem;color:var(--text-muted);">115.11.09</span></td><td><strong>桃園市八德區仁德國民小學新建校舍工程第二期</strong></td><td style="color:var(--text-main);font-weight:700;">無（今日現場施作：待今日 15:00 回報明日範圍）</td><td><div style="font-size:0.76rem;color:var(--text-muted);">當日無新增查驗單或進貨單</div></td></tr><tr style="cursor:pointer;" onclick="selectCalendarDate('2026-11-08')"><td><strong>2026-11-08</strong><br><span style="font-size:0.73rem;color:var(--text-muted);">115.11.08</span></td><td><strong>桃園市八德區仁德國民小學新建校舍工程第二期</strong></td><td style="color:var(--text-main);font-weight:700;">無（今日現場施作：2-3F ACP試水 查管）</td><td><div style="font-size:0.76rem;color:var(--text-muted);">當日無新增查驗單或進貨單</div></td></tr><tr style="cursor:pointer;" onclick="selectCalendarDate('2026-11-07')"><td><strong>2026-11-07</strong><br><span style="font-size:0.73rem;color:var(--text-muted);">115.11.07</span></td><td><strong>桃園市八德區仁德國民小學新建校舍工程第二期</strong></td><td style="color:var(--text-main);font-weight:700;">[D11-E-1151107-1] PVC-E管材料進場抽驗紀錄表 (南亞塑膠 E管 3/4" &amp; 1" 現場抽驗合格)</td><td><div style="font-size:0.76rem;color:var(--text-muted);">現場查驗單 PDF 與標單核銷歸檔完成</div></td></tr><tr style="cursor:pointer;" onclick="selectCalendarDate('2026-11-06')"><td><strong>2026-11-06</strong><br><span style="font-size:0.73rem;color:var(--text-muted);">115.11.06</span></td><td><strong>桃園市八德區仁德國民小學新建校舍工程第二期</strong></td><td style="color:var(--text-main);font-weight:700;">廠商送貨收貨單 (廠商出貨日期 115.11.06)：暐琦事業 出貨單 115111572 南亞(灰)E(電導)管 3/4"x2.0 4M 進場 40 支</td><td><div style="font-size:0.76rem;color:var(--text-muted);">依廠商出貨日期核銷歸檔並標記日曆</div></td></tr><tr style="cursor:pointer;" onclick="selectCalendarDate('2026-11-05')"><td><strong>2026-11-05</strong><br><span style="font-size:0.73rem;color:var(--text-muted);">115.11.05</span></td><td><strong>桃園市八德區仁德國民小學新建校舍工程第二期</strong></td><td style="color:var(--text-main);font-weight:700;">廠商送貨收貨單 (廠商出貨日期 115.11.05)：欣歐企業(SENCO) 出貨單 11511013-11 鋁製梯型線槽 400x100x3M 81PC、300x100x3M 105PC 及 90度/45度水平彎頭 12PC (共6項 198 PC)</td><td><div style="font-size:0.76rem;color:var(--text-muted);">依廠商出貨日期核銷歸檔並標記日曆</div></td></tr><tr style="cursor:pointer;" onclick="selectCalendarDate('2026-11-04')"><td><strong>2026-11-04</strong><br><span style="font-size:0.73rem;color:var(--text-muted);">115.11.04</span></td><td><strong>桃園市八德區仁德國民小學新建校舍工程第二期</strong></td><td style="color:var(--text-main);font-weight:700;">無（今日現場施作：頂板配管 3F輕隔間配管 1-2FACP試水找點 預計14人）</td><td><div style="font-size:0.76rem;color:var(--text-muted);">當日無新增查驗單或進貨單</div></td></tr><tr style="cursor:pointer;" onclick="selectCalendarDate('2026-11-03')"><td><strong>2026-11-03</strong><br><span style="font-size:0.73rem;color:var(--text-muted);">115.11.03</span></td><td><strong>桃園市八德區仁德國民小學新建校舍工程第二期</strong></td><td style="color:var(--text-main);font-weight:700;">無（今日現場施作：頂板配管 3F輕隔間配管 1-2FACP試水找點）</td><td><div style="font-size:0.76rem;color:var(--text-muted);">當日無新增查驗單或進貨單</div></td></tr><tr style="cursor:pointer;" onclick="selectCalendarDate('2026-11-02')"><td><strong>2026-11-02</strong><br><span style="font-size:0.73rem;color:var(--text-muted);">115.11.02</span></td><td><strong>桃園市八德區仁德國民小學新建校舍工程第二期</strong></td><td style="color:var(--text-main);font-weight:700;">無（今日現場施作：今日出工:14人 | 預計明日出工:14人 | 明日項目:頂板配管 3F輕隔間配管 1-2FACP試水找點）</td><td><div style="font-size:0.76rem;color:var(--text-muted);">當日無新增查驗單或進貨單</div></td></tr><tr style="cursor:pointer;" onclick="selectCalendarDate('2026-11-01')"><td><strong>2026-11-01</strong><br><span style="font-size:0.73rem;color:var(--text-muted);">115.11.01</span></td><td><strong>桃園市八德區仁德國民小學新建校舍工程第二期</strong></td><td style="color:var(--text-main);font-weight:700;">無（今日現場施作：1F排水修改 1F輕隔間配管）</td><td><div style="font-size:0.76rem;color:var(--text-muted);">當日無新增查驗單或進貨單</div></td></tr><tr style="cursor:pointer;" onclick="selectCalendarDate('2026-10-31')"><td><strong>2026-10-31</strong><br><span style="font-size:0.73rem;color:var(--text-muted);">115.10.31</span></td><td><strong>桃園市八德區仁德國民小學新建校舍工程第二期</strong></td><td style="color:var(--text-main);font-weight:700;">無（今日現場施作：今日出工:16人 | 預計明日出工:7人 | 明日項目:1F排水修改 1F輕隔間配管）</td><td><div style="font-size:0.76rem;color:var(--text-muted);">當日無新增查驗單或進貨單</div></td></tr><tr style="cursor:pointer;" onclick="selectCalendarDate('2026-10-30')"><td><strong>2026-10-30</strong><br><span style="font-size:0.73rem;color:var(--text-muted);">115.10.30</span></td><td><strong>桃園市八德區仁德國民小學新建校舍工程第二期</strong></td><td style="color:var(--text-main);font-weight:700;">無（今日現場施作：待今日 15:00 回報明日範圍）</td><td><div style="font-size:0.76rem;color:var(--text-muted);">當日無新增查驗單或進貨單</div></td></tr><tr style="cursor:pointer;" onclick="selectCalendarDate('2026-10-29')"><td><strong>2026-10-29</strong><br><span style="font-size:0.73rem;color:var(--text-muted);">115.10.29</span></td><td><strong>桃園市八德區仁德國民小學新建校舍工程第二期</strong></td><td style="color:var(--text-main);font-weight:700;">新增查驗單 1 份：[1234] 一樓戶外活動中心配管 (4張查驗照片 PDF)｜進場收貨單 1 張：暐琦事業 出貨單115106680（廠商出貨日期 115.10.29）南亞(灰)E(電導)管 3/4" 80支 ＋ 1/2" 30支 (共110支)</td><td><div style="font-size:0.76rem;color:var(--text-muted);">依廠商出貨日期核銷歸檔並標記日曆</div></td></tr></tbody>
 </table>
 </div>
-<div id="ledgerPaneNcr" style="display:none;">
+<div id="ledgerPaneNcr" style="display: none;">
 <div style="background: rgba(16, 185, 129, 0.12); border-width: 1px 1px 1px 4px; border-style: solid; border-color: rgba(16, 185, 129, 0.45) rgba(16, 185, 129, 0.45) rgba(16, 185, 129, 0.45) rgb(16, 185, 129); border-image: none; border-radius: 8px; padding: 10px 14px; margin-bottom: 12px; display: none; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
 <div id="ncrSummaryBannerText_V166" style="font-size:0.84rem;font-weight:800;color:var(--text-main);">✅ 【品質缺失 (NCR #001 ~ #018) 全數改善完成同步】累計開立 <strong style="color:#0284c7;">18 件</strong> ｜ 目前改善中：<strong style="color:#10b981;">0 件</strong> ｜ 已完成改善結案：<strong style="color:#10b981;">18 件（結案率 100.0%）</strong></div>
 <span style="font-size: 0.75rem; font-weight: 800; padding: 3px 10px; border-radius: 999px; background: rgb(220, 252, 231); color: rgb(21, 128, 61); border: 1px solid rgb(134, 239, 172); display: none;">
@@ -7243,7 +7243,7 @@ quickUpdateTodayHeadcountDirect: window.quickUpdateTodayHeadcountDirect
 </tbody>
 </table>
 </div>
-<div id="ledgerPaneFlags" style="display:block;overflow-x:auto;">
+<div id="ledgerPaneFlags" style="display: none; overflow-x: auto;">
 <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;padding:12px 16px;background:var(--panel-sub);border:1px solid var(--border-strong);border-radius:10px;margin-bottom:14px;">
 <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;" id="deployedBotTabsBar">
 <button type="button" class="btn btn-primary" id="btnBotTab_0" onclick="selectBotAndOpenFeatures(0)" style="padding:7px 14px;font-size:0.82rem;">
@@ -7382,7 +7382,7 @@ quickUpdateTodayHeadcountDirect: window.quickUpdateTodayHeadcountDirect
   "webAppUrl": "https://script.google.com/macros/s/AKfycbxRcVWuQzMEQWtGMd-PNqBr6ejcxjTvRLuxeRut38uwFFveHrPJDb6bbe3cRp4hkSXTsQ/exec",
   "spreadsheetId": "1sJiy0wDJAyDqJzBD39AX2PTbBiUWJNySX22APzI_7s8",
   "configHash": "CFG-BIGBOSS-13ON-96B8BB",
-  "savedAt": "2026/11/9 13:47:06",
+  "savedAt": "2026/11/9 13:48:11",
   "enabledModulesCount": "13 / 13",
   "modules": [
     {
