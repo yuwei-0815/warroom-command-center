@@ -18827,7 +18827,7 @@ window.__RENDE1_BUILTIN_BIM_HTML_V186__ = {"html": "<!DOCTYPE html>\n<html lang=
   };
 
   const DEFAULT_STATE = {
-    meta: { version: 'V185.0', rocDate: '115.11.09', activeProject: 'RENDE_2' },
+    meta: { version: 'V185.1', rocDate: '115.11.09', activeProject: 'RENDE_2' },
     projects: {
       RENDE_2: {
         weatherStation: {
@@ -18853,24 +18853,19 @@ window.__RENDE1_BUILTIN_BIM_HTML_V186__ = {"html": "<!DOCTYPE html>\n<html lang=
 
   // =========================================================================
   // PART 1: 材料與請款 —「數量溢出」與「100% 滿額進場」Excel 匯出引擎
-  // 自動解析：標單項目 (項次/系統/名稱規格/合約量/單價) + 歷次進場日期及數量
   // =========================================================================
 
-  // 解析「歷次進場明細」字串，例如："07/30(1,500M) + 09/07(2,200M) · 查驗/收貨單 (115.10.19)"
   function parseDeliveryHistory(rawText, fallbackUnit) {
     if (!rawText) return [];
     const results = [];
-    // 提取查驗單號備註
     const docMatch = rawText.match(/查驗\/收貨單\s*\([^)]+\)|查驗單\s*\([^)]+\)/g);
     const docNote = docMatch ? docMatch.join('、') : '';
 
-    // 匹配 MM/DD(數量+單位) 或 YYY/MM/DD(數量+單位) 或 02/23(進場100M：...)
     const regex = /(\d{2,3}[\/.]\d{2}(?:[\/.]\d{2})?)\s*[（(]([^）)]+)[）)]/g;
     let m;
     while ((m = regex.exec(rawText)) !== null) {
       const dateStr = m[1].trim();
       const inside = m[2].trim();
-      // 從括號內提取數字與單位 (支援 "1,500M" 或 "進場100M：接地80M + 照明20M")
       const qtyMatch = inside.match(/([0-9,]+(?:\.\d+)?)\s*([A-Za-z\u4e00-\u9fa5²³″"]+)?/);
       const qtyNum = qtyMatch ? parseFloat(qtyMatch[1].replace(/,/g, '')) : 0;
       const unitStr = (qtyMatch && qtyMatch[2]) ? qtyMatch[2] : (fallbackUnit || '');
@@ -18883,7 +18878,6 @@ window.__RENDE1_BUILTIN_BIM_HTML_V186__ = {"html": "<!DOCTYPE html>\n<html lang=
       });
     }
 
-    // 若無括號格式但有進場文字
     if (results.length === 0 && rawText.trim() !== '-' && rawText.trim() !== '') {
       results.push({
         date: docNote ? docNote.replace(/[^0-9./]/g, '') : '累計進場',
@@ -18896,132 +18890,146 @@ window.__RENDE1_BUILTIN_BIM_HTML_V186__ = {"html": "<!DOCTYPE html>\n<html lang=
     return results;
   }
 
-  // 從目前表格 DOM 擷取所有列並解析欄位
+  // 同時支援 <table> (tr/td) 與 <div> 彈性表格列之資料擷取
   function scrapeTableRows(defaultCategoryLabel) {
     const rows = [];
-    const tables = document.querySelectorAll('table');
-    tables.forEach(table => {
-      const thText = table.innerText || '';
-      if (!thText.includes('材料設備名稱與規格') && !thText.includes('項次')) return;
+    const candidateRows = [];
 
-      const trList = table.querySelectorAll('tbody tr, tr');
-      trList.forEach(tr => {
-        const tds = tr.querySelectorAll('td');
-        if (tds.length < 8) return;
+    // 1. 抓取標準 table tr
+    document.querySelectorAll('table tr').forEach(tr => {
+      if (tr.offsetWidth === 0 && tr.offsetHeight === 0) return;
+      const tds = tr.querySelectorAll('td');
+      if (tds.length >= 8) candidateRows.push(Array.from(tds));
+    });
 
-        const clean = idx => (tds[idx] ? tds[idx].innerText.replace(/\s+/g, ' ').trim() : '');
-        const boqItemCode = clean(0); // 項次(標單列)
-        const systemName  = clean(1); // 系統別
-        const itemSpecRaw = clean(2); // 材料設備名稱與規格
-        const contractRaw = clean(3); // 合約數量 (如 18,500 M)
-        const priceRaw    = clean(4); // 契約單價 (如 $26)
-        const d11CumRaw   = clean(5); // D11查驗累積
-        const recentRaw   = clean(6); // 10/29~11/07收貨
-        const totalArrRaw = clean(7); // 目前總進場量
-        const remainRaw   = clean(8); // 契約餘額
-        const amountRaw   = clean(9); // 累計進場金額
-        const statusRaw   = clean(10); // 狀態檢核
-        const historyRaw  = clean(11); // 歷次進場明細 & 查驗掃描檔
-
-        // 拆離單位與數值
-        const unitMatch = contractRaw.match(/([0-9,]+(?:\.\d+)?)\s*(.*)/);
-        const contractQty = unitMatch ? parseFloat(unitMatch[1].replace(/,/g, '')) : contractRaw;
-        const unit = (unitMatch && unitMatch[2]) ? unitMatch[2].trim() : '';
-
-        const totalMatch = totalArrRaw.match(/([0-9,]+(?:\.\d+)?)/);
-        const totalArrQty = totalMatch ? parseFloat(totalMatch[1].replace(/,/g, '')) : totalArrRaw;
-
-        const priceNum = parseFloat(priceRaw.replace(/[^0-9.-]/g, '')) || 0;
-        const amountNum = parseFloat(amountRaw.replace(/[^0-9.-]/g, '')) || 0;
-
-        // 判斷是否為溢出或滿額
-        let category = defaultCategoryLabel || '一般進場';
-        const pctMatch = statusRaw.match(/(\d+(?:\.\d+)?)%/);
-        const pct = pctMatch ? parseFloat(pctMatch[1]) : (contractQty > 0 ? (totalArrQty / contractQty) * 100 : 0);
-
-        if (statusRaw.includes('溢出') || pct > 100 || (typeof totalArrQty === 'number' && typeof contractQty === 'number' && totalArrQty > contractQty)) {
-          category = '⚠️ 數量溢出預警';
-        } else if (statusRaw.includes('滿額') || statusRaw.includes('100%') || Math.abs(pct - 100) < 0.05 || (typeof totalArrQty === 'number' && totalArrQty === contractQty && contractQty > 0)) {
-          category = '✅ 100% 滿額進場';
-        }
-
-        const deliveries = parseDeliveryHistory(historyRaw, unit);
-        // 若近期收貨欄 (10/29~11/07) 有獨立數值且未包含於明細中，自動補入一筆
-        if (recentRaw && recentRaw !== '-' && recentRaw !== '0') {
-          const recNum = parseFloat(recentRaw.replace(/,/g, ''));
-          if (!isNaN(recNum) && recNum > 0) {
-            deliveries.push({
-              date: '10/29~11/07(近期收貨)',
-              qty: recNum,
-              unit: unit,
-              rawDetail: `近期收貨 ${recentRaw}`,
-              docNote: '10/29~11/07收貨欄'
-            });
+    // 2. 若表格是由 div 構成，抓取具備 10~14 個子欄位且第 5 欄含 '$' 的資料列
+    if (candidateRows.length === 0) {
+      document.querySelectorAll('div').forEach(div => {
+        if (div.offsetWidth === 0) return;
+        const ch = div.children;
+        if (ch.length >= 10 && ch.length <= 14) {
+          const c0 = (ch[0].innerText || '').trim();
+          const c4 = (ch[4].innerText || '').trim();
+          if (c0 && !c0.includes('項次') && c4.includes('$')) {
+            candidateRows.push(Array.from(ch));
           }
         }
+      });
+    }
 
-        rows.push({
-          category,
-          boqItemCode,
-          systemName,
-          itemSpecRaw,
-          unit,
-          contractQty,
-          priceNum,
-          d11CumRaw,
-          recentRaw,
-          totalArrQty,
-          remainRaw,
-          amountNum,
-          statusRaw,
-          historyRaw,
-          deliveries
-        });
+    candidateRows.forEach(cells => {
+      const clean = idx => (cells[idx] ? cells[idx].innerText.replace(/\s+/g, ' ').trim() : '');
+      const boqItemCode = clean(0);
+      const systemName  = clean(1);
+      const itemSpecRaw = clean(2);
+      const contractRaw = clean(3);
+      const priceRaw    = clean(4);
+      const d11CumRaw   = clean(5);
+      const recentRaw   = clean(6);
+      const totalArrRaw = clean(7);
+      const remainRaw   = clean(8);
+      const amountRaw   = clean(9);
+      const statusRaw   = clean(10);
+      const historyRaw  = clean(11);
+
+      const unitMatch = contractRaw.match(/([0-9,]+(?:\.\d+)?)\s*(.*)/);
+      const contractQty = unitMatch ? parseFloat(unitMatch[1].replace(/,/g, '')) : contractRaw;
+      const unit = (unitMatch && unitMatch[2]) ? unitMatch[2].trim() : '';
+
+      const totalMatch = totalArrRaw.match(/([0-9,]+(?:\.\d+)?)/);
+      const totalArrQty = totalMatch ? parseFloat(totalMatch[1].replace(/,/g, '')) : totalArrRaw;
+
+      const priceNum = parseFloat(priceRaw.replace(/[^0-9.-]/g, '')) || 0;
+      const amountNum = parseFloat(amountRaw.replace(/[^0-9.-]/g, '')) || 0;
+
+      let category = defaultCategoryLabel || '一般進場';
+      const pctMatch = statusRaw.match(/(\d+(?:\.\d+)?)%/);
+      const pct = pctMatch ? parseFloat(pctMatch[1]) : (contractQty > 0 ? (totalArrQty / contractQty) * 100 : 0);
+
+      if (statusRaw.includes('溢出') || pct > 100 || (typeof totalArrQty === 'number' && typeof contractQty === 'number' && totalArrQty > contractQty)) {
+        category = '⚠️ 數量溢出預警';
+      } else if (statusRaw.includes('滿額') || statusRaw.includes('100%') || Math.abs(pct - 100) < 0.05 || (typeof totalArrQty === 'number' && totalArrQty === contractQty && contractQty > 0)) {
+        category = '✅ 100% 滿額進場';
+      }
+
+      const deliveries = parseDeliveryHistory(historyRaw, unit);
+      if (recentRaw && recentRaw !== '-' && recentRaw !== '0') {
+        const recNum = parseFloat(recentRaw.replace(/,/g, ''));
+        if (!isNaN(recNum) && recNum > 0) {
+          deliveries.push({
+            date: '10/29~11/07(近期收貨)',
+            qty: recNum,
+            unit: unit,
+            rawDetail: `近期收貨 ${recentRaw}`,
+            docNote: '10/29~11/07收貨欄'
+          });
+        }
+      }
+
+      rows.push({
+        category, boqItemCode, systemName, itemSpecRaw, unit,
+        contractQty, priceNum, d11CumRaw, recentRaw, totalArrQty,
+        remainRaw, amountNum, statusRaw, historyRaw, deliveries
       });
     });
+
     return rows;
   }
 
-  // 自動切換篩選按鈕以完整擷取「18項數量溢出」與「17項滿額進場」所有資料列
-  async function collectTargetRows(mode) {
-    const buttons = Array.from(document.querySelectorAll('button, span, div, a'));
-    const btnAll      = buttons.find(b => b.children.length === 0 && b.textContent.includes('全部系統'));
-    const btnOverflow = buttons.find(b => b.textContent.includes('數量溢出預警') && b.tagName !== 'DIV');
-    const btnFull     = buttons.find(b => b.textContent.includes('100% 滿額進場') && b.tagName !== 'DIV');
+  // 尋找畫面上可見且文字精準匹配的按鈕（支援 button, div, span, a）
+  function findPillButton(keyword) {
+    const els = Array.from(document.querySelectorAll('button, div, span, a'));
+    return els.find(el => {
+      if (el.offsetWidth === 0 && el.offsetHeight === 0) return false;
+      const t = (el.textContent || '').replace(/\s+/g, ' ').trim();
+      return t.includes(keyword) && t.length < 38 && !el.id.startsWith('btn-exp-');
+    });
+  }
 
+  async function collectTargetRows(mode) {
     const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+    // 若使用者在別的分頁點選右下角匯出，先自動點開「材料與請款」分頁
+    let btnOverflow = findPillButton('數量溢出預警');
+    if (!btnOverflow) {
+      const tabBtn = findPillButton('材料與請款');
+      if (tabBtn) {
+        tabBtn.click();
+        await sleep(200);
+      }
+    }
+
+    btnOverflow   = findPillButton('數量溢出預警');
+    const btnFull = findPillButton('100% 滿額進場');
+    const btnAll  = findPillButton('全部系統');
+
     let collected = [];
 
     if (mode === 'OVERFLOW' && btnOverflow) {
       btnOverflow.click();
-      await sleep(80);
+      await sleep(120);
       collected = scrapeTableRows('⚠️ 數量溢出預警').map(r => ({ ...r, category: '⚠️ 數量溢出預警' }));
     } else if (mode === 'FULL' && btnFull) {
       btnFull.click();
-      await sleep(80);
+      await sleep(120);
       collected = scrapeTableRows('✅ 100% 滿額進場').map(r => ({ ...r, category: '✅ 100% 滿額進場' }));
     } else {
-      // 合併匯出：先抓「數量溢出預警」，再抓「100% 滿額進場」
       if (btnOverflow) {
         btnOverflow.click();
-        await sleep(80);
-        const ovRows = scrapeTableRows('⚠️ 數量溢出預警').map(r => ({ ...r, category: '⚠️ 數量溢出預警' }));
-        collected = collected.concat(ovRows);
+        await sleep(120);
+        collected = collected.concat(scrapeTableRows('⚠️ 數量溢出預警').map(r => ({ ...r, category: '⚠️ 數量溢出預警' })));
       }
       if (btnFull) {
         btnFull.click();
-        await sleep(80);
-        const fullRows = scrapeTableRows('✅ 100% 滿額進場').map(r => ({ ...r, category: '✅ 100% 滿額進場' }));
-        collected = collected.concat(fullRows);
+        await sleep(120);
+        collected = collected.concat(scrapeTableRows('✅ 100% 滿額進場').map(r => ({ ...r, category: '✅ 100% 滿額進場' })));
       }
-      // 若按鈕未觸發切換，則切回全部系統並依數值自動過濾 >= 100% 之項目
       if (collected.length === 0) {
-        if (btnAll) { btnAll.click(); await sleep(80); }
+        if (btnAll) { btnAll.click(); await sleep(120); }
         collected = scrapeTableRows().filter(r => r.category.includes('溢出') || r.category.includes('滿額'));
       }
     }
 
-    // 去除重複項次
     const seen = new Set();
     return collected.filter(r => {
       const k = `${r.category}_${r.boqItemCode}_${r.itemSpecRaw}`;
@@ -19031,7 +19039,6 @@ window.__RENDE1_BUILTIN_BIM_HTML_V186__ = {"html": "<!DOCTYPE html>\n<html lang=
     });
   }
 
-  // 轉義 XML 字元並產生原生多工作表 Excel (.xls SpreadsheetML) 檔案
   function escXml(str) {
     return String(str ?? '')
       .replace(/&/g, '&amp;')
@@ -19043,11 +19050,10 @@ window.__RENDE1_BUILTIN_BIM_HTML_V186__ = {"html": "<!DOCTYPE html>\n<html lang=
   async function exportMaterialExcel(mode) {
     const items = await collectTargetRows(mode);
     if (!items || items.length === 0) {
-      alert('目前未偵測到符合條件之溢出或滿額標單項目，請確認已開啟「材料與請款」表格畫面。');
+      alert('目前未偵測到溢出或滿額資料列，請先點開「材料與請款」分頁後再試一次。');
       return;
     }
 
-    // 計算最多有幾次進場，以便在彙總表動態展開「第1次進場日期/數量 ~ 第N次進場日期/數量」
     let maxDeliveries = 1;
     items.forEach(it => {
       if (it.deliveries && it.deliveries.length > maxDeliveries) {
@@ -19055,7 +19061,6 @@ window.__RENDE1_BUILTIN_BIM_HTML_V186__ = {"html": "<!DOCTYPE html>\n<html lang=
       }
     });
 
-    // --- 工作表 1：進場日期及數量逐筆明細 (一筆進場日期一列) ---
     let ws1RowsXml = '';
     items.forEach(it => {
       const styleId = it.category.includes('溢出') ? 'sOverflow' : 'sFull';
@@ -19083,7 +19088,6 @@ window.__RENDE1_BUILTIN_BIM_HTML_V186__ = {"html": "<!DOCTYPE html>\n<html lang=
       });
     });
 
-    // --- 工作表 2：標單項目彙總與歷次進場橫向展開表 ---
     let dynamicHeaderXml = '';
     for (let i = 1; i <= maxDeliveries; i++) {
       dynamicHeaderXml += `<Cell ss:StyleID="sHeader"><Data ss:Type="String">第${i}次進場日期</Data></Cell>`;
@@ -19203,36 +19207,57 @@ window.__RENDE1_BUILTIN_BIM_HTML_V186__ = {"html": "<!DOCTYPE html>\n<html lang=
     document.body.removeChild(a);
   }
 
-  // 在「⚠️ 數量溢出預警」與「✅ 100% 滿額進場」按鈕旁自動掛載 Excel 匯出按鈕組
+  // 強制在「材料與請款」分頁內掛載按鈕（若因切換分頁隱藏或重繪，自動重新掛載）
   function mountMaterialExportButtons() {
-    if (document.getElementById('warroom-mat-export-group')) return;
-    const allEls = Array.from(document.querySelectorAll('button, span, a'));
-    const fullBtn = allEls.find(el => el.textContent && el.textContent.includes('100% 滿額進場') && el.parentElement);
-    if (!fullBtn || !fullBtn.parentElement) return;
+    const existing = document.getElementById('warroom-mat-export-group');
+    if (existing && existing.offsetWidth > 0 && existing.offsetHeight > 0) return;
+    if (existing) existing.remove();
+
+    // 優先尋找搜尋框「搜尋系統、項次...」或「100% 滿額進場」按鈕
+    const searchInput = document.querySelector('input[placeholder*="搜尋系統"], input[placeholder*="管材規格"]');
+    let anchorEl = findPillButton('100% 滿額進場');
+
+    // 若 anchorEl 是內部小標籤，往上找到按鈕本體
+    if (anchorEl) {
+      while (anchorEl.parentElement && (anchorEl.parentElement.textContent || '').trim().length < 35) {
+        anchorEl = anchorEl.parentElement;
+      }
+    }
+
+    const targetContainer = (anchorEl && anchorEl.parentElement)
+      ? anchorEl.parentElement
+      : (searchInput && searchInput.parentElement ? searchInput.parentElement : null);
+
+    if (!targetContainer) return;
 
     const group = document.createElement('span');
     group.id = 'warroom-mat-export-group';
-    group.style.cssText = 'display:inline-flex;gap:8px;margin-left:8px;flex-wrap:wrap;vertical-align:middle;';
+    group.style.cssText = 'display:inline-flex;gap:8px;margin-left:8px;flex-wrap:wrap;align-items:center;vertical-align:middle;z-index:9999;';
     group.innerHTML = `
-      <button type="button" id="btn-exp-both" style="padding:6px 12px;background:#0f172a;color:#fff;border:1px solid #1e293b;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:4px;box-shadow:0 2px 6px rgba(0,0,0,0.12);">
+      <button type="button" id="btn-exp-both" style="padding:7px 14px;background:#0f172a;color:#fff;border:1px solid #1e293b;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,0.15);">
         📥 匯出「溢出＋滿額」Excel (含標單/進場日期/數量)
       </button>
-      <button type="button" id="btn-exp-overflow" style="padding:6px 10px;background:#fef2f2;color:#b91c1c;border:1px solid #fca5a5;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;">
+      <button type="button" id="btn-exp-overflow" style="padding:7px 12px;background:#fef2f2;color:#b91c1c;border:1px solid #fca5a5;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;">
         ⚠️ 僅匯出溢出 Excel
       </button>
-      <button type="button" id="btn-exp-full" style="padding:6px 10px;background:#ecfdf5;color:#047857;border:1px solid #6ee7b7;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;">
+      <button type="button" id="btn-exp-full" style="padding:7px 12px;background:#ecfdf5;color:#047857;border:1px solid #6ee7b7;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;">
         ✅ 僅匯出滿額 Excel
       </button>
     `;
-    fullBtn.parentElement.appendChild(group);
 
-    document.getElementById('btn-exp-both').addEventListener('click', () => exportMaterialExcel('BOTH'));
-    document.getElementById('btn-exp-overflow').addEventListener('click', () => exportMaterialExcel('OVERFLOW'));
-    document.getElementById('btn-exp-full').addEventListener('click', () => exportMaterialExcel('FULL'));
+    if (anchorEl && anchorEl.nextSibling) {
+      targetContainer.insertBefore(group, anchorEl.nextSibling);
+    } else {
+      targetContainer.appendChild(group);
+    }
+
+    document.getElementById('btn-exp-both').addEventListener('click', e => { e.stopPropagation(); exportMaterialExcel('BOTH'); });
+    document.getElementById('btn-exp-overflow').addEventListener('click', e => { e.stopPropagation(); exportMaterialExcel('OVERFLOW'); });
+    document.getElementById('btn-exp-full').addEventListener('click', e => { e.stopPropagation(); exportMaterialExcel('FULL'); });
   }
 
   // =========================================================================
-  // PART 2: 修復首頁左上角 KPI 卡片 (10 人 / 90 人日) 與 GitHub 即時熱更新
+  // PART 2: TreeWalker 文字節點穿透更新（解決左上角 10人 卡片未跳字問題）
   // =========================================================================
   async function fetchLiveState() {
     const t = Date.now();
@@ -19262,64 +19287,61 @@ window.__RENDE1_BUILTIN_BIM_HTML_V186__ = {"html": "<!DOCTYPE html>\n<html lang=
     const att = proj.attendance || {};
     const rocDate = (activeState.meta && activeState.meta.rocDate) || '115.11.09';
 
-    // 針對 V172 面板將「10」與「人」拆開或跨行之結構，直接鎖定卡片容器更新
-    const allElements = document.body.querySelectorAll('span, div, strong, b');
-    for (let i = 0; i < allElements.length; i++) {
-      const el = allElements[i];
-      if (el.id === 'warroom-safe-status-text') continue;
+    // 使用 SHOW_TEXT 直接穿透所有子標籤，精準修改文字節點
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+    let textNode;
+    while ((textNode = walker.nextNode())) {
+      const parent = textNode.parentElement;
+      if (!parent || parent.tagName === 'SCRIPT' || parent.tagName === 'STYLE' || parent.id === 'warroom-safe-status-text') continue;
 
-      const rawTxt = (el.textContent || '').replace(/\s+/g, ' ').trim();
-      const parentTxt = el.parentElement ? (el.parentElement.textContent || '').replace(/\s+/g, ' ').trim() : '';
+      const val = textNode.nodeValue;
+      const trimVal = val.trim();
+      if (!trimVal) continue;
 
-      // 1. 若單一數字節點 "10" 右側緊鄰 "人" 且外層是今日出工卡片
-      if (/^\d+$/.test(rawTxt) && parentTxt.startsWith(rawTxt + ' 人') && el.children.length === 0) {
-        const cardTxt = el.parentElement.parentElement ? el.parentElement.parentElement.textContent : parentTxt;
-        if (cardTxt.includes('水電') || cardTxt.includes('今日出工')) {
-          el.textContent = String(att.todayTotal);
-          continue;
-        }
+      const cardContext = parent.parentElement ? (parent.parentElement.textContent || '') : (parent.textContent || '');
+
+      // 1. 左上角今日出工大字「10 人」或單獨數字「10」
+      if (/^\d+\s*人$/.test(trimVal) && (cardContext.includes('水電') || cardContext.includes('今日出工'))) {
+        const nextVal = `${att.todayTotal} 人`;
+        if (textNode.nodeValue !== nextVal) textNode.nodeValue = nextVal;
+      } else if (/^\d+$/.test(trimVal) && (cardContext.includes('水電') || cardContext.includes('今日出工')) && (parent.textContent || '').includes('人')) {
+        const nextVal = String(att.todayTotal);
+        if (textNode.nodeValue !== nextVal) textNode.nodeValue = nextVal;
       }
-
-      // 2. 若節點本身即為 "10 人" (含內部空白或換行)
-      if (/^\d+\s*人$/.test(rawTxt) && (parentTxt.includes('水電') || parentTxt.includes('今日出工'))) {
-        if (el.children.length === 0) {
-          el.textContent = `${att.todayTotal} 人`;
-        } else if (el.firstElementChild && /^\d+$/.test(el.firstElementChild.textContent.trim())) {
-          el.firstElementChild.textContent = String(att.todayTotal);
-        }
-        continue;
+      // 2. 右側小字「水電 *10」
+      else if (val.includes('水電') && /\*\s*\d+/.test(val)) {
+        const nextVal = val.replace(/\*\s*\d+/g, `*${att.todayTotal}`);
+        if (textNode.nodeValue !== nextVal) textNode.nodeValue = nextVal;
       }
-
-      // 3. 若節點為 "90 人日" 或跨行 "90 人 日"
-      if (/^\d+\s*人\s*日$/.test(rawTxt) && (parentTxt.includes('本月日均') || parentTxt.includes('當月累積'))) {
-        if (el.children.length === 0) {
-          el.textContent = `${att.monthManDays} 人日`;
-        } else if (el.firstElementChild && /^\d+$/.test(el.firstElementChild.textContent.trim())) {
-          el.firstElementChild.textContent = String(att.monthManDays);
-        }
-        continue;
+      // 3. 底部說明「合計 10 人」
+      else if (val.includes('合計') && /合計\s*\d+\s*人/.test(val)) {
+        const nextVal = val.replace(/合計\s*\d+\s*人/g, `合計 ${att.todayTotal} 人`);
+        if (textNode.nodeValue !== nextVal) textNode.nodeValue = nextVal;
       }
-
-      // 4. 明細文字同步更新
-      if (el.children.length === 0 && rawTxt) {
-        if (rawTxt.startsWith('水電 *')) {
-          el.textContent = rawTxt.replace(/水電\s*\*\s*\d+/g, `水電 *${att.todayTotal}`);
-        } else if (rawTxt.includes('工具箱點名') && rawTxt.includes('合計')) {
-          el.textContent = rawTxt.replace(/合計\s*\d+\s*人/g, `合計 ${att.todayTotal} 人`);
-        } else if (rawTxt.includes('當月累計') && rawTxt.includes('含今日')) {
-          el.textContent = rawTxt
-            .replace(/當月累計\s*\d+\s*人日/g, `當月累計 ${att.monthManDays} 人日`)
-            .replace(/含今日\s*\d+\s*人/g, `含今日 ${att.todayTotal} 人`)
-            .replace(/全期累計\s*\d+\s*人日/g, `全期累計 ${att.totalManDays} 人日`);
-        } else if (rawTxt.includes('今日現場施作比對') || rawTxt.includes('(今日出工')) {
-          el.textContent = rawTxt.replace(/今日出工\s*\d+\s*人/g, `今日出工 ${att.todayTotal} 人`);
-        }
+      // 4. 當月累積出工大字「90 人日」
+      else if (/^\d+\s*人\s*日$/.test(trimVal) && (cardContext.includes('本月日均') || cardContext.includes('當月累積'))) {
+        const nextVal = `${att.monthManDays} 人日`;
+        if (textNode.nodeValue !== nextVal) textNode.nodeValue = nextVal;
+      }
+      // 5. 當月累積底部「當月累計 90 人日 ( 含今日 10 人 | 10/29 起全期累計 119 人日 )」
+      else if (val.includes('含今日')) {
+        const nextVal = val
+          .replace(/當月累計\s*\d+\s*人日/g, `當月累計 ${att.monthManDays} 人日`)
+          .replace(/含今日\s*\d+\s*人/g, `含今日 ${att.todayTotal} 人`)
+          .replace(/全期累計\s*\d+\s*人日/g, `全期累計 ${att.totalManDays} 人日`);
+        if (textNode.nodeValue !== nextVal) textNode.nodeValue = nextVal;
+      }
+      // 6. MS Project 要徑看板「(今日出工 10 人)」
+      else if (val.includes('今日出工')) {
+        const nextVal = val.replace(/今日出工\s*\d+\s*人/g, `今日出工 ${att.todayTotal} 人`);
+        if (textNode.nodeValue !== nextVal) textNode.nodeValue = nextVal;
       }
     }
 
     const badge = document.getElementById('warroom-safe-status-text');
     if (badge) {
-      badge.textContent = `✅ 已同步 (${syncSourceLabel}｜${rocDate} 今日 ${att.todayTotal}人・當月 ${att.monthManDays}人日・累計 ${att.totalManDays}人日)`;
+      const msg = `✅ 已同步 (${syncSourceLabel}｜${rocDate} 今日 ${att.todayTotal}人・當月 ${att.monthManDays}人日・累計 ${att.totalManDays}人日)`;
+      if (badge.textContent !== msg) badge.textContent = msg;
     }
   }
 
@@ -19329,26 +19351,32 @@ window.__RENDE1_BUILTIN_BIM_HTML_V186__ = {"html": "<!DOCTYPE html>\n<html lang=
     applyDOMSync();
   }
 
+  // 右下角常駐狀態列：直接內建「📥 匯出溢出/滿額Excel」按鈕，100% 保證隨時可見可點！
   function mountStatusBar() {
     if (document.getElementById('warroom-v184-safe-bar')) return;
     const bar = document.createElement('div');
     bar.id = 'warroom-v184-safe-bar';
-    bar.style.cssText = 'position:fixed;bottom:12px;right:12px;z-index:999999;background:rgba(15,23,42,0.95);border:1px solid #10B981;color:#f8fafc;padding:8px 14px;border-radius:999px;font-size:12px;display:flex;align-items:center;gap:10px;box-shadow:0 4px 16px rgba(0,0,0,0.45);';
-    bar.innerHTML = `<span id="warroom-safe-status-text" style="color:#10B981;font-weight:700;">⚡ 初始化同步中...</span><button type="button" id="warroom-safe-btn" style="background:#2563eb;color:#fff;border:none;border-radius:999px;padding:4px 10px;font-size:11px;font-weight:700;cursor:pointer;">立即同步</button>`;
+    bar.style.cssText = 'position:fixed;bottom:12px;right:12px;z-index:999999;background:rgba(15,23,42,0.96);border:1px solid #10B981;color:#f8fafc;padding:8px 14px;border-radius:999px;font-size:12px;display:flex;align-items:center;gap:8px;box-shadow:0 4px 16px rgba(0,0,0,0.45);';
+    bar.innerHTML = `
+      <span id="warroom-safe-status-text" style="color:#10B981;font-weight:700;">⚡ 初始化同步中...</span>
+      <button type="button" id="warroom-bar-export-btn" style="background:#059669;color:#fff;border:none;border-radius:999px;padding:5px 12px;font-size:11px;font-weight:700;cursor:pointer;">📥 匯出溢出/滿額Excel</button>
+      <button type="button" id="warroom-safe-btn" style="background:#2563eb;color:#fff;border:none;border-radius:999px;padding:5px 10px;font-size:11px;font-weight:700;cursor:pointer;">立即同步</button>
+    `;
     document.body.appendChild(bar);
+    document.getElementById('warroom-bar-export-btn').addEventListener('click', () => exportMaterialExcel('BOTH'));
     document.getElementById('warroom-safe-btn').addEventListener('click', syncNow);
   }
 
   function init() {
     mountStatusBar();
     syncNow();
-    setTimeout(applyDOMSync, 800);
-    setTimeout(applyDOMSync, 2000);
+    // 每 1.2 秒自動檢查一次按鈕是否因切換分頁而消失，並保持卡片數字同步（零網路負擔）
+    setInterval(applyDOMSync, 1200);
+    // 每 20 秒向 GitHub 拉取一次最新 JSON
     setInterval(syncNow, CONFIG.pollMs);
 
-    // 點擊切換「材料與請款」等分頁時，立即掛載 Excel 匯出按鈕
     document.addEventListener('click', () => {
-      setTimeout(applyDOMSync, 120);
+      setTimeout(applyDOMSync, 150);
     });
   }
 
