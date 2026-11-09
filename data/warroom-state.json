@@ -1,0 +1,54 @@
+{
+  "meta": {
+    "version": "V184.0",
+    "updatedAt": "2026-11-09T18:25:00+08:00",
+    "rocDate": "115.11.09",
+    "isoDate": "2026-11-09",
+    "activeProject": "RENDE_2"
+  },
+  "projects": {
+    "RENDE_2": {
+      "projectName": "桃園市八德區仁德國民小學新建校舍工程(第二期)",
+      "shortName": "仁德國小(第二期)新建工程（2026-11-04）",
+      "siteAddress": "桃園市八德區",
+      "weatherStation": {
+        "primary": "主依據接收站：C0C700 八德觀測站（距工區 0.61 km｜桃園市八德區）",
+        "primaryShort": "C0C700 八德站 (0.61km)",
+        "alertStation": "「C0C700 八德站 (距工區 0.61 km)」",
+        "backup": "備援接收站（主站儀器維護或缺測時契約自動遞補）：C0C480 桃園站 (5.42 km) ｜ C0C630 大溪站 (6.80 km)",
+        "extensionDaysTotal": 2.5,
+        "extensionDaysToday": 1.0
+      },
+      "attendance": {
+        "todayTotal": 10,
+        "todayDetail": "水電 *10 ([2, 2, 5, 1] 共4張)",
+        "todaySummary": "08:25~08:54 工具箱點名 [2, 2, 5, 1] 共 4 張合計 10 人｜今日施作：2-3F ACP試水 查管",
+        "monthCode": "115.11月",
+        "monthWorkDays": 9,
+        "monthManDays": 90,
+        "monthAvg": 10.0,
+        "totalManDays": 119,
+        "totalWorkDays": 12
+      },
+      "safetyAndQuality": {
+        "safetyStatus": "符合勞安標準",
+        "safetyTodayDefects": 0,
+        "safetyTotalFines": 3,
+        "safetyNote": "115.11.09 現場 4 張照片全數配戴安全帽與安全鞋｜歷史 3 件罰單已開立公文",
+        "ncrPending": 0,
+        "ncrClosed": 18,
+        "ncrRate": 100,
+        "ncrNote": "NCR #001~#018 全數改善完成並通過複查解列（0 件待改善）"
+      },
+      "finance": {
+        "materialAmount": 4398112,
+        "orderAmount": 4813408,
+        "writeOffRate": 64.9,
+        "vendorClaim": 7709481,
+        "ownerValuationMep": 7715654,
+        "ownerValuationTotal": 84737062,
+        "breakdownText": "⚡電力 $2,024,809 · 🚰給排水 $1,364,561 · 🌐弱電 $882,922 · 🚒消防 $125,820｜🏦 廠商請款累計 $7,709,481 (19.74%・易興11.1%/伸泰38.8%/暐琦60.9%)"
+      }
+    }
+  }
+}
