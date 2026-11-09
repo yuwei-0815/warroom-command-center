@@ -18815,5 +18815,120 @@ window.__RENDE1_BUILTIN_BIM_HTML_V186__ = {"html": "<!DOCTYPE html>\n<html lang=
 })();
 
 </script>
+  <!-- WARROOM_V184_REMOTE_PATCH_START -->
+<script id="warroom-v184-remote-sync">
+(function() {
+  const CONFIG = {
+    owner: 'yuwei-0815',
+    repo: 'warroom-command-center',
+    branch: 'main',
+    dataPath: 'data/warroom-state.json',
+    pollMs: 30000
+  };
+
+  let lastSha = localStorage.getItem('WARROOM_GITHUB_SHA') || '';
+  let currentState = null;
+
+  async function fetchGitHubLive() {
+    const url = `https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents/${CONFIG.dataPath}?ref=${CONFIG.branch}&_t=${Date.now()}`;
+    const res = await fetch(url, { headers: { 'Accept': 'application/vnd.github.v3+json' }, cache: 'no-store' });
+    if (!res.ok) throw new Error('GitHub HTTP ' + res.status);
+    const payload = await res.json();
+    const bin = atob(payload.content.replace(/\n/g, ''));
+    const bytes = Uint8Array.from(bin, c => c.charCodeAt(0));
+    return { sha: payload.sha, state: JSON.parse(new TextDecoder('utf-8').decode(bytes)) };
+  }
+
+  function patchAndRenderDOM(state) {
+    if (!state || !state.projects) return;
+    const key = (state.meta && state.meta.activeProject) || 'RENDE_2';
+    const proj = state.projects[key] || state.projects.RENDE_2;
+    if (!proj) return;
+
+    const att = proj.attendance;
+    const wx = proj.weatherStation;
+
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_ELEMENT, null, false);
+    let node;
+    while ((node = walker.nextNode())) {
+      if (node.children.length === 0 && node.textContent) {
+        const t = node.textContent.trim();
+        if ((t === '4 人' || t === '10 人') && node.parentElement && node.parentElement.textContent.includes('水電')) {
+          node.textContent = `${att.todayTotal} 人`;
+        }
+        if ((t === '80 人日' || t === '90 人日') && node.parentElement && node.parentElement.textContent.includes('本月日均')) {
+          node.textContent = `${att.monthManDays} 人日`;
+        }
+        if (t.includes('C0X100 仁德觀測站') || t.includes('主依據接收站：')) {
+          node.textContent = wx.primary;
+        }
+        if (t.includes('C0X310 歸仁站') || t.includes('467410 臺南氣象站')) {
+          node.textContent = wx.backup;
+        }
+        if (t.includes('C0X100 仁德站')) {
+          node.textContent = t.replace(/C0X100\s*仁德站\s*\(距工區\s*0\.62\s*km\)/g, wx.primaryShort);
+        }
+      }
+      if (node.tagName === 'DIV' && (node.innerHTML.includes('累計 105 人日') || node.innerHTML.includes('累計 119 人日'))) {
+        node.innerHTML = `${att.todayTotal} <small>人 (累計 ${att.totalManDays} 人日)</small>`;
+      }
+    }
+
+    document.querySelectorAll('[data-sync="status-badge"]').forEach(el => {
+      el.textContent = `✅ GitHub 即時同步完成 (${state.meta.rocDate} ｜ 出工 ${att.todayTotal}人 / 累計 ${att.totalManDays}人日)`;
+      el.style.color = '#10B981';
+    });
+  }
+
+  async function syncNow(force) {
+    try {
+      const { sha, state } = await fetchGitHubLive();
+      if (force || sha !== lastSha || !currentState) {
+        lastSha = sha;
+        currentState = state;
+        localStorage.setItem('WARROOM_GITHUB_SHA', sha);
+        localStorage.setItem('WARROOM_STATE_CACHE', JSON.stringify(state));
+        patchAndRenderDOM(state);
+      }
+    } catch (e) {
+      const cached = localStorage.getItem('WARROOM_STATE_CACHE');
+      if (cached) patchAndRenderDOM(JSON.parse(cached));
+    }
+  }
+
+  function mountFloatingSyncBar() {
+    if (document.getElementById('warroom-live-sync-bar')) return;
+    const bar = document.createElement('div');
+    bar.id = 'warroom-live-sync-bar';
+    bar.style.cssText = 'position:fixed;bottom:14px;right:14px;z-index:99999;background:rgba(15,23,42,0.95);border:1px solid #334155;color:#f8fafc;padding:8px 14px;border-radius:999px;font-size:12px;display:flex;align-items:center;gap:10px;box-shadow:0 4px 16px rgba(0,0,0,0.4);backdrop-filter:blur(6px);';
+    bar.innerHTML = `<span data-sync="status-badge" style="color:#10B981;font-weight:600;">⚡ GitHub 即時同步連線中...</span><button type="button" id="btn-force-gh-sync" style="background:#2563eb;color:#fff;border:none;border-radius:999px;padding:4px 10px;font-size:11px;font-weight:700;cursor:pointer;">立即同步</button>`;
+    document.body.appendChild(bar);
+    document.getElementById('btn-force-gh-sync').addEventListener('click', () => syncNow(true));
+  }
+
+  function boot() {
+    mountFloatingSyncBar();
+    syncNow(true);
+    setInterval(() => syncNow(false), CONFIG.pollMs);
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') syncNow(false);
+    });
+    document.addEventListener('click', e => {
+      const btn = e.target.closest('button, input[type="submit"]');
+      if (btn && (btn.textContent.includes('登入') || btn.textContent.includes('驗證') || btn.textContent.includes('同步'))) {
+        setTimeout(() => syncNow(true), 120);
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
+  }
+  window.GitHubRealtimeSync = { pullLatest: syncNow };
+})();
+</script>
+<!-- WARROOM_V184_REMOTE_PATCH_END -->
 </body>
 </html>
