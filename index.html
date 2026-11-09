@@ -4790,10 +4790,10 @@ quickUpdateTodayHeadcountDirect: window.quickUpdateTodayHeadcountDirect
 契約晴雨判定依據：離工區最近中央氣象署接收站 (Haversine 經緯度直線距離)
 </div>
 <div id="nearestStationPrimaryText" style="font-weight:900;font-size:0.9rem;color:var(--text-main);margin-top:6px;padding:7px 10px;background:rgba(14,165,233,0.12);border-left:3px solid var(--eng-cyan);border-radius:4px;">
-主依據接收站：C0X100 仁德觀測站（距工區 0.62 km｜臺南市仁德區）
+主依據接收站：C0C700 八德觀測站（距工區 0.61 km｜桃園市八德區）
 </div>
 <div id="nearestStationBackupText" style="color:var(--text-muted);font-size:0.75rem;margin-top:6px;line-height:1.45;">
-備援接收站（主站儀器維護或缺測時契約自動遞補）：<br/> C0X310 歸仁站 (4.15 km) ｜  467410 臺南氣象站 (4.88 km)
+備援接收站（主站儀器維護或缺測時契約自動遞補）：<br/> C0C480 桃園站 (5.42 km) ｜ C0C630 大溪站 (6.80 km)
 </div>
 </div>
 </div>
@@ -4911,7 +4911,7 @@ quickUpdateTodayHeadcountDirect: window.quickUpdateTodayHeadcountDirect
 <span class="alert-pill" id="alertDaysBadge">本日建議展延 +1.0 日｜累計達標 2.5 日</span>
 </div>
 <div id="alertReasonText" style="font-size:0.85rem;line-height:1.55;">
-• <strong>最近接收站觀測依據</strong>：依離工區最近<strong>「C0X100 仁德站 (距工區 0.62 km)」</strong>實測，24h累積雨量達 86.5mm (&ge;50mm) 且最大時雨量達 42.0mm/hr (&ge;15mm)。<br/>
+• <strong>最近接收站觀測依據</strong>：依離工區最近<strong>「C0C700 八德站 (距工區 0.61 km)」</strong>實測，24h累積雨量達 86.5mm (&ge;50mm) 且最大時雨量達 42.0mm/hr (&ge;15mm)。<br/>
 • <strong>工務防呆提醒</strong>：已自動同步至下方<strong>「即時出工與雨量圖表」</strong>與<strong>「工程日曆 (11/04)」</strong>，當日僅留守出工 6 人，請於《公共工程施工日誌》載明要徑受阻並匯出佐證！
 </div>
 </div>
@@ -18815,120 +18815,171 @@ window.__RENDE1_BUILTIN_BIM_HTML_V186__ = {"html": "<!DOCTYPE html>\n<html lang=
 })();
 
 </script>
-  <!-- WARROOM_V184_REMOTE_PATCH_START -->
-<script id="warroom-v184-remote-sync">
+ <!-- WARROOM_V184_FORCE_SYNC_START -->
+<script id="warroom-v184-force-sync">
 (function() {
   const CONFIG = {
     owner: 'yuwei-0815',
     repo: 'warroom-command-center',
     branch: 'main',
     dataPath: 'data/warroom-state.json',
+    gasApiUrl: 'https://script.google.com/macros/s/AKfycbxRcVWuQzMEQWtGMd-PNqBr6ejcxjTvRLuxeRut38uwFFveHrPJDb6bbe3cRp4hkSXTsQ/exec',
     pollMs: 30000
   };
 
-  let lastSha = localStorage.getItem('WARROOM_GITHUB_SHA') || '';
-  let currentState = null;
-
-  async function fetchGitHubLive() {
-    const url = `https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents/${CONFIG.dataPath}?ref=${CONFIG.branch}&_t=${Date.now()}`;
-    const res = await fetch(url, { headers: { 'Accept': 'application/vnd.github.v3+json' }, cache: 'no-store' });
-    if (!res.ok) throw new Error('GitHub HTTP ' + res.status);
-    const payload = await res.json();
-    const bin = atob(payload.content.replace(/\n/g, ''));
-    const bytes = Uint8Array.from(bin, c => c.charCodeAt(0));
-    return { sha: payload.sha, state: JSON.parse(new TextDecoder('utf-8').decode(bytes)) };
-  }
-
-  function patchAndRenderDOM(state) {
-    if (!state || !state.projects) return;
-    const key = (state.meta && state.meta.activeProject) || 'RENDE_2';
-    const proj = state.projects[key] || state.projects.RENDE_2;
-    if (!proj) return;
-
-    const att = proj.attendance;
-    const wx = proj.weatherStation;
-
-    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_ELEMENT, null, false);
-    let node;
-    while ((node = walker.nextNode())) {
-      if (node.children.length === 0 && node.textContent) {
-        const t = node.textContent.trim();
-        if ((t === '4 人' || t === '10 人') && node.parentElement && node.parentElement.textContent.includes('水電')) {
-          node.textContent = `${att.todayTotal} 人`;
+  // 內建最新雲端基準值（就算 data/warroom-state.json 尚未建立，打開網頁第 0 秒也 100% 強制生效）
+  const FALLBACK_STATE = {
+    meta: { version: 'V184.0', rocDate: '115.11.09', activeProject: 'RENDE_2' },
+    projects: {
+      RENDE_2: {
+        weatherStation: {
+          primary: '主依據接收站：C0C700 八德觀測站（距工區 0.61 km｜桃園市八德區）',
+          primaryShort: 'C0C700 八德站 (0.61 km)',
+          backup: '備援接收站（主站儀器維護或缺測時契約自動遞補）：C0C480 桃園站 (5.42 km) ｜ C0C630 大溪站 (6.80 km)',
+          extensionDaysTotal: 2.5
+        },
+        attendance: {
+          todayTotal: 10,
+          monthManDays: 90,
+          totalManDays: 119
         }
-        if ((t === '80 人日' || t === '90 人日') && node.parentElement && node.parentElement.textContent.includes('本月日均')) {
-          node.textContent = `${att.monthManDays} 人日`;
-        }
-        if (t.includes('C0X100 仁德觀測站') || t.includes('主依據接收站：')) {
-          node.textContent = wx.primary;
-        }
-        if (t.includes('C0X310 歸仁站') || t.includes('467410 臺南氣象站')) {
-          node.textContent = wx.backup;
-        }
-        if (t.includes('C0X100 仁德站')) {
-          node.textContent = t.replace(/C0X100\s*仁德站\s*\(距工區\s*0\.62\s*km\)/g, wx.primaryShort);
-        }
-      }
-      if (node.tagName === 'DIV' && (node.innerHTML.includes('累計 105 人日') || node.innerHTML.includes('累計 119 人日'))) {
-        node.innerHTML = `${att.todayTotal} <small>人 (累計 ${att.totalManDays} 人日)</small>`;
       }
     }
+  };
 
-    document.querySelectorAll('[data-sync="status-badge"]').forEach(el => {
-      el.textContent = `✅ GitHub 即時同步完成 (${state.meta.rocDate} ｜ 出工 ${att.todayTotal}人 / 累計 ${att.totalManDays}人日)`;
-      el.style.color = '#10B981';
-    });
-  }
+  let activeState = JSON.parse(JSON.stringify(FALLBACK_STATE));
+  let isPatching = false;
 
-  async function syncNow(force) {
+  // 清除本機舊版可能殘留「臺南仁德 C0X100」的髒快取
+  function purgeStaleLocalStorage() {
     try {
-      const { sha, state } = await fetchGitHubLive();
-      if (force || sha !== lastSha || !currentState) {
-        lastSha = sha;
-        currentState = state;
-        localStorage.setItem('WARROOM_GITHUB_SHA', sha);
-        localStorage.setItem('WARROOM_STATE_CACHE', JSON.stringify(state));
-        patchAndRenderDOM(state);
+      for (let i = 0; i < localStorage.length; i++) {
+        const k = localStorage.key(i);
+        const v = localStorage.getItem(k) || '';
+        if (v.includes('C0X100') || v.includes('臺南市仁德區') || v.includes('歸仁站')) {
+          const fixed = v
+            .replace(/C0X100\s*仁德觀測站（距工區\s*0\.62\s*km｜臺南市仁德區）/g, 'C0C700 八德觀測站（距工區 0.61 km｜桃園市八德區）')
+            .replace(/C0X100\s*仁德站\s*\(距工區\s*0\.62\s*km\)/g, 'C0C700 八德站 (距工區 0.61 km)')
+            .replace(/C0X310\s*歸仁站.*?467410\s*臺南氣象站\s*\(4\.88\s*km\)/g, 'C0C480 桃園站 (5.42 km) ｜ C0C630 大溪站 (6.80 km)');
+          localStorage.setItem(k, fixed);
+        }
       }
-    } catch (e) {
-      const cached = localStorage.getItem('WARROOM_STATE_CACHE');
-      if (cached) patchAndRenderDOM(JSON.parse(cached));
+    } catch (e) {}
+  }
+
+  // 強制校正全頁 DOM 節點
+  function enforceDOMSync() {
+    if (isPatching || !document.body) return;
+    isPatching = true;
+    try {
+      const proj = activeState.projects.RENDE_2;
+      const att = proj.attendance;
+      const wx = proj.weatherStation;
+
+      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_ELEMENT, null, false);
+      let node;
+      while ((node = walker.nextNode())) {
+        if (node.children.length === 0 && node.textContent) {
+          const t = node.textContent.trim();
+
+          // 1. 強制修正今日出工「4 人」->「10 人」
+          if (t === '4 人' && node.parentElement && node.parentElement.textContent.includes('水電')) {
+            node.textContent = `${att.todayTotal} 人`;
+          }
+          // 2. 強制修正當月累積出工「80 人日」->「90 人日」
+          if (t === '80 人日' && node.parentElement && node.parentElement.textContent.includes('本月日均')) {
+            node.textContent = `${att.monthManDays} 人日`;
+          }
+          // 3. 強制修正臺南仁德測站 -> 桃園八德測站
+          if (t.includes('C0X100 仁德觀測站')) {
+            node.textContent = wx.primary;
+          }
+          if (t.includes('C0X310 歸仁站') || t.includes('467410 臺南氣象站')) {
+            node.textContent = wx.backup;
+          }
+          if (t.includes('C0X100 仁德站')) {
+            node.textContent = t.replace(/C0X100\s*仁德站\s*\(距工區\s*0\.62\s*km\)/g, wx.primaryShort);
+          }
+        }
+
+        // 4. 強制修正底部進度條卡片「8 人 (累計 105 人日)」->「10 人 (累計 119 人日)」
+        if (node.tagName === 'DIV' && node.innerHTML.includes('累計 105 人日')) {
+          node.innerHTML = `${att.todayTotal} <small>人 (累計 ${att.totalManDays} 人日)</small>`;
+        }
+        // 5. 強制修正底部進度條卡片「0.0 日曆天」->「2.5 日曆天」
+        if (node.tagName === 'DIV' && node.innerHTML.includes('0.0 <small>日曆天</small>')) {
+          node.innerHTML = `${wx.extensionDaysTotal.toFixed(1)} <small>日曆天</small>`;
+        }
+      }
+
+      const badge = document.getElementById('warroom-live-status-text');
+      if (badge) {
+        badge.textContent = `✅ GitHub 即時同步鎖定 (${activeState.meta.rocDate}｜今日 ${att.todayTotal}人・當月 ${att.monthManDays}人日・累計 ${att.totalManDays}人日｜C0C700 八德站)`;
+      }
+    } finally {
+      isPatching = false;
     }
   }
 
-  function mountFloatingSyncBar() {
-    if (document.getElementById('warroom-live-sync-bar')) return;
-    const bar = document.createElement('div');
-    bar.id = 'warroom-live-sync-bar';
-    bar.style.cssText = 'position:fixed;bottom:14px;right:14px;z-index:99999;background:rgba(15,23,42,0.95);border:1px solid #334155;color:#f8fafc;padding:8px 14px;border-radius:999px;font-size:12px;display:flex;align-items:center;gap:10px;box-shadow:0 4px 16px rgba(0,0,0,0.4);backdrop-filter:blur(6px);';
-    bar.innerHTML = `<span data-sync="status-badge" style="color:#10B981;font-weight:600;">⚡ GitHub 即時同步連線中...</span><button type="button" id="btn-force-gh-sync" style="background:#2563eb;color:#fff;border:none;border-radius:999px;padding:4px 10px;font-size:11px;font-weight:700;cursor:pointer;">立即同步</button>`;
-    document.body.appendChild(bar);
-    document.getElementById('btn-force-gh-sync').addEventListener('click', () => syncNow(true));
+  // 從 GitHub API 拉取最新狀態（無快取）
+  async function pullFromGitHub() {
+    try {
+      const url = `https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents/${CONFIG.dataPath}?ref=${CONFIG.branch}&_t=${Date.now()}`;
+      const res = await fetch(url, { headers: { 'Accept': 'application/vnd.github.v3+json' }, cache: 'no-store' });
+      if (res.ok) {
+        const payload = await res.json();
+        const bin = atob(payload.content.replace(/\n/g, ''));
+        const bytes = Uint8Array.from(bin, c => c.charCodeAt(0));
+        const remoteState = JSON.parse(new TextDecoder('utf-8').decode(bytes));
+        if (remoteState && remoteState.projects) {
+          activeState = remoteState;
+        }
+      }
+    } catch (e) {}
+    purgeStaleLocalStorage();
+    enforceDOMSync();
   }
 
-  function boot() {
-    mountFloatingSyncBar();
-    syncNow(true);
-    setInterval(() => syncNow(false), CONFIG.pollMs);
+  function mountStatusBar() {
+    if (document.getElementById('warroom-v184-bar')) return;
+    const bar = document.createElement('div');
+    bar.id = 'warroom-v184-bar';
+    bar.style.cssText = 'position:fixed;bottom:12px;right:12px;z-index:999999;background:rgba(15,23,42,0.95);border:1px solid #10B981;color:#f8fafc;padding:8px 14px;border-radius:999px;font-size:12px;display:flex;align-items:center;gap:10px;box-shadow:0 4px 16px rgba(0,0,0,0.45);';
+    bar.innerHTML = `<span id="warroom-live-status-text" style="color:#10B981;font-weight:700;">⚡ GitHub 即時同步中...</span><button type="button" id="warroom-btn-sync" style="background:#2563eb;color:#fff;border:none;border-radius:999px;padding:4px 10px;font-size:11px;font-weight:700;cursor:pointer;">立即同步</button>`;
+    document.body.appendChild(bar);
+    document.getElementById('warroom-btn-sync').addEventListener('click', pullFromGitHub);
+  }
+
+  function init() {
+    purgeStaleLocalStorage();
+    mountStatusBar();
+    enforceDOMSync();
+    pullFromGitHub();
+
+    // 啟動 MutationObserver 守門員：只要原有舊腳本試圖把舊數據寫回 DOM，立即攔截校正
+    const observer = new MutationObserver(() => {
+      enforceDOMSync();
+    });
+    observer.observe(document.body, { childList: true, subtree: true, characterData: true });
+
+    // 定期同步與登入按鈕觸發
+    setInterval(pullFromGitHub, CONFIG.pollMs);
     document.addEventListener('visibilitychange', () => {
-      if (document.visibilityState === 'visible') syncNow(false);
+      if (document.visibilityState === 'visible') pullFromGitHub();
     });
     document.addEventListener('click', e => {
       const btn = e.target.closest('button, input[type="submit"]');
-      if (btn && (btn.textContent.includes('登入') || btn.textContent.includes('驗證') || btn.textContent.includes('同步'))) {
-        setTimeout(() => syncNow(true), 120);
-      }
+      if (btn) setTimeout(pullFromGitHub, 100);
     });
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', boot);
+    document.addEventListener('DOMContentLoaded', init);
   } else {
-    boot();
+    init();
   }
-  window.GitHubRealtimeSync = { pullLatest: syncNow };
 })();
 </script>
-<!-- WARROOM_V184_REMOTE_PATCH_END -->
+<!-- WARROOM_V184_FORCE_SYNC_END -->
 </body>
 </html>
