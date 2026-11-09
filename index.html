@@ -18815,21 +18815,19 @@ window.__RENDE1_BUILTIN_BIM_HTML_V186__ = {"html": "<!DOCTYPE html>\n<html lang=
 })();
 
 </script>
- <!-- WARROOM_V184_FORCE_SYNC_START -->
-<script id="warroom-v184-force-sync">
+<!-- WARROOM_V184_SAFE_SYNC_START -->
+<script id="warroom-v184-safe-sync">
 (function() {
   const CONFIG = {
     owner: 'yuwei-0815',
     repo: 'warroom-command-center',
     branch: 'main',
     dataPath: 'data/warroom-state.json',
-    gasApiUrl: 'https://script.google.com/macros/s/AKfycbxRcVWuQzMEQWtGMd-PNqBr6ejcxjTvRLuxeRut38uwFFveHrPJDb6bbe3cRp4hkSXTsQ/exec',
     pollMs: 30000
   };
 
-  // 內建最新雲端基準值（就算 data/warroom-state.json 尚未建立，打開網頁第 0 秒也 100% 強制生效）
   const FALLBACK_STATE = {
-    meta: { version: 'V184.0', rocDate: '115.11.09', activeProject: 'RENDE_2' },
+    meta: { version: 'V184.1', rocDate: '115.11.09', activeProject: 'RENDE_2' },
     projects: {
       RENDE_2: {
         weatherStation: {
@@ -18848,128 +18846,113 @@ window.__RENDE1_BUILTIN_BIM_HTML_V186__ = {"html": "<!DOCTYPE html>\n<html lang=
   };
 
   let activeState = JSON.parse(JSON.stringify(FALLBACK_STATE));
-  let isPatching = false;
+  let lastSha = '';
 
-  // 清除本機舊版可能殘留「臺南仁德 C0X100」的髒快取
-  function purgeStaleLocalStorage() {
+  // 1. 清除舊版殘留「臺南仁德 C0X100」的本機快取
+  function cleanLocalStorage() {
     try {
       for (let i = 0; i < localStorage.length; i++) {
         const k = localStorage.key(i);
         const v = localStorage.getItem(k) || '';
         if (v.includes('C0X100') || v.includes('臺南市仁德區') || v.includes('歸仁站')) {
-          const fixed = v
+          localStorage.setItem(k, v
             .replace(/C0X100\s*仁德觀測站（距工區\s*0\.62\s*km｜臺南市仁德區）/g, 'C0C700 八德觀測站（距工區 0.61 km｜桃園市八德區）')
             .replace(/C0X100\s*仁德站\s*\(距工區\s*0\.62\s*km\)/g, 'C0C700 八德站 (距工區 0.61 km)')
-            .replace(/C0X310\s*歸仁站.*?467410\s*臺南氣象站\s*\(4\.88\s*km\)/g, 'C0C480 桃園站 (5.42 km) ｜ C0C630 大溪站 (6.80 km)');
-          localStorage.setItem(k, fixed);
+            .replace(/C0X310\s*歸仁站.*?467410\s*臺南氣象站\s*\(4\.88\s*km\)/g, 'C0C480 桃園站 (5.42 km) ｜ C0C630 大溪站 (6.80 km)')
+          );
         }
       }
     } catch (e) {}
   }
 
-  // 強制校正全頁 DOM 節點
-  function enforceDOMSync() {
-    if (isPatching || !document.body) return;
-    isPatching = true;
-    try {
-      const proj = activeState.projects.RENDE_2;
-      const att = proj.attendance;
-      const wx = proj.weatherStation;
+  // 2. 單次輕量校正（無監聽迴圈，耗時 < 2ms）
+  function applyDOMSync() {
+    if (!document.body) return;
+    const proj = (activeState.projects && activeState.projects.RENDE_2) || FALLBACK_STATE.projects.RENDE_2;
+    const att = proj.attendance;
+    const wx = proj.weatherStation;
 
-      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_ELEMENT, null, false);
-      let node;
-      while ((node = walker.nextNode())) {
-        if (node.children.length === 0 && node.textContent) {
-          const t = node.textContent.trim();
-
-          // 1. 強制修正今日出工「4 人」->「10 人」
-          if (t === '4 人' && node.parentElement && node.parentElement.textContent.includes('水電')) {
-            node.textContent = `${att.todayTotal} 人`;
-          }
-          // 2. 強制修正當月累積出工「80 人日」->「90 人日」
-          if (t === '80 人日' && node.parentElement && node.parentElement.textContent.includes('本月日均')) {
-            node.textContent = `${att.monthManDays} 人日`;
-          }
-          // 3. 強制修正臺南仁德測站 -> 桃園八德測站
-          if (t.includes('C0X100 仁德觀測站')) {
-            node.textContent = wx.primary;
-          }
-          if (t.includes('C0X310 歸仁站') || t.includes('467410 臺南氣象站')) {
-            node.textContent = wx.backup;
-          }
-          if (t.includes('C0X100 仁德站')) {
-            node.textContent = t.replace(/C0X100\s*仁德站\s*\(距工區\s*0\.62\s*km\)/g, wx.primaryShort);
-          }
+    // 僅針對一般區塊標籤進行比對，跳過 canvas / script / style
+    const elements = document.body.querySelectorAll('span, div');
+    for (let i = 0; i < elements.length; i++) {
+      const el = elements[i];
+      if (el.children.length === 0) {
+        const t = el.textContent.trim();
+        if (t === '4 人' && el.parentElement && el.parentElement.textContent.includes('水電')) {
+          el.textContent = `${att.todayTotal} 人`;
+        } else if (t === '80 人日' && el.parentElement && el.parentElement.textContent.includes('本月日均')) {
+          el.textContent = `${att.monthManDays} 人日`;
+        } else if (t.includes('C0X100 仁德觀測站')) {
+          el.textContent = wx.primary;
+        } else if (t.includes('C0X310 歸仁站') || t.includes('467410 臺南氣象站')) {
+          el.textContent = wx.backup;
+        } else if (t.includes('C0X100 仁德站')) {
+          el.textContent = t.replace(/C0X100\s*仁德站\s*\(距工區\s*0\.62\s*km\)/g, wx.primaryShort);
         }
-
-        // 4. 強制修正底部進度條卡片「8 人 (累計 105 人日)」->「10 人 (累計 119 人日)」
-        if (node.tagName === 'DIV' && node.innerHTML.includes('累計 105 人日')) {
-          node.innerHTML = `${att.todayTotal} <small>人 (累計 ${att.totalManDays} 人日)</small>`;
-        }
-        // 5. 強制修正底部進度條卡片「0.0 日曆天」->「2.5 日曆天」
-        if (node.tagName === 'DIV' && node.innerHTML.includes('0.0 <small>日曆天</small>')) {
-          node.innerHTML = `${wx.extensionDaysTotal.toFixed(1)} <small>日曆天</small>`;
+      } else if (el.tagName === 'DIV' && el.children.length === 1 && el.firstElementChild.tagName === 'SMALL') {
+        if (el.innerHTML.includes('累計 105 人日')) {
+          el.innerHTML = `${att.todayTotal} <small>人 (累計 ${att.totalManDays} 人日)</small>`;
+        } else if (el.innerHTML.includes('0.0 <small>日曆天</small>')) {
+          el.innerHTML = `${wx.extensionDaysTotal.toFixed(1)} <small>日曆天</small>`;
         }
       }
+    }
 
-      const badge = document.getElementById('warroom-live-status-text');
-      if (badge) {
-        badge.textContent = `✅ GitHub 即時同步鎖定 (${activeState.meta.rocDate}｜今日 ${att.todayTotal}人・當月 ${att.monthManDays}人日・累計 ${att.totalManDays}人日｜C0C700 八德站)`;
-      }
-    } finally {
-      isPatching = false;
+    const badge = document.getElementById('warroom-safe-status-text');
+    if (badge) {
+      const newBadgeText = `✅ GitHub 即時同步就緒 (${activeState.meta.rocDate}｜今日 ${att.todayTotal}人・當月 ${att.monthManDays}人日・累計 ${att.totalManDays}人日｜C0C700 八德站)`;
+      if (badge.textContent !== newBadgeText) badge.textContent = newBadgeText;
     }
   }
 
-  // 從 GitHub API 拉取最新狀態（無快取）
-  async function pullFromGitHub() {
+  // 3. 從 GitHub API 讀取 data/warroom-state.json
+  async function syncFromGitHub(force) {
     try {
       const url = `https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents/${CONFIG.dataPath}?ref=${CONFIG.branch}&_t=${Date.now()}`;
       const res = await fetch(url, { headers: { 'Accept': 'application/vnd.github.v3+json' }, cache: 'no-store' });
       if (res.ok) {
         const payload = await res.json();
-        const bin = atob(payload.content.replace(/\n/g, ''));
-        const bytes = Uint8Array.from(bin, c => c.charCodeAt(0));
-        const remoteState = JSON.parse(new TextDecoder('utf-8').decode(bytes));
-        if (remoteState && remoteState.projects) {
-          activeState = remoteState;
+        if (force || payload.sha !== lastSha) {
+          lastSha = payload.sha;
+          const bin = atob(payload.content.replace(/\n/g, ''));
+          const bytes = Uint8Array.from(bin, c => c.charCodeAt(0));
+          const parsed = JSON.parse(new TextDecoder('utf-8').decode(bytes));
+          if (parsed && parsed.projects) activeState = parsed;
         }
       }
     } catch (e) {}
-    purgeStaleLocalStorage();
-    enforceDOMSync();
+    cleanLocalStorage();
+    applyDOMSync();
   }
 
   function mountStatusBar() {
-    if (document.getElementById('warroom-v184-bar')) return;
+    if (document.getElementById('warroom-v184-safe-bar')) return;
     const bar = document.createElement('div');
-    bar.id = 'warroom-v184-bar';
+    bar.id = 'warroom-v184-safe-bar';
     bar.style.cssText = 'position:fixed;bottom:12px;right:12px;z-index:999999;background:rgba(15,23,42,0.95);border:1px solid #10B981;color:#f8fafc;padding:8px 14px;border-radius:999px;font-size:12px;display:flex;align-items:center;gap:10px;box-shadow:0 4px 16px rgba(0,0,0,0.45);';
-    bar.innerHTML = `<span id="warroom-live-status-text" style="color:#10B981;font-weight:700;">⚡ GitHub 即時同步中...</span><button type="button" id="warroom-btn-sync" style="background:#2563eb;color:#fff;border:none;border-radius:999px;padding:4px 10px;font-size:11px;font-weight:700;cursor:pointer;">立即同步</button>`;
+    bar.innerHTML = `<span id="warroom-safe-status-text" style="color:#10B981;font-weight:700;">⚡ GitHub 即時同步連線中...</span><button type="button" id="warroom-safe-btn" style="background:#2563eb;color:#fff;border:none;border-radius:999px;padding:4px 10px;font-size:11px;font-weight:700;cursor:pointer;">立即同步</button>`;
     document.body.appendChild(bar);
-    document.getElementById('warroom-btn-sync').addEventListener('click', pullFromGitHub);
+    document.getElementById('warroom-safe-btn').addEventListener('click', () => syncFromGitHub(true));
   }
 
   function init() {
-    purgeStaleLocalStorage();
+    cleanLocalStorage();
     mountStatusBar();
-    enforceDOMSync();
-    pullFromGitHub();
+    applyDOMSync();
+    // 於頁面載入後第 0.8 秒與 2 秒各補校正一次（防舊初始化腳本延遲載入），完全不使用 MutationObserver
+    setTimeout(applyDOMSync, 800);
+    setTimeout(() => syncFromGitHub(true), 1800);
 
-    // 啟動 MutationObserver 守門員：只要原有舊腳本試圖把舊數據寫回 DOM，立即攔截校正
-    const observer = new MutationObserver(() => {
-      enforceDOMSync();
-    });
-    observer.observe(document.body, { childList: true, subtree: true, characterData: true });
+    // 每 30 秒定時同步一次
+    setInterval(() => syncFromGitHub(false), CONFIG.pollMs);
 
-    // 定期同步與登入按鈕觸發
-    setInterval(pullFromGitHub, CONFIG.pollMs);
-    document.addEventListener('visibilitychange', () => {
-      if (document.visibilityState === 'visible') pullFromGitHub();
-    });
+    // 點擊「登入系統」或切換按鈕時觸發一次同步
     document.addEventListener('click', e => {
       const btn = e.target.closest('button, input[type="submit"]');
-      if (btn) setTimeout(pullFromGitHub, 100);
+      if (btn) {
+        setTimeout(applyDOMSync, 150);
+        setTimeout(() => syncFromGitHub(true), 600);
+      }
     });
   }
 
@@ -18980,6 +18963,6 @@ window.__RENDE1_BUILTIN_BIM_HTML_V186__ = {"html": "<!DOCTYPE html>\n<html lang=
   }
 })();
 </script>
-<!-- WARROOM_V184_FORCE_SYNC_END -->
+<!-- WARROOM_V184_SAFE_SYNC_END -->
 </body>
 </html>
