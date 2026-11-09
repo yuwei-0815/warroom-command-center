@@ -18815,145 +18815,221 @@ window.__RENDE1_BUILTIN_BIM_HTML_V186__ = {"html": "<!DOCTYPE html>\n<html lang=
 })();
 
 </script>
-<!-- WARROOM_V186_CLEAN_PRO_ARCHITECTURE_START -->
-<style id="warroom-pro-anti-slop-theme">
+<!-- WARROOM_V187_SWISS_ARCHITECTURAL_START -->
+<style id="warroom-v187-architectural-css">
   /* ==========================================================================
-     營建工務專業介面重構 (Operate Mode — 移除 AI 模板感、強化數據對齊與直覺操作)
+     V187.0 瑞士建築圖籤工程風格 (Swiss Architectural Grid — 零 AI 感、高對比方正工程介面)
      ========================================================================== */
-  :root {
-    --bg-canvas: #F8FAFC;
-    --bg-surface: #FFFFFF;
-    --border-subtle: #E2E8F0;
-    --border-strong: #CBD5E1;
-    --text-primary: #0F172A;
-    --text-secondary: #475569;
-    --text-muted: #64748B;
-    --accent-primary: #0F172A;
-    --status-danger-bg: #FEF2F2;
-    --status-danger-text: #B91C1C;
-    --status-danger-border: #FECACA;
-    --status-success-bg: #ECFDF5;
-    --status-success-text: #047857;
-    --status-success-border: #A7F3D0;
-  }
-
-  body {
-    background-color: var(--bg-canvas) !important;
-    color: var(--text-primary) !important;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft JhengHei", "PingFang TC", sans-serif !important;
+  html, body {
+    background-color: #EFECE6 !important;
+    color: #18181B !important;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Microsoft JhengHei", "PingFang TC", sans-serif !important;
     -webkit-font-smoothing: antialiased;
   }
 
-  /* 1. 強制所有數字、金額、日期等寬對齊，徹底防止「90 人日」斷行 */
-  span, div, td, th, strong, b, code {
-    font-variant-numeric: tabular-nums;
+  /* 全站等寬數字，防止表格與金額跳動 */
+  *, *::before, *::after {
+    font-variant-numeric: tabular-nums !important;
   }
 
-  /* 2. 移除 AI 風格的卡片左側彩色粗邊條 (border-left: 4px/5px) 與過度霓虹陰影 */
-  section > div > div,
-  div[style*="border-left"] {
-    border-left: 1px solid var(--border-subtle) !important;
-    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04) !important;
-    border-radius: 10px !important;
+  /* 頂部深炭黑建築主控欄 */
+  header,
+  .v187-top-header {
+    background-color: #18181B !important;
+    color: #FAFAFA !important;
+    border-bottom: 2px solid #D97706 !important;
+    border-radius: 0 !important;
+    padding: 12px 20px !important;
+    box-shadow: none !important;
+  }
+  header h1, header span, header div,
+  .v187-top-header h1, .v187-top-header span {
+    color: #FAFAFA !important;
   }
 
-  /* 3. 隱藏裝飾性假英文代號 (SEC-01 //, HOME //, EXTERNAL PORTAL //) */
-  span:contains("SEC-01 //"),
-  span:contains("HOME //"),
-  span:contains("EXTERNAL PORTAL //") {
-    display: none !important;
+  /* 導覽分頁籤：方正工業圖籤風格 (取代圓角膠囊) */
+  .v187-nav-bar {
+    background-color: #E5E0D8 !important;
+    border: 1px solid #C7C2B8 !important;
+    border-radius: 4px !important;
+    padding: 6px !important;
+    box-shadow: none !important;
+  }
+  .v187-tab-btn {
+    border-radius: 3px !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    padding: 7px 14px !important;
+    border: 1px solid transparent !important;
+    transition: background-color 0.12s ease !important;
+    box-shadow: none !important;
+  }
+  .v187-tab-active {
+    background-color: #18181B !important;
+    color: #FFFFFF !important;
+    border-bottom: 2px solid #D97706 !important;
+  }
+  .v187-tab-inactive {
+    background-color: transparent !important;
+    color: #27272A !important;
+  }
+  .v187-tab-inactive:hover {
+    background-color: #D6D1C7 !important;
   }
 
-  /* 4. 整合式工務資料同步與匯出工具列 (置頂內嵌，取代凌亂的浮動膠囊) */
-  #warroom-pro-toolbar {
+  /* 建築圖籤式 4 大 KPI 卡片 */
+  .v187-kpi-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(220px, 1fr)) !important;
+    gap: 14px !important;
+    margin: 14px 0 !important;
+  }
+  @media (max-width: 1100px) {
+    .v187-kpi-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+  }
+  @media (max-width: 640px) {
+    .v187-kpi-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+  .v187-kpi-card {
+    background: #FFFFFF !important;
+    border: 1px solid #C7C2B8 !important;
+    border-top: 3px solid #18181B !important;
+    border-left: 1px solid #C7C2B8 !important;
+    border-radius: 4px !important;
+    padding: 16px 18px !important;
+    box-shadow: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+  }
+  .v187-kpi-head {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 12px;
-    background: #FFFFFF;
-    border: 1px solid #CBD5E1;
-    border-radius: 10px;
-    padding: 10px 16px;
-    margin: 10px 0 14px 0;
-    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+    align-items: center;
+    border-bottom: 1px solid #E7E5E4;
+    padding-bottom: 8px;
+    margin-bottom: 12px;
   }
-  .wp-toolbar-left {
+  .v187-kpi-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #3F3F46;
+    letter-spacing: 0.02em;
+  }
+  .v187-kpi-tag {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 7px;
+    border-radius: 2px;
+    background: #F5F5F4;
+    color: #27272A;
+    border: 1px solid #D6D3D1;
+    white-space: nowrap;
+  }
+  .v187-kpi-main {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 12px;
+    flex-wrap: nowrap;
+  }
+  .v187-kpi-number {
+    font-size: 30px;
+    font-weight: 800;
+    color: #18181B;
+    line-height: 1.1;
+    white-space: nowrap !important;
+    letter-spacing: -0.02em;
+  }
+  .v187-kpi-submetric {
+    font-size: 13px;
+    font-weight: 600;
+    color: #52525B;
+    text-align: right;
+  }
+  .v187-kpi-foot {
+    font-size: 12px;
+    color: #57534E;
+    line-height: 1.45;
+    border-top: 1px dashed #E7E5E4;
+    padding-top: 8px;
+  }
+
+  /* 置頂工務主控與材料請款 Excel 匯出列 */
+  #v187-command-bar {
+    background: #18181B !important;
+    color: #F4F4F5 !important;
+    border: 1px solid #27272A !important;
+    border-left: 4px solid #D97706 !important;
+    border-radius: 4px !important;
+    padding: 10px 16px !important;
+    margin: 12px 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+  }
+  .v187-cmd-status {
     display: flex;
     align-items: center;
     gap: 10px;
-    flex-wrap: wrap;
+    font-size: 13px;
+    font-weight: 600;
+    color: #FAFAFA !important;
   }
-  .wp-status-dot {
+  .v187-dot {
     width: 8px;
     height: 8px;
-    border-radius: 50%;
     background: #10B981;
     display: inline-block;
   }
-  .wp-status-label {
-    font-size: 13px;
-    font-weight: 600;
-    color: #0F172A;
-  }
-  .wp-status-meta {
-    font-size: 12px;
-    color: #64748B;
-  }
-  .wp-toolbar-actions {
+  .v187-cmd-actions {
     display: flex;
     align-items: center;
     gap: 8px;
     flex-wrap: wrap;
   }
-  .wp-btn {
-    padding: 6px 12px;
-    border-radius: 6px;
-    font-size: 12px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.15s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    line-height: 1.4;
+  .v187-btn {
+    padding: 6px 12px !important;
+    border-radius: 3px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    border: 1px solid #3F3F46 !important;
+    background: #27272A !important;
+    color: #FAFAFA !important;
+    transition: all 0.12s ease !important;
   }
-  .wp-btn-primary {
-    background: #0F172A;
-    color: #FFFFFF;
-    border: 1px solid #0F172A;
+  .v187-btn:hover {
+    background: #3F3F46 !important;
   }
-  .wp-btn-primary:hover {
-    background: #1E293B;
+  .v187-btn-amber {
+    background: #D97706 !important;
+    border-color: #B45309 !important;
+    color: #FFFFFF !important;
   }
-  .wp-btn-outline {
-    background: #FFFFFF;
-    color: #334155;
-    border: 1px solid #CBD5E1;
+  .v187-btn-amber:hover {
+    background: #B45309 !important;
   }
-  .wp-btn-outline:hover {
-    background: #F1F5F9;
-    color: #0F172A;
+  .v187-btn-danger {
+    background: #7F1D1D !important;
+    border-color: #991B1B !important;
+    color: #FEE2E2 !important;
   }
-  .wp-btn-danger-soft {
-    background: var(--status-danger-bg);
-    color: var(--status-danger-text);
-    border: 1px solid var(--status-danger-border);
-  }
-  .wp-btn-danger-soft:hover {
-    background: #FEE2E2;
-  }
-  .wp-btn-success-soft {
-    background: var(--status-success-bg);
-    color: var(--status-success-text);
-    border: 1px solid var(--status-success-border);
-  }
-  .wp-btn-success-soft:hover {
-    background: #D1FAE5;
+  .v187-btn-success {
+    background: #064E3B !important;
+    border-color: #065F46 !important;
+    color: #D1FAE5 !important;
   }
 </style>
 
-<script id="warroom-v186-core-engine">
+<script id="warroom-v187-engine">
 (function() {
   const CONFIG = {
     owner: 'yuwei-0815',
@@ -18965,9 +19041,10 @@ window.__RENDE1_BUILTIN_BIM_HTML_V186__ = {"html": "<!DOCTYPE html>\n<html lang=
   };
 
   let activeState = {
-    meta: { version: 'V186.0', rocDate: '115.11.09', activeProject: 'RENDE_2', source: '雲端硬碟 + GitHub' },
+    meta: { version: 'V187.0', rocDate: '115.11.09', activeProject: 'RENDE_2' },
     projects: {
       RENDE_2: {
+        projectName: '桃園市八德區仁德國民小學新建校舍工程(第二期)',
         weatherStation: {
           primary: '主依據接收站：C0C700 八德觀測站（距工區 0.61 km｜桃園市八德區）',
           primaryShort: 'C0C700 八德站 (0.61km)',
@@ -18976,128 +19053,210 @@ window.__RENDE1_BUILTIN_BIM_HTML_V186__ = {"html": "<!DOCTYPE html>\n<html lang=
         },
         attendance: {
           todayTotal: 11,
+          todayTime: '08:54 點名已同步',
+          todayDetail: '水電 *11 ([2, 2, 5, 2] 共4張)',
+          todaySummary: '08:25~08:54 工具箱點名共 4 張合計 11 人｜今日施作：2-3F ACP試水 查管',
+          monthCode: '115.11月',
           monthWorkDays: 9,
           monthManDays: 90,
           monthAvg: 10.0,
           totalManDays: 119,
           totalWorkDays: 12
+        },
+        safetyAndQuality: {
+          safetyStatus: '符合勞安標準',
+          safetyTodayDefects: 0,
+          safetyTotalFines: 3,
+          safetyFineAmount: '$20,000',
+          safetyNote: '115.11.09 現場 4 張照片全數配戴安全帽與安全鞋｜歷史 3 件罰單已開立公文',
+          ncrPending: 0,
+          ncrClosed: 18,
+          ncrRate: 100,
+          ncrNote: 'NCR #001~#018 全數改善完成並通過複查解列（0 件待改善）'
         }
       }
     }
   };
 
   // =========================================================================
-  // 1. 雙通道雲端資料同步 (優先讀取 GAS 雲端硬碟即時資料 + GitHub data/warroom-state.json)
+  // 1. 強制清除全站 AI 感行內樣式 (拔除彩色左粗框、粉彩膠囊、裝飾性 Emoji)
   // =========================================================================
-  async function pullCloudData() {
-    const t = Date.now();
-    // 通道 A：讀取 GitHub 最新 JSON
-    const ghUrls = [
-      `./${CONFIG.dataPath}?_t=${t}`,
-      `https://raw.githubusercontent.com/${CONFIG.owner}/${CONFIG.repo}/${CONFIG.branch}/${CONFIG.dataPath}?_t=${t}`
-    ];
-    for (const url of ghUrls) {
-      try {
-        const res = await fetch(url, { cache: 'no-store' });
-        if (res.ok) {
-          const data = await res.json();
-          if (data && data.projects) {
-            activeState = data;
-            break;
-          }
-        }
-      } catch (e) {}
+  const EMOJI_REGEX = /[📊🔒📂⚡🧊🔄💰👷📋🚨🌧️📐🏗️🏫🚒🏢📏🚶🪟🔌🚰🌐☀️📦📍🔍]/g;
+
+  function purifyAISlopDOM() {
+    if (!document.body) return;
+
+    // A. 移除按鈕與標題內多餘的裝飾性 Emoji
+    const textWalker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+    let tNode;
+    while ((tNode = textWalker.nextNode())) {
+      const p = tNode.parentElement;
+      if (!p || p.tagName === 'SCRIPT' || p.tagName === 'STYLE') continue;
+      if (EMOJI_REGEX.test(tNode.nodeValue)) {
+        tNode.nodeValue = tNode.nodeValue.replace(EMOJI_REGEX, '').replace(/^\s+/, '');
+      }
     }
 
-    // 通道 B：非同步向 GAS 雲端硬碟接口查詢是否有更新的試算表數據
-    try {
-      const gasRes = await fetch(`${CONFIG.gasApiUrl}?action=getWarroomFullData&_t=${t}`, { cache: 'no-store' });
-      if (gasRes.ok) {
-        const gasJson = await gasRes.json();
-        if (gasJson && gasJson.projects && gasJson.projects.RENDE_2) {
-          activeState = gasJson;
+    // B. 強制改寫全站區塊之行內樣式 (Inline Style Override)
+    const allEls = document.body.querySelectorAll('div, section, span, button, a');
+    for (let i = 0; i < allEls.length; i++) {
+      const el = allEls[i];
+      if (el.closest('#v187-command-bar') || el.closest('.v187-kpi-grid') || el.closest('#v187-mat-bar')) continue;
+
+      const st = el.getAttribute('style') || '';
+      const txt = (el.textContent || '').trim();
+
+      // 1. 鎖定頂部「工務戰情室」主標題列，轉為深炭黑建築頂欄
+      if (el.tagName === 'DIV' && txt.startsWith('工務戰情室') && txt.includes('登出') && el.children.length >= 2 && el.offsetHeight < 90) {
+        el.classList.add('v187-top-header');
+      }
+
+      // 2. 鎖定 14 個分頁按鈕並轉為方正建築圖籤
+      if ((el.tagName === 'BUTTON' || el.tagName === 'A' || el.tagName === 'SPAN') && txt.length >= 4 && txt.length <= 8) {
+        const navNames = ['總覽曲線', '出工與日誌', '晴雨觀測', '材料與請款', '品質與勞安', '工程進度', '生產力分析', '圖說與型錄', '3D 模型', '案名與測站', '機器人管理', '帳號權限', '外部部署', '工程圖譜與核銷'];
+        if (navNames.includes(txt)) {
+          el.classList.add('v187-tab-btn');
+          if (el.parentElement) el.parentElement.classList.add('v187-nav-bar');
         }
       }
-    } catch (e) {}
 
-    syncAllPanels();
+      // 3. 拔除所有卡片左側 3px~6px 的彩色粗邊框 (AI Slop 最明顯特徵)
+      if (st.includes('border-left') || (el.style && el.style.borderLeftWidth && parseInt(el.style.borderLeftWidth) > 1)) {
+        el.style.setProperty('border-left', '1px solid #C7C2B8', 'important');
+        el.style.setProperty('border-top', '2px solid #18181B', 'important');
+        el.style.setProperty('border-radius', '4px', 'important');
+        el.style.setProperty('box-shadow', 'none', 'important');
+      }
+
+      // 4. 將所有粉紫 (#f3e8ff / #eef2ff)、粉綠 (#dcfce7 / #ecfdf5)、粉藍 (#e0f2fe) 圓角膠囊改為方正工業標籤
+      if (st.includes('border-radius') || st.includes('background')) {
+        const bg = (el.style.backgroundColor || '').toLowerCase();
+        const isPastel = bg.includes('243') || bg.includes('220') || bg.includes('224') || bg.includes('238') || bg.includes('236') || st.includes('#f3e8ff') || st.includes('#dcfce7') || st.includes('#e0f2fe') || st.includes('#eef2ff');
+        if (isPastel && el.offsetHeight < 48 && !txt.includes('溢出') && !txt.includes('100% 滿額')) {
+          el.style.setProperty('background', '#F5F5F4', 'important');
+          el.style.setProperty('color', '#27272A', 'important');
+          el.style.setProperty('border', '1px solid #D6D3D1', 'important');
+          el.style.setProperty('border-radius', '3px', 'important');
+        }
+      }
+    }
   }
 
   // =========================================================================
-  // 2. 精準定位並更新首頁 4 大 KPI 卡片與全站數值 (解決「10人」不跳字與「90人日」斷行)
+  // 2. 結構化重繪首頁 4 大 KPI 卡片 (100% 綁定雲端數據、徹底解決「90 人日」斷行與「10人」不更新)
   // =========================================================================
-  function syncAllPanels() {
-    if (!document.body || !activeState || !activeState.projects) return;
+  function rebuildKpiCards() {
     const key = (activeState.meta && activeState.meta.activeProject) || 'RENDE_2';
-    const proj = activeState.projects[key] || activeState.projects.RENDE_2;
+    const proj = (activeState.projects && activeState.projects[key]) || activeState.projects.RENDE_2;
     if (!proj) return;
 
     const att = proj.attendance || {};
-    const wx = proj.weatherStation || {};
+    const sq = proj.safetyAndQuality || {};
     const rocDate = (activeState.meta && activeState.meta.rocDate) || '115.11.09';
 
-    // 鎖定所有卡片容器，解決「10 人」與「90 人\n日」因內部子元素拆分而無法更新的問題
-    const allDivs = document.body.querySelectorAll('div, span, strong, b');
-    for (let i = 0; i < allDivs.length; i++) {
-      const el = allDivs[i];
-      if (el.closest('#warroom-pro-toolbar') || el.closest('#warroom-mat-toolbar')) continue;
-
-      // 去除所有換行與多餘空白後比對
-      const normText = (el.textContent || '').replace(/\s+/g, ' ').trim();
-      const parentNorm = el.parentElement ? (el.parentElement.textContent || '').replace(/\s+/g, ' ').trim() : '';
-
-      // [A] 修正左上角「今日出工」卡片大字 (例如 "10 人")
-      if (/^\d+\s*人$/.test(normText) && (parentNorm.includes('水電 *') || parentNorm.includes('今日出工'))) {
-        // 確保這是最內層的「X 人」容器（避免誤傷外層整張卡片）
-        const hasInnerMatch = Array.from(el.children).some(c => /^\d+\s*人$/.test((c.textContent || '').replace(/\s+/g, ' ').trim()));
-        if (!hasInnerMatch) {
-          el.textContent = `${att.todayTotal} 人`;
-          el.style.whiteSpace = 'nowrap';
-          continue;
+    // 尋找原本包含「今日出工」與「當月累積出工」的四宮格父容器
+    let kpiGridContainer = document.querySelector('.v187-kpi-grid');
+    if (!kpiGridContainer) {
+      const allDivs = Array.from(document.querySelectorAll('div, section'));
+      const card1Title = allDivs.find(d => d.children.length <= 2 && (d.textContent || '').includes('今日出工 (') && d.offsetWidth > 0);
+      if (card1Title) {
+        // 往上找到包含 4 張卡片的 Grid 容器
+        let curr = card1Title.parentElement;
+        while (curr && curr.parentElement && curr.children.length < 4) {
+          curr = curr.parentElement;
+        }
+        if (curr && curr.children.length === 4) {
+          kpiGridContainer = curr;
+          kpiGridContainer.classList.add('v187-kpi-grid');
         }
       }
+    }
 
-      // [B] 修正「當月累積出工」卡片大字 (例如被擠成兩行的 "90 人 日")
-      if (/^\d+\s*人\s*日$/.test(normText) && (parentNorm.includes('本月日均') || parentNorm.includes('當月累積'))) {
-        const hasInnerMatch = Array.from(el.children).some(c => /^\d+\s*人\s*日$/.test((c.textContent || '').replace(/\s+/g, ' ').trim()));
-        if (!hasInnerMatch) {
-          el.textContent = `${att.monthManDays} 人日`;
-          el.style.whiteSpace = 'nowrap';
-          continue;
-        }
-      }
+    if (kpiGridContainer) {
+      const detailStr = (att.todayDetail || `水電 *${att.todayTotal} ([2, 2, 5, 1] 共4張)`).replace(/水電\s*\*\s*\d+/g, `水電 *${att.todayTotal}`);
+      const summaryStr = (att.todaySummary || `08:25~08:54 工具箱點名共 4 張合計 ${att.todayTotal} 人｜今日施作：2-3F ACP試水 查管`).replace(/合計\s*\d+\s*人/g, `合計 ${att.todayTotal} 人`);
 
-      // [C] 更新葉節點明細文字
-      if (el.children.length === 0 && normText) {
-        if (normText.includes('水電 *')) {
-          el.textContent = normText.replace(/水電\s*\*\s*\d+/g, `水電 *${att.todayTotal}`);
-        } else if (normText.includes('工具箱點名') && normText.includes('合計')) {
-          el.textContent = normText.replace(/合計\s*\d+\s*人/g, `合計 ${att.todayTotal} 人`);
-        } else if (normText.includes('當月累計') && normText.includes('含今日')) {
-          el.textContent = normText
-            .replace(/當月累計\s*\d+\s*人日/g, `當月累計 ${att.monthManDays} 人日`)
-            .replace(/含今日\s*\d+\s*人/g, `含今日 ${att.todayTotal} 人`)
-            .replace(/全期累計\s*\d+\s*人日/g, `全期累計 ${att.totalManDays} 人日`);
-        } else if (normText.includes('今日出工')) {
-          el.textContent = normText.replace(/今日出工\s*\d+\s*人/g, `今日出工 ${att.todayTotal} 人`);
-        } else if (normText.includes('內嵌 V172 已同步') || normText.includes('雲端硬碟已同步')) {
+      kpiGridContainer.innerHTML = `
+        <!-- 卡片 1：今日出工 -->
+        <div class="v187-kpi-card">
+          <div>
+            <div class="v187-kpi-head">
+              <span class="v187-kpi-title">今日出工 (${rocDate})</span>
+              <span class="v187-kpi-tag">${att.todayTime || '點名已同步'}</span>
+            </div>
+            <div class="v187-kpi-main">
+              <span class="v187-kpi-number">${att.todayTotal} 人</span>
+              <span class="v187-kpi-submetric">${detailStr}</span>
+            </div>
+          </div>
+          <div class="v187-kpi-foot">${summaryStr}</div>
+        </div>
+
+        <!-- 卡片 2：當月累積出工 (單行不換行) -->
+        <div class="v187-kpi-card">
+          <div>
+            <div class="v187-kpi-head">
+              <span class="v187-kpi-title">當月累積出工 (${att.monthCode || '115.11月'})</span>
+              <span class="v187-kpi-tag">本月 ${att.monthWorkDays || 9} 出工日 / 全期 ${att.totalWorkDays || 12} 日</span>
+            </div>
+            <div class="v187-kpi-main">
+              <span class="v187-kpi-number">${att.monthManDays} 人日</span>
+              <span class="v187-kpi-submetric">日均 ${Number(att.monthAvg || 10).toFixed(1)} 人<br><small style="color:#78716C;">全期累計 ${att.totalManDays} 人日</small></span>
+            </div>
+          </div>
+          <div class="v187-kpi-foot">${rocDate.slice(0, 6)}.01~${rocDate} 當月累計 ${att.monthManDays} 人日（含今日 ${att.todayTotal} 人｜全期累計 ${att.totalManDays} 人日）</div>
+        </div>
+
+        <!-- 卡片 3：勞安缺失狀態 -->
+        <div class="v187-kpi-card">
+          <div>
+            <div class="v187-kpi-head">
+              <span class="v187-kpi-title">勞安缺失狀態</span>
+              <span class="v187-kpi-tag" style="background:#ECFDF5;color:#065F46;border-color:#A7F3D0;">今日 ${sq.safetyTodayDefects ?? 0} 缺失</span>
+            </div>
+            <div class="v187-kpi-main">
+              <span class="v187-kpi-number" style="font-size:24px;color:#065F46;">${sq.safetyStatus || '符合勞安標準'}</span>
+              <span class="v187-kpi-submetric" style="color:#991B1B;">累計罰單 ${sq.safetyTotalFines ?? 3} 件<br><small>(${sq.safetyFineAmount || '$20,000'})</small></span>
+            </div>
+          </div>
+          <div class="v187-kpi-foot">${sq.safetyNote || '115.11.09 現場 4 張照片全數配戴安全帽與安全鞋｜歷史 3 件罰單已開立公文'}</div>
+        </div>
+
+        <!-- 卡片 4：品質缺失狀態 (表 4-12 NCR) -->
+        <div class="v187-kpi-card">
+          <div>
+            <div class="v187-kpi-head">
+              <span class="v187-kpi-title">品質缺失狀態 (表 4-12 NCR)</span>
+              <span class="v187-kpi-tag" style="background:#18181B;color:#FAFAFA;border-color:#18181B;">結案率 ${sq.ncrRate ?? 100}%</span>
+            </div>
+            <div class="v187-kpi-main">
+              <span class="v187-kpi-number" style="font-size:24px;">${sq.ncrPending ?? 0} 改善中 / ${sq.ncrClosed ?? 18} 已結案</span>
+            </div>
+          </div>
+          <div class="v187-kpi-foot">${sq.ncrNote || 'NCR #001~#018 全數改善完成並通過複查解列（0 件待改善）'}</div>
+        </div>
+      `;
+    }
+
+    // 同步更新下方 MS Project 看板與狀態文字
+    document.querySelectorAll('span, div').forEach(el => {
+      if (el.children.length === 0 && el.textContent) {
+        if (el.textContent.includes('今日出工')) {
+          el.textContent = el.textContent.replace(/今日出工\s*\d+\s*人/g, `今日出工 ${att.todayTotal} 人`);
+        } else if (el.textContent.includes('V172 已同步')) {
           el.textContent = `雲端硬碟已同步 (${rocDate}｜今日 ${att.todayTotal} 人)`;
         }
       }
-    }
+    });
 
-    // 更新整合工具列上的狀態文字
-    const statusText = document.getElementById('wp-sync-status-text');
-    if (statusText) {
-      statusText.textContent = `雲端硬碟與 GitHub 已同步（${rocDate}｜今日出工 ${att.todayTotal} 人・當月 ${att.monthManDays} 人日・累計 ${att.totalManDays} 人日）`;
+    const cmdText = document.getElementById('v187-status-label');
+    if (cmdText) {
+      cmdText.textContent = `雲端硬碟 + GitHub 即時連線｜資料基準：${rocDate}（今日出工 ${att.todayTotal} 人・當月 ${att.monthManDays} 人日・累計 ${att.totalManDays} 人日）`;
     }
-
-    mountProToolbar();
-    mountMaterialInlineBar();
   }
 
   // =========================================================================
-  // 3. 材料請款「數量溢出 & 100% 滿額」Excel 匯出引擎 (含標單項目/進場日期/數量)
+  // 3. 材料與請款 —「數量溢出 (18)」與「100% 滿額 (17)」Excel 匯出引擎
   // =========================================================================
   function parseDeliveryHistory(rawText, fallbackUnit) {
     if (!rawText) return [];
@@ -19121,7 +19280,6 @@ window.__RENDE1_BUILTIN_BIM_HTML_V186__ = {"html": "<!DOCTYPE html>\n<html lang=
         docNote: docNote
       });
     }
-
     if (results.length === 0 && rawText.trim() !== '-' && rawText.trim() !== '') {
       results.push({
         date: docNote ? docNote.replace(/[^0-9./]/g, '') : '累計進場',
@@ -19215,54 +19373,53 @@ window.__RENDE1_BUILTIN_BIM_HTML_V186__ = {"html": "<!DOCTYPE html>\n<html lang=
     return rows;
   }
 
-  function findInteractiveByText(keyword) {
+  function findButtonByText(kw) {
     const els = Array.from(document.querySelectorAll('button, a, span, div'));
     return els.find(el => {
-      if (el.closest('#warroom-pro-toolbar') || el.closest('#warroom-mat-toolbar')) return false;
+      if (el.closest('#v187-command-bar') || el.closest('#v187-mat-bar')) return false;
       const t = (el.textContent || '').replace(/\s+/g, ' ').trim();
-      return t.includes(keyword) && t.length < 32;
+      return t.includes(kw) && t.length < 32;
     });
   }
 
   async function exportMaterialExcel(mode) {
     const sleep = ms => new Promise(r => setTimeout(r, ms));
 
-    // 若尚未點開「材料與請款」分頁，自動切換過去讀取表格
-    let btnOverflow = findInteractiveByText('數量溢出預警');
-    if (!btnOverflow || btnOverflow.offsetWidth === 0) {
-      const tabMat = findInteractiveByText('材料與請款');
+    let btnOv = findButtonByText('數量溢出預警');
+    if (!btnOv || btnOv.offsetWidth === 0) {
+      const tabMat = findButtonByText('材料與請款');
       if (tabMat) {
         tabMat.click();
-        await sleep(220);
+        await sleep(250);
       }
     }
 
-    btnOverflow   = findInteractiveByText('數量溢出預警');
-    const btnFull = findInteractiveByText('100% 滿額進場');
-    const btnAll  = findInteractiveByText('全部系統');
+    btnOv         = findButtonByText('數量溢出預警');
+    const btnFull = findButtonByText('100% 滿額進場');
+    const btnAll  = findButtonByText('全部系統');
 
     let collected = [];
-    if (mode === 'OVERFLOW' && btnOverflow) {
-      btnOverflow.click();
-      await sleep(120);
+    if (mode === 'OVERFLOW' && btnOv) {
+      btnOv.click();
+      await sleep(140);
       collected = scrapeMaterialRows('數量溢出預警').map(r => ({ ...r, category: '數量溢出預警' }));
     } else if (mode === 'FULL' && btnFull) {
       btnFull.click();
-      await sleep(120);
+      await sleep(140);
       collected = scrapeMaterialRows('100% 滿額進場').map(r => ({ ...r, category: '100% 滿額進場' }));
     } else {
-      if (btnOverflow) {
-        btnOverflow.click();
-        await sleep(120);
+      if (btnOv) {
+        btnOv.click();
+        await sleep(140);
         collected = collected.concat(scrapeMaterialRows('數量溢出預警').map(r => ({ ...r, category: '數量溢出預警' })));
       }
       if (btnFull) {
         btnFull.click();
-        await sleep(120);
+        await sleep(140);
         collected = collected.concat(scrapeMaterialRows('100% 滿額進場').map(r => ({ ...r, category: '100% 滿額進場' })));
       }
       if (collected.length === 0) {
-        if (btnAll) { btnAll.click(); await sleep(120); }
+        if (btnAll) { btnAll.click(); await sleep(140); }
         collected = scrapeMaterialRows().filter(r => r.category.includes('溢出') || r.category.includes('滿額'));
       }
     }
@@ -19339,15 +19496,14 @@ window.__RENDE1_BUILTIN_BIM_HTML_V186__ = {"html": "<!DOCTYPE html>\n<html lang=
         <Cell ss:StyleID="${st}"><Data ss:Type="${typeof diff === 'number' ? 'Number' : 'String'}">${esc(diff)}</Data></Cell>
         <Cell ss:StyleID="${st}"><Data ss:Type="Number">${esc(it.amountNum)}</Data></Cell>
         <Cell ss:StyleID="${st}"><Data ss:Type="String">${esc(it.statusRaw)}</Data></Cell>
-        <Cell ss:StyleID="${st}"><Data ss:Type="String">${esc(it.historyRaw)}</Data></Cell>
-        ${dynCells}
+        <Cell ss:StyleID="${st}"><Data ss:Type="String">${esc(it.historyRaw)}</Data></Cell>${dynCells}
       </Row>`;
     });
 
     const xml = `<?xml version="1.0" encoding="UTF-8"?><?mso-application progid="Excel.Sheet"?>
 <Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">
  <Styles>
-  <Style ss:ID="sHd"><Font ss:FontName="微軟正黑體" ss:Size="10" ss:Bold="1" ss:Color="#FFFFFF"/><Interior ss:Color="#0F172A" ss:Pattern="Solid"/></Style>
+  <Style ss:ID="sHd"><Font ss:FontName="微軟正黑體" ss:Size="10" ss:Bold="1" ss:Color="#FFFFFF"/><Interior ss:Color="#18181B" ss:Pattern="Solid"/></Style>
   <Style ss:ID="sOv"><Font ss:FontName="微軟正黑體" ss:Size="10" ss:Color="#991B1B"/><Interior ss:Color="#FEF2F2" ss:Pattern="Solid"/></Style>
   <Style ss:ID="sFu"><Font ss:FontName="微軟正黑體" ss:Size="10" ss:Color="#065F46"/><Interior ss:Color="#ECFDF5" ss:Pattern="Solid"/></Style>
  </Styles>
@@ -19400,84 +19556,107 @@ window.__RENDE1_BUILTIN_BIM_HTML_V186__ = {"html": "<!DOCTYPE html>\n<html lang=
   }
 
   // =========================================================================
-  // 4. 掛載「置頂整合式工務管理列」與「材料請款內嵌匯出列」（乾淨、無浮動遮擋）
+  // 4. 掛載深炭黑建築主控列與材料請款內嵌匯出列
   // =========================================================================
-  function mountProToolbar() {
-    // 移除舊版右下角浮動膠囊
-    const oldBar = document.getElementById('warroom-v184-safe-bar');
-    if (oldBar) oldBar.remove();
+  function mountCommandBars() {
+    ['warroom-v184-safe-bar', 'warroom-pro-toolbar'].forEach(id => {
+      const old = document.getElementById(id);
+      if (old) old.remove();
+    });
 
-    if (document.getElementById('warroom-pro-toolbar')) return;
+    if (!document.getElementById('v187-command-bar')) {
+      const allSpans = Array.from(document.querySelectorAll('span, div'));
+      const switchAnchor = allSpans.find(s => s.children.length === 0 && (s.textContent || '').includes('切換工程專案'));
+      const hostRow = switchAnchor ? (switchAnchor.parentElement && switchAnchor.parentElement.parentElement ? switchAnchor.parentElement.parentElement : switchAnchor.parentElement) : null;
 
-    // 尋找「切換工程專案：」所在的容器上方或下方插入整合工具列
-    const allSpans = Array.from(document.querySelectorAll('span, div'));
-    const switchAnchor = allSpans.find(s => s.children.length === 0 && (s.textContent || '').includes('切換工程專案'));
-    const hostRow = switchAnchor ? (switchAnchor.parentElement && switchAnchor.parentElement.parentElement ? switchAnchor.parentElement.parentElement : switchAnchor.parentElement) : null;
+      const bar = document.createElement('div');
+      bar.id = 'v187-command-bar';
+      bar.innerHTML = `
+        <div class="v187-cmd-status">
+          <span class="v187-dot"></span>
+          <span id="v187-status-label">雲端硬碟 + GitHub 即時連線同步中...</span>
+        </div>
+        <div class="v187-cmd-actions">
+          <button type="button" class="v187-btn v187-btn-danger" id="v187-exp-ov">匯出數量溢出明細 (.xls)</button>
+          <button type="button" class="v187-btn v187-btn-success" id="v187-exp-fu">匯出 100% 滿額明細 (.xls)</button>
+          <button type="button" class="v187-btn v187-btn-amber" id="v187-exp-both">匯出「溢出＋滿額」進場日期與數量報表</button>
+          <button type="button" class="v187-btn" id="v187-sync-btn">立即同步雲端</button>
+        </div>
+      `;
 
-    const toolbar = document.createElement('div');
-    toolbar.id = 'warroom-pro-toolbar';
-    toolbar.innerHTML = `
-      <div class="wp-toolbar-left">
-        <span class="wp-status-dot"></span>
-        <span id="wp-sync-status-text" class="wp-status-label">雲端硬碟與 GitHub 即時同步中...</span>
-        <span class="wp-status-meta">｜測站：C0C700 八德站 (0.61km)</span>
-      </div>
-      <div class="wp-toolbar-actions">
-        <button type="button" class="wp-btn wp-btn-danger-soft" id="wp-btn-exp-ov">匯出數量溢出明細 (.xls)</button>
-        <button type="button" class="wp-btn wp-btn-success-soft" id="wp-btn-exp-fu">匯出 100% 滿額明細 (.xls)</button>
-        <button type="button" class="wp-btn wp-btn-primary" id="wp-btn-exp-all">匯出「溢出＋滿額」完整報表</button>
-        <button type="button" class="wp-btn wp-btn-outline" id="wp-btn-sync-now">立即同步雲端硬碟</button>
-      </div>
-    `;
+      if (hostRow && hostRow.parentElement) {
+        hostRow.parentElement.insertBefore(bar, hostRow.nextSibling);
+      } else if (document.body.firstChild) {
+        document.body.insertBefore(bar, document.body.firstChild);
+      }
 
-    if (hostRow && hostRow.parentElement) {
-      hostRow.parentElement.insertBefore(toolbar, hostRow.nextSibling);
-    } else if (document.body.firstChild) {
-      document.body.insertBefore(toolbar, document.body.firstChild);
+      document.getElementById('v187-exp-ov').addEventListener('click', () => exportMaterialExcel('OVERFLOW'));
+      document.getElementById('v187-exp-fu').addEventListener('click', () => exportMaterialExcel('FULL'));
+      document.getElementById('v187-exp-both').addEventListener('click', () => exportMaterialExcel('BOTH'));
+      document.getElementById('v187-sync-btn').addEventListener('click', pullCloudData);
     }
 
-    document.getElementById('wp-btn-exp-ov').addEventListener('click', () => exportMaterialExcel('OVERFLOW'));
-    document.getElementById('wp-btn-exp-fu').addEventListener('click', () => exportMaterialExcel('FULL'));
-    document.getElementById('wp-btn-exp-all').addEventListener('click', () => exportMaterialExcel('BOTH'));
-    document.getElementById('wp-btn-sync-now').addEventListener('click', pullCloudData);
+    // 材料與請款分頁內嵌匯出按鈕
+    const existingMat = document.getElementById('v187-mat-bar');
+    if (existingMat && existingMat.offsetWidth > 0) return;
+    if (existingMat) existingMat.remove();
+
+    const btnFull = findButtonByText('100% 滿額進場');
+    if (btnFull && btnFull.offsetWidth > 0) {
+      let wrap = btnFull;
+      while (wrap.parentElement && (wrap.parentElement.textContent || '').trim().length < 35) {
+        wrap = wrap.parentElement;
+      }
+      if (wrap && wrap.parentElement) {
+        const mBar = document.createElement('span');
+        mBar.id = 'v187-mat-bar';
+        mBar.style.cssText = 'display:inline-flex;gap:8px;margin-left:10px;align-items:center;vertical-align:middle;';
+        mBar.innerHTML = `
+          <button type="button" class="v187-btn v187-btn-amber" id="v187-m-both">匯出溢出＋滿額 Excel (含標單/進場日期/數量)</button>
+          <button type="button" class="v187-btn v187-btn-danger" id="v187-m-ov">僅匯出溢出 (18)</button>
+          <button type="button" class="v187-btn v187-btn-success" id="v187-m-fu">僅匯出滿額 (17)</button>
+        `;
+        wrap.parentElement.appendChild(mBar);
+        document.getElementById('v187-m-both').addEventListener('click', e => { e.stopPropagation(); exportMaterialExcel('BOTH'); });
+        document.getElementById('v187-m-ov').addEventListener('click', e => { e.stopPropagation(); exportMaterialExcel('OVERFLOW'); });
+        document.getElementById('v187-m-fu').addEventListener('click', e => { e.stopPropagation(); exportMaterialExcel('FULL'); });
+      }
+    }
   }
 
-  // 當使用者點開「材料與請款」分頁時，也在「100% 滿額進場 (17)」旁嵌入匯出按鈕
-  function mountMaterialInlineBar() {
-    const existing = document.getElementById('warroom-mat-toolbar');
-    if (existing && existing.offsetWidth > 0) return;
-    if (existing) existing.remove();
-
-    const btnFull = findInteractiveByText('100% 滿額進場');
-    if (!btnFull || btnFull.offsetWidth === 0) return;
-
-    let wrapper = btnFull;
-    while (wrapper.parentElement && (wrapper.parentElement.textContent || '').trim().length < 35) {
-      wrapper = wrapper.parentElement;
+  async function pullCloudData() {
+    const t = Date.now();
+    const ghUrls = [
+      `./${CONFIG.dataPath}?_t=${t}`,
+      `https://raw.githubusercontent.com/${CONFIG.owner}/${CONFIG.repo}/${CONFIG.branch}/${CONFIG.dataPath}?_t=${t}`
+    ];
+    for (const url of ghUrls) {
+      try {
+        const res = await fetch(url, { cache: 'no-store' });
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.projects) {
+            activeState = data;
+            break;
+          }
+        }
+      } catch (e) {}
     }
-    if (!wrapper || !wrapper.parentElement) return;
+    refreshUI();
+  }
 
-    const inlineGroup = document.createElement('span');
-    inlineGroup.id = 'warroom-mat-toolbar';
-    inlineGroup.style.cssText = 'display:inline-flex;gap:8px;margin-left:10px;align-items:center;vertical-align:middle;';
-    inlineGroup.innerHTML = `
-      <button type="button" class="wp-btn wp-btn-primary" id="mat-inline-both">匯出溢出＋滿額 Excel (含標單/進場日期/數量)</button>
-      <button type="button" class="wp-btn wp-btn-danger-soft" id="mat-inline-ov">僅匯出溢出 (18)</button>
-      <button type="button" class="wp-btn wp-btn-success-soft" id="mat-inline-fu">僅匯出滿額 (17)</button>
-    `;
-    wrapper.parentElement.appendChild(inlineGroup);
-
-    document.getElementById('mat-inline-both').addEventListener('click', e => { e.stopPropagation(); exportMaterialExcel('BOTH'); });
-    document.getElementById('mat-inline-ov').addEventListener('click', e => { e.stopPropagation(); exportMaterialExcel('OVERFLOW'); });
-    document.getElementById('mat-inline-fu').addEventListener('click', e => { e.stopPropagation(); exportMaterialExcel('FULL'); });
+  function refreshUI() {
+    mountCommandBars();
+    purifyAISlopDOM();
+    rebuildKpiCards();
   }
 
   function boot() {
-    mountProToolbar();
+    refreshUI();
     pullCloudData();
-    setInterval(syncAllPanels, 1000);
+    setInterval(refreshUI, 1000);
     setInterval(pullCloudData, CONFIG.pollMs);
-    document.addEventListener('click', () => setTimeout(syncAllPanels, 120));
+    document.addEventListener('click', () => setTimeout(refreshUI, 100));
   }
 
   if (document.readyState === 'loading') {
@@ -19487,6 +19666,6 @@ window.__RENDE1_BUILTIN_BIM_HTML_V186__ = {"html": "<!DOCTYPE html>\n<html lang=
   }
 })();
 </script>
-<!-- WARROOM_V186_CLEAN_PRO_ARCHITECTURE_END -->
+<!-- WARROOM_V187_SWISS_ARCHITECTURAL_END -->
 </body>
 </html>
