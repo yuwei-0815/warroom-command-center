@@ -1051,7 +1051,7 @@
     "receiptSlipsFolderUrl": "https://drive.google.com/drive/folders/1uVqN-IaqhSTLxZSlQ-htk6_oLJH48J1h",
     "materialInspFolderUrl": "https://drive.google.com/drive/folders/1aTXDjGNBRkwuULae6C41ve9PYs5y1BAh",
     "d04NcrFolderUrl": "https://drive.google.com/drive/folders/1o8Z2-8IwU9G3ItHoKSina0Q0T71qx2il",
-    "d04NcrXlsxUrl": "https://drive.google.com/file/d/1pNvhIZfy7Ldlki0VaJX-cHU_E_UllsIK/view",
+    "d04NcrXlsxUrl": "https://drive.google.com/file/d/11I81UNeugXbqwjPmkTY1OyyqhGUc2qIx/view",
     "vendorBillingFolderUrl": "https://drive.google.com/drive/folders/1GdwccNDwPL9X1JZFgxODseQifHessr4M",
     "vendorPendingFolderUrl": "https://drive.google.com/drive/folders/1IB8SPE_4eZoGmBnpauL5O5fg6VrtcPFO",
     "ownerValuationFolderUrl": "https://drive.google.com/drive/folders/1OWa1pfQmUAcRI81cLlV2wT2Y8tB9UDhH"
@@ -1216,8 +1216,8 @@
     "d04NcrAndSupervision": {
       "folderId": "1o8Z2-8IwU9G3ItHoKSina0Q0T71qx2il",
       "folderUrl": "https://drive.google.com/drive/folders/1o8Z2-8IwU9G3ItHoKSina0Q0T71qx2il",
-      "excelFileId": "1pNvhIZfy7Ldlki0VaJX-cHU_E_UllsIK",
-      "excelFileUrl": "https://drive.google.com/file/d/1pNvhIZfy7Ldlki0VaJX-cHU_E_UllsIK/view",
+      "excelFileId": "11I81UNeugXbqwjPmkTY1OyyqhGUc2qIx",
+      "excelFileUrl": "https://drive.google.com/file/d/11I81UNeugXbqwjPmkTY1OyyqhGUc2qIx/view",
       "ncrTotal": 18,
       "ncrClosed": 18,
       "ncrInProgress": 0,
