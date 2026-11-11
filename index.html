@@ -3304,7 +3304,7 @@ body.light-engineering .launcher-bar#mainNavigationButtonsBar {
 <div>
 <h3 class="prelogin-showcase-title">
 <span style="display:inline-flex;width:10px;height:10px;border-radius:50%;background:#C86446;box-shadow:0 0 0 4px rgba(200,100,70,0.18);"></span>
-              登入前免帳密 · 3D 建築與管溝模型公開展廳
+              模型展示
             </h3>
 <p class="prelogin-showcase-sub">
               無須登入系統，即可直接開啟 3D 互動模型預覽。
@@ -23150,6 +23150,88 @@ document.documentElement.setAttribute("data-release-version", "S2版");
     }
     window.syncSingleModelOnDemand_V195(projectKey, false);
     return res;
+  };
+})();
+</script>
+
+
+<script>
+/* ==================== S4.0 CLOSED-LOOP METRIC SYNC OVERRIDE ==================== */
+(function initWarRoomS40ClosedLoopSync() {
+  "use strict";
+  window.__WARROOM_RELEASE_VERSION__ = "S4.0版";
+  document.documentElement.setAttribute("data-release-version", "S4.0版");
+
+  function callJsonpS40_(url, timeoutMs) {
+    return new Promise(function(resolve, reject) {
+      var cb = "__s40_sync_cb_" + Date.now() + "_" + Math.floor(Math.random() * 10000);
+      var sc = document.createElement("script");
+      var done = false;
+      var timer = setTimeout(function() {
+        if (done) return;
+        done = true;
+        cleanup();
+        reject(new Error("Sync timeout"));
+      }, timeoutMs || 45000);
+      function cleanup() {
+        clearTimeout(timer);
+        try { delete window[cb]; } catch (_e) { window[cb] = undefined; }
+        if (sc.parentNode) sc.parentNode.removeChild(sc);
+      }
+      window[cb] = function(data) {
+        if (done) return;
+        done = true;
+        cleanup();
+        resolve(data);
+      };
+      sc.onerror = function() {
+        if (done) return;
+        done = true;
+        cleanup();
+        reject(new Error("JSONP failed"));
+      };
+      var sep = url.indexOf("?") === -1 ? "?" : "&";
+      sc.src = url + sep + "callback=" + cb + "&_t=" + Date.now();
+      document.head.appendChild(sc);
+    });
+  }
+
+  // Upgrade manual "立即同步標單比對" button so it awaits live GAS recalculation of all folders & Excel sheets!
+  window.triggerFourWayBoqSyncNow_S3 = function(btnEl) {
+    var btn = btnEl || document.getElementById("btnTriggerFourWaySyncNow");
+    if (btn) {
+      btn.disabled = true;
+      btn.textContent = "正在掃描雲端查驗與標單...";
+    }
+    var cfg = window.V164_SYNC_CONFIG || {};
+    var gasUrl = cfg.gasLiveApiUrl || "https://script.google.com/macros/s/AKfycbxRcVWuQzMEQWtGMd-PNqBr6ejcxjTvRLuxeRut38uwFFveHrPJDb6bbe3cRp4hkSXTsQ/exec";
+    var syncEndpoint = gasUrl + (gasUrl.indexOf("?") === -1 ? "?" : "&") + "action=run2400FourWayBoqSync&hotReload=1&returnSnap=1";
+
+    return callJsonpS40_(syncEndpoint, 45000)
+      .then(function(res) {
+        var snap = (res && res.snapshot && res.snapshot.ok) ? res.snapshot : (res && res.ok && res.fourWayBoqSync ? res : null);
+        if (snap) {
+          window.applyS2RealtimeSnapshot_(snap, "四合一查驗標單即時重算", true);
+          if (typeof window.renderS3FourWayPanels_ === "function") window.renderS3FourWayPanels_(true);
+        } else if (typeof window.pollRealtimeWarRoom_S2 === "function") {
+          return window.pollRealtimeWarRoom_S2(true);
+        }
+      })
+      .catch(function() {
+        if (typeof window.pollRealtimeWarRoom_S2 === "function") {
+          return window.pollRealtimeWarRoom_S2(true);
+        }
+      })
+      .finally(function() {
+        if (btn) {
+          btn.disabled = false;
+          btn.textContent = "立即同步標單比對";
+        }
+        if (typeof window.renderS3FourWayPanels_ === "function") window.renderS3FourWayPanels_(true);
+        if (typeof window.showToast === "function") {
+          window.showToast("已完成雲端查驗單、計價單與二期機電標單最新數量重算同步");
+        }
+      });
   };
 })();
 </script>

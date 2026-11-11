@@ -2,7 +2,7 @@
   "ok": true,
   "version": "S3.5版_FAST_REALTIME_SYNC",
   "driveFingerprint": "S35F_2534ff68",
-  "syncedAt": "2026-11-11 18:47:48",
+  "syncedAt": "2026-11-11 19:17:28",
   "latestDate": "2026-11-11",
   "excelDriveFileId": "1sJiy0wDJAyDqJzBD39AX2PTbBiUWJNySX22APzI_7s8",
   "d11Summary": {
@@ -339,10 +339,108 @@
   "safetySummary": {
     "safetyTodayCount": 1,
     "safetyTodayStatusText": "今日 1 件缺失（已開罰單）",
-    "safetyTodayDetailText": "115.11.11 工具箱集合區右1人員未著合格安全鞋（穿露趾拖鞋，罰款 $3,000）｜累計 4 件罰單（$23,000）已開立公文",
-    "safetyTotalFinesCount": 4,
-    "safetyTotalFineAmount": 23000,
+    "safetyTotalFinesCount": 13,
+    "safetyTotalFineAmount": 78000,
     "safetyRecords": [
+      {
+        "rocDate": "115.11.02",
+        "isoDate": "2026-11-02",
+        "botName": "機器人B(云水電)",
+        "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)",
+        "location": "施工現場",
+        "violationItem": "於本工程施工現場作業時未依規定穿著安全鞋（現場穿著露趾拖鞋）之情事 ($3000)",
+        "status": "發現缺失",
+        "fineAmount": 3000,
+        "pdfFileId": "14B9hR7v1Cnhv357SsHTcK1wNNcy6Qx2g"
+      },
+      {
+        "rocDate": "115.10.30",
+        "isoDate": "2026-10-30",
+        "botName": "機器人B(云水電)",
+        "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)",
+        "location": "施工現場",
+        "violationItem": "於本工程施工現場作業時未依規定穿著安全鞋（現場穿著露趾拖鞋）之情事 ($3000)",
+        "status": "發現缺失",
+        "fineAmount": 3000,
+        "pdfFileId": "1i6k7EX9Mtaw6n9soHFoGqrXAHTSSUrjV"
+      },
+      {
+        "rocDate": "115.10.30",
+        "isoDate": "2026-10-30",
+        "botName": "機器人B(云水電)",
+        "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)",
+        "location": "施工現場",
+        "violationItem": "於本工程施工現場作業時未依規定配戴合格安全帽（僅配戴黑色鴨舌帽/便帽）之情事 ($7000)",
+        "status": "發現缺失",
+        "fineAmount": 7000,
+        "pdfFileId": "1tPT7Cq2H1J64XBfU9THUN_mW7AN2gJlf"
+      },
+      {
+        "rocDate": "115.10.30",
+        "isoDate": "2026-10-30",
+        "botName": "機器人B(云水電)",
+        "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)",
+        "location": "施工現場",
+        "violationItem": "於本工程施工現場作業時未依規定配戴合格安全帽（僅配戴黑色鴨舌帽/便帽）之情事 ($7000)",
+        "status": "發現缺失",
+        "fineAmount": 7000,
+        "pdfFileId": "1N-gwIU-YIe8OoqKnGsyquy23cedQxb9q"
+      },
+      {
+        "rocDate": "115.10.30",
+        "isoDate": "2026-10-30",
+        "botName": "機器人B(云水電)",
+        "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)",
+        "location": "施工現場",
+        "violationItem": "於本工程施工現場作業時未依規定配戴合格安全帽（僅配戴黑色鴨舌帽/便帽）之情事 ($7000)",
+        "status": "發現缺失",
+        "fineAmount": 7000,
+        "pdfFileId": "1Mwb00Jv6_Y5cb57f6U8vNaUoSEztzJjo"
+      },
+      {
+        "rocDate": "115.10.29",
+        "isoDate": "2026-10-29",
+        "botName": "機器人B(云水電)",
+        "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)",
+        "location": "施工現場",
+        "violationItem": "於本工程施工現場作業時未依規定配戴合格安全帽（僅配戴黑色鴨舌帽/便帽）之情事 ($7000)",
+        "status": "發現缺失",
+        "fineAmount": 7000,
+        "pdfFileId": "14J4M5i5Hch0LT178QR-L77x5cdcCg0LO"
+      },
+      {
+        "rocDate": "115.10.29",
+        "isoDate": "2026-10-29",
+        "botName": "機器人B(云水電)",
+        "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)",
+        "location": "施工現場",
+        "violationItem": "於本工程施工現場作業時未依規定配戴合格安全帽（僅配戴黑色鴨舌帽/便帽）之情事 ($7000)",
+        "status": "發現缺失",
+        "fineAmount": 7000,
+        "pdfFileId": "1k7XfRnOsJLfte3Y-7GkMDuVssNTkzaO3"
+      },
+      {
+        "rocDate": "115.10.29",
+        "isoDate": "2026-10-29",
+        "botName": "機器人B(云水電)",
+        "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)",
+        "location": "施工現場",
+        "violationItem": "於本工程施工現場作業時未依規定配戴合格安全帽（僅配戴黑色鴨舌帽/便帽）之情事 ($7000)",
+        "status": "發現缺失",
+        "fineAmount": 7000,
+        "pdfFileId": "1IuljJfFTjcra2wq7tk1ylj1qcnN8vkQ9"
+      },
+      {
+        "rocDate": "115.10.29",
+        "isoDate": "2026-10-29",
+        "botName": "機器人B(云水電)",
+        "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)",
+        "location": "施工現場",
+        "violationItem": "於本工程施工現場作業時未依規定配戴合格安全帽（僅配戴黑色鴨舌帽/便帽）之情事 ($7000)",
+        "status": "發現缺失",
+        "fineAmount": 7000,
+        "pdfFileId": "1ZLazLlkljEWeGuwR6pzBUR6lg36-QnbR"
+      },
       {
         "rocDate": "115.11.11",
         "isoDate": "2026-11-11",
@@ -476,7 +574,8 @@
           "fileUrl": "https://drive.google.com/drive/folders/1uVqN-IaqhSTLxZSlQ-htk6_oLJH48J1h",
           "status": "已進場待轉D11正式查驗"
         }
-      ]
+      ],
+      "sheetRowCount": 10
     },
     "materialInspection": {
       "folderId": "1aTXDjGNBRkwuULae6C41ve9PYs5y1BAh",
