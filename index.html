@@ -2613,7 +2613,7 @@ body.light-engineering code {
   box-shadow: 0 6px 16px -3px rgba(200, 100, 70, 0.32) !important;
 }
 #btnOpen3dFromLogin:hover {
-  transform: translateY(-2px) !important;
+  transform: none !important;
   box-shadow: 0 10px 22px -3px rgba(200, 100, 70, 0.44) !important;
 }
 #btnOpenYingge3dFromLogin_V183 {
@@ -2623,7 +2623,7 @@ body.light-engineering code {
   box-shadow: 0 6px 16px -3px rgba(74, 124, 89, 0.30) !important;
 }
 #btnOpenYingge3dFromLogin_V183:hover {
-  transform: translateY(-2px) !important;
+  transform: none !important;
   box-shadow: 0 10px 22px -3px rgba(74, 124, 89, 0.42) !important;
 }
 
@@ -3293,9 +3293,8 @@ body.light-engineering .launcher-bar#mainNavigationButtonsBar {
 </div>
 </div>
 </div>
-<div style="margin-top:16px;padding-top:12px;border-top:1px solid rgba(180,148,120,0.22);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;font-size:0.74rem;color:#78665B;">
+<div style="margin-top:16px;padding-top:12px;border-top:1px solid rgba(180,148,120,0.22);display:flex;justify-content:flex-start;align-items:center;font-size:0.74rem;color:#78665B;">
 <span>雲端即時連動 · 免手動同步</span>
-<a href="https://github.com/yuwei-0815/warroom-command-center" rel="noopener" style="color:#C86446;font-weight:600;text-decoration:none;" target="_blank">GitHub 專案儲存庫 ↗</a>
 </div>
 </div>
 <!-- 右欄：登入前免帳密「二期模型」與「鶯歌模型」公開展廳 -->
@@ -3308,77 +3307,49 @@ body.light-engineering .launcher-bar#mainNavigationButtonsBar {
               登入前免帳密 · 3D 建築與管溝模型公開展廳
             </h3>
 <p class="prelogin-showcase-sub">
-              無須登入系統，即可直接於本頁展開 3D 互動模型，或點選獨立連結開啟 GitHub 內之模型檔案。
+              無須登入系統，即可直接開啟 3D 互動模型預覽。
             </p>
 </div>
 <span style="font-size:0.73rem;font-weight:600;padding:4px 11px;border-radius:999px;background:#F4EFE6;color:#78665B;border:1px solid rgba(180,148,120,0.3);">
-            公開直連 · 雙模型即時預覽
+            雙模型即時預覽
           </span>
 </div>
 <div class="prelogin-model-cards-grid" style="margin-top:16px;">
 <!-- 展廳卡片 1：仁德二期模型 -->
 <div class="warm-model-showcase-card">
 <div>
-<span class="warm-model-kicker">01 · 仁德國小（第二期）新建校舍</span><span id="preloginRende2LiveSyncBadge" style="font-size:0.68rem;font-weight:600;color:#4A7C59;background:rgba(74,124,89,0.10);padding:2px 8px;border-radius:999px;border:1px solid rgba(74,124,89,0.22);margin-left:6px;">↻ 自動追蹤 GitHub 最新版</span>
+<span class="warm-model-kicker">01 · 仁德國小（第二期）新建校舍</span>
 <h4 class="warm-model-name">仁德二期 全棟 6 層 3D / 2D BIM 整合模型</h4>
 <p class="warm-model-desc">
                 涵蓋 BS 基礎層、1F 至 4F 教室群與 RF 屋頂層之建築結構及四大機電管線（電力、給排水、消防、弱電），支援各樓層剖切與 2D 系統圖檢視。
               </p>
-<div class="warm-model-quick-chips" style="margin-top:10px;">
-<span class="warm-mini-chip" onclick="openPublic3dModelViewer('RENDE_2', 'ALL', 'bldg3d')">全棟 6 層總覽</span>
-<span class="warm-mini-chip" onclick="openPublic3dModelViewer('RENDE_2', '1F', 'bldg3d')">1F 警衛室/機房</span>
-<span class="warm-mini-chip" onclick="openPublic3dModelViewer('RENDE_2', '2F', 'bldg3d')">2F~3F 教室群</span>
-<span class="warm-mini-chip" onclick="openPublic3dModelViewer('RENDE_2', 'ALL', 'sys2d')">2D 系統昇位圖</span>
 </div>
-</div>
-<div class="warm-model-actions">
-<button class="btn btn-primary" id="btnOpen3dFromLogin" onclick="openPublic3dModelViewer('RENDE_2', 'ALL', 'bldg3d')" type="button">
-                於本頁展開「二期 3D 模型」
-              </button>
-<a class="warm-standalone-link" href="./仁德二期_BIM_3D整合模型_獨立分享版.html" id="linkPreLoginRende2Standalone" onclick="return openStandaloneModelLink_V191('RENDE_2', this, event)" rel="noopener" target="_blank">
-<span>獨立分頁開啟二期模型檔案 (GitHub 直連)</span>
-<span>↗</span>
-</a>
+<div class="warm-model-actions" style="margin-top:16px;">
+<button class="btn btn-primary" id="btnOpen3dFromLogin" onclick="openPublic3dModelViewer('RENDE_2', 'ALL', 'bldg3d')" type="button">開啟</button>
 </div>
 </div>
 <!-- 展廳卡片 2：鶯歌消防局模型 -->
 <div class="warm-model-showcase-card yingge-card">
 <div>
-<span class="warm-model-kicker">02 · 鶯歌消防局（北區訓練中心 TPFA115008）</span><span id="preloginYinggeLiveSyncBadge" style="font-size:0.68rem;font-weight:600;color:#4A7C59;background:rgba(74,124,89,0.10);padding:2px 8px;border-radius:999px;border:1px solid rgba(74,124,89,0.22);margin-left:6px;">↻ 自動追蹤 GitHub 最新版</span>
+<span class="warm-model-kicker">02 · 鶯歌消防局（北區訓練中心 TPFA115008）</span>
 <h4 class="warm-model-name">鶯歌消防局 680m 共同管溝 3D 拆解模擬器</h4>
 <p class="warm-model-desc">
                 呈現 680 公尺地下共同管溝雙向階梯漸變斷面、鋼板樁擋土支撐、臨時水電配置與六大訓練建築群之互動式 3D 爆炸拆解視角。
               </p>
-<div class="warm-model-quick-chips" style="margin-top:10px;">
-<span class="warm-mini-chip" onclick="openPublic3dModelViewer('YINGGE_FIRE', 'ALL', 'bldg3d')">全區管溝與建築群</span>
-<span class="warm-mini-chip" onclick="openPublic3dModelViewer('YINGGE_FIRE', 'TRENCH', 'bldg3d')">雙向漸變管溝斷面</span>
-<span class="warm-mini-chip" onclick="openPublic3dModelViewer('YINGGE_FIRE', 'BOQ', 'bldg3d')">價值工程數量表</span>
 </div>
-</div>
-<div class="warm-model-actions">
-<button class="btn btn-emerald" id="btnOpenYingge3dFromLogin_V183" onclick="openPublic3dModelViewer('YINGGE_FIRE', 'ALL', 'bldg3d')" type="button">
-                於本頁展開「鶯歌 3D 模型」
-              </button>
-<a class="warm-standalone-link" href="./鶯歌消防局_北區訓練中心共同管溝3D拆解模擬器_獨立分享版.html" id="linkPreLoginYinggeStandalone" onclick="return openStandaloneModelLink_V191('YINGGE_FIRE', this, event)" rel="noopener" target="_blank">
-<span>獨立分頁開啟鶯歌模型檔案 (GitHub 直連)</span>
-<span>↗</span>
-</a>
+<div class="warm-model-actions" style="margin-top:16px;">
+<button class="btn btn-emerald" id="btnOpenYingge3dFromLogin_V183" onclick="openPublic3dModelViewer('YINGGE_FIRE', 'ALL', 'bldg3d')" type="button">開啟</button>
 </div>
 </div>
 </div>
 </div>
-<!-- 底部輔助連結列：一期模型與快速導覽 -->
+<!-- 底部輔助連結列：一期模型 -->
 <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;padding:12px 16px;background:#F4EFE6;border:1px solid rgba(180,148,120,0.28);border-radius:14px;">
 <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
 <span style="font-size:0.77rem;font-weight:700;color:#5C4B41;">同場收錄模型：</span>
-<button class="warm-mini-chip" onclick="openPublic3dModelViewer('BADE_SOCIAL', 'ALL', 'bldg3d')" style="background:#FFFDF9;" type="button">
-            仁德國小（第一期）筏基與雙向漸縮共同管溝 3D 模型
-          </button>
+<span style="font-size:0.79rem;font-weight:600;color:#2C221E;">仁德國小（第一期）筏基與雙向漸縮共同管溝 3D 模型</span>
 </div>
-<div style="display:flex;gap:12px;align-items:center;font-size:0.75rem;">
-<a href="./rende2-bim-model.html" onclick="return openStandaloneModelLink_V191('RENDE_2', this, event)" style="color:#B35032;font-weight:600;text-decoration:underline;" target="_blank">二期模型短網址</a>
-<a href="./yingge-3d-model.html" onclick="return openStandaloneModelLink_V191('YINGGE_FIRE', this, event)" style="color:#3B6949;font-weight:600;text-decoration:underline;" target="_blank">鶯歌模型短網址</a>
-</div>
+<button class="warm-mini-chip" onclick="openPublic3dModelViewer('BADE_SOCIAL', 'ALL', 'bldg3d')" style="background:#FFFDF9;padding:6px 16px;font-weight:700;" type="button">開啟</button>
 </div>
 </div>
 </div>
@@ -22872,8 +22843,8 @@ document.documentElement.setAttribute("data-release-version", "S2版");
   "use strict";
   if (window.__WARROOM_S38_MODEL_HOT_SYNC_ACTIVE__) return;
   window.__WARROOM_S38_MODEL_HOT_SYNC_ACTIVE__ = true;
-  window.__WARROOM_RELEASE_VERSION__ = "S3.8版";
-  document.documentElement.setAttribute("data-release-version", "S3.8版");
+  window.__WARROOM_RELEASE_VERSION__ = "S3.9版";
+  document.documentElement.setAttribute("data-release-version", "S3.9版");
 
   var GH_OWNER = (window.V164_SYNC_CONFIG && window.V164_SYNC_CONFIG.githubOwner) || "yuwei-0815";
   var GH_WARROOM_REPO = "warroom-command-center";
