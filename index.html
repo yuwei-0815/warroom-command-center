@@ -22829,7 +22829,9 @@ document.documentElement.setAttribute("data-release-version", "S2版");
     try {
       var cfgA = window.V164_SYNC_CONFIG || {};
       var mUrl = cfgA.gasLiveApiUrl || "https://script.google.com/macros/s/AKfycbxRcVWuQzMEQWtGMd-PNqBr6ejcxjTvRLuxeRut38uwFFveHrPJDb6bbe3cRp4hkSXTsQ/exec";
-      fetchJsonpS35_(mUrl + (mUrl.indexOf("?") === -1 ? "?" : "&") + "action=autoSyncDriveToGithubS36&hotReload=1", 15000).catch(function() {});
+      fetchJsonpS35_(mUrl + (mUrl.indexOf("?") === -1 ? "?" : "&") + "action=autoSyncDriveToGithubS36&hotReload=1", 35000).then(function(r) {
+        if (r) document.documentElement.setAttribute("data-auto-push-res", JSON.stringify({ ok: r.ok, skipped: r.skipped, sha: r.commitSha || r.lastCommitSha || "", err: r.error || r.reason || "" }));
+      }).catch(function() {});
     } catch (_eAuto) {}
   }, 2800);
 })();
