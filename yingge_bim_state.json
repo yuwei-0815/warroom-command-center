@@ -1,0 +1,14 @@
+{
+  "project_id": "YINGGE-FIRE-STATION",
+  "project_name": "鶯歌消防局專案 — 680m 共同管溝 3D BIM 拆解模型 (淺色工作坊樣式 v14精進版)",
+  "updated_at_cst": "2026-11-11 12:32:00",
+  "active_segment": "S08",
+  "status_code": "WATCH",
+  "ui_theme": "LIGHT_STUDIO_IMAGE3_WEBGL",
+  "structure_type": "CLSM兩階段實心包封管溝 (完工後非人員通行・由地面平齊39座人手孔維護)",
+  "total_length_m": 680,
+  "total_racks": 342,
+  "total_manholes": 39,
+  "manhole_flush_grade": "GL±0.00m (100% Flush with AC Roadway)",
+  "culvert_crossing_sta": "0+410 (S08 / 09A-09B, 22支, 150mm抗浮翼趾 FS=1.44)"
+}
