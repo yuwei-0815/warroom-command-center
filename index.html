@@ -7920,7 +7920,7 @@ quickUpdateTodayHeadcountDirect: window.quickUpdateTodayHeadcountDirect
  群組設定 (群組一 / 群組二)
 </button>
 <button class="btn btn-ghost" id="btnBotSubTabRemoteStd" onclick="switchBotConfigSubTab('remote_std')" style="padding:7px 14px;font-size:0.82rem;" type="button">
- 遠端部署 BOT ＆ 標準化資料庫
+ 🚀 一鍵部署 LINE Bot（合約上傳・路徑設定）
 </button>
 <button class="btn btn-emerald" id="btnRunOpenSpecGate" onclick="runClientOpenSpecFullSystemCheck()" style="padding:7px 14px;font-size:0.8rem;" type="button">
  執行 OpenSpec 全系統檢測
@@ -8214,6 +8214,187 @@ B. 新增／修正 BIGBOSS ＆ 機器人B 之 OCR 錯字與標單綁定規則
 </table>
 </div>
 <div id="botSubPaneRemoteStd" style="display:none;">
+<!-- ==================== S6.0 ONE-CLICK LINE BOT DEPLOYER, CONTRACT UPLOAD & PATH CONFIGURATOR ==================== -->
+<div id="s60OneClickDeployWorkbench" class="glass-panel" style="padding:16px 18px;margin-bottom:16px;background:var(--panel-bg);border:1.5px solid #0284c7;border-left:5px solid #0284c7;border-radius:10px;">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:12px;">
+    <div>
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+        <span style="background:#0284c7;color:#fff;font-size:0.73rem;font-weight:900;padding:3px 9px;border-radius:5px;">S6.0 一鍵部署上線總控台</span>
+        <strong style="font-size:0.98rem;color:var(--text-main);">戰情室預先配置 LINE Bot 憑證・全類別資料擺放路徑・合約標單直傳・一鍵自動綁定 Webhook 上線</strong>
+      </div>
+      <div style="font-size:0.76rem;color:var(--text-muted);margin-top:4px;line-height:1.5;">
+        無須手動新建 GAS 專案或改程式碼：於下方填妥新機器人基本資料、設定各類雲端／NAS 擺放資料夾（留空即由系統自動建立 8 大標準工務資料夾樹）、上傳工程合約／標單／規範檔案後，點擊「<strong>一鍵部署上線</strong>」即可自動完成雲端建夾、合約歸檔索引、LINE Webhook 網址綁定與 13 大功能掛載。
+      </div>
+    </div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;">
+      <button type="button" class="btn btn-ghost" onclick="window.fillS60DemoSandboxPreset()" style="padding:6px 11px;font-size:0.75rem;">
+        🧪 載入範例設定與測試合約檔
+      </button>
+      <button type="button" class="btn btn-amber" onclick="window.executeS60OneClickBotProvision(true)" style="padding:6px 12px;font-size:0.76rem;font-weight:800;">
+        ⚡ 沙盒預演測試（驗證建夾＋合約歸檔＋路由）
+      </button>
+      <button type="button" class="btn btn-primary" onclick="window.executeS60OneClickBotProvision(false)" style="padding:6px 14px;font-size:0.78rem;font-weight:900;background:#0284c7;border-color:#0284c7;">
+        🚀 一鍵正式部署 LINE Bot 上線
+      </button>
+    </div>
+  </div>
+
+  <!-- STEP 1: LINE Credentials & Project Identity -->
+  <div style="padding:12px 14px;background:var(--panel-sub);border:1px solid var(--border-std);border-radius:8px;margin-bottom:12px;">
+    <div style="font-weight:800;font-size:0.85rem;color:var(--text-main);margin-bottom:8px;">
+      步驟 1 / 3：機器人憑證、工程標案與推播排程設定
+    </div>
+    <div class="form-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;">
+      <div class="field-group">
+        <label>機器人代號 (Bot Code，英數唯一識別碼)</label>
+        <input id="s60BotCodeInput" type="text" value="BOT_YINGGE" placeholder="例：BOT_YINGGE 或 BOT_C"/>
+      </div>
+      <div class="field-group">
+        <label>機器人顯示名稱</label>
+        <input id="s60BotDisplayNameInput" type="text" value="鶯歌消防局工務專機 (BOT_C)" oninput="var el=document.getElementById('newBotNameInput');if(el)el.value=this.value;"/>
+      </div>
+      <div class="field-group">
+        <label>管理權限層級 (預設套用對應功能開關)</label>
+        <select id="s60BotTierSelect" onchange="var el=document.getElementById('newBotTierSelect');if(el)el.value=this.value;">
+          <option value="TIER_1">第一級：第一線工班回報型 (TIER_1)</option>
+          <option value="TIER_2" selected>第二級：工務所專機型 (TIER_2 — 同機器人B)</option>
+          <option value="TIER_3">第三級：最高總控型 (TIER_3 — 同工務機器人)</option>
+        </select>
+      </div>
+      <div class="field-group">
+        <label>綁定工程標案全銜</label>
+        <input id="s60ProjectNameInput" type="text" value="新北市政府消防局北區複合型災害應變暨訓練中心新建工程(鶯歌消防局)" oninput="var el=document.getElementById('newBotProjInput');if(el)el.value=this.value;"/>
+      </div>
+      <div class="field-group">
+        <label>工區地址（自動配對最近中央氣象署測站）</label>
+        <input id="s60SiteAddressInput" type="text" value="新北市鶯歌區尖山路101巷"/>
+      </div>
+      <div class="field-group">
+        <label>定時推播排程時間</label>
+        <input id="s60SchedulesInput" type="text" value="08:00 / 09:00 / 15:00 / 19:00"/>
+      </div>
+      <div class="field-group" style="grid-column:span 2;">
+        <label>LINE Channel Access Token（長效權杖；沙盒測試可留空或填 SANDBOX_TOKEN，正式上線貼入即自動綁定 Webhook 與選單）</label>
+        <div style="display:flex;gap:6px;">
+          <input id="s60LineChannelTokenInput" type="password" placeholder="貼上 LINE Developers Messaging API 之 Channel Access Token (long-lived)" style="flex:1;"/>
+          <button type="button" class="btn btn-ghost" onclick="var i=document.getElementById('s60LineChannelTokenInput');i.type=(i.type==='password'?'text':'password');" style="padding:4px 10px;font-size:0.74rem;">顯示/隱藏</button>
+        </div>
+      </div>
+      <div class="field-group">
+        <label>LINE Channel Secret（選填，簽章驗證備查）</label>
+        <input id="s60LineChannelSecretInput" type="password" placeholder="貼上 Channel Secret（選填）"/>
+      </div>
+      <div class="field-group">
+        <label>預設推播群組 ID（選填，入群說話亦會自動捕獲）</label>
+        <input id="s60PrimaryGroupIdInput" type="text" placeholder="例：C108736ec8ad2cad7132a7eb41b42036e"/>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 2: Configurable Cloud Drive & NAS Folder Paths -->
+  <div style="padding:12px 14px;background:var(--panel-sub);border:1px solid var(--border-std);border-radius:8px;margin-bottom:12px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:8px;">
+      <div style="font-weight:800;font-size:0.85rem;color:var(--text-main);">
+        步驟 2 / 3：合約、標單、圖說、查驗與照片擺放路徑設定（可貼上既有 Google 雲端硬碟資料夾網址／ID，留空即自動建立標準子資料夾！）
+      </div>
+      <span style="font-size:0.72rem;color:#059669;font-weight:700;">支援格式：完整 https://drive.google.com/... 網址 或 資料夾/試算表 ID</span>
+    </div>
+    <div class="form-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:9px;">
+      <div class="field-group">
+        <label>00. 專案雲端根目錄（留空自動於總控雲端下建立專案總資料夾）</label>
+        <input id="s60PathRootFolder" type="text" placeholder="留空自動建立，或貼上既有專案根資料夾網址/ID"/>
+      </div>
+      <div class="field-group">
+        <label>01. 合約書與契約詳細表擺放資料夾</label>
+        <input id="s60PathContractFolder" type="text" placeholder="留空自動建立「01_合約與契約詳細表」"/>
+      </div>
+      <div class="field-group">
+        <label>02. 工程標單／估驗計價資料夾（或既有標單試算表網址/ID）</label>
+        <input id="s60PathBidBoqFolder" type="text" placeholder="留空自動建立「02_工程標單與計價」或貼標單Sheet ID"/>
+      </div>
+      <div class="field-group">
+        <label>03. 施工圖說 (DWG/PDF) 與 3D 模型資料夾</label>
+        <input id="s60PathDrawingFolder" type="text" placeholder="留空自動建立「03_施工圖說與BIM模型」"/>
+      </div>
+      <div class="field-group">
+        <label>04. 送審核定材料型錄與承認圖資料夾</label>
+        <input id="s60PathApprovedMatFolder" type="text" placeholder="留空自動建立「04_送審核定材料型錄」"/>
+      </div>
+      <div class="field-group">
+        <label>05. 材料進場查驗 (D11) ＆ 廠商收貨單歸檔資料夾</label>
+        <input id="s60PathMatReceiptFolder" type="text" placeholder="留空自動建立「05_材料查驗與收貨單」"/>
+      </div>
+      <div class="field-group">
+        <label>06. 施工查驗 (C10) ＆ 黏貼查驗照 PDF 歸檔資料夾</label>
+        <input id="s60PathConstInspFolder" type="text" placeholder="留空自動建立「06_施工查驗與黏貼照片PDF」"/>
+      </div>
+      <div class="field-group">
+        <label>07. 每日施工照片 (99.施工照片) ＆ 工具箱點名資料夾</label>
+        <input id="s60PathDailyPhotoFolder" type="text" placeholder="留空自動建立「07_每日施工照片與工具箱點名」"/>
+      </div>
+      <div class="field-group">
+        <label>08. 品質缺失 (NCR) ＆ 勞安罰單歸檔資料夾</label>
+        <input id="s60PathNcrSafetyFolder" type="text" placeholder="留空自動建立「08_品質缺失NCR與勞安紀錄」"/>
+      </div>
+      <div class="field-group">
+        <label>09. 綁定雲端資料庫試算表 ID（留空預設共用輕量中樞試算表）</label>
+        <input id="s60PathSpreadsheetId" type="text" placeholder="留空自動綁定標準化試算表，或貼專屬 Google Sheet 網址/ID"/>
+      </div>
+      <div class="field-group" style="grid-column:span 2;">
+        <label>10. Synology NAS 內網同步鏡像根路徑（供 19:00 / 24:00 雙向備份對映）</label>
+        <input id="s60PathNasRoot" type="text" value="\\dogreatnas.synology.me\元順工程-鶯歌消防局\60-機電相關"/>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 3: Pre-Deployment Contract, BOQ & Spec File Uploader -->
+  <div style="padding:12px 14px;background:var(--panel-sub);border:1px solid var(--border-std);border-radius:8px;margin-bottom:12px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px;">
+      <div>
+        <div style="font-weight:800;font-size:0.85rem;color:var(--text-main);">
+          步驟 3 / 3：預先上傳工程合約、標單價目表、送審型錄與施工規範（部署時自動歸入上方對應資料夾並建立機器人即時查詢索引！）
+        </div>
+        <div style="font-size:0.73rem;color:var(--text-muted);margin-top:2px;">
+          支援 PDF、Excel (`.xlsx`/`.xls`/`.csv`)、Word (`.docx`)、圖說或圖片多檔上傳；部署完成後於 LINE 輸入「<code>合約</code>」、「<code>標單</code>」、「<code>型錄</code>」、「<code>路徑</code>」即可秒開檢視。
+        </div>
+      </div>
+      <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;">
+        <select id="s60UploadDocCategorySelect" style="padding:5px 8px;font-size:0.76rem;border-radius:6px;border:1px solid var(--border-strong);background:var(--input-bg);color:var(--text-main);">
+          <option value="CONTRACT">📄 01. 工程契約書／合約條款與罰則</option>
+          <option value="BID_BOQ">📊 02. 工程標單／契約詳細價目表</option>
+          <option value="DRAWING">📐 03. 施工圖說／BIM 清冊</option>
+          <option value="APPROVED_MAT">📑 04. 送審核定材料型錄</option>
+          <option value="SPEC_SOP">📋 05. 施工規範與自主查驗基準</option>
+        </select>
+        <label class="btn btn-emerald" style="padding:5px 12px;font-size:0.75rem;cursor:pointer;margin:0;">
+          ➕ 選取檔案加入部署清單
+          <input id="s60ContractFilesInput" type="file" multiple accept=".pdf,.xlsx,.xls,.csv,.doc,.docx,.txt,.json,.zip,.jpg,.jpeg,.png" onchange="window.handleS60ContractFilesSelected(event)" style="display:none;"/>
+        </label>
+      </div>
+    </div>
+    <div id="s60StagedFilesEmptyHint" style="font-size:0.75rem;color:var(--text-muted);padding:8px 10px;background:var(--panel-bg);border:1px dashed var(--border-strong);border-radius:6px;">
+      目前尚無預載檔案（可點擊右上角「➕ 選取檔案加入部署清單」，或點擊頂部「🧪 載入範例設定與測試合約檔」自動產生範例契約與標單進行測試）。
+    </div>
+    <div id="s60StagedFilesTableWrap" style="display:none;overflow-x:auto;margin-top:6px;">
+      <table class="ledger-table" style="font-size:0.76rem;">
+        <thead>
+          <tr>
+            <th>檔案名稱</th>
+            <th style="width:165px;">歸檔分類（自動對映步驟2路徑）</th>
+            <th style="width:90px;">檔案大小</th>
+            <th style="width:80px;text-align:center;">移除</th>
+          </tr>
+        </thead>
+        <tbody id="s60StagedFilesTbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Provisioning Execution Receipt & Live Deployed Bots Status -->
+  <div id="s60ProvisionResultPanel" style="display:none;padding:12px 14px;background:#f0fdf4;border:1.5px solid #16a34a;border-radius:8px;color:#14532d;font-size:0.78rem;line-height:1.6;"></div>
+</div>
+<!-- ==================== END S6.0 ONE-CLICK LINE BOT DEPLOYER ==================== -->
+
 <div class="glass-panel" style="padding:14px 16px;margin-bottom:14px;background:var(--panel-sub);border-left:3px solid var(--eng-amber);">
 <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px;">
 <div>
@@ -13342,7 +13523,7 @@ try { initWarRoomAppFast(); } catch (_eInitSync) {}
 <button onclick="void(0)" type="button">進料・NCR・圖說清冊 檢視歷史總表、NCR/勞安與圖說</button>
 <button onclick="void(0)" type="button">儲存並發布此 BOT 功能開關</button>
 <button onclick="void(0)" type="button">2. 群組設定 (群組一 / 群組二 ＆ 功能開關)</button>
-<button onclick="void(0)" type="button">3. 遠端部署 BOT ＆ 標準化資料庫與程式優化</button>
+<button onclick="void(0)" type="button">3. 🚀 一鍵部署 LINE Bot（合約上傳・路徑設定）與程式優化</button>
 <button onclick="void(0)" type="button">前往「2. 群組設定」調整此 BOT 群組開關 </button>
 <button onclick="void(0)" type="button">從 GitHub 儲存艙同步最新資料</button>
 <button onclick="void(0)" type="button">戰情室遠端誤判修正 (人數/勞安/OCR/標單)</button>
@@ -23307,6 +23488,271 @@ document.documentElement.setAttribute("data-release-version", "S2版");
       }
     } catch (_ePaste) {}
   }, false);
+})();
+</script>
+<script id="s60OneClickBotDeployerScript">
+(function() {
+  if (window.__S60_ONECLICK_DEPLOYER_READY__) return;
+  window.__S60_ONECLICK_DEPLOYER_READY__ = true;
+
+  var S60_MASTER_GATEWAY_URL = "https://script.google.com/macros/s/AKfycbxRcVWuQzMEQWtGMd-PNqBr6ejcxjTvRLuxeRut38uwFFveHrPJDb6bbe3cRp4hkSXTsQ/exec";
+  window.__S60_STAGED_FILES__ = [];
+
+  var CAT_LABELS = {
+    CONTRACT: "📄 01. 工程契約書／合約條款",
+    BID_BOQ: "📊 02. 工程標單／詳細價目表",
+    DRAWING: "📐 03. 施工圖說／BIM 清冊",
+    APPROVED_MAT: "📑 04. 送審核定材料型錄",
+    SPEC_SOP: "📋 05. 施工規範與查驗基準"
+  };
+
+  function renderS60StagedFiles() {
+    var list = window.__S60_STAGED_FILES__ || [];
+    var hint = document.getElementById("s60StagedFilesEmptyHint");
+    var wrap = document.getElementById("s60StagedFilesTableWrap");
+    var tbody = document.getElementById("s60StagedFilesTbody");
+    if (!tbody) return;
+    if (list.length === 0) {
+      if (hint) hint.style.display = "block";
+      if (wrap) wrap.style.display = "none";
+      tbody.innerHTML = "";
+      return;
+    }
+    if (hint) hint.style.display = "none";
+    if (wrap) wrap.style.display = "block";
+    tbody.innerHTML = list.map(function(f, idx) {
+      var kb = Math.max(1, Math.round((f.sizeBytes || 0) / 1024));
+      return '<tr>' +
+        '<td style="font-weight:700;color:var(--text-main);">' + f.fileName + '</td>' +
+        '<td>' + (CAT_LABELS[f.category] || f.category) + '</td>' +
+        '<td>' + kb + ' KB</td>' +
+        '<td style="text-align:center;"><button type="button" class="btn btn-ghost" style="padding:2px 8px;font-size:0.72rem;" onclick="window.removeS60StagedFile(' + idx + ')">移除</button></td>' +
+      '</tr>';
+    }).join("");
+  }
+
+  window.removeS60StagedFile = function(idx) {
+    window.__S60_STAGED_FILES__.splice(idx, 1);
+    renderS60StagedFiles();
+  };
+
+  window.handleS60ContractFilesSelected = function(ev) {
+    var files = ev && ev.target && ev.target.files ? Array.prototype.slice.call(ev.target.files) : [];
+    var catEl = document.getElementById("s60UploadDocCategorySelect");
+    var cat = catEl ? catEl.value : "CONTRACT";
+    if (!files.length) return;
+    files.forEach(function(file) {
+      if (file.size > 18 * 1024 * 1024) {
+        if (typeof window.showToast === "function") window.showToast("⚠️ 單一檔案超過 18MB，建議先放置於雲端資料夾並於步驟 2 貼上網址！");
+        return;
+      }
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        var dataUrl = String(e.target.result || "");
+        var b64 = dataUrl.indexOf("base64,") !== -1 ? dataUrl.split("base64,")[1] : "";
+        window.__S60_STAGED_FILES__.push({
+          fileName: file.name,
+          mimeType: file.type || "application/octet-stream",
+          sizeBytes: file.size,
+          category: cat,
+          base64: b64
+        });
+        renderS60StagedFiles();
+      };
+      reader.readAsDataURL(file);
+    });
+    ev.target.value = "";
+  };
+
+  window.fillS60DemoSandboxPreset = function() {
+    var setVal = function(id, v) { var el = document.getElementById(id); if (el) el.value = v; };
+    setVal("s60BotCodeInput", "BOT_YINGGE_DEMO");
+    setVal("s60BotDisplayNameInput", "鶯歌消防局工務機器人 (一鍵部署驗證機)");
+    setVal("s60ProjectNameInput", "新北市政府消防局北區複合型災害應變暨訓練中心新建工程(鶯歌消防局)");
+    setVal("s60SiteAddressInput", "新北市鶯歌區尖山路101巷");
+    setVal("s60LineChannelTokenInput", "SANDBOX_DEMO_LINE_CHANNEL_TOKEN_S60");
+    setVal("s60PathNasRoot", "\\\\dogreatnas.synology.me\\元順工程-鶯歌消防局\\60-機電相關");
+    var sampleContract = "【工程契約摘要與勞安環保罰則條款】\n工程名稱：鶯歌消防局新建工程\n未配戴安全帽或未穿合格安全鞋：每人次罰款新臺幣 3,000 元整。\n降雨達 24h >= 50mm 得檢具最近測站觀測資料申請工期展延。";
+    var sampleBoq = "項次,工項名稱,規格,契約數量,單位,單價\n壹.一.1,共同管溝電力幹管,PVC Ø100mm (4\"),680,M,420\n壹.一.2,共同管溝弱電光纖管,PVC Ø80mm (3\"),680,M,310\n壹.二.1,臨時總配電盤,MP-TEMP 3Φ4W 400A,1,座,185000";
+    window.__S60_STAGED_FILES__ = [
+      {
+        fileName: "01_鶯歌消防局_工程契約書與安衛罰款條款摘要.txt",
+        mimeType: "text/plain",
+        sizeBytes: sampleContract.length,
+        category: "CONTRACT",
+        base64: btoa(unescape(encodeURIComponent(sampleContract)))
+      },
+      {
+        fileName: "02_鶯歌消防局_機電標單詳細價目表_V1.csv",
+        mimeType: "text/csv",
+        sizeBytes: sampleBoq.length,
+        category: "BID_BOQ",
+        base64: btoa(unescape(encodeURIComponent(sampleBoq)))
+      }
+    ];
+    renderS60StagedFiles();
+    if (typeof window.showToast === "function") {
+      window.showToast("✅ 已載入範例設定與 2 份測試合約／標單檔案！請點擊「⚡ 沙盒預演測試」體驗一鍵部署。");
+    }
+  };
+
+  function collectS60Payload(isDryRun) {
+    var val = function(id) { var el = document.getElementById(id); return el ? String(el.value || "").trim() : ""; };
+    var tier = val("s60BotTierSelect") || "TIER_2";
+    var flagsMap = {};
+    if (typeof BOT_FEATURE_FLAGS !== "undefined" && Array.isArray(BOT_FEATURE_FLAGS)) {
+      BOT_FEATURE_FLAGS.forEach(function(f) {
+        flagsMap[f.key] = (tier === "TIER_1") ? Boolean(f.tier1) : ((tier === "TIER_2") ? Boolean(f.tier2) : Boolean(f.tier3));
+      });
+    }
+    return {
+      internalAction: "ONE_CLICK_PROVISION_BOT_S60",
+      dryRun: Boolean(isDryRun),
+      botCode: (val("s60BotCodeInput") || "BOT_C").replace(/[^A-Za-z0-9_]/g, "_").toUpperCase(),
+      botName: val("s60BotDisplayNameInput") || "新工務專責機器人",
+      tier: tier,
+      projectName: val("s60ProjectNameInput") || "新建工程專案",
+      siteAddress: val("s60SiteAddressInput") || "",
+      schedules: val("s60SchedulesInput") || "08:00 / 09:00 / 15:00 / 19:00",
+      lineChannelToken: val("s60LineChannelTokenInput"),
+      lineChannelSecret: val("s60LineChannelSecretInput"),
+      primaryGroupId: val("s60PrimaryGroupIdInput"),
+      paths: {
+        rootFolder: val("s60PathRootFolder"),
+        contractFolder: val("s60PathContractFolder"),
+        bidBoqFolder: val("s60PathBidBoqFolder"),
+        drawingFolder: val("s60PathDrawingFolder"),
+        approvedMatFolder: val("s60PathApprovedMatFolder"),
+        matReceiptFolder: val("s60PathMatReceiptFolder"),
+        constInspFolder: val("s60PathConstInspFolder"),
+        dailyPhotoFolder: val("s60PathDailyPhotoFolder"),
+        ncrSafetyFolder: val("s60PathNcrSafetyFolder"),
+        spreadsheetId: val("s60PathSpreadsheetId"),
+        nasRootPath: val("s60PathNasRoot")
+      },
+      featureFlags: flagsMap,
+      files: (window.__S60_STAGED_FILES__ || []).slice()
+    };
+  }
+
+  function registerDeployedBotIntoWarRoomUi(res, reqPayload) {
+    try {
+      var bCode = res.botCode || reqPayload.botCode;
+      var tier = reqPayload.tier || "TIER_2";
+      var tierLabels = { TIER_1: "第一級：工班群組", TIER_2: "第二級：工務所群組", TIER_3: "第三級：管理者" };
+      var botEntry = {
+        botId: bCode,
+        botCode: bCode,
+        tier: tier,
+        tierLabel: (tierLabels[tier] || tier) + " — " + bCode,
+        botName: reqPayload.botName,
+        project: reqPayload.projectName,
+        webhook: res.webhookEndpointUrl || (S60_MASTER_GATEWAY_URL + "?botId=" + encodeURIComponent(bCode)),
+        scriptId: "DYNAMIC_GATEWAY_" + bCode,
+        deploymentId: "S60_ONECLICK_" + bCode,
+        spreadsheetId: (res.folders && res.folders.spreadsheetId) || "1sEut2NPfeCBiq-jjdVFuTI_nv-ZXK7z_TZMJOPc2e0s",
+        schedules: reqPayload.schedules,
+        nasPath: (reqPayload.paths && reqPayload.paths.nasRootPath) || "",
+        paths: res.folders || {},
+        uploadedDocs: res.uploadedDocs || [],
+        group1Name: reqPayload.primaryGroupId ? ("群組一：" + reqPayload.primaryGroupId) : ("群組一：" + reqPayload.projectName + " 施工主群"),
+        group1Enabled: true,
+        group2Name: "群組二：" + reqPayload.projectName + " 工務查驗群",
+        group2Enabled: true,
+        group1Flags: [true, true, true, true, true, true, true, true, false, false, true, false, false],
+        group2Flags: [true, true, true, true, true, true, true, true, true, true, true, tier === "TIER_3", tier === "TIER_3"]
+      };
+      if (typeof BOT_INSTANCES_LIST !== "undefined" && Array.isArray(BOT_INSTANCES_LIST)) {
+        var existIdx = -1;
+        for (var i = 0; i < BOT_INSTANCES_LIST.length; i++) {
+          if (BOT_INSTANCES_LIST[i] && BOT_INSTANCES_LIST[i].botCode === bCode) { existIdx = i; break; }
+        }
+        if (existIdx >= 0) BOT_INSTANCES_LIST[existIdx] = botEntry;
+        else BOT_INSTANCES_LIST.push(botEntry);
+      }
+      if (typeof saveBotGroup12ToStorage === "function") saveBotGroup12ToStorage();
+      if (typeof renderBotSelectorAndGroup12UI === "function") renderBotSelectorAndGroup12UI();
+      if (typeof DEPLOYED_GROUP_BOTS !== "undefined" && Array.isArray(DEPLOYED_GROUP_BOTS)) {
+        DEPLOYED_GROUP_BOTS.unshift({
+          tier: tier,
+          tierLabel: tierLabels[tier] || tier,
+          botName: reqPayload.botName,
+          project: reqPayload.projectName,
+          targetGroup: reqPayload.primaryGroupId || "自動捕獲入群 ID",
+          mode: res.dryRun ? "沙盒預演驗證通過" : "已正式綁定上線",
+          webhookUrl: botEntry.webhook,
+          status: res.webhookBound ? "✅ LINE Webhook 已自動綁定" : "✅ 雲端路由與資料夾已就緒"
+        });
+        if (typeof renderDeployedBotsRegistry === "function") renderDeployedBotsRegistry();
+      }
+    } catch (_eRegUi) {}
+  }
+
+  window.executeS60OneClickBotProvision = function(isDryRun) {
+    var payload = collectS60Payload(isDryRun);
+    if (!isDryRun && (!payload.lineChannelToken || payload.lineChannelToken.indexOf("SANDBOX_") === 0)) {
+      if (typeof window.showToast === "function") {
+        window.showToast("💡 尚未填入正式 LINE Channel Access Token，已自動切換為「沙盒預演模式」驗證雲端建夾與合約上傳！");
+      }
+      payload.dryRun = true;
+    }
+    var panel = document.getElementById("s60ProvisionResultPanel");
+    if (panel) {
+      panel.style.display = "block";
+      panel.style.background = "#eff6ff";
+      panel.style.borderColor = "#2563eb";
+      panel.style.color = "#1e3a8a";
+      panel.innerHTML = "⏳ <strong>正在執行 S6.0 七階段自動化部署流水線...</strong>（驗證憑證 ➔ 建立/綁定 8 大雲端資料夾 ➔ 上傳歸檔 " + payload.files.length + " 份合約標單 ➔ 註冊動態路由 ➔ 自動設定 LINE Webhook 與選單）";
+    }
+
+    // Use CORS-safe text/plain POST (zero OPTIONS preflight block on Google Apps Script!)
+    fetch(S60_MASTER_GATEWAY_URL, {
+      method: "POST",
+      redirect: "follow",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(payload)
+    })
+      .then(function(r) { return r.json(); })
+      .then(function(res) {
+        if (!res || !res.ok) throw new Error((res && res.error) || "部署回應異常");
+        registerDeployedBotIntoWarRoomUi(res, payload);
+        if (panel) {
+          panel.style.background = "#f0fdf4";
+          panel.style.borderColor = "#16a34a";
+          panel.style.color = "#14532d";
+          var stepsHtml = (res.stages || []).map(function(st) {
+            return "<div>" + (st.ok ? "✅" : "⚠️") + " <strong>" + st.name + "：</strong>" + st.detail + "</div>";
+          }).join("");
+          var docsHtml = (res.uploadedDocs || []).map(function(d) {
+            return '<li><a href="' + d.viewerUrl + '" target="_blank" rel="noopener" style="color:#0284c7;font-weight:700;">' + d.fileName + '</a>（分類：' + d.category + '）</li>';
+          }).join("");
+          var fldLinks = [];
+          if (res.folders && res.folders.rootFolderUrl) fldLinks.push('<a href="' + res.folders.rootFolderUrl + '" target="_blank" rel="noopener" style="color:#0284c7;font-weight:700;">📂 開啟專案雲端總目錄</a>');
+          if (res.folders && res.folders.contractFolderUrl) fldLinks.push('<a href="' + res.folders.contractFolderUrl + '" target="_blank" rel="noopener" style="color:#0284c7;font-weight:700;">📄 合約資料夾</a>');
+          if (res.folders && res.folders.constInspFolderUrl) fldLinks.push('<a href="' + res.folders.constInspFolderUrl + '" target="_blank" rel="noopener" style="color:#0284c7;font-weight:700;">📸 查驗PDF資料夾</a>');
+          if (res.folders && res.folders.dailyPhotoFolderUrl) fldLinks.push('<a href="' + res.folders.dailyPhotoFolderUrl + '" target="_blank" rel="noopener" style="color:#0284c7;font-weight:700;">👷 施工/工具箱照片夾</a>');
+
+          panel.innerHTML =
+            '<div style="font-size:0.9rem;font-weight:900;margin-bottom:6px;">🎉 【' + res.botCode + '｜' + payload.botName + '】' + (res.dryRun ? '沙盒預演部署 100% 成功！' : '一鍵正式部署上線完成！') + '</div>' +
+            '<div style="margin-bottom:6px;">🔗 <strong>專屬 Webhook 端點（已自動支援免新建 GAS 專案）：</strong><code>' + res.webhookEndpointUrl + '</code></div>' +
+            (fldLinks.length ? ('<div style="margin-bottom:6px;">📁 <strong>已建置／綁定雲端路徑：</strong>' + fldLinks.join(" ｜ ") + '</div>') : '') +
+            stepsHtml +
+            (docsHtml ? ('<div style="margin-top:6px;"><strong>📑 已上傳並建立 LINE 即時查詢索引之合約／標單檔案：</strong><ul style="margin:4px 0 0 18px;">' + docsHtml + '</ul></div>') : '') +
+            '<div style="margin-top:6px;padding-top:6px;border-top:1px dashed #86efac;">💡 <strong>LINE 實機測試指令：</strong>於該機器人對話視窗輸入 <code>合約</code>、<code>標單</code>、<code>路徑</code>、<code>開啟圖說</code> 或直接傳送工具箱／白板查驗照片，即自動歸入上方設定之專屬路徑！</div>';
+        }
+        if (typeof window.showToast === "function") {
+          window.showToast("🎉 【" + res.botCode + "】已完成雲端路徑綁定、合約歸檔與 LINE Bot 部署！");
+        }
+      })
+      .catch(function(err) {
+        if (panel) {
+          panel.style.background = "#fef2f2";
+          panel.style.borderColor = "#dc2626";
+          panel.style.color = "#7f1d1d";
+          panel.innerHTML = "❌ <strong>連線遠端部署閘道失敗：</strong>" + String(err && err.message || err);
+        }
+      });
+  };
 })();
 </script>
 </body>
