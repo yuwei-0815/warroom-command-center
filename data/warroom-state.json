@@ -1,8 +1,8 @@
 {
   "ok": true,
-  "version": "S3.4版_INDEPENDENT_3WAY_QTY_DIFF",
-  "syncedAt": "2026-11-11 09:15:00",
-  "latestDate": "2026-11-10",
+  "version": "S3.5版_REALTIME_ATTENDANCE_ZERO_DRIFT",
+  "syncedAt": "2026-11-11 09:58:00",
+  "latestDate": "2026-11-11",
   "excelDriveFileId": "1sJiy0wDJAyDqJzBD39AX2PTbBiUWJNySX22APzI_7s8",
   "d11Summary": {
     "totalFilesSynced": 44,
@@ -49,34 +49,8 @@
         "符合勞安標準（無勞安缺失）"
       ],
       "note": "",
-      "__fromLiveCloudDb": true
-    },
-    {
-      "date": "2026-11-02",
-      "rocDate": "115.11.02",
-      "project": "桃園市八德區仁德國民小學新建校舍工程(第一期)",
-      "addr": "桃園市八德區仁德國小一期工區",
-      "stationId": "C0C700",
-      "stationName": "八德觀測站",
-      "stationDistKm": 0.61,
-      "weatherState": "陰",
-      "workerCount": 8,
-      "workerTrades": "一期空調通風與管閥安裝 8人",
-      "materialItem": "新增查驗單 1 份：[D03-AC-01-1151102-1] 通風設備-全熱交換機材料查驗 (4張照片 PDF)｜另進場不銹鋼防震軟管3組、不銹鋼閘閥4組",
-      "category": "MATERIAL_DELIVERY",
-      "rain24h": 2.5,
-      "rain1h": 1.5,
-      "windMs": 3.6,
-      "beaufort": 3,
-      "eligible": false,
-      "extDays": 0.0,
-      "badgeText": "查驗1單・8人",
-      "pillClass": "pill-amber",
-      "rules": [
-        "符合勞安標準（無勞安缺失）"
-      ],
-      "note": "",
-      "__fromLiveCloudDb": true
+      "__fromLiveCloudDb": true,
+      "__isAutoRolloverToday": false
     },
     {
       "date": "2026-10-29",
@@ -103,7 +77,8 @@
         "符合勞安標準（無勞安缺失）"
       ],
       "note": "",
-      "__fromLiveCloudDb": true
+      "__fromLiveCloudDb": true,
+      "__isAutoRolloverToday": false
     },
     {
       "date": "2026-10-30",
@@ -130,7 +105,8 @@
         "符合勞安標準（無勞安缺失）"
       ],
       "note": "1樓給、排水修改配管、1樓輕隔間配管、2樓輕隔間改善、3樓輕隔間配管、R樓頂板吊料",
-      "__fromLiveCloudDb": true
+      "__fromLiveCloudDb": true,
+      "__isAutoRolloverToday": false
     },
     {
       "date": "2026-10-31",
@@ -157,7 +133,8 @@
         "符合勞安標準（無勞安缺失）"
       ],
       "note": "1F排水修改、1F輕隔間配管",
-      "__fromLiveCloudDb": true
+      "__fromLiveCloudDb": true,
+      "__isAutoRolloverToday": false
     },
     {
       "date": "2026-11-01",
@@ -184,7 +161,36 @@
         "符合勞安標準（無勞安缺失）"
       ],
       "note": "",
-      "__fromLiveCloudDb": true
+      "__fromLiveCloudDb": true,
+      "__isAutoRolloverToday": false
+    },
+    {
+      "date": "2026-11-02",
+      "rocDate": "115.11.02",
+      "project": "桃園市八德區仁德國民小學新建校舍工程(第一期)",
+      "addr": "桃園市八德區仁德國小一期工區",
+      "stationId": "C0C700",
+      "stationName": "八德觀測站",
+      "stationDistKm": 0.61,
+      "weatherState": "陰",
+      "workerCount": 8,
+      "workerTrades": "一期空調通風與管閥安裝 8人",
+      "materialItem": "新增查驗單 1 份：[D03-AC-01-1151102-1] 通風設備-全熱交換機材料查驗 (4張照片 PDF)｜另進場不銹鋼防震軟管3組、不銹鋼閘閥4組",
+      "category": "MATERIAL_DELIVERY",
+      "rain24h": 2.5,
+      "rain1h": 1.5,
+      "windMs": 3.6,
+      "beaufort": 3,
+      "eligible": false,
+      "extDays": 0.0,
+      "badgeText": "查驗1單・8人",
+      "pillClass": "pill-amber",
+      "rules": [
+        "符合勞安標準（無勞安缺失）"
+      ],
+      "note": "",
+      "__fromLiveCloudDb": true,
+      "__isAutoRolloverToday": false
     },
     {
       "date": "2026-11-02",
@@ -211,7 +217,8 @@
         "符合勞安標準（無勞安缺失）"
       ],
       "note": "頂板配管、3F輕隔間配管、1-2F ACP試水找點",
-      "__fromLiveCloudDb": true
+      "__fromLiveCloudDb": true,
+      "__isAutoRolloverToday": false
     },
     {
       "date": "2026-11-03",
@@ -238,7 +245,8 @@
         "符合勞安標準（無勞安缺失）"
       ],
       "note": "頂板配管、3F輕隔間配管、1-2F ACP試水找點",
-      "__fromLiveCloudDb": true
+      "__fromLiveCloudDb": true,
+      "__isAutoRolloverToday": false
     },
     {
       "date": "2026-11-04",
@@ -265,7 +273,8 @@
         "符合勞安標準（無勞安缺失）"
       ],
       "note": "",
-      "__fromLiveCloudDb": true
+      "__fromLiveCloudDb": true,
+      "__isAutoRolloverToday": false
     },
     {
       "date": "2026-11-05",
@@ -292,7 +301,8 @@
         "符合勞安標準（無勞安缺失）"
       ],
       "note": "頂板配管、3F輕隔間配管、1-2F ACP試水找點",
-      "__fromLiveCloudDb": true
+      "__fromLiveCloudDb": true,
+      "__isAutoRolloverToday": false
     },
     {
       "date": "2026-11-06",
@@ -319,7 +329,64 @@
         "符合勞安標準（無勞安缺失）"
       ],
       "note": "2-3F ACP修改、1F補線、3F拉線、3F輕隔間配管",
-      "__fromLiveCloudDb": true
+      "__fromLiveCloudDb": true,
+      "__isAutoRolloverToday": false
+    },
+    {
+      "date": "2026-11-06",
+      "rocDate": "115.11.06",
+      "project": "鶯歌消防局新建工程",
+      "addr": "新北市鶯歌區文化路",
+      "stationId": "C0AD40",
+      "stationName": "鶯歌觀測站",
+      "stationDistKm": 0.56,
+      "weatherState": "晴",
+      "workerCount": 0,
+      "workerTrades": "先期規劃與圖說審查階段 (0人)",
+      "materialItem": "無",
+      "category": "WEATHER_EXTENSION",
+      "rain24h": 0.0,
+      "rain1h": 0.0,
+      "windMs": 2.4,
+      "beaufort": 2,
+      "eligible": false,
+      "extDays": 0.0,
+      "badgeText": "晴 0mm",
+      "pillClass": "pill-cyan",
+      "rules": [
+        "符合勞安標準（無勞安缺失）"
+      ],
+      "note": "",
+      "__fromLiveCloudDb": true,
+      "__isAutoRolloverToday": false
+    },
+    {
+      "date": "2026-11-07",
+      "rocDate": "115.11.07",
+      "project": "桃園市八德區仁德國民小學新建校舍工程(第一期)",
+      "addr": "桃園市八德區仁德國小一期工區",
+      "stationId": "C0C700",
+      "stationName": "八德觀測站",
+      "stationDistKm": 0.61,
+      "weatherState": "晴",
+      "workerCount": 0,
+      "workerTrades": "週六例行巡檢 (0人)",
+      "materialItem": "無",
+      "category": "WEATHER_EXTENSION",
+      "rain24h": 0.0,
+      "rain1h": 0.0,
+      "windMs": 2.3,
+      "beaufort": 2,
+      "eligible": false,
+      "extDays": 0.0,
+      "badgeText": "晴 0mm",
+      "pillClass": "pill-cyan",
+      "rules": [
+        "符合勞安標準（無勞安缺失）"
+      ],
+      "note": "3F ACP 查管 修復 3F室內拉線 查管、2F ACP試水（今日15:00文字回報：9人｜工具箱點名：8人 [3,3,2]，差1人｜明日預計：6人｜明日範圍：2-3F ACP試水 查管）",
+      "__fromLiveCloudDb": true,
+      "__isAutoRolloverToday": false
     },
     {
       "date": "2026-11-07",
@@ -347,61 +414,8 @@
         "15:00人數比對：工具箱照片點名 8 人 [3,3,2] vs 廠商回報 9 人（少 1 人）｜預計明日出工：6 人（2-3F ACP試水 查管）"
       ],
       "note": "3F ACP 查管 修復 3F室內拉線 查管、2F ACP試水（今日15:00文字回報：9人｜工具箱點名：8人 [3,3,2]，差1人｜明日預計：6人｜明日範圍：2-3F ACP試水 查管）",
-      "__fromLiveCloudDb": true
-    },
-    {
-      "date": "2026-11-07",
-      "rocDate": "115.11.07",
-      "project": "桃園市八德區仁德國民小學新建校舍工程(第一期)",
-      "addr": "桃園市八德區仁德國小一期工區",
-      "stationId": "C0C700",
-      "stationName": "八德觀測站",
-      "stationDistKm": 0.61,
-      "weatherState": "晴",
-      "workerCount": 0,
-      "workerTrades": "週六例行巡檢 (0人)",
-      "materialItem": "無",
-      "category": "WEATHER_EXTENSION",
-      "rain24h": 0.0,
-      "rain1h": 0.0,
-      "windMs": 2.3,
-      "beaufort": 2,
-      "eligible": false,
-      "extDays": 0.0,
-      "badgeText": "晴 0mm",
-      "pillClass": "pill-cyan",
-      "rules": [
-        "符合勞安標準（無勞安缺失）"
-      ],
-      "note": "3F ACP 查管 修復 3F室內拉線 查管、2F ACP試水（今日15:00文字回報：9人｜工具箱點名：8人 [3,3,2]，差1人｜明日預計：6人｜明日範圍：2-3F ACP試水 查管）",
-      "__fromLiveCloudDb": true
-    },
-    {
-      "date": "2026-11-06",
-      "rocDate": "115.11.06",
-      "project": "鶯歌消防局新建工程",
-      "addr": "新北市鶯歌區文化路",
-      "stationId": "C0AD40",
-      "stationName": "鶯歌觀測站",
-      "stationDistKm": 0.56,
-      "weatherState": "晴",
-      "workerCount": 0,
-      "workerTrades": "先期規劃與圖說審查階段 (0人)",
-      "materialItem": "無",
-      "category": "WEATHER_EXTENSION",
-      "rain24h": 0.0,
-      "rain1h": 0.0,
-      "windMs": 2.4,
-      "beaufort": 2,
-      "eligible": false,
-      "extDays": 0.0,
-      "badgeText": "晴 0mm",
-      "pillClass": "pill-cyan",
-      "rules": [
-        "符合勞安標準（無勞安缺失）"
-      ],
-      "note": "",
-      "__fromLiveCloudDb": true
+      "__fromLiveCloudDb": true,
+      "__isAutoRolloverToday": false
     },
     {
       "date": "2026-11-07",
@@ -428,34 +442,8 @@
         "符合勞安標準（無勞安缺失）"
       ],
       "note": "3F ACP 查管 修復 3F室內拉線 查管、2F ACP試水（今日15:00文字回報：9人｜工具箱點名：8人 [3,3,2]，差1人｜明日預計：6人｜明日範圍：2-3F ACP試水 查管）",
-      "__fromLiveCloudDb": true
-    },
-    {
-      "date": "2026-11-08",
-      "rocDate": "115.11.08",
-      "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)",
-      "addr": "桃園市八德區豐德路",
-      "stationId": "C0C700",
-      "stationName": "八德觀測站",
-      "stationDistKm": 0.61,
-      "weatherState": "晴",
-      "workerCount": 4,
-      "workerTrades": "水電 4人 (工具箱點名 [3, 1] 共2張｜標準回報：115.11.09 水電 *4｜比對昨日預計6人，少2人)",
-      "materialItem": "無（今日現場施作：2-3F ACP試水 查管）",
-      "category": "WEATHER_EXTENSION",
-      "rain24h": 0.0,
-      "rain1h": 0.0,
-      "windMs": 2.1,
-      "beaufort": 2,
-      "eligible": false,
-      "extDays": 0.0,
-      "badgeText": "晴 0mm・水電4人",
-      "pillClass": "pill-emerald",
-      "rules": [
-        "符合勞安標準（無勞安缺失）"
-      ],
-      "note": "今日預計施作：2-3F ACP試水 查管（08:19 工具箱點名：水電 4人 [3, 1] 共2張｜比對昨日15:00預計6人，少2人｜待今日15:00文字回報核對）",
-      "__fromLiveCloudDb": true
+      "__fromLiveCloudDb": true,
+      "__isAutoRolloverToday": false
     },
     {
       "date": "2026-11-08",
@@ -482,7 +470,36 @@
         "符合勞安標準（無勞安缺失）"
       ],
       "note": "",
-      "__fromLiveCloudDb": true
+      "__fromLiveCloudDb": true,
+      "__isAutoRolloverToday": false
+    },
+    {
+      "date": "2026-11-08",
+      "rocDate": "115.11.08",
+      "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)",
+      "addr": "桃園市八德區豐德路",
+      "stationId": "C0C700",
+      "stationName": "八德觀測站",
+      "stationDistKm": 0.61,
+      "weatherState": "晴",
+      "workerCount": 4,
+      "workerTrades": "水電 4人 (工具箱點名 [3, 1] 共2張｜標準回報：115.11.09 水電 *4｜比對昨日預計6人，少2人)",
+      "materialItem": "無（今日現場施作：2-3F ACP試水 查管）",
+      "category": "WEATHER_EXTENSION",
+      "rain24h": 0.0,
+      "rain1h": 0.0,
+      "windMs": 2.1,
+      "beaufort": 2,
+      "eligible": false,
+      "extDays": 0.0,
+      "badgeText": "晴 0mm・水電4人",
+      "pillClass": "pill-emerald",
+      "rules": [
+        "符合勞安標準（無勞安缺失）"
+      ],
+      "note": "今日預計施作：2-3F ACP試水 查管（08:19 工具箱點名：水電 4人 [3, 1] 共2張｜比對昨日15:00預計6人，少2人｜待今日15:00文字回報核對）",
+      "__fromLiveCloudDb": true,
+      "__isAutoRolloverToday": false
     },
     {
       "date": "2026-11-08",
@@ -509,34 +526,8 @@
         "符合勞安標準（無勞安缺失）"
       ],
       "note": "",
-      "__fromLiveCloudDb": true
-    },
-    {
-      "date": "2026-11-09",
-      "rocDate": "115.11.09",
-      "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)",
-      "addr": "桃園市八德區豐德路",
-      "stationId": "C0C700",
-      "stationName": "八德觀測站",
-      "stationDistKm": 0.61,
-      "weatherState": "晴",
-      "workerCount": 10,
-      "workerTrades": "水電 10人 (工具箱點名 [2, 2, 5, 1] 共4張｜標準回報：115.11.09 水電 *10)",
-      "materialItem": "無（今日現場施作：2-3F ACP試水 查管）",
-      "category": "WEATHER_EXTENSION",
-      "rain24h": 0.0,
-      "rain1h": 0.0,
-      "windMs": 2.0,
-      "beaufort": 2,
-      "eligible": false,
-      "extDays": 0.0,
-      "badgeText": "晴 0mm・水電10人",
-      "pillClass": "pill-emerald",
-      "rules": [
-        "符合勞安標準（無勞安缺失）"
-      ],
-      "note": "今日預計施作：2-3F ACP試水 查管（08:25~08:54 工具箱點名：水電 10人 [2, 2, 5, 1] 共4張｜01_(2人)、02_(2人)、03_(5人)、04_(1人)｜勞安合格）",
-      "__fromLiveCloudDb": true
+      "__fromLiveCloudDb": true,
+      "__isAutoRolloverToday": false
     },
     {
       "date": "2026-11-09",
@@ -563,7 +554,36 @@
         "符合勞安標準（無勞安缺失）"
       ],
       "note": "",
-      "__fromLiveCloudDb": true
+      "__fromLiveCloudDb": true,
+      "__isAutoRolloverToday": false
+    },
+    {
+      "date": "2026-11-09",
+      "rocDate": "115.11.09",
+      "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)",
+      "addr": "桃園市八德區豐德路",
+      "stationId": "C0C700",
+      "stationName": "八德觀測站",
+      "stationDistKm": 0.61,
+      "weatherState": "晴",
+      "workerCount": 10,
+      "workerTrades": "水電 10人 (工具箱點名 [2, 2, 5, 1] 共4張｜標準回報：115.11.09 水電 *10)",
+      "materialItem": "無（今日現場施作：2-3F ACP試水 查管）",
+      "category": "WEATHER_EXTENSION",
+      "rain24h": 0.0,
+      "rain1h": 0.0,
+      "windMs": 2.0,
+      "beaufort": 2,
+      "eligible": false,
+      "extDays": 0.0,
+      "badgeText": "晴 0mm・水電10人",
+      "pillClass": "pill-emerald",
+      "rules": [
+        "符合勞安標準（無勞安缺失）"
+      ],
+      "note": "今日預計施作：2-3F ACP試水 查管（08:25~08:54 工具箱點名：水電 10人 [2, 2, 5, 1] 共4張｜01_(2人)、02_(2人)、03_(5人)、04_(1人)｜勞安合格）",
+      "__fromLiveCloudDb": true,
+      "__isAutoRolloverToday": false
     },
     {
       "date": "2026-11-09",
@@ -590,7 +610,8 @@
         "符合勞安標準（無勞安缺失）"
       ],
       "note": "已完成共同管溝深寬雙向漸變 v13.9 通案檢討修正與 3D 拆解模擬器同步",
-      "__fromLiveCloudDb": true
+      "__fromLiveCloudDb": true,
+      "__isAutoRolloverToday": false
     },
     {
       "date": "2026-11-10",
@@ -616,38 +637,133 @@
       "rules": [
         "符合勞安標準（無勞安缺失）"
       ],
-      "note": "今日施作：1F補線及隔間補線完成配管收尾、3F拉線查管｜15:37回報今日實到11人、明日預計12人（1F補線 2F 3F 排水管打鑿配管 3F ACP修繕 3F查管路及修改敗管）",
+      "note": "今日施作：1F補線及隔間補線完成配管收尾、3F拉線查管｜明日預計(12人)：1F補線 2F 3F 排水管打鑿配管 3F ACP修繕 3F查管路及修改敗管",
       "__fromLiveCloudDb": true,
       "toolboxWorkers": 8,
       "report1500Workers": 11,
       "photoBreakdown": "[1, 2, 2, 3]",
       "tomorrowPredictedWorkers": 12,
-      "tomorrowScope": "1F補線 2F 3F 排水管打鑿配管 3F ACP修繕 3F查管路及修改敗管"
+      "tomorrowScope": "1F補線 2F 3F 排水管打鑿配管 3F ACP修繕 3F查管路及修改敗管",
+      "__isAutoRolloverToday": false,
+      "photoCount": 4
+    },
+    {
+      "date": "2026-11-11",
+      "rocDate": "115.11.11",
+      "project": "桃園市八德區仁德國民小學新建校舍工程(第一期)",
+      "addr": "桃園市八德區仁德國小一期工區",
+      "stationId": "C0C700",
+      "stationName": "八德觀測站",
+      "stationDistKm": 0.61,
+      "weatherState": "晴",
+      "workerCount": 0,
+      "workerTrades": "今日 (115.11.11) 尚無出工回報 (0人)",
+      "materialItem": "無",
+      "category": "WEATHER_EXTENSION",
+      "rain24h": 0.0,
+      "rain1h": 0.0,
+      "windMs": 2.0,
+      "beaufort": 2,
+      "eligible": false,
+      "extDays": 0.0,
+      "badgeText": "晴 0mm",
+      "pillClass": "pill-cyan",
+      "rules": [
+        "符合勞安標準（無勞安缺失）"
+      ],
+      "note": "",
+      "__fromLiveCloudDb": true,
+      "__isAutoRolloverToday": false
+    },
+    {
+      "date": "2026-11-11",
+      "rocDate": "115.11.11",
+      "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)",
+      "addr": "桃園市八德區豐德路",
+      "stationId": "C0C700",
+      "stationName": "八德觀測站",
+      "stationDistKm": 0.61,
+      "weatherState": "晴",
+      "workerCount": 8,
+      "toolboxWorkers": 8,
+      "report1500Workers": null,
+      "photoBreakdown": "[5, 2, 1]",
+      "photoCount": 3,
+      "tomorrowPredictedWorkers": 0,
+      "tomorrowScope": "",
+      "workerTrades": "水電 8人 (工具箱點名 [5, 2, 1] 共3張｜標準回報：115.11.11 水電 *8)",
+      "materialItem": "無（現場施作：1F補線 2F 3F 排水管打鑿配管 3F ACP修繕 3F查管路及修改敗管）",
+      "category": "WEATHER_EXTENSION",
+      "rain24h": 0.0,
+      "rain1h": 0.0,
+      "windMs": 2.0,
+      "beaufort": 2,
+      "eligible": false,
+      "extDays": 0.0,
+      "badgeText": "晴 0mm・水電8人",
+      "pillClass": "pill-emerald",
+      "rules": [
+        "符合勞安標準（無勞安缺失）"
+      ],
+      "note": "今日施作：1F補線 2F 3F 排水管打鑿配管 3F ACP修繕 3F查管路及修改敗管",
+      "__fromLiveCloudDb": true,
+      "__isAutoRolloverToday": false
+    },
+    {
+      "date": "2026-11-11",
+      "rocDate": "115.11.11",
+      "project": "鶯歌消防局新建工程",
+      "addr": "新北市鶯歌區文化路",
+      "stationId": "C0AD40",
+      "stationName": "鶯歌觀測站",
+      "stationDistKm": 0.56,
+      "weatherState": "晴",
+      "workerCount": 0,
+      "workerTrades": "今日 (115.11.11) 第1階段先行工程共同管溝v13.9圖審與開工前檢討 (0人)",
+      "materialItem": "無",
+      "category": "WEATHER_EXTENSION",
+      "rain24h": 0.0,
+      "rain1h": 0.0,
+      "windMs": 1.9,
+      "beaufort": 2,
+      "eligible": false,
+      "extDays": 0.0,
+      "badgeText": "晴 0mm",
+      "pillClass": "pill-cyan",
+      "rules": [
+        "符合勞安標準（無勞安缺失）"
+      ],
+      "note": "共同管溝深寬雙向漸變 v13.9 3D 拆解模擬器即時連動",
+      "__fromLiveCloudDb": true,
+      "__isAutoRolloverToday": false
     }
   ],
   "laborSummaryByProject": {
     "R2": {
       "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)",
-      "latestDate": "2026-11-10",
-      "latestRocDate": "115.11.10",
-      "todayWorkers": 11,
+      "latestDate": "2026-11-11",
+      "latestRocDate": "115.11.11",
+      "todayWorkers": 8,
       "toolboxWorkers": 8,
-      "report1500Workers": 11,
-      "photoBreakdown": "[1, 2, 2, 3]",
-      "photoCount": 4,
-      "yesterdayPredictedWorkers": 14,
-      "tomorrowPredictedWorkers": 12,
-      "tomorrowWorkScope": "1F補線 2F 3F 排水管打鑿配管 3F ACP修繕 3F查管路及修改敗管",
-      "todayWorkScope": "1F補線及隔間補線完成配管收尾、3F拉線查管（明日預計12人：1F補線 2F/3F排水管打鑿配管 3F ACP修繕）",
-      "todayBadgeText": "15:37 實到已同步",
-      "todayTradeTag": "水電 *11 (15:00實到｜晨間點名8人 [1,2,2,3])",
-      "todaySubText": "115.11.10 15:37回報實到 11 人（晨間工具箱 4 張 [1,2,2,3] 共 8 人）｜明日預計 12 人：1F補線 2F 3F 排水管打鑿配管 3F ACP修繕 3F查管路及修改敗管",
-      "cumulativeWorkers": 130,
-      "priorCumulativeWorkers": 119,
-      "currentMonthWorkers": 101,
-      "currentMonthDays": 10,
-      "workDaysCount": 13,
-      "dailyAvgWorkers": 10.0
+      "report1500Workers": null,
+      "photoBreakdown": "[5, 2, 1]",
+      "photoCount": 3,
+      "lastVerifiedDate": "2026-11-10",
+      "lastVerifiedRocDate": "115.11.10",
+      "lastVerifiedWorkers": 11,
+      "yesterdayPredictedWorkers": 12,
+      "tomorrowPredictedWorkers": 0,
+      "tomorrowWorkScope": "",
+      "todayWorkScope": "1F補線 2F 3F 排水管打鑿配管 3F ACP修繕 3F查管路及修改敗管",
+      "todayBadgeText": "今日點名已同步",
+      "todayTradeTag": "水電 *8 ([5, 2, 1] 共3張)",
+      "todaySubText": "115.11.11 現場工具箱點名合計 8 人 [5, 2, 1]（昨預計 12 人）｜今日施作：1F補線 2F 3F 排水管打鑿配管 3F ACP修繕 3F查管路及修改敗管",
+      "cumulativeWorkers": 138,
+      "priorCumulativeWorkers": 130,
+      "currentMonthWorkers": 109,
+      "currentMonthDays": 11,
+      "workDaysCount": 14,
+      "dailyAvgWorkers": 9.9
     },
     "R1": {
       "project": "桃園市八德區仁德國民小學新建校舍工程(第一期)",
@@ -1606,7 +1722,7 @@
       ]
     }
   },
-  "driveFingerprint": "S2_c886b13c1b9372",
+  "driveFingerprint": "S35_ebc3dff94461",
   "fourWayBoqSync": {
     "syncSchedule": {
       "cronExpressionTaipei": "0 0 * * * (每日 24:00 / 00:00 Asia/Taipei)",
