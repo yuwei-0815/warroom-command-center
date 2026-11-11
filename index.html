@@ -3106,6 +3106,10 @@ body.light-engineering .launcher-bar#mainNavigationButtonsBar {
 <button class="btn btn-emerald" id="btnHotUpdateBimNow" onclick="triggerWarRoomHotUpdateNow()" style="display:none !important;padding:7px 11px;font-size:0.76rem;" type="button">
  雲端熱更新同步 (S1版)
 </button>
+<span id="bim3dLoadedVersionBadge_S38" style="padding:5px 9px;border-radius:6px;background:rgba(15,23,42,0.78);border:1px solid rgba(148,163,184,0.35);color:#e2e8f0;font-size:0.73rem;font-weight:700;white-space:nowrap;">模型就緒</span>
+<button class="btn btn-emerald" id="btnForceReload3dModel_S38" onclick="forceReloadActive3dModelNow_S38()" style="padding:7px 12px;font-size:0.78rem;white-space:nowrap;" type="button">
+ 重新同步最新模型
+</button>
 <button class="btn btn-emerald" onclick="copyPublic3dShareUrl()" style="padding:7px 12px;font-size:0.78rem;" type="button">
  複製公開網址
 </button>
@@ -22861,22 +22865,25 @@ document.documentElement.setAttribute("data-release-version", "S2版");
 </script>
 
 
+
 <script>
-/* ==================== S3.7 DUAL-MODEL GITHUB & DRIVE HOT-UPDATE ENGINE ==================== */
-(function initWarRoomS37DualModelHotUpdateEngine() {
+/* ==================== S3.8 DUAL-MODEL GITHUB & DRIVE HOT-UPDATE ENGINE ==================== */
+(function initWarRoomS38DualModelHotUpdateEngine() {
   "use strict";
-  if (window.__WARROOM_S37_MODEL_HOT_SYNC_ACTIVE__) return;
-  window.__WARROOM_S37_MODEL_HOT_SYNC_ACTIVE__ = true;
-  window.__WARROOM_RELEASE_VERSION__ = "S3.7版";
-  document.documentElement.setAttribute("data-release-version", "S3.7版");
+  if (window.__WARROOM_S38_MODEL_HOT_SYNC_ACTIVE__) return;
+  window.__WARROOM_S38_MODEL_HOT_SYNC_ACTIVE__ = true;
+  window.__WARROOM_RELEASE_VERSION__ = "S3.8版";
+  document.documentElement.setAttribute("data-release-version", "S3.8版");
 
   var GH_OWNER = (window.V164_SYNC_CONFIG && window.V164_SYNC_CONFIG.githubOwner) || "yuwei-0815";
   var GH_WARROOM_REPO = "warroom-command-center";
   var GH_YINGGE_REPO = "yingge-fire-station-bim-teardown";
+  var MASTER_GAS_URL = (window.V164_SYNC_CONFIG && window.V164_SYNC_CONFIG.gasLiveApiUrl)
+    || "https://script.google.com/macros/s/AKfycbxRcVWuQzMEQWtGMd-PNqBr6ejcxjTvRLuxeRut38uwFFveHrPJDb6bbe3cRp4hkSXTsQ/exec";
 
   var modelSyncState = {
-    RENDE_2: { lastCheckMs: 0, hash: "", remoteLocked: false, inFlight: false },
-    YINGGE_FIRE: { lastCheckMs: 0, hash: "", remoteLocked: false, inFlight: false }
+    RENDE_2: { lastCheckMs: 0, hash: "", title: "", inFlight: false },
+    YINGGE_FIRE: { lastCheckMs: 0, hash: "", title: "", inFlight: false }
   };
 
   function hashModelStr_(s) {
@@ -22888,6 +22895,27 @@ document.documentElement.setAttribute("data-release-version", "S2版");
       h = (h * 0x01000193) >>> 0;
     }
     return h.toString(16) + "_" + str.length;
+  }
+
+  function extractModelShortTitle_(txt, projKey) {
+    var m = String(txt || "").slice(0, 4500).match(/<title>([^<]+)<\/title>/i);
+    var raw = m ? m[1].replace(/[\u2600-\u27BF]|[\uD83C-\uDBFF][\uDC00-\uDFFF]/g, "").trim() : "";
+    if (!raw) return projKey === "YINGGE_FIRE" ? "鶯歌 680m 共同管溝模型" : "仁德二期 3D 模型";
+    if (raw.length > 26) {
+      var vMatch = raw.match(/\b(V\d{2,4}|v\d+\.\d+)\b/);
+      if (vMatch) {
+        return (projKey === "YINGGE_FIRE" ? "鶯歌模型 " : "二期模型 ") + vMatch[1];
+      }
+      return raw.slice(0, 24) + "...";
+    }
+    return raw;
+  }
+
+  function setModelVersionBadge_(text) {
+    var el = document.getElementById("bim3dLoadedVersionBadge_S38");
+    if (el && el.textContent !== text) {
+      el.textContent = text;
+    }
   }
 
   function isComplete3dModelHtml_(txt) {
@@ -22918,12 +22946,45 @@ document.documentElement.setAttribute("data-release-version", "S2版");
     var sep = url.indexOf("?") === -1 ? "?" : "&";
     var opts = { method: "GET", cache: "no-store" };
     if (ctrl) opts.signal = ctrl.signal;
-    return fetch(url + sep + "_s37_ts=" + Date.now(), opts)
+    return fetch(url + sep + "_s38_ts=" + Date.now() + "_" + Math.floor(Math.random() * 10000), opts)
       .then(function(r) { return r.ok ? r.text() : Promise.reject(new Error("HTTP " + r.status)); })
       .finally(function() { clearTimeout(timer); });
   }
 
-  // Resolve newest Yingge source across warroom-command-center/yingge-3d-model.html and yingge-fire-station-bim-teardown/index.html
+  function pingGasDriveToGithubSync_(timeoutMs) {
+    return new Promise(function(resolve) {
+      var cbName = "__s38_m_cb_" + Date.now() + "_" + Math.floor(Math.random() * 10000);
+      var sc = document.createElement("script");
+      var done = false;
+      var t = setTimeout(function() {
+        if (done) return;
+        done = true;
+        cleanup();
+        resolve(null);
+      }, timeoutMs || 9000);
+      function cleanup() {
+        clearTimeout(t);
+        try { delete window[cbName]; } catch (_e) { window[cbName] = undefined; }
+        if (sc.parentNode) sc.parentNode.removeChild(sc);
+      }
+      window[cbName] = function(res) {
+        if (done) return;
+        done = true;
+        cleanup();
+        resolve(res);
+      };
+      sc.onerror = function() {
+        if (done) return;
+        done = true;
+        cleanup();
+        resolve(null);
+      };
+      var sep = MASTER_GAS_URL.indexOf("?") === -1 ? "?" : "&";
+      sc.src = MASTER_GAS_URL + sep + "action=autoSyncDriveToGithubS36&hotReload=1&callback=" + cbName + "&_t=" + Date.now();
+      document.head.appendChild(sc);
+    });
+  }
+
   function fetchNewestYinggeModelHtml_() {
     var warroomRaw = "https://raw.githubusercontent.com/" + GH_OWNER + "/" + GH_WARROOM_REPO + "/main/yingge-3d-model.html";
     var standaloneRaw = "https://raw.githubusercontent.com/" + GH_OWNER + "/" + GH_YINGGE_REPO + "/main/index.html";
@@ -22964,7 +23025,6 @@ document.documentElement.setAttribute("data-release-version", "S2版");
   }
 
   function fetchNewestRende2ModelHtml_() {
-    // Prioritize GitHub Raw main branch (0s CDN delay after commit!) -> same-origin GitHub Pages -> models/ fallback
     var candidates = [
       "https://raw.githubusercontent.com/" + GH_OWNER + "/" + GH_WARROOM_REPO + "/main/rende2-bim-model.html",
       "./rende2-bim-model.html",
@@ -22983,11 +23043,18 @@ document.documentElement.setAttribute("data-release-version", "S2版");
   }
 
   window.syncSingleModelOnDemand_V195 = function(projKey, forceNowOpt) {
+    if (projKey === "BADE_SOCIAL") {
+      setModelVersionBadge_("一期模型就緒");
+      return Promise.resolve(true);
+    }
     if (projKey !== "RENDE_2" && projKey !== "YINGGE_FIRE") return Promise.resolve(false);
     var st = modelSyncState[projKey];
     var now = Date.now();
     if (!forceNowOpt && st.inFlight) return Promise.resolve(false);
-    if (!forceNowOpt && st.lastCheckMs && (now - st.lastCheckMs < 15000)) return Promise.resolve(false);
+    if (!forceNowOpt && st.lastCheckMs && (now - st.lastCheckMs < 15000)) {
+      if (st.title) setModelVersionBadge_(st.title);
+      return Promise.resolve(false);
+    }
     st.lastCheckMs = now;
     st.inFlight = true;
 
@@ -22995,8 +23062,10 @@ document.documentElement.setAttribute("data-release-version", "S2版");
     return fetcher.then(function(txt) {
       st.inFlight = false;
       var newHash = hashModelStr_(txt);
+      var shortTitle = extractModelShortTitle_(txt, projKey);
+      var hms = new Date().toTimeString().slice(0, 8);
       st.hash = newHash;
-      st.remoteLocked = true;
+      st.title = shortTitle + " · " + hms.slice(0, 5);
 
       if (window.__LIVE_MODEL_CACHE_V192__ && window.__LIVE_MODEL_CACHE_V192__[projKey]) {
         window.__LIVE_MODEL_CACHE_V192__[projKey].html = txt;
@@ -23018,7 +23087,9 @@ document.documentElement.setAttribute("data-release-version", "S2版");
       if (overlay && overlay.classList.contains("active") && activeProj === projKey && iframeEl) {
         var mountedHash = iframeEl.getAttribute("data-mounted-hash") || "";
         updateExternalModelTabBlob_(txt);
-        if (mountedHash !== newHash) {
+        setModelVersionBadge_(st.title);
+        // Unconditionally remount when forceNowOpt === true OR when hash changed!
+        if (forceNowOpt || mountedHash !== newHash) {
           iframeEl.srcdoc = txt;
           iframeEl.setAttribute("data-mounted-proj", projKey);
           iframeEl.setAttribute("data-mounted-hash", newHash);
@@ -23031,31 +23102,80 @@ document.documentElement.setAttribute("data-release-version", "S2版");
     });
   };
 
-  // Hook BOTH openPublic3dModelViewer AND switchBim3dProjectModel so switching tabs ALWAYS checks GitHub for hot updates!
-  var _prevOpen3dS37 = window.openPublic3dModelViewer;
+  // Manual 1-Click Force Reload Handler in 3D Topbar ("重新同步最新模型")
+  window.forceReloadActive3dModelNow_S38 = function() {
+    var btn = document.getElementById("btnForceReload3dModel_S38");
+    var activeProj = window.__ACTIVE_BIM3D_PROJECT__ || window.bim3dCurrentProject || "RENDE_2";
+    if (btn) {
+      btn.disabled = true;
+      btn.textContent = "正在同步最新模型...";
+    }
+    setModelVersionBadge_("正在檢查雲端與 GitHub 最新版...");
+
+    // Step 1: Wake GAS Drive->GitHub auto-push so any new Drive .html is pushed first, then Step 2: Force pull from GitHub Raw!
+    return pingGasDriveToGithubSync_(8500)
+      .then(function() {
+        if (activeProj === "BADE_SOCIAL") {
+          var iframe1 = document.getElementById("rende2EmbeddedBimIframe");
+          if (iframe1 && window.__RENDE1_BUILTIN_BIM_HTML_V186__) {
+            iframe1.srcdoc = window.__RENDE1_BUILTIN_BIM_HTML_V186__;
+          }
+          return true;
+        }
+        return window.syncSingleModelOnDemand_V195(activeProj, true);
+      })
+      .then(function(ok) {
+        if (btn) {
+          btn.disabled = false;
+          btn.textContent = ok ? "已載入最新模型" : "重新同步最新模型";
+          setTimeout(function() {
+            if (btn && !btn.disabled) btn.textContent = "重新同步最新模型";
+          }, 2200);
+        }
+        if (typeof window.showToast === "function") {
+          window.showToast(ok ? "已強制重新抓取並掛載最新 3D 模型" : "目前無網路連線，維持快取模型顯示");
+        }
+        return ok;
+      })
+      .catch(function() {
+        if (btn) {
+          btn.disabled = false;
+          btn.textContent = "重新同步最新模型";
+        }
+        return false;
+      });
+  };
+
+  var _prevOpen3dS38 = window.openPublic3dModelViewer;
   window.openPublic3dModelViewer = function(projOpt) {
     var proj = projOpt || window.__ACTIVE_BIM3D_PROJECT__ || "RENDE_2";
-    var res = (typeof _prevOpen3dS37 === "function") ? _prevOpen3dS37.apply(this, arguments) : true;
+    var res = (typeof _prevOpen3dS38 === "function") ? _prevOpen3dS38.apply(this, arguments) : true;
     var iframeEl = document.getElementById("rende2EmbeddedBimIframe");
     if (iframeEl) {
       var curHtml = (proj === "YINGGE_FIRE")
         ? (window.__YINGGE_BUILTIN_BIM_HTML_V177__ || "")
         : (window.__RENDE2_DECOMPRESSED_HTML_V186__ || window.__RENDE2_FULL_BIM_HTML_CACHE__ || "");
-      if (curHtml) iframeEl.setAttribute("data-mounted-hash", hashModelStr_(curHtml));
+      if (curHtml) {
+        iframeEl.setAttribute("data-mounted-hash", hashModelStr_(curHtml));
+        setModelVersionBadge_(extractModelShortTitle_(curHtml, proj));
+      }
     }
     window.syncSingleModelOnDemand_V195(proj, false);
     return res;
   };
 
-  var _prevSwitch3dS37 = window.switchBim3dProjectModel;
+  var _prevSwitch3dS38 = window.switchBim3dProjectModel;
   window.switchBim3dProjectModel = function(projectKey) {
-    var res = (typeof _prevSwitch3dS37 === "function") ? _prevSwitch3dS37.apply(this, arguments) : true;
+    var res = (typeof _prevSwitch3dS38 === "function") ? _prevSwitch3dS38.apply(this, arguments) : true;
     var iframeEl = document.getElementById("rende2EmbeddedBimIframe");
     if (iframeEl) {
       var curHtml = (projectKey === "YINGGE_FIRE")
         ? (window.__YINGGE_BUILTIN_BIM_HTML_V177__ || "")
         : (window.__RENDE2_DECOMPRESSED_HTML_V186__ || window.__RENDE2_FULL_BIM_HTML_CACHE__ || "");
-      if (curHtml) iframeEl.setAttribute("data-mounted-hash", hashModelStr_(curHtml));
+      if (curHtml) {
+        iframeEl.setAttribute("data-mounted-hash", hashModelStr_(curHtml));
+        setModelVersionBadge_(extractModelShortTitle_(curHtml, projectKey));
+      }
     }
     window.syncSingleModelOnDemand_V195(projectKey, false);
     return res;
