@@ -23238,5 +23238,76 @@ document.documentElement.setAttribute("data-release-version", "S2版");
 })();
 </script>
 
+<!-- S5.0 Instant Clipboard Photo Paste & Canvas Downscale Accelerator -->
+<script id="s50ClientPasteAccelerator">
+(function() {
+  if (window.__S50_PASTE_ACCEL_READY__) return;
+  window.__S50_PASTE_ACCEL_READY__ = true;
+  window.compressImageBlobToFastJpegS50_ = function(fileOrBlob, maxDim, quality) {
+    maxDim = maxDim || 1440;
+    quality = quality || 0.84;
+    return new Promise(function(resolve, reject) {
+      if (!fileOrBlob) return reject(new Error("Empty image"));
+      var url = URL.createObjectURL(fileOrBlob);
+      var img = new Image();
+      img.onload = function() {
+        try {
+          var w = img.naturalWidth || img.width || 1;
+          var h = img.naturalHeight || img.height || 1;
+          var scale = Math.min(1, maxDim / Math.max(w, h));
+          var nw = Math.max(1, Math.round(w * scale));
+          var nh = Math.max(1, Math.round(h * scale));
+          var cvs = document.createElement("canvas");
+          cvs.width = nw;
+          cvs.height = nh;
+          var ctx = cvs.getContext("2d");
+          ctx.fillStyle = "#FFFFFF";
+          ctx.fillRect(0, 0, nw, nh);
+          ctx.drawImage(img, 0, 0, nw, nh);
+          var dataUrl = cvs.toDataURL("image/jpeg", quality);
+          URL.revokeObjectURL(url);
+          resolve(dataUrl);
+        } catch (err) {
+          URL.revokeObjectURL(url);
+          reject(err);
+        }
+      };
+      img.onerror = function(e) {
+        URL.revokeObjectURL(url);
+        reject(e);
+      };
+      img.src = url;
+    });
+  };
+
+  document.addEventListener("paste", function(ev) {
+    try {
+      var items = (ev.clipboardData || (ev.originalEvent && ev.originalEvent.clipboardData) || {}).items;
+      if (!items) return;
+      for (var i = 0; i < items.length; i++) {
+        if (items[i].type && items[i].type.indexOf("image/") === 0) {
+          var blob = items[i].getAsFile();
+          var activeFileInput = document.querySelector('input[type="file"][accept*="image"]:not([disabled])');
+          if (blob && activeFileInput && typeof DataTransfer !== "undefined") {
+            window.compressImageBlobToFastJpegS50_(blob, 1440, 0.84).then(function(dataUrl) {
+              var arr = dataUrl.split(","), bstr = atob(arr[1]), n = bstr.length, u8 = new Uint8Array(n);
+              while (n--) u8[n] = bstr.charCodeAt(n);
+              var fastFile = new File([u8], "pasted_" + Date.now() + ".jpg", { type: "image/jpeg" });
+              var dt = new DataTransfer();
+              dt.items.add(fastFile);
+              activeFileInput.files = dt.files;
+              activeFileInput.dispatchEvent(new Event("change", { bubbles: true }));
+              if (typeof window.showToast === "function") {
+                window.showToast("⚡ 已極速壓縮並貼上剪貼簿照片 (" + Math.round(u8.length / 1024) + " KB)");
+              }
+            }).catch(function() {});
+          }
+          break;
+        }
+      }
+    } catch (_ePaste) {}
+  }, false);
+})();
+</script>
 </body>
 </html>
