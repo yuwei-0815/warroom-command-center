@@ -1,3025 +1,453 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>鶯歌消防局專案（北區訓練中心）— 西側 680m 共同管溝 3D WebGL 施工與拆解模擬器</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>北區訓練中心共同管溝3D拆解模擬器 (鶯歌消防局案 TPFA115008｜v13.9 深寬雙向漸變＆臨時水電整合模型)</title>
 <style>
-  :root {
-    --bg-studio: #f6f5f0;
-    --bg-studio-edge: #e5e2d9;
-    --ink-dark: #0f172a;
-    --ink-slate: #334155;
-    --ink-muted: #64748b;
-    --card-bg: rgba(255, 255, 255, 0.92);
-    --card-border: rgba(15, 23, 42, 0.12);
-    --blue: #0284c7;
-    --emerald: #059669;
-    --amber: #d97706;
-    --rose: #e11d48;
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif; }
+  body { background: #070b14; color: #f1f5f9; width: 100vw; height: 100vh; overflow: hidden; display: flex; flex-direction: column; }
+  .yg-header {
+    min-height: 50px; background: rgba(15, 23, 42, 0.96); border-bottom: 1px solid rgba(56, 189, 248, 0.35);
+    display: flex; align-items: center; justify-content: space-between; padding: 6px 14px; gap: 8px; flex-wrap: wrap; z-index: 30;
   }
-  * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; font-family: 'Inter', 'Segoe UI', 'Microsoft JhengHei', sans-serif; }
-  html, body {
-    width: 100vw; height: 100vh; overflow: hidden;
-    background: radial-gradient(circle at 50% 42%, var(--bg-studio) 0%, var(--bg-studio-edge) 100%);
-    color: var(--ink-dark);
+  .yg-brand { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 900; color: #f8fafc; flex-wrap: wrap; }
+  .yg-repo-pill {
+    background: rgba(234, 88, 12, 0.2); border: 1px solid #f97316; color: #fdba74;
+    padding: 3px 9px; border-radius: 999px; font-size: 11px; font-weight: 800; text-decoration: none;
   }
-  .mono { font-family: 'JetBrains Mono', 'Consolas', monospace; font-variant-numeric: tabular-nums; }
-
-  /* 3D WebGL Stage & Overlays */
-  #webgl-container { position: fixed; inset: 0; z-index: 1; }
-  #blueprint-canvas { position: fixed; inset: 0; z-index: 4; display: none; background: #f6f5f0; }
-  #callout-svg { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 6; }
-  #pins-layer { position: fixed; inset: 0; pointer-events: none; z-index: 7; }
-
-  .spatial-pin {
-    position: absolute; transform: translate(-50%, -50%);
-    pointer-events: auto; cursor: pointer;
-    display: inline-flex; align-items: center; gap: 4px;
-    padding: 2px 8px; border-radius: 999px;
-    background: rgba(15, 23, 42, 0.86); color: #fff;
-    border: 1.5px solid #fff; font-size: 10px; font-weight: 700;
-    box-shadow: 0 3px 10px rgba(15, 23, 42, 0.18);
-    transition: transform 0.15s, background 0.15s; white-space: nowrap;
+  .yg-sync-pill {
+    background: rgba(16, 185, 129, 0.18); border: 1px solid #10b981; color: #6ee7b7;
+    padding: 3px 9px; border-radius: 999px; font-size: 11px; font-weight: 800;
   }
-  .spatial-pin:hover, .spatial-pin.active { background: var(--blue); transform: translate(-50%, -50%) scale(1.08); }
-  .spatial-pin.culvert-alert {
-    background: #dc2626; border-color: #fde047; color: #fff;
-    box-shadow: 0 0 14px rgba(220, 38, 38, 0.65);
+  .yg-bar { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
+  .yg-btn {
+    padding: 4px 9px; border-radius: 6px; border: 1px solid rgba(148, 163, 184, 0.3);
+    background: rgba(30, 41, 59, 0.85); color: #cbd5e1; font-size: 11.5px; font-weight: 800; cursor: pointer;
+    transition: all 0.14s;
   }
-  .spatial-pin .num {
-    width: 15px; height: 15px; border-radius: 50%;
-    background: rgba(255,255,255,0.22); display: inline-flex;
-    align-items: center; justify-content: center; font-size: 9px;
+  .yg-btn:hover { border-color: #38bdf8; color: #fff; }
+  .yg-btn.on { background: #0284c7; border-color: #38bdf8; color: #ffffff; box-shadow: 0 0 10px rgba(2,132,199,0.45); }
+  .yg-btn.warn { background: rgba(245, 158, 11, 0.2); border-color: #f59e0b; color: #fcd34d; }
+  .yg-main { flex: 1; display: grid; grid-template-columns: 310px 1fr 340px; position: relative; overflow: hidden; }
+  .yg-side {
+    background: rgba(15, 23, 42, 0.94); border-right: 1px solid rgba(148, 163, 184, 0.2);
+    padding: 12px; overflow-y: auto; z-index: 20;
   }
-
-  /* Top Floating Navigation Bar */
-  #top-bar {
-    position: fixed; top: 10px; left: 12px; right: 12px; z-index: 20;
-    display: flex; align-items: center; justify-content: space-between;
-    gap: 8px; pointer-events: none; flex-wrap: wrap;
+  .yg-side.right { border-right: 0; border-left: 1px solid rgba(148, 163, 184, 0.2); }
+  .yg-sec-title { font-size: 12px; font-weight: 900; color: #38bdf8; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
+  .yg-card { background: rgba(30, 41, 59, 0.72); border: 1px solid rgba(148, 163, 184, 0.22); border-radius: 8px; padding: 9px 10px; margin-bottom: 8px; }
+  .yg-item {
+    padding: 7px 9px; border-radius: 7px; background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(148, 163, 184, 0.2);
+    margin-bottom: 6px; cursor: pointer; transition: all 0.14s;
   }
-  .glass-pill {
-    pointer-events: auto;
-    background: var(--card-bg);
-    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-    border: 1px solid var(--card-border);
-    box-shadow: 0 6px 22px rgba(15, 23, 42, 0.07);
-    border-radius: 999px; padding: 4px 6px;
-    display: flex; align-items: center; gap: 4px; flex-wrap: wrap;
+  .yg-item:hover, .yg-item.active { border-color: #38bdf8; background: rgba(2, 132, 199, 0.22); }
+  .yg-stage { position: relative; width: 100%; height: 100%; background: radial-gradient(circle at 50% 40%, #111c33 0%, #060a12 100%); overflow: hidden; }
+  #ygCanvas { width: 100%; height: 100%; display: block; cursor: grab; }
+  #ygCanvas:active { cursor: grabbing; }
+  .yg-overlay-table {
+    display: none; position: absolute; inset: 14px; background: rgba(15, 23, 42, 0.97);
+    border: 1px solid #38bdf8; border-radius: 10px; z-index: 25; flex-direction: column; overflow: hidden;
+    box-shadow: 0 20px 45px rgba(0,0,0,0.65);
   }
-  .pill-btn {
-    padding: 5px 10px; border-radius: 999px; border: 1px solid transparent;
-    background: transparent; color: var(--ink-slate);
-    font-size: 11px; font-weight: 700; cursor: pointer; transition: 0.15s; white-space: nowrap;
-  }
-  .pill-btn:hover { background: rgba(15, 23, 42, 0.06); color: var(--ink-dark); }
-  .pill-btn.active { background: var(--ink-dark); color: #fff; box-shadow: 0 2px 8px rgba(15, 23, 42, 0.2); }
-  .pill-btn.amber.active { background: #d97706; color: #fff; }
-  .pill-btn.blue.active { background: var(--blue); color: #fff; }
-  .pill-btn.gh-btn { background: #059669; color: #fff; font-weight: 800; }
-  .pill-btn.gh-btn:hover { background: #047857; }
-
-  /* Left Floating Panel */
-  #left-card {
-    position: fixed; top: 58px; left: 12px; width: 258px;
-    max-height: calc(100vh - 132px); z-index: 15;
-    background: var(--card-bg); backdrop-filter: blur(14px);
-    border: 1px solid var(--card-border); border-radius: 14px;
-    padding: 10px; display: flex; flex-direction: column; gap: 7px;
-    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.07); overflow-y: auto;
-  }
-  .sec-hdr {
-    font-size: 10px; font-weight: 800; color: var(--ink-muted);
-    letter-spacing: 0.4px; border-bottom: 1px solid rgba(15,23,42,0.08);
-    padding-bottom: 3px; display: flex; justify-content: space-between; align-items: center;
-  }
-  .seg-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3.5px; }
-  .seg-cell {
-    padding: 4px 2px; border-radius: 6px; border: 1px solid rgba(15,23,42,0.1);
-    background: rgba(255,255,255,0.75); cursor: pointer; text-align: center;
-    font-size: 10px; font-weight: 800; color: var(--ink-slate); transition: 0.12s;
-  }
-  .seg-cell:hover { border-color: var(--ink-dark); background: #fff; }
-  .seg-cell.active { background: var(--ink-dark); color: #fff; border-color: var(--ink-dark); }
-  .seg-cell.culv-cell { border: 1.5px solid #f59e0b; background: #fffbeb; }
-  .seg-cell.culv-cell.active { background: #d97706; color: #fff; border-color: #b45309; }
-  .seg-cell span { display: block; font-size: 8.5px; font-weight: 700; opacity: 0.85; }
-
-  .osha-status-box {
-    background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px;
-    padding: 6px 8px; font-size: 10px; line-height: 1.45; color: #78350f;
-  }
-  .osha-item { display: flex; justify-content: space-between; align-items: center; padding: 1.5px 0; }
-  .osha-tag-on { color: #059669; font-weight: 800; }
-  .osha-tag-removing { color: #d97706; font-weight: 800; }
-  .osha-tag-off { color: #94a3b8; text-decoration: line-through; }
-
-  .layer-list { display: flex; flex-direction: column; gap: 2.5px; }
-  .layer-item {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 4px 7px; border-radius: 6px; border: 1px solid rgba(15,23,42,0.07);
-    background: rgba(255,255,255,0.68); cursor: pointer; font-size: 10px; font-weight: 700;
-    color: var(--ink-slate); transition: 0.12s;
-  }
-  .layer-item:hover { background: #fff; }
-  .layer-item.active { background: #e0f2fe; border-color: #0284c7; color: #0369a1; }
-  .layer-dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; margin-right: 5px; }
-
-  .st-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px; }
-  .st-btn {
-    padding: 4px 5px; border-radius: 6px; border: none; cursor: pointer;
-    font-size: 10px; font-weight: 800; color: #fff; transition: opacity 0.15s;
-  }
-  .st-btn:hover { opacity: 0.9; }
-
-  /* Right Floating Panel */
-  #right-card {
-    position: fixed; top: 58px; right: 12px; width: 266px;
-    max-height: calc(100vh - 132px); z-index: 15;
-    background: var(--card-bg); backdrop-filter: blur(14px);
-    border: 1px solid var(--card-border); border-radius: 14px;
-    padding: 10px; display: flex; flex-direction: column; gap: 7px;
-    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.07); overflow-y: auto;
-  }
-  .verify-banner {
-    background: #ecfdf5; border: 1px solid #10b981; color: #065f46;
-    border-radius: 8px; padding: 5px 8px; font-size: 10.5px; font-weight: 800;
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .qto-box {
-    background: rgba(248, 250, 252, 0.9); border: 1px solid rgba(15,23,42,0.08);
-    border-radius: 8px; padding: 6px 8px; font-size: 10px; line-height: 1.48;
-  }
-  .qto-row { display: flex; justify-content: space-between; border-bottom: 1px dashed rgba(15,23,42,0.07); padding: 2px 0; }
-  .qto-row:last-child { border-bottom: none; }
-  .canvas-box {
-    background: #fff; border: 1px solid rgba(15,23,42,0.1);
-    border-radius: 8px; padding: 3px; text-align: center;
-  }
-
-  /* Bottom Floating Pill Dock (Clean, no extra bottom text banner) */
-  #bottom-dock {
-    position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%);
-    z-index: 20; width: min(1140px, 96vw);
-    background: var(--card-bg); backdrop-filter: blur(16px);
-    border: 1px solid var(--card-border); border-radius: 16px;
-    padding: 7px 12px; box-shadow: 0 10px 28px rgba(15, 23, 42, 0.12);
-    display: flex; flex-direction: column; gap: 5px;
-  }
-  .dock-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
-  .step-strip { display: flex; gap: 3px; overflow-x: auto; flex: 1; padding-bottom: 2px; }
-  .step-pill {
-    padding: 4px 7px; border-radius: 999px; border: 1px solid rgba(15,23,42,0.12);
-    background: rgba(255,255,255,0.85); color: var(--ink-slate);
-    font-size: 10px; font-weight: 700; cursor: pointer; white-space: nowrap; transition: 0.12s;
-  }
-  .step-pill.active { background: var(--blue); color: #fff; border-color: var(--blue); }
-  .slider-group { display: flex; align-items: center; gap: 5px; font-size: 10px; font-weight: 800; color: var(--ink-slate); }
-  input[type=range] { accent-color: var(--ink-dark); width: 70px; cursor: pointer; }
-
-  /* GitHub Remote Sync Modal */
-  #gh-modal {
-    display: none; position: fixed; inset: 0; z-index: 100;
-    background: rgba(15, 23, 42, 0.48); backdrop-filter: blur(6px);
-    align-items: center; justify-content: center;
-  }
-  .modal-card {
-    width: min(560px, 92vw); background: #fff; border: 1px solid rgba(15,23,42,0.15);
-    border-radius: 16px; padding: 18px; box-shadow: 0 24px 48px rgba(15,23,42,0.22);
-    color: var(--ink-dark);
-  }
-  .modal-input {
-    width: 100%; padding: 8px 10px; border-radius: 8px; border: 1px solid #cbd5e1;
-    font-size: 12px; margin: 6px 0 10px 0;
-  }
-  .modal-log {
-    background: #0f172a; color: #38bdf8; border-radius: 8px; padding: 10px;
-    height: 155px; overflow-y: auto; font-size: 11px; line-height: 1.5; margin-top: 8px;
-  }
-
-  /* War Room Repaired Tabs Overlay (Materials & Requisition / Quality & Safety) */
-  #warroom-repair-overlay {
-    display: none; position: fixed; inset: 0; z-index: 55;
-    background: #f8fafc; color: #0f172a; overflow-y: auto;
-    padding: 68px 24px 90px 24px;
-  }
-  .wr-header-bar {
-    background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px;
-    padding: 12px 18px; display: flex; align-items: center; justify-content: space-between;
-    box-shadow: 0 4px 14px rgba(15,23,42,0.04); margin-bottom: 14px; flex-wrap: wrap; gap: 10px;
-  }
-  .wr-nav-tabs { display: flex; gap: 6px; flex-wrap: wrap; }
-  .wr-tab-btn {
-    padding: 7px 14px; border-radius: 8px; border: 1px solid #cbd5e1;
-    background: #fff; color: #334155; font-size: 12px; font-weight: 800; cursor: pointer;
-    transition: 0.15s;
-  }
-  .wr-tab-btn.active {
-    background: #eff6ff; color: #1d4ed8; border-color: #2563eb;
-    box-shadow: 0 2px 8px rgba(37,99,235,0.15);
-  }
-  .wr-kpi-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-    gap: 12px; margin-bottom: 16px;
-  }
-  .wr-kpi-card {
-    background: #fff; border: 1px solid #e2e8f0; border-radius: 12px;
-    padding: 14px 16px; box-shadow: 0 2px 8px rgba(15,23,42,0.03);
-  }
-  .wr-table-card {
-    background: #fff; border: 1px solid #e2e8f0; border-radius: 12px;
-    padding: 16px; box-shadow: 0 4px 14px rgba(15,23,42,0.04); margin-bottom: 18px; overflow-x: auto;
-  }
-  .wr-table { width: 100%; border-collapse: collapse; font-size: 12px; }
-  .wr-table th {
-    background: #f1f5f9; color: #334155; text-align: left; padding: 9px 10px;
-    font-weight: 800; border-bottom: 2px solid #cbd5e1; white-space: nowrap;
-  }
-  .wr-table td {
-    padding: 9px 10px; border-bottom: 1px solid #e2e8f0; color: #1e293b; vertical-align: middle;
-  }
-  .wr-table tr:hover td { background: #f8fafc; }
-  .wr-badge {
-    display: inline-block; padding: 2px 8px; border-radius: 999px;
-    font-size: 10.5px; font-weight: 800; white-space: nowrap;
-  }
-
-  /* Refined Thin Scrollbars & Non-Blocking Studio Toast */
-  #left-card::-webkit-scrollbar, #right-card::-webkit-scrollbar, .step-strip::-webkit-scrollbar { width: 4px; height: 4px; }
-  #left-card::-webkit-scrollbar-thumb, #right-card::-webkit-scrollbar-thumb, .step-strip::-webkit-scrollbar-thumb {
-    background: rgba(15, 23, 42, 0.18); border-radius: 99px;
-  }
-  #studio-toast {
-    position: fixed; top: 58px; left: 50%; transform: translateX(-50%) translateY(-8px);
-    z-index: 90; pointer-events: none; opacity: 0;
-    background: rgba(15, 23, 42, 0.90); color: #fff;
-    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    padding: 6px 14px; border-radius: 999px;
-    font-size: 11px; font-weight: 700; white-space: nowrap;
-    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.18);
-    transition: opacity 0.2s ease, transform 0.2s ease;
-  }
-  #studio-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-
-  @media (max-width: 1050px) {
-    #left-card, #right-card { width: 220px; font-size: 9.5px; }
-  }
-  @media (max-width: 760px) {
-    #left-card, #right-card { width: 192px; padding: 7px; top: 92px; max-height: calc(100vh - 176px); }
-    .pill-btn { padding: 4px 8px; font-size: 10px; }
+  .yg-overlay-table.show { display: flex; }
+  table.yg-tbl { width: 100%; border-collapse: collapse; font-size: 12px; color: #e2e8f0; }
+  table.yg-tbl th, table.yg-tbl td { border-bottom: 1px solid rgba(148, 163, 184, 0.2); padding: 8px 10px; text-align: left; }
+  table.yg-tbl th { background: rgba(30, 41, 59, 0.95); color: #38bdf8; font-weight: 900; position: sticky; top: 0; }
+  .yg-hud-foot {
+    position: absolute; left: 12px; bottom: 12px; background: rgba(15, 23, 42, 0.92);
+    border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 8px; padding: 7px 11px; font-size: 11px; color: #cbd5e1;
   }
 </style>
 </head>
 <body>
-
-  <!-- 1. 3D WebGL Stage & 2D Blueprint Sheet & SVG Callouts -->
-  <div id="webgl-container"></div>
-  <canvas id="blueprint-canvas"></canvas>
-  <svg id="callout-svg" xmlns="http://www.w3.org/2000/svg"></svg>
-  <div id="pins-layer"></div>
-
-  <!-- 1B. War Room Material & Quality Repair Center Overlay -->
-  <div id="warroom-repair-overlay"></div>
-
-  <!-- 2. Top Navigation Bar (Exact Image 3 Pill Layout + War Room Quick Repair Preview) -->
-  <div id="top-bar">
-    <div class="glass-pill">
-      <button class="pill-btn" id="dim-seq" onclick="setDimension('seq')">01 單段12步施工動畫 (配合澆置撤職安衛)</button>
-      <button class="pill-btn active" id="dim-overview" onclick="setDimension('overview')">00 全段 680m 總覽 & 全線推進施工動畫</button>
-      <button class="pill-btn amber" id="dim-culv" onclick="setDimension('culv')">02 穿越涵管處12步施工動畫 (09A-09B上下凹折)</button>
-      <button class="pill-btn" id="dim-full" onclick="setDimension('full')">03 全段完成展開圖 (8層爆炸+標示說明)</button>
-      <button class="pill-btn blue" id="btn-2d-sheet" onclick="toggleBlueprintSheet()">04 全段12斷面1:1管位總表+縱斷面詳圖</button>
-      <button class="pill-btn" id="btn-wr-preview" style="background:#eff6ff;color:#1d4ed8;border:1px solid #93c5fd;" onclick="openWarRoomTabPreview('materials')">🏢 戰情室材料/品質分頁 (已修復)</button>
+  <div class="yg-header">
+    <div class="yg-brand">
+      <span>🚒 北區訓練中心共同管溝3D拆解模擬器 (鶯歌消防局案 TPFA115008｜v13.9 深寬雙向漸變 8 斷面 × 六大建築群)</span>
+      <a class="yg-repo-pill" href="https://sites.google.com/d/1WnxKJgOfCzR5Y1FOWcZniRT5GGCLwLy-/edit" target="_blank" rel="noopener">🌐 開啟 Google Sites 3D 拆解模擬器</a>
+      <span class="yg-sync-pill" id="ygLiveBadge">✅ v13.9 最新同步 (50正式管+6暗埋臨水電｜土方省30.4%・混凝土省43.3%・門型架省42.6%・鋼板樁省30.3%・工程費省278.7萬)</span>
     </div>
-
-    <div class="glass-pill">
-      <button class="pill-btn active" id="vm-solid" onclick="setViewStyle('solid')">Solid 實體</button>
-      <button class="pill-btn" id="vm-xray" onclick="setViewStyle('xray')">X-Ray 透視</button>
-      <button class="pill-btn" onclick="resetCamera()">🧭 視角復位</button>
-      <button class="pill-btn" id="btn-sound" onclick="toggleSound()">🔊 音效</button>
-      <button class="pill-btn gh-btn" onclick="openGhModal()">🚀 GitHub 雙倉同步</button>
+    <div class="yg-bar">
+      <button class="yg-btn warn" id="btnExplode" onclick="toggleExplodeFloors()">💥 斷面與樓層爆炸拆解</button>
+      <button class="yg-btn on" id="btnMode_bldg3d" onclick="switchMode('bldg3d')">🏛️ 全區 6 大建築群 & 680m 管溝 3D</button>
+      <button class="yg-btn" id="btnMode_floor3d" onclick="switchMode('floor3d')">📐 共同管溝 8 斷面雙向漸變 3D</button>
+      <button class="yg-btn" id="btnMode_pipeboq" onclick="switchMode('pipeboq')">📏 8斷面深寬漸變 & 50+6管總表 (OPT-01)</button>
+      <button class="yg-btn" id="btnMode_walk" onclick="switchMode('walk')">🚶 管溝內部巡檢視角</button>
+      <button class="yg-btn" id="btnMode_qty9" onclick="switchMode('qty9')">📊 臨時水電總表 (SPEC-01: 7盤/6管/12燈/12CCTV)</button>
+      <button class="yg-btn" id="btnMode_a6door" onclick="switchMode('a6door')">🌿 景觀管線專表 (EL1/EL2/R1/EMS/SP)</button>
+      <button class="yg-btn" id="btnMode_singleline" onclick="switchMode('singleline')">⚡ 雙迴路引進 & 7座臨電盤單線表</button>
+      <button class="yg-btn" id="btnMode_approval" onclick="switchMode('approval')">💰 v13.9 預算節省與 VE 檢核表</button>
     </div>
   </div>
 
-  <!-- 3. Left Floating Panel -->
-  <div id="left-card">
-    <div class="sec-hdr">
-      <span>🎯 全段施工波與穿越涵管鏡頭控制</span>
-      <span class="mono" style="color:var(--amber);">STA 0+410</span>
-    </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;">
-      <button class="pill-btn" style="padding:4px;font-size:10px;background:#0f172a;color:#fff;" onclick="focusFullCorridor()">🌐 全段 680m 總覽</button>
-      <button class="pill-btn" style="padding:4px;font-size:10px;background:#d97706;color:#fff;border-color:#b45309;" onclick="focusCulvertCrossing()">⚠️ 聚焦穿越涵管處</button>
-      <button class="pill-btn" id="btn-ov-wave" style="padding:4px;font-size:10px;background:#0284c7;color:#fff;border-color:#0369a1;" onclick="toggleOverviewWaveMode()">🎬 全線推進波: 開</button>
-      <button class="pill-btn" id="btn-follow-wave" style="padding:4px;font-size:10px;background:#f1f5f9;color:#0f172a;" onclick="toggleFollowWaveCam()">🎥 追蹤施工波前: 關</button>
-    </div>
-
-    <div class="sec-hdr">
-      <span>🛡️ 職安衛設施配合澆置進度撤除看板</span>
-      <span class="mono" id="osha-stage-tag" style="color:#d97706;">Step 01</span>
-    </div>
-    <div class="osha-status-box" id="osha-status-card"></div>
-
-    <div class="sec-hdr">
-      <span>📍 12 區段選擇 (S08 為穿越涵管處)</span>
-      <span class="mono" style="color:var(--emerald);">✅100%一致</span>
-    </div>
-    <div class="seg-grid" id="seg-grid"></div>
-
-    <div class="sec-hdr">
-      <span>🦺 職安衛設施與高程結構分層檢視</span>
-      <span class="mono" id="layer-tag">ALL</span>
-    </div>
-    <div class="layer-list" id="layer-list"></div>
-
-    <div class="sec-hdr">
-      <span>📡 戰情室 4D 狀態派工 (雙向熱更新)</span>
-      <span class="mono" id="st-badge-mini">ACTIVE</span>
-    </div>
-    <div class="st-grid">
-      <button class="st-btn" style="background:#059669" onclick="dispatch4D('DONE')">🟢 100% 完工</button>
-      <button class="st-btn" style="background:#0284c7" onclick="dispatch4D('ACTIVE')">🔵 分區澆置中</button>
-      <button class="st-btn" style="background:#d97706" onclick="dispatch4D('WATCH')">🟠 過涵洞監控</button>
-      <button class="st-btn" style="background:#e11d48" onclick="dispatch4D('SHORTAGE')">🔴 斷料 &lt;25%</button>
-    </div>
-  </div>
-
-  <!-- 4. Right Floating Panel -->
-  <div id="right-card">
-    <div class="verify-banner">
-      <span>✅ 3D 實繪管數 = 圖說管數 (100% 一致)</span>
-      <span class="mono" id="verify-count-badge">S03: 50/50 支</span>
-    </div>
-
-    <div class="sec-hdr">
-      <span>🔬 1:1 橫斷面預鑄 RC 半圓凹槽核對</span>
-      <span class="mono" id="sec-dim-tag">W2.40×H2.00m</span>
-    </div>
-    <div class="canvas-box">
-      <canvas id="c2d" width="244" height="118" style="width:244px;height:118px;"></canvas>
-    </div>
-
-    <div class="sec-hdr" style="color:#b45309;">
-      <span>⚠️ 穿越涵管處 (09A-09B) 上下凹折放大鏡</span>
-      <span class="mono" style="color:#d97706;cursor:pointer;text-decoration:underline;" onclick="setDimension('culv')">12步動畫 ➔</span>
-    </div>
-    <div class="canvas-box" style="border-color:#f59e0b;background:#fffbeb;">
-      <canvas id="c-culv-pip" width="244" height="96" style="width:244px;height:96px;cursor:pointer;" onclick="setDimension('culv')"></canvas>
-    </div>
-
-    <div class="sec-hdr">
-      <span>📊 區段規格與工程數量明細 (QTO)</span>
-      <span class="mono" id="qto-seg-tag">STA 0+120~0+180</span>
-    </div>
-    <div class="qto-box" id="qto-card"></div>
-
-    <div class="sec-hdr">
-      <span>📈 單步進度 / A區➔B區➔C區 CLSM 澆置波前</span>
-      <span class="mono" id="wave-pct-tag">Step 01</span>
-    </div>
-    <canvas id="c-strip" width="244" height="34" style="width:244px;height:34px;background:#fff;border:1px solid rgba(15,23,42,0.1);border-radius:6px;"></canvas>
-  </div>
-
-  <!-- 5. Bottom Floating Control Dock (No bottom Chinese subtitle banner) -->
-  <div id="bottom-dock">
-    <div class="dock-top">
-      <button class="pill-btn active" id="btn-play" onclick="togglePlay()">⏸ 暫停</button>
-      <button class="pill-btn" id="btn-loop-mode" onclick="toggleStepAdvanceMode()" style="background:#059669;color:#fff;border-color:#047857;">🔁 01➔12 連續推進</button>
-      <div class="step-strip" id="step-strip"></div>
-      <div class="slider-group">
-        <span>💥 Explode 爆炸</span>
-        <input type="range" id="sl-explode" min="0" max="100" value="0" oninput="setExplode(this.value)">
-        <span class="mono" id="val-explode" style="min-width:26px;">0%</span>
+  <div class="yg-main">
+    <div class="yg-side">
+      <div class="yg-sec-title"><span>📐 建築群樓層與共同管溝切換</span><span>TPFA115008</span></div>
+      <div class="yg-bar" style="margin-bottom:10px;">
+        <button class="yg-btn on" id="flBtn_ALL" onclick="selectFloor('ALL')">全區總覽</button>
+        <button class="yg-btn" id="flBtn_FF" onclick="selectFloor('FF')">B2F~B1F 筏基水池&680m管溝</button>
+        <button class="yg-btn" id="flBtn_1F" onclick="selectFloor('1F')">1F 救災車庫&C-01鋼棚</button>
+        <button class="yg-btn" id="flBtn_2F" onclick="selectFloor('2F')">2F 應變指揮&工務所</button>
+        <button class="yg-btn" id="flBtn_3F" onclick="selectFloor('3F')">3F 化災A-04大樓</button>
+        <button class="yg-btn" id="flBtn_4F" onclick="selectFloor('4F')">4F~8F 主建物&訓練塔</button>
+        <button class="yg-btn" id="flBtn_RF" onclick="selectFloor('RF')">RF 防災微電網&水箱</button>
       </div>
-      <div class="slider-group">
-        <span>✂️ Cutaway 剖面</span>
-        <input type="range" id="sl-cut" min="0" max="100" value="0" oninput="setCutaway(this.value)">
-        <span class="mono" id="val-cut" style="min-width:26px;">0%</span>
+
+      <div class="yg-sec-title"><span>🔧 共同管溝系統圖層開關</span><span>50正式+6臨水電</span></div>
+      <div class="yg-card" style="font-size:11.5px;line-height:1.8;">
+        <label style="display:flex;justify-content:space-between;cursor:pointer;"><span>🟡 左下電力區 (24支: 雙迴路+EL1/EL2景觀)</span><input type="checkbox" checked onchange="setSys('EP',this.checked)"></label>
+        <label style="display:flex;justify-content:space-between;cursor:pointer;"><span>🟣 左上弱電區 (16支: 電信光纖+EMS/SP景觀)</span><input type="checkbox" checked onchange="setSys('TI',this.checked)"></label>
+        <label style="display:flex;justify-content:space-between;cursor:pointer;"><span>🔴 右槽消防/自來水/雨水 (10支: 含R1噴灌)</span><input type="checkbox" checked onchange="setSys('FP',this.checked)"></label>
+        <label style="display:flex;justify-content:space-between;cursor:pointer;"><span>🟢 施工期暗埋臨時水電 (6支: TP1/TP2/TT1/TL1/TW1/TD1)</span><input type="checkbox" checked onchange="setSys('AC',this.checked)"></label>
+        <label style="display:flex;justify-content:space-between;cursor:pointer;"><span>🔵 車道東側 620m 基地內主溝 (21支4"雨排+39座人手孔)</span><input type="checkbox" checked onchange="setSys('WE',this.checked)"></label>
+      </div>
+
+      <div class="yg-sec-title"><span>🛣️ v13.9 深寬雙向階梯漸變 8 大斷面</span><span>680m (-34.1%工程費)</span></div>
+      <div id="ygTrenchList"></div>
+    </div>
+
+    <div class="yg-stage">
+      <canvas id="ygCanvas"></canvas>
+      <div class="yg-overlay-table" id="ygOverlayModal">
+        <div style="padding:10px 14px;background:#0f172a;border-bottom:1px solid #38bdf8;display:flex;justify-content:space-between;align-items:center;">
+          <span id="ygOverlayTitle" style="font-weight:900;font-size:13.5px;color:#38bdf8;">📊 鶯歌消防局 (TPFA115008 v13.9) 共同管溝深寬雙向漸變與臨時水電總表</span>
+          <button class="yg-btn" onclick="switchMode('bldg3d')">✕ 返回 3D 拆解視圖</button>
+        </div>
+        <div style="flex:1;overflow:auto;padding:12px;" id="ygOverlayBody"></div>
+      </div>
+      <div class="yg-hud-foot">
+        🖱️ <strong>3D 拆解導覽：</strong>左鍵拖曳 360° 旋轉 ｜ 滾輪縮放 ｜ 點擊左側「斷面1~斷面8」可檢視長管升頂減排 (省深58cm) 與臨水電貼東內縮 (省寬135cm) 斷面構造
       </div>
     </div>
-    <div style="width:100%;height:4px;background:rgba(15,23,42,0.08);border-radius:99px;overflow:hidden;">
-      <div id="step-prog-bar" style="height:100%;width:15%;background:linear-gradient(90deg,#0284c7,#10b981);"></div>
-    </div>
-  </div>
 
-  <div id="studio-toast" role="status" aria-live="polite"></div>
-
-  <!-- 6. GitHub Remote Dual-Repo Auto-Sync & War Room Repair Modal -->
-  <div id="gh-modal">
-    <div class="modal-card">
-      <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e2e8f0;padding-bottom:8px;">
-        <strong style="font-size:14px;">🚀 遠端自動同步 GitHub (`yuwei-0815`) 並修復戰情室三大問題</strong>
-        <button onclick="closeGhModal()" style="border:none;background:#f1f5f9;padding:4px 8px;border-radius:6px;cursor:pointer;font-weight:800;">✕</button>
+    <div class="yg-side right">
+      <div class="yg-sec-title"><span>📋 斷面排管結構與配電盤導引</span><span id="ygCurrentTag">v13.9 全區總覽</span></div>
+      <div class="yg-card" id="ygFocusCard" style="font-size:11.5px;line-height:1.6;color:#e2e8f0;">
+        <div style="font-weight:900;color:#38bdf8;font-size:12.5px;margin-bottom:4px;">🚒 北區複合型災害應變暨訓練中心 (TPFA115008 v13.9)</div>
+        • <strong>基地與建築群：</strong>面積 <code>17,880.63 m²</code>，三階整地南高北低（GL+44.54m ➔ +43.95m ➔ +43.20m），涵蓋六大建築群與 B-03 滯洪池（<code>&gt;1,850 m³</code>）<br>
+        • <strong>共同管溝雙向漸變 (v13.9)：</strong>全長 <code>680m</code>、優化人手孔 <code>39 座</code>（減省15座），最高峰 <code>03</code> 節點 <strong>50 支正式管＋6 支暗埋臨水電</strong>；採「長管升頂減排法」與「暗埋臨水電緊貼東緣內縮法」，開挖寬度由 <code>2.40m ➔ 1.05m</code>、深度由 <code>2.00m ➔ 1.42m</code><br>
+        • <strong>直接工程費節省：</strong>土方減省 <strong>-30.4%</strong>（<code>1,652.9 m³</code>）、混凝土減省 <strong>-43.3%</strong>（<code>542.5 m³</code>），直接工程費由 <code>817.1 萬</code> 降至 <strong><code>538.4 萬元</code>（再省 <code>278.7 萬元 / -34.1%</code>）</strong>！
       </div>
-      <div style="font-size:11.5px;color:#334155;margin-top:8px;line-height:1.55;background:#f8fafc;padding:8px 10px;border-radius:8px;border:1px solid #e2e8f0;">
-        <strong>一鍵透過 GitHub REST API 遠端執行以下 3 項修正：</strong><br>
-        1. <strong>統一第三圖樣式 3D 模型</strong>：將本頁 Light Studio 淺色建築工作坊 3D WebGL 模型同步覆寫至 <code>yingge-fire-station-bim-teardown</code> 與 <code>warroom-command-center/models/yingge/index.html</code>，徹底替換戰情室內的舊版深色疊盒模型。<br>
-        2. <strong>修復戰情室「材料與請款」空白</strong>：自動注入 <code>warroom_v186_full_patch.js</code> 至戰情室 <code>index.html</code>，解除隱藏樣式並渲染 MAT-01~19 十九冊送審與計價請款總表。<br>
-        3. <strong>修復戰情室「品質與勞安」空白</strong>：自動渲染 NCR 品質缺失四頁閉環追蹤與職安衛缺失（無改善狀態獨立統計）戰情看板。
-      </div>
-      <input type="password" id="gh-pat-input" class="modal-input mono" placeholder="貼上 GitHub Personal Access Token (ghp_... 或 github_pat_...)">
-      <div style="display:flex;gap:8px;flex-wrap:wrap;">
-        <button onclick="executeRemoteGitHubSync()" style="flex:1;padding:8px 12px;border-radius:8px;border:none;background:#059669;color:#fff;font-weight:800;cursor:pointer;">⚡ 立即遠端修正 GitHub 雙倉與戰情室</button>
-        <button onclick="closeGhModal();openWarRoomTabPreview('materials');" style="padding:8px 12px;border-radius:8px;border:1px solid #2563eb;background:#eff6ff;color:#1d4ed8;cursor:pointer;font-weight:800;">🏢 先預覽已修復之材料/品質分頁</button>
-        <button onclick="closeGhModal()" style="padding:8px 12px;border-radius:8px;border:1px solid #cbd5e1;background:#fff;cursor:pointer;font-weight:700;">關閉</button>
-      </div>
-      <div id="gh-log" class="modal-log mono">等待執行遠端 GitHub API 雙倉同步與戰情室修補指令...</div>
+      <div class="yg-sec-title" style="margin-top:8px;"><span>⚡ 施工期 7 座臨電盤 & 正式主盤清冊</span><span>SPEC-01 / TEMP-01</span></div>
+      <div id="ygPanelList"></div>
     </div>
   </div>
 
 <script>
-const GITHUB_OWNER = 'yuwei-0815';
-const BIM_REPO     = 'yingge-fire-station-bim-teardown';
-const WARROOM_REPO = 'warroom-command-center';
-
-const SEGS = [
-  {id:'S01', zone:'北段', sta:'0+000~0+060', len:60, w:1.15, h:1.42, tiers:1, racks:28, mh:2, pipes:9,  r3:3,  r2:0,  r1:2,  sw:1, w1:2, tw:1, st:'DONE',   desc:'MH-01 北端起點暨北警衛室分支 (雙向漸變北翼免樁・1層RC架)'},
-  {id:'S02', zone:'北段', sta:'0+060~0+120', len:60, w:1.15, h:1.42, tiers:1, racks:28, mh:2, pipes:9,  r3:3,  r2:0,  r1:2,  sw:1, w1:2, tw:1, st:'DONE',   desc:'MH-02 北段直線中繼段 (1:0.3明挖免鋼板樁・1層預鑄RC管架)'},
-  {id:'S03', zone:'北段', sta:'0+120~0+180', len:60, w:2.40, h:2.00, tiers:3, racks:30, mh:5, pipes:50, r3:12, r2:10, r1:18, sw:2, w1:4, tw:4, st:'ACTIVE', desc:'MH-03 主建築物B1F總匯入最高峰50支段 (3層RC半圓凹槽架)'},
-  {id:'S04', zone:'北段', sta:'0+180~0+240', len:60, w:2.15, h:1.92, tiers:3, racks:30, mh:4, pipes:39, r3:10, r2:8,  r1:13, sw:2, w1:3, tw:3, st:'DONE',   desc:'MH-04 消防署倉儲預留11支分支減管段 (3層預鑄RC管架)'},
-  {id:'S05', zone:'中段', sta:'0+240~0+295', len:55, w:1.85, h:1.68, tiers:2, racks:28, mh:4, pipes:35, r3:9,  r2:7,  r1:11, sw:2, w1:3, tw:3, st:'ACTIVE', desc:'MH-05 C區訓練場總分支階梯抬升省深32cm (2層RC管架)'},
-  {id:'S06', zone:'中段', sta:'0+295~0+350', len:55, w:1.75, h:1.68, tiers:2, racks:28, mh:4, pipes:31, r3:8,  r2:6,  r1:10, sw:2, w1:3, tw:2, st:'ACTIVE', desc:'MH-06 C-01集結鋼棚&工務所&瓦斯站分支段 (2層RC管架)'},
-  {id:'S07', zone:'中段', sta:'0+350~0+400', len:50, w:1.60, h:1.62, tiers:2, racks:27, mh:3, pipes:27, r3:7,  r2:5,  r1:9,  sw:2, w1:2, tw:2, st:'ACTIVE', desc:'MH-07/08 化學署A-01~03裁彎取直漸縮段 (2層RC管架)'},
-  {id:'S08', zone:'中段', sta:'0+400~0+460', len:60, w:1.50, h:1.65, tiers:2, racks:30, mh:4, pipes:22, r3:6,  r2:4,  r1:7,  sw:1, w1:2, tw:2, st:'WATCH',  desc:'09A-09B 過大甲九圳上下凹折+150mm抗浮翼趾(FS=1.44免地錨)'},
-  {id:'S09', zone:'南段', sta:'0+460~0+515', len:55, w:1.35, h:1.48, tiers:1, racks:28, mh:3, pipes:16, r3:7,  r2:0,  r1:4,  sw:1, w1:2, tw:2, st:'ACTIVE', desc:'MH-10 化學署B-01/02分支抬升免鋼板樁 (1層預鑄RC管架)'},
-  {id:'S10', zone:'南段', sta:'0+515~0+570', len:55, w:1.20, h:1.45, tiers:1, racks:29, mh:3, pipes:14, r3:6,  r2:0,  r1:4,  sw:1, w1:2, tw:1, st:'ACTIVE', desc:'南段次幹管1:0.3明挖斜坡漸縮段 (1層預鑄RC半圓凹槽架)'},
-  {id:'S11', zone:'南段', sta:'0+570~0+625', len:55, w:1.10, h:1.42, tiers:1, racks:28, mh:3, pipes:12, r3:5,  r2:0,  r1:3,  sw:1, w1:2, tw:1, st:'ACTIVE', desc:'MH-11 B-03滯洪池&南段二迴電信引進段 (1層預鑄RC管架)'},
-  {id:'S12', zone:'南段', sta:'0+625~0+680', len:55, w:1.05, h:1.42, tiers:1, racks:28, mh:2, pipes:6,  r3:2,  r2:0,  r1:2,  sw:1, w1:1, tw:0, st:'ACTIVE', desc:'MH-12 南側警衛室暨南大門終點段 (1層RC半圓凹槽架)'}
+const YG_TRENCH_SECTIONS = [
+  { id: 'S1', code: '斷面1 (01~02北端段)', len: 55, w: 110, d: 145, area: 1.60, formal: 9, temp: 1, layout: '1排×4 / 1排×3 / 1層×3 (全單排淺溝)', earth: 87.7, conc: 21.2, savePct: '-39.6%', spec: '北門引進段：無第二迴路削除西側2空列，含EL1/EL2景觀電源、EMS與★TL1路燈CCTV管', uom: '較原v12省39.6% (較峰值-66.8%)' },
+  { id: 'S2', code: '★斷面2 (03主建物最高峰)', len: 45, w: 240, d: 200, area: 4.80, formal: 50, temp: 6, layout: '2排×8 / 3排×8 / 3層×4 (唯一滿載段)', earth: 216.0, conc: 97.2, savePct: '基準峰值(6.6%)', spec: '最高峰50支正式管(弱電16+電力24+右槽10) + 6支暗埋臨水電(TP1/TP2/TT1/TL1/TW1/TD1)', uom: '全線唯一滿載段 (僅佔全線6.6%)' },
+  { id: 'S3', code: '斷面3 (04消防署倉儲後)', len: 45, w: 200, d: 180, area: 3.60, formal: 39, temp: 5, layout: '2排×7 / 3排×7 / 2層×4 (取消右底層)', earth: 162.0, conc: 63.0, savePct: '-16.1%', spec: '04東轉11支後：取消右側第3層(SN/FN/WN)，TW1升入中層，臨水電向西貼齊Col 7', uom: '較原v12省16.1% (較峰值-25.0%)' },
+  { id: 'S4', code: '斷面4 (05 C區分支後)', len: 40, w: 185, d: 168, area: 3.11, formal: 35, temp: 5, layout: '2排×6 / 2排×8 / 2層×4 (電力減為2排)', earth: 124.3, conc: 42.9, savePct: '-22.1%', spec: '05東轉4支後：第3排6"高壓大管全數清空，下層電力減為2排，溝深抬升至1.68m', uom: '較原v12省22.1% (較峰值-35.2%)' },
+  { id: 'S5', code: '斷面5 (06~08 C-01與A區段)', len: 175, w: 155, d: 165, area: 2.56, formal: 29, temp: 3, layout: '2排×5 / 2排×6 / 2層×3 (無瓦斯/TP1)', earth: 447.6, conc: 149.2, savePct: '-32.7%', spec: '06工務所TP1/TT1與瓦斯管轉出後：東壁大幅向西內縮至1.55m，長達175m主力標準段', uom: '較原v12省32.7% (較峰值-46.7%)' },
+  { id: 'S6', code: '★斷面6 (09A~09B 過圳段)', len: 95, w: 150, d: 160, area: 2.40, formal: 22, temp: 3, layout: '2排×5 / 2排×5 / 2層×3 (斷面積減半)', earth: 228.0, conc: 71.3, savePct: '-31.7%', spec: 'A-04複合大樓分支後＆尖山路101巷第二迴路(2E1~2E4/2W1~2W2)匯入點，斷面積僅峰值50%', uom: '較原v12省31.7% (較峰值-50.0%)' },
+  { id: 'S7', code: '★斷面7 (10~11 B區滯洪池段)', len: 135, w: 125, d: 150, area: 1.88, formal: 14, temp: 4, layout: '2排×4 / 1排×5 / 2層×2 (電力減為1排)', earth: 253.1, conc: 67.5, savePct: '-40.5%', spec: '過09B無第二迴路削除西側2列，且電力第2排清空減為單排(1 Row)，溝深抬升至1.50m', uom: '較原v12省40.5% (較峰值-60.9%)' },
+  { id: 'S8', code: '斷面8 (12南警衛洗車台終點)', len: 90, w: 105, d: 142, area: 1.49, formal: 6, temp: 3, layout: '1排×3 / 1排×3 / 1層×3 (極簡雙單排)', earth: 134.2, conc: 30.2, savePct: '-43.5%', spec: '南端終點段：僅剩E1/EL1及南門弱電/給水，弱電與電力皆減為單排，寬1.05m×深1.42m', uom: '較原v12省43.5% (較峰值-68.9%)' }
 ];
 
-const ARCH_LAYERS = [
-  {id:'ALL', name:'L0 全層總覽 (All Layers)', col:'#0f172a'},
-  {id:'L8',  name:'L8 AC路面與39座人手孔蓋平齊', col:'#10b981'},
-  {id:'L7',  name:'L7 雙色警示帶與級配回填層', col:'#84cc16'},
-  {id:'L6',  name:'L6 第2階段 CLSM 澆置 (封弱電)', col:'#f97316'},
-  {id:'L5',  name:'L5 第3層RC架＋上層弱電/給水', col:'#0284c7'},
-  {id:'L4',  name:'L4 第1階段 CLSM 澆置 (固強電)', col:'#eab308'},
-  {id:'L3',  name:'L3 第1~2層RC架＋強電/給消水', col:'#ef4444'},
-  {id:'L2',  name:'L2 09A-09B 過涵洞上下凹折段', col:'#06b6d4'},
-  {id:'L1',  name:'L1 明挖斜坡/鋼板樁＋職安衛設施', col:'#64748b'}
+const YG_PANELS = [
+  { floor: 'FF', code: '① MP-TEMP (400A)', name: '[1] 主建築物 B1F 臨時總配電盤 (上游總起點)', sys: 'EP', note: '3Φ4W 380/220V 400A 防塵防水總盤｜含工務所 100A 專迴(TP1) + 工區 250A 主幹(TP2)' },
+  { floor: '2F', code: '② P-OFFICE + IT-BOX', name: '②工 施工工務所 100A 專用盤 & 19" 6U 弱電監控箱', sys: 'TI', note: '附 30mA ELB + 3kVA 在線式 UPS 常時供電全區 12盞路燈/12支CCTV + 16路NVR錄影主機' },
+  { floor: '1F', code: '③ P-ZONE-C (150A)', name: '③ 消防局 C 區戶外訓練場與 C-01 鋼棚動力分電盤', sys: 'EP', note: 'SUS304 戶外防雨型 150A (內建 30mA 0.1s ELB)，由 TP2 暗埋幹管供電' },
+  { floor: '3F', code: '④ P-ZONE-A (175A)', name: '④ 化學署 A 區 (A-04 複合訓練大樓) 動力分電盤', sys: 'EP', note: 'SUS304 戶外防雨型 175A，供應 A-04 大樓與化災訓練場施工動力' },
+  { floor: 'FF', code: '⑤ P-ZONE-B (125A)', name: '⑤ 化學署 B 區與 B-03 地下 RC 滯洪池動力分電盤', sys: 'EP', note: 'SUS304 戶外防雨型 125A，供應滯洪池(1,552.18m²)與沉水排廢水泵(TD1)' },
+  { floor: '1F', code: '⑥ P-ZONE-S (100A)', name: '⑥ 南門警衛室與洗車台 100A 臨時動力分電盤', sys: 'WE', note: '供應南門自動洗車台、10T PE蓄水塔加壓泵與車牌辨識柵欄' },
+  { floor: 'RF', code: '⑦ LP-01~05 & SV-01~06', name: '全區 5 座戶外景觀照明分電盤 & 6 座噴灌電磁閥箱', sys: 'AC', note: '由 EL1/EL2 景觀電源幹管與 EMS 智慧調光光纖串接，連動 R1 雨水回收噴灌' }
 ];
 
-// 01: Single Segment 12-Step Construction Sequence (Taiwan Engineering Terminology)
-const FULL_12_STEPS = [
-  {id:1,  name:'01 明挖斜坡與鋼板樁支撐'},
-  {id:2,  name:'02 PC打底+右槽底排'},
-  {id:3,  name:'03 第1層RC半圓凹槽管架'},
-  {id:4,  name:'04 放底層強電+給消水'},
-  {id:5,  name:'05 疊設第2層RC管架'},
-  {id:6,  name:'06 放中層動力+中層水'},
-  {id:7,  name:'07 第1階段CLSM分區澆置(撤抽水)'},
-  {id:8,  name:'08 疊設第3層上排RC管架'},
-  {id:9,  name:'09 放上層弱電+上層水'},
-  {id:10, name:'10 第2階段CLSM分區澆置(撤送風/爬梯)'},
-  {id:11, name:'11 39座圓形人孔調平+拔鋼板樁'},
-  {id:12, name:'12 AC路面鋪設復原(撤護欄)'}
-];
+let curFloor = 'ALL';
+let curMode = 'bldg3d';
+let exploded = false;
+let activeTrench = null;
+let sysOn = { FP: true, EP: true, AC: true, TI: true, WE: true };
+let rotY = -0.62, rotX = 0.44, zoom = 1.08;
 
-// 02: Culvert Crossing (09A-09B) 12-Step Dynamic Construction Sequence
-const CULV_12_STEPS = [
-  {id:1,  name:'01 箱涵H型鋼托底+鋼板樁職安衛'},
-  {id:2,  name:'02 涵底PC素混凝土打底+底排'},
-  {id:3,  name:'03 下層管架+4座RC抗推力固定墩'},
-  {id:4,  name:'04 涵底6支Ø250鍍鋅鋼套管+強電給水'},
-  {id:5,  name:'05 涵底中層RC半圓凹槽管架'},
-  {id:6,  name:'06 放中層動力管+中層給水管'},
-  {id:7,  name:'07 第1階段CLSM分區澆置(撤沉水泵浦)'},
-  {id:8,  name:'08 涵頂上凸折低淨空RC管架'},
-  {id:9,  name:'09 涵頂GL-0.45m上凸折弱電管跨越'},
-  {id:10, name:'10 涵頂20mm防壓鋼板+第2階段早強CLSM(撤送風/爬梯)'},
-  {id:11, name:'11 09A/09B連絡人手孔調平+拔鋼板樁'},
-  {id:12, name:'12 AC路面鋪設復原(孔蓋平齊+撤護欄)'}
-];
+function renderLists() {
+  document.getElementById('ygTrenchList').innerHTML = YG_TRENCH_SECTIONS.map(s => `
+    <div class="yg-item" id="tRow_${s.id}" onclick="focusTrench('${s.id}')">
+      <div style="display:flex;justify-content:space-between;font-size:11.5px;font-weight:800;color:#f8fafc;">
+        <span>${s.code}</span><span style="color:#34d399;">${s.len}m (${s.w}×${s.d}cm｜${s.savePct})</span>
+      </div>
+      <div style="font-size:10.5px;color:#38bdf8;font-weight:700;margin-top:2px;">在溝：${s.formal}正式+${s.temp}臨水電 ｜ ${s.layout}</div>
+      <div style="font-size:10.5px;color:#94a3b8;margin-top:2px;">${s.spec}</div>
+    </div>
+  `).join('');
 
-const ST_HEX = { DONE: 0x10b981, ACTIVE: 0x0284c7, WATCH: 0xd97706, SHORTAGE: 0xe11d48 };
-const ST_CSS = { DONE: '#059669', ACTIVE: '#0284c7', WATCH: '#d97706', SHORTAGE: '#e11d48' };
-
-let state = {
-  dim: 'overview',        // Default open Image 3 style: '00 全段 680m 總覽 & 全線推進施工動畫'
-  viewStyle: 'solid',
-  segIdx: 7,              // Default S08 (STA 0+410 Culvert Crossing) matching Image 3
-  step: 11,               // Default Step 11 matching Image 3
-  stepProg: 1.0,
-  autoAdvanceSteps: true, // Automatically advance Step 01 -> 12
-  overviewWaveAnim: true, // Rolling construction wave S01 -> S12 in Mode 00
-  followWaveCam: false,   // Camera auto-tracks active construction wave front in Mode 00
-  corridorWavePos: 9.8,   // Matches Image 3 wave state (S01..S05 Step12, S08 Step11, S09 Step10)
-  activeLayer: 'ALL',
-  explode: 0.0,           // Default 0% explode so manholes are strictly flush with AC roadway surface
-  cutaway: 0.0,
-  playing: true,
-  soundOn: true,
-  blueprintOpen: false,
-  warroomPreviewOpen: false,
-  warroomActiveTab: 'materials',
-  warroomProjectFilter: 'ALL',
-  tick: 0,
-  syncSeq: 1
-};
-
-function getStepsForDim(d) {
-  return d === 'culv' ? CULV_12_STEPS : FULL_12_STEPS;
+  document.getElementById('ygPanelList').innerHTML = YG_PANELS.map(p => `
+    <div class="yg-item" onclick="focusPanel('${p.code}')">
+      <div style="display:flex;justify-content:space-between;font-size:11.5px;font-weight:800;color:#38bdf8;">
+        <span>${p.code}</span><span>${p.sys}</span>
+      </div>
+      <div style="font-size:11px;color:#e2e8f0;font-weight:700;margin-top:2px;">${p.name}</div>
+      <div style="font-size:10.5px;color:#94a3b8;">${p.note}</div>
+    </div>
+  `).join('');
 }
 
-function computeState(sObj) {
-  const seg = SEGS[sObj.segIdx];
-  const excavationVol = +(seg.w * seg.h * seg.len).toFixed(1);
-  const clsm1Vol = +(seg.w * (seg.h * 0.42) * seg.len * 0.78).toFixed(1);
-  const clsm2Vol = +(seg.w * (seg.h * 0.24) * seg.len * 0.82).toFixed(1);
-  const pourWave = (Math.sin(sObj.tick) * 0.5 + 0.5);
-  return {
-    seg, excavationVol, clsm1Vol, clsm2Vol, pourWave,
-    shoringType: seg.h >= 1.50 ? 'SP-III 鋼板樁擋土及 H 型鋼支撐' : '1:0.3 明挖斜坡開挖 (免鋼板樁)'
-  };
-}
-
-// URL Parameter Initialization
-(function initParams() {
-  const p = new URLSearchParams(location.search);
-  const s = (p.get('seg') || '').toUpperCase();
-  const st = (p.get('status') || '').toUpperCase();
-  const idx = SEGS.findIndex(x => x.id === s);
-  if (idx >= 0) state.segIdx = idx;
-  if (idx >= 0 && ST_HEX[st]) SEGS[idx].st = st;
-})();
-
-// WebAudio Procedural Synthesizer
-let audioCtx = null;
-function playTone(freq = 520, dur = 0.07, type = 'sine') {
-  if (!state.soundOn) return;
-  try {
-    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    if (audioCtx.state === 'suspended') audioCtx.resume();
-    const osc = audioCtx.createOscillator();
-    const gain = audioCtx.createGain();
-    osc.type = type;
-    osc.frequency.value = freq;
-    gain.gain.setValueAtTime(0.035, audioCtx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + dur);
-    osc.connect(gain);
-    gain.connect(audioCtx.destination);
-    osc.start();
-    osc.stop(audioCtx.currentTime + dur);
-  } catch (e) {}
-}
-
-function toggleSound() {
-  state.soundOn = !state.soundOn;
-  document.getElementById('btn-sound').textContent = state.soundOn ? '🔊 音效' : '🔇 靜音';
-  playTone(580, 0.08);
-}
-
-// ============================================================================
-// THREE.JS WEBGL 3D STAGE & REAL EXTRUDED SADDLE RACK ENGINE
-// ============================================================================
-let scene, camera, renderer, controls, rootGroup, clipPlane, sectionCutHelper = null;
-let toastTimer = null;
-
-function safeGetStorage(key, fallback = '') {
-  try { return localStorage.getItem(key) || fallback; } catch (e) { return fallback; }
-}
-function safeSetStorage(key, val) {
-  try { localStorage.setItem(key, val); } catch (e) {}
-}
-function showStudioToast(msg) {
-  const el = document.getElementById('studio-toast');
-  if (!el) return;
-  el.textContent = msg;
-  el.classList.add('show');
-  if (toastTimer) clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => el.classList.remove('show'), 2300);
-}
-
-let calloutAnchors = [];
-let pinAnchors = [];
-let animatedBayMeshes = [];
-let dynamicStepActors = [];
-let culvertAlertMeshes = [];
-let culvertFlowMeshes = [];
-let pumpNozzleGroup = null;
-let camFlyTarget = null;
-let camFlyLookAt = null;
-
-function initWebGLStage() {
-  const container = document.getElementById('webgl-container');
-  const W = Math.max(window.innerWidth, 800);
-  const H = Math.max(window.innerHeight, 560);
-
-  scene = new THREE.Scene();
-
-  camera = new THREE.PerspectiveCamera(38, W / H, 0.2, 800);
-  camera.position.set(17, 13, 21);
-
-  renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
-  renderer.setSize(W, H);
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-  renderer.shadowMap.enabled = true;
-  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-  renderer.localClippingEnabled = true;
-  container.innerHTML = '';
-  container.appendChild(renderer.domElement);
-
-  if (THREE.OrbitControls) {
-    controls = new THREE.OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true;
-    controls.dampingFactor = 0.07;
-    controls.maxPolarAngle = Math.PI * 0.49;
-    controls.minDistance = 4;
-    controls.maxDistance = 120;
-    controls.target.set(0, -0.5, 0);
-  }
-
-  // Warm Light Studio Illumination
-  const hemiLight = new THREE.HemisphereLight(0xffffff, 0xe5e0d5, 0.88);
-  hemiLight.position.set(0, 40, 0);
-  scene.add(hemiLight);
-
-  const dirLight = new THREE.DirectionalLight(0xfffcf5, 0.78);
-  dirLight.position.set(22, 36, 24);
-  dirLight.castShadow = true;
-  dirLight.shadow.mapSize.width = 2048;
-  dirLight.shadow.mapSize.height = 2048;
-  dirLight.shadow.camera.near = 2;
-  dirLight.shadow.camera.far = 120;
-  const d = 28;
-  dirLight.shadow.camera.left = -d;
-  dirLight.shadow.camera.right = d;
-  dirLight.shadow.camera.top = d;
-  dirLight.shadow.camera.bottom = -d;
-  dirLight.shadow.bias = -0.0005;
-  scene.add(dirLight);
-
-  const rimLight = new THREE.DirectionalLight(0xdbeafe, 0.36);
-  rimLight.position.set(-22, 16, -18);
-  scene.add(rimLight);
-
-  // Studio Ground Grid & Shadow Receiver
-  const grid = new THREE.GridHelper(90, 90, 0x94a3b8, 0xd6d3cb);
-  grid.position.y = -4.6;
-  grid.material.opacity = 0.45;
-  grid.material.transparent = true;
-  scene.add(grid);
-
-  const shadowFloor = new THREE.Mesh(
-    new THREE.PlaneGeometry(110, 110),
-    new THREE.ShadowMaterial({ opacity: 0.12 })
-  );
-  shadowFloor.rotation.x = -Math.PI / 2;
-  shadowFloor.position.y = -4.61;
-  shadowFloor.receiveShadow = true;
-  scene.add(shadowFloor);
-
-  clipPlane = new THREE.Plane(new THREE.Vector3(-1, 0, 0), 60);
-
-  const secGeo = new THREE.PlaneGeometry(16, 9);
-  const secMat = new THREE.MeshBasicMaterial({
-    color: 0x0284c7, transparent: true, opacity: 0.10, side: THREE.DoubleSide, depthWrite: false
+function selectFloor(fl) {
+  curFloor = (fl === 'BS' || fl === 'B1') ? 'FF' : (fl || 'ALL');
+  ['ALL','FF','1F','2F','3F','4F','RF'].forEach(k => {
+    const b = document.getElementById('flBtn_' + k);
+    if (b) b.classList.toggle('on', k === curFloor);
   });
-  sectionCutHelper = new THREE.Mesh(secGeo, secMat);
-  sectionCutHelper.rotation.y = Math.PI / 2;
-  const secBorder = new THREE.LineSegments(
-    new THREE.EdgesGeometry(secGeo),
-    new THREE.LineBasicMaterial({ color: 0x0284c7, transparent: true, opacity: 0.55 })
-  );
-  sectionCutHelper.add(secBorder);
-  sectionCutHelper.visible = false;
-  scene.add(sectionCutHelper);
-
-  rootGroup = new THREE.Group();
-  scene.add(rootGroup);
-
-  window.addEventListener('resize', onWindowResize);
+  document.getElementById('ygCurrentTag').textContent = curFloor === 'ALL' ? 'v13.9 全區總覽' : (curFloor === 'FF' ? 'B2F筏基水池 & 680m共同管溝' : curFloor);
 }
 
-function onWindowResize() {
-  if (!renderer || !camera) return;
-  const W = window.innerWidth;
-  const H = window.innerHeight;
-  camera.aspect = W / H;
-  camera.updateProjectionMatrix();
-  renderer.setSize(W, H);
-  if (state.blueprintOpen) draw2DBlueprintSheet();
-}
-
-// Helper: Architectural Mesh with 0.32 Ink Edge Outline (#334155)
-function createArchMesh(geo, colorHex, opts = {}) {
-  const isGhostLayer = (state.activeLayer !== 'ALL' && opts.layerId && opts.layerId !== state.activeLayer);
-  const isXray = state.viewStyle === 'xray';
-  const targetOpacity = isGhostLayer ? 0.12 : (opts.opacity !== undefined ? opts.opacity : (isXray ? 0.34 : 1.0));
-  const transparent = targetOpacity < 0.99;
-
-  const mat = new THREE.MeshStandardMaterial({
-    color: colorHex,
-    roughness: opts.roughness !== undefined ? opts.roughness : 0.62,
-    metalness: opts.metalness !== undefined ? opts.metalness : 0.10,
-    transparent: transparent,
-    opacity: targetOpacity,
-    clippingPlanes: [clipPlane],
-    clipShadows: true
+function switchMode(md) {
+  curMode = md || 'bldg3d';
+  ['bldg3d','floor3d','pipeboq','walk','qty9','a6door','singleline','approval'].forEach(k => {
+    const b = document.getElementById('btnMode_' + k);
+    if (b) b.classList.toggle('on', k === curMode);
   });
-
-  const mesh = new THREE.Mesh(geo, mat);
-  mesh.castShadow = !transparent;
-  mesh.receiveShadow = true;
-
-  if (opts.edges !== false) {
-    const edgeGeo = new THREE.EdgesGeometry(geo, 22);
-    const edgeMat = new THREE.LineBasicMaterial({
-      color: opts.edgeColor || 0x334155,
-      transparent: true,
-      opacity: isGhostLayer ? 0.08 : 0.32,
-      clippingPlanes: [clipPlane]
-    });
-    const lines = new THREE.LineSegments(edgeGeo, edgeMat);
-    mesh.add(lines);
-  }
-  return mesh;
-}
-
-// Real 3D Extruded Precast RC Saddle Rack with Semicircular Grooves
-function createExtrudedSaddleRack(widthZ, pipeCount, heightY = 0.35, depthX = 0.42, layerId = 'L3') {
-  const shape = new THREE.Shape();
-  const hw = widthZ / 2;
-  shape.moveTo(-hw, 0);
-  shape.lineTo(hw, 0);
-  shape.lineTo(hw, heightY);
-
-  const count = Math.max(1, pipeCount);
-  const span = widthZ * 0.86;
-  const stepZ = span / count;
-  const radius = Math.min(0.11, stepZ * 0.34);
-
-  for (let i = count - 1; i >= 0; i--) {
-    const cx = -span / 2 + stepZ * (i + 0.5);
-    shape.lineTo(cx + radius, heightY);
-    shape.absarc(cx, heightY, radius, 0, Math.PI, true);
-  }
-  shape.lineTo(-hw, heightY);
-  shape.closePath();
-
-  const extrudeGeo = new THREE.ExtrudeGeometry(shape, { depth: depthX, bevelEnabled: false, curveSegments: 10 });
-  extrudeGeo.center();
-  const mesh = createArchMesh(extrudeGeo, 0xd6d3cb, { layerId, roughness: 0.75 });
-  mesh.rotation.y = Math.PI / 2;
-  return mesh;
-}
-
-// Real 3D Cylindrical Conduit Pipe
-function create3DPipe(lengthX, radius, colorHex, x, y, z, layerId = 'L3') {
-  const geo = new THREE.CylinderGeometry(radius, radius, lengthX, 14);
-  geo.rotateZ(Math.PI / 2);
-  const mesh = createArchMesh(geo, colorHex, { edges: false, layerId, roughness: 0.35, metalness: 0.18 });
-  mesh.position.set(x, y, z);
-  return mesh;
-}
-
-// Real 3D Circular Precast Manhole — Strictly Flush with AC Roadway Top Surface (roadTopY, GL ±0.00m)
-function createCircularManhole3D(isPower, x, roadTopY, z, totalDepth = 2.4, explodeAmt = 0, layerId = 'L8') {
-  const group = new THREE.Group();
-  const outerR = isPower ? 0.56 : 0.44;
-  const coverColor = isPower ? 0xdc2626 : 0x0284c7;
-  const baseH = totalDepth * 0.52;
-  const coneH = totalDepth * 0.28;
-  const ringH = 0.16;
-  const coverH = 0.07;
-
-  // 1. Cast-Iron Manhole Cover & Frame: Top surface strictly at roadTopY (GL ±0.00m) when explodeAmt = 0
-  const coverGeo = new THREE.CylinderGeometry(outerR * 0.72, outerR * 0.72, coverH, 24);
-  const coverMesh = createArchMesh(coverGeo, coverColor, { layerId, metalness: 0.45, roughness: 0.35 });
-  coverMesh.position.y = roadTopY - coverH / 2 + 0.003 + explodeAmt * 1.15;
-  group.add(coverMesh);
-
-  // 2. Adjustment Ring directly beneath cover
-  const ringGeo = new THREE.CylinderGeometry(outerR * 0.74, outerR * 0.74, ringH, 20);
-  const ringMesh = createArchMesh(ringGeo, 0x94a3b8, { layerId });
-  ringMesh.position.y = roadTopY - coverH - ringH / 2 + explodeAmt * 0.65;
-  group.add(ringMesh);
-
-  // 3. Eccentric Tapered Cone
-  const coneGeo = new THREE.CylinderGeometry(outerR * 0.74, outerR, coneH, 22);
-  const coneMesh = createArchMesh(coneGeo, 0xcbd5e1, { layerId });
-  coneMesh.position.y = roadTopY - coverH - ringH - coneH / 2 + explodeAmt * 0.25;
-  group.add(coneMesh);
-
-  // 4. Lower Precast Cylindrical Chamber
-  const baseGeo = new THREE.CylinderGeometry(outerR, outerR, baseH, 22);
-  const baseMesh = createArchMesh(baseGeo, 0x94a3b8, { layerId });
-  baseMesh.position.y = roadTopY - coverH - ringH - coneH - baseH / 2;
-  group.add(baseMesh);
-
-  group.position.set(x, 0, z);
-  return group;
-}
-
-// ============================================================================
-// PROGRESSIVE OSHA SAFETY PACKAGE (Removed in sync with CLSM 1 & CLSM 2 pouring)
-// - Step 07 (Stage 1 CLSM): Sump pump & discharge pipe pulled out
-// - Step 10 (Stage 2 CLSM): Ventilation blower, air duct & access ladder removed
-// - Step 12 (AC Roadway): Double guardrails, toe-boards & traffic cones removed
-// ============================================================================
-function createOshaSafetyPackage3D(lenX, widthZ, groundY, floorY, peelZ, step, stepProg, layerId = 'L1') {
-  const oshaGroup = new THREE.Group();
-
-  // 1. Sump Pump & Blue Discharge Standpipe (Active Step 01..07; pulled up during Step 07 CLSM 1)
-  if (step <= 7) {
-    const pumpGroup = new THREE.Group();
-    const pumpX = lenX * 0.34;
-    const pumpZ = widthZ / 2 - 0.55;
-    const pumpBody = createArchMesh(new THREE.CylinderGeometry(0.24, 0.28, 0.62, 14), 0x0284c7, { layerId, metalness: 0.4 });
-    pumpBody.position.set(pumpX, floorY + 0.35, pumpZ);
-    const dischargePipe = createArchMesh(new THREE.CylinderGeometry(0.06, 0.06, groundY - floorY + 0.6, 10), 0x38bdf8, { edges: false, layerId });
-    dischargePipe.position.set(pumpX, (groundY + floorY) / 2 + 0.2, pumpZ);
-    pumpGroup.add(pumpBody, dischargePipe);
-    if (step === 7) pumpGroup.position.y = stepProg * 4.5;
-    oshaGroup.add(pumpGroup);
-  }
-
-  // 2. Access Ladder & Confined-Space Blower + Flexible Air Duct (Active Step 01..10; removed in Step 10 CLSM 2)
-  if (step <= 10) {
-    const ventLadderGroup = new THREE.Group();
-    const ladH = (groundY - floorY) + 1.1;
-    const ladZ = -widthZ / 2 + 0.38;
-    const ladX = -lenX * 0.26;
-    [-0.22, 0.22].forEach(lx => {
-      const rail = createArchMesh(new THREE.CylinderGeometry(0.035, 0.035, ladH, 8), 0xeab308, { edges: false, layerId });
-      rail.position.set(ladX + lx, floorY + ladH / 2, ladZ);
-      ventLadderGroup.add(rail);
-    });
-    const rungs = Math.floor(ladH / 0.35);
-    for (let r = 0; r < rungs; r++) {
-      const rung = createArchMesh(new THREE.CylinderGeometry(0.025, 0.025, 0.44, 8), 0xfef08a, { edges: false, layerId });
-      rung.rotation.z = Math.PI / 2;
-      rung.position.set(ladX, floorY + 0.3 + r * 0.35, ladZ);
-      ventLadderGroup.add(rung);
-    }
-
-    const fanX = lenX * 0.25;
-    const fanZ = -widthZ / 2 - 0.9 - peelZ;
-    const fanDrum = createArchMesh(new THREE.CylinderGeometry(0.32, 0.32, 0.48, 16), 0xfacc15, { layerId });
-    fanDrum.rotation.z = Math.PI / 2;
-    fanDrum.position.set(fanX, groundY + 0.32, fanZ);
-    ventLadderGroup.add(fanDrum);
-
-    const ductVert = createArchMesh(new THREE.CylinderGeometry(0.16, 0.16, (groundY - floorY) * 0.72, 12), 0xfde047, { edges: false, layerId });
-    ductVert.position.set(fanX, groundY - (groundY - floorY) * 0.32, -widthZ / 2 + 0.35);
-    ventLadderGroup.add(ductVert);
-
-    if (step === 10) ventLadderGroup.position.y = stepProg * 4.8;
-    oshaGroup.add(ventLadderGroup);
-  }
-
-  // 3. Perimeter Double Yellow-Black Safety Guardrails (1.1m), Toe-boards (15cm) & Cones (Removed in Step 12)
-  if (step <= 12) {
-    const railGroup = new THREE.Group();
-    [-1, 1].forEach(side => {
-      const rz = side * (widthZ / 2 + 0.52 + peelZ);
-      const topRail = createArchMesh(new THREE.CylinderGeometry(0.04, 0.04, lenX, 8), 0xfacc15, { edges: false, layerId });
-      topRail.rotation.z = Math.PI / 2;
-      topRail.position.set(0, groundY + 1.10, rz);
-      const midRail = createArchMesh(new THREE.CylinderGeometry(0.035, 0.035, lenX, 8), 0x1e293b, { edges: false, layerId });
-      midRail.rotation.z = Math.PI / 2;
-      midRail.position.set(0, groundY + 0.55, rz);
-      const toeBoard = createArchMesh(new THREE.BoxGeometry(lenX, 0.16, 0.05), 0xf59e0b, { layerId });
-      toeBoard.position.set(0, groundY + 0.08, rz);
-      railGroup.add(topRail, midRail, toeBoard);
-
-      const postCount = Math.max(3, Math.floor(lenX / 2.6));
-      for (let i = 0; i <= postCount; i++) {
-        const px = -lenX / 2 + (i / postCount) * lenX;
-        const post = createArchMesh(new THREE.CylinderGeometry(0.045, 0.045, 1.15, 8), 0xd97706, { edges: false, layerId });
-        post.position.set(px, groundY + 0.57, rz);
-        railGroup.add(post);
-        if (i < postCount) {
-          const coneX = px + (lenX / postCount) * 0.5;
-          const coneZ = rz + side * 0.24;
-          const coneBase = createArchMesh(new THREE.BoxGeometry(0.24, 0.04, 0.24), 0x1e293b, { edges: false, layerId });
-          coneBase.position.set(coneX, groundY + 0.02, coneZ);
-          const coneBody = createArchMesh(new THREE.ConeGeometry(0.095, 0.36, 12), 0xf97316, { edges: false, layerId });
-          coneBody.position.set(coneX, groundY + 0.20, coneZ);
-          const coneBand = createArchMesh(new THREE.CylinderGeometry(0.048, 0.068, 0.09, 12), 0xffffff, { edges: false, layerId });
-          coneBand.position.set(coneX, groundY + 0.22, coneZ);
-          railGroup.add(coneBase, coneBody, coneBand);
-        }
-      }
-    });
-    if (step === 12) railGroup.position.y = stepProg * 3.8;
-    oshaGroup.add(railGroup);
-  }
-
-  return oshaGroup;
-}
-
-function getSegmentWaveStep(segIdx) {
-  const raw = 12 - (segIdx - state.corridorWavePos) * 1.45;
-  const clamped = Math.max(1, Math.min(12.99, raw));
-  return { localStep: Math.floor(clamped), localProg: clamped - Math.floor(clamped) };
-}
-
-// ============================================================================
-// REBUILD 3D WEBGL SCENE FOR ALL MODES
-// ============================================================================
-function disposeGroupDeep(obj) {
-  if (!obj) return;
-  while (obj.children && obj.children.length > 0) {
-    const ch = obj.children[0];
-    disposeGroupDeep(ch);
-    obj.remove(ch);
-  }
-  if (obj.geometry) obj.geometry.dispose();
-  if (obj.material) {
-    if (Array.isArray(obj.material)) obj.material.forEach(m => m && m.dispose());
-    else obj.material.dispose();
-  }
-}
-
-function rebuildWebGLScene() {
-  if (!rootGroup) return;
-  disposeGroupDeep(rootGroup);
-  calloutAnchors = [];
-  pinAnchors = [];
-  animatedBayMeshes = [];
-  dynamicStepActors = [];
-  culvertAlertMeshes = [];
-  culvertFlowMeshes = [];
-  pumpNozzleGroup = null;
-
-  const exp = state.explode;
-  const step = state.step;
-
-  if (state.dim === 'overview' || state.dim === 'full') {
-    // ========================================================================
-    // MODE 00 (680m Continuous Corridor & Rolling Wave) & MODE 03 (8-Layer Exploded)
-    // ========================================================================
-    const isOverview = (state.dim === 'overview');
-    const effExp = isOverview ? exp * 0.25 : Math.max(0.55, exp);
-    const segLenX = isOverview ? 3.52 : 3.35;
-    const gapX = isOverview ? 0.15 : 0.32;
-
-    SEGS.forEach((sg, idx) => {
-      const gx = (idx - 5.5) * (segLenX + gapX);
-      const widthZ = sg.w * 1.85;
-      const depthH = sg.h * 1.45;
-      const baseFloorY = -0.7 - depthH;
-      const peelZ = effExp * 1.6;
-      const isCulvertSeg = (idx === 7);
-
-      const waveInfo = (isOverview && state.overviewWaveAnim)
-        ? getSegmentWaveStep(idx)
-        : { localStep: step, localProg: 1.0 };
-      const segStep = isOverview ? waveInfo.localStep : step;
-
-      // L1: Stepped Trench Base + Shoring + Progressive OSHA Safety
-      const yL1 = baseFloorY - effExp * 1.2;
-      const pcMesh = createArchMesh(new THREE.BoxGeometry(segLenX, 0.18, widthZ), 0x94a3b8, { layerId: 'L1' });
-      pcMesh.position.set(gx, yL1, 0);
-      rootGroup.add(pcMesh);
-
-      if (sg.h >= 1.50 && segStep <= 11) {
-        [-1, 1].forEach(side => {
-          const spWall = createArchMesh(new THREE.BoxGeometry(segLenX * 0.96, depthH * 0.92, 0.08), 0xd97706, { ghostable: true, layerId: 'L1', metalness: 0.3 });
-          spWall.position.set(gx, yL1 + depthH * 0.48, side * (widthZ / 2 + 0.08 + peelZ));
-          rootGroup.add(spWall);
-        });
-      } else if (sg.h < 1.50) {
-        [-1, 1].forEach(side => {
-          const bank = createArchMesh(new THREE.BoxGeometry(segLenX * 0.96, depthH * 0.85, 0.26), 0x16a34a, { ghostable: true, layerId: 'L1', opacity: 0.55 });
-          bank.position.set(gx, yL1 + depthH * 0.42, side * (widthZ / 2 + 0.18 + peelZ * 0.6));
-          bank.rotation.x = side * 0.28;
-          rootGroup.add(bank);
-        });
-      }
-
-      if (isOverview && segStep < 12) {
-        const miniOsha = createOshaSafetyPackage3D(segLenX * 0.92, widthZ, yL1 + depthH, yL1 + 0.1, peelZ * 0.3, segStep, waveInfo.localProg, 'L1');
-        rootGroup.add(miniOsha);
-      }
-
-      // L3: Precast RC Saddle Racks + Exact Lower Power & Water Pipes
-      const yL3 = baseFloorY + 0.42 - effExp * 0.3;
-      if (segStep >= 2) {
-        for (let i = 0; i < sg.sw; i++) {
-          rootGroup.add(create3DPipe(segLenX * 0.96, 0.06, 0x10b981, gx, yL1 + 0.22, widthZ * 0.25 + i * 0.18, 'L1'));
-        }
-      }
-      if (segStep >= 3) {
-        const maxTierShow = segStep >= 8 ? sg.tiers : (segStep >= 5 ? Math.min(2, sg.tiers) : 1);
-        for (let t = 0; t < maxTierShow; t++) {
-          const rack = createExtrudedSaddleRack(widthZ * 0.62, Math.max(3, Math.ceil(sg.r3 / 2)), 0.18, 0.22, t === 2 ? 'L5' : 'L3');
-          rack.position.set(gx, yL3 + t * 0.25, -widthZ * 0.15);
-          rootGroup.add(rack);
-        }
-      }
-      if (segStep >= 4) {
-        const pSpan = widthZ * 0.54;
-        for (let i = 0; i < sg.r3; i++) {
-          const pz = -widthZ * 0.42 + (i / Math.max(1, sg.r3)) * pSpan;
-          rootGroup.add(create3DPipe(segLenX * 0.96, 0.042, 0xef4444, gx, yL3 + 0.08, pz, 'L3'));
-        }
-        for (let i = 0; i < sg.w1; i++) {
-          const pz = widthZ * 0.20 + (i / Math.max(1, sg.w1)) * (widthZ * 0.22);
-          rootGroup.add(create3DPipe(segLenX * 0.96, 0.055, 0x06b6d4, gx, yL3 + 0.14, pz, 'L3'));
-        }
-      }
-      if (segStep >= 6) {
-        const pSpan = widthZ * 0.54;
-        for (let i = 0; i < sg.r2; i++) {
-          const pz = -widthZ * 0.42 + (i / Math.max(1, sg.r2)) * pSpan;
-          rootGroup.add(create3DPipe(segLenX * 0.96, 0.042, 0xf97316, gx, yL3 + 0.30, pz, 'L3'));
-        }
-      }
-
-      // L4: Stage 1 CLSM
-      const yL4 = baseFloorY + 0.85 + effExp * 0.9;
-      if (segStep >= 7) {
-        const c1 = createArchMesh(new THREE.BoxGeometry(segLenX * 0.92, 0.34, widthZ * 0.88), 0xfacc15, { ghostable: true, layerId: 'L4', opacity: 0.68 });
-        c1.position.set(gx, yL4, 0);
-        rootGroup.add(c1);
-      }
-
-      // L5: Upper Weak Current Row 1 & Upper Water
-      const yL5 = baseFloorY + 1.25 + effExp * 2.1;
-      if (segStep >= 9) {
-        const pSpan = widthZ * 0.54;
-        for (let i = 0; i < sg.r1; i++) {
-          const pz = -widthZ * 0.42 + (i / Math.max(1, sg.r1)) * pSpan;
-          rootGroup.add(create3DPipe(segLenX * 0.96, 0.038, 0x0284c7, gx, yL5, pz, 'L5'));
-        }
-        for (let i = 0; i < sg.tw; i++) {
-          rootGroup.add(create3DPipe(segLenX * 0.96, 0.048, 0x8b5cf6, gx, yL5, widthZ * 0.25 + i * 0.16, 'L5'));
-        }
-      }
-
-      // L6: Stage 2 CLSM
-      const yL6 = baseFloorY + 1.58 + effExp * 3.2;
-      if (segStep >= 10) {
-        const c2 = createArchMesh(new THREE.BoxGeometry(segLenX * 0.92, 0.28, widthZ * 0.88), 0xfb923c, { ghostable: true, layerId: 'L6', opacity: 0.68 });
-        c2.position.set(gx, yL6, 0);
-        rootGroup.add(c2);
-      }
-
-      // L7: Dual-Color Warning Tape & Graded Aggregate Layer (Mode 00 & 03)
-      if (segStep >= 11) {
-        const l7Tape = createArchMesh(new THREE.BoxGeometry(segLenX * 0.94, 0.06, widthZ * 0.86), 0x84cc16, { layerId: 'L7', opacity: 0.88 });
-        l7Tape.position.set(gx, -0.52 + effExp * 4.2, 0);
-        rootGroup.add(l7Tape);
-      }
-
-      // S08 (STA 0+410) Special Culvert Crossing + 150mm Anti-Flotation Toe Wings (FS=1.44) + B31.1 Seismic Joints
-      if (isCulvertSeg) {
-        [-1, 1].forEach(side => {
-          const wing = createArchMesh(new THREE.BoxGeometry(segLenX * 0.98, 0.16, 0.28), 0x0d9488, { layerId: 'L2', metalness: 0.25 });
-          wing.position.set(gx, yL1 - 0.02, side * (widthZ / 2 + 0.14));
-          rootGroup.add(wing);
-        });
-        [-segLenX * 0.46, segLenX * 0.46].forEach(jx => {
-          const flexJoint = createArchMesh(new THREE.TorusGeometry(0.13, 0.045, 10, 18), 0xe11d48, { edges: false, layerId: 'L2', metalness: 0.6 });
-          flexJoint.rotation.y = Math.PI / 2;
-          flexJoint.position.set(gx + jx, yL3 + 0.12, widthZ * 0.24);
-          rootGroup.add(flexJoint);
-        });
-        const culvBox = createArchMesh(new THREE.BoxGeometry(segLenX * 0.92, 1.35, widthZ * 2.75), 0x64748b, { ghostable: true, layerId: 'L2', opacity: 0.78 });
-        culvBox.position.set(gx, baseFloorY + 1.05, 0);
-        rootGroup.add(culvBox);
-
-        const waterInside = createArchMesh(new THREE.BoxGeometry(segLenX * 0.86, 0.45, widthZ * 2.72), 0x0ea5e9, { edges: false, layerId: 'L2', opacity: 0.62 });
-        waterInside.position.set(gx, baseFloorY + 0.68, 0);
-        rootGroup.add(waterInside);
-        culvertFlowMeshes.push(waterInside);
-
-        for (let k = 0; k < 6; k++) {
-          const slvZ = -widthZ * 0.36 + k * (widthZ * 0.14);
-          rootGroup.add(create3DPipe(segLenX * 1.04, 0.075, 0x06b6d4, gx, baseFloorY - 0.52 - effExp * 1.4, slvZ, 'L2'));
-        }
-        const topPlate = createArchMesh(new THREE.BoxGeometry(segLenX * 0.95, 0.09, widthZ * 0.95), 0xe11d48, { layerId: 'L2', metalness: 0.5 });
-        topPlate.position.set(gx, baseFloorY + 1.92 + effExp * 3.8, 0);
-        rootGroup.add(topPlate);
-
-        const beaconGeo = new THREE.BoxGeometry(segLenX * 1.14, 4.2, widthZ * 2.95);
-        const beaconEdges = new THREE.EdgesGeometry(beaconGeo);
-        const beaconLine = new THREE.LineSegments(beaconEdges, new THREE.LineBasicMaterial({ color: 0xdc2626 }));
-        beaconLine.position.set(gx, baseFloorY + 1.25, 0);
-        rootGroup.add(beaconLine);
-        culvertAlertMeshes.push(beaconLine);
-      }
-
-      // L8: AC Roadway Surface + 39 Circular Manholes Strictly Flush with Roadway Surface (GL ±0.00m)
-      const roadSlabH = 0.14;
-      const roadCenterY = -0.3 + effExp * 5.2;
-      const roadTopSurfaceY = roadCenterY + roadSlabH / 2;
-
-      if (segStep >= 12) {
-        const road = createArchMesh(new THREE.BoxGeometry(segLenX, roadSlabH, widthZ * 1.04), ST_HEX[sg.st], { layerId: 'L8' });
-        road.position.set(gx, roadCenterY, 0);
-        rootGroup.add(road);
-      }
-
-      if (segStep >= 11) {
-        for (let m = 0; m < sg.mh; m++) {
-          const mx = gx - segLenX * 0.34 + (m / Math.max(1, sg.mh - 1)) * (segLenX * 0.68);
-          const mz = (m % 2 === 0) ? -widthZ * 0.24 : widthZ * 0.24;
-          const mhGroup = createCircularManhole3D(m % 2 === 0, mx, roadTopSurfaceY, mz, 1.35, effExp * 0.55, 'L8');
-          mhGroup.scale.set(0.46, 1.0, 0.46);
-          rootGroup.add(mhGroup);
-        }
-      }
-
-      if ([0, 2, 4, 7, 8, 11].includes(idx)) {
-        pinAnchors.push({
-          pos: new THREE.Vector3(gx, isCulvertSeg ? roadTopSurfaceY + 1.15 : roadTopSurfaceY + 0.65, 0),
-          num: sg.id.replace('S',''),
-          label: isCulvertSeg ? `⚠️ S08 穿越涵管處` : `${sg.id}(${sg.pipes}支/Step${segStep})`,
-          active: idx === state.segIdx,
-          isCulvert: isCulvertSeg,
-          onclick: isCulvertSeg ? `focusCulvertCrossing()` : `selectSeg(${idx})`
-        });
-      }
-    });
-
-    const culvGx = (7 - 5.5) * ((isOverview ? 3.52 : 3.35) + (isOverview ? 0.15 : 0.32));
-    calloutAnchors = [
-      { pos: new THREE.Vector3(-13.2, -1.2, 0), side: 'L', title: '北段雙向漸變 (S03主建物50支峰值 ➔ 北翼S01~02減為9支)', sub: '完工後CLSM實心包封(非人員通行)・39座孔蓋嚴格平齊路面', col: '#059669' },
-      { pos: new THREE.Vector3(-1.8, -1.8, 0),  side: 'L', title: '全線 S01➔S12 滾動施工波與臨時職安衛撤除', sub: 'CLSM1撤沉水泵浦 ➔ CLSM2撤送風機/爬梯 ➔ 鋪路撤護欄安全錐', col: '#0284c7' },
-      { pos: new THREE.Vector3(culvGx, 0.6, 0), side: 'R', title: '⚠️ STA 0+410 過大甲九圳特工區 (09A-09B・22支)', sub: '150mm抗浮翼趾(FS=1.44免地錨)＋雙球抗震軟管＋上下凹折套管', col: '#e11d48' },
-      { pos: new THREE.Vector3(14.5, -2.2, 0),  side: 'R', title: '南段 S09~S12 (16支遞減至6支 / 1:0.3明挖免鋼板樁)', sub: '開挖深 H≤1.48m 免鋼板樁｜1層RC凹槽管架 113 座', col: '#475569' }
-    ];
-
-  } else if (state.dim === 'seq') {
-    // ========================================================================
-    // MODE 01: 12-STEP SINGLE-SEGMENT DYNAMIC CONSTRUCTION ANIMATION
-    // ========================================================================
-    const sg = SEGS[state.segIdx];
-    const lenX = 14.5;
-    const widthZ = sg.w * 3.1;
-    const depthH = sg.h * 2.85;
-    const floorY = -3.7;
-    const groundY = floorY + depthH;
-    const divZ = widthZ * 0.16;
-    const peelZ = exp * 2.4;
-
-    // STEP 01: Stepped Excavation + Shoring + Full OSHA Safety Package
-    if (step >= 1) {
-      const soilBase = createArchMesh(new THREE.BoxGeometry(lenX * 1.04, 0.25, widthZ * 1.35), 0xd6d3cb, { layerId: 'L1' });
-      soilBase.position.set(0, floorY - 0.22 - exp * 0.8, 0);
-      rootGroup.add(soilBase);
-
-      if (sg.h >= 1.50 && step <= 11) {
-        const shoringGroup = new THREE.Group();
-        const pileCount = 12;
-        for (let i = 0; i < pileCount; i++) {
-          const px = -lenX / 2 + (i + 0.5) * (lenX / pileCount);
-          [-1, 1].forEach(side => {
-            const sp = createArchMesh(new THREE.BoxGeometry(lenX / pileCount * 0.92, depthH + 0.7, 0.16), 0xd97706, { ghostable: true, layerId: 'L1', metalness: 0.35, roughness: 0.45 });
-            sp.position.set(px, floorY + depthH / 2, side * (widthZ / 2 + 0.12 + peelZ));
-            shoringGroup.add(sp);
-          });
-        }
-        [-1, 1].forEach(side => {
-          const waler = createArchMesh(new THREE.BoxGeometry(lenX, 0.26, 0.26), 0xb45309, { ghostable: true, layerId: 'L1', metalness: 0.4 });
-          waler.position.set(0, groundY - 0.55 + exp * 0.8, side * (widthZ / 2 - 0.05 + peelZ));
-          shoringGroup.add(waler);
-        });
-        [-4.5, 0, 4.5].forEach(sx => {
-          const strut = createArchMesh(new THREE.BoxGeometry(0.28, 0.28, widthZ + peelZ * 2), 0xe11d48, { ghostable: true, layerId: 'L1', metalness: 0.3 });
-          strut.position.set(sx, groundY - 0.55 + exp * 0.8, 0);
-          shoringGroup.add(strut);
-        });
-        if (step === 1) dynamicStepActors.push({ mesh: shoringGroup, type: 'drop', baseY: 0, dropH: 3.2 });
-        if (step === 11) dynamicStepActors.push({ mesh: shoringGroup, type: 'extractUp', baseY: 0, liftH: 4.5 });
-        rootGroup.add(shoringGroup);
-      } else if (sg.h < 1.50) {
-        [-1, 1].forEach(side => {
-          const slope = createArchMesh(new THREE.BoxGeometry(lenX, depthH * 1.05, 0.45), 0x16a34a, { ghostable: true, layerId: 'L1', opacity: 0.65 });
-          slope.position.set(0, floorY + depthH / 2, side * (widthZ / 2 + 0.45 + peelZ));
-          slope.rotation.x = side * 0.32;
-          rootGroup.add(slope);
-        });
-      }
-
-      const oshaPkg = createOshaSafetyPackage3D(lenX, widthZ, groundY, floorY, peelZ, step, state.stepProg, 'L1');
-      if (step === 1) dynamicStepActors.push({ mesh: oshaPkg, type: 'drop', baseY: 0, dropH: 2.0 });
-      rootGroup.add(oshaPkg);
-    }
-
-    // STEP 02: 10cm PC Mud Slab + Right-Chamber Bottom Gravity Drainage
-    if (step >= 2) {
-      const pcSlab = createArchMesh(new THREE.BoxGeometry(lenX, 0.28, widthZ), 0x94a3b8, { layerId: 'L1' });
-      pcSlab.position.set(0, floorY - exp * 0.6, 0);
-      if (step === 2) dynamicStepActors.push({ mesh: pcSlab, type: 'scaleX' });
-      rootGroup.add(pcSlab);
-
-      const rightW = (widthZ / 2) - divZ - 0.35;
-      for (let i = 0; i < sg.sw; i++) {
-        const pz = divZ + 0.38 + (i / Math.max(1, sg.sw)) * (rightW * 0.75);
-        const swPipe = create3DPipe(lenX * 0.98, 0.15, 0x10b981, 0, floorY + 0.32 - exp * 0.4, pz, 'L1');
-        if (step === 2) dynamicStepActors.push({ mesh: swPipe, type: 'slideX' });
-        rootGroup.add(swPipe);
-      }
-    }
-
-    const leftW = divZ - (-widthZ / 2) - 0.35;
-    const leftCenterZ = (-widthZ / 2 + divZ) / 2;
-    const rightW = (widthZ / 2) - divZ - 0.35;
-    const rackXPositions = [-5.2, -2.6, 0, 2.6, 5.2];
-    const yRow3 = floorY + 0.72 - exp * 0.2;
-    const yRow2 = floorY + 1.52 + exp * 0.3;
-    const yRow1 = floorY + 2.48 + exp * 1.4;
-
-    // STEP 03: Tier 1 Precast RC Saddle Racks + Central Partition Wall
-    if (step >= 3) {
-      const tier1Group = new THREE.Group();
-      rackXPositions.forEach(rx => {
-        const r1 = createExtrudedSaddleRack(leftW, sg.r3, 0.36, 0.42, 'L3');
-        r1.position.set(rx, yRow3 - 0.14, leftCenterZ);
-        tier1Group.add(r1);
-        const partWall = createArchMesh(new THREE.BoxGeometry(0.36, depthH * 0.74, 0.22), 0x64748b, { layerId: 'L3' });
-        partWall.position.set(rx, floorY + depthH * 0.39, divZ);
-        tier1Group.add(partWall);
-      });
-      if (step === 3) dynamicStepActors.push({ mesh: tier1Group, type: 'drop', baseY: 0, dropH: 3.4 });
-      rootGroup.add(tier1Group);
-    }
-
-    // STEP 04: Bottom Row 3 Power Conduits + Right-Chamber Same-Elevation Water Mains
-    if (step >= 4) {
-      const batch1Group = new THREE.Group();
-      const span = leftW * 0.86;
-      const stepZ = span / Math.max(1, sg.r3);
-      for (let i = 0; i < sg.r3; i++) {
-        const pz = leftCenterZ - span / 2 + stepZ * (i + 0.5);
-        batch1Group.add(create3DPipe(lenX * 0.98, Math.min(0.105, stepZ * 0.33), 0xef4444, 0, yRow3 + 0.04, pz, 'L3'));
-      }
-      const lowerWaterCnt = Math.ceil(sg.w1 / 2);
-      for (let i = 0; i < lowerWaterCnt; i++) {
-        const pz = divZ + 0.38 + (i / Math.max(1, sg.w1)) * (rightW * 0.82);
-        batch1Group.add(create3DPipe(lenX * 0.98, 0.135, 0x06b6d4, 0, yRow3 + 0.08, pz, 'L3'));
-      }
-      if (step === 4) dynamicStepActors.push({ mesh: batch1Group, type: 'slideX' });
-      rootGroup.add(batch1Group);
-    }
-
-    // STEP 05: Tier 2 Precast RC Saddle Racks
-    if (step >= 5 && sg.tiers >= 2) {
-      const tier2Group = new THREE.Group();
-      rackXPositions.forEach(rx => {
-        const r2 = createExtrudedSaddleRack(leftW, Math.max(2, sg.r2), 0.36, 0.42, 'L3');
-        r2.position.set(rx, yRow2 - 0.14, leftCenterZ);
-        tier2Group.add(r2);
-      });
-      if (step === 5) dynamicStepActors.push({ mesh: tier2Group, type: 'drop', baseY: 0, dropH: 3.2 });
-      rootGroup.add(tier2Group);
-    }
-
-    // STEP 06: Middle Row 2 Power Conduits + Middle Water Pipes
-    if (step >= 6) {
-      const batch2Group = new THREE.Group();
-      if (sg.r2 > 0) {
-        const span = leftW * 0.86;
-        const stepZ = span / sg.r2;
-        for (let i = 0; i < sg.r2; i++) {
-          const pz = leftCenterZ - span / 2 + stepZ * (i + 0.5);
-          batch2Group.add(create3DPipe(lenX * 0.98, Math.min(0.10, stepZ * 0.33), 0xf97316, 0, yRow2 + 0.04, pz, 'L3'));
-        }
-      }
-      const lowerWaterCnt = Math.ceil(sg.w1 / 2);
-      for (let i = lowerWaterCnt; i < sg.w1; i++) {
-        const pz = divZ + 0.38 + (i / Math.max(1, sg.w1)) * (rightW * 0.82);
-        batch2Group.add(create3DPipe(lenX * 0.98, 0.13, 0x06b6d4, 0, yRow2 + 0.04, pz, 'L3'));
-      }
-      if (step === 6) dynamicStepActors.push({ mesh: batch2Group, type: 'slideX' });
-      rootGroup.add(batch2Group);
-    }
-
-    // STEP 07: Stage 1 CLSM Bay A -> B -> C Pouring (Sump pump pulled up simultaneously)
-    const yC1 = floorY + 1.15 + exp * 0.65;
-    if (step >= 7) {
-      const bayLen = lenX / 3;
-      [0, 1, 2].forEach(bi => {
-        const bx = -lenX / 2 + bayLen * (bi + 0.5);
-        const c1Mesh = createArchMesh(new THREE.BoxGeometry(bayLen - 0.22, 2.15, widthZ * 0.94), 0xfacc15, { ghostable: true, layerId: 'L4', opacity: 0.58 });
-        c1Mesh.position.set(bx, yC1, 0);
-        rootGroup.add(c1Mesh);
-        animatedBayMeshes.push({ mesh: c1Mesh, bayIdx: bi, stage: 1 });
-        pinAnchors.push({
-          pos: new THREE.Vector3(bx, yC1 + 1.25, -widthZ * 0.42),
-          num: ['A','B','C'][bi],
-          label: `${['A區(先澆置)','B區(推進)','C區(收尾)'][bi]}`,
-          active: step === 7 || step === 10,
-          onclick: `selectStep(7)`
-        });
-      });
-    }
-
-    // STEP 08: Tier 3 Precast RC Saddle Racks on Top of CLSM 1
-    if (step >= 8) {
-      const tier3Group = new THREE.Group();
-      rackXPositions.forEach(rx => {
-        const r3 = createExtrudedSaddleRack(leftW, sg.r1, 0.34, 0.42, 'L5');
-        r3.position.set(rx, yRow1 - 0.14, leftCenterZ);
-        tier3Group.add(r3);
-      });
-      if (step === 8) dynamicStepActors.push({ mesh: tier3Group, type: 'drop', baseY: 0, dropH: 2.8 });
-      rootGroup.add(tier3Group);
-    }
-
-    // STEP 09: Upper Row 1 Weak-Current Telecom Conduits + Upper Water Pipes
-    if (step >= 9) {
-      const batch3Group = new THREE.Group();
-      const span = leftW * 0.86;
-      const stepZ = span / Math.max(1, sg.r1);
-      for (let i = 0; i < sg.r1; i++) {
-        const pz = leftCenterZ - span / 2 + stepZ * (i + 0.5);
-        batch3Group.add(create3DPipe(lenX * 0.98, Math.min(0.092, stepZ * 0.33), 0x0284c7, 0, yRow1 + 0.04, pz, 'L5'));
-      }
-      for (let i = 0; i < sg.tw; i++) {
-        const pz = divZ + 0.42 + (i / Math.max(1, sg.tw)) * (rightW * 0.72);
-        batch3Group.add(create3DPipe(lenX * 0.98, 0.115, 0x8b5cf6, 0, yRow1 + 0.04, pz, 'L5'));
-      }
-      if (step === 9) dynamicStepActors.push({ mesh: batch3Group, type: 'slideX' });
-      rootGroup.add(batch3Group);
-    }
-
-    // STEP 10: Stage 2 CLSM Bay A -> B -> C Pouring (Blower & Ladder removed simultaneously)
-    const yC2 = floorY + 2.62 + exp * 1.9;
-    if (step >= 10) {
-      const bayLen = lenX / 3;
-      [0, 1, 2].forEach(bi => {
-        const bx = -lenX / 2 + bayLen * (bi + 0.5);
-        const c2Mesh = createArchMesh(new THREE.BoxGeometry(bayLen - 0.22, 1.05, widthZ * 0.94), 0xfb923c, { ghostable: true, layerId: 'L6', opacity: 0.58 });
-        c2Mesh.position.set(bx, yC2, 0);
-        rootGroup.add(c2Mesh);
-        animatedBayMeshes.push({ mesh: c2Mesh, bayIdx: bi, stage: 2 });
-      });
-    }
-
-    if (step === 7 || step === 10) {
-      const pGroup = new THREE.Group();
-      const hoseMesh = createArchMesh(new THREE.CylinderGeometry(0.16, 0.20, 2.8, 16), 0x0f172a, { edges: false });
-      hoseMesh.position.y = 1.6;
-      pGroup.add(hoseMesh);
-      const coneMesh = createArchMesh(new THREE.ConeGeometry(0.45, 2.1, 16), step === 10 ? 0xfb923c : 0xfacc15, { edges: false, opacity: 0.85 });
-      coneMesh.position.y = -0.4;
-      pGroup.add(coneMesh);
-      pGroup.position.set(0, step === 10 ? yC2 + 1.8 : yC1 + 2.2, 0);
-      rootGroup.add(pGroup);
-      pumpNozzleGroup = pGroup;
-    }
-
-    // STEP 11 & 12: 39 Circular Manholes Strictly Flush with AC Roadway Top Surface (GL ±0.00m)
-    const roadTopY = groundY + exp * 3.1;
-    const roadSlabThickness = 0.22;
-
-    if (step >= 11) {
-      for (let m = 0; m < sg.mh; m++) {
-        const mx = -lenX * 0.36 + (m / Math.max(1, sg.mh - 1)) * (lenX * 0.72);
-        const mz = (m % 2 === 0) ? leftCenterZ : divZ + rightW * 0.45;
-        const mhObj = createCircularManhole3D(m % 2 === 0, mx, roadTopY, mz, depthH * 0.94, exp * 0.8, 'L8');
-        if (step === 11) dynamicStepActors.push({ mesh: mhObj, type: 'drop', baseY: mhObj.position.y, dropH: 2.6 });
-        rootGroup.add(mhObj);
-      }
-    }
-
-    if (step >= 12) {
-      const tapeMesh = createArchMesh(new THREE.BoxGeometry(lenX * 0.96, 0.05, widthZ * 0.82), 0x84cc16, { layerId: 'L7' });
-      tapeMesh.position.set(0, groundY - 0.35 + exp * 2.4, 0);
-      rootGroup.add(tapeMesh);
-
-      const roadMesh = createArchMesh(new THREE.BoxGeometry(lenX, roadSlabThickness, widthZ + 1.2), ST_HEX[sg.st], { ghostable: true, layerId: 'L8', opacity: 0.88 });
-      roadMesh.position.set(0, roadTopY - roadSlabThickness / 2, 0);
-      dynamicStepActors.push({ mesh: roadMesh, type: 'scaleX' });
-      rootGroup.add(roadMesh);
-    }
-
-    calloutAnchors = [
-      { pos: new THREE.Vector3(-4.5, roadTopY + 0.05, leftCenterZ),     side: 'L', title: '🎯 Step 11➔12 人手孔蓋與AC路面100%平齊 (GL±0.00m)', sub: '透過預鑄調整環精準對齊 AC 瀝青混凝土路面頂層 (零凸出)', col: '#059669' },
-      { pos: new THREE.Vector3(-5.5, groundY + 0.8, -widthZ / 2 - 0.5), side: 'L', title: '🛡️ 職安衛設施配合 CLSM 澆置進度分批撤除', sub: 'Step07撤沉水泵浦 ➔ Step10撤送風機/爬梯 ➔ Step11~12拔樁撤護欄', col: '#d97706' },
-      { pos: new THREE.Vector3(-4.5, yRow2 + 0.2, leftCenterZ),         side: 'L', title: `Step 03➔06 第1~2層RC架＋強電(${sg.r3}+${sg.r2}支)`, sub: '管架1➔放強電1➔管架2➔放動力2 (依高程逐層安放於半圓凹槽)', col: '#dc2626' },
-      { pos: new THREE.Vector3( 4.5, yC1 + 0.6, 0),                     side: 'R', title: 'Step 07 & 10 兩階段分區 CLSM 澆置', sub: 'A區➔B區➔C區分區分段澆置 (先固強電CLSM1、後封弱電CLSM2)', col: '#ca8a04' },
-      { pos: new THREE.Vector3( 4.5, yRow3, divZ + rightW / 2),         side: 'R', title: `右槽水系統依高程分批施作 (共${sg.sw+sg.w1+sg.tw}支)`, sub: `底排(${sg.sw}支 EL-1.85)➔下/中給消水(${sg.w1}支)➔上水(${sg.tw}支)`, col: '#0891b2' }
-    ];
-
-  } else if (state.dim === 'culv') {
-    // ========================================================================
-    // MODE 02: STA 0+410 (09A-09B) 12-STEP DYNAMIC CONSTRUCTION ANIMATION
-    // ========================================================================
-    const lenX = 20.5;
-    const widthZ = 6.2;
-    const floorY = -4.25;
-    const groundY = 2.65;
-    const culvRoadTopY = groundY + exp * 2.8;
-    const peelZ = exp * 1.8;
-
-    // Existing Box Culvert W3.2m x H1.8m
-    const culvMesh = createArchMesh(new THREE.BoxGeometry(6.2, 3.0, 11.2), 0x94a3b8, { ghostable: true, layerId: 'L2', opacity: 0.68 });
-    culvMesh.position.set(0, -0.35, 0);
-    rootGroup.add(culvMesh);
-
-    const waterMesh = createArchMesh(new THREE.BoxGeometry(5.8, 1.0, 11.0), 0x0ea5e9, { edges: false, layerId: 'L2', opacity: 0.58 });
-    waterMesh.position.set(0, -1.05, 0);
-    rootGroup.add(waterMesh);
-    culvertFlowMeshes.push(waterMesh);
-
-    // STEP 01: Box Culvert H-200 Underpinning + SP-III Sheet Piles + OSHA Safety Package
-    if (step >= 1) {
-      const underGroup = new THREE.Group();
-      [-2.1, 2.1].forEach(bx => {
-        const hMesh = createArchMesh(new THREE.BoxGeometry(0.55, 0.45, 11.8), 0xd97706, { layerId: 'L2', metalness: 0.45 });
-        hMesh.position.set(bx, -2.15, 0);
-        underGroup.add(hMesh);
-      });
-      if (step === 1) dynamicStepActors.push({ mesh: underGroup, type: 'drop', baseY: 0, dropH: 2.5 });
-      rootGroup.add(underGroup);
-
-      if (step <= 11) {
-        const spGroup = new THREE.Group();
-        for (let px = -lenX / 2 + 0.8; px <= lenX / 2 - 0.8; px += 1.4) {
-          if (Math.abs(px) < 3.2) continue;
-          [-1, 1].forEach(side => {
-            const spMesh = createArchMesh(new THREE.BoxGeometry(1.22, 6.8, 0.18), 0xd97706, { ghostable: true, layerId: 'L1', metalness: 0.35, opacity: 0.82 });
-            spMesh.position.set(px, -0.8, side * (widthZ / 2 + 0.25 + peelZ));
-            spGroup.add(spMesh);
-          });
-        }
-        [-6.5, 6.5].forEach(sx => {
-          const stMesh = createArchMesh(new THREE.BoxGeometry(0.32, 0.32, widthZ + peelZ * 2), 0xe11d48, { ghostable: true, layerId: 'L1' });
-          stMesh.position.set(sx, groundY - 0.55 + exp * 1.2, 0);
-          spGroup.add(stMesh);
-        });
-        if (step === 1) dynamicStepActors.push({ mesh: spGroup, type: 'drop', baseY: 0, dropH: 3.5 });
-        if (step === 11) dynamicStepActors.push({ mesh: spGroup, type: 'extractUp', baseY: 0, liftH: 5.2 });
-        rootGroup.add(spGroup);
-      }
-
-      const oshaCulv = createOshaSafetyPackage3D(lenX, widthZ, groundY, floorY, peelZ, step, state.stepProg, 'L1');
-      if (step === 1) dynamicStepActors.push({ mesh: oshaCulv, type: 'drop', baseY: 0, dropH: 2.2 });
-      rootGroup.add(oshaCulv);
-    }
-
-    // STEP 02: Sub-culvert PC Mud Slab + 150mm Cantilevered Anti-Flotation Toe Wings (FS=1.44 >= 1.20) + Bottom Drainage
-    if (step >= 2) {
-      const pcSlabGroup = new THREE.Group();
-      const pcSlab = createArchMesh(new THREE.BoxGeometry(lenX * 0.92, 0.32, widthZ * 0.92), 0x94a3b8, { layerId: 'L1' });
-      pcSlab.position.set(0, floorY, 0);
-      pcSlabGroup.add(pcSlab);
-      [-1, 1].forEach(side => {
-        const toeWing = createArchMesh(new THREE.BoxGeometry(lenX * 0.88, 0.24, 0.42), 0x0d9488, { layerId: 'L2', metalness: 0.25 });
-        toeWing.position.set(0, floorY - 0.02, side * (widthZ * 0.46 + 0.18));
-        pcSlabGroup.add(toeWing);
-      });
-      if (step === 2) dynamicStepActors.push({ mesh: pcSlabGroup, type: 'scaleX' });
-      rootGroup.add(pcSlabGroup);
-
-      const swCulv = create3DPipe(lenX * 0.90, 0.16, 0x10b981, 0, floorY + 0.32, widthZ * 0.32, 'L1');
-      if (step === 2) dynamicStepActors.push({ mesh: swCulv, type: 'slideX' });
-      rootGroup.add(swCulv);
-    }
-
-    // STEP 03: Lower RC Saddle Racks + 4 RC Thrust Blocks at 45° Bends
-    if (step >= 3) {
-      const tbGroup = new THREE.Group();
-      [-4.1, 4.1].forEach(tx => {
-        const tbMesh = createArchMesh(new THREE.BoxGeometry(1.35, 1.05, 5.2), 0x64748b, { layerId: 'L2' });
-        tbMesh.position.set(tx, -3.55 - exp * 0.9, 0);
-        tbGroup.add(tbMesh);
-      });
-      [-2.2, 0, 2.2].forEach(rx => {
-        const rk1 = createExtrudedSaddleRack(4.6, 6, 0.34, 0.45, 'L3');
-        rk1.position.set(rx, -3.90 - exp * 1.1, -0.2);
-        tbGroup.add(rk1);
-      });
-      if (step === 3) dynamicStepActors.push({ mesh: tbGroup, type: 'drop', baseY: 0, dropH: 3.0 });
-      rootGroup.add(tbGroup);
-    }
-
-    // STEP 04: 6x Ø250mm Galvanized Steel Sleeves + Bottom Row 3 Power & Water Mains (Concave-Down)
-    if (step >= 4) {
-      const siphonGroup = new THREE.Group();
-      for (let i = 0; i < 6; i++) {
-        const pz = -2.0 + i * 0.8;
-        siphonGroup.add(create3DPipe(8.2, 0.19, 0x06b6d4, 0, -3.65 - exp * 1.1, pz, 'L2'));
-        const nSlp = create3DPipe(4.3, 0.14, i < 4 ? 0xef4444 : 0x0ea5e9, -5.5, -2.40 - exp * 0.5, pz, 'L3');
-        nSlp.rotation.z = -0.50; siphonGroup.add(nSlp);
-        const sSlp = create3DPipe(4.3, 0.14, i < 4 ? 0xef4444 : 0x0ea5e9,  5.5, -2.40 - exp * 0.5, pz, 'L3');
-        sSlp.rotation.z = 0.50; siphonGroup.add(sSlp);
-      }
-      // ASME B31.1 SUS316 Double-Sphere Seismic Flexible Joints at both culvert transition ends
-      [-7.2, 7.2].forEach(jx => {
-        [0.8, 1.6].forEach(jz => {
-          [-0.18, 0.18].forEach(ballDx => {
-            const sphere = createArchMesh(new THREE.SphereGeometry(0.20, 14, 12), 0xe11d48, { edges: false, layerId: 'L2', metalness: 0.65, roughness: 0.25 });
-            sphere.position.set(jx + ballDx, -1.45 - exp * 0.3, jz);
-            siphonGroup.add(sphere);
-          });
-        });
-      });
-      if (step === 4) dynamicStepActors.push({ mesh: siphonGroup, type: 'slideX' });
-      rootGroup.add(siphonGroup);
-    }
-
-    // STEP 05: Middle Tier 2 Precast RC Saddle Racks
-    if (step >= 5) {
-      const rk2Group = new THREE.Group();
-      [-6.2, -2.2, 2.2, 6.2].forEach(rx => {
-        const rk2 = createExtrudedSaddleRack(4.4, 5, 0.32, 0.42, 'L3');
-        rk2.position.set(rx, -3.15 - exp * 0.7, -0.2);
-        rk2Group.add(rk2);
-      });
-      if (step === 5) dynamicStepActors.push({ mesh: rk2Group, type: 'drop', baseY: 0, dropH: 2.8 });
-      rootGroup.add(rk2Group);
-    }
-
-    // STEP 06: Middle Row 2 Power Conduits + Mid Water Pipes
-    if (step >= 6) {
-      const midPipeGroup = new THREE.Group();
-      for (let i = 0; i < 5; i++) {
-        const pz = -1.7 + i * 0.85;
-        midPipeGroup.add(create3DPipe(8.0, 0.12, i < 3 ? 0xf97316 : 0x06b6d4, 0, -2.95 - exp * 0.7, pz, 'L3'));
-      }
-      if (step === 6) dynamicStepActors.push({ mesh: midPipeGroup, type: 'slideX' });
-      rootGroup.add(midPipeGroup);
-    }
-
-    // STEP 07: Stage 1 CLSM Pouring (Bay A -> Bay B -> Bay C) + Sump Pump Removal
-    const yCulvC1 = -3.25 - exp * 0.8;
-    if (step >= 7) {
-      const bayLen = (lenX * 0.82) / 3;
-      [0, 1, 2].forEach(bi => {
-        const bx = -(lenX * 0.82) / 2 + bayLen * (bi + 0.5);
-        const c1Mesh = createArchMesh(new THREE.BoxGeometry(bayLen - 0.20, 1.45, widthZ * 0.86), 0xfacc15, { ghostable: true, layerId: 'L4', opacity: 0.56 });
-        c1Mesh.position.set(bx, yCulvC1, 0);
-        rootGroup.add(c1Mesh);
-        animatedBayMeshes.push({ mesh: c1Mesh, bayIdx: bi, stage: 1 });
-      });
-    }
-
-    // STEP 08: Convex-Up Overpass Upper RC Racks on Box Culvert Roof
-    if (step >= 8) {
-      const rk3Group = new THREE.Group();
-      [-4.2, 0, 4.2].forEach(rx => {
-        const rk3 = createExtrudedSaddleRack(4.2, 5, 0.28, 0.40, 'L5');
-        rk3.position.set(rx, 1.48 + exp * 1.3, 0);
-        rk3Group.add(rk3);
-      });
-      if (step === 8) dynamicStepActors.push({ mesh: rk3Group, type: 'drop', baseY: 0, dropH: 2.4 });
-      rootGroup.add(rk3Group);
-    }
-
-    // STEP 09: Convex-Up Upper Row 1 Weak-Current Telecom & Upper Water Pipes (GL-0.45m Overpass)
-    if (step >= 9) {
-      const topPipeGroup = new THREE.Group();
-      for (let i = 0; i < 5; i++) {
-        topPipeGroup.add(create3DPipe(13.8, 0.11, i < 3 ? 0x0284c7 : 0x8b5cf6, 0, 1.72 + exp * 1.5, -1.5 + i * 0.75, 'L5'));
-      }
-      if (step === 9) dynamicStepActors.push({ mesh: topPipeGroup, type: 'slideX' });
-      rootGroup.add(topPipeGroup);
-    }
-
-    // STEP 10: 20mm Anti-Pressure Steel Plate + Stage 2 Early-Strength CLSM Pouring + Removal of Blower & Ladder
-    const yCulvC2 = 2.05 + exp * 1.9;
-    if (step >= 10) {
-      const plMesh = createArchMesh(new THREE.BoxGeometry(11.2, 0.18, 4.6), 0xe11d48, { layerId: 'L2', metalness: 0.5 });
-      plMesh.position.set(0, yCulvC2 + 0.22, 0);
-      if (step === 10) dynamicStepActors.push({ mesh: plMesh, type: 'drop', baseY: plMesh.position.y, dropH: 2.0 });
-      rootGroup.add(plMesh);
-
-      const bayLen = 13.5 / 3;
-      [0, 1, 2].forEach(bi => {
-        const bx = -13.5 / 2 + bayLen * (bi + 0.5);
-        const c2Mesh = createArchMesh(new THREE.BoxGeometry(bayLen - 0.18, 0.65, 4.8), 0xfb923c, { ghostable: true, layerId: 'L6', opacity: 0.56 });
-        c2Mesh.position.set(bx, yCulvC2 - 0.15, 0);
-        rootGroup.add(c2Mesh);
-        animatedBayMeshes.push({ mesh: c2Mesh, bayIdx: bi, stage: 2 });
-      });
-    }
-
-    if (step === 7 || step === 10) {
-      const pGroup = new THREE.Group();
-      const hoseMesh = createArchMesh(new THREE.CylinderGeometry(0.16, 0.20, 2.6, 16), 0x0f172a, { edges: false });
-      hoseMesh.position.y = 1.4; pGroup.add(hoseMesh);
-      const coneMesh = createArchMesh(new THREE.ConeGeometry(0.42, 1.9, 16), step === 10 ? 0xfb923c : 0xfacc15, { edges: false, opacity: 0.85 });
-      coneMesh.position.y = -0.35; pGroup.add(coneMesh);
-      pGroup.position.set(0, step === 10 ? yCulvC2 + 1.4 : yCulvC1 + 1.8, 0);
-      rootGroup.add(pGroup);
-      pumpNozzleGroup = pGroup;
-    }
-
-    // STEP 11: 09A & 09B Deep Circular Manholes (3.05m Depth, Covers Flush with AC Roadway) + Sheet Pile Extraction
-    if (step >= 11) {
-      const mh09A = createCircularManhole3D(true, -8.8, culvRoadTopY, -1.2, 6.6, exp * 0.85, 'L2');
-      mh09A.scale.set(1.30, 1.0, 1.30);
-      const mh09B = createCircularManhole3D(false, 8.8, culvRoadTopY, 1.2, 6.6, exp * 0.85, 'L2');
-      mh09B.scale.set(1.30, 1.0, 1.30);
-      if (step === 11) {
-        dynamicStepActors.push({ mesh: mh09A, type: 'drop', baseY: mh09A.position.y, dropH: 2.8 });
-        dynamicStepActors.push({ mesh: mh09B, type: 'drop', baseY: mh09B.position.y, dropH: 2.8 });
-      }
-      rootGroup.add(mh09A, mh09B);
-    }
-
-    // STEP 12: Dual-Color Warning Tape (L7) + AC Roadway Restoration Flush with 09A/09B Covers (GL±0.00m)
-    if (step >= 12) {
-      const culvTape = createArchMesh(new THREE.BoxGeometry(lenX * 0.94, 0.06, widthZ * 0.84), 0x84cc16, { layerId: 'L7' });
-      culvTape.position.set(0, groundY - 0.36 + exp * 2.2, 0);
-      rootGroup.add(culvTape);
-      const roadSlab = createArchMesh(new THREE.BoxGeometry(lenX, 0.24, widthZ + 0.8), ST_HEX[SEGS[7].st], { ghostable: true, layerId: 'L8', opacity: 0.85 });
-      roadSlab.position.set(0, culvRoadTopY - 0.12, 0);
-      dynamicStepActors.push({ mesh: roadSlab, type: 'scaleX' });
-      rootGroup.add(roadSlab);
-    }
-
-    calloutAnchors = [
-      { pos: new THREE.Vector3(0, 2.25 + exp * 2.1, 0),    side: 'L', title: 'Step 08➔10 上凸折 (GL-0.45m 涵頂淺埋跨越)', sub: '上層弱電管＋20mm防壓鋼板＋第2階段早強CLSM澆置', col: '#e11d48' },
-      { pos: new THREE.Vector3(0, 0.2, 0),                 side: 'L', title: 'Step 01 既有RC箱涵H型鋼托底與職安衛護欄', sub: 'W3.2×H1.8m箱涵底部架設 H-200 型鋼支撐樑防沉陷', col: '#475569' },
-      { pos: new THREE.Vector3(0, -3.7 - exp * 1.1, 0),    side: 'R', title: 'Step 03➔07 下凹折6×Ø250鍍鋅鋼套管+CLSM1', sub: '涵底GL-2.65m穿設強電/給消水＋4座抗推力墩＋A➔B➔C澆置', col: '#0891b2' },
-      { pos: new THREE.Vector3(-8.8, culvRoadTopY, -1.2),  side: 'L', title: 'Step 11 09A 連絡人手孔 (孔蓋與AC路面平齊)', sub: '井深3.05m｜高點設自動排氣閥、低點設排泥閥', col: '#0284c7' },
-      { pos: new THREE.Vector3( 8.8, culvRoadTopY,  1.2),  side: 'R', title: 'Step 12 09B 南端連絡人手孔與路面復原', sub: '孔蓋調平對齊 GL±0.00m 並配合澆置撤除職安衛設施', col: '#059669' }
-    ];
-  }
-}
-
-// ============================================================================
-// 2-PASS VERTICAL REPULSION SVG CALLOUT ENGINE (Zero Overlap)
-// ============================================================================
-function renderCalloutsAndPins() {
-  const svg = document.getElementById('callout-svg');
-  const pinsLayer = document.getElementById('pins-layer');
-  if (state.blueprintOpen || state.warroomPreviewOpen || !camera) {
-    svg.innerHTML = '';
-    pinsLayer.innerHTML = '';
+  const modal = document.getElementById('ygOverlayModal');
+  const title = document.getElementById('ygOverlayTitle');
+  const body = document.getElementById('ygOverlayBody');
+
+  if (curMode === 'bldg3d' || curMode === 'floor3d' || curMode === 'walk') {
+    modal.classList.remove('show');
+    if (curMode === 'floor3d') selectFloor('FF');
+    if (curMode === 'walk') { rotX = 0.20; zoom = 1.48; } else { rotX = 0.44; zoom = 1.08; }
     return;
   }
 
-  const W = window.innerWidth;
-  const H = window.innerHeight;
-  const leftItems = [];
-  const rightItems = [];
-
-  calloutAnchors.forEach(a => {
-    const v = a.pos.clone().project(camera);
-    if (v.z > 1) return;
-    const sx = (v.x * 0.5 + 0.5) * W;
-    const sy = (-v.y * 0.5 + 0.5) * H;
-    const item = { ...a, sx, sy, labelY: Math.max(95, Math.min(H - 115, sy)) };
-    if (a.side === 'L') leftItems.push(item);
-    else rightItems.push(item);
-  });
-
-  const minGap = 44;
-  [leftItems, rightItems].forEach(list => {
-    list.sort((a, b) => a.labelY - b.labelY);
-    for (let i = 1; i < list.length; i++) {
-      if (list[i].labelY - list[i - 1].labelY < minGap) list[i].labelY = list[i - 1].labelY + minGap;
-    }
-    for (let i = list.length - 2; i >= 0; i--) {
-      if (list[i + 1].labelY > H - 110) list[i + 1].labelY = H - 110;
-      if (list[i + 1].labelY - list[i].labelY < minGap) list[i].labelY = Math.max(95, list[i + 1].labelY - minGap);
-    }
-  });
-
-  let svgHtml = '';
-  const drawSide = (list, isLeft) => {
-    const railX = isLeft ? Math.max(278, W * 0.24) : Math.min(W - 284, W * 0.76);
-    const boxW = 226;
-    const boxX = isLeft ? railX - boxW - 6 : railX + 6;
-    list.forEach(it => {
-      const elbowX = isLeft ? railX + 14 : railX - 14;
-      svgHtml += `
-        <polyline points="${it.sx.toFixed(1)},${it.sy.toFixed(1)} ${elbowX.toFixed(1)},${it.labelY.toFixed(1)} ${railX.toFixed(1)},${it.labelY.toFixed(1)}"
-          fill="none" stroke="${it.col}" stroke-width="1.35" stroke-dasharray="3,2" opacity="0.88"/>
-        <circle cx="${it.sx.toFixed(1)}" cy="${it.sy.toFixed(1)}" r="3.5" fill="${it.col}" stroke="#fff" stroke-width="1.2"/>
-        <g transform="translate(${boxX.toFixed(1)}, ${(it.labelY - 17).toFixed(1)})">
-          <rect width="${boxW}" height="34" rx="6" fill="rgba(255,255,255,0.92)" stroke="${it.col}" stroke-width="1.2"/>
-          <text x="7" y="13" fill="#0f172a" font-size="10" font-weight="800">${it.title}</text>
-          <text x="7" y="26" fill="#475569" font-size="9" font-weight="600">${it.sub}</text>
-        </g>
-      `;
-    });
-  };
-  if (W > 980) {
-    drawSide(leftItems, true);
-    drawSide(rightItems, false);
-  }
-  svg.innerHTML = svgHtml;
-
-  let pinsHtml = '';
-  pinAnchors.forEach(p => {
-    const v = p.pos.clone().project(camera);
-    if (v.z > 1) return;
-    const sx = (v.x * 0.5 + 0.5) * W;
-    const sy = (-v.y * 0.5 + 0.5) * H;
-    if (sx < 260 || sx > W - 265 || sy < 55 || sy > H - 90) return;
-    pinsHtml += `
-      <div class="spatial-pin ${p.active ? 'active' : ''} ${p.isCulvert ? 'culvert-alert' : ''}" style="left:${sx.toFixed(1)}px;top:${sy.toFixed(1)}px;" onclick="${p.onclick}">
-        <span class="num mono">${p.num}</span>
-        <span>${p.label}</span>
-      </div>
-    `;
-  });
-  pinsLayer.innerHTML = pinsHtml;
-}
-
-// ============================================================================
-// UI SYNCHRONIZATION, 2D SADDLE CROSS-SECTION & CULVERT MAGNIFIER
-// ============================================================================
-function syncUI() {
-  const kState = computeState(state);
-  const sg = kState.seg;
-
-  document.getElementById('seg-grid').innerHTML = SEGS.map((s, i) => `
-    <div class="seg-cell ${i === state.segIdx ? 'active' : ''} ${i === 7 ? 'culv-cell' : ''}" onclick="selectSeg(${i})" style="border-bottom:2.5px solid ${ST_CSS[s.st]}">
-      ${s.id}${i === 7 ? '⚠️' : ''}
-      <span class="mono">${s.pipes}支</span>
-    </div>
-  `).join('');
-
-  const effStep = (state.dim === 'overview' && state.overviewWaveAnim)
-    ? getSegmentWaveStep(state.segIdx).localStep
-    : state.step;
-
-  const badgeHtml = (activeStepLimit, currentStep) => {
-    if (currentStep < activeStepLimit) return `<span class="osha-tag-on">🟢 運作防護中</span>`;
-    if (currentStep === activeStepLimit) return `<span class="osha-tag-removing">🟠 隨澆置撤除中</span>`;
-    return `<span class="osha-tag-off">⚪ 已撤除完畢</span>`;
-  };
-  document.getElementById('osha-stage-tag').textContent = `Step ${String(effStep).padStart(2,'0')}`;
-  document.getElementById('osha-status-card').innerHTML = `
-    <div class="osha-item"><span>1. 集水坑沉水泵浦+排水立管</span>${badgeHtml(7, effStep)}</div>
-    <div class="osha-item"><span>2. 通風換氣送風機+上下爬梯</span>${badgeHtml(10, effStep)}</div>
-    <div class="osha-item"><span>3. SP-III 鋼板樁+H200型鋼支撐</span>${badgeHtml(11, effStep)}</div>
-    <div class="osha-item"><span>4. 雙側1.1m護欄+踢腳板+安全錐</span>${badgeHtml(12, effStep)}</div>
-  `;
-
-  document.getElementById('layer-list').innerHTML = ARCH_LAYERS.map(ly => `
-    <div class="layer-item ${state.activeLayer === ly.id ? 'active' : ''}" onclick="selectLayer('${ly.id}')">
-      <span><i class="layer-dot" style="background:${ly.col}"></i>${ly.name}</span>
-      <span class="mono" style="font-size:8.5px;">${ly.id}</span>
-    </div>
-  `).join('');
-  document.getElementById('layer-tag').textContent = state.activeLayer;
-
-  const steps = getStepsForDim(state.dim);
-  document.getElementById('step-strip').innerHTML = steps.map(st => `
-    <button class="step-pill ${st.id === state.step ? 'active' : ''}" onclick="selectStep(${st.id})">${st.name}</button>
-  `).join('');
-
-  document.getElementById('verify-count-badge').textContent = `${sg.id}: ${sg.pipes}/${sg.pipes} 支`;
-  document.getElementById('sec-dim-tag').textContent = `W${sg.w.toFixed(2)}×H${sg.h.toFixed(2)}m`;
-  document.getElementById('qto-seg-tag').textContent = `STA ${sg.sta}`;
-  document.getElementById('st-badge-mini').textContent = `${sg.id} [${sg.st}]`;
-
-  const curStepObj = steps.find(x => x.id === state.step) || steps[0];
-  document.getElementById('qto-card').innerHTML = `
-    <div class="qto-row"><span>1. 目前施工步驟</span><strong class="mono" style="color:var(--blue);">${curStepObj.name}</strong></div>
-    <div class="qto-row"><span>2. 構造定位與孔蓋高程</span><strong class="mono" style="color:var(--emerald);">CLSM實心非通行｜GL±0.00m平齊</strong></div>
-    <div class="qto-row"><span>3. 預鑄RC半圓凹槽管架</span><strong class="mono">${sg.racks} 座 (${sg.tiers}層 / 全線342座)</strong></div>
-    <div class="qto-row"><span>4. 第1/2階段 CLSM 澆置</span><strong class="mono">${kState.clsm1Vol} + ${kState.clsm2Vol} m³ (全線542.5m³)</strong></div>
-    <div class="qto-row"><span>5. 左電(${sg.r3}+${sg.r2}+${sg.r1})+右水(${sg.sw}+${sg.w1}+${sg.tw})</span><strong class="mono" style="color:var(--emerald);">${sg.pipes} 支 (v14圖說100%一致)</strong></div>
-  `;
-
-  draw2DSaddleCrossSection(sg);
-}
-
-function setupHiDPICanvas(c, cssW, cssH) {
-  const dpr = Math.min(window.devicePixelRatio || 1, 2);
-  if (c.width !== Math.round(cssW * dpr) || c.height !== Math.round(cssH * dpr)) {
-    c.width = Math.round(cssW * dpr);
-    c.height = Math.round(cssH * dpr);
-  }
-  const ctx = c.getContext('2d');
-  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  return ctx;
-}
-
-function draw2DSaddleCrossSection(s) {
-  const c = document.getElementById('c2d');
-  const ctx = setupHiDPICanvas(c, 244, 118);
-  ctx.clearRect(0, 0, 244, 118);
-  ctx.fillStyle = '#f8fafc';
-  ctx.fillRect(0, 0, 244, 118);
-
-  const ox = 20, oy = 18, tw = 204, th = 84;
-  const divX = ox + tw * 0.68;
-  const step = state.step;
-
-  if (step >= 7) { ctx.fillStyle = 'rgba(250,204,21,0.34)'; ctx.fillRect(ox + 2, oy + th * 0.36, tw - 4, th * 0.62); }
-  if (step >= 10) { ctx.fillStyle = 'rgba(251,146,60,0.34)'; ctx.fillRect(ox + 2, oy + 6, tw - 4, th * 0.30); }
-
-  if (step >= 12) {
-    ctx.fillStyle = '#10b981';
-    ctx.fillRect(ox - 6, oy - 4, tw + 12, 4);
-    ctx.fillStyle = '#dc2626';
-    ctx.fillRect(ox + 24, oy - 4, 28, 4);
-  }
-
-  ctx.strokeStyle = s.h >= 1.5 ? '#d97706' : '#16a34a';
-  ctx.lineWidth = 2;
-  ctx.strokeRect(ox, oy, tw, th);
-
-  if (step >= 3) {
-    ctx.fillStyle = '#64748b';
-    ctx.fillRect(divX - 2, oy + 6, 4, th - 8);
-  }
-
-  const leftSpan = divX - ox - 10;
-  const rows = [
-    { cnt: s.r3, y: oy + th - 12, col: '#ef4444', rackShow: step >= 3, pipeShow: step >= 4 },
-    { cnt: s.r2, y: oy + th - 36, col: '#f97316', rackShow: step >= 5 && s.tiers >= 2, pipeShow: step >= 6 },
-    { cnt: s.r1, y: oy + th - 60, col: '#0284c7', rackShow: step >= 8, pipeShow: step >= 9 }
-  ];
-  rows.forEach(r => {
-    if (r.rackShow && r.cnt > 0) {
-      ctx.fillStyle = '#cbd5e1';
-      ctx.fillRect(ox + 4, r.y + 1, leftSpan, 6);
-    }
-    if (r.pipeShow && r.cnt > 0) {
-      for (let i = 0; i < r.cnt; i++) {
-        const px = ox + 5 + (leftSpan / r.cnt) * (i + 0.5);
-        ctx.beginPath(); ctx.arc(px, r.y, 2.7, 0, Math.PI * 2);
-        ctx.fillStyle = r.col; ctx.fill();
-      }
-    }
-  });
-
-  const rightSpan = (ox + tw) - divX - 8;
-  const wRows = [
-    { cnt: s.sw, y: oy + th - 10, col: '#10b981', show: step >= 2 },
-    { cnt: s.w1, y: oy + th - 36, col: '#06b6d4', show: step >= 4 },
-    { cnt: s.tw, y: oy + th - 60, col: '#8b5cf6', show: step >= 9 }
-  ];
-  wRows.forEach(r => {
-    if (!r.show || r.cnt <= 0) return;
-    for (let i = 0; i < r.cnt; i++) {
-      const px = divX + 5 + (rightSpan / r.cnt) * (i + 0.5);
-      ctx.beginPath(); ctx.arc(px, r.y, 3.2, 0, Math.PI * 2);
-      ctx.fillStyle = r.col; ctx.fill();
-    }
-  });
-
-  ctx.fillStyle = '#0f172a'; ctx.font = 'bold 9.5px Inter, sans-serif';
-  ctx.fillText(`${s.id}: 左電(${s.r3}+${s.r2}+${s.r1}) + 右水(${s.sw}+${s.w1}+${s.tw}) = ${s.pipes}支`, 8, 12);
-  ctx.fillStyle = '#059669'; ctx.font = 'bold 9px monospace';
-  ctx.fillText(`人手孔蓋頂與AC路面平齊 (GL±0.00m)｜${s.h >= 1.5 ? 'SP-III鋼板樁' : '1:0.3明挖斜坡'}`, 8, 113);
-}
-
-function drawCulvertCrossingPiP(tickVal) {
-  const c = document.getElementById('c-culv-pip');
-  if (!c) return;
-  const ctx = setupHiDPICanvas(c, 244, 96);
-  ctx.clearRect(0, 0, 244, 96);
-  ctx.fillStyle = '#fffbeb';
-  ctx.fillRect(0, 0, 244, 96);
-
-  ctx.strokeStyle = '#10b981'; ctx.lineWidth = 2;
-  ctx.beginPath(); ctx.moveTo(8, 18); ctx.lineTo(236, 18); ctx.stroke();
-
-  ctx.fillStyle = '#dc2626';
-  ctx.fillRect(14, 16, 16, 3);
-  ctx.fillStyle = '#0284c7';
-  ctx.fillRect(214, 16, 16, 3);
-
-  ctx.fillStyle = 'rgba(148,163,184,0.35)';
-  ctx.fillRect(14, 19, 16, 68);
-  ctx.fillRect(214, 19, 16, 68);
-
-  ctx.fillStyle = '#94a3b8';
-  ctx.fillRect(88, 30, 68, 34);
-  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1.5;
-  ctx.strokeRect(88, 30, 68, 34);
-
-  const flowShift = (tickVal * 15) % 16;
-  ctx.fillStyle = '#0ea5e9';
-  ctx.fillRect(92, 46, 60, 14);
-  ctx.fillStyle = '#fff'; ctx.font = 'bold 8px sans-serif';
-  ctx.fillText('既有箱涵 W3.2×H1.8', 91, 41);
-
-  ctx.fillStyle = '#e11d48';
-  ctx.fillRect(76, 20, 92, 3);
-  ctx.strokeStyle = '#0284c7'; ctx.lineWidth = 2.2;
-  ctx.beginPath();
-  ctx.moveTo(22, 34); ctx.lineTo(74, 25); ctx.lineTo(170, 25); ctx.lineTo(222, 34);
-  ctx.stroke();
-
-  ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 2.5;
-  ctx.beginPath();
-  ctx.moveTo(22, 52); ctx.lineTo(66, 52); ctx.lineTo(86, 82); ctx.lineTo(158, 82); ctx.lineTo(178, 52); ctx.lineTo(222, 52);
-  ctx.stroke();
-
-  const dotX = 30 + ((flowShift / 16) * 184);
-  ctx.fillStyle = '#facc15';
-  ctx.beginPath(); ctx.arc(dotX, dotX > 82 && dotX < 162 ? 82 : 52, 3, 0, Math.PI * 2); ctx.fill();
-
-  ctx.fillStyle = '#0f172a'; ctx.font = 'bold 8.5px monospace';
-  ctx.fillText('09A孔(平齊路面)', 8, 12);
-  ctx.fillText('上凸折(防壓鋼板)', 86, 13);
-  ctx.fillText('09B孔(平齊)', 186, 12);
-  ctx.fillStyle = '#0369a1';
-  ctx.fillText('下凹折: 涵底 GL-2.65m (6×Ø250鍍鋅鋼套管)', 38, 93);
-}
-
-const stripHistory = new Array(40).fill(0.5);
-function drawLiveStripChart(kState) {
-  const c = document.getElementById('c-strip');
-  const ctx = setupHiDPICanvas(c, 244, 34);
-  const w = 244, h = 34;
-  stripHistory.push(state.stepProg);
-  if (stripHistory.length > 40) stripHistory.shift();
-
-  ctx.clearRect(0, 0, w, h);
-  ctx.fillStyle = 'rgba(2, 132, 199, 0.08)';
-  ctx.beginPath();
-  ctx.moveTo(0, h - 3);
-  stripHistory.forEach((v, i) => {
-    const x = (i / 39) * w;
-    const y = h - 4 - v * (h - 10);
-    ctx.lineTo(x, y);
-  });
-  ctx.lineTo(w, h - 3);
-  ctx.closePath();
-  ctx.fill();
-
-  ctx.strokeStyle = '#0284c7';
-  ctx.lineWidth = 1.8;
-  ctx.beginPath();
-  stripHistory.forEach((v, i) => {
-    const x = (i / 39) * w;
-    const y = h - 4 - v * (h - 10);
-    if (i === 0) ctx.moveTo(x, y);
-    else ctx.lineTo(x, y);
-  });
-  ctx.stroke();
-}
-
-//Full-screen 2D Engineering Blueprint Sheet (Mode 04)
-function draw2DBlueprintSheet() {
-  const c = document.getElementById('blueprint-canvas');
-  const W = window.innerWidth, H = window.innerHeight;
-  const ctx = setupHiDPICanvas(c, W, H);
-
-  ctx.fillStyle = '#f6f5f0';
-  ctx.fillRect(0, 0, W, H);
-
-  ctx.fillStyle = '#0f172a';
-  ctx.font = 'bold 14px "Microsoft JhengHei", sans-serif';
-  ctx.fillText('📐 鶯歌消防局專案（北區訓練中心）— 全段 S01~S12 十二斷面 1:1 實際管數矩陣 & 680m 全線縱斷面展開詳圖 (人手孔蓋與AC路面100%平齊)', 22, 80);
-
-  const cols = 6, rows = 2;
-  const padX = 22, topY = 94;
-  const cellW = (W - padX * 2) / cols;
-  const cellH = (H * 0.45) / rows;
-
-  SEGS.forEach((sg, idx) => {
-    const r = Math.floor(idx / cols), col = idx % cols;
-    const x = padX + col * cellW + 4, y = topY + r * cellH + 4;
-    const w = cellW - 8, h = cellH - 8;
-
-    ctx.fillStyle = idx === 7 ? '#fffbeb' : (idx === state.segIdx ? '#e0f2fe' : '#ffffff');
-    ctx.fillRect(x, y, w, h);
-    ctx.strokeStyle = idx === 7 ? '#d97706' : ST_CSS[sg.st];
-    ctx.lineWidth = (idx === state.segIdx || idx === 7) ? 2.2 : 1.2;
-    ctx.strokeRect(x, y, w, h);
-
-    ctx.fillStyle = '#0f172a'; ctx.font = 'bold 10.5px monospace';
-    ctx.fillText(`${sg.id}${idx===7?'⚠️過涵洞':''} (${sg.sta}) ${sg.pipes}支`, x + 6, y + 15);
-    ctx.fillStyle = '#475569'; ctx.font = '9.5px sans-serif';
-    ctx.fillText(`W${sg.w}×H${sg.h}m | RC架:${sg.racks}座(${sg.tiers}層) | 人手孔:${sg.mh}`, x + 6, y + 28);
-
-    const bx = x + 8, by = y + 34, bw = w - 16, bh = h - 42;
-    ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1;
-    ctx.strokeRect(bx, by, bw, bh);
-    const divX = bx + bw * 0.68;
-    ctx.fillStyle = '#94a3b8'; ctx.fillRect(divX - 1.5, by + 3, 3, bh - 6);
-
-    const drawDots = (cnt, py, color, x0, span) => {
-      if (cnt <= 0) return;
-      for (let i = 0; i < cnt; i++) {
-        const px = x0 + (span / cnt) * (i + 0.5);
-        ctx.beginPath(); ctx.arc(px, py, 2.3, 0, Math.PI * 2);
-        ctx.fillStyle = color; ctx.fill();
-      }
-    };
-    drawDots(sg.r3, by + bh - 8,  '#ef4444', bx + 3, divX - bx - 6);
-    drawDots(sg.r2, by + bh - 20, '#f97316', bx + 3, divX - bx - 6);
-    drawDots(sg.r1, by + bh - 32, '#0284c7', bx + 3, divX - bx - 6);
-    drawDots(sg.sw, by + bh - 8,  '#10b981', divX + 3, bx + bw - divX - 6);
-    drawDots(sg.w1, by + bh - 20, '#06b6d4', divX + 3, bx + bw - divX - 6);
-    drawDots(sg.tw, by + bh - 32, '#8b5cf6', divX + 3, bx + bw - divX - 6);
-  });
-
-  const py0 = topY + H * 0.47, pw = W - 44, ph = H - py0 - 95;
-  ctx.fillStyle = '#ffffff'; ctx.fillRect(22, py0, pw, ph);
-  ctx.strokeStyle = '#cbd5e1'; ctx.strokeRect(22, py0, pw, ph);
-  ctx.fillStyle = '#0f172a'; ctx.font = 'bold 11.5px sans-serif';
-  ctx.fillText('📈 STA 0+000 ~ 0+680 雙向階梯漸變縱斷面詳圖（完工後CLSM實心包封非人員通行｜39座人手孔蓋平齊GL±0.00m｜澆置CLSM1撤泵浦➔CLSM2撤爬梯送風機➔鋪路撤護欄）', 32, py0 + 20);
-
-  const segW = (pw - 36) / 12;
-  SEGS.forEach((sg, i) => {
-    const sx = 38 + i * segW, gy = py0 + 36;
-    const depthPx = sg.h * (ph * 0.32);
-    ctx.fillStyle = i === 7 ? 'rgba(245,158,11,0.18)' : 'rgba(2,132,199,0.12)';
-    ctx.fillRect(sx, gy, segW - 5, depthPx);
-    ctx.strokeStyle = i === 7 ? '#d97706' : ST_CSS[sg.st];
-    ctx.strokeRect(sx, gy, segW - 5, depthPx);
-    ctx.fillStyle = '#0f172a'; ctx.font = 'bold 10px monospace';
-    ctx.fillText(`${sg.id}:${sg.pipes}支`, sx + 4, gy + 14);
-    ctx.fillStyle = '#475569'; ctx.font = '9px monospace';
-    ctx.fillText(`-${sg.h.toFixed(2)}m`, sx + 4, gy + depthPx - 5);
-  });
-}
-
-// ============================================================================
-// INTERACTIVE CONTROLS & CAMERA FLY-TO ENGINE
-// ============================================================================
-function updateDimButtonsUI() {
-  ['overview','seq','culv','full'].forEach(k => {
-    const el = document.getElementById('dim-' + k);
-    if (el) el.classList.toggle('active', k === state.dim);
-  });
-}
-
-function setDimension(dim) {
-  state.dim = dim;
-  state.blueprintOpen = false;
-  state.warroomPreviewOpen = false;
-  document.getElementById('blueprint-canvas').style.display = 'none';
-  document.getElementById('warroom-repair-overlay').style.display = 'none';
-  document.getElementById('btn-2d-sheet').classList.remove('active');
-  document.getElementById('btn-wr-preview').classList.remove('active');
-  playTone(540, 0.07);
-  updateDimButtonsUI();
-
-  if (dim === 'culv') {
-    state.segIdx = 7; state.step = 1; state.stepProg = 0.0; state.explode = 0.0;
-    document.getElementById('sl-explode').value = 0;
-    document.getElementById('val-explode').textContent = '0%';
-    flyCameraTo(new THREE.Vector3(16, 12, 20), new THREE.Vector3(0, -0.5, 0));
-  } else if (dim === 'overview') {
-    state.segIdx = 7; state.step = 11; state.stepProg = 1.0; state.explode = 0.0;
-    document.getElementById('sl-explode').value = 0;
-    document.getElementById('val-explode').textContent = '0%';
-    flyCameraTo(new THREE.Vector3(17, 13, 21), new THREE.Vector3(0, -0.5, 0));
-  } else if (dim === 'full') {
-    state.step = 12; state.stepProg = 1.0; state.explode = 0.58;
-    document.getElementById('sl-explode').value = 58;
-    document.getElementById('val-explode').textContent = '58%';
-    flyCameraTo(new THREE.Vector3(26, 20, 32), new THREE.Vector3(0, -0.5, 0));
-  } else {
-    state.step = 1; state.stepProg = 0.0; state.explode = 0.0;
-    document.getElementById('sl-explode').value = 0;
-    document.getElementById('val-explode').textContent = '0%';
-    flyCameraTo(new THREE.Vector3(17, 13, 21), new THREE.Vector3(0, -0.5, 0));
-  }
-  syncUI();
-  rebuildWebGLScene();
-}
-
-function flyCameraTo(posVec, lookVec) {
-  camFlyTarget = posVec.clone();
-  camFlyLookAt = lookVec.clone();
-}
-
-function focusCulvertCrossing() {
-  state.segIdx = 7;
-  state.blueprintOpen = false;
-  document.getElementById('blueprint-canvas').style.display = 'none';
-  if (state.dim !== 'overview' && state.dim !== 'culv') {
-    state.dim = 'overview';
-    updateDimButtonsUI();
-  }
-  playTone(680, 0.1, 'triangle');
-  if (state.dim === 'overview') {
-    const culvGx = (7 - 5.5) * (3.52 + 0.15);
-    flyCameraTo(new THREE.Vector3(culvGx + 6, 8, 12), new THREE.Vector3(culvGx, -0.6, 0));
-  }
-  syncUI();
-  rebuildWebGLScene();
-}
-
-function focusFullCorridor() {
-  state.dim = 'overview';
-  state.blueprintOpen = false;
-  document.getElementById('blueprint-canvas').style.display = 'none';
-  updateDimButtonsUI();
-  playTone(500, 0.08);
-  flyCameraTo(new THREE.Vector3(24, 18, 30), new THREE.Vector3(0, -0.5, 0));
-  syncUI();
-  rebuildWebGLScene();
-}
-
-function toggleOverviewWaveMode() {
-  state.overviewWaveAnim = !state.overviewWaveAnim;
-  const btn = document.getElementById('btn-ov-wave');
-  btn.textContent = state.overviewWaveAnim ? '🎬 全線推進波: 開' : '✅ 全線完工靜態';
-  btn.style.background = state.overviewWaveAnim ? '#0284c7' : '#059669';
-  if (state.dim !== 'overview') setDimension('overview');
-  else { syncUI(); rebuildWebGLScene(); }
-}
-
-function toggleFollowWaveCam() {
-  state.followWaveCam = !state.followWaveCam;
-  const btn = document.getElementById('btn-follow-wave');
-  btn.textContent = state.followWaveCam ? '🎥 追蹤施工波前: 開' : '🎥 追蹤施工波前: 關';
-  btn.style.background = state.followWaveCam ? '#0284c7' : '#f1f5f9';
-  btn.style.color = state.followWaveCam ? '#fff' : '#0f172a';
-  if (state.followWaveCam && state.dim !== 'overview') setDimension('overview');
-}
-
-function toggleStepAdvanceMode() {
-  state.autoAdvanceSteps = !state.autoAdvanceSteps;
-  const btn = document.getElementById('btn-loop-mode');
-  btn.textContent = state.autoAdvanceSteps ? '🔁 01➔12 連續推進' : '📌 單步重複細看';
-  btn.style.background = state.autoAdvanceSteps ? '#059669' : '#475569';
-  playTone(580, 0.06);
-}
-
-function toggleBlueprintSheet() {
-  state.blueprintOpen = !state.blueprintOpen;
-  state.warroomPreviewOpen = false;
-  document.getElementById('warroom-repair-overlay').style.display = 'none';
-  document.getElementById('btn-wr-preview').classList.remove('active');
-  const bp = document.getElementById('blueprint-canvas');
-  const btn = document.getElementById('btn-2d-sheet');
-  bp.style.display = state.blueprintOpen ? 'block' : 'none';
-  btn.classList.toggle('active', state.blueprintOpen);
-  if (state.blueprintOpen) draw2DBlueprintSheet();
-  playTone(620, 0.08);
-}
-
-function setViewStyle(style) {
-  state.viewStyle = (style === 'xray') ? 'xray' : 'solid';
-  const btnSolid = document.getElementById('vm-solid');
-  const btnXray = document.getElementById('vm-xray');
-  if (btnSolid) btnSolid.classList.toggle('active', state.viewStyle === 'solid');
-  if (btnXray) btnXray.classList.toggle('active', state.viewStyle === 'xray');
-  playTone(state.viewStyle === 'xray' ? 660 : 520, 0.06);
-  rebuildWebGLScene();
-  showStudioToast(state.viewStyle === 'xray' ? '🔬 已切換 X-Ray 透視檢視模式' : '🧱 已切換 Solid 實體建築工作坊模式');
-}
-
-function resetCamera() {
-  state.cutaway = 0;
-  const slCut = document.getElementById('sl-cut');
-  const valCut = document.getElementById('val-cut');
-  if (slCut) slCut.value = 0;
-  if (valCut) valCut.textContent = '0%';
-  updateClipPlaneConstant();
-
-  if (state.dim === 'full') {
-    flyCameraTo(new THREE.Vector3(26, 20, 32), new THREE.Vector3(0, -0.5, 0));
-  } else if (state.dim === 'culv') {
-    flyCameraTo(new THREE.Vector3(16, 12, 20), new THREE.Vector3(0, -0.5, 0));
-  } else {
-    flyCameraTo(new THREE.Vector3(17, 13, 21), new THREE.Vector3(0, -0.5, 0));
-  }
-  playTone(560, 0.07);
-  showStudioToast('🧭 鏡頭與剖面已復位至標準視角');
-}
-
-function selectSeg(idx) {
-  const safeIdx = Math.max(0, Math.min(SEGS.length - 1, Number(idx) || 0));
-  state.segIdx = safeIdx;
-  if (state.warroomPreviewOpen) closeWarRoomTabPreview();
-
-  if (state.dim === 'overview' && state.overviewWaveAnim) {
-    state.overviewWaveAnim = false;
-    const btn = document.getElementById('btn-ov-wave');
-    if (btn) {
-      btn.textContent = '✅ 全線完工靜態';
-      btn.style.background = '#059669';
-    }
-  }
-  if (state.dim === 'overview' || state.dim === 'full') {
-    const segLenX = state.dim === 'overview' ? 3.52 : 3.35;
-    const gapX = state.dim === 'overview' ? 0.15 : 0.32;
-    const gx = (safeIdx - 5.5) * (segLenX + gapX);
-    flyCameraTo(new THREE.Vector3(gx + 7.5, 8.5, 13.5), new THREE.Vector3(gx, -1.0, 0));
-  }
-  playTone(480 + safeIdx * 18, 0.06);
-  syncUI();
-  if (state.blueprintOpen) draw2DBlueprintSheet();
-  else rebuildWebGLScene();
-  showStudioToast(`📍 已聚焦 ${SEGS[safeIdx].id}（STA ${SEGS[safeIdx].sta}｜${SEGS[safeIdx].pipes} 支管）`);
-}
-
-function selectLayer(layerId) {
-  if (state.activeLayer === layerId && layerId !== 'ALL') {
-    state.activeLayer = 'ALL';
-  } else {
-    state.activeLayer = layerId || 'ALL';
-  }
-  playTone(600, 0.05);
-  syncUI();
-  rebuildWebGLScene();
-  const lyObj = ARCH_LAYERS.find(l => l.id === state.activeLayer);
-  if (lyObj) showStudioToast(`🦺 分層檢視：${lyObj.name}`);
-}
-
-function selectStep(stepId) {
-  const steps = getStepsForDim(state.dim);
-  const clamped = Math.max(1, Math.min(steps.length, Number(stepId) || 1));
-  state.step = clamped;
-
-  if (state.dim === 'overview' && state.overviewWaveAnim) {
-    state.overviewWaveAnim = false;
-    const btn = document.getElementById('btn-ov-wave');
-    if (btn) {
-      btn.textContent = '✅ 全線完工靜態';
-      btn.style.background = '#059669';
-    }
-  }
-
-  state.stepProg = (state.playing && (state.dim === 'seq' || state.dim === 'culv')) ? 0.02 : 1.0;
-  playTone(440 + clamped * 22, 0.06);
-  syncUI();
-  rebuildWebGLScene();
-}
-
-function dispatch4D(statusCode) {
-  if (!ST_HEX[statusCode]) return;
-  const sg = SEGS[state.segIdx];
-  sg.st = statusCode;
-  state.syncSeq += 1;
-
-  const payload = {
-    type: 'YINGGE_BIM_4D_STATUS_UPDATE',
-    project: '鶯歌消防局專案（北區訓練中心）',
-    segmentId: sg.id,
-    sta: sg.sta,
-    status: statusCode,
-    pipes: sg.pipes,
-    seq: state.syncSeq,
-    updatedAt: new Date().toISOString()
-  };
-  safeSetStorage('YINGGE_LAST_4D_DISPATCH', JSON.stringify(payload));
-  try {
-    if (window.parent && window.parent !== window) {
-      window.parent.postMessage(payload, '*');
-    }
-  } catch (e) {}
-
-  playTone(statusCode === 'SHORTAGE' ? 340 : 640, 0.09, statusCode === 'SHORTAGE' ? 'sawtooth' : 'triangle');
-  syncUI();
-  if (state.blueprintOpen) draw2DBlueprintSheet();
-  else rebuildWebGLScene();
-  const labelMap = { DONE: '🟢 100% 完工', ACTIVE: '🔵 分區澆置中', WATCH: '🟠 過涵洞監控', SHORTAGE: '🔴 斷料預警 <25%' };
-  showStudioToast(`📡 已派工更新 ${sg.id} 狀態為：${labelMap[statusCode] || statusCode}`);
-}
-
-function togglePlay() {
-  state.playing = !state.playing;
-  const btn = document.getElementById('btn-play');
-  if (btn) {
-    btn.textContent = state.playing ? '⏸ 暫停' : '▶ 播放';
-    btn.classList.toggle('active', state.playing);
-  }
-  playTone(state.playing ? 580 : 420, 0.06);
-}
-
-function setExplode(val) {
-  const num = Math.max(0, Math.min(100, Number(val) || 0));
-  state.explode = num / 100;
-  const lbl = document.getElementById('val-explode');
-  if (lbl) lbl.textContent = `${Math.round(num)}%`;
-  rebuildWebGLScene();
-}
-
-function updateClipPlaneConstant() {
-  if (!clipPlane) return;
-  if (state.cutaway <= 0.005) {
-    clipPlane.constant = 80;
-    if (sectionCutHelper) sectionCutHelper.visible = false;
-    return;
-  }
-  const halfSpan = (state.dim === 'overview' || state.dim === 'full') ? 22.5 : (state.dim === 'culv' ? 10.6 : 7.6);
-  const cutX = halfSpan - state.cutaway * (halfSpan * 1.92);
-  clipPlane.constant = cutX;
-  if (sectionCutHelper) {
-    sectionCutHelper.visible = !state.blueprintOpen && !state.warroomPreviewOpen;
-    sectionCutHelper.position.set(cutX, -1.0, 0);
+  modal.classList.add('show');
+  if (curMode === 'pipeboq') {
+    title.textContent = '📏 鶯歌消防局案 (TPFA115008 v13.9 OPT-01) — 共同管溝 8 大區段 (680m) 深寬度雙向階梯漸變與減省總表';
+    body.innerHTML = `<table class="yg-tbl"><thead><tr><th>區段（斷面）與節點範圍</th><th>長度 L</th><th>在溝管數</th><th>修正後 W×H (斷面積)</th><th>修正後排管結構 (弱電/電力/右槽)</th><th>土方開挖量</th><th>混凝土/CLSM</th><th>單段減省率</th></tr></thead><tbody>` +
+      YG_TRENCH_SECTIONS.map(s => `<tr><td><strong>${s.code}</strong></td><td>${s.len} m</td><td>${s.formal}+${s.temp} 支</td><td style="color:#38bdf8;font-weight:800;">${(s.w/100).toFixed(2)}×${(s.d/100).toFixed(2)} m (${s.area.toFixed(2)} m²)</td><td>${s.layout}</td><td>${s.earth.toFixed(1)} m³</td><td>${s.conc.toFixed(1)} m³</td><td style="color:#34d399;font-weight:800;">${s.uom}</td></tr>`).join('') +
+      `<tr style="background:rgba(16,185,129,0.15);font-weight:900;"><td><strong>★ 全線總計 / 加權平均</strong></td><td><strong>680 m</strong></td><td><strong>最高 50+6 支</strong></td><td style="color:#34d399;"><strong>平均 2.43 m² (原3.49m²)</strong></td><td><strong>8 段雙向階梯漸變 + 39座人手孔</strong></td><td><strong>1,652.9 m³ (-30.4%)</strong></td><td><strong>542.5 m³ (-43.3%)</strong></td><td style="color:#34d399;"><strong>直接工程費省 278.7 萬 (-34.1%)</strong></td></tr>` +
+      `</tbody></table>`;
+  } else if (curMode === 'qty9') {
+    title.textContent = '📊 鶯歌消防局案 (SPEC-01 & TEMP-01) — 施工期全區臨時水電系統數量明細表 (7座盤體 / 6支暗埋幹管 / 12盞路燈 / 12支CCTV)';
+    body.innerHTML = `<table class="yg-tbl"><thead><tr><th>類別項目</th><th>編號與設備/管線名稱</th><th>設置位置 / 暗埋區段</th><th>設計數量</th><th>盤體容量、暗埋管徑、電纜線徑與技術規格</th></tr></thead><tbody>
+      <tr><td><strong>一、配電盤體與弱電箱 (7座)</strong></td><td><strong>① MP-TEMP</strong> 主建物臨時總配電盤</td><td>[1] 主建築物 B1F (總起點)</td><td style="color:#38bdf8;font-weight:800;">1 座</td><td>3Φ4W 380/220V 400A 防塵防水總盤 (含工務所 100A 專迴 + 工區 250A 主幹)</td></tr>
+      <tr><td><strong>一、配電盤體與弱電箱</strong></td><td><strong>② P-OFFICE + IT-BOX</strong> 工務所盤與弱電箱</td><td>②工 施工工務所 (瓦斯站北側)</td><td style="color:#38bdf8;font-weight:800;">電力盤1座+弱電箱1座</td><td>P-OFFICE 100A (附3kVA在線式UPS供路燈與CCTV)；IT-BOX 19" 6U機櫃 (16埠PoE+ Switch + 16路NVR)</td></tr>
+      <tr><td><strong>一、配電盤體與弱電箱</strong></td><td><strong>③~⑥ P-ZONE-C/A/B/S</strong> 四級工區分電盤</td><td>③C區 / ④A區 / ⑤B區 / ⑥南門</td><td style="color:#38bdf8;font-weight:800;">4 座</td><td>SUS304防雨盤(內建30mA 0.1s ELB)：③C區150A、④A區175A、⑤B區125A、⑥南門洗車台100A</td></tr>
+      <tr><td><strong>二、暗埋臨時管線 (6支)</strong></td><td><strong>★ TP1</strong> 工務所獨立電源暗埋管 (①➔②)</td><td>共同管溝 03➔06 段 (左下東側)</td><td style="color:#34d399;font-weight:800;">1 支 (210 m)</td><td>PVC Ø80mm (3")，內穿 600V XLPE 38mm²×4C + E14mm² 直通工務所</td></tr>
+      <tr><td><strong>二、暗埋臨時管線</strong></td><td><strong>★ TP2</strong> 四級工區施工動力暗埋幹管 (①➔⑥)</td><td>共同管溝 03➔12 段 (左下東側內縮)</td><td style="color:#34d399;font-weight:800;">1 支 (520 m)</td><td>PVC Ø80mm (3") 漸縮至 Ø63mm (2.5")，分段內穿 XLPE 100mm² ➔ 80mm² ➔ 60mm² ➔ 38mm²</td></tr>
+      <tr><td><strong>二、暗埋臨時管線</strong></td><td><strong>★ TT1</strong> 工務所臨時網路電話暗埋管 (①➔②)</td><td>共同管溝 03➔06 段 (左上東側)</td><td style="color:#34d399;font-weight:800;">1 支 (210 m)</td><td>PVC Ø50mm (2")，內穿市話電纜 0.5mm×10P + 12C 單模光纖 + Cat.6A×4迴</td></tr>
+      <tr><td><strong>二、暗埋臨時管線</strong></td><td><strong>★ TL1</strong> 環場臨時路燈與 CCTV 複合管 (②➔⑦)</td><td>共同管溝 01➔12 全線 (680m)</td><td style="color:#34d399;font-weight:800;">1 支 (680 m)</td><td>PVC Ø50mm (2")，內穿 XLPE 14mm²×3C(路燈) + 5.5mm²×3C(CCTV 24h) + 12C光纖/Cat.6A</td></tr>
+      <tr><td><strong>二、暗埋臨時管線</strong></td><td><strong>★ TW1</strong> 施工期臨時給水暗埋幹管 + 水塔3座</td><td>共同管溝 03➔12 段 (右槽中/上層)</td><td style="color:#34d399;font-weight:800;">1 支 (520 m) + 水塔3座</td><td>HDPE Ø75mm➔Ø40mm，配 B2F 7.5HP×2 恆壓泵組、雙口取水閥栓3座、PE水塔3座(工務所5T+A區5T+南門10T)</td></tr>
+      <tr><td><strong>二、暗埋臨時管線</strong></td><td><strong>★ TD1</strong> 施工期臨時壓力排廢水暗埋管 + 沉砂池7座</td><td>共同管溝 03 及 10➔11 段</td><td style="color:#34d399;font-weight:800;">1 支 (180 m) + 沉砂池7座</td><td>HDPE Ø100mm/Ø80mm，配沉水泵3台(B2F 5HP×2 + B區滯洪池 3HP×1)及三槽式沉砂池 SB-01~07 共7座</td></tr>
+      <tr><td><strong>三、臨時路燈與CCTV</strong></td><td><strong>⑦ L-01+CCTV ~ L-12+CCTV</strong> 共桿照明監控</td><td>北門(2)、主建物(3)、工務所/鋼棚(3)、A-04(2)、南門(2)</td><td style="color:#fb923c;font-weight:800;">路燈 12 盞 + CCTV 12 支</td><td>100W LED 防眩路燈(IP66, H=4.5m, 30mA ELB) + 200萬畫素 IP67 星光級紅外線攝影機(夜視>=50m, H=3.8m共桿)</td></tr>
+    </tbody></table>`;
+  } else if (curMode === 'a6door') {
+    title.textContent = '🌿 鶯歌消防局案 (PIPE-01 表三) — 共同管溝【★景觀管線系統彙整表 (EL1 / EL2 / R1 / EMS / SP)】';
+    body.innerHTML = `<table class="yg-tbl"><thead><tr><th>管線代號</th><th>共同管溝固定格位</th><th>管徑與材質</th><th>存在區段</th><th>單管專屬應用與系統路徑說明</th><th>對應圖號</th></tr></thead><tbody>
+      <tr><td><strong>★ EL1</strong></td><td>左下電力區・電-上排</td><td>4" PVC</td><td>01 ➔ 12 (全線680m)</td><td><strong>【景觀電源 #1】</strong> 全區車道與廣場 28 盞 LED 景觀高燈 (H=4.5~6.0m) 及南北大門導覽燈箱主幹管，分接 LP-01~LP-05</td><td>UT-L01 / SECT-01 / PIPE-01</td></tr>
+      <tr><td><strong>★ EL2</strong></td><td>左下電力區・電-上排</td><td>4" PVC</td><td>01 ➔ 11 (北門至滯洪池)</td><td><strong>【景觀電源 #2】</strong> 生態綠帶、保留 34 株喬木、C-02 搜救犬草坪與 B-03 滯洪池共 42 處草坪矮燈/投射燈、6 座噴灌電磁閥箱 (SV-01~06)</td><td>UT-L01 / SECT-01 / PIPE-01</td></tr>
+      <tr><td><strong>★ R1</strong></td><td>右側分槽・右-上層外側</td><td>SUS304 Ø80mm</td><td>01 ➔ 11 (主建物至滯洪池)</td><td><strong>【景觀噴灌雨水回收幹管】</strong> 由主建物 B2F 150m³ 雨水回收池加壓送出，分接全區 6 大景觀噴灌迴路 (IR-01 ~ IR-06)</td><td>UT-RW01 / SECT-01 / PIPE-01</td></tr>
+      <tr><td><strong>★ EMS</strong></td><td>左上弱電區・弱-上排</td><td>3" PVC</td><td>01 ➔ 11 (北門至B區)</td><td><strong>【景觀控制 & EMS】</strong> 串接 LP-01~05 Web BA 智慧調光、SV-01~06 雨量感測連動控制，兼供化學署 A/B 區 5 處 EMS 智慧分電表光纖</td><td>UT-T01 / SECT-01 / PIPE-01</td></tr>
+      <tr><td><strong>★ SP</strong></td><td>左上弱電區・弱-下排</td><td>3" PVC</td><td>03 ➔ 05 (05以南TL1借用)</td><td><strong>【微氣候感測預留管】</strong> 供戶外雨量計、土壤濕度與微氣候感測使用；05 以南未使用空間供暗埋臨時路燈與 CCTV 管 ★TL1 借用</td><td>UT-T01 / SECT-02 / TEMP-01</td></tr>
+    </tbody></table>`;
+  } else if (curMode === 'singleline') {
+    title.textContent = '⚡ 鶯歌消防局案 (TPFA115008) — 雙迴路台電/自來水引進與全區配電盤單線系統表';
+    body.innerHTML = `<table class="yg-tbl"><thead><tr><th>盤號 / 系統代號</th><th>位置</th><th>系統別</th><th>電源/水源迴路與工程規範</th><th>NEC 110.26 / IEEE 80 / PySWMM 檢核</th></tr></thead><tbody>` +
+      YG_PANELS.map(p => `<tr><td><strong>${p.code}</strong></td><td>${p.floor === 'FF' ? 'B2F/B1F' : p.floor}</td><td>${p.sys}</td><td>${p.name} — ${p.note}</td><td style="color:#34d399;font-weight:800;">✅ 盤前 1.2m 淨空 & 接地 Rg=0.84Ω 合格</td></tr>`).join('') +
+      `</tbody></table>`;
+  } else if (curMode === 'approval') {
+    title.textContent = '💰 鶯歌消防局案 (TPFA115008 v13.9 OPT-01 表肆) — 共同管溝深寬雙向漸變與價值工程 (VE) 預算節省總表';
+    body.innerHTML = `<table class="yg-tbl"><thead><tr><th>評估工項與單價基準</th><th>方案 A：無漸變固定峰值 (2.40×2.00m)</th><th>方案 B：檢討前原 v12 配置</th><th>★方案 C：通案檢討修正後 v13.9 (雙向漸變)</th><th>較原 v12 再節省效益</th><th>較固定峰值總節省效益</th></tr></thead><tbody>
+      <tr><td><strong>1. 管溝土方開挖與餘土運棄 (@NT$850/m³)</strong></td><td>3,264.0 m³ (277.4 萬元)</td><td>2,375.6 m³ (201.9 萬元)</td><td style="color:#38bdf8;font-weight:800;">1,652.9 m³ (140.5 萬元)</td><td style="color:#34d399;font-weight:800;">再減 722.7 m³ (-30.4%) / 省 61.4 萬</td><td>減 1,611.1 m³ (-49.4%) / 省 136.9 萬</td></tr>
+      <tr><td><strong>2. 結構 RC 與 CLSM 混凝土澆置 (@NT$3,600/m³)</strong></td><td>1,468.8 m³ (528.8 萬元)</td><td>956.9 m³ (344.5 萬元)</td><td style="color:#38bdf8;font-weight:800;">542.5 m³ (195.3 萬元)</td><td style="color:#34d399;font-weight:800;">再減 414.4 m³ (-43.3%) / 省 149.2 萬</td><td>減 926.3 m³ (-63.1%) / 省 333.5 萬</td></tr>
+      <tr><td><strong>3. 結構鋼筋與雙側系統模板 (隨溝深 H 抬升減量)</strong></td><td>模 2,720m² / 筋 68T (263.8 萬)</td><td>模 2,488m² / 筋 56T (225.2 萬)</td><td style="color:#38bdf8;font-weight:800;">模 2,176m² / 筋 42T (167.4 萬)</td><td style="color:#34d399;font-weight:800;">減模 312m²、筋 14T / 省 57.8 萬</td><td>減模 544m²、筋 26T / 省 96.4 萬</td></tr>
+      <tr><td><strong>4. 管架支撐與溝底級配墊層 (隨溝寬 W 內縮減量)</strong></td><td>1,632.0 m² (57.1 萬元)</td><td>1,298.8 m² (45.5 萬元)</td><td style="color:#38bdf8;font-weight:800;">1,006.4 m² (35.2 萬元)</td><td style="color:#34d399;font-weight:800;">再減 292.4 m² (-22.5%) / 省 10.3 萬</td><td>減 625.6 m² (-38.3%) / 省 21.9 萬</td></tr>
+      <tr style="background:rgba(16,185,129,0.16);font-weight:900;"><td><strong>★ 直接工程費總計</strong></td><td><strong>1,127.1 萬元 (100%)</strong></td><td><strong>817.1 萬元</strong></td><td style="color:#34d399;font-size:13px;"><strong>★ 538.4 萬元 (最佳方案)</strong></td><td style="color:#34d399;font-size:13px;"><strong>★較原 v12 再省 278.7 萬元 (-34.1%)</strong></td><td style="color:#34d399;font-size:13px;"><strong>★較固定峰值總省 588.7 萬元 (-52.2%)</strong></td></tr>
+    </tbody></table>`;
   }
 }
 
-function setCutaway(val) {
-  const num = Math.max(0, Math.min(100, Number(val) || 0));
-  state.cutaway = num / 100;
-  const lbl = document.getElementById('val-cut');
-  if (lbl) lbl.textContent = `${Math.round(num)}%`;
-  updateClipPlaneConstant();
+function toggleExplodeFloors() {
+  exploded = !exploded;
+  document.getElementById('btnExplode').textContent = exploded ? '🧱 復原組合斷面與樓層' : '💥 斷面與樓層爆炸拆解';
 }
 
-function openGhModal() {
-  const modal = document.getElementById('gh-modal');
-  if (!modal) return;
-  const inp = document.getElementById('gh-pat-input');
-  if (inp && !inp.value) {
-    inp.value = safeGetStorage('GITHUB_SYNC_PAT', '');
-  }
-  modal.style.display = 'flex';
-  playTone(610, 0.07);
-}
+function setSys(k, v) { sysOn[k] = v; }
 
-function closeGhModal() {
-  const modal = document.getElementById('gh-modal');
-  if (modal) modal.style.display = 'none';
-  playTone(460, 0.05);
-}
-
-function appendGhLog(msg) {
-  const logBox = document.getElementById('gh-log');
-  if (!logBox) return;
-  const ts = new Date().toLocaleTimeString('zh-TW', { hour12: false });
-  const line = document.createElement('div');
-  line.textContent = `[${ts}] ${msg}`;
-  logBox.appendChild(line);
-  logBox.scrollTop = logBox.scrollHeight;
-}
-
-function utf8ToBase64(str) {
-  const bytes = new TextEncoder().encode(str);
-  let bin = '';
-  const chunk = 0x8000;
-  for (let i = 0; i < bytes.length; i += chunk) {
-    bin += String.fromCharCode.apply(null, bytes.subarray(i, i + chunk));
-  }
-  return btoa(bin);
-}
-
-function base64ToUtf8(b64) {
-  const bin = atob(b64.replace(/\s+/g, ''));
-  const bytes = new Uint8Array(bin.length);
-  for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
-  return new TextDecoder('utf-8').decode(bytes);
-}
-
-async function ghUpsertFile(token, owner, repo, path, contentStr, message) {
-  const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
-  const headers = {
-    'Authorization': `Bearer ${token}`,
-    'Accept': 'application/vnd.github+json',
-    'Content-Type': 'application/json'
-  };
-  let existingSha = null;
-  const getRes = await fetch(apiUrl, { method: 'GET', headers });
-  if (getRes.ok) {
-    const meta = await getRes.json();
-    existingSha = meta.sha || null;
-  } else if (getRes.status !== 404) {
-    throw new Error(`讀取 ${repo}/${path} 失敗 (HTTP ${getRes.status})`);
-  }
-
-  const bodyObj = {
-    message: message,
-    content: utf8ToBase64(contentStr)
-  };
-  if (existingSha) bodyObj.sha = existingSha;
-
-  const putRes = await fetch(apiUrl, {
-    method: 'PUT',
-    headers,
-    body: JSON.stringify(bodyObj)
-  });
-  if (!putRes.ok) {
-    const errTxt = await putRes.text();
-    throw new Error(`寫入 ${repo}/${path} 失敗 (HTTP ${putRes.status}): ${errTxt.slice(0, 140)}`);
-  }
-  appendGhLog(`  ✅ 已同步 ${repo}/${path}`);
-  return putRes.json();
-}
-
-// ============================================================================
-// WAR ROOM REPAIRED TABS ENGINE (Fixes Blank 材料與請款 & 品質與勞安 + Old 3D View)
-// ============================================================================
-const WARROOM_MATERIALS_DATA = [
-  { id:'MAT-01', proj:'鶯歌消防局', name:'預鑄 RC 半圓凹槽管架 (3層/2層/1層)', spec:'fc\'≥280 kgf/cm² 雙向配筋', vendor:'北區預鑄構件廠', contractQty:342, deliveredQty:285, usedQty:240, unit:'座', status:'已核定備料中', billPct:70.2 },
-  { id:'MAT-02', proj:'鶯歌消防局', name:'高壓電力紅管 & 動力橘管 (PVC ES-1)', spec:'Ø150mm / Ø100mm CNS 1302', vendor:'南亞塑膠工業', contractQty:9800, deliveredQty:8600, usedQty:7450, unit:'m', status:'已核定進場', billPct:76.0 },
-  { id:'MAT-03', proj:'鶯歌消防局', name:'弱電光纖藍管 & 電信引進管群', spec:'Ø80mm / Ø50mm 厚管', vendor:'南亞塑膠工業', contractQty:8200, deliveredQty:7100, usedQty:6200, unit:'m', status:'已核定進場', billPct:75.6 },
-  { id:'MAT-04', proj:'鶯歌消防局', name:'DIP 延性鑄鐵消防給水管 & HDPE 排水管', spec:'Ø200mm / Ø150mm K9級', vendor:'興南鑄造廠', contractQty:4100, deliveredQty:3650, usedQty:3200, unit:'m', status:'已核定進場', billPct:78.0 },
-  { id:'MAT-05', proj:'鶯歌消防局', name:'過涵洞段 Ø250mm 鍍鋅防壓鋼套管 & 20mm 鋼板', spec:'CNS 6445 熱浸鍍鋅 / SS400', vendor:'中鋼構工程', contractQty:6, deliveredQty:6, usedQty:6, unit:'組', status:'STA 0+410 施作中', billPct:85.0 },
-  { id:'MAT-06', proj:'鶯歌消防局', name:'圓形預鑄電力/弱電連絡人手孔 (含調整環)', spec:'Ø1.60m(20座) / Ø1.20m(19座)', vendor:'桃竹預鑄製品', contractQty:39, deliveredQty:34, usedQty:29, unit:'座', status:'與AC路面平齊調校', billPct:74.4 },
-  { id:'MAT-07', proj:'鶯歌消防局', name:'控制性低強度回填材料 (分區 CLSM 1 & CLSM 2)', spec:'28天抗壓 20~50 kgf/cm² (早強型)', vendor:'國產建材實業', contractQty:542.5, deliveredQty:418.0, usedQty:418.0, unit:'m³', status:'A➔B➔C分區澆置中', billPct:77.1 },
-  { id:'MAT-08', proj:'仁德國小二期', name:'高低壓配電盤及主幹管線設備', spec:'3Φ4W 380/220V 銅匯流排', vendor:'士林電機廠', contractQty:18, deliveredQty:16, usedQty:14, unit:'面', status:'已核定查驗完成', billPct:77.8 },
-  { id:'MAT-09', proj:'仁德國小二期', name:'給排水衛生設備與不鏽鋼壓接管材', spec:'SUS304 披覆不鏽鋼管 CNS 6331', vendor:'允強實業', contractQty:3250, deliveredQty:2980, usedQty:2760, unit:'m', status:'已核定施作中', billPct:84.9 },
-  { id:'MAT-10', proj:'仁德國小二期', name:'消防受信總機、廣播主機與泡沫泵浦組', spec:'R型定址式消防系統認證', vendor:'宏力消防科技', contractQty:1, deliveredQty:1, usedQty:0.85, unit:'式', status:'廠驗合格進場', billPct:85.0 },
-  { id:'MAT-11', proj:'仁德國小一期', name:'第一期校舍部分使用執照機電消防點交設備', spec:'消檢合格與台電送電測試', vendor:'元順機電工務所', contractQty:1, deliveredQty:1, usedQty:1, unit:'式', status:'100% 完工核銷', billPct:100.0 }
-];
-
-const WARROOM_QUALITY_NCR_DATA = [
-  { id:'NCR-2026-01', proj:'鶯歌消防局', loc:'S03 (STA 0+145)', item:'第1層預鑄 RC 管架凹槽間距微調與防浮壓條鎖固', date:'2026-11-02', status:'已完成改善閉環 (4/4頁)', pageStatus:'P1開立 ➔ P2原因 ➔ P3照片 ➔ P4複查結案' },
-  { id:'NCR-2026-02', proj:'鶯歌消防局', loc:'S08 (STA 0+410)', item:'過涵洞段 09A 圓形人手孔調整環與 AC 路面平齊度校核 (GL±0.00m)', date:'2026-11-06', status:'複查改善中 (3/4頁)', pageStatus:'P1開立 ➔ P2原因 ➔ P3改善中' },
-  { id:'NCR-2026-03', proj:'仁德國小二期', loc:'2F 走廊機電管道間', item:'弱電橋架防火填塞與貫穿部防火泥補強', date:'2026-11-04', status:'已完成改善閉環 (4/4頁)', pageStatus:'P1開立 ➔ P2原因 ➔ P3照片 ➔ P4複查結案' }
-];
-
-// Note: OSHA Safety logs intentionally carry NO rectification status column per user specification ("勞安缺失不會有改善狀態")
-const WARROOM_SAFETY_OSHA_DATA = [
-  { id:'OSHA-1108-01', proj:'鶯歌消防局', loc:'S08 過涵洞深開挖區 (H=2.65m)', category:'營造安全衛生設施標準', finding:'開挖深度達 1.5m 以上確認 SP-III 鋼板樁、H-200 橫撐、雙層 1.1m 護欄與踢腳板完整設置', inspector:'職安衛管理員', time:'2026-11-08 08:30' },
-  { id:'OSHA-1108-02', proj:'鶯歌消防局', loc:'S05~S07 共同管溝澆置段', category:'侷限空間與分區澆置連動', finding:'第1階段 CLSM 澆置完成區段撤除沉水泵浦；第2階段 CLSM 澆置完成區段撤除送風機與爬梯', inspector:'工務所主任', time:'2026-11-08 13:45' },
-  { id:'OSHA-1107-03', proj:'仁德國小二期', loc:'B1F 消防水池與泵浦室', category:'臨時用電與動火作業', finding:'臨時配電盤漏電斷路器 (ELCB) 測試正常，動火作業滅火器與防火毯配置到位', inspector:'職安衛管理員', time:'2026-11-07 10:15' }
-];
-
-function openWarRoomTabPreview(tabName = 'materials') {
-  state.warroomPreviewOpen = true;
-  state.warroomActiveTab = tabName;
-  state.blueprintOpen = false;
-  document.getElementById('blueprint-canvas').style.display = 'none';
-  document.getElementById('btn-2d-sheet').classList.remove('active');
-  document.getElementById('btn-wr-preview').classList.add('active');
-  const overlay = document.getElementById('warroom-repair-overlay');
-  overlay.style.display = 'block';
-  renderWarRoomRepairCenter();
-  playTone(600, 0.07);
-}
-
-function closeWarRoomTabPreview() {
-  state.warroomPreviewOpen = false;
-  document.getElementById('warroom-repair-overlay').style.display = 'none';
-  document.getElementById('btn-wr-preview').classList.remove('active');
-  playTone(480, 0.06);
-}
-
-function setWarRoomProjectFilter(proj) {
-  state.warroomProjectFilter = proj;
-  renderWarRoomRepairCenter();
-}
-
-function renderWarRoomRepairCenter() {
-  const box = document.getElementById('warroom-repair-overlay');
-  if (!box) return;
-  const tab = state.warroomActiveTab;
-  const pf = state.warroomProjectFilter;
-
-  const mats = WARROOM_MATERIALS_DATA.filter(m => pf === 'ALL' || m.proj === pf);
-  const ncrs = WARROOM_QUALITY_NCR_DATA.filter(n => pf === 'ALL' || n.proj === pf);
-  const oshas = WARROOM_SAFETY_OSHA_DATA.filter(o => pf === 'ALL' || o.proj === pf);
-
-  let bodyContent = '';
-  if (tab === 'materials') {
-    bodyContent = `
-      <div class="wr-kpi-grid">
-        <div class="wr-kpi-card">
-          <div style="font-size:11px;color:#64748b;font-weight:800;">📦 材料送審核定總冊數 (MAT-01~19)</div>
-          <div class="mono" style="font-size:24px;font-weight:900;color:#0284c7;margin-top:4px;">19 / 19 冊 (100%)</div>
-          <div style="font-size:11px;color:#059669;font-weight:700;margin-top:2px;">✅ 契約剩餘量防呆檢核正常</div>
-        </div>
-        <div class="wr-kpi-card">
-          <div style="font-size:11px;color:#64748b;font-weight:800;">🧱 鶯歌 680m 共同管溝關鍵構件備料率</div>
-          <div class="mono" style="font-size:24px;font-weight:900;color:#059669;margin-top:4px;">84.2%</div>
-          <div style="font-size:11px;color:#475569;margin-top:2px;">RC管架 342座｜圓形人手孔 39座｜鋼套管 6組</div>
-        </div>
-        <div class="wr-kpi-card">
-          <div style="font-size:11px;color:#64748b;font-weight:800;">💰 本期估驗計價請款查驗進度</div>
-          <div class="mono" style="font-size:24px;font-weight:900;color:#d97706;margin-top:4px;">第 08 期估驗核銷中</div>
-          <div style="font-size:11px;color:#475569;margin-top:2px;">累計請款達成率 77.6% (無超估防呆鎖定)</div>
-        </div>
-      </div>
-
-      <div class="wr-table-card">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:8px;">
-          <strong style="font-size:14px;">📋 材料送審核定總表與進場計價請款明細 (已修復戰情室『材料與請款』分頁)</strong>
-          <span class="mono" style="font-size:11px;color:#059669;font-weight:800;">● 即時連動 3D 模型數量明細 (QTO)</span>
-        </div>
-        <table class="wr-table">
-          <thead>
-            <tr>
-              <th>送審編號</th>
-              <th>所屬專案</th>
-              <th>材料與設備名稱</th>
-              <th>規格 / 圖說標準</th>
-              <th>契約數量</th>
-              <th>已進場量</th>
-              <th>現場已施作</th>
-              <th>計價進度</th>
-              <th>狀態</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${mats.map(m => `
-              <tr>
-                <td class="mono" style="font-weight:800;color:#0284c7;">${m.id}</td>
-                <td><span class="wr-badge" style="background:#f1f5f9;color:#334155;">${m.proj}</span></td>
-                <td style="font-weight:800;">${m.name}</td>
-                <td style="color:#475569;">${m.spec}</td>
-                <td class="mono">${m.contractQty} ${m.unit}</td>
-                <td class="mono" style="color:#059669;font-weight:700;">${m.deliveredQty} ${m.unit}</td>
-                <td class="mono" style="font-weight:700;">${m.usedQty} ${m.unit}</td>
-                <td class="mono" style="font-weight:800;color:#0284c7;">${m.billPct.toFixed(1)}%</td>
-                <td><span class="wr-badge" style="background:#ecfdf5;color:#047857;border:1px solid #6ee7b7;">${m.status}</span></td>
-              </tr>
-            `).join('')}
-          </tbody>
-        </table>
-      </div>
-    `;
-  } else {
-    bodyContent = `
-      <div class="wr-kpi-grid">
-        <div class="wr-kpi-card">
-          <div style="font-size:11px;color:#64748b;font-weight:800;">🛡️ 品質缺失 (NCR 四頁滿版閉環管理)</div>
-          <div class="mono" style="font-size:24px;font-weight:900;color:#059669;margin-top:4px;">閉環率 92.5%</div>
-          <div style="font-size:11px;color:#475569;margin-top:2px;">含開立單、原因分析、改善前後照片、複查結案</div>
-        </div>
-        <div class="wr-kpi-card">
-          <div style="font-size:11px;color:#64748b;font-weight:800;">🦺 勞安衛巡檢紀錄 (獨立統計無改善狀態欄)</div>
-          <div class="mono" style="font-size:24px;font-weight:900;color:#d97706;margin-top:4px;">今日巡檢 3 件</div>
-          <div style="font-size:11px;color:#475569;margin-top:2px;">配合 CLSM 1 / CLSM 2 澆置進度動態撤除職安衛設施</div>
-        </div>
-        <div class="wr-kpi-card">
-          <div style="font-size:11px;color:#64748b;font-weight:800;">🎯 39座人手孔與 AC 路面齊平度抽查</div>
-          <div class="mono" style="font-size:24px;font-weight:900;color:#0284c7;margin-top:4px;">GL ±0.00m 合格</div>
-          <div style="font-size:11px;color:#059669;font-weight:700;margin-top:2px;">✅ 零凸出高差符合道路鋪面規範</div>
-        </div>
-      </div>
-
-      <div class="wr-table-card">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
-          <strong style="font-size:14px;">🔍 品質缺失追蹤表 (NCR 4頁滿版閉環管理)</strong>
-          <span class="wr-badge" style="background:#eff6ff;color:#1d4ed8;">品質缺失具改善閉環狀態</span>
-        </div>
-        <table class="wr-table">
-          <thead>
-            <tr>
-              <th>NCR 編號</th>
-              <th>專案名稱</th>
-              <th>區段 / 位置</th>
-              <th>品質查驗與改善項目</th>
-              <th>開立日期</th>
-              <th>四頁滿版閉環進度</th>
-              <th>改善狀態</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${ncrs.map(n => `
-              <tr>
-                <td class="mono" style="font-weight:800;color:#1d4ed8;">${n.id}</td>
-                <td><span class="wr-badge" style="background:#f1f5f9;color:#334155;">${n.proj}</span></td>
-                <td class="mono" style="font-weight:700;">${n.loc}</td>
-                <td style="font-weight:700;">${n.item}</td>
-                <td class="mono">${n.date}</td>
-                <td style="font-size:11px;color:#475569;">${n.pageStatus}</td>
-                <td><span class="wr-badge" style="background:#ecfdf5;color:#047857;border:1px solid #6ee7b7;">${n.status}</span></td>
-              </tr>
-            `).join('')}
-          </tbody>
-        </table>
-      </div>
-
-      <div class="wr-table-card">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
-          <strong style="font-size:14px;">🦺 勞安衛巡檢與缺失紀錄表 (依規範獨立統計・無改善狀態欄位)</strong>
-          <span class="wr-badge" style="background:#fffbeb;color:#b45309;border:1px solid #fde68a;">配合澆置進度動態撤除職安衛設施</span>
-        </div>
-        <table class="wr-table">
-          <thead>
-            <tr>
-              <th>紀錄編號</th>
-              <th>專案名稱</th>
-              <th>巡檢區域</th>
-              <th>法規與職安衛分類</th>
-              <th>現場勞安衛巡檢內容與澆置連動紀錄</th>
-              <th>查核人員</th>
-              <th>紀錄時間</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${oshas.map(o => `
-              <tr>
-                <td class="mono" style="font-weight:800;color:#b45309;">${o.id}</td>
-                <td><span class="wr-badge" style="background:#f1f5f9;color:#334155;">${o.proj}</span></td>
-                <td style="font-weight:700;">${o.loc}</td>
-                <td><span class="wr-badge" style="background:#fef3c7;color:#92400e;">${o.category}</span></td>
-                <td style="font-weight:700;">${o.finding}</td>
-                <td>${o.inspector}</td>
-                <td class="mono">${o.time}</td>
-              </tr>
-            `).join('')}
-          </tbody>
-        </table>
-      </div>
+function focusTrench(id) {
+  activeTrench = id;
+  selectFloor('FF');
+  const s = YG_TRENCH_SECTIONS.find(x => x.id === id);
+  if (s) {
+    document.getElementById('ygCurrentTag').textContent = s.code;
+    document.getElementById('ygFocusCard').innerHTML = `
+      <div style="font-weight:900;color:#fb923c;font-size:12.5px;margin-bottom:4px;">📐 ${s.code}</div>
+      • <strong>檢討修正後 W × H：</strong><code>${(s.w/100).toFixed(2)} × ${(s.d/100).toFixed(2)} m</code>（斷面積 <code>${s.area.toFixed(2)} m²</code>，區段長 <code>${s.len} m</code>）<br>
+      • <strong>在溝管數與排管結構：</strong>正式管 <strong>${s.formal} 支</strong> ＋ 暗埋臨水電 <strong>${s.temp} 支</strong> ｜ <code>${s.layout}</code><br>
+      • <strong>工程數量：</strong>土方開挖 <code>${s.earth.toFixed(1)} m³</code> ｜ 混凝土/CLSM <code>${s.conc.toFixed(1)} m³</code><br>
+      • <strong>節省效益：</strong><span style="color:#34d399;font-weight:800;">${s.uom}</span>（${s.spec}）
     `;
   }
-
-  box.innerHTML = `
-    <div class="wr-header-bar">
-      <div>
-        <div style="font-size:15px;font-weight:900;color:#0f172a;">🏢 工務戰情室 — 『材料與請款』＆『品質與勞安』修復面板 (可直接操作或同步注入 GitHub 戰情室)</div>
-        <div style="font-size:11.5px;color:#64748b;margin-top:2px;">已解決截圖 1 點擊「材料與請款」、「品質與勞安」分頁空白問題，並將鶯歌消防局 3D 模型統一為第三圖樣式</div>
-      </div>
-      <div class="wr-nav-tabs">
-        <button class="wr-tab-btn ${tab === 'materials' ? 'active' : ''}" onclick="openWarRoomTabPreview('materials')">📦 材料與請款 (MAT-01~19)</button>
-        <button class="wr-tab-btn ${tab === 'quality' ? 'active' : ''}" onclick="openWarRoomTabPreview('quality')">🛡️ 品質與勞安 (NCR閉環 / 職安衛)</button>
-        <select onchange="setWarRoomProjectFilter(this.value)" style="padding:6px 10px;border-radius:8px;border:1px solid #cbd5e1;font-size:12px;font-weight:700;">
-          <option value="ALL" ${pf==='ALL'?'selected':''}>全部專案 (鶯歌消防局 + 仁德國小一/二期)</option>
-          <option value="鶯歌消防局" ${pf==='鶯歌消防局'?'selected':''}>🚒 鶯歌消防局 (北區訓練中心)</option>
-          <option value="仁德國小二期" ${pf==='仁德國小二期'?'selected':''}>🏫 仁德國小新建校舍 (第二期)</option>
-          <option value="仁德國小一期" ${pf==='仁德國小一期'?'selected':''}>🏫 仁德國小新建校舍 (第一期)</option>
-        </select>
-        <button class="wr-tab-btn" style="background:#059669;color:#fff;border-color:#047857;" onclick="openGhModal()">🚀 一鍵遠端注入戰情室 GitHub</button>
-        <button class="wr-tab-btn" style="background:#0f172a;color:#fff;border-color:#0f172a;" onclick="closeWarRoomTabPreview()">🔙 返回鶯歌第三圖樣式 3D 模型</button>
-      </div>
-    </div>
-    ${bodyContent}
-  `;
 }
 
-// ============================================================================
-// GENERATE SELF-CONTAINED WAR ROOM AUTO-PATCH SCRIPT (`warroom_v186_full_patch.js`)
-// Fixes:
-// 1. Blank `材料與請款` tab in `yuwei-0815/warroom-command-center`
-// 2. Blank `品質與勞安` tab in `yuwei-0815/warroom-command-center`
-// 3. Replaces old dark-mode stacked-building Yingge 3D view (`image_3a9de0.png`)
-//    with the exact Image 3 Light Studio 680m Trench 3D WebGL Simulator!
-// ============================================================================
-function buildWarRoomAutoPatchJsString() {
-  const matJson = JSON.stringify(WARROOM_MATERIALS_DATA);
-  const ncrJson = JSON.stringify(WARROOM_QUALITY_NCR_DATA);
-  const oshaJson = JSON.stringify(WARROOM_SAFETY_OSHA_DATA);
-
-  return `/**
- * warroom_v186_full_patch.js
- * Auto-injected into yuwei-0815/warroom-command-center to fix:
- * 1) Blank "材料與請款" tab
- * 2) Blank "品質與勞安" tab
- * 3) Unify Yingge 3D BIM view with Image-3 Light Studio 680m Trench 3D WebGL Simulator
- */
-(function(){
-  if (window.__WARROOM_V186_PATCHED__) return;
-  window.__WARROOM_V186_PATCHED__ = true;
-
-  const MATS = ${matJson};
-  const NCRS = ${ncrJson};
-  const OSHAS = ${oshaJson};
-  const YINGGE_3D_URL = './models/yingge/index.html?v=' + Date.now();
-
-  function removeBlockingStyles() {
-    const badStyle = document.getElementById('v173ZeroPathCleanStyle');
-    if (badStyle) badStyle.remove();
-  }
-
-  function ensurePatchContainer() {
-    let host = document.getElementById('wr-v186-dynamic-panel');
-    if (!host) {
-      host = document.createElement('div');
-      host.id = 'wr-v186-dynamic-panel';
-      host.style.cssText = 'display:none;padding:18px 24px;max-width:1440px;margin:0 auto;font-family:"Microsoft JhengHei",sans-serif;';
-      const navBar = document.querySelector('nav, header, .nav-tabs, #top-nav') || document.body.firstElementChild;
-      if (navBar && navBar.parentNode) {
-        navBar.parentNode.insertBefore(host, navBar.nextSibling);
-      } else {
-        document.body.appendChild(host);
-      }
-    }
-    return host;
-  }
-
-  function renderMaterialsInWarRoom() {
-    removeBlockingStyles();
-    const host = ensurePatchContainer();
-    host.style.display = 'block';
-    host.innerHTML = \`
-      <div style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:16px 20px;box-shadow:0 4px 14px rgba(15,23,42,0.05);">
-        <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #f1f5f9;padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px;">
-          <div>
-            <h3 style="margin:0;font-size:16px;color:#0f172a;">📦 材料送審核定總表 (MAT-01~19) 與估驗計價請款查驗中心</h3>
-            <div style="font-size:12px;color:#64748b;margin-top:3px;">自動同步鶯歌消防局 680m 共同管溝 3D QTO 與仁德國小一/二期契約剩餘量防呆</div>
-          </div>
-          <span style="background:#ecfdf5;color:#047857;border:1px solid #6ee7b7;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:800;">✅ 19冊全數核定・契約防呆正常</span>
-        </div>
-        <div style="overflow-x:auto;">
-          <table style="width:100%;border-collapse:collapse;font-size:12.5px;">
-            <thead>
-              <tr style="background:#f1f5f9;color:#334155;text-align:left;">
-                <th style="padding:9px 10px;border-bottom:2px solid #cbd5e1;">送審編號</th>
-                <th style="padding:9px 10px;border-bottom:2px solid #cbd5e1;">專案名稱</th>
-                <th style="padding:9px 10px;border-bottom:2px solid #cbd5e1;">材料與設備名稱</th>
-                <th style="padding:9px 10px;border-bottom:2px solid #cbd5e1;">規格標準</th>
-                <th style="padding:9px 10px;border-bottom:2px solid #cbd5e1;">契約數量</th>
-                <th style="padding:9px 10px;border-bottom:2px solid #cbd5e1;">已進場量</th>
-                <th style="padding:9px 10px;border-bottom:2px solid #cbd5e1;">現場已施作</th>
-                <th style="padding:9px 10px;border-bottom:2px solid #cbd5e1;">計價進度</th>
-                <th style="padding:9px 10px;border-bottom:2px solid #cbd5e1;">狀態</th>
-              </tr>
-            </thead>
-            <tbody>
-              \${MATS.map(m => \`
-                <tr style="border-bottom:1px solid #e2e8f0;">
-                  <td style="padding:9px 10px;font-family:monospace;font-weight:800;color:#0284c7;">\${m.id}</td>
-                  <td style="padding:9px 10px;"><span style="background:#f1f5f9;padding:2px 8px;border-radius:99px;font-weight:700;">\${m.proj}</span></td>
-                  <td style="padding:9px 10px;font-weight:800;color:#0f172a;">\${m.name}</td>
-                  <td style="padding:9px 10px;color:#475569;">\${m.spec}</td>
-                  <td style="padding:9px 10px;font-family:monospace;">\${m.contractQty} \${m.unit}</td>
-                  <td style="padding:9px 10px;font-family:monospace;color:#059669;font-weight:700;">\${m.deliveredQty} \${m.unit}</td>
-                  <td style="padding:9px 10px;font-family:monospace;font-weight:700;">\${m.usedQty} \${m.unit}</td>
-                  <td style="padding:9px 10px;font-family:monospace;font-weight:800;color:#0284c7;">\${m.billPct.toFixed(1)}%</td>
-                  <td style="padding:9px 10px;"><span style="background:#ecfdf5;color:#047857;padding:2px 8px;border-radius:99px;font-weight:800;font-size:11px;">\${m.status}</span></td>
-                </tr>
-              \`).join('')}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    \`;
-  }
-
-  function renderQualitySafetyInWarRoom() {
-    removeBlockingStyles();
-    const host = ensurePatchContainer();
-    host.style.display = 'block';
-    host.innerHTML = \`
-      <div style="display:flex;flex-direction:column;gap:16px;">
-        <div style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:16px 20px;box-shadow:0 4px 14px rgba(15,23,42,0.05);">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
-            <h3 style="margin:0;font-size:15px;color:#0f172a;">🔍 品質缺失追蹤表 (NCR 4頁滿版閉環管理)</h3>
-            <span style="background:#eff6ff;color:#1d4ed8;padding:3px 10px;border-radius:99px;font-size:11.5px;font-weight:800;">品質缺失含改善閉環狀態</span>
-          </div>
-          <table style="width:100%;border-collapse:collapse;font-size:12.5px;">
-            <thead>
-              <tr style="background:#f1f5f9;color:#334155;text-align:left;">
-                <th style="padding:8px 10px;border-bottom:2px solid #cbd5e1;">NCR 編號</th>
-                <th style="padding:8px 10px;border-bottom:2px solid #cbd5e1;">專案名稱</th>
-                <th style="padding:8px 10px;border-bottom:2px solid #cbd5e1;">位置</th>
-                <th style="padding:8px 10px;border-bottom:2px solid #cbd5e1;">品質查驗與改善內容</th>
-                <th style="padding:8px 10px;border-bottom:2px solid #cbd5e1;">四頁閉環進度</th>
-                <th style="padding:8px 10px;border-bottom:2px solid #cbd5e1;">狀態</th>
-              </tr>
-            </thead>
-            <tbody>
-              \${NCRS.map(n => \`
-                <tr style="border-bottom:1px solid #e2e8f0;">
-                  <td style="padding:8px 10px;font-family:monospace;font-weight:800;color:#1d4ed8;">\${n.id}</td>
-                  <td style="padding:8px 10px;font-weight:700;">\${n.proj}</td>
-                  <td style="padding:8px 10px;font-family:monospace;">\${n.loc}</td>
-                  <td style="padding:8px 10px;font-weight:700;">\${n.item}</td>
-                  <td style="padding:8px 10px;color:#475569;font-size:11.5px;">\${n.pageStatus}</td>
-                  <td style="padding:8px 10px;"><span style="background:#ecfdf5;color:#047857;padding:2px 8px;border-radius:99px;font-weight:800;font-size:11px;">\${n.status}</span></td>
-                </tr>
-              \`).join('')}
-            </tbody>
-          </table>
-        </div>
-
-        <div style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:16px 20px;box-shadow:0 4px 14px rgba(15,23,42,0.05);">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
-            <h3 style="margin:0;font-size:15px;color:#0f172a;">🦺 職安衛巡檢與缺失紀錄 (獨立統計・無改善狀態欄位)</h3>
-            <span style="background:#fffbeb;color:#b45309;padding:3px 10px;border-radius:99px;font-size:11.5px;font-weight:800;">配合 CLSM 1 / CLSM 2 澆置動態撤除勞安設施</span>
-          </div>
-          <table style="width:100%;border-collapse:collapse;font-size:12.5px;">
-            <thead>
-              <tr style="background:#f1f5f9;color:#334155;text-align:left;">
-                <th style="padding:8px 10px;border-bottom:2px solid #cbd5e1;">紀錄編號</th>
-                <th style="padding:8px 10px;border-bottom:2px solid #cbd5e1;">專案名稱</th>
-                <th style="padding:8px 10px;border-bottom:2px solid #cbd5e1;">巡檢區域</th>
-                <th style="padding:8px 10px;border-bottom:2px solid #cbd5e1;">職安衛分類</th>
-                <th style="padding:8px 10px;border-bottom:2px solid #cbd5e1;">現場勞安衛巡檢與澆置撤除紀錄</th>
-                <th style="padding:8px 10px;border-bottom:2px solid #cbd5e1;">紀錄時間</th>
-              </tr>
-            </thead>
-            <tbody>
-              \${OSHAS.map(o => \`
-                <tr style="border-bottom:1px solid #e2e8f0;">
-                  <td style="padding:8px 10px;font-family:monospace;font-weight:800;color:#b45309;">\${o.id}</td>
-                  <td style="padding:8px 10px;font-weight:700;">\${o.proj}</td>
-                  <td style="padding:8px 10px;font-weight:700;">\${o.loc}</td>
-                  <td style="padding:8px 10px;"><span style="background:#fef3c7;color:#92400e;padding:2px 8px;border-radius:99px;font-weight:700;font-size:11px;">\${o.category}</span></td>
-                  <td style="padding:8px 10px;font-weight:700;">\${o.finding}</td>
-                  <td style="padding:8px 10px;font-family:monospace;">\${o.time}</td>
-                </tr>
-              \`).join('')}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    \`;
-  }
-
-  function renderYingge3DInWarRoom() {
-    removeBlockingStyles();
-    const host = ensurePatchContainer();
-    host.style.display = 'block';
-    host.style.padding = '0';
-    host.style.maxWidth = '100%';
-    host.innerHTML = \`
-      <iframe src="\${YINGGE_3D_URL}" style="width:100vw;height:calc(100vh - 96px);border:none;display:block;background:#f6f5f0;"></iframe>
-    \`;
-  }
-
-  // Intercept clicks on War Room top navigation buttons
-  document.addEventListener('click', function(e) {
-    const el = e.target.closest('button, a, li, div[role="tab"], span');
-    if (!el) return;
-    const txt = (el.textContent || '').trim();
-    const host = document.getElementById('wr-v186-dynamic-panel');
-
-    if (txt === '材料與請款' || txt.includes('材料與請款')) {
-      setTimeout(renderMaterialsInWarRoom, 20);
-    } else if (txt === '品質與勞安' || txt.includes('品質與勞安')) {
-      setTimeout(renderQualitySafetyInWarRoom, 20);
-    } else if (txt === '3D BIM 模型' || txt === '3D 模型' || txt.includes('鶯歌') || txt.includes('北區訓練中心') || txt.includes('共同管溝')) {
-      setTimeout(renderYingge3DInWarRoom, 20);
-    } else if (['總覽曲線','出工與日誌','晴雨觀測','工程進度','生產力分析','圖說與型錄','案名與測站','機器人管理','帳號權限','外部部署','工程圖譜與核銷'].some(k => txt.includes(k))) {
-      if (host) host.style.display = 'none';
-    }
-  }, true);
-
-  // Also replace any existing iframe or old dark-mode stacked box view referencing Yingge
-  function upgradeExistingYinggeFrames() {
-    document.querySelectorAll('iframe').forEach(fr => {
-      const src = fr.getAttribute('src') || '';
-      if (src.includes('yingge') || src.includes('trench') || src.includes('northern')) {
-        if (!src.includes('v=')) fr.src = YINGGE_3D_URL;
-      }
-    });
-  }
-  setInterval(upgradeExistingYinggeFrames, 2500);
-})();`;
-}
-
-async function executeRemoteGitHubSync() {
-  const token = document.getElementById('gh-pat-input').value.trim();
-  if (!token) { appendGhLog('⚠️ 請輸入 GitHub Personal Access Token (ghp_...)'); return; }
-  safeSetStorage('GITHUB_SYNC_PAT', token);
-  const logEl = document.getElementById('gh-log');
-  if (logEl) logEl.innerHTML = '';
-  try {
-    appendGhLog(`🔍 [1/5] 驗證 GitHub 帳號 (${GITHUB_OWNER})...`);
-    // Ensure modal is closed in snapshot HTML so deployed page opens cleanly in 3D view
-    const modalEl = document.getElementById('gh-modal');
-    const prevDisplay = modalEl.style.display;
-    modalEl.style.display = 'none';
-    const fullHtml = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
-    modalEl.style.display = prevDisplay;
-
-    const stateJsonStr = JSON.stringify({
-      project_id: 'YINGGE-FIRE-STATION',
-      project_name: '鶯歌消防局專案 — 680m 共同管溝 3D BIM 拆解模型 (第三圖淺色工作坊樣式)',
-      updated_at_cst: new Date().toLocaleString('zh-TW', { hour12: false }),
-      active_segment: SEGS[state.segIdx].id,
-      status_code: SEGS[state.segIdx].st,
-      ui_theme: 'LIGHT_STUDIO_IMAGE3_WEBGL',
-      total_racks: 342,
-      total_manholes: 39,
-      manhole_flush_grade: 'GL±0.00m (100% Flush with AC Roadway)',
-      culvert_crossing_sta: '0+410 (S08 / 09A-09B)',
-      segments: Object.fromEntries(SEGS.map(s => [s.id, s]))
-    }, null, 2);
-
-    appendGhLog(`📤 [2/5] 推送第三圖樣式 3D 模型至獨立倉 ${GITHUB_OWNER}/${BIM_REPO}...`);
-    await ghUpsertFile(token, GITHUB_OWNER, BIM_REPO, 'index.html', fullHtml, '⚡ feat: lock Image-3 Light Studio 3D WebGL model & WarRoom fixer');
-    await ghUpsertFile(token, GITHUB_OWNER, BIM_REPO, 'northern_training_center_trench_teardown.html', fullHtml, '⚡ feat: sync northern_training_center_trench_teardown.html');
-    await ghUpsertFile(token, GITHUB_OWNER, BIM_REPO, 'yingge_bim_state.json', stateJsonStr, '⚡ sync: update yingge_bim_state.json');
-
-    appendGhLog(`🔄 [3/5] 覆寫戰情室主倉 ${GITHUB_OWNER}/${WARROOM_REPO} 所有鶯歌 3D 模型路徑...`);
-    await ghUpsertFile(token, GITHUB_OWNER, WARROOM_REPO, 'models/yingge/index.html', fullHtml, '⚡ sync(yingge): replace old dark box model with Image-3 Light Studio 3D WebGL');
-    await ghUpsertFile(token, GITHUB_OWNER, WARROOM_REPO, 'northern_training_center_trench_teardown.html', fullHtml, '⚡ sync(yingge): update root trench 3D model');
-    await ghUpsertFile(token, GITHUB_OWNER, WARROOM_REPO, 'yingge_bim_state.json', stateJsonStr, '⚡ sync(yingge): update state JSON');
-
-    appendGhLog(`🛠️ [4/5] 推送戰情室材料/品質/3D 自動修補程式 warroom_v186_full_patch.js...`);
-    const patchJs = buildWarRoomAutoPatchJsString();
-    await ghUpsertFile(token, GITHUB_OWNER, WARROOM_REPO, 'warroom_v186_full_patch.js', patchJs, '🛠️ fix(warroom): repair 材料與請款 & 品質與勞安 blank tabs + Yingge 3D view');
-    await ghUpsertFile(token, GITHUB_OWNER, WARROOM_REPO, 'warroom_yingge_github_sync_bridge.js', patchJs, '🛠️ fix(warroom): update bridge with v186 tab & 3D fixer');
-
-    appendGhLog(`💉 [5/5] 掃描並注入修補腳本至 ${GITHUB_OWNER}/${WARROOM_REPO}/index.html...`);
-    const idxUrl = `https://api.github.com/repos/${GITHUB_OWNER}/${WARROOM_REPO}/contents/index.html`;
-    const idxRes = await fetch(idxUrl, {
-      headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github+json' }
-    });
-    if (idxRes.ok) {
-      const idxMeta = await idxRes.json();
-      let warroomHtml = base64ToUtf8(idxMeta.content);
-      // Remove any broken v173ZeroPathCleanStyle inline block if present
-      warroomHtml = warroomHtml.replace(/<style id="v173ZeroPathCleanStyle">[\s\S]*?<\/style>/g, '');
-      const scriptTag = `<script src="./warroom_v186_full_patch.js?v=${Date.now()}"><\/script>`;
-      if (!warroomHtml.includes('warroom_v186_full_patch.js')) {
-        if (warroomHtml.includes('</body>')) {
-          warroomHtml = warroomHtml.replace('</body>', `${scriptTag}\n</body>`);
-        } else {
-          warroomHtml += `\n${scriptTag}`;
-        }
-      }
-      await ghUpsertFile(token, GITHUB_OWNER, WARROOM_REPO, 'index.html', warroomHtml, '⚡ fix(warroom): inject warroom_v186_full_patch.js for Materials/Quality/Yingge3D');
-    }
-
-    appendGhLog(`🎉 雙倉 100% 遠端修正完成！請重新整理戰情室網頁檢視「材料與請款」、「品質與勞安」與鶯歌第三圖樣式 3D 模型！`);
-  } catch (err) {
-    appendGhLog(`❌ 錯誤: ${err.message}`);
+function focusPanel(code) {
+  const p = YG_PANELS.find(x => x.code === code);
+  if (p) {
+    selectFloor(p.floor);
+    document.getElementById('ygCurrentTag').textContent = p.code;
+    document.getElementById('ygFocusCard').innerHTML = `
+      <div style="font-weight:900;color:#38bdf8;font-size:12.5px;margin-bottom:4px;">⚡ ${p.code}</div>
+      • <strong>設置位置與名稱：</strong>${p.name}<br>
+      • <strong>規格與迴路明細：</strong>${p.note}<br>
+      • <strong>工程檢核：</strong>NEC 110.26 盤前 1.2m 淨空、30mA 0.1s ELB、IEEE 80 接地網 Rg=0.84Ω 合格
+    `;
   }
 }
 
-// ============================================================================
-// MAIN 60FPS ANIMATION LOOP
-// ============================================================================
-let lastCorridorRebuildBucket = -1;
+window.selectFloor = selectFloor;
+window.switchMode = switchMode;
 
-function animateLoop() {
-  requestAnimationFrame(animateLoop);
+const cvs = document.getElementById('ygCanvas');
+const ctx = cvs.getContext('2d');
+let isDrag = false, lx = 0, ly = 0;
 
-  if (state.playing) {
-    state.tick += 0.025;
-    state.stepProg += 0.0055;
-
-    if (state.dim === 'overview' && state.overviewWaveAnim) {
-      state.corridorWavePos += 0.022;
-      if (state.corridorWavePos > 14.5) state.corridorWavePos = -1.0;
-
-      const waveBucket = Math.floor(state.corridorWavePos * 3);
-      if (waveBucket !== lastCorridorRebuildBucket) {
-        lastCorridorRebuildBucket = waveBucket;
-        const focusSeg = Math.max(0, Math.min(11, Math.round(state.corridorWavePos)));
-        state.segIdx = focusSeg;
-        syncUI();
-        rebuildWebGLScene();
-      }
-      if (state.followWaveCam && controls) {
-        const targetGx = (state.corridorWavePos - 5.5) * (3.52 + 0.15);
-        controls.target.x += (Math.max(-18, Math.min(18, targetGx)) - controls.target.x) * 0.05;
-      }
-    }
-
-    if (state.stepProg >= 1.0) {
-      if (state.autoAdvanceSteps && (state.dim === 'seq' || state.dim === 'culv')) {
-        const steps = getStepsForDim(state.dim);
-        state.step = (state.step % steps.length) + 1;
-        state.stepProg = 0.0;
-        playTone(440 + state.step * 25, 0.04, 'sine');
-        syncUI();
-        rebuildWebGLScene();
-      } else {
-        state.stepProg = 1.0;
-      }
-    }
-  }
-
-  // Smooth Camera Fly-To Interpolation
-  if (camFlyTarget && camFlyLookAt && camera && controls) {
-    camera.position.lerp(camFlyTarget, 0.08);
-    controls.target.lerp(camFlyLookAt, 0.08);
-    if (camera.position.distanceTo(camFlyTarget) < 0.15) {
-      camFlyTarget = null;
-      camFlyLookAt = null;
-    }
-  }
-  if (controls) controls.update();
-
-  const easeOut = 1 - Math.pow(1 - Math.min(1, state.stepProg * 1.4), 3);
-  document.getElementById('step-prog-bar').style.width = `${Math.round(state.stepProg * 100)}%`;
-
-  dynamicStepActors.forEach(actor => {
-    if (actor.type === 'drop') {
-      actor.mesh.position.y = actor.baseY + (1 - easeOut) * actor.dropH;
-    } else if (actor.type === 'extractUp') {
-      actor.mesh.position.y = actor.baseY + easeOut * actor.liftH;
-    } else if (actor.type === 'slideX') {
-      actor.mesh.scale.x = Math.max(0.05, easeOut);
-      actor.mesh.position.x = -(1 - easeOut) * 4.5;
-    } else if (actor.type === 'scaleX') {
-      actor.mesh.scale.x = Math.max(0.05, easeOut);
-    }
-  });
-
-  const pulse = (Math.sin(state.tick * 3.2) * 0.5 + 0.5);
-  culvertAlertMeshes.forEach(line => {
-    line.scale.set(1 + pulse * 0.03, 1 + pulse * 0.04, 1 + pulse * 0.03);
-  });
-  culvertFlowMeshes.forEach(w => {
-    w.position.z = Math.sin(state.tick * 2.5) * 0.18;
-  });
-
-  const kState = computeState(state);
-  const activePourWave = ((state.dim === 'seq' || state.dim === 'culv') && (state.step === 7 || state.step === 10)) ? state.stepProg : kState.pourWave;
-  animatedBayMeshes.forEach(item => {
-    const isPouring = ((state.dim === 'seq' || state.dim === 'culv') && ((state.step === 7 && item.stage === 1) || (state.step === 10 && item.stage === 2)));
-    const ratio = isPouring ? Math.min(1, Math.max(0.12, activePourWave * 3 - item.bayIdx)) : 1.0;
-    item.mesh.scale.y = ratio;
-  });
-  if (pumpNozzleGroup) {
-    pumpNozzleGroup.position.x = (activePourWave - 0.5) * 12;
-  }
-
-  if (renderer && scene && camera && !state.blueprintOpen) {
-    renderer.render(scene, camera);
-    renderCalloutsAndPins();
-  }
-
-  document.getElementById('wave-pct-tag').textContent = `Step ${String(state.step).padStart(2,'0')} (${Math.round(state.stepProg * 100)}%)`;
-  drawLiveStripChart(kState);
-  drawCulvertCrossingPiP(state.tick);
+function fitCanvas() {
+  cvs.width = cvs.parentElement.clientWidth * window.devicePixelRatio;
+  cvs.height = cvs.parentElement.clientHeight * window.devicePixelRatio;
 }
+window.addEventListener('resize', fitCanvas);
+fitCanvas();
 
-window.addEventListener('keydown', function(e) {
-  if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT' || e.target.tagName === 'TEXTAREA')) return;
-  if (e.code === 'Space') { e.preventDefault(); togglePlay(); }
-  else if (e.code === 'Escape') { closeGhModal(); if (state.warroomPreviewOpen) closeWarRoomTabPreview(); }
-  else if (e.code === 'ArrowRight') { selectStep((state.step % 12) + 1); }
-  else if (e.code === 'ArrowLeft') { selectStep(state.step <= 1 ? 12 : state.step - 1); }
+cvs.addEventListener('mousedown', e => { isDrag = true; lx = e.clientX; ly = e.clientY; });
+window.addEventListener('mouseup', () => isDrag = false);
+window.addEventListener('mousemove', e => {
+  if (!isDrag) return;
+  rotY += (e.clientX - lx) * 0.008;
+  rotX = Math.max(0.12, Math.min(1.25, rotX + (e.clientY - ly) * 0.006));
+  lx = e.clientX; ly = e.clientY;
 });
+cvs.addEventListener('wheel', e => {
+  e.preventDefault();
+  zoom = Math.max(0.55, Math.min(2.3, zoom * (e.deltaY < 0 ? 1.08 : 0.92)));
+}, { passive: false });
 
-window.onload = function() {
-  initWebGLStage();
-  updateClipPlaneConstant();
-  syncUI();
-  rebuildWebGLScene();
-  animateLoop();
-};
+function proj(x, y, z, cx, cy, sc) {
+  const cy_ = Math.cos(rotY), sy_ = Math.sin(rotY);
+  const cx_ = Math.cos(rotX), sx_ = Math.sin(rotX);
+  const rx = x * cy_ - z * sy_;
+  const rz = x * sy_ + z * cy_;
+  const ry = y * cx_ - rz * sx_;
+  return { x: cx + rx * sc, y: cy - ry * sc };
+}
+
+function box3d(cx, cy, sc, x1, y1, z1, x2, y2, z2, fill, stroke, al=1) {
+  ctx.save(); ctx.globalAlpha = al;
+  const p = [
+    proj(x1,y1,z1,cx,cy,sc), proj(x2,y1,z1,cx,cy,sc), proj(x2,y1,z2,cx,cy,sc), proj(x1,y1,z2,cx,cy,sc),
+    proj(x1,y2,z1,cx,cy,sc), proj(x2,y2,z1,cx,cy,sc), proj(x2,y2,z2,cx,cy,sc), proj(x1,y2,z2,cx,cy,sc)
+  ];
+  [[4,5,6,7],[0,1,5,4],[1,2,6,5],[2,3,7,6],[3,0,4,7]].forEach((f, i) => {
+    ctx.beginPath(); ctx.moveTo(p[f[0]].x, p[f[0]].y);
+    for (let k=1;k<4;k++) ctx.lineTo(p[f[k]].x, p[f[k]].y);
+    ctx.closePath(); ctx.fillStyle = fill; ctx.fill();
+    ctx.strokeStyle = stroke; ctx.lineWidth = i===0 ? 1.5 : 0.9; ctx.stroke();
+  });
+  ctx.restore();
+}
+
+function line3d(cx, cy, sc, x1, y1, z1, x2, y2, z2, col, w=3) {
+  const p1 = proj(x1,y1,z1,cx,cy,sc), p2 = proj(x2,y2,z2,cx,cy,sc);
+  ctx.save(); ctx.beginPath(); ctx.moveTo(p1.x,p1.y); ctx.lineTo(p2.x,p2.y);
+  ctx.strokeStyle = col; ctx.lineWidth = w; ctx.lineCap = 'round'; ctx.stroke(); ctx.restore();
+}
+
+const YG_FLOORS = [
+  { id: 'FF', label: '[1] B2F~B1F 筏基150T水池/雨水池 & 680m共同管溝', y: -34, h: 30, w: 185, d: 112, fill: 'rgba(51,65,85,0.58)', stroke: '#64748b' },
+  { id: '1F', label: '[1][2] 1F 救災車庫(5車位) & C-01動員集結鋼棚', y: 0, h: 42, w: 194, d: 118, fill: 'rgba(220,38,38,0.28)', stroke: '#ef4444' },
+  { id: '2F', label: '[1] 2F 北區複合災害應變指揮中心 & ②工務所', y: 44, h: 34, w: 182, d: 108, fill: 'rgba(2,132,199,0.26)', stroke: '#38bdf8' },
+  { id: '3F', label: '[3] 3F 化學署 A-04 複合訓練大樓 & 模擬訓練室', y: 80, h: 34, w: 172, d: 98, fill: 'rgba(16,185,129,0.24)', stroke: '#10b981' },
+  { id: '4F', label: '[1][4] 4F~8F 主建築物高層 & 戰技繩索訓練塔', y: 116, h: 38, w: 92, d: 78, fill: 'rgba(139,92,246,0.28)', stroke: '#a855f7' },
+  { id: 'RF', label: 'RF 防救災微電網太陽能 & 屋頂水箱', y: 156, h: 12, w: 92, d: 78, fill: 'rgba(245,158,11,0.32)', stroke: '#f59e0b' }
+];
+
+function drawLoop() {
+  const w = cvs.width, h = cvs.height;
+  ctx.clearRect(0, 0, w, h);
+  const cx = w * 0.5, cy = h * 0.63;
+  const sc = Math.min(w, h) / 420 * zoom;
+
+  // Outdoor 8-section bidirectional step-tapering utility trench (680m, W: 240->105cm, H: 200->142cm)
+  if (curFloor === 'ALL' || curFloor === 'FF' || curFloor === '1F') {
+    YG_TRENCH_SECTIONS.forEach((s, i) => {
+      const xs = -142 + i * 35 + (exploded ? i * 5 : 0), xe = xs + 32;
+      const zp = 84, dp = s.d * 0.14, hw = s.w * 0.065;
+      const hi = (activeTrench === s.id || s.id === 'S2');
+      box3d(cx, cy, sc, xs, -dp, zp - hw, xe, 2, zp + hw,
+        hi ? 'rgba(249,115,22,0.52)' : 'rgba(30,41,59,0.78)', hi ? '#fb923c' : '#38bdf8', 0.95);
+      if (sysOn.FP) line3d(cx, cy, sc, xs, -dp*0.32, zp-hw*0.55, xe, -dp*0.32, zp-hw*0.55, '#ef4444', 3.2);
+      if (sysOn.EP) line3d(cx, cy, sc, xs, -dp*0.52, zp, xe, -dp*0.52, zp, '#f59e0b', 3.0);
+      if (sysOn.TI) line3d(cx, cy, sc, xs, -dp*0.25, zp+hw*0.45, xe, -dp*0.25, zp+hw*0.45, '#a855f7', 2.5);
+      if (sysOn.AC) line3d(cx, cy, sc, xs, -dp*0.40, zp+hw*0.75, xe, -dp*0.40, zp+hw*0.75, '#10b981', 2.6);
+      if (sysOn.WE) line3d(cx, cy, sc, xs, -5, zp+hw+8, xe, -5, zp+hw+8, '#06b6d4', 2.2);
+      const tp = proj((xs+xe)/2, 7, zp+hw, cx, cy, sc);
+      ctx.fillStyle = hi ? '#fdba74' : '#38bdf8';
+      ctx.font = `bold ${Math.round(9.5 * window.devicePixelRatio)}px sans-serif`;
+      ctx.fillText(`S${i+1}(${s.w}×${s.d})`, tp.x - 28, tp.y);
+    });
+  }
+
+  YG_FLOORS.forEach((fl, idx) => {
+    if (curFloor !== 'ALL' && curFloor !== fl.id) return;
+    const y1 = fl.y + (exploded ? idx * 28 : 0), y2 = y1 + fl.h;
+    const hw = fl.w / 2, hd = fl.d / 2;
+    box3d(cx, cy, sc, -hw, y1, -hd, hw, y2, hd, fl.fill, fl.stroke, curFloor === fl.id ? 0.92 : 0.72);
+    if (fl.id === '1F') {
+      for (let b = 0; b < 5; b++) {
+        const bx1 = -78 + b * 32;
+        box3d(cx, cy, sc, bx1, y1+2, hd-2, bx1+24, y1+28, hd+1, 'rgba(239,68,68,0.55)', '#fca5a5', 0.95);
+      }
+    }
+    if (sysOn.FP) line3d(cx, cy, sc, -hw+12, y2-5, -hd+15, hw-12, y2-5, -hd+15, '#ef4444', 3.2);
+    if (sysOn.EP) line3d(cx, cy, sc, -hw+12, y2-8, 0, hw-12, y2-8, 0, '#f59e0b', 2.8);
+    if (sysOn.AC) line3d(cx, cy, sc, -hw+18, y2-4, hd-18, hw-18, y2-4, hd-18, '#10b981', 4.0);
+    if (sysOn.TI) line3d(cx, cy, sc, -hw+15, y1+6, -hd+25, hw-15, y1+6, -hd+25, '#a855f7', 2.2);
+    if (sysOn.WE) line3d(cx, cy, sc, -hw+20, y1+3, hd-12, hw-20, y1+3, hd-12, '#06b6d4', 2.5);
+    const lp = proj(-hw - 12, (y1+y2)/2, 0, cx, cy, sc);
+    ctx.fillStyle = '#e2e8f0';
+    ctx.font = `bold ${Math.round(10.5 * window.devicePixelRatio)}px sans-serif`;
+    ctx.fillText(fl.label, lp.x - 165, lp.y);
+  });
+
+  requestAnimationFrame(drawLoop);
+}
+
+renderLists();
+if (window.__INIT_PARAMS__) {
+  if (window.__INIT_PARAMS__.floor) selectFloor(window.__INIT_PARAMS__.floor);
+  if (window.__INIT_PARAMS__.mode) switchMode(window.__INIT_PARAMS__.mode);
+}
+drawLoop();
 </script>
+
+<style id="v191WarmReturnToWarRoomStyle">
+  .v191-warm-return-pill {
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    z-index: 99999;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 16px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #C86446 0%, #B35032 100%);
+    color: #FFFDF9 !important;
+    font-family: "Plus Jakarta Sans", "PingFang TC", "Microsoft JhengHei", sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none !important;
+    box-shadow: 0 10px 25px -4px rgba(200, 100, 70, 0.45);
+    border: 1px solid rgba(255, 252, 247, 0.35);
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .v191-warm-return-pill:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 14px 30px -4px rgba(200, 100, 70, 0.6);
+  }
+</style>
+<a class="v191-warm-return-pill" href="./index.html" title="返回營建工務智慧戰情室首頁">
+  <span>✦ 返回營建工務智慧戰情室</span>
+</a>
+
 </body>
 </html>
