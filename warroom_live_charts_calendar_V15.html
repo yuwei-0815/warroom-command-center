@@ -78,34 +78,125 @@
   window.__S60_STAGED_FILES__ = [];
 
   var CAT_LABELS = {
-    CONTRACT: "📄 01. 工程契約書／合約條款",
-    BID_BOQ: "📊 02. 工程標單／詳細價目表",
-    DRAWING: "📐 03. 施工圖說／BIM 清冊",
+    CONTRACT: "📄 01. 工程契約書／罰則",
+    BID_BOQ: "📊 02. 工程標單／價目表",
+    DRAWING: "📐 03. 施工圖說／BIM",
     APPROVED_MAT: "📑 04. 送審核定材料型錄",
     SPEC_SOP: "📋 05. 施工規範與查驗基準"
   };
 
+  // Smart Filename Auto-Classifier (Zero manual dropdown needed!)
+  function classifyDocByFileNameS61(fileName) {
+    var n = String(fileName || "");
+    if (/標單|價目|計價|預算|詳細表|BOQ|\.xlsx$|\.xls$|\.csv$/i.test(n) && !/合約|契約書/.test(n)) return "BID_BOQ";
+    if (/圖說|施工圖|平面|剖面|單線圖|管溝圖|BIM|\.dwg$|\.dxf$/i.test(n)) return "DRAWING";
+    if (/型錄|送審|承認|核定材料|樣品|材質/i.test(n)) return "APPROVED_MAT";
+    if (/規範|查驗基準|自主檢查|SOP|計畫書/i.test(n)) return "SPEC_SOP";
+    return "CONTRACT";
+  }
+  window.classifyDocByFileNameS61 = classifyDocByFileNameS61;
+
+  // Auto-Derive Bot Code, Display Name & Default NAS Path from Project Name!
+  function deriveBotIdentityFromProjectS61(projName) {
+    var p = String(projName || "").trim();
+    if (!p) return { code: "BOT_NEW", name: "新工務專責機器人" };
+    var shortName = p.replace(/新建工程|統包工程|工程|\(.*?\)|（.*?）/g, "").trim().slice(-8) || p.slice(0, 8);
+    var codeSlug = "";
+    if (/鶯歌|消防/.test(p)) codeSlug = "BOT_YINGGE";
+    else if (/仁德.*三期/.test(p)) codeSlug = "BOT_RENDE3";
+    else if (/仁德.*二期/.test(p)) codeSlug = "BOT_RENDE2";
+    else if (/仁德/.test(p)) codeSlug = "BOT_RENDE1";
+    else {
+      var ascii = p.replace(/[^A-Za-z0-9]/g, "").toUpperCase().slice(0, 8);
+      var hash = 0;
+      for (var i = 0; i < p.length; i++) hash = ((hash << 5) - hash + p.charCodeAt(i)) | 0;
+      codeSlug = "BOT_" + (ascii || String(Math.abs(hash) % 900 + 100));
+    }
+    return {
+      code: codeSlug,
+      name: shortName + "工務機器人",
+      nas: "\\\\dogreatnas.synology.me\\元順工程-" + shortName + "\\60-機電相關"
+    };
+  }
+  window.deriveBotIdentityFromProjectS61 = deriveBotIdentityFromProjectS61;
+
+  window.onS61ProjectNameInput = function(val) {
+    var legacyProj = document.getElementById("newBotProjInput");
+    if (legacyProj) legacyProj.value = val;
+    var derived = deriveBotIdentityFromProjectS61(val);
+    var codeEl = document.getElementById("s60BotCodeInput");
+    var nameEl = document.getElementById("s60BotDisplayNameInput");
+    var nasEl = document.getElementById("s60PathNasRoot");
+    if (codeEl && !codeEl.dataset.userEdited) codeEl.value = derived.code;
+    if (nameEl && !nameEl.dataset.userEdited) {
+      nameEl.value = derived.name;
+      var legacyName = document.getElementById("newBotNameInput");
+      if (legacyName) legacyName.value = derived.name;
+    }
+    if (nasEl && !nasEl.dataset.userEdited) nasEl.value = derived.nas;
+    var cBadge = document.getElementById("s61AutoCodeBadge");
+    var nBadge = document.getElementById("s61AutoNameBadge");
+    if (cBadge && codeEl) cBadge.textContent = codeEl.value;
+    if (nBadge && nameEl) nBadge.textContent = nameEl.value;
+  };
+
+  window.toggleS61ExternalGuide = function(forceShow) {
+    var p = document.getElementById("s61ExternalLineGuidePanel");
+    if (!p) return;
+    if (typeof forceShow === "boolean") {
+      p.style.display = forceShow ? "block" : "none";
+    } else {
+      p.style.display = (p.style.display === "none") ? "block" : "none";
+    }
+  };
+
+  window.pasteS61TokenFromClipboard = function() {
+    var inp = document.getElementById("s60LineChannelTokenInput");
+    if (!inp) return;
+    if (navigator.clipboard && navigator.clipboard.readText) {
+      navigator.clipboard.readText().then(function(txt) {
+        if (txt && txt.trim()) {
+          inp.value = txt.trim();
+          if (typeof window.showToast === "function") window.showToast("✅ 已貼上 LINE Channel Access Token！");
+        }
+      }).catch(function() {
+        inp.focus();
+        if (typeof window.showToast === "function") window.showToast("請於輸入框按 Ctrl+V / Cmd+V 貼上權杖");
+      });
+    } else {
+      inp.focus();
+    }
+  };
+
+  window.changeS61StagedFileCategory = function(idx, newCat) {
+    if (window.__S60_STAGED_FILES__ && window.__S60_STAGED_FILES__[idx]) {
+      window.__S60_STAGED_FILES__[idx].category = newCat;
+      renderS60StagedFiles();
+    }
+  };
+
   function renderS60StagedFiles() {
     var list = window.__S60_STAGED_FILES__ || [];
-    var hint = document.getElementById("s60StagedFilesEmptyHint");
     var wrap = document.getElementById("s60StagedFilesTableWrap");
     var tbody = document.getElementById("s60StagedFilesTbody");
     if (!tbody) return;
     if (list.length === 0) {
-      if (hint) hint.style.display = "block";
       if (wrap) wrap.style.display = "none";
       tbody.innerHTML = "";
       return;
     }
-    if (hint) hint.style.display = "none";
     if (wrap) wrap.style.display = "block";
+    var catKeys = Object.keys(CAT_LABELS);
     tbody.innerHTML = list.map(function(f, idx) {
       var kb = Math.max(1, Math.round((f.sizeBytes || 0) / 1024));
+      var opts = catKeys.map(function(k) {
+        return '<option value="' + k + '"' + (f.category === k ? ' selected' : '') + '>' + CAT_LABELS[k] + '</option>';
+      }).join("");
       return '<tr>' +
         '<td style="font-weight:700;color:var(--text-main);">' + f.fileName + '</td>' +
-        '<td>' + (CAT_LABELS[f.category] || f.category) + '</td>' +
+        '<td><select onchange="window.changeS61StagedFileCategory(' + idx + ', this.value)" style="width:100%;padding:4px 6px;font-size:0.75rem;border-radius:6px;border:1px solid var(--border-std);background:var(--input-bg);color:var(--text-main);">' + opts + '</select></td>' +
         '<td>' + kb + ' KB</td>' +
-        '<td style="text-align:center;"><button type="button" class="btn btn-ghost" style="padding:2px 8px;font-size:0.72rem;" onclick="window.removeS60StagedFile(' + idx + ')">移除</button></td>' +
+        '<td style="text-align:center;"><button type="button" class="btn btn-ghost" style="padding:2px 8px;font-size:0.72rem;" onclick="window.removeS60StagedFile(' + idx + ')">✕</button></td>' +
       '</tr>';
     }).join("");
   }
@@ -115,16 +206,16 @@
     renderS60StagedFiles();
   };
 
-  window.handleS60ContractFilesSelected = function(ev) {
-    var files = ev && ev.target && ev.target.files ? Array.prototype.slice.call(ev.target.files) : [];
+  function ingestFileListS61(files) {
+    if (!files || !files.length) return;
     var catEl = document.getElementById("s60UploadDocCategorySelect");
-    var cat = catEl ? catEl.value : "CONTRACT";
-    if (!files.length) return;
+    var manualCat = (catEl && catEl.value && catEl.value !== "AUTO") ? catEl.value : "";
     files.forEach(function(file) {
       if (file.size > 18 * 1024 * 1024) {
-        if (typeof window.showToast === "function") window.showToast("⚠️ 單一檔案超過 18MB，建議先放置於雲端資料夾並於步驟 2 貼上網址！");
+        if (typeof window.showToast === "function") window.showToast("⚠️ 單一檔案超過 18MB，建議先放置於雲端資料夾並展開「進階設定」貼上網址！");
         return;
       }
+      var detectedCat = manualCat || classifyDocByFileNameS61(file.name);
       var reader = new FileReader();
       reader.onload = function(e) {
         var dataUrl = String(e.target.result || "");
@@ -133,24 +224,42 @@
           fileName: file.name,
           mimeType: file.type || "application/octet-stream",
           sizeBytes: file.size,
-          category: cat,
+          category: detectedCat,
           base64: b64
         });
         renderS60StagedFiles();
       };
       reader.readAsDataURL(file);
     });
-    ev.target.value = "";
+  }
+
+  window.handleS60ContractFilesSelected = function(ev) {
+    var files = ev && ev.target && ev.target.files ? Array.prototype.slice.call(ev.target.files) : [];
+    ingestFileListS61(files);
+    if (ev && ev.target) ev.target.value = "";
+  };
+
+  window.handleS61FileDrop = function(ev) {
+    ev.preventDefault();
+    var dz = document.getElementById("s60DropZone");
+    if (dz) dz.style.borderColor = "var(--border-strong)";
+    var files = (ev.dataTransfer && ev.dataTransfer.files) ? Array.prototype.slice.call(ev.dataTransfer.files) : [];
+    ingestFileListS61(files);
   };
 
   window.fillS60DemoSandboxPreset = function() {
     var setVal = function(id, v) { var el = document.getElementById(id); if (el) el.value = v; };
-    setVal("s60BotCodeInput", "BOT_YINGGE_DEMO");
-    setVal("s60BotDisplayNameInput", "鶯歌消防局工務機器人 (一鍵部署驗證機)");
     setVal("s60ProjectNameInput", "新北市政府消防局北區複合型災害應變暨訓練中心新建工程(鶯歌消防局)");
+    setVal("s60BotCodeInput", "BOT_YINGGE_DEMO");
+    setVal("s60BotDisplayNameInput", "鶯歌消防局工務機器人 (驗證專機)");
     setVal("s60SiteAddressInput", "新北市鶯歌區尖山路101巷");
     setVal("s60LineChannelTokenInput", "SANDBOX_DEMO_LINE_CHANNEL_TOKEN_S60");
     setVal("s60PathNasRoot", "\\\\dogreatnas.synology.me\\元順工程-鶯歌消防局\\60-機電相關");
+    var cBadge = document.getElementById("s61AutoCodeBadge");
+    var nBadge = document.getElementById("s61AutoNameBadge");
+    if (cBadge) cBadge.textContent = "BOT_YINGGE_DEMO";
+    if (nBadge) nBadge.textContent = "鶯歌消防局工務機器人 (驗證專機)";
+
     var sampleContract = "【工程契約摘要與勞安環保罰則條款】\n工程名稱：鶯歌消防局新建工程\n未配戴安全帽或未穿合格安全鞋：每人次罰款新臺幣 3,000 元整。\n降雨達 24h >= 50mm 得檢具最近測站觀測資料申請工期展延。";
     var sampleBoq = "項次,工項名稱,規格,契約數量,單位,單價\n壹.一.1,共同管溝電力幹管,PVC Ø100mm (4\"),680,M,420\n壹.一.2,共同管溝弱電光纖管,PVC Ø80mm (3\"),680,M,310\n壹.二.1,臨時總配電盤,MP-TEMP 3Φ4W 400A,1,座,185000";
     window.__S60_STAGED_FILES__ = [
@@ -158,25 +267,31 @@
         fileName: "01_鶯歌消防局_工程契約書與安衛罰款條款摘要.txt",
         mimeType: "text/plain",
         sizeBytes: sampleContract.length,
-        category: "CONTRACT",
+        category: classifyDocByFileNameS61("01_鶯歌消防局_工程契約書與安衛罰款條款摘要.txt"),
         base64: btoa(unescape(encodeURIComponent(sampleContract)))
       },
       {
         fileName: "02_鶯歌消防局_機電標單詳細價目表_V1.csv",
         mimeType: "text/csv",
         sizeBytes: sampleBoq.length,
-        category: "BID_BOQ",
+        category: classifyDocByFileNameS61("02_鶯歌消防局_機電標單詳細價目表_V1.csv"),
         base64: btoa(unescape(encodeURIComponent(sampleBoq)))
       }
     ];
     renderS60StagedFiles();
     if (typeof window.showToast === "function") {
-      window.showToast("✅ 已載入範例設定與 2 份測試合約／標單檔案！請點擊「⚡ 沙盒預演測試」體驗一鍵部署。");
+      window.showToast("✅ 已帶入範例設定與 2 份自動分類檔案！請直接點擊右下角「🚀 一鍵部署 LINE Bot 上線」體驗。");
     }
   };
 
   function collectS60Payload(isDryRun) {
     var val = function(id) { var el = document.getElementById(id); return el ? String(el.value || "").trim() : ""; };
+    var projName = val("s60ProjectNameInput") || "新建工程專案";
+    var derived = deriveBotIdentityFromProjectS61(projName);
+    var codeEl = document.getElementById("s60BotCodeInput");
+    var nameEl = document.getElementById("s60BotDisplayNameInput");
+    var rawCode = (codeEl && codeEl.value) ? val("s60BotCodeInput") : derived.code;
+    var rawName = (nameEl && nameEl.value) ? val("s60BotDisplayNameInput") : derived.name;
     var tier = val("s60BotTierSelect") || "TIER_2";
     var flagsMap = {};
     if (typeof BOT_FEATURE_FLAGS !== "undefined" && Array.isArray(BOT_FEATURE_FLAGS)) {
@@ -187,10 +302,10 @@
     return {
       internalAction: "ONE_CLICK_PROVISION_BOT_S60",
       dryRun: Boolean(isDryRun),
-      botCode: (val("s60BotCodeInput") || "BOT_C").replace(/[^A-Za-z0-9_]/g, "_").toUpperCase(),
-      botName: val("s60BotDisplayNameInput") || "新工務專責機器人",
+      botCode: (rawCode || derived.code || "BOT_C").replace(/[^A-Za-z0-9_]/g, "_").toUpperCase(),
+      botName: rawName || derived.name || "新工務專責機器人",
       tier: tier,
-      projectName: val("s60ProjectNameInput") || "新建工程專案",
+      projectName: projName,
       siteAddress: val("s60SiteAddressInput") || "",
       schedules: val("s60SchedulesInput") || "08:00 / 09:00 / 15:00 / 19:00",
       lineChannelToken: val("s60LineChannelTokenInput"),
@@ -207,7 +322,7 @@
         dailyPhotoFolder: val("s60PathDailyPhotoFolder"),
         ncrSafetyFolder: val("s60PathNcrSafetyFolder"),
         spreadsheetId: val("s60PathSpreadsheetId"),
-        nasRootPath: val("s60PathNasRoot")
+        nasRootPath: val("s60PathNasRoot") || derived.nas
       },
       featureFlags: flagsMap,
       files: (window.__S60_STAGED_FILES__ || []).slice()
@@ -251,6 +366,7 @@
       }
       if (typeof saveBotGroup12ToStorage === "function") saveBotGroup12ToStorage();
       if (typeof renderBotSelectorAndGroup12UI === "function") renderBotSelectorAndGroup12UI();
+      if (typeof window.renderDeployedBotTabsBar === "function") window.renderDeployedBotTabsBar();
       if (typeof DEPLOYED_GROUP_BOTS !== "undefined" && Array.isArray(DEPLOYED_GROUP_BOTS)) {
         DEPLOYED_GROUP_BOTS.unshift({
           tier: tier,
@@ -271,20 +387,17 @@
     var payload = collectS60Payload(isDryRun);
     if (!isDryRun && (!payload.lineChannelToken || payload.lineChannelToken.indexOf("SANDBOX_") === 0)) {
       if (typeof window.showToast === "function") {
-        window.showToast("💡 尚未填入正式 LINE Channel Access Token，已自動切換為「沙盒預演模式」驗證雲端建夾與合約上傳！");
+        window.showToast("💡 尚未填入正式 LINE 權杖，已自動切換為「沙盒預演模式」建立雲端資料夾與歸檔合約！");
       }
       payload.dryRun = true;
     }
     var panel = document.getElementById("s60ProvisionResultPanel");
     if (panel) {
       panel.style.display = "block";
-      panel.style.background = "#eff6ff";
-      panel.style.borderColor = "#2563eb";
-      panel.style.color = "#1e3a8a";
-      panel.innerHTML = "⏳ <strong>正在執行 S6.0 七階段自動化部署流水線...</strong>（驗證憑證 ➔ 建立/綁定 8 大雲端資料夾 ➔ 上傳歸檔 " + payload.files.length + " 份合約標單 ➔ 註冊動態路由 ➔ 自動設定 LINE Webhook 與選單）";
+      panel.style.borderColor = "#0284c7";
+      panel.innerHTML = "⏳ <strong>正在自動部署【" + payload.botName + "】...</strong>（建立 8 大雲端工務資料夾 ➔ 歸檔 " + payload.files.length + " 份合約標單 ➔ 綁定 LINE Webhook 網址）";
     }
 
-    // Use CORS-safe text/plain POST (zero OPTIONS preflight block on Google Apps Script!)
     fetch(S60_MASTER_GATEWAY_URL, {
       method: "POST",
       redirect: "follow",
@@ -296,42 +409,94 @@
         if (!res || !res.ok) throw new Error((res && res.error) || "部署回應異常");
         registerDeployedBotIntoWarRoomUi(res, payload);
         if (panel) {
-          panel.style.background = "#f0fdf4";
           panel.style.borderColor = "#16a34a";
-          panel.style.color = "#14532d";
           var stepsHtml = (res.stages || []).map(function(st) {
             return "<div>" + (st.ok ? "✅" : "⚠️") + " <strong>" + st.name + "：</strong>" + st.detail + "</div>";
           }).join("");
           var docsHtml = (res.uploadedDocs || []).map(function(d) {
-            return '<li><a href="' + d.viewerUrl + '" target="_blank" rel="noopener" style="color:#0284c7;font-weight:700;">' + d.fileName + '</a>（分類：' + d.category + '）</li>';
+            return '<li><a href="' + d.viewerUrl + '" target="_blank" rel="noopener" style="color:#0284c7;font-weight:700;">' + d.fileName + '</a>（' + (CAT_LABELS[d.category] || d.category) + '）</li>';
           }).join("");
           var fldLinks = [];
           if (res.folders && res.folders.rootFolderUrl) fldLinks.push('<a href="' + res.folders.rootFolderUrl + '" target="_blank" rel="noopener" style="color:#0284c7;font-weight:700;">📂 開啟專案雲端總目錄</a>');
-          if (res.folders && res.folders.contractFolderUrl) fldLinks.push('<a href="' + res.folders.contractFolderUrl + '" target="_blank" rel="noopener" style="color:#0284c7;font-weight:700;">📄 合約資料夾</a>');
-          if (res.folders && res.folders.constInspFolderUrl) fldLinks.push('<a href="' + res.folders.constInspFolderUrl + '" target="_blank" rel="noopener" style="color:#0284c7;font-weight:700;">📸 查驗PDF資料夾</a>');
-          if (res.folders && res.folders.dailyPhotoFolderUrl) fldLinks.push('<a href="' + res.folders.dailyPhotoFolderUrl + '" target="_blank" rel="noopener" style="color:#0284c7;font-weight:700;">👷 施工/工具箱照片夾</a>');
+          if (res.folders && res.folders.contractFolderUrl) fldLinks.push('<a href="' + res.folders.contractFolderUrl + '" target="_blank" rel="noopener" style="color:#0284c7;font-weight:700;">📄 合約夾</a>');
+          if (res.folders && res.folders.bidBoqFolderUrl) fldLinks.push('<a href="' + res.folders.bidBoqFolderUrl + '" target="_blank" rel="noopener" style="color:#0284c7;font-weight:700;">📊 標單夾</a>');
+          if (res.folders && res.folders.constInspFolderUrl) fldLinks.push('<a href="' + res.folders.constInspFolderUrl + '" target="_blank" rel="noopener" style="color:#0284c7;font-weight:700;">📸 查驗PDF夾</a>');
 
           panel.innerHTML =
-            '<div style="font-size:0.9rem;font-weight:900;margin-bottom:6px;">🎉 【' + res.botCode + '｜' + payload.botName + '】' + (res.dryRun ? '沙盒預演部署 100% 成功！' : '一鍵正式部署上線完成！') + '</div>' +
-            '<div style="margin-bottom:6px;">🔗 <strong>專屬 Webhook 端點（已自動支援免新建 GAS 專案）：</strong><code>' + res.webhookEndpointUrl + '</code></div>' +
-            (fldLinks.length ? ('<div style="margin-bottom:6px;">📁 <strong>已建置／綁定雲端路徑：</strong>' + fldLinks.join(" ｜ ") + '</div>') : '') +
+            '<div style="font-size:0.95rem;font-weight:900;color:#16a34a;margin-bottom:6px;">🎉 【' + res.botCode + '｜' + payload.botName + '】' + (res.dryRun ? '沙盒預演建置完成！' : '一鍵部署上線成功！') + '</div>' +
+            '<div style="margin-bottom:6px;">🔗 <strong>專屬 Webhook 網址（已自動寫入）：</strong><code>' + res.webhookEndpointUrl + '</code></div>' +
+            (fldLinks.length ? ('<div style="margin-bottom:6px;">📁 <strong>雲端資料夾直連：</strong>' + fldLinks.join(" ｜ ") + '</div>') : '') +
             stepsHtml +
-            (docsHtml ? ('<div style="margin-top:6px;"><strong>📑 已上傳並建立 LINE 即時查詢索引之合約／標單檔案：</strong><ul style="margin:4px 0 0 18px;">' + docsHtml + '</ul></div>') : '') +
-            '<div style="margin-top:6px;padding-top:6px;border-top:1px dashed #86efac;">💡 <strong>LINE 實機測試指令：</strong>於該機器人對話視窗輸入 <code>合約</code>、<code>標單</code>、<code>路徑</code>、<code>開啟圖說</code> 或直接傳送工具箱／白板查驗照片，即自動歸入上方設定之專屬路徑！</div>';
+            (docsHtml ? ('<div style="margin-top:6px;"><strong>📑 已建立 LINE 即時查詢索引之檔案：</strong><ul style="margin:4px 0 0 18px;">' + docsHtml + '</ul></div>') : '') +
+            '<div style="margin-top:8px;padding-top:8px;border-top:1px dashed var(--border-std);">💡 <strong>下一步：</strong>確認 <a href="https://developers.line.biz/console/" target="_blank" rel="noopener" style="color:#0284c7;font-weight:700;">LINE Developers ↗</a> 內 <code>Use webhook</code> 為開啟，將機器人邀入 LINE 群組傳送 <code>合約</code>、<code>標單</code> 或現場照片即可自動運作！</div>';
         }
         if (typeof window.showToast === "function") {
-          window.showToast("🎉 【" + res.botCode + "】已完成雲端路徑綁定、合約歸檔與 LINE Bot 部署！");
+          window.showToast("🎉 【" + res.botCode + "】已完成雲端建夾、合約歸檔與 LINE Bot 部署！");
         }
       })
       .catch(function(err) {
         if (panel) {
-          panel.style.background = "#fef2f2";
           panel.style.borderColor = "#dc2626";
-          panel.style.color = "#7f1d1d";
           panel.innerHTML = "❌ <strong>連線遠端部署閘道失敗：</strong>" + String(err && err.message || err);
         }
       });
   };
+
+  // S6.1 Navigation & Zero-Clutter Enhancement:
+  // 1) Inject "+ 新增機器人（一鍵部署）" directly into #deployedBotTabsBar so users find it immediately!
+  // 2) Hide #daily0600SimTestCenterCard while viewing the One-Click Deploy wizard so the form sits right at the top!
+  window.openS61OneClickNewBotWizard = function() {
+    if (typeof window.switchBotConfigSubTab === "function") {
+      window.switchBotConfigSubTab("remote_std");
+    }
+    var wb = document.getElementById("s60OneClickDeployWorkbench");
+    if (wb && wb.scrollIntoView) wb.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  function enhanceBotTabsAndSubTabFocusS61() {
+    if (typeof window.renderDeployedBotTabsBar === "function" && !window.renderDeployedBotTabsBar.__s61Wrapped) {
+      var origRenderTabs = window.renderDeployedBotTabsBar;
+      var wrappedRender = function() {
+        origRenderTabs.apply(this, arguments);
+        var bar = document.getElementById("deployedBotTabsBar");
+        if (!bar) return;
+        var remotePane = document.getElementById("botSubPaneRemoteStd");
+        var isRemoteActive = Boolean(remotePane && remotePane.style.display !== "none");
+        if (!document.getElementById("btnQuickAddNewBotS61")) {
+          var addBtn = document.createElement("button");
+          addBtn.type = "button";
+          addBtn.id = "btnQuickAddNewBotS61";
+          addBtn.className = isRemoteActive ? "btn btn-primary" : "btn btn-emerald";
+          addBtn.style.cssText = "padding:7px 14px;font-size:0.82rem;font-weight:800;";
+          addBtn.innerHTML = "＋ 新增 LINE 機器人（一鍵部署）";
+          addBtn.onclick = window.openS61OneClickNewBotWizard;
+          bar.appendChild(addBtn);
+        }
+      };
+      wrappedRender.__s61Wrapped = true;
+      window.renderDeployedBotTabsBar = wrappedRender;
+      try { window.renderDeployedBotTabsBar(); } catch (_eInitBar) {}
+    }
+
+    if (typeof window.switchBotConfigSubTab === "function" && !window.switchBotConfigSubTab.__s61Wrapped) {
+      var origSwitch = window.switchBotConfigSubTab;
+      var wrappedSwitch = function(subTab) {
+        origSwitch.apply(this, arguments);
+        var simCard = document.getElementById("daily0600SimTestCenterCard");
+        if (simCard) {
+          simCard.style.display = (subTab === "remote_std") ? "none" : "block";
+        }
+      };
+      wrappedSwitch.__s61Wrapped = true;
+      window.switchBotConfigSubTab = wrappedSwitch;
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", enhanceBotTabsAndSubTabFocusS61);
+  } else {
+    enhanceBotTabsAndSubTabFocusS61();
+  }
 })();
 </script>
 </body></html>

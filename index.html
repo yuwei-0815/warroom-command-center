@@ -7920,7 +7920,7 @@ quickUpdateTodayHeadcountDirect: window.quickUpdateTodayHeadcountDirect
  群組設定 (群組一 / 群組二)
 </button>
 <button class="btn btn-ghost" id="btnBotSubTabRemoteStd" onclick="switchBotConfigSubTab('remote_std')" style="padding:7px 14px;font-size:0.82rem;" type="button">
- 🚀 一鍵部署 LINE Bot（合約上傳・路徑設定）
+ ＋ 新增／一鍵部署 LINE Bot
 </button>
 <button class="btn btn-emerald" id="btnRunOpenSpecGate" onclick="runClientOpenSpecFullSystemCheck()" style="padding:7px 14px;font-size:0.8rem;" type="button">
  執行 OpenSpec 全系統檢測
@@ -8215,174 +8215,220 @@ B. 新增／修正 BIGBOSS ＆ 機器人B 之 OCR 錯字與標單綁定規則
 </div>
 <div id="botSubPaneRemoteStd" style="display:none;">
 <!-- ==================== S6.0 ONE-CLICK LINE BOT DEPLOYER, CONTRACT UPLOAD & PATH CONFIGURATOR ==================== -->
-<div id="s60OneClickDeployWorkbench" class="glass-panel" style="padding:16px 18px;margin-bottom:16px;background:var(--panel-bg);border:1.5px solid #0284c7;border-left:5px solid #0284c7;border-radius:10px;">
-  <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:12px;">
+<div id="s60OneClickDeployWorkbench" class="glass-panel" style="padding:20px 22px;margin-bottom:16px;background:var(--panel-bg);border:1px solid var(--border-strong);border-radius:12px;">
+  <!-- Clean Header + Demo Preset -->
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding-bottom:14px;margin-bottom:16px;border-bottom:1px solid var(--border-std);">
     <div>
       <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-        <span style="background:#0284c7;color:#fff;font-size:0.73rem;font-weight:900;padding:3px 9px;border-radius:5px;">S6.0 一鍵部署上線總控台</span>
-        <strong style="font-size:0.98rem;color:var(--text-main);">戰情室預先配置 LINE Bot 憑證・全類別資料擺放路徑・合約標單直傳・一鍵自動綁定 Webhook 上線</strong>
+        <span style="background:#059669;color:#ffffff;font-size:0.74rem;font-weight:800;padding:3px 10px;border-radius:999px;letter-spacing:0.02em;">極簡 3 步・一鍵上線</span>
+        <strong style="font-size:1.06rem;color:var(--text-main);">新增工務 LINE 機器人（免寫程式・自動建雲端資料夾・合約自動歸檔）</strong>
       </div>
-      <div style="font-size:0.76rem;color:var(--text-muted);margin-top:4px;line-height:1.5;">
-        無須手動新建 GAS 專案或改程式碼：於下方填妥新機器人基本資料、設定各類雲端／NAS 擺放資料夾（留空即由系統自動建立 8 大標準工務資料夾樹）、上傳工程合約／標單／規範檔案後，點擊「<strong>一鍵部署上線</strong>」即可自動完成雲端建夾、合約歸檔索引、LINE Webhook 網址綁定與 13 大功能掛載。
+      <div style="font-size:0.8rem;color:var(--text-muted);margin-top:4px;">
+        只要填寫「<strong>① 工程名稱</strong>」與「<strong>② LINE 權杖</strong>」（合約標單可直接拖拉上傳），系統即自動建妥 8 大雲端資料夾並綁定 LINE Webhook。
       </div>
     </div>
-    <div style="display:flex;gap:6px;flex-wrap:wrap;">
-      <button type="button" class="btn btn-ghost" onclick="window.fillS60DemoSandboxPreset()" style="padding:6px 11px;font-size:0.75rem;">
-        🧪 載入範例設定與測試合約檔
+    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+      <button type="button" class="btn btn-ghost" id="btnToggleS61ExternalGuide" onclick="window.toggleS61ExternalGuide()" style="padding:7px 12px;font-size:0.78rem;font-weight:700;">
+        📖 收合／展開：LINE 外部申請圖解教學
       </button>
-      <button type="button" class="btn btn-amber" onclick="window.executeS60OneClickBotProvision(true)" style="padding:6px 12px;font-size:0.76rem;font-weight:800;">
-        ⚡ 沙盒預演測試（驗證建夾＋合約歸檔＋路由）
-      </button>
-      <button type="button" class="btn btn-primary" onclick="window.executeS60OneClickBotProvision(false)" style="padding:6px 14px;font-size:0.78rem;font-weight:900;background:#0284c7;border-color:#0284c7;">
-        🚀 一鍵正式部署 LINE Bot 上線
+      <button type="button" class="btn btn-ghost" onclick="window.fillS60DemoSandboxPreset()" style="padding:7px 12px;font-size:0.78rem;">
+        🧪 帶入範例資料試跑
       </button>
     </div>
   </div>
 
-  <!-- STEP 1: LINE Credentials & Project Identity -->
-  <div style="padding:12px 14px;background:var(--panel-sub);border:1px solid var(--border-std);border-radius:8px;margin-bottom:12px;">
-    <div style="font-weight:800;font-size:0.85rem;color:var(--text-main);margin-bottom:8px;">
-      步驟 1 / 3：機器人憑證、工程標案與推播排程設定
+  <!-- EXTERNAL APPLICATION ILLUSTRATED GUIDE (3 Annotated SVG Cards + Official Links) -->
+  <div id="s61ExternalLineGuidePanel" style="display:block;padding:14px 16px;margin-bottom:18px;background:var(--panel-sub);border:1px solid var(--border-std);border-radius:10px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px;">
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+        <span style="background:#0284c7;color:#ffffff;font-size:0.72rem;font-weight:800;padding:2px 8px;border-radius:6px;">外部申請圖解說明</span>
+        <strong style="font-size:0.9rem;color:var(--text-main);">還沒有 LINE 機器人權杖 (Token)？跟著下方 3 張圖點選官方網站，3 分鐘免費取得：</strong>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <a href="https://manager.line.biz/" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="padding:5px 11px;font-size:0.76rem;text-decoration:none;font-weight:700;">
+          🌐 網站 1：LINE 官方帳號後台 (manager.line.biz) ↗
+        </a>
+        <a href="https://developers.line.biz/console/" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="padding:5px 11px;font-size:0.76rem;text-decoration:none;font-weight:700;">
+          🌐 網站 2：LINE Developers 開發者後台 (developers.line.biz) ↗
+        </a>
+      </div>
     </div>
-    <div class="form-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;">
-      <div class="field-group">
-        <label>機器人代號 (Bot Code，英數唯一識別碼)</label>
-        <input id="s60BotCodeInput" type="text" value="BOT_YINGGE" placeholder="例：BOT_YINGGE 或 BOT_C"/>
-      </div>
-      <div class="field-group">
-        <label>機器人顯示名稱</label>
-        <input id="s60BotDisplayNameInput" type="text" value="鶯歌消防局工務專機 (BOT_C)" oninput="var el=document.getElementById('newBotNameInput');if(el)el.value=this.value;"/>
-      </div>
-      <div class="field-group">
-        <label>管理權限層級 (預設套用對應功能開關)</label>
-        <select id="s60BotTierSelect" onchange="var el=document.getElementById('newBotTierSelect');if(el)el.value=this.value;">
-          <option value="TIER_1">第一級：第一線工班回報型 (TIER_1)</option>
-          <option value="TIER_2" selected>第二級：工務所專機型 (TIER_2 — 同機器人B)</option>
-          <option value="TIER_3">第三級：最高總控型 (TIER_3 — 同工務機器人)</option>
-        </select>
-      </div>
-      <div class="field-group">
-        <label>綁定工程標案全銜</label>
-        <input id="s60ProjectNameInput" type="text" value="新北市政府消防局北區複合型災害應變暨訓練中心新建工程(鶯歌消防局)" oninput="var el=document.getElementById('newBotProjInput');if(el)el.value=this.value;"/>
-      </div>
-      <div class="field-group">
-        <label>工區地址（自動配對最近中央氣象署測站）</label>
-        <input id="s60SiteAddressInput" type="text" value="新北市鶯歌區尖山路101巷"/>
-      </div>
-      <div class="field-group">
-        <label>定時推播排程時間</label>
-        <input id="s60SchedulesInput" type="text" value="08:00 / 09:00 / 15:00 / 19:00"/>
-      </div>
-      <div class="field-group" style="grid-column:span 2;">
-        <label>LINE Channel Access Token（長效權杖；沙盒測試可留空或填 SANDBOX_TOKEN，正式上線貼入即自動綁定 Webhook 與選單）</label>
-        <div style="display:flex;gap:6px;">
-          <input id="s60LineChannelTokenInput" type="password" placeholder="貼上 LINE Developers Messaging API 之 Channel Access Token (long-lived)" style="flex:1;"/>
-          <button type="button" class="btn btn-ghost" onclick="var i=document.getElementById('s60LineChannelTokenInput');i.type=(i.type==='password'?'text':'password');" style="padding:4px 10px;font-size:0.74rem;">顯示/隱藏</button>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(275px,1fr));gap:12px;">
+      <!-- Visual Card A: LINE Official Account Manager -->
+      <div style="padding:12px;background:var(--panel-bg);border:1px solid var(--border-std);border-radius:8px;display:flex;flex-direction:column;justify-content:space-between;gap:8px;">
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:6px;margin-bottom:6px;">
+            <strong style="font-size:0.83rem;color:var(--text-main);">圖解 A｜建立帳號並啟用 Messaging API</strong>
+            <a href="https://manager.line.biz/" target="_blank" rel="noopener noreferrer" style="font-size:0.74rem;font-weight:800;color:#0284c7;text-decoration:none;white-space:nowrap;">開啟後台 ↗</a>
+          </div>
+          <svg viewBox="0 0 340 158" width="100%" style="display:block;border-radius:6px;border:1px solid #cbd5e1;background:#f8fafc;" role="img" aria-label="LINE Official Account Manager 啟用 Messaging API 圖解">
+            <rect x="0" y="0" width="340" height="24" fill="#06C755"/>
+            <circle cx="12" cy="12" r="4" fill="#ffffff" opacity="0.85"/>
+            <text x="22" y="16" font-size="10" font-weight="bold" fill="#ffffff" font-family="sans-serif">LINE Official Account Manager (manager.line.biz)</text>
+            <rect x="266" y="4" width="66" height="16" rx="4" fill="#0f172a"/>
+            <text x="273" y="15" font-size="9.5" font-weight="bold" fill="#ffffff" font-family="sans-serif">① ⚙ 設定</text>
+            <!-- Left Menu -->
+            <rect x="0" y="24" width="98" height="134" fill="#f1f5f9"/>
+            <line x1="98" y1="24" x2="98" y2="158" stroke="#cbd5e1" stroke-width="1"/>
+            <text x="10" y="43" font-size="9.5" fill="#64748b" font-family="sans-serif">帳號設定</text>
+            <rect x="6" y="51" width="86" height="20" rx="4" fill="#dcfce7" stroke="#16a34a" stroke-width="1.2"/>
+            <text x="10" y="64" font-size="9.2" font-weight="bold" fill="#14532d" font-family="sans-serif">② Messaging API</text>
+            <rect x="6" y="77" width="86" height="20" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1"/>
+            <text x="10" y="90" font-size="9" font-weight="bold" fill="#0369a1" font-family="sans-serif">④ 回應設定</text>
+            <!-- Main Pane -->
+            <text x="110" y="44" font-size="10.5" font-weight="bold" fill="#0f172a" font-family="sans-serif">Messaging API 狀態：尚未啟用</text>
+            <text x="110" y="59" font-size="8.8" fill="#475569" font-family="sans-serif">點擊下方綠色按鈕並建立服務提供者(公司名稱)</text>
+            <rect x="110" y="68" width="146" height="26" rx="5" fill="#06C755"/>
+            <text x="122" y="85" font-size="10.5" font-weight="bold" fill="#ffffff" font-family="sans-serif">③ 啟用 Messaging API</text>
+            <!-- Callout Box for Response Settings -->
+            <rect x="110" y="103" width="218" height="45" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-dasharray="3,2"/>
+            <text x="118" y="118" font-size="9" font-weight="bold" fill="#0f172a" font-family="sans-serif">④ 順手檢查左側「回應設定」：</text>
+            <text x="118" y="132" font-size="8.8" fill="#dc2626" font-weight="bold" font-family="sans-serif">‧ 自動回應訊息：停用 (OFF)</text>
+            <text x="118" y="144" font-size="8.8" fill="#15803d" font-weight="bold" font-family="sans-serif">‧ Webhook：啟用 (ON)</text>
+          </svg>
+        </div>
+        <div style="font-size:0.75rem;color:var(--text-muted);line-height:1.45;">
+          登入後建立新官方帳號 ➔ 點右上角「<strong>設定</strong>」➔ 左側「<strong>Messaging API</strong>」按啟用，並於「回應設定」開啟 Webhook。
         </div>
       </div>
-      <div class="field-group">
-        <label>LINE Channel Secret（選填，簽章驗證備查）</label>
-        <input id="s60LineChannelSecretInput" type="password" placeholder="貼上 Channel Secret（選填）"/>
+
+      <!-- Visual Card B: LINE Developers Console Issue Token -->
+      <div style="padding:12px;background:var(--panel-bg);border:1px solid var(--border-std);border-radius:8px;display:flex;flex-direction:column;justify-content:space-between;gap:8px;">
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:6px;margin-bottom:6px;">
+            <strong style="font-size:0.83rem;color:var(--text-main);">圖解 B｜發行並複製長效權杖 (Token)</strong>
+            <a href="https://developers.line.biz/console/" target="_blank" rel="noopener noreferrer" style="font-size:0.74rem;font-weight:800;color:#0284c7;text-decoration:none;white-space:nowrap;">開啟開發者後台 ↗</a>
+          </div>
+          <svg viewBox="0 0 340 158" width="100%" style="display:block;border-radius:6px;border:1px solid #cbd5e1;background:#f8fafc;" role="img" aria-label="LINE Developers Console 發行 Channel Access Token 圖解">
+            <rect x="0" y="0" width="340" height="24" fill="#0f172a"/>
+            <text x="12" y="16" font-size="10" font-weight="bold" fill="#ffffff" font-family="sans-serif">LINE Developers Console (developers.line.biz)</text>
+            <!-- Tabs -->
+            <rect x="10" y="30" width="84" height="20" rx="4" fill="#e2e8f0"/>
+            <text x="18" y="43" font-size="9" fill="#475569" font-family="sans-serif">Basic settings</text>
+            <rect x="98" y="30" width="112" height="20" rx="4" fill="#dcfce7" stroke="#16a34a" stroke-width="1.3"/>
+            <text x="106" y="43" font-size="9.2" font-weight="bold" fill="#14532d" font-family="sans-serif">① Messaging API 分頁</text>
+            <line x1="10" y1="52" x2="330" y2="52" stroke="#cbd5e1" stroke-width="1"/>
+            <!-- Token Card -->
+            <text x="12" y="68" font-size="9.5" font-weight="bold" fill="#0f172a" font-family="sans-serif">捲動至頁面最底部：Channel access token (long-lived)</text>
+            <rect x="12" y="76" width="316" height="34" rx="5" fill="#ffffff" stroke="#94a3b8"/>
+            <text x="20" y="97" font-size="9.5" fill="#334155" font-family="monospace">eyJhbGciOiJIUzI1NiJ9.eyJjaGFubmVs...</text>
+            <rect x="206" y="81" width="54" height="24" rx="4" fill="#0f172a"/>
+            <text x="213" y="96" font-size="9" font-weight="bold" fill="#ffffff" font-family="sans-serif">② Issue</text>
+            <rect x="265" y="81" width="57" height="24" rx="4" fill="#06C755"/>
+            <text x="272" y="96" font-size="9" font-weight="bold" fill="#ffffff" font-family="sans-serif">③ Copy</text>
+            <!-- Pointer Banner -->
+            <rect x="12" y="118" width="316" height="30" rx="5" fill="#eff6ff" stroke="#3b82f6"/>
+            <text x="20" y="137" font-size="9.5" font-weight="bold" fill="#1d4ed8" font-family="sans-serif">⬇ 複製這組長效權杖，貼回下方「步驟 ②」輸入框即可！</text>
+          </svg>
+        </div>
+        <div style="font-size:0.75rem;color:var(--text-muted);line-height:1.45;">
+          點選剛建立的 Channel ➔ 切換上方「<strong>Messaging API</strong>」分頁 ➔ 拉到最底下按「<strong>Issue</strong>」再按「<strong>Copy</strong>」複製權杖。
+        </div>
       </div>
-      <div class="field-group">
-        <label>預設推播群組 ID（選填，入群說話亦會自動捕獲）</label>
-        <input id="s60PrimaryGroupIdInput" type="text" placeholder="例：C108736ec8ad2cad7132a7eb41b42036e"/>
+
+      <!-- Visual Card C: One-Click Auto Webhook & Group Invite -->
+      <div style="padding:12px;background:var(--panel-bg);border:1px solid var(--border-std);border-radius:8px;display:flex;flex-direction:column;justify-content:space-between;gap:8px;">
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:6px;margin-bottom:6px;">
+            <strong style="font-size:0.83rem;color:var(--text-main);">圖解 C｜按「一鍵部署」自動綁定網址</strong>
+            <span style="font-size:0.72rem;font-weight:800;color:#059669;">免手動填網址</span>
+          </div>
+          <svg viewBox="0 0 340 158" width="100%" style="display:block;border-radius:6px;border:1px solid #cbd5e1;background:#f8fafc;" role="img" aria-label="戰情室自動寫入 Webhook URL 與開啟 Use webhook 圖解">
+            <rect x="0" y="0" width="340" height="24" fill="#0284c7"/>
+            <text x="12" y="16" font-size="10" font-weight="bold" fill="#ffffff" font-family="sans-serif">戰情室自動連線 LINE API 完成綁定</text>
+            <!-- Webhook URL auto-filled -->
+            <rect x="12" y="32" width="316" height="42" rx="5" fill="#ffffff" stroke="#cbd5e1"/>
+            <text x="20" y="47" font-size="9" font-weight="bold" fill="#0f172a" font-family="sans-serif">Webhook URL（✨ 戰情室部署時自動寫入，免手填！）</text>
+            <text x="20" y="64" font-size="8.5" fill="#059669" font-weight="bold" font-family="monospace">https://script.google.com/.../exec?botId=BOT_...</text>
+            <!-- Use webhook switch -->
+            <rect x="12" y="82" width="316" height="32" rx="5" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.2"/>
+            <text x="20" y="102" font-size="9.8" font-weight="bold" fill="#14532d" font-family="sans-serif">① 確認 Use webhook 開關為開啟：</text>
+            <rect x="268" y="89" width="46" height="18" rx="9" fill="#06C755"/>
+            <circle cx="304" cy="98" r="7" fill="#ffffff"/>
+            <text x="275" y="101" font-size="8" font-weight="bold" fill="#ffffff" font-family="sans-serif">ON</text>
+            <!-- Invite to LINE Group -->
+            <rect x="12" y="121" width="316" height="28" rx="5" fill="#f8fafc" stroke="#94a3b8"/>
+            <text x="20" y="139" font-size="9.2" font-weight="bold" fill="#334155" font-family="sans-serif">② 將機器人邀請進工務 LINE 群組，傳送「狀態」或照片即完成！</text>
+          </svg>
+        </div>
+        <div style="font-size:0.75rem;color:var(--text-muted);line-height:1.45;">
+          按下下方「<strong>🚀 一鍵部署上線</strong>」後，系統會自動把專屬 Webhook 寫入 LINE 後台；確認 `Use webhook` 為綠色開啟即可入群使用！
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- STEP 2: Configurable Cloud Drive & NAS Folder Paths -->
-  <div style="padding:12px 14px;background:var(--panel-sub);border:1px solid var(--border-std);border-radius:8px;margin-bottom:12px;">
-    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:8px;">
-      <div style="font-weight:800;font-size:0.85rem;color:var(--text-main);">
-        步驟 2 / 3：合約、標單、圖說、查驗與照片擺放路徑設定（可貼上既有 Google 雲端硬碟資料夾網址／ID，留空即自動建立標準子資料夾！）
+  <!-- ULTRA-SIMPLE 3-STEP MAIN FORM (2 Inputs + 1 Smart Dropzone) -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;margin-bottom:14px;">
+    <!-- STEP 1: Project Name -->
+    <div style="padding:14px 16px;background:var(--panel-sub);border:1px solid var(--border-std);border-radius:10px;">
+      <label for="s60ProjectNameInput" style="display:flex;align-items:center;gap:8px;font-weight:800;font-size:0.9rem;color:var(--text-main);margin-bottom:8px;cursor:pointer;">
+        <span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:#0284c7;color:#ffffff;font-size:0.78rem;font-weight:900;">1</span>
+        工程標案名稱（必填）
+      </label>
+      <input id="s60ProjectNameInput" type="text" value="新北市政府消防局北區複合型災害應變暨訓練中心新建工程(鶯歌消防局)" placeholder="例：鶯歌消防局新建工程 或 仁德國小三期工程" oninput="window.onS61ProjectNameInput(this.value)" style="width:100%;padding:9px 12px;font-size:0.88rem;border-radius:8px;border:1px solid var(--border-strong);background:var(--input-bg);color:var(--text-main);"/>
+      <div id="s61AutoDerivedHint" style="font-size:0.75rem;color:var(--text-muted);margin-top:8px;line-height:1.45;">
+        ✨ 自動配賦代號 <code id="s61AutoCodeBadge">BOT_YINGGE</code>｜顯示名稱「<strong id="s61AutoNameBadge">鶯歌消防局工務專機 (BOT_C)</strong>」｜自動建立 8 大標準雲端工務資料夾
       </div>
-      <span style="font-size:0.72rem;color:#059669;font-weight:700;">支援格式：完整 https://drive.google.com/... 網址 或 資料夾/試算表 ID</span>
     </div>
-    <div class="form-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:9px;">
-      <div class="field-group">
-        <label>00. 專案雲端根目錄（留空自動於總控雲端下建立專案總資料夾）</label>
-        <input id="s60PathRootFolder" type="text" placeholder="留空自動建立，或貼上既有專案根資料夾網址/ID"/>
+
+    <!-- STEP 2: LINE Channel Access Token -->
+    <div style="padding:14px 16px;background:var(--panel-sub);border:1px solid var(--border-std);border-radius:10px;">
+      <label for="s60LineChannelTokenInput" style="display:flex;align-items:center;justify-content:space-between;gap:8px;font-weight:800;font-size:0.9rem;color:var(--text-main);margin-bottom:8px;cursor:pointer;">
+        <span style="display:inline-flex;align-items:center;gap:8px;">
+          <span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:#0284c7;color:#ffffff;font-size:0.78rem;font-weight:900;">2</span>
+          LINE 機器人權杖 Channel Access Token
+        </span>
+        <span style="font-size:0.73rem;font-weight:600;color:var(--text-muted);">未填可先跑沙盒測試</span>
+      </label>
+      <div style="display:flex;gap:6px;">
+        <input id="s60LineChannelTokenInput" type="password" placeholder="貼上從 developers.line.biz 複製的長效權杖" style="flex:1;padding:9px 12px;font-size:0.86rem;border-radius:8px;border:1px solid var(--border-strong);background:var(--input-bg);color:var(--text-main);"/>
+        <button type="button" class="btn btn-ghost" onclick="window.pasteS61TokenFromClipboard()" style="padding:6px 10px;font-size:0.76rem;white-space:nowrap;">📋 貼上</button>
+        <button type="button" class="btn btn-ghost" onclick="var i=document.getElementById('s60LineChannelTokenInput');i.type=(i.type==='password'?'text':'password');" style="padding:6px 10px;font-size:0.76rem;white-space:nowrap;">👁 顯示</button>
       </div>
-      <div class="field-group">
-        <label>01. 合約書與契約詳細表擺放資料夾</label>
-        <input id="s60PathContractFolder" type="text" placeholder="留空自動建立「01_合約與契約詳細表」"/>
-      </div>
-      <div class="field-group">
-        <label>02. 工程標單／估驗計價資料夾（或既有標單試算表網址/ID）</label>
-        <input id="s60PathBidBoqFolder" type="text" placeholder="留空自動建立「02_工程標單與計價」或貼標單Sheet ID"/>
-      </div>
-      <div class="field-group">
-        <label>03. 施工圖說 (DWG/PDF) 與 3D 模型資料夾</label>
-        <input id="s60PathDrawingFolder" type="text" placeholder="留空自動建立「03_施工圖說與BIM模型」"/>
-      </div>
-      <div class="field-group">
-        <label>04. 送審核定材料型錄與承認圖資料夾</label>
-        <input id="s60PathApprovedMatFolder" type="text" placeholder="留空自動建立「04_送審核定材料型錄」"/>
-      </div>
-      <div class="field-group">
-        <label>05. 材料進場查驗 (D11) ＆ 廠商收貨單歸檔資料夾</label>
-        <input id="s60PathMatReceiptFolder" type="text" placeholder="留空自動建立「05_材料查驗與收貨單」"/>
-      </div>
-      <div class="field-group">
-        <label>06. 施工查驗 (C10) ＆ 黏貼查驗照 PDF 歸檔資料夾</label>
-        <input id="s60PathConstInspFolder" type="text" placeholder="留空自動建立「06_施工查驗與黏貼照片PDF」"/>
-      </div>
-      <div class="field-group">
-        <label>07. 每日施工照片 (99.施工照片) ＆ 工具箱點名資料夾</label>
-        <input id="s60PathDailyPhotoFolder" type="text" placeholder="留空自動建立「07_每日施工照片與工具箱點名」"/>
-      </div>
-      <div class="field-group">
-        <label>08. 品質缺失 (NCR) ＆ 勞安罰單歸檔資料夾</label>
-        <input id="s60PathNcrSafetyFolder" type="text" placeholder="留空自動建立「08_品質缺失NCR與勞安紀錄」"/>
-      </div>
-      <div class="field-group">
-        <label>09. 綁定雲端資料庫試算表 ID（留空預設共用輕量中樞試算表）</label>
-        <input id="s60PathSpreadsheetId" type="text" placeholder="留空自動綁定標準化試算表，或貼專屬 Google Sheet 網址/ID"/>
-      </div>
-      <div class="field-group" style="grid-column:span 2;">
-        <label>10. Synology NAS 內網同步鏡像根路徑（供 19:00 / 24:00 雙向備份對映）</label>
-        <input id="s60PathNasRoot" type="text" value="\\dogreatnas.synology.me\元順工程-鶯歌消防局\60-機電相關"/>
+      <div style="font-size:0.75rem;color:var(--text-muted);margin-top:8px;line-height:1.45;">
+        🔒 權杖安全儲存於雲端總控屬性庫，部署時自動寫入 LINE Webhook 網址並執行連通驗證。
       </div>
     </div>
   </div>
 
-  <!-- STEP 3: Pre-Deployment Contract, BOQ & Spec File Uploader -->
-  <div style="padding:12px 14px;background:var(--panel-sub);border:1px solid var(--border-std);border-radius:8px;margin-bottom:12px;">
-    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px;">
-      <div>
-        <div style="font-weight:800;font-size:0.85rem;color:var(--text-main);">
-          步驟 3 / 3：預先上傳工程合約、標單價目表、送審型錄與施工規範（部署時自動歸入上方對應資料夾並建立機器人即時查詢索引！）
-        </div>
-        <div style="font-size:0.73rem;color:var(--text-muted);margin-top:2px;">
-          支援 PDF、Excel (`.xlsx`/`.xls`/`.csv`)、Word (`.docx`)、圖說或圖片多檔上傳；部署完成後於 LINE 輸入「<code>合約</code>」、「<code>標單</code>」、「<code>型錄</code>」、「<code>路徑</code>」即可秒開檢視。
-        </div>
+  <!-- STEP 3: Drag & Drop Multi-File Smart Auto-Classifier -->
+  <div style="padding:14px 16px;background:var(--panel-sub);border:1px solid var(--border-std);border-radius:10px;margin-bottom:14px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px;">
+      <div style="display:flex;align-items:center;gap:8px;font-weight:800;font-size:0.9rem;color:var(--text-main);">
+        <span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:#0284c7;color:#ffffff;font-size:0.78rem;font-weight:900;">3</span>
+        預先上傳工程合約、標單、圖說或送審型錄（選填・依檔名自動歸類）
       </div>
-      <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;">
-        <select id="s60UploadDocCategorySelect" style="padding:5px 8px;font-size:0.76rem;border-radius:6px;border:1px solid var(--border-strong);background:var(--input-bg);color:var(--text-main);">
-          <option value="CONTRACT">📄 01. 工程契約書／合約條款與罰則</option>
-          <option value="BID_BOQ">📊 02. 工程標單／契約詳細價目表</option>
-          <option value="DRAWING">📐 03. 施工圖說／BIM 清冊</option>
-          <option value="APPROVED_MAT">📑 04. 送審核定材料型錄</option>
-          <option value="SPEC_SOP">📋 05. 施工規範與自主查驗基準</option>
-        </select>
-        <label class="btn btn-emerald" style="padding:5px 12px;font-size:0.75rem;cursor:pointer;margin:0;">
-          ➕ 選取檔案加入部署清單
-          <input id="s60ContractFilesInput" type="file" multiple accept=".pdf,.xlsx,.xls,.csv,.doc,.docx,.txt,.json,.zip,.jpg,.jpeg,.png" onchange="window.handleS60ContractFilesSelected(event)" style="display:none;"/>
-        </label>
+      <!-- Hidden compatibility select preserved for programmatic overrides -->
+      <select id="s60UploadDocCategorySelect" style="display:none;">
+        <option value="AUTO" selected>✨ 依檔名自動分類</option>
+        <option value="CONTRACT">📄 01. 工程契約書／合約條款與罰則</option>
+        <option value="BID_BOQ">📊 02. 工程標單／契約詳細價目表</option>
+        <option value="DRAWING">📐 03. 施工圖說／BIM 清冊</option>
+        <option value="APPROVED_MAT">📑 04. 送審核定材料型錄</option>
+        <option value="SPEC_SOP">📋 05. 施工規範與自主查驗基準</option>
+      </select>
+    </div>
+
+    <label id="s60DropZone" for="s60ContractFilesInput" ondragover="event.preventDefault();this.style.borderColor='#0284c7';" ondragleave="this.style.borderColor='var(--border-strong)';" ondrop="window.handleS61FileDrop(event)" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:18px 14px;background:var(--panel-bg);border:1.5px dashed var(--border-strong);border-radius:8px;cursor:pointer;text-align:center;transition:border-color 0.15s ease;">
+      <div style="font-size:0.86rem;font-weight:800;color:var(--text-main);">
+        📥 將檔案直接拖拉至此，或 <span style="color:#0284c7;text-decoration:underline;">點此選取多個檔案</span>
       </div>
-    </div>
-    <div id="s60StagedFilesEmptyHint" style="font-size:0.75rem;color:var(--text-muted);padding:8px 10px;background:var(--panel-bg);border:1px dashed var(--border-strong);border-radius:6px;">
-      目前尚無預載檔案（可點擊右上角「➕ 選取檔案加入部署清單」，或點擊頂部「🧪 載入範例設定與測試合約檔」自動產生範例契約與標單進行測試）。
-    </div>
-    <div id="s60StagedFilesTableWrap" style="display:none;overflow-x:auto;margin-top:6px;">
-      <table class="ledger-table" style="font-size:0.76rem;">
+      <div id="s60StagedFilesEmptyHint" style="font-size:0.75rem;color:var(--text-muted);">
+        免手動選分類！系統會依檔名自動歸入「契約書／標單／圖說／核定型錄／施工規範」，部署後於 LINE 輸入「<code>合約</code>」、「<code>標單</code>」即可秒開
+      </div>
+      <input id="s60ContractFilesInput" type="file" multiple accept=".pdf,.xlsx,.xls,.csv,.doc,.docx,.txt,.json,.zip,.jpg,.jpeg,.png" onchange="window.handleS60ContractFilesSelected(event)" style="display:none;"/>
+    </label>
+
+    <div id="s60StagedFilesTableWrap" style="display:none;overflow-x:auto;margin-top:10px;">
+      <table class="ledger-table" style="font-size:0.78rem;">
         <thead>
           <tr>
-            <th>檔案名稱</th>
-            <th style="width:165px;">歸檔分類（自動對映步驟2路徑）</th>
-            <th style="width:90px;">檔案大小</th>
-            <th style="width:80px;text-align:center;">移除</th>
+            <th>已選取檔案名稱</th>
+            <th style="width:210px;">自動辨識歸檔資料夾（可點選微調）</th>
+            <th style="width:85px;">大小</th>
+            <th style="width:70px;text-align:center;">移除</th>
           </tr>
         </thead>
         <tbody id="s60StagedFilesTbody"></tbody>
@@ -8390,11 +8436,99 @@ B. 新增／修正 BIGBOSS ＆ 機器人B 之 OCR 錯字與標單綁定規則
     </div>
   </div>
 
+  <!-- COLLAPSIBLE OPTIONAL ADVANCED SETTINGS (Preserves 100% of S6.0 Custom Path & Identity Inputs!) -->
+  <details id="s61AdvancedConfigDrawer" style="margin-bottom:16px;background:var(--panel-sub);border:1px solid var(--border-std);border-radius:10px;padding:10px 14px;">
+    <summary style="cursor:pointer;font-weight:700;font-size:0.82rem;color:var(--text-muted);user-select:none;">
+      ⚙️ 選填進階設定：指定既有 Google 雲端資料夾網址、NAS 備份路徑、機器人代號或權限層級（不展開即全自動建立標準 8 大資料夾）
+    </summary>
+    <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border-std);">
+      <!-- Quick Single Root Override -->
+      <div style="padding:10px 12px;background:var(--panel-bg);border:1px solid var(--border-std);border-radius:8px;margin-bottom:12px;">
+        <label for="s60PathRootFolder" style="display:block;font-weight:800;font-size:0.8rem;color:var(--text-main);margin-bottom:4px;">
+          📂 指定既有「專案雲端總目錄」網址或 ID（貼 1 個總資料夾網址，底下 8 大分類子資料夾即自動建於該目錄內；留空則自動建立）
+        </label>
+        <input id="s60PathRootFolder" type="text" placeholder="留空自動建立，或貼上 https://drive.google.com/drive/folders/... 網址" style="width:100%;padding:7px 10px;font-size:0.8rem;"/>
+      </div>
+
+      <div class="form-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:9px;margin-bottom:10px;">
+        <div class="field-group">
+          <label>機器人代號 (Bot Code)</label>
+          <input id="s60BotCodeInput" type="text" value="BOT_YINGGE" oninput="this.dataset.userEdited='1'" placeholder="例：BOT_YINGGE"/>
+        </div>
+        <div class="field-group">
+          <label>機器人顯示名稱</label>
+          <input id="s60BotDisplayNameInput" type="text" value="鶯歌消防局工務專機 (BOT_C)" oninput="this.dataset.userEdited='1';var el=document.getElementById('newBotNameInput');if(el)el.value=this.value;"/>
+        </div>
+        <div class="field-group">
+          <label>管理權限層級</label>
+          <select id="s60BotTierSelect" onchange="var el=document.getElementById('newBotTierSelect');if(el)el.value=this.value;">
+            <option value="TIER_1">第一級：第一線工班回報型 (TIER_1)</option>
+            <option value="TIER_2" selected>第二級：工務所專機型 (TIER_2 — 同機器人B)</option>
+            <option value="TIER_3">第三級：最高總控型 (TIER_3 — 同工務機器人)</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label>工區地址（自動配對最近氣象署測站）</label>
+          <input id="s60SiteAddressInput" type="text" value="新北市鶯歌區尖山路101巷"/>
+        </div>
+        <div class="field-group">
+          <label>定時推播排程時間</label>
+          <input id="s60SchedulesInput" type="text" value="08:00 / 09:00 / 15:00 / 19:00"/>
+        </div>
+        <div class="field-group">
+          <label>預設推播群組 ID（入群說話亦會自動捕獲）</label>
+          <input id="s60PrimaryGroupIdInput" type="text" placeholder="選填，例：C108736ec8ad..."/>
+        </div>
+        <div class="field-group">
+          <label>LINE Channel Secret（選填備查）</label>
+          <input id="s60LineChannelSecretInput" type="password" placeholder="選填"/>
+        </div>
+        <div class="field-group">
+          <label>綁定雲端試算表 ID（留空自動綁定標準庫）</label>
+          <input id="s60PathSpreadsheetId" type="text" placeholder="留空自動綁定標準試算表"/>
+        </div>
+        <div class="field-group" style="grid-column:span 2;">
+          <label>Synology NAS 內網同步鏡像根路徑（選填）</label>
+          <input id="s60PathNasRoot" type="text" value="\\dogreatnas.synology.me\元順工程-鶯歌消防局\60-機電相關" oninput="this.dataset.userEdited='1'"/>
+        </div>
+      </div>
+
+      <!-- Sub-drawer for individual 8 folder overrides if user already has separate scattered Drive folders -->
+      <details style="padding:8px 10px;background:var(--panel-bg);border:1px solid var(--border-std);border-radius:8px;">
+        <summary style="cursor:pointer;font-size:0.77rem;font-weight:700;color:var(--text-muted);">
+          📁 個別指定 01～08 子資料夾網址（僅在各類檔案分散於不同既有雲端資料夾時才需填寫）
+        </summary>
+        <div class="form-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;margin-top:10px;">
+          <div class="field-group"><label>01. 合約與契約詳細表資料夾</label><input id="s60PathContractFolder" type="text" placeholder="留空自動建「01_合約與契約詳細表」"/></div>
+          <div class="field-group"><label>02. 工程標單與計價資料夾</label><input id="s60PathBidBoqFolder" type="text" placeholder="留空自動建「02_工程標單與計價」"/></div>
+          <div class="field-group"><label>03. 施工圖說與 BIM 模型資料夾</label><input id="s60PathDrawingFolder" type="text" placeholder="留空自動建「03_施工圖說與BIM模型」"/></div>
+          <div class="field-group"><label>04. 送審核定材料型錄資料夾</label><input id="s60PathApprovedMatFolder" type="text" placeholder="留空自動建「04_送審核定材料型錄」"/></div>
+          <div class="field-group"><label>05. 材料進場查驗與收貨單資料夾</label><input id="s60PathMatReceiptFolder" type="text" placeholder="留空自動建「05_材料查驗與收貨單」"/></div>
+          <div class="field-group"><label>06. 施工查驗與黏貼照片 PDF 資料夾</label><input id="s60PathConstInspFolder" type="text" placeholder="留空自動建「06_施工查驗與黏貼照片PDF」"/></div>
+          <div class="field-group"><label>07. 每日施工照片與工具箱點名資料夾</label><input id="s60PathDailyPhotoFolder" type="text" placeholder="留空自動建「07_每日施工照片與工具箱點名」"/></div>
+          <div class="field-group"><label>08. 品質缺失 NCR 與勞安紀錄資料夾</label><input id="s60PathNcrSafetyFolder" type="text" placeholder="留空自動建「08_品質缺失NCR與勞安紀錄」"/></div>
+        </div>
+      </details>
+    </div>
+  </details>
+
+  <!-- PRIMARY ONE-CLICK CTA BAR -->
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+    <button type="button" class="btn btn-ghost" onclick="window.executeS60OneClickBotProvision(true)" style="padding:10px 16px;font-size:0.82rem;font-weight:700;">
+      ⚡ 免權杖沙盒預演（先測試雲端建夾與合約歸檔）
+    </button>
+    <button type="button" class="btn btn-primary" onclick="window.executeS60OneClickBotProvision(false)" style="padding:11px 26px;font-size:0.92rem;font-weight:900;background:#0284c7;border-color:#0284c7;border-radius:8px;">
+      🚀 一鍵部署 LINE Bot 上線
+    </button>
+  </div>
+
   <!-- Provisioning Execution Receipt & Live Deployed Bots Status -->
-  <div id="s60ProvisionResultPanel" style="display:none;padding:12px 14px;background:#f0fdf4;border:1.5px solid #16a34a;border-radius:8px;color:#14532d;font-size:0.78rem;line-height:1.6;"></div>
+  <div id="s60ProvisionResultPanel" style="display:none;margin-top:14px;padding:14px 16px;background:var(--panel-sub);border:1.5px solid #16a34a;border-radius:10px;color:var(--text-main);font-size:0.81rem;line-height:1.65;"></div>
 </div>
 <!-- ==================== END S6.0 ONE-CLICK LINE BOT DEPLOYER ==================== -->
-
+<details id="s61LegacyTechSpecsDrawer" style="margin-top:12px;padding:10px 14px;background:var(--panel-sub);border:1px solid var(--border-std);border-radius:10px;">
+  <summary style="cursor:pointer;font-size:0.78rem;font-weight:700;color:var(--text-muted);user-select:none;">📚 系統底層架構備查（已部署機器人清單・雙機標準化欄位對照與 GitHub Monorepo 設定）</summary>
+  <div style="margin-top:12px;">
 <div class="glass-panel" style="padding:14px 16px;margin-bottom:14px;background:var(--panel-sub);border-left:3px solid var(--eng-amber);">
 <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px;">
 <div>
@@ -8561,6 +8695,8 @@ B. 新增／修正 BIGBOSS ＆ 機器人B 之 OCR 錯字與標單綁定規則
 </table>
 </div>
 </div>
+  </div>
+</details>
 </div>
 <div id="ledgerPaneGithubAuth" style="display:none;overflow-x:auto;">
 <div style="background:var(--panel-sub);border:1px solid var(--border-strong);border-left:4px solid var(--eng-emerald);border-radius:6px;padding:12px 14px;margin-bottom:12px;">
@@ -13523,7 +13659,7 @@ try { initWarRoomAppFast(); } catch (_eInitSync) {}
 <button onclick="void(0)" type="button">進料・NCR・圖說清冊 檢視歷史總表、NCR/勞安與圖說</button>
 <button onclick="void(0)" type="button">儲存並發布此 BOT 功能開關</button>
 <button onclick="void(0)" type="button">2. 群組設定 (群組一 / 群組二 ＆ 功能開關)</button>
-<button onclick="void(0)" type="button">3. 🚀 一鍵部署 LINE Bot（合約上傳・路徑設定）與程式優化</button>
+<button onclick="void(0)" type="button">3. ＋ 新增／一鍵部署 LINE Bot與程式優化</button>
 <button onclick="void(0)" type="button">前往「2. 群組設定」調整此 BOT 群組開關 </button>
 <button onclick="void(0)" type="button">從 GitHub 儲存艙同步最新資料</button>
 <button onclick="void(0)" type="button">戰情室遠端誤判修正 (人數/勞安/OCR/標單)</button>
@@ -23499,34 +23635,125 @@ document.documentElement.setAttribute("data-release-version", "S2版");
   window.__S60_STAGED_FILES__ = [];
 
   var CAT_LABELS = {
-    CONTRACT: "📄 01. 工程契約書／合約條款",
-    BID_BOQ: "📊 02. 工程標單／詳細價目表",
-    DRAWING: "📐 03. 施工圖說／BIM 清冊",
+    CONTRACT: "📄 01. 工程契約書／罰則",
+    BID_BOQ: "📊 02. 工程標單／價目表",
+    DRAWING: "📐 03. 施工圖說／BIM",
     APPROVED_MAT: "📑 04. 送審核定材料型錄",
     SPEC_SOP: "📋 05. 施工規範與查驗基準"
   };
 
+  // Smart Filename Auto-Classifier (Zero manual dropdown needed!)
+  function classifyDocByFileNameS61(fileName) {
+    var n = String(fileName || "");
+    if (/標單|價目|計價|預算|詳細表|BOQ|\.xlsx$|\.xls$|\.csv$/i.test(n) && !/合約|契約書/.test(n)) return "BID_BOQ";
+    if (/圖說|施工圖|平面|剖面|單線圖|管溝圖|BIM|\.dwg$|\.dxf$/i.test(n)) return "DRAWING";
+    if (/型錄|送審|承認|核定材料|樣品|材質/i.test(n)) return "APPROVED_MAT";
+    if (/規範|查驗基準|自主檢查|SOP|計畫書/i.test(n)) return "SPEC_SOP";
+    return "CONTRACT";
+  }
+  window.classifyDocByFileNameS61 = classifyDocByFileNameS61;
+
+  // Auto-Derive Bot Code, Display Name & Default NAS Path from Project Name!
+  function deriveBotIdentityFromProjectS61(projName) {
+    var p = String(projName || "").trim();
+    if (!p) return { code: "BOT_NEW", name: "新工務專責機器人" };
+    var shortName = p.replace(/新建工程|統包工程|工程|\(.*?\)|（.*?）/g, "").trim().slice(-8) || p.slice(0, 8);
+    var codeSlug = "";
+    if (/鶯歌|消防/.test(p)) codeSlug = "BOT_YINGGE";
+    else if (/仁德.*三期/.test(p)) codeSlug = "BOT_RENDE3";
+    else if (/仁德.*二期/.test(p)) codeSlug = "BOT_RENDE2";
+    else if (/仁德/.test(p)) codeSlug = "BOT_RENDE1";
+    else {
+      var ascii = p.replace(/[^A-Za-z0-9]/g, "").toUpperCase().slice(0, 8);
+      var hash = 0;
+      for (var i = 0; i < p.length; i++) hash = ((hash << 5) - hash + p.charCodeAt(i)) | 0;
+      codeSlug = "BOT_" + (ascii || String(Math.abs(hash) % 900 + 100));
+    }
+    return {
+      code: codeSlug,
+      name: shortName + "工務機器人",
+      nas: "\\\\dogreatnas.synology.me\\元順工程-" + shortName + "\\60-機電相關"
+    };
+  }
+  window.deriveBotIdentityFromProjectS61 = deriveBotIdentityFromProjectS61;
+
+  window.onS61ProjectNameInput = function(val) {
+    var legacyProj = document.getElementById("newBotProjInput");
+    if (legacyProj) legacyProj.value = val;
+    var derived = deriveBotIdentityFromProjectS61(val);
+    var codeEl = document.getElementById("s60BotCodeInput");
+    var nameEl = document.getElementById("s60BotDisplayNameInput");
+    var nasEl = document.getElementById("s60PathNasRoot");
+    if (codeEl && !codeEl.dataset.userEdited) codeEl.value = derived.code;
+    if (nameEl && !nameEl.dataset.userEdited) {
+      nameEl.value = derived.name;
+      var legacyName = document.getElementById("newBotNameInput");
+      if (legacyName) legacyName.value = derived.name;
+    }
+    if (nasEl && !nasEl.dataset.userEdited) nasEl.value = derived.nas;
+    var cBadge = document.getElementById("s61AutoCodeBadge");
+    var nBadge = document.getElementById("s61AutoNameBadge");
+    if (cBadge && codeEl) cBadge.textContent = codeEl.value;
+    if (nBadge && nameEl) nBadge.textContent = nameEl.value;
+  };
+
+  window.toggleS61ExternalGuide = function(forceShow) {
+    var p = document.getElementById("s61ExternalLineGuidePanel");
+    if (!p) return;
+    if (typeof forceShow === "boolean") {
+      p.style.display = forceShow ? "block" : "none";
+    } else {
+      p.style.display = (p.style.display === "none") ? "block" : "none";
+    }
+  };
+
+  window.pasteS61TokenFromClipboard = function() {
+    var inp = document.getElementById("s60LineChannelTokenInput");
+    if (!inp) return;
+    if (navigator.clipboard && navigator.clipboard.readText) {
+      navigator.clipboard.readText().then(function(txt) {
+        if (txt && txt.trim()) {
+          inp.value = txt.trim();
+          if (typeof window.showToast === "function") window.showToast("✅ 已貼上 LINE Channel Access Token！");
+        }
+      }).catch(function() {
+        inp.focus();
+        if (typeof window.showToast === "function") window.showToast("請於輸入框按 Ctrl+V / Cmd+V 貼上權杖");
+      });
+    } else {
+      inp.focus();
+    }
+  };
+
+  window.changeS61StagedFileCategory = function(idx, newCat) {
+    if (window.__S60_STAGED_FILES__ && window.__S60_STAGED_FILES__[idx]) {
+      window.__S60_STAGED_FILES__[idx].category = newCat;
+      renderS60StagedFiles();
+    }
+  };
+
   function renderS60StagedFiles() {
     var list = window.__S60_STAGED_FILES__ || [];
-    var hint = document.getElementById("s60StagedFilesEmptyHint");
     var wrap = document.getElementById("s60StagedFilesTableWrap");
     var tbody = document.getElementById("s60StagedFilesTbody");
     if (!tbody) return;
     if (list.length === 0) {
-      if (hint) hint.style.display = "block";
       if (wrap) wrap.style.display = "none";
       tbody.innerHTML = "";
       return;
     }
-    if (hint) hint.style.display = "none";
     if (wrap) wrap.style.display = "block";
+    var catKeys = Object.keys(CAT_LABELS);
     tbody.innerHTML = list.map(function(f, idx) {
       var kb = Math.max(1, Math.round((f.sizeBytes || 0) / 1024));
+      var opts = catKeys.map(function(k) {
+        return '<option value="' + k + '"' + (f.category === k ? ' selected' : '') + '>' + CAT_LABELS[k] + '</option>';
+      }).join("");
       return '<tr>' +
         '<td style="font-weight:700;color:var(--text-main);">' + f.fileName + '</td>' +
-        '<td>' + (CAT_LABELS[f.category] || f.category) + '</td>' +
+        '<td><select onchange="window.changeS61StagedFileCategory(' + idx + ', this.value)" style="width:100%;padding:4px 6px;font-size:0.75rem;border-radius:6px;border:1px solid var(--border-std);background:var(--input-bg);color:var(--text-main);">' + opts + '</select></td>' +
         '<td>' + kb + ' KB</td>' +
-        '<td style="text-align:center;"><button type="button" class="btn btn-ghost" style="padding:2px 8px;font-size:0.72rem;" onclick="window.removeS60StagedFile(' + idx + ')">移除</button></td>' +
+        '<td style="text-align:center;"><button type="button" class="btn btn-ghost" style="padding:2px 8px;font-size:0.72rem;" onclick="window.removeS60StagedFile(' + idx + ')">✕</button></td>' +
       '</tr>';
     }).join("");
   }
@@ -23536,16 +23763,16 @@ document.documentElement.setAttribute("data-release-version", "S2版");
     renderS60StagedFiles();
   };
 
-  window.handleS60ContractFilesSelected = function(ev) {
-    var files = ev && ev.target && ev.target.files ? Array.prototype.slice.call(ev.target.files) : [];
+  function ingestFileListS61(files) {
+    if (!files || !files.length) return;
     var catEl = document.getElementById("s60UploadDocCategorySelect");
-    var cat = catEl ? catEl.value : "CONTRACT";
-    if (!files.length) return;
+    var manualCat = (catEl && catEl.value && catEl.value !== "AUTO") ? catEl.value : "";
     files.forEach(function(file) {
       if (file.size > 18 * 1024 * 1024) {
-        if (typeof window.showToast === "function") window.showToast("⚠️ 單一檔案超過 18MB，建議先放置於雲端資料夾並於步驟 2 貼上網址！");
+        if (typeof window.showToast === "function") window.showToast("⚠️ 單一檔案超過 18MB，建議先放置於雲端資料夾並展開「進階設定」貼上網址！");
         return;
       }
+      var detectedCat = manualCat || classifyDocByFileNameS61(file.name);
       var reader = new FileReader();
       reader.onload = function(e) {
         var dataUrl = String(e.target.result || "");
@@ -23554,24 +23781,42 @@ document.documentElement.setAttribute("data-release-version", "S2版");
           fileName: file.name,
           mimeType: file.type || "application/octet-stream",
           sizeBytes: file.size,
-          category: cat,
+          category: detectedCat,
           base64: b64
         });
         renderS60StagedFiles();
       };
       reader.readAsDataURL(file);
     });
-    ev.target.value = "";
+  }
+
+  window.handleS60ContractFilesSelected = function(ev) {
+    var files = ev && ev.target && ev.target.files ? Array.prototype.slice.call(ev.target.files) : [];
+    ingestFileListS61(files);
+    if (ev && ev.target) ev.target.value = "";
+  };
+
+  window.handleS61FileDrop = function(ev) {
+    ev.preventDefault();
+    var dz = document.getElementById("s60DropZone");
+    if (dz) dz.style.borderColor = "var(--border-strong)";
+    var files = (ev.dataTransfer && ev.dataTransfer.files) ? Array.prototype.slice.call(ev.dataTransfer.files) : [];
+    ingestFileListS61(files);
   };
 
   window.fillS60DemoSandboxPreset = function() {
     var setVal = function(id, v) { var el = document.getElementById(id); if (el) el.value = v; };
-    setVal("s60BotCodeInput", "BOT_YINGGE_DEMO");
-    setVal("s60BotDisplayNameInput", "鶯歌消防局工務機器人 (一鍵部署驗證機)");
     setVal("s60ProjectNameInput", "新北市政府消防局北區複合型災害應變暨訓練中心新建工程(鶯歌消防局)");
+    setVal("s60BotCodeInput", "BOT_YINGGE_DEMO");
+    setVal("s60BotDisplayNameInput", "鶯歌消防局工務機器人 (驗證專機)");
     setVal("s60SiteAddressInput", "新北市鶯歌區尖山路101巷");
     setVal("s60LineChannelTokenInput", "SANDBOX_DEMO_LINE_CHANNEL_TOKEN_S60");
     setVal("s60PathNasRoot", "\\\\dogreatnas.synology.me\\元順工程-鶯歌消防局\\60-機電相關");
+    var cBadge = document.getElementById("s61AutoCodeBadge");
+    var nBadge = document.getElementById("s61AutoNameBadge");
+    if (cBadge) cBadge.textContent = "BOT_YINGGE_DEMO";
+    if (nBadge) nBadge.textContent = "鶯歌消防局工務機器人 (驗證專機)";
+
     var sampleContract = "【工程契約摘要與勞安環保罰則條款】\n工程名稱：鶯歌消防局新建工程\n未配戴安全帽或未穿合格安全鞋：每人次罰款新臺幣 3,000 元整。\n降雨達 24h >= 50mm 得檢具最近測站觀測資料申請工期展延。";
     var sampleBoq = "項次,工項名稱,規格,契約數量,單位,單價\n壹.一.1,共同管溝電力幹管,PVC Ø100mm (4\"),680,M,420\n壹.一.2,共同管溝弱電光纖管,PVC Ø80mm (3\"),680,M,310\n壹.二.1,臨時總配電盤,MP-TEMP 3Φ4W 400A,1,座,185000";
     window.__S60_STAGED_FILES__ = [
@@ -23579,25 +23824,31 @@ document.documentElement.setAttribute("data-release-version", "S2版");
         fileName: "01_鶯歌消防局_工程契約書與安衛罰款條款摘要.txt",
         mimeType: "text/plain",
         sizeBytes: sampleContract.length,
-        category: "CONTRACT",
+        category: classifyDocByFileNameS61("01_鶯歌消防局_工程契約書與安衛罰款條款摘要.txt"),
         base64: btoa(unescape(encodeURIComponent(sampleContract)))
       },
       {
         fileName: "02_鶯歌消防局_機電標單詳細價目表_V1.csv",
         mimeType: "text/csv",
         sizeBytes: sampleBoq.length,
-        category: "BID_BOQ",
+        category: classifyDocByFileNameS61("02_鶯歌消防局_機電標單詳細價目表_V1.csv"),
         base64: btoa(unescape(encodeURIComponent(sampleBoq)))
       }
     ];
     renderS60StagedFiles();
     if (typeof window.showToast === "function") {
-      window.showToast("✅ 已載入範例設定與 2 份測試合約／標單檔案！請點擊「⚡ 沙盒預演測試」體驗一鍵部署。");
+      window.showToast("✅ 已帶入範例設定與 2 份自動分類檔案！請直接點擊右下角「🚀 一鍵部署 LINE Bot 上線」體驗。");
     }
   };
 
   function collectS60Payload(isDryRun) {
     var val = function(id) { var el = document.getElementById(id); return el ? String(el.value || "").trim() : ""; };
+    var projName = val("s60ProjectNameInput") || "新建工程專案";
+    var derived = deriveBotIdentityFromProjectS61(projName);
+    var codeEl = document.getElementById("s60BotCodeInput");
+    var nameEl = document.getElementById("s60BotDisplayNameInput");
+    var rawCode = (codeEl && codeEl.value) ? val("s60BotCodeInput") : derived.code;
+    var rawName = (nameEl && nameEl.value) ? val("s60BotDisplayNameInput") : derived.name;
     var tier = val("s60BotTierSelect") || "TIER_2";
     var flagsMap = {};
     if (typeof BOT_FEATURE_FLAGS !== "undefined" && Array.isArray(BOT_FEATURE_FLAGS)) {
@@ -23608,10 +23859,10 @@ document.documentElement.setAttribute("data-release-version", "S2版");
     return {
       internalAction: "ONE_CLICK_PROVISION_BOT_S60",
       dryRun: Boolean(isDryRun),
-      botCode: (val("s60BotCodeInput") || "BOT_C").replace(/[^A-Za-z0-9_]/g, "_").toUpperCase(),
-      botName: val("s60BotDisplayNameInput") || "新工務專責機器人",
+      botCode: (rawCode || derived.code || "BOT_C").replace(/[^A-Za-z0-9_]/g, "_").toUpperCase(),
+      botName: rawName || derived.name || "新工務專責機器人",
       tier: tier,
-      projectName: val("s60ProjectNameInput") || "新建工程專案",
+      projectName: projName,
       siteAddress: val("s60SiteAddressInput") || "",
       schedules: val("s60SchedulesInput") || "08:00 / 09:00 / 15:00 / 19:00",
       lineChannelToken: val("s60LineChannelTokenInput"),
@@ -23628,7 +23879,7 @@ document.documentElement.setAttribute("data-release-version", "S2版");
         dailyPhotoFolder: val("s60PathDailyPhotoFolder"),
         ncrSafetyFolder: val("s60PathNcrSafetyFolder"),
         spreadsheetId: val("s60PathSpreadsheetId"),
-        nasRootPath: val("s60PathNasRoot")
+        nasRootPath: val("s60PathNasRoot") || derived.nas
       },
       featureFlags: flagsMap,
       files: (window.__S60_STAGED_FILES__ || []).slice()
@@ -23672,6 +23923,7 @@ document.documentElement.setAttribute("data-release-version", "S2版");
       }
       if (typeof saveBotGroup12ToStorage === "function") saveBotGroup12ToStorage();
       if (typeof renderBotSelectorAndGroup12UI === "function") renderBotSelectorAndGroup12UI();
+      if (typeof window.renderDeployedBotTabsBar === "function") window.renderDeployedBotTabsBar();
       if (typeof DEPLOYED_GROUP_BOTS !== "undefined" && Array.isArray(DEPLOYED_GROUP_BOTS)) {
         DEPLOYED_GROUP_BOTS.unshift({
           tier: tier,
@@ -23692,20 +23944,17 @@ document.documentElement.setAttribute("data-release-version", "S2版");
     var payload = collectS60Payload(isDryRun);
     if (!isDryRun && (!payload.lineChannelToken || payload.lineChannelToken.indexOf("SANDBOX_") === 0)) {
       if (typeof window.showToast === "function") {
-        window.showToast("💡 尚未填入正式 LINE Channel Access Token，已自動切換為「沙盒預演模式」驗證雲端建夾與合約上傳！");
+        window.showToast("💡 尚未填入正式 LINE 權杖，已自動切換為「沙盒預演模式」建立雲端資料夾與歸檔合約！");
       }
       payload.dryRun = true;
     }
     var panel = document.getElementById("s60ProvisionResultPanel");
     if (panel) {
       panel.style.display = "block";
-      panel.style.background = "#eff6ff";
-      panel.style.borderColor = "#2563eb";
-      panel.style.color = "#1e3a8a";
-      panel.innerHTML = "⏳ <strong>正在執行 S6.0 七階段自動化部署流水線...</strong>（驗證憑證 ➔ 建立/綁定 8 大雲端資料夾 ➔ 上傳歸檔 " + payload.files.length + " 份合約標單 ➔ 註冊動態路由 ➔ 自動設定 LINE Webhook 與選單）";
+      panel.style.borderColor = "#0284c7";
+      panel.innerHTML = "⏳ <strong>正在自動部署【" + payload.botName + "】...</strong>（建立 8 大雲端工務資料夾 ➔ 歸檔 " + payload.files.length + " 份合約標單 ➔ 綁定 LINE Webhook 網址）";
     }
 
-    // Use CORS-safe text/plain POST (zero OPTIONS preflight block on Google Apps Script!)
     fetch(S60_MASTER_GATEWAY_URL, {
       method: "POST",
       redirect: "follow",
@@ -23717,42 +23966,94 @@ document.documentElement.setAttribute("data-release-version", "S2版");
         if (!res || !res.ok) throw new Error((res && res.error) || "部署回應異常");
         registerDeployedBotIntoWarRoomUi(res, payload);
         if (panel) {
-          panel.style.background = "#f0fdf4";
           panel.style.borderColor = "#16a34a";
-          panel.style.color = "#14532d";
           var stepsHtml = (res.stages || []).map(function(st) {
             return "<div>" + (st.ok ? "✅" : "⚠️") + " <strong>" + st.name + "：</strong>" + st.detail + "</div>";
           }).join("");
           var docsHtml = (res.uploadedDocs || []).map(function(d) {
-            return '<li><a href="' + d.viewerUrl + '" target="_blank" rel="noopener" style="color:#0284c7;font-weight:700;">' + d.fileName + '</a>（分類：' + d.category + '）</li>';
+            return '<li><a href="' + d.viewerUrl + '" target="_blank" rel="noopener" style="color:#0284c7;font-weight:700;">' + d.fileName + '</a>（' + (CAT_LABELS[d.category] || d.category) + '）</li>';
           }).join("");
           var fldLinks = [];
           if (res.folders && res.folders.rootFolderUrl) fldLinks.push('<a href="' + res.folders.rootFolderUrl + '" target="_blank" rel="noopener" style="color:#0284c7;font-weight:700;">📂 開啟專案雲端總目錄</a>');
-          if (res.folders && res.folders.contractFolderUrl) fldLinks.push('<a href="' + res.folders.contractFolderUrl + '" target="_blank" rel="noopener" style="color:#0284c7;font-weight:700;">📄 合約資料夾</a>');
-          if (res.folders && res.folders.constInspFolderUrl) fldLinks.push('<a href="' + res.folders.constInspFolderUrl + '" target="_blank" rel="noopener" style="color:#0284c7;font-weight:700;">📸 查驗PDF資料夾</a>');
-          if (res.folders && res.folders.dailyPhotoFolderUrl) fldLinks.push('<a href="' + res.folders.dailyPhotoFolderUrl + '" target="_blank" rel="noopener" style="color:#0284c7;font-weight:700;">👷 施工/工具箱照片夾</a>');
+          if (res.folders && res.folders.contractFolderUrl) fldLinks.push('<a href="' + res.folders.contractFolderUrl + '" target="_blank" rel="noopener" style="color:#0284c7;font-weight:700;">📄 合約夾</a>');
+          if (res.folders && res.folders.bidBoqFolderUrl) fldLinks.push('<a href="' + res.folders.bidBoqFolderUrl + '" target="_blank" rel="noopener" style="color:#0284c7;font-weight:700;">📊 標單夾</a>');
+          if (res.folders && res.folders.constInspFolderUrl) fldLinks.push('<a href="' + res.folders.constInspFolderUrl + '" target="_blank" rel="noopener" style="color:#0284c7;font-weight:700;">📸 查驗PDF夾</a>');
 
           panel.innerHTML =
-            '<div style="font-size:0.9rem;font-weight:900;margin-bottom:6px;">🎉 【' + res.botCode + '｜' + payload.botName + '】' + (res.dryRun ? '沙盒預演部署 100% 成功！' : '一鍵正式部署上線完成！') + '</div>' +
-            '<div style="margin-bottom:6px;">🔗 <strong>專屬 Webhook 端點（已自動支援免新建 GAS 專案）：</strong><code>' + res.webhookEndpointUrl + '</code></div>' +
-            (fldLinks.length ? ('<div style="margin-bottom:6px;">📁 <strong>已建置／綁定雲端路徑：</strong>' + fldLinks.join(" ｜ ") + '</div>') : '') +
+            '<div style="font-size:0.95rem;font-weight:900;color:#16a34a;margin-bottom:6px;">🎉 【' + res.botCode + '｜' + payload.botName + '】' + (res.dryRun ? '沙盒預演建置完成！' : '一鍵部署上線成功！') + '</div>' +
+            '<div style="margin-bottom:6px;">🔗 <strong>專屬 Webhook 網址（已自動寫入）：</strong><code>' + res.webhookEndpointUrl + '</code></div>' +
+            (fldLinks.length ? ('<div style="margin-bottom:6px;">📁 <strong>雲端資料夾直連：</strong>' + fldLinks.join(" ｜ ") + '</div>') : '') +
             stepsHtml +
-            (docsHtml ? ('<div style="margin-top:6px;"><strong>📑 已上傳並建立 LINE 即時查詢索引之合約／標單檔案：</strong><ul style="margin:4px 0 0 18px;">' + docsHtml + '</ul></div>') : '') +
-            '<div style="margin-top:6px;padding-top:6px;border-top:1px dashed #86efac;">💡 <strong>LINE 實機測試指令：</strong>於該機器人對話視窗輸入 <code>合約</code>、<code>標單</code>、<code>路徑</code>、<code>開啟圖說</code> 或直接傳送工具箱／白板查驗照片，即自動歸入上方設定之專屬路徑！</div>';
+            (docsHtml ? ('<div style="margin-top:6px;"><strong>📑 已建立 LINE 即時查詢索引之檔案：</strong><ul style="margin:4px 0 0 18px;">' + docsHtml + '</ul></div>') : '') +
+            '<div style="margin-top:8px;padding-top:8px;border-top:1px dashed var(--border-std);">💡 <strong>下一步：</strong>確認 <a href="https://developers.line.biz/console/" target="_blank" rel="noopener" style="color:#0284c7;font-weight:700;">LINE Developers ↗</a> 內 <code>Use webhook</code> 為開啟，將機器人邀入 LINE 群組傳送 <code>合約</code>、<code>標單</code> 或現場照片即可自動運作！</div>';
         }
         if (typeof window.showToast === "function") {
-          window.showToast("🎉 【" + res.botCode + "】已完成雲端路徑綁定、合約歸檔與 LINE Bot 部署！");
+          window.showToast("🎉 【" + res.botCode + "】已完成雲端建夾、合約歸檔與 LINE Bot 部署！");
         }
       })
       .catch(function(err) {
         if (panel) {
-          panel.style.background = "#fef2f2";
           panel.style.borderColor = "#dc2626";
-          panel.style.color = "#7f1d1d";
           panel.innerHTML = "❌ <strong>連線遠端部署閘道失敗：</strong>" + String(err && err.message || err);
         }
       });
   };
+
+  // S6.1 Navigation & Zero-Clutter Enhancement:
+  // 1) Inject "+ 新增機器人（一鍵部署）" directly into #deployedBotTabsBar so users find it immediately!
+  // 2) Hide #daily0600SimTestCenterCard while viewing the One-Click Deploy wizard so the form sits right at the top!
+  window.openS61OneClickNewBotWizard = function() {
+    if (typeof window.switchBotConfigSubTab === "function") {
+      window.switchBotConfigSubTab("remote_std");
+    }
+    var wb = document.getElementById("s60OneClickDeployWorkbench");
+    if (wb && wb.scrollIntoView) wb.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  function enhanceBotTabsAndSubTabFocusS61() {
+    if (typeof window.renderDeployedBotTabsBar === "function" && !window.renderDeployedBotTabsBar.__s61Wrapped) {
+      var origRenderTabs = window.renderDeployedBotTabsBar;
+      var wrappedRender = function() {
+        origRenderTabs.apply(this, arguments);
+        var bar = document.getElementById("deployedBotTabsBar");
+        if (!bar) return;
+        var remotePane = document.getElementById("botSubPaneRemoteStd");
+        var isRemoteActive = Boolean(remotePane && remotePane.style.display !== "none");
+        if (!document.getElementById("btnQuickAddNewBotS61")) {
+          var addBtn = document.createElement("button");
+          addBtn.type = "button";
+          addBtn.id = "btnQuickAddNewBotS61";
+          addBtn.className = isRemoteActive ? "btn btn-primary" : "btn btn-emerald";
+          addBtn.style.cssText = "padding:7px 14px;font-size:0.82rem;font-weight:800;";
+          addBtn.innerHTML = "＋ 新增 LINE 機器人（一鍵部署）";
+          addBtn.onclick = window.openS61OneClickNewBotWizard;
+          bar.appendChild(addBtn);
+        }
+      };
+      wrappedRender.__s61Wrapped = true;
+      window.renderDeployedBotTabsBar = wrappedRender;
+      try { window.renderDeployedBotTabsBar(); } catch (_eInitBar) {}
+    }
+
+    if (typeof window.switchBotConfigSubTab === "function" && !window.switchBotConfigSubTab.__s61Wrapped) {
+      var origSwitch = window.switchBotConfigSubTab;
+      var wrappedSwitch = function(subTab) {
+        origSwitch.apply(this, arguments);
+        var simCard = document.getElementById("daily0600SimTestCenterCard");
+        if (simCard) {
+          simCard.style.display = (subTab === "remote_std") ? "none" : "block";
+        }
+      };
+      wrappedSwitch.__s61Wrapped = true;
+      window.switchBotConfigSubTab = wrappedSwitch;
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", enhanceBotTabsAndSubTabFocusS61);
+  } else {
+    enhanceBotTabsAndSubTabFocusS61();
+  }
 })();
 </script>
 </body>
