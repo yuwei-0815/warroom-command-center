@@ -1,8 +1,8 @@
 {
   "ok": true,
   "version": "S3.5版_FAST_REALTIME_SYNC",
-  "driveFingerprint": "S35F_aad199d0",
-  "syncedAt": "2026-11-12 08:21:26",
+  "driveFingerprint": "S35F_6811513c",
+  "syncedAt": "2026-11-12 08:52:07",
   "latestDate": "2026-11-12",
   "excelDriveFileId": "1sJiy0wDJAyDqJzBD39AX2PTbBiUWJNySX22APzI_7s8",
   "d11Summary": {
@@ -13326,14 +13326,14 @@
       "rules": [
         "符合勞安標準（無勞安缺失）"
       ],
-      "workerCount": 1,
-      "toolboxWorkers": 1,
+      "workerCount": 2,
+      "toolboxWorkers": 2,
       "report1500Workers": null,
-      "photoBreakdown": "[1]",
+      "photoBreakdown": "[1, 1]",
       "tomorrowPredictedWorkers": 0,
       "tomorrowScope": "",
-      "workerTrades": "水電 1人 (工具箱點名 [1] 共1張｜標準回報：115.11.12 水電 *1)",
-      "badgeText": "晴 0mm・水電1人",
+      "workerTrades": "水電 2人 (工具箱點名 [1, 1] 共2張｜標準回報：115.11.12 水電 *2)",
+      "badgeText": "晴 0mm・水電2人",
       "note": "今日施作：2F補線 配管收尾、3F拉線、查管、3F隔間配管查管補配",
       "__fromLiveCloudDb": true,
       "__isAutoRolloverToday": false
@@ -13652,10 +13652,10 @@
       "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)",
       "latestDate": "2026-11-12",
       "latestRocDate": "115.11.12",
-      "todayWorkers": 1,
-      "toolboxWorkers": 1,
+      "todayWorkers": 2,
+      "toolboxWorkers": 2,
       "report1500Workers": null,
-      "photoBreakdown": "[1]",
+      "photoBreakdown": "[1, 1]",
       "lastVerifiedDate": "2026-11-11",
       "lastVerifiedRocDate": "115.11.11",
       "lastVerifiedWorkers": 9,
@@ -13663,12 +13663,12 @@
       "tomorrowWorkScope": "",
       "todayWorkScope": "2F補線 配管收尾、3F拉線、查管、3F隔間配管查管補配",
       "todayBadgeText": "今日點名已同步",
-      "todayTradeTag": "水電 *1 ([1])",
-      "cumulativeWorkers": 147,
-      "currentMonthWorkers": 118,
+      "todayTradeTag": "水電 *2 ([1, 1])",
+      "cumulativeWorkers": 148,
+      "currentMonthWorkers": 119,
       "currentMonthDays": 12,
       "workDaysCount": 15,
-      "dailyAvgWorkers": 9.8
+      "dailyAvgWorkers": 9.9
     }
   }
 }
