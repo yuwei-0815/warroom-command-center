@@ -1,8 +1,8 @@
 {
   "ok": true,
   "version": "S3.5版_FAST_REALTIME_SYNC",
-  "driveFingerprint": "S35F_950a69",
-  "syncedAt": "2026-11-12 14:45:12",
+  "driveFingerprint": "S35F_ef82aba0",
+  "syncedAt": "2026-11-12 15:53:56",
   "latestDate": "2026-11-12",
   "excelDriveFileId": "1sJiy0wDJAyDqJzBD39AX2PTbBiUWJNySX22APzI_7s8",
   "d11Summary": {
@@ -22,7 +22,9 @@
       "WP": 19,
       "LV": 1,
       "F": 4
-    }
+    },
+    "arrivedTotalAmt": 5706957,
+    "orderedPendingAmt": 415296
   },
   "ncrInProgress": 0,
   "ncrClosed": 18,
@@ -592,8 +594,7 @@
           "status": "已於115.10.31完成D11正式查驗 (銷帳轉正)",
           "fileUrl": "https://drive.google.com/file/d/1rrA-SUTXeYfEMzyJxTb60kzW5Hp3rpG_/view"
         }
-      ],
-      "sheetRowCount": 10
+      ]
     },
     "materialInspection": {
       "folderId": "1aTXDjGNBRkwuULae6C41ve9PYs5y1BAh",
@@ -5144,27 +5145,6 @@
       ]
     },
     "materialInspectionAll": {
-      "rootFolderId": "1aTXDjGNBRkwuULae6C41ve9PYs5y1BAh",
-      "rootFolderUrl": "https://drive.google.com/drive/folders/1aTXDjGNBRkwuULae6C41ve9PYs5y1BAh",
-      "deliveryFolderUrl": "https://drive.google.com/drive/folders/1UZYDvWLEp_PTZC7gEOqJnZBwF9Zz7IHV",
-      "subfolders": {
-        "E": {
-          "name": "電力與避雷接地 (E)",
-          "url": "https://drive.google.com/drive/folders/1K-DbsrdKf7ZrBpIkjKcbLqaGupe8gxgs"
-        },
-        "WP": {
-          "name": "給排水衛生設備 (WP)",
-          "url": "https://drive.google.com/drive/folders/1QlQgJnZKoO01h9nGFz6OInh6gGaGA_3-"
-        },
-        "LV": {
-          "name": "弱電與電信資訊 (LV)",
-          "url": "https://drive.google.com/drive/folders/1ZCQU8tKS-vkbCfq2IPYbgVCKryikTGKn"
-        },
-        "F": {
-          "name": "消防系統設備 (F)",
-          "url": "https://drive.google.com/drive/folders/1VqDp-_7MoTN91EvXea7m4CtVeTImIDjz"
-        }
-      },
       "totalPdfCount": 52,
       "countsBySystem": {
         "E": 28,
@@ -14088,15 +14068,15 @@
       "rules": [
         "符合勞安標準（無勞安缺失）"
       ],
-      "workerCount": 9,
+      "workerCount": 11,
       "toolboxWorkers": 9,
-      "report1500Workers": null,
+      "report1500Workers": 11,
       "photoBreakdown": "[4, 1, 4]",
-      "tomorrowPredictedWorkers": 0,
-      "tomorrowScope": "",
-      "workerTrades": "水電 9人 (工具箱點名 [4, 1, 4] 共3張｜標準回報：115.11.12 水電 *9)",
-      "badgeText": "晴 0mm・水電9人",
-      "note": "今日施作：2F補線 配管收尾、3F拉線、查管、3F隔間配管查管補配",
+      "tomorrowPredictedWorkers": 11,
+      "tomorrowScope": "2F補線 配管收尾、3F拉線、查管、2-3F ACP、排水修繕",
+      "workerTrades": "水電 11人 (15:00回報實到 11人｜晨間工具箱點名 9人 [4, 1, 4]｜明日預計 11人)",
+      "badgeText": "晴 0mm・水電11人",
+      "note": "今日施作：2F補線 配管收尾、3F拉線、查管、3F隔間配管查管補配｜明日預計(11人)：2F補線 配管收尾、3F拉線、查管、2-3F ACP、排水修繕",
       "__fromLiveCloudDb": true,
       "__isAutoRolloverToday": false
     },
@@ -14414,23 +14394,35 @@
       "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)",
       "latestDate": "2026-11-12",
       "latestRocDate": "115.11.12",
-      "todayWorkers": 9,
+      "todayWorkers": 11,
       "toolboxWorkers": 9,
-      "report1500Workers": null,
+      "report1500Workers": 11,
       "photoBreakdown": "[4, 1, 4]",
       "lastVerifiedDate": "2026-11-11",
       "lastVerifiedRocDate": "115.11.11",
       "lastVerifiedWorkers": 9,
-      "tomorrowPredictedWorkers": 0,
-      "tomorrowWorkScope": "",
+      "tomorrowPredictedWorkers": 11,
+      "tomorrowWorkScope": "2F補線 配管收尾、3F拉線、查管、2-3F ACP、排水修繕",
       "todayWorkScope": "2F補線 配管收尾、3F拉線、查管、3F隔間配管查管補配",
-      "todayBadgeText": "今日點名已同步",
-      "todayTradeTag": "水電 *9 ([4, 1, 4])",
-      "cumulativeWorkers": 155,
-      "currentMonthWorkers": 126,
+      "todayBadgeText": "15:00 實到已同步",
+      "todayTradeTag": "水電 *11 (15:00實到｜點名9人)",
+      "cumulativeWorkers": 157,
+      "currentMonthWorkers": 128,
       "currentMonthDays": 12,
       "workDaysCount": 15,
-      "dailyAvgWorkers": 10.3
+      "dailyAvgWorkers": 10.5
     }
+  },
+  "c10Summary": {
+    "totalFilesSynced": 58,
+    "countsBySystem": {
+      "E": 17,
+      "WP": 16,
+      "LV": 12,
+      "F": 9,
+      "PA": 4
+    },
+    "rende1CaseFolderCount": 25,
+    "folderId": "1hCfZHP1e6RIkMVyfp2EEWKepgJFZRxD7"
   }
 }
