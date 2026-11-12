@@ -2,20 +2,20 @@
   "ok": true,
   "version": "S3.5版_FAST_REALTIME_SYNC",
   "driveFingerprint": "S35F_950a69",
-  "syncedAt": "2026-11-12 12:44:10",
+  "syncedAt": "2026-11-12 13:23:57",
   "latestDate": "2026-11-12",
   "excelDriveFileId": "1sJiy0wDJAyDqJzBD39AX2PTbBiUWJNySX22APzI_7s8",
   "d11Summary": {
     "totalFilesSynced": 52,
-    "d11InspectedAmount": 4089694,
-    "postReceiptAmount": 1019318,
-    "totalArrivedAmount": 5109012,
+    "d11InspectedAmount": 4993177,
+    "postReceiptAmount": 713780,
+    "totalArrivedAmount": 5706957,
     "orderPendingAmount": 415296,
-    "totalWithOrderAmount": 5524308,
-    "matchedContractTotal": 8216698,
-    "itemCount": 66,
-    "arrivedItemCount": 65,
-    "fullItemCount": 17,
+    "totalWithOrderAmount": 6122253,
+    "matchedContractTotal": 9297762,
+    "itemCount": 77,
+    "arrivedItemCount": 76,
+    "fullItemCount": 22,
     "overflowItemCount": 18,
     "countsBySystem": {
       "E": 28,
@@ -509,97 +509,91 @@
     "deliverySlips": {
       "folderId": "1UZYDvWLEp_PTZC7gEOqJnZBwF9Zz7IHV",
       "folderUrl": "https://drive.google.com/drive/folders/1UZYDvWLEp_PTZC7gEOqJnZBwF9Zz7IHV",
-      "totalRecords": 6,
+      "totalRecords": 8,
+      "totalCount": 8,
       "records": [
         {
           "rocDate": "115.11.11",
           "isoDate": "2026-11-11",
           "vendor": "伸泰國際 (電線電纜)",
-          "materialSpec": "出貨單 11511100031：600V XLPE 電力電纜 4/C 8.0mm² (NT$ 631,800)",
+          "materialSpec": "出貨單 11511100031：600V XLPE 電力電纜 4/C 8.0mm² (契約價 NT$ 624,000)",
           "qtyText": "2 軸 (2,000 M)",
-          "sourceType": "已連動標單核銷",
-          "status": "已連動標單核銷",
+          "sourceType": "已進場連動標單 (待轉D11)",
+          "status": "已進場連動標單 (待轉D11)",
           "fileUrl": "https://drive.google.com/file/d/1kyCfeRPjsZsYyOIVHDTXVEeQOwjo9uzJ/view"
         },
         {
           "rocDate": "115.11.11",
           "isoDate": "2026-11-11",
           "vendor": "伸泰國際 (電線電纜)",
-          "materialSpec": "出貨單 11511100030：600V PVC 絕緣電線 2.0mm (28卷) ＋ 5.5mm² (3卷) (NT$ 91,700)",
+          "materialSpec": "出貨單 11511100030：600V PVC 絕緣電線 2.0mm (2,800M) ＋ 5.5mm² (300M) (契約價 NT$ 86,900)",
           "qtyText": "31 卷 (3,100 M)",
-          "sourceType": "已連動標單核銷",
-          "status": "已連動標單核銷",
+          "sourceType": "已進場連動標單 (待轉D11)",
+          "status": "已進場連動標單 (待轉D11)",
           "fileUrl": "https://drive.google.com/file/d/1Vr_sOgbErmtPPctnnSJETEw6PFA6Opqc/view"
-        },
-        {
-          "rocDate": "115.11.10",
-          "isoDate": "2026-11-10",
-          "vendor": "伸泰電機 / 電線電纜供應商",
-          "materialSpec": "600V PVC絕緣電線 2.0mm (2800M)、5.5mm²絞線 (300M)、600V XLPE電纜 4/C 8.0mm² (2000M)",
-          "qtyText": "2800M / 300M / 2000M",
-          "sourceType": "雲端硬碟\\出貨單 (即時OCR連動二期標單R1361)",
-          "fileName": "115.11.10_出貨單_出貨單_115.11.10.jpg",
-          "fileUrl": "https://drive.google.com/file/d/1RXafQEjxu1JQFcR4q_pXVu1kg2Ed9M_s/view",
-          "status": "已進場連動標單"
         },
         {
           "rocDate": "115.11.06",
           "isoDate": "2026-11-06",
           "vendor": "暐琦事業股份有限公司",
-          "materialSpec": "南亞(灰)E(電導)管 (3/4\"x2.0 4M)",
-          "qtyText": "40支 (160M)",
-          "sourceType": "LINE Bot 出貨單雲端總表 + 收貨單歸檔",
-          "fileName": "115.11.06_暐琦_南亞E管40支.jpg",
-          "fileUrl": "https://drive.google.com/drive/folders/1uVqN-IaqhSTLxZSlQ-htk6_oLJH48J1h",
-          "status": "已歸檔核銷"
+          "materialSpec": "出貨單 115111572：南亞(灰) PVC-E 電導管 3/4\"×2.0 4M",
+          "qtyText": "40 支 (160 M)",
+          "sourceType": "已併入 D11-E-1151107-01 正式查驗",
+          "status": "已於115.11.07完成D11查驗 (320M銷帳)",
+          "fileUrl": "https://drive.google.com/file/d/1KJG9eTUXOPUnjnkKscyAWPTPFS9qLttu/view"
         },
         {
           "rocDate": "115.11.05",
           "isoDate": "2026-11-05",
           "vendor": "欣歐企業股份有限公司 (SENCO)",
-          "materialSpec": "(鋁製)(梯型)直式線槽及彎頭配件 400Wx100Hx3000L & 300Wx100Hx3000L",
-          "qtyText": "198 PC",
-          "sourceType": "LINE Bot 出貨單雲端總表 + D11查驗連動",
-          "fileName": "115.11.05_欣歐_鋁製梯型線槽198PC.jpg",
-          "fileUrl": "https://drive.google.com/drive/folders/1uVqN-IaqhSTLxZSlQ-htk6_oLJH48J1h",
-          "status": "已於115.11.08完成D11查驗"
+          "materialSpec": "出貨單 11511013-11：鋁製梯型線槽及水平L/T彎頭 (400×100 & 300×100)",
+          "qtyText": "198 PC (NT$ 680,741)",
+          "sourceType": "已併入 D11-E/LV-1151108-1 正式查驗",
+          "status": "已於115.11.08完成D11查驗 (銷帳轉正)",
+          "fileUrl": "https://drive.google.com/file/d/15BDDXsncXbqbuaa54DHHskHv6avaMQr8/view"
         },
         {
           "rocDate": "115.11.02",
           "isoDate": "2026-11-02",
           "vendor": "暐琦事業股份有限公司",
-          "materialSpec": "南亞(灰)PVC-B排水管 (3/4\"x3.0 4M) 20支 ＋ 南亞(灰)E電導管 (3/4\"x2.0 4M) 40支",
-          "qtyText": "20支 + 40支",
-          "sourceType": "雲端硬碟\\出貨單",
-          "fileName": "115.11.02_出貨單_出貨單_115.11.02.jpg",
-          "fileUrl": "https://drive.google.com/file/d/1cY8Mo6i6lfvTBsDjd5WzFUGkyYOfJ1JS/view",
-          "status": "已歸檔核銷"
+          "materialSpec": "出貨單 115110232：南亞 PVC-E 管 3/4\" 40支(160M) ＋ PVC-B 排水管 3/4\" 20支(80M)",
+          "qtyText": "40支 + 20支",
+          "sourceType": "E管已轉D11查驗｜B管80M連動標單",
+          "status": "E管160M已於11/07查驗｜B管80M待轉D11",
+          "fileUrl": "https://drive.google.com/file/d/1cY8Mo6i6lfvTBsDjd5WzFUGkyYOfJ1JS/view"
         },
         {
           "rocDate": "115.10.30",
           "isoDate": "2026-10-30",
-          "vendor": "衛浴設備供應商 (GMT格式污染已自動修復)",
-          "materialSpec": "蹲式馬桶(含配件、按壓式沖水器) 契約項次壹.甲.三.12.(4)",
+          "vendor": "衛浴設備供應商",
+          "materialSpec": "蹲式馬桶(含配件、按壓式沖水器) 契約項次 壹.甲.三.12.(4)",
           "qtyText": "36 組 (NT$ 415,296)",
-          "sourceType": "雲端硬碟\\出貨單 (已清洗GMT字串污染)",
-          "fileName": "115.10.30_出貨單_仁德國小(第二期)_蹲式馬桶36組.png",
-          "fileUrl": "https://drive.google.com/file/d/1A83N4UNDhS3t0VWoAke07dBwfBiUyfhZ/view",
-          "status": "已叫貨待進場查驗"
+          "sourceType": "已叫貨待進場查驗",
+          "status": "已叫貨待進場查驗",
+          "fileUrl": "https://drive.google.com/file/d/1A83N4UNDhS3t0VWoAke07dBwfBiUyfhZ/view"
+        },
+        {
+          "rocDate": "115.10.30",
+          "isoDate": "2026-10-30",
+          "vendor": "鋒剛實業 (彰源 SUS304)",
+          "materialSpec": "銷貨單 202609290005：SUS304 不鏽鋼被覆管 Sch-20S (65/75/100/125mm)",
+          "qtyText": "156 M (NT$ 291,618)",
+          "sourceType": "已併入 D11-WP-1151031-1 正式查驗",
+          "status": "已於115.10.31完成D11正式查驗 (銷帳轉正)",
+          "fileUrl": "https://drive.google.com/file/d/1nKdXvO4FoJqL-Qtazlkb8qVzRSwRrIUe/view"
         },
         {
           "rocDate": "115.10.29",
           "isoDate": "2026-10-29",
-          "vendor": "不鏽鋼管材供應商 (GMT格式污染已自動修復)",
-          "materialSpec": "SUS304不鏽鋼管 Sch-20S (65mm/75mm/100mm/125mm) 進場收貨單",
-          "qtyText": "156 M (NT$ 278,587)",
-          "sourceType": "出貨單雲端總表 (已清洗GMT字串污染)",
-          "fileName": "115.10.29_SUS304大口徑不鏽鋼管收貨單",
-          "fileUrl": "https://drive.google.com/drive/folders/1uVqN-IaqhSTLxZSlQ-htk6_oLJH48J1h",
-          "status": "已進場待轉D11正式查驗"
+          "vendor": "暐琦事業股份有限公司",
+          "materialSpec": "出貨單 115106680：南亞(灰) PVC-E 電導管 3/4\" 80支(320M) ＋ 1/2\" 30支(120M)",
+          "qtyText": "110 支 (440 M)",
+          "sourceType": "已併入 D11-E-1151031-01 正式查驗",
+          "status": "已於115.10.31完成D11正式查驗 (銷帳轉正)",
+          "fileUrl": "https://drive.google.com/file/d/1rrA-SUTXeYfEMzyJxTb60kzW5Hp3rpG_/view"
         }
       ],
-      "sheetRowCount": 10,
-      "totalCount": 8
+      "sheetRowCount": 10
     },
     "materialInspection": {
       "folderId": "1aTXDjGNBRkwuULae6C41ve9PYs5y1BAh",
@@ -619,7 +613,7 @@
           "rocDate": "115.11.08",
           "isoDate": "2026-11-08",
           "fileName": "D11-LV-1151108-1弱電線槽-弱電線槽材料查驗.pdf",
-          "amountText": "弱電電纜架設備 (鋁製梯型線槽及彎頭 3項 NT$ 511,660)",
+          "amountText": "弱電電纜架設備 (鋁製梯型線槽及L/T彎頭 3項 NT$ 511,660)",
           "fileUrl": "https://drive.google.com/file/d/15BDDXsncXbqbuaa54DHHskHv6avaMQr8/view"
         },
         {
@@ -629,7 +623,7 @@
           "rocDate": "115.11.08",
           "isoDate": "2026-11-08",
           "fileName": "D11-E-1151108-1-動力線槽材料查驗.pdf",
-          "amountText": "電力電纜架設備 (鋁製梯型線槽及彎頭 3項 NT$ 169,081)",
+          "amountText": "電力電纜架設備 (鋁製梯型線槽及L/T彎頭 3項 NT$ 169,081)",
           "fileUrl": "https://drive.google.com/file/d/1pmA3RMfuuzsIq55qiBN6_ASYtNYE2_TF/view"
         },
         {
@@ -639,7 +633,7 @@
           "rocDate": "115.11.07",
           "isoDate": "2026-11-07",
           "fileName": "D11-E-1151107-01-PVC-E管.pdf",
-          "amountText": "南亞硬質 PVC-E 電導管 20mm (含電信預埋管共用送審)",
+          "amountText": "南亞硬質 PVC-E 電導管 20mm 320M (安全監視160M・門禁80M・求救80M｜NT$ 7,680)",
           "fileUrl": "https://drive.google.com/file/d/1KJG9eTUXOPUnjnkKscyAWPTPFS9qLttu/view"
         },
         {
@@ -649,7 +643,7 @@
           "rocDate": "115.10.31",
           "isoDate": "2026-10-31",
           "fileName": "D11-WP-1151031-1-不銹鋼管材料.pdf",
-          "amountText": "SUS304 不鏽鋼冷水管 Sch-20S (2-1/2\"~5\")",
+          "amountText": "SUS304 冷水管 Sch-20S (65mm 72M・75mm 42M・100mm 30M・125mm 12M｜NT$ 291,618 已銷帳)",
           "fileUrl": "https://drive.google.com/file/d/1nKdXvO4FoJqL-Qtazlkb8qVzRSwRrIUe/view"
         },
         {
@@ -659,7 +653,7 @@
           "rocDate": "115.10.31",
           "isoDate": "2026-10-31",
           "fileName": "D11-E-1151031-02-電線電纜材料.pdf",
-          "amountText": "照明與動力系統 600V PVC 絕緣電線",
+          "amountText": "伸泰 600V PVC 絕緣電線 2.0mm(累計15,300M) ＆ 5.5mm²(累計22,500M)｜本次 NT$ 133,000",
           "fileUrl": "https://drive.google.com/file/d/1ovveE0ol5NgV-uS8Kxv8Djd6Cb6mWFuF/view"
         },
         {
@@ -669,7 +663,7 @@
           "rocDate": "115.10.31",
           "isoDate": "2026-10-31",
           "fileName": "D11-E-1151031-01-PVC-E管材料.pdf",
-          "amountText": "南亞硬質 PVC-E 電導管材",
+          "amountText": "弱電與廣播南亞 PVC-E 管 440M (監視80M・門禁80M・求救160M・廣播120M｜NT$ 10,080)",
           "fileUrl": "https://drive.google.com/file/d/1rrA-SUTXeYfEMzyJxTb60kzW5Hp3rpG_/view"
         },
         {
@@ -679,7 +673,7 @@
           "rocDate": "115.10.29",
           "isoDate": "2026-10-29",
           "fileName": "D11-WP-1151029-1-不鏽鋼壓接另件.pdf",
-          "amountText": "SUS304 不鏽鋼壓接彎頭、三通及接頭另件",
+          "amountText": "竑鉞 Hun Yue SUS304 雙壓著彎頭、三通及異徑接頭 101 只 (折算 0.05 式 NT$ 28,447)",
           "fileUrl": "https://drive.google.com/file/d/19k12vAWbfeXe5EhMC2bdwjk5k66lX-Xk/view"
         },
         {
@@ -729,7 +723,7 @@
           "rocDate": "115.10.12",
           "isoDate": "2026-10-12",
           "fileName": "D11-E-1151012-02-避雷針基礎座材料.pdf",
-          "amountText": "避雷針 RC 基礎台及基礎螺栓座 (1座)",
+          "amountText": "避雷針 RC 基礎台及基礎螺栓座 1 座 (NT$ 8,598)",
           "fileUrl": "https://drive.google.com/file/d/196SCKHS3jfPqAer1zGMa--j09Eszcn_v/view"
         },
         {
@@ -749,7 +743,7 @@
           "rocDate": "115.10.07",
           "isoDate": "2026-10-07",
           "fileName": "D11-F-1151007-1-滅火器箱及消防底箱.pdf",
-          "amountText": "SUS304 室內綜合消防栓底箱及滅火器箱體預埋查驗",
+          "amountText": "禾昌/虹元黑鐵 2.0mm 滅火器底箱 16只($56,000) ＆ 綜合消防栓底箱 12組先行預埋",
           "fileUrl": "https://drive.google.com/file/d/1IlVbl4GMndQGOoWFdEvHo_JRuo2IhN5P/view"
         },
         {
@@ -769,7 +763,7 @@
           "rocDate": "115.10.01",
           "isoDate": "2026-10-01",
           "fileName": "D11-E-1151001-1-PVC-E管.pdf",
-          "amountText": "南亞硬質 PVC-E 電導管材",
+          "amountText": "火警與緊急廣播系統南亞 PVC-E 預埋管共 3,200M (4項 NT$ 54,080)",
           "fileUrl": "https://drive.google.com/file/d/1D23-omddmnJcWQlbOb8Ko6eOYqAEMwP7/view"
         },
         {
@@ -819,7 +813,7 @@
           "rocDate": "115.09.18",
           "isoDate": "2026-09-18",
           "fileName": "D11-F-1150918-01-電線電纜HR1.6.pdf",
-          "amountText": "伸泰 380℃ 15分鐘 HR 1.6mm 火警耐熱線",
+          "amountText": "伸泰 380℃ 15分鐘 HR 1.6mm 火警耐熱線 (累計 2,400M)",
           "fileUrl": "https://drive.google.com/file/d/1Z8GlQhuiWC5JC4wNdVZOEXosUCDsiNKV/view"
         },
         {
@@ -839,7 +833,7 @@
           "rocDate": "115.09.07",
           "isoDate": "2026-09-07",
           "fileName": "D11-F-1150907-01-電線電纜-HR1.6訊號線2.0.pdf",
-          "amountText": "伸泰耐熱對絞銅網信號隔離線與火警耐熱線",
+          "amountText": "伸泰耐熱對絞銅網信號隔離線 600M 與火警耐熱線 1,200M",
           "fileUrl": "https://drive.google.com/file/d/12GUtCKdMefco8YbeGmE3CJlsDfNi2O5s/view"
         },
         {
@@ -889,7 +883,7 @@
           "rocDate": "115.09.01",
           "isoDate": "2026-09-01",
           "fileName": "D11-E-1150901-01-EMT 31.pdf",
-          "amountText": "遠東無螺紋鍍鋅鋼管 EMT E31 (100支=366M)",
+          "amountText": "遠東無螺紋鍍鋅鋼管 EMT E31 (累計 732M)",
           "fileUrl": "https://drive.google.com/file/d/1Sjtx0PhCLtvOCyNMlYTa8RXzHmmPDFFJ/view"
         },
         {
@@ -989,7 +983,7 @@
           "rocDate": "115.05.21",
           "isoDate": "2026-05-21",
           "fileName": "D11-E-1150521-1-EMT管.pdf",
-          "amountText": "遠東無螺紋鍍鋅鋼管 EMT E31 (前期 366M)",
+          "amountText": "遠東無螺紋鍍鋅鋼管 EMT E31 (366M) ＆ E39 (110M 100%滿額)",
           "fileUrl": "https://drive.google.com/file/d/1duwb4hadIdKjtIyXBeL4hboCUUIoc8eb/view"
         },
         {
@@ -1079,7 +1073,7 @@
           "rocDate": "115.03.20",
           "isoDate": "2026-03-20",
           "fileName": "D11-F-1150320-1-鍍鋅鋼管.pdf",
-          "amountText": "室內消防栓系統預塗裝鍍鋅鋼管 3吋 (60M)",
+          "amountText": "室內消防栓系統預塗裝鍍鋅鋼管 3吋 60M (NT$ 37,020)",
           "fileUrl": "https://drive.google.com/file/d/1M2yhqnAV24sCCFc3V_QVaz5afB_ImN3y/view"
         },
         {
@@ -1119,7 +1113,7 @@
           "rocDate": "115.02.10",
           "isoDate": "2026-02-10",
           "fileName": "D11-E-1150210-02-PVC管材.pdf",
-          "amountText": "避雷接地保護用硬質 PVC-E 導線管",
+          "amountText": "避雷接地保護用硬質 PVC-E 導線管 (100% 滿額)",
           "fileUrl": "https://drive.google.com/file/d/1wZySGY9TTq-uWc0ILRz6R6uqMowEqZKR/view"
         },
         {
@@ -1532,7 +1526,7 @@
       "cronExpressionUtc": "0 16 * * *",
       "triggerFunctionName": "cron2400FourWayBoqReconcileAndSync_S3",
       "last2400SyncedAt": "2026-11-12 00:01:24",
-      "lastRealtimeVerifiedAt": "2026-11-12 12:43:58",
+      "lastRealtimeVerifiedAt": "2026-11-12 00:01:24",
       "nextScheduledSync": "2026-11-10 24:00:00"
     },
     "summaryCounts": {
@@ -1550,8 +1544,8 @@
       "vendorBilledInclDepositTotal": 7709481,
       "vendorPendingSignoffCount": 4,
       "materialInspectionPdfCount": 52,
-      "materialArrivedTotalAmt": 5109012,
-      "materialWithOrderTotalAmt": 5524308,
+      "materialArrivedTotalAmt": 5706957,
+      "materialWithOrderTotalAmt": 6122253,
       "constructionInspectionPdfCount": 58,
       "constructionCountsBySystem": {
         "E": 17,
@@ -2753,7 +2747,7 @@
           "contractQty": 1188,
           "unitPrice": 24,
           "contractAmt": 28512,
-          "matArrivedQty": null,
+          "matArrivedQty": 337,
           "matArrivedAmt": null,
           "ownerPrevQty": 1112,
           "ownerP5Qty": 552,
@@ -2789,7 +2783,7 @@
           "contractQty": 1457,
           "unitPrice": 15,
           "contractAmt": 21855,
-          "matArrivedQty": null,
+          "matArrivedQty": 1440,
           "matArrivedAmt": null,
           "ownerPrevQty": 1206,
           "ownerP5Qty": 676,
@@ -2825,7 +2819,7 @@
           "contractQty": 403,
           "unitPrice": 33,
           "contractAmt": 13299,
-          "matArrivedQty": null,
+          "matArrivedQty": 129,
           "matArrivedAmt": null,
           "ownerPrevQty": 270,
           "ownerP5Qty": 135,
@@ -2861,7 +2855,7 @@
           "contractQty": 2088,
           "unitPrice": 24,
           "contractAmt": 50112,
-          "matArrivedQty": 1200,
+          "matArrivedQty": 1440,
           "matArrivedAmt": 28800,
           "ownerPrevQty": 1080,
           "ownerP5Qty": 640,
@@ -2897,7 +2891,7 @@
           "contractQty": 33200,
           "unitPrice": 47,
           "contractAmt": 1560400,
-          "matArrivedQty": 20800,
+          "matArrivedQty": 22800,
           "matArrivedAmt": 963500,
           "ownerPrevQty": 0,
           "ownerP5Qty": 0,
@@ -2915,7 +2909,7 @@
           "contractQty": 18500,
           "unitPrice": 26,
           "contractAmt": 481000,
-          "matArrivedQty": 16600,
+          "matArrivedQty": 18100,
           "matArrivedAmt": 358800,
           "ownerPrevQty": 0,
           "ownerP5Qty": 0,
@@ -3437,7 +3431,7 @@
           "contractQty": 1,
           "unitPrice": 568934,
           "contractAmt": 568934,
-          "matArrivedQty": null,
+          "matArrivedQty": 0.05,
           "matArrivedAmt": null,
           "ownerPrevQty": 0.47,
           "ownerP5Qty": 0.36,
@@ -3545,7 +3539,7 @@
           "contractQty": 10620,
           "unitPrice": 24,
           "contractAmt": 254880,
-          "matArrivedQty": 8488,
+          "matArrivedQty": 7848,
           "matArrivedAmt": 199872,
           "ownerPrevQty": 7102,
           "ownerP5Qty": 952,
@@ -3923,7 +3917,7 @@
           "contractQty": 1782,
           "unitPrice": 24,
           "contractAmt": 42768,
-          "matArrivedQty": null,
+          "matArrivedQty": 410,
           "matArrivedAmt": null,
           "ownerPrevQty": 960,
           "ownerP5Qty": 660,
@@ -4175,7 +4169,7 @@
           "contractQty": 1799,
           "unitPrice": 17,
           "contractAmt": 30583,
-          "matArrivedQty": null,
+          "matArrivedQty": 1600,
           "matArrivedAmt": null,
           "ownerPrevQty": 930,
           "ownerP5Qty": 540,
@@ -4463,7 +4457,7 @@
           "contractQty": 110,
           "unitPrice": 135,
           "contractAmt": 14850,
-          "matArrivedQty": null,
+          "matArrivedQty": 110,
           "matArrivedAmt": null,
           "ownerPrevQty": 68,
           "ownerP5Qty": 21,
@@ -4841,7 +4835,7 @@
           "contractQty": 135,
           "unitPrice": 24,
           "contractAmt": 3240,
-          "matArrivedQty": null,
+          "matArrivedQty": 135,
           "matArrivedAmt": null,
           "ownerPrevQty": 100,
           "ownerP5Qty": 0,
@@ -4931,7 +4925,7 @@
           "contractQty": 31,
           "unitPrice": 33,
           "contractAmt": 1023,
-          "matArrivedQty": null,
+          "matArrivedQty": 31,
           "matArrivedAmt": null,
           "ownerPrevQty": 31,
           "ownerP5Qty": 0,
@@ -5184,12 +5178,12 @@
           "subfolder": "LV",
           "rocDate": "115.11.08",
           "isoDate": "2026-11-08",
-          "materialSpec": "弱電線槽材料查驗 (W300×H100mm)",
+          "materialSpec": "弱電線槽材料查驗 (W300×H100mm｜直式315M＋彎頭8只)",
           "fileName": "D11-LV-1151108-1弱電線槽-弱電線槽材料查驗.pdf",
           "fileId": "15BDDXsncXbqbuaa54DHHskHv6avaMQr8",
           "fileUrl": "https://drive.google.com/file/d/15BDDXsncXbqbuaa54DHHskHv6avaMQr8/view",
-          "matchedBoqCode": "壹.甲.三.7.(1)~(4)",
-          "matchedBoqName": "弱電電纜架設備 (鋁製梯型線槽及彎頭 3項 NT$ 511,660)",
+          "matchedBoqCode": "壹.甲.三.7.(1),(2),(4)",
+          "matchedBoqName": "弱電電纜架設備 (鋁製梯型線槽及L/T彎頭 3項 NT$ 511,660)",
           "resultStatus": "材料查驗合格 (○)"
         },
         {
@@ -5197,12 +5191,12 @@
           "subfolder": "E",
           "rocDate": "115.11.08",
           "isoDate": "2026-11-08",
-          "materialSpec": "動力線槽材料查驗 (W400×H100mm)",
+          "materialSpec": "動力線槽材料查驗 (W400×H100mm｜直式81只＋彎頭4只)",
           "fileName": "D11-E-1151108-1-動力線槽材料查驗.pdf",
           "fileId": "1pmA3RMfuuzsIq55qiBN6_ASYtNYE2_TF",
           "fileUrl": "https://drive.google.com/file/d/1pmA3RMfuuzsIq55qiBN6_ASYtNYE2_TF/view",
-          "matchedBoqCode": "壹.甲.三.3.(3)~(6)",
-          "matchedBoqName": "電力電纜架設備 (鋁製梯型線槽及彎頭 3項 NT$ 169,081)",
+          "matchedBoqCode": "壹.甲.三.3.(3),(4),(6)",
+          "matchedBoqName": "電力電纜架設備 (鋁製梯型線槽及L/T彎頭 3項 NT$ 169,081)",
           "resultStatus": "材料查驗合格 (○)"
         },
         {
@@ -5210,12 +5204,12 @@
           "subfolder": "E",
           "rocDate": "115.11.07",
           "isoDate": "2026-11-07",
-          "materialSpec": "PVC-E 電線導管材料查驗 (3/4\" 40支=160M)",
+          "materialSpec": "PVC-E 電線導管材料查驗 (3/4\" 80支=320M)",
           "fileName": "D11-E-1151107-01-PVC-E管.pdf",
           "fileId": "1KJG9eTUXOPUnjnkKscyAWPTPFS9qLttu",
           "fileUrl": "https://drive.google.com/file/d/1KJG9eTUXOPUnjnkKscyAWPTPFS9qLttu/view",
-          "matchedBoqCode": "壹.甲.三.5.(18)",
-          "matchedBoqName": "南亞硬質 PVC-E 電導管 20mm (含電信預埋管共用送審)",
+          "matchedBoqCode": "壹.甲.三.8.(20) / 9.(14) / 10.(10)",
+          "matchedBoqName": "南亞硬質 PVC-E 電導管 20mm 320M (安全監視160M・門禁80M・求救80M｜NT$ 7,680)",
           "resultStatus": "材料查驗合格 (○)"
         },
         {
@@ -5223,12 +5217,12 @@
           "subfolder": "WP",
           "rocDate": "115.10.31",
           "isoDate": "2026-10-31",
-          "materialSpec": "SUS304 不鏽鋼管材料查驗 (Sch-20S 被覆管)",
+          "materialSpec": "SUS304 不鏽鋼管材料查驗 (Sch-20S 被覆管 156M)",
           "fileName": "D11-WP-1151031-1-不銹鋼管材料.pdf",
           "fileId": "1nKdXvO4FoJqL-Qtazlkb8qVzRSwRrIUe",
           "fileUrl": "https://drive.google.com/file/d/1nKdXvO4FoJqL-Qtazlkb8qVzRSwRrIUe/view",
           "matchedBoqCode": "壹.甲.三.12.(80).1~(80).4",
-          "matchedBoqName": "SUS304 不鏽鋼冷水管 Sch-20S (2-1/2\"~5\")",
+          "matchedBoqName": "SUS304 冷水管 Sch-20S (65mm 72M・75mm 42M・100mm 30M・125mm 12M｜NT$ 291,618 已銷帳)",
           "resultStatus": "材料查驗合格 (○)"
         },
         {
@@ -5236,12 +5230,12 @@
           "subfolder": "E",
           "rocDate": "115.10.31",
           "isoDate": "2026-10-31",
-          "materialSpec": "電線電纜材料查驗 (600V PVC 絕緣電線)",
+          "materialSpec": "電線電纜材料查驗 (2.0mm 1,500M ＋ 5.5mm² 2,000M)",
           "fileName": "D11-E-1151031-02-電線電纜材料.pdf",
           "fileId": "1ovveE0ol5NgV-uS8Kxv8Djd6Cb6mWFuF",
           "fileUrl": "https://drive.google.com/file/d/1ovveE0ol5NgV-uS8Kxv8Djd6Cb6mWFuF/view",
-          "matchedBoqCode": "壹.甲.三.2.(29)~(31)",
-          "matchedBoqName": "照明與動力系統 600V PVC 絕緣電線",
+          "matchedBoqCode": "壹.甲.三.2.(29),(30)",
+          "matchedBoqName": "伸泰 600V PVC 絕緣電線 2.0mm(累計15,300M) ＆ 5.5mm²(累計22,500M)｜本次 NT$ 133,000",
           "resultStatus": "材料查驗合格 (○)"
         },
         {
@@ -5249,12 +5243,12 @@
           "subfolder": "E",
           "rocDate": "115.10.31",
           "isoDate": "2026-10-31",
-          "materialSpec": "PVC-E 電導管材料查驗",
+          "materialSpec": "PVC-E 電導管材料查驗 (4分 120M ＋ 6分 320M)",
           "fileName": "D11-E-1151031-01-PVC-E管材料.pdf",
           "fileId": "1rrA-SUTXeYfEMzyJxTb60kzW5Hp3rpG_",
           "fileUrl": "https://drive.google.com/file/d/1rrA-SUTXeYfEMzyJxTb60kzW5Hp3rpG_/view",
-          "matchedBoqCode": "壹.甲.三.2.(54)~(57)",
-          "matchedBoqName": "南亞硬質 PVC-E 電導管材",
+          "matchedBoqCode": "壹.甲.三.8.(20) / 9.(14) / 10.(10) / 11.(17)",
+          "matchedBoqName": "弱電與廣播南亞 PVC-E 管 440M (監視80M・門禁80M・求救160M・廣播120M｜NT$ 10,080)",
           "resultStatus": "材料查驗合格 (○)"
         },
         {
@@ -5262,12 +5256,12 @@
           "subfolder": "WP",
           "rocDate": "115.10.29",
           "isoDate": "2026-10-29",
-          "materialSpec": "SUS304 不鏽鋼壓接管件材料查驗",
+          "materialSpec": "SUS304 不鏽鋼壓接管件材料查驗 (7規格共 101只)",
           "fileName": "D11-WP-1151029-1-不鏽鋼壓接另件.pdf",
           "fileId": "19k12vAWbfeXe5EhMC2bdwjk5k66lX-Xk",
           "fileUrl": "https://drive.google.com/file/d/19k12vAWbfeXe5EhMC2bdwjk5k66lX-Xk/view",
-          "matchedBoqCode": "壹.甲.三.12.(79)",
-          "matchedBoqName": "SUS304 不鏽鋼壓接彎頭、三通及接頭另件",
+          "matchedBoqCode": "壹.甲.三.12.(79).6",
+          "matchedBoqName": "竑鉞 Hun Yue SUS304 雙壓著彎頭、三通及異徑接頭 101 只 (折算 0.05 式 NT$ 28,447)",
           "resultStatus": "材料查驗合格 (○)"
         },
         {
@@ -5305,7 +5299,7 @@
           "fileName": "D11-E-1151019-01-電線電纜.pdf",
           "fileId": "1f3kLcsBJxLd8E8lD7JkzaPXtz0UtYUDW",
           "fileUrl": "https://drive.google.com/file/d/1f3kLcsBJxLd8E8lD7JkzaPXtz0UtYUDW/view",
-          "matchedBoqCode": "壹.甲.三.2.(29),(31)",
+          "matchedBoqCode": "壹.甲.三.2.(29),(30)",
           "matchedBoqName": "伸泰 600V PVC 絕緣電線 2.0mm & 5.5mm²",
           "resultStatus": "材料查驗合格 (○)"
         },
@@ -5327,12 +5321,12 @@
           "subfolder": "E",
           "rocDate": "115.10.12",
           "isoDate": "2026-10-12",
-          "materialSpec": "避雷針基礎座材料查驗",
+          "materialSpec": "避雷針基礎座材料查驗 (1座滿額)",
           "fileName": "D11-E-1151012-02-避雷針基礎座材料.pdf",
           "fileId": "196SCKHS3jfPqAer1zGMa--j09Eszcn_v",
           "fileUrl": "https://drive.google.com/file/d/196SCKHS3jfPqAer1zGMa--j09Eszcn_v/view",
           "matchedBoqCode": "壹.甲.三.4.(4)",
-          "matchedBoqName": "避雷針 RC 基礎台及基礎螺栓座 (1座)",
+          "matchedBoqName": "避雷針 RC 基礎台及基礎螺栓座 1 座 (NT$ 8,598)",
           "resultStatus": "材料查驗合格 (○)"
         },
         {
@@ -5344,7 +5338,7 @@
           "fileName": "D11-E-1151012-01-電線電纜材料.pdf",
           "fileId": "1jFEEbhDwASOyIaGHhWo7Yr0ygYrVqhug",
           "fileUrl": "https://drive.google.com/file/d/1jFEEbhDwASOyIaGHhWo7Yr0ygYrVqhug/view",
-          "matchedBoqCode": "壹.甲.三.2.(29)~(34)",
+          "matchedBoqCode": "壹.甲.三.2.(29),(30)",
           "matchedBoqName": "伸泰 600V PVC 絕緣電線及絞線",
           "resultStatus": "材料查驗合格 (○)"
         },
@@ -5353,12 +5347,12 @@
           "subfolder": "F",
           "rocDate": "115.10.07",
           "isoDate": "2026-10-07",
-          "materialSpec": "滅火器箱及室內綜合消防栓底箱材料查驗",
+          "materialSpec": "滅火器底箱(16只)及室內綜合消防栓底箱(12組)查驗",
           "fileName": "D11-F-1151007-1-滅火器箱及消防底箱.pdf",
           "fileId": "1IlVbl4GMndQGOoWFdEvHo_JRuo2IhN5P",
           "fileUrl": "https://drive.google.com/file/d/1IlVbl4GMndQGOoWFdEvHo_JRuo2IhN5P/view",
-          "matchedBoqCode": "壹.甲.三.14.(2)",
-          "matchedBoqName": "SUS304 室內綜合消防栓底箱及滅火器箱體預埋查驗",
+          "matchedBoqCode": "壹.甲.三.14.(2).4,(2).5",
+          "matchedBoqName": "禾昌/虹元黑鐵 2.0mm 滅火器底箱 16只($56,000) ＆ 綜合消防栓底箱 12組先行預埋",
           "resultStatus": "材料查驗合格 (○)"
         },
         {
@@ -5379,12 +5373,12 @@
           "subfolder": "E",
           "rocDate": "115.10.01",
           "isoDate": "2026-10-01",
-          "materialSpec": "PVC-E 電導管材料查驗",
+          "materialSpec": "消防預埋 PVC-E 電導管查驗 (4分1,440M・6分1,600M・1吋160M)",
           "fileName": "D11-E-1151001-1-PVC-E管.pdf",
           "fileId": "1D23-omddmnJcWQlbOb8Ko6eOYqAEMwP7",
           "fileUrl": "https://drive.google.com/file/d/1D23-omddmnJcWQlbOb8Ko6eOYqAEMwP7/view",
-          "matchedBoqCode": "壹.甲.三.2.(54)~(56)",
-          "matchedBoqName": "南亞硬質 PVC-E 電導管材",
+          "matchedBoqCode": "壹.甲.三.14.(1).17,(1).18 / 14.(3).18,(3).19",
+          "matchedBoqName": "火警與緊急廣播系統南亞 PVC-E 預埋管共 3,200M (4項 NT$ 54,080)",
           "resultStatus": "材料查驗合格 (○)"
         },
         {
@@ -5396,7 +5390,7 @@
           "fileName": "D11-E-1150924-01-電線電纜-5.5.pdf",
           "fileId": "12MnglOB1-waVsMV_18H0p2QwGgpBhA6a",
           "fileUrl": "https://drive.google.com/file/d/12MnglOB1-waVsMV_18H0p2QwGgpBhA6a/view",
-          "matchedBoqCode": "壹.甲.三.2.(31)",
+          "matchedBoqCode": "壹.甲.三.2.(30)",
           "matchedBoqName": "伸泰 600V PVC 絕緣電線絞線 5.5mm²",
           "resultStatus": "材料查驗合格 (○)"
         },
@@ -5422,7 +5416,7 @@
           "fileName": "D11-E-1150922-01-電線電纜-5.5&2.0.pdf",
           "fileId": "1s_ADpJph3yczs8UVLrBS3aEpByyp40YO",
           "fileUrl": "https://drive.google.com/file/d/1s_ADpJph3yczs8UVLrBS3aEpByyp40YO/view",
-          "matchedBoqCode": "壹.甲.三.2.(29),(31)",
+          "matchedBoqCode": "壹.甲.三.2.(29),(30)",
           "matchedBoqName": "伸泰 600V PVC 絕緣電線 2.0mm & 5.5mm²",
           "resultStatus": "材料查驗合格 (○)"
         },
@@ -5449,7 +5443,7 @@
           "fileId": "1Z8GlQhuiWC5JC4wNdVZOEXosUCDsiNKV",
           "fileUrl": "https://drive.google.com/file/d/1Z8GlQhuiWC5JC4wNdVZOEXosUCDsiNKV/view",
           "matchedBoqCode": "壹.甲.三.14.(1).14,(2).15",
-          "matchedBoqName": "伸泰 380℃ 15分鐘 HR 1.6mm 火警耐熱線",
+          "matchedBoqName": "伸泰 380℃ 15分鐘 HR 1.6mm 火警耐熱線 (累計 2,400M)",
           "resultStatus": "材料查驗合格 (○)"
         },
         {
@@ -5461,7 +5455,7 @@
           "fileName": "D11-E-1150918-01-電線電纜-5.5.pdf",
           "fileId": "1qZsIcD1G2aS46YxRRQ-uPjXGgnBeYM4_",
           "fileUrl": "https://drive.google.com/file/d/1qZsIcD1G2aS46YxRRQ-uPjXGgnBeYM4_/view",
-          "matchedBoqCode": "壹.甲.三.2.(31)",
+          "matchedBoqCode": "壹.甲.三.2.(30)",
           "matchedBoqName": "伸泰 600V PVC 絕緣電線絞線 5.5mm²",
           "resultStatus": "材料查驗合格 (○)"
         },
@@ -5475,7 +5469,7 @@
           "fileId": "12GUtCKdMefco8YbeGmE3CJlsDfNi2O5s",
           "fileUrl": "https://drive.google.com/file/d/12GUtCKdMefco8YbeGmE3CJlsDfNi2O5s/view",
           "matchedBoqCode": "壹.甲.三.14.(1).11,(1).14",
-          "matchedBoqName": "伸泰耐熱對絞銅網信號隔離線與火警耐熱線",
+          "matchedBoqName": "伸泰耐熱對絞銅網信號隔離線 600M 與火警耐熱線 1,200M",
           "resultStatus": "材料查驗合格 (○)"
         },
         {
@@ -5487,7 +5481,7 @@
           "fileName": "D11-E-1150907-02-PVC管材4&6分.pdf",
           "fileId": "1aaTgJ4xkifELmExEZqX2twpx5V9QCksq",
           "fileUrl": "https://drive.google.com/file/d/1aaTgJ4xkifELmExEZqX2twpx5V9QCksq/view",
-          "matchedBoqCode": "壹.甲.三.2.(54),(55) / 5.(18) / 11.(17)",
+          "matchedBoqCode": "壹.甲.三.2.(54),(55) / 5.(18) / 11.(17),(18)",
           "matchedBoqName": "南亞硬質 PVC-E 電導管 16mm & 20mm (含電信/廣播共用)",
           "resultStatus": "材料查驗合格 (○)"
         },
@@ -5500,7 +5494,7 @@
           "fileName": "D11-E-1150907-01-電線電纜-5.5&2.0.pdf",
           "fileId": "1oSLPtREG9xKFn0xzxHWY2uVgVaAZb7yh",
           "fileUrl": "https://drive.google.com/file/d/1oSLPtREG9xKFn0xzxHWY2uVgVaAZb7yh/view",
-          "matchedBoqCode": "壹.甲.三.2.(29),(31)",
+          "matchedBoqCode": "壹.甲.三.2.(29),(30)",
           "matchedBoqName": "伸泰 600V PVC 絕緣電線 2.0mm & 5.5mm²",
           "resultStatus": "材料查驗合格 (○)"
         },
@@ -5522,7 +5516,7 @@
           "subfolder": "E",
           "rocDate": "115.09.01",
           "isoDate": "2026-09-01",
-          "materialSpec": "PVC-E 管材 6分 (20mm)",
+          "materialSpec": "PVC-E 管材 6分 (20mm 300支=1,200M)",
           "fileName": "D11-E-1150901-02-PVC管材6分.pdf",
           "fileId": "1wfNKvyUfzPgPMjk6aWRXBF0Ukei3Llm4",
           "fileUrl": "https://drive.google.com/file/d/1wfNKvyUfzPgPMjk6aWRXBF0Ukei3Llm4/view",
@@ -5535,12 +5529,12 @@
           "subfolder": "E",
           "rocDate": "115.09.01",
           "isoDate": "2026-09-01",
-          "materialSpec": "無螺紋電線用鋼管 EMT E31 (1\")",
+          "materialSpec": "無螺紋電線用鋼管 EMT E31 (1\" 100支=366M)",
           "fileName": "D11-E-1150901-01-EMT 31.pdf",
           "fileId": "1Sjtx0PhCLtvOCyNMlYTa8RXzHmmPDFFJ",
           "fileUrl": "https://drive.google.com/file/d/1Sjtx0PhCLtvOCyNMlYTa8RXzHmmPDFFJ/view",
           "matchedBoqCode": "壹.甲.三.2.(63)",
-          "matchedBoqName": "遠東無螺紋鍍鋅鋼管 EMT E31 (100支=366M)",
+          "matchedBoqName": "遠東無螺紋鍍鋅鋼管 EMT E31 (累計 732M)",
           "resultStatus": "材料查驗合格 (○)"
         },
         {
@@ -5591,7 +5585,7 @@
           "fileName": "D11-E-1150730-01-電線電纜-5.5&2.0.pdf",
           "fileId": "1WnYPlOxgagOkXlTesQ9ZNiPV_600okBD",
           "fileUrl": "https://drive.google.com/file/d/1WnYPlOxgagOkXlTesQ9ZNiPV_600okBD/view",
-          "matchedBoqCode": "壹.甲.三.2.(29),(31)",
+          "matchedBoqCode": "壹.甲.三.2.(29),(30)",
           "matchedBoqName": "伸泰 600V PVC 絕緣電線 2.0mm & 5.5mm²",
           "resultStatus": "材料查驗合格 (○)"
         },
@@ -5643,7 +5637,7 @@
           "fileName": "D11-E-1150611-01-PVC(E)3分6分1吋半.pdf",
           "fileId": "1gbqZj0HUZ1kXLgu16_3uIaOShGuvUETb",
           "fileUrl": "https://drive.google.com/file/d/1gbqZj0HUZ1kXLgu16_3uIaOShGuvUETb/view",
-          "matchedBoqCode": "壹.甲.三.2.(55),(57) / 5.(18) / 11.(19)",
+          "matchedBoqCode": "壹.甲.三.2.(54),(55) / 5.(18) / 11.(19)",
           "matchedBoqName": "南亞硬質 PVC-E 電導管 (含電信/廣播共用)",
           "resultStatus": "材料查驗合格 (○)"
         },
@@ -5665,12 +5659,12 @@
           "subfolder": "E",
           "rocDate": "115.05.21",
           "isoDate": "2026-05-21",
-          "materialSpec": "無螺紋電線用鋼管 EMT 管查驗",
+          "materialSpec": "無螺紋電線用鋼管 EMT 管查驗 (E31 366M ＋ E39 110M)",
           "fileName": "D11-E-1150521-1-EMT管.pdf",
           "fileId": "1duwb4hadIdKjtIyXBeL4hboCUUIoc8eb",
           "fileUrl": "https://drive.google.com/file/d/1duwb4hadIdKjtIyXBeL4hboCUUIoc8eb/view",
-          "matchedBoqCode": "壹.甲.三.2.(63)",
-          "matchedBoqName": "遠東無螺紋鍍鋅鋼管 EMT E31 (前期 366M)",
+          "matchedBoqCode": "壹.甲.三.2.(63),(64)",
+          "matchedBoqName": "遠東無螺紋鍍鋅鋼管 EMT E31 (366M) ＆ E39 (110M 100%滿額)",
           "resultStatus": "材料查驗合格 (○)"
         },
         {
@@ -5730,7 +5724,7 @@
           "subfolder": "E",
           "rocDate": "115.03.26",
           "isoDate": "2026-03-26",
-          "materialSpec": "PVC-E 電導管 6分 (20mm)",
+          "materialSpec": "PVC-E 電導管 6分 (20mm 1,200M 滿額)",
           "fileName": "D11-E-1150326-01-PVC管材6分.pdf",
           "fileId": "1L64rAF-uva2fQQk8bQOGuT1mYCxQCfD4",
           "fileUrl": "https://drive.google.com/file/d/1L64rAF-uva2fQQk8bQOGuT1mYCxQCfD4/view",
@@ -5782,12 +5776,12 @@
           "subfolder": "F",
           "rocDate": "115.03.20",
           "isoDate": "2026-03-20",
-          "materialSpec": "消防預塗裝鍍鋅鋼管 CNS 6445 SGP 3\"",
+          "materialSpec": "消防預塗裝鍍鋅鋼管 CNS 6445 SGP 3\" (60M)",
           "fileName": "D11-F-1150320-1-鍍鋅鋼管.pdf",
           "fileId": "1M2yhqnAV24sCCFc3V_QVaz5afB_ImN3y",
           "fileUrl": "https://drive.google.com/file/d/1M2yhqnAV24sCCFc3V_QVaz5afB_ImN3y/view",
           "matchedBoqCode": "壹.甲.三.14.(2).11",
-          "matchedBoqName": "室內消防栓系統預塗裝鍍鋅鋼管 3吋 (60M)",
+          "matchedBoqName": "室內消防栓系統預塗裝鍍鋅鋼管 3吋 60M (NT$ 37,020)",
           "resultStatus": "材料查驗合格 (○)"
         },
         {
@@ -5808,11 +5802,11 @@
           "subfolder": "E",
           "rocDate": "115.03.13",
           "isoDate": "2026-03-13",
-          "materialSpec": "PVC-E 各徑電導管材 (1-1/2\"~4\")",
+          "materialSpec": "PVC-E 各徑電導管材 (1/2\"~4\")",
           "fileName": "D11-E-1150313-01-PVC管材.pdf",
           "fileId": "1pYKjDjNVyp409fLfL7cZcbKaGKoxcOt-",
           "fileUrl": "https://drive.google.com/file/d/1pYKjDjNVyp409fLfL7cZcbKaGKoxcOt-/view",
-          "matchedBoqCode": "壹.甲.三.2.(57)~(60) / 5.(20),(21)",
+          "matchedBoqCode": "壹.甲.三.2.(54)~(60) / 5.(20),(21)",
           "matchedBoqName": "南亞硬質 PVC-E 電導管 (含電信資訊幹管)",
           "resultStatus": "材料查驗合格 (○)"
         },
@@ -5825,7 +5819,7 @@
           "fileName": "D11-E-1150223-01-接地電線.pdf",
           "fileId": "1tss0LI7MWY-O-RnRIbGLYx9e1uloJwfU",
           "fileUrl": "https://drive.google.com/file/d/1tss0LI7MWY-O-RnRIbGLYx9e1uloJwfU/view",
-          "matchedBoqCode": "壹.甲.三.4.(8)~(10)",
+          "matchedBoqCode": "壹.甲.三.2.(32) / 4.(8)~(10)",
           "matchedBoqName": "避雷接地系統 PVC 接地絞線與 BCW 裸銅線",
           "resultStatus": "材料查驗合格 (○)"
         },
@@ -5834,12 +5828,12 @@
           "subfolder": "E",
           "rocDate": "115.02.10",
           "isoDate": "2026-02-10",
-          "materialSpec": "接地用 PVC-E 導線管 (20mm/28mm)",
+          "materialSpec": "接地用 PVC-E 導線管 (20mm 80M / 28mm 100M)",
           "fileName": "D11-E-1150210-02-PVC管材.pdf",
           "fileId": "1wZySGY9TTq-uWc0ILRz6R6uqMowEqZKR",
           "fileUrl": "https://drive.google.com/file/d/1wZySGY9TTq-uWc0ILRz6R6uqMowEqZKR/view",
           "matchedBoqCode": "壹.甲.三.4.(5),(6)",
-          "matchedBoqName": "避雷接地保護用硬質 PVC-E 導線管",
+          "matchedBoqName": "避雷接地保護用硬質 PVC-E 導線管 (100% 滿額)",
           "resultStatus": "材料查驗合格 (○)"
         },
         {
@@ -5847,7 +5841,7 @@
           "subfolder": "E",
           "rocDate": "115.02.10",
           "isoDate": "2026-02-10",
-          "materialSpec": "接地銅棒材料查驗 (3/4\"×10')",
+          "materialSpec": "接地銅棒材料查驗 (3/4\"×10' 10支)",
           "fileName": "D11-E-1150210-01-接地銅棒.pdf",
           "fileId": "1po5hhVjUhnOgJZMtUf2vDjzMTaBMIgsh",
           "fileUrl": "https://drive.google.com/file/d/1po5hhVjUhnOgJZMtUf2vDjzMTaBMIgsh/view",
@@ -6791,7 +6785,7 @@
           "installRatePct": 0,
           "diffTag": "MAT_ARRIVED_PENDING_CONST",
           "diffStatus": "材料已查驗進場 (600M)，待現場施工查驗／丈量計價",
-          "matchedMatDocs": "D11-F-1150918-01、D11-F-1150907-01、D03-F-1150320-3",
+          "matchedMatDocs": "D11-F-1150918-01、D11-F-1150907-01、D11-F-1150320-1",
           "matchedConstDocs": "-"
         },
         {
@@ -6896,7 +6890,7 @@
           "installRatePct": 0,
           "diffTag": "MAT_ARRIVED_PENDING_CONST",
           "diffStatus": "材料已查驗進場 (60M)，待現場施工查驗／丈量計價",
-          "matchedMatDocs": "D11-F-1150918-01、D11-F-1150907-01、D03-F-1150320-3",
+          "matchedMatDocs": "D11-F-1150918-01、D11-F-1150907-01、D11-F-1150320-1",
           "matchedConstDocs": "-"
         },
         {
@@ -6917,7 +6911,7 @@
           "installRatePct": 0,
           "diffTag": "MAT_ARRIVED_PENDING_CONST",
           "diffStatus": "材料已查驗進場 (50M)，待現場施工查驗／丈量計價",
-          "matchedMatDocs": "D11-E-1151012-02、D03-E-1150223-01、D03-E-1150210-01",
+          "matchedMatDocs": "D11-E-1151012-02、D11-E-1150223-01、D11-E-1150210-01",
           "matchedConstDocs": "-"
         },
         {
@@ -6959,7 +6953,7 @@
           "installRatePct": 0,
           "diffTag": "MAT_ARRIVED_PENDING_CONST",
           "diffStatus": "材料已查驗進場 (2155M)，待現場施工查驗／丈量計價",
-          "matchedMatDocs": "D11-F-1150918-01、D11-F-1150907-01、D03-F-1150320-3",
+          "matchedMatDocs": "D11-F-1150918-01、D11-F-1150907-01、D11-F-1150320-1",
           "matchedConstDocs": "-"
         },
         {
@@ -7064,7 +7058,7 @@
           "installRatePct": 0,
           "diffTag": "MAT_ARRIVED_PENDING_CONST",
           "diffStatus": "材料已查驗進場 (1座)，待現場施工查驗／丈量計價",
-          "matchedMatDocs": "D11-E-1151012-02、D03-E-1150223-01、D03-E-1150210-01",
+          "matchedMatDocs": "D11-E-1151012-02、D11-E-1150223-01、D11-E-1150210-01",
           "matchedConstDocs": "-"
         },
         {
@@ -7127,7 +7121,7 @@
           "installRatePct": 0,
           "diffTag": "MAT_ARRIVED_PENDING_CONST",
           "diffStatus": "材料已查驗進場 (245M)，待現場施工查驗／丈量計價",
-          "matchedMatDocs": "D11-F-1150918-01、D11-F-1150907-01、D03-F-1150320-3",
+          "matchedMatDocs": "D11-F-1150918-01、D11-F-1150907-01、D11-F-1150320-1",
           "matchedConstDocs": "-"
         },
         {
@@ -7946,7 +7940,7 @@
           "installRatePct": 100,
           "diffTag": "MATCHED_EXACT",
           "diffStatus": "材料查驗數量與施工完成數量一致",
-          "matchedMatDocs": "D11-E-1151012-02、D03-E-1150223-01、D03-E-1150210-01",
+          "matchedMatDocs": "D11-E-1151012-02、D11-E-1150223-01、D11-E-1150210-01",
           "matchedConstDocs": "C08-E-1150227-01"
         },
         {
@@ -7973,18 +7967,18 @@
       ]
     },
     "threeWayQtyDiff": {
-      "generatedAt": "2026-11-12 09:00:00",
+      "generatedAt": "2026-11-12 12:00:00",
       "sources": {
         "matSource": "二期機電標單(D11進場總表)＋機電二期查驗單統計表(材料統計表)",
         "constSource": "機電二期查驗單統計表(施工統計表 C08/C10 實測數量)",
         "ownerSource": "仁德國小(第二期)-工程估驗計價(第5期).xls 累計至本期數量"
       },
       "counts": {
-        "totalItems": 78,
+        "totalItems": 88,
         "constGtOwnerCount": 3,
         "ownerGtConstCount": 27,
-        "matGtConstCount": 52,
-        "constGtMatCount": 16,
+        "matGtConstCount": 66,
+        "constGtMatCount": 11,
         "ownerOverContractCount": 8,
         "matchedAllThreeCount": 2
       },
@@ -7994,84 +7988,84 @@
           "sysName": "電氣與避雷接地系統 (E)",
           "matPdfCount": 28,
           "constPdfCount": 17,
-          "itemCount": 19,
+          "itemCount": 23,
           "contractQtySum": 67131,
-          "matQtySum": 52193,
+          "matQtySum": 57888,
           "constQtySum": 13575,
           "ownerQtySum": 17379,
           "contractAmtSum": 2748978,
-          "matAmtSum": 1942628,
+          "matAmtSum": 2883559,
           "constAmtSum": 458586,
           "ownerAmtSum": 585761,
-          "diffABSum": 38618,
+          "diffABSum": 44313,
           "diffBCSum": -3804,
-          "diffACSum": 34814,
-          "diffABAmt": 1484042,
+          "diffACSum": 40509,
+          "diffABAmt": 2424973,
           "diffBCAmt": -127175,
-          "diffACAmt": 1356867
+          "diffACAmt": 2297798
         },
         {
           "disc": "WP",
           "sysName": "給排水衛生設備系統 (WP)",
           "matPdfCount": 19,
           "constPdfCount": 16,
-          "itemCount": 35,
+          "itemCount": 36,
           "contractQtySum": 5821,
-          "matQtySum": 5939,
+          "matQtySum": 5939.05,
           "constQtySum": 2274,
           "ownerQtySum": 2830.37,
           "contractAmtSum": 3598601,
-          "matAmtSum": 1364561,
+          "matAmtSum": 1393008,
           "constAmtSum": 316260,
           "ownerAmtSum": 1538408,
-          "diffABSum": 3665,
+          "diffABSum": 3665.05,
           "diffBCSum": -556.37,
-          "diffACSum": 3108.63,
-          "diffABAmt": 1048301,
+          "diffACSum": 3108.68,
+          "diffABAmt": 1076748,
           "diffBCAmt": -1222148,
-          "diffACAmt": -173847
+          "diffACAmt": -145400
         },
         {
           "disc": "LV",
           "sysName": "弱電與電信資訊系統 (LV)",
           "matPdfCount": 1,
           "constPdfCount": 12,
-          "itemCount": 7,
+          "itemCount": 10,
           "contractQtySum": 16548,
-          "matQtySum": 10810,
+          "matQtySum": 11480,
           "constQtySum": 11327,
           "ownerQtySum": 14005,
           "contractAmtSum": 457512,
-          "matAmtSum": 295562,
+          "matAmtSum": 815550,
           "constAmtSum": 335062,
           "ownerAmtSum": 396436,
-          "diffABSum": -517,
+          "diffABSum": 153,
           "diffBCSum": -2678,
-          "diffACSum": -3195,
-          "diffABAmt": -39500,
+          "diffACSum": -2525,
+          "diffABAmt": 480488,
           "diffBCAmt": -61374,
-          "diffACAmt": -100874
+          "diffACAmt": 419114
         },
         {
           "disc": "F",
           "sysName": "消防系統設備工程 (F)",
           "matPdfCount": 4,
           "constPdfCount": 9,
-          "itemCount": 14,
+          "itemCount": 16,
           "contractQtySum": 11058,
-          "matQtySum": 3060,
+          "matQtySum": 6288,
           "constQtySum": 2778,
           "ownerQtySum": 4153.28,
           "contractAmtSum": 4144986,
-          "matAmtSum": 125820,
+          "matAmtSum": 535900,
           "constAmtSum": 50054,
           "ownerAmtSum": 443651,
-          "diffABSum": 282,
+          "diffABSum": 3510,
           "diffBCSum": -1375.28,
-          "diffACSum": -1093.28,
-          "diffABAmt": 75766,
+          "diffACSum": 2134.72,
+          "diffABAmt": 485846,
           "diffBCAmt": -393597,
-          "diffACAmt": -317831
+          "diffACAmt": 92249
         },
         {
           "disc": "PA",
@@ -8080,25 +8074,25 @@
           "constPdfCount": 4,
           "itemCount": 3,
           "contractQtySum": 3534,
-          "matQtySum": 3305,
+          "matQtySum": 3440,
           "constQtySum": 1646,
           "ownerQtySum": 2228,
           "contractAmtSum": 90840,
-          "matAmtSum": 75700,
+          "matAmtSum": 78940,
           "constAmtSum": 33320,
           "ownerAmtSum": 44960,
-          "diffABSum": 1659,
+          "diffABSum": 1794,
           "diffBCSum": -582,
-          "diffACSum": 1077,
-          "diffABAmt": 42380,
+          "diffACSum": 1212,
+          "diffABAmt": 45620,
           "diffBCAmt": -11640,
-          "diffACAmt": 30740
+          "diffACAmt": 33980
         }
       ],
       "totals": {
         "matPdfCount": 52,
         "constPdfCount": 58,
-        "itemCount": 78,
+        "itemCount": 88,
         "contractQtySum": 104092,
         "matQtySum": 72047,
         "constQtySum": 31600,
@@ -8107,12 +8101,12 @@
         "diffBCSum": -8995.65,
         "diffACSum": 31451.35,
         "contractAmtSum": 11040917,
-        "matAmtSum": 3804271,
+        "matAmtSum": 5706957,
         "constAmtSum": 1193282,
         "ownerAmtSum": 3009216,
-        "diffABAmt": 2610989,
+        "diffABAmt": 4513675,
         "diffBCAmt": -1815934,
-        "diffACAmt": 795055
+        "diffACAmt": 2697741
       },
       "items": [
         {
@@ -8139,7 +8133,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "施工大於業主計價 (+126M)｜現場實作超契約上限卡控未計價",
-          "matDocRef": "1150701-D03-E-1150701-01-PVC(E)1吋",
+          "matDocRef": "D11-E-1150818-01-PVC(E)4分1吋.pdf",
           "constDocRef": "C08-LV-1150629、C08-LV-1150723、C10-LV-1150812"
         },
         {
@@ -8165,7 +8159,7 @@
             "CONST_GT_MAT"
           ],
           "statusText": "施工大於業主計價 (+700M)｜現場實作超契約上限卡控未計價",
-          "matDocRef": "1150326-D03-E-1150326-01-PVC管材6分",
+          "matDocRef": "D11-E-1150326-01-PVC管材6分.pdf",
           "constDocRef": "C08-E-1150515、C08-E-1150530、E-1150629-照明電氣管線設備工程1F頂版AB棟"
         },
         {
@@ -8191,7 +8185,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "施工大於業主計價 (+94M)｜現場實作超契約上限卡控未計價 (只能 計17)",
-          "matDocRef": "1150313-D03-P-1150313-01-PVC管材",
+          "matDocRef": "D11-WP-1151022-01 + 11/02收貨單",
           "constDocRef": "C08-P-1150423、C08-P-1150429、C08-P-1150530"
         },
         {
@@ -8343,7 +8337,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "業主計價超契約 (+2447M) 且大於施工統計表 (3771M)",
-          "matDocRef": "1150313-D03-E-1150313-01-PVC管材、1150611-D03-E-1150611-01-PVC(E)3分6分1吋半",
+          "matDocRef": "D11-E-1150818-01-PVC(E)4分1吋.pdf",
           "constDocRef": "C08-E-1150515、C08-E-1150530、E-1150629-照明電氣管線設備工程1F頂版AB棟"
         },
         {
@@ -8420,7 +8414,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "業主計價超契約 (+139M) 且大於施工統計表 (512M)",
-          "matDocRef": "前期(366M)+09/01(100支×3.66M=36",
+          "matDocRef": "D11-E-1150901-01-EMT 31.pdf",
           "constDocRef": "C08-E-1150530、E-1150629-照明電氣管線設備工程1F頂版AB棟、C08-E-1150723"
         },
         {
@@ -8446,7 +8440,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "業主計價大於施工統計表 (60M)｜請核對跨期抽查單或補登4F/RF施工單",
-          "matDocRef": "05/12(120M)+08/04(204M)=累積32",
+          "matDocRef": "D11-WP-1150804-01-不鏽鋼管1吋半.pdf",
           "constDocRef": "C08-P-1150530、C08-WP-1150723"
         },
         {
@@ -8457,13 +8451,13 @@
           "contractQty": 1188,
           "unitPrice": 24,
           "contractAmt": 28512,
-          "matQty": 0,
+          "matQty": 337,
           "constQty": 1112,
           "ownerQty": 1664,
-          "diffMatMinusConst": -1112,
+          "diffMatMinusConst": -775,
           "diffConstMinusOwner": -552,
-          "diffMatMinusOwner": -1664,
-          "matAmt": 0,
+          "diffMatMinusOwner": -1327,
+          "matAmt": 8088,
           "constAmt": 26688,
           "ownerAmt": 39936,
           "primaryTag": "OWNER_GT_CONST",
@@ -8473,7 +8467,7 @@
             "CONST_GT_MAT"
           ],
           "statusText": "業主計價超契約 (+476M) 且大於施工統計表 (552M)",
-          "matDocRef": "-",
+          "matDocRef": "D11-E-1151107-01-PVC-E管.pdf",
           "constDocRef": "C08-LV-1150530、C08-LV-1150629、C08-LV-1150723"
         },
         {
@@ -8484,13 +8478,13 @@
           "contractQty": 1782,
           "unitPrice": 24,
           "contractAmt": 42768,
-          "matQty": 0,
+          "matQty": 410,
           "constQty": 960,
           "ownerQty": 1620,
-          "diffMatMinusConst": -960,
+          "diffMatMinusConst": -550,
           "diffConstMinusOwner": -660,
-          "diffMatMinusOwner": -1620,
-          "matAmt": 0,
+          "diffMatMinusOwner": -1210,
+          "matAmt": 9840,
           "constAmt": 23040,
           "ownerAmt": 38880,
           "primaryTag": "OWNER_GT_CONST",
@@ -8499,7 +8493,7 @@
             "CONST_GT_MAT"
           ],
           "statusText": "業主計價大於施工統計表 (660M)｜請核對跨期抽查單或補登4F/RF施工單",
-          "matDocRef": "-",
+          "matDocRef": "D11-E-1151107-01-PVC-E管.pdf",
           "constDocRef": "C08-LV-1150629、C08-LV-1150723、C10-LV-1150812"
         },
         {
@@ -8510,13 +8504,13 @@
           "contractQty": 1457,
           "unitPrice": 15,
           "contractAmt": 21855,
-          "matQty": 0,
+          "matQty": 1440,
           "constQty": 1206,
           "ownerQty": 1882,
-          "diffMatMinusConst": -1206,
+          "diffMatMinusConst": 234,
           "diffConstMinusOwner": -676,
-          "diffMatMinusOwner": -1882,
-          "matAmt": 0,
+          "diffMatMinusOwner": -442,
+          "matAmt": 21600,
           "constAmt": 18090,
           "ownerAmt": 28230,
           "primaryTag": "OWNER_GT_CONST",
@@ -8526,7 +8520,7 @@
             "CONST_GT_MAT"
           ],
           "statusText": "業主計價超契約 (+425M) 且大於施工統計表 (676M)",
-          "matDocRef": "-",
+          "matDocRef": "D11-E-1151001-1-PVC-E管.pdf",
           "constDocRef": "C08-F-1150520、C08-LV-1150629、C08-F-1150715"
         },
         {
@@ -8552,7 +8546,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "業主計價大於施工統計表 (102M)｜請核對跨期抽查單或補登4F/RF施工單",
-          "matDocRef": "05/12(120M)+07/20(168M)+09/2",
+          "matDocRef": "D11-WP-1150923-01-不鏽鋼管1吋.pdf",
           "constDocRef": "C08-P-1150530、C08-WP-1150723、C10-WP-1150812"
         },
         {
@@ -8563,13 +8557,13 @@
           "contractQty": 1799,
           "unitPrice": 17,
           "contractAmt": 30583,
-          "matQty": 0,
+          "matQty": 1600,
           "constQty": 930,
           "ownerQty": 1470,
-          "diffMatMinusConst": -930,
+          "diffMatMinusConst": 670,
           "diffConstMinusOwner": -540,
-          "diffMatMinusOwner": -1470,
-          "matAmt": 0,
+          "diffMatMinusOwner": 130,
+          "matAmt": 27200,
           "constAmt": 15810,
           "ownerAmt": 24990,
           "primaryTag": "OWNER_GT_CONST",
@@ -8578,7 +8572,7 @@
             "CONST_GT_MAT"
           ],
           "statusText": "業主計價大於施工統計表 (540M)｜請核對跨期抽查單或補登4F/RF施工單",
-          "matDocRef": "-",
+          "matDocRef": "D11-E-1151001-1-PVC-E管.pdf",
           "constDocRef": "C08-LV-1150629、C10-F-1150812"
         },
         {
@@ -8604,7 +8598,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "業主計價大於施工統計表 (78M)｜請核對跨期抽查單或補登4F/RF施工單",
-          "matDocRef": "03/23(300M)+07/20(84M)=累積384",
+          "matDocRef": "D11-WP-1150720-01-不鏽鋼壓接管&PVC-B管.pdf",
           "constDocRef": "C08-P-1150530、C08-WP-1150629、C08-WP-1150723"
         },
         {
@@ -8615,13 +8609,13 @@
           "contractQty": 10620,
           "unitPrice": 24,
           "contractAmt": 254880,
-          "matQty": 8488,
+          "matQty": 7848,
           "constQty": 7102,
           "ownerQty": 8054,
-          "diffMatMinusConst": 1386,
+          "diffMatMinusConst": 746,
           "diffConstMinusOwner": -952,
-          "diffMatMinusOwner": 434,
-          "matAmt": 203712,
+          "diffMatMinusOwner": -206,
+          "matAmt": 188352,
           "constAmt": 170448,
           "ownerAmt": 193296,
           "primaryTag": "OWNER_GT_CONST",
@@ -8630,7 +8624,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "業主計價大於施工統計表 (952M)｜請核對跨期抽查單或補登4F/RF施工單",
-          "matDocRef": "D11-E-1151107-1 (PVC-E管查驗) + 出貨單115111572",
+          "matDocRef": "D11-E-1150907-02-PVC管材4&6分.pdf",
           "constDocRef": "C08-LV-1150515、C08-LV-1150629、C08-LV-1150723"
         },
         {
@@ -8657,7 +8651,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "業主計價超契約 (+130M) 且大於施工統計表 (284M)",
-          "matDocRef": "03/20(300M)+07/20(246M)=累積54",
+          "matDocRef": "D11-WP-1150720-01-不鏽鋼壓接管&PVC-B管.pdf",
           "constDocRef": "C08-P-1150530、C08-WP-1150629、C08-WP-1150723"
         },
         {
@@ -8683,7 +8677,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "業主計價大於施工統計表 (582M)｜請核對跨期抽查單或補登4F/RF施工單",
-          "matDocRef": "08/18(500M)+09/07(2,525M)=查驗",
+          "matDocRef": "D11-E-1151031-01-PVC-E管材料.pdf",
           "constDocRef": "C08-PA-1150530、C08-LV-1150629、C08-PA-1150723"
         },
         {
@@ -8710,7 +8704,7 @@
             "CONST_GT_MAT"
           ],
           "statusText": "業主計價超契約 (+440M) 且大於施工統計表 (200M)",
-          "matDocRef": "1150210-D03-E-1150210-02-PVC-E管材料查驗、1150313-D03-E-1150313-01-PVC管材",
+          "matDocRef": "D11-E-1150818-01-PVC(E)4分1吋.pdf",
           "constDocRef": "E-1150629-照明電氣管線設備工程1F頂版AB棟、C08-E-1150723、C10-E-1150812"
         },
         {
@@ -8721,13 +8715,13 @@
           "contractQty": 2088,
           "unitPrice": 24,
           "contractAmt": 50112,
-          "matQty": 1200,
+          "matQty": 1440,
           "constQty": 1080,
           "ownerQty": 1720,
-          "diffMatMinusConst": 120,
+          "diffMatMinusConst": 360,
           "diffConstMinusOwner": -640,
-          "diffMatMinusOwner": -520,
-          "matAmt": 28800,
+          "diffMatMinusOwner": -280,
+          "matAmt": 34560,
           "constAmt": 25920,
           "ownerAmt": 41280,
           "primaryTag": "OWNER_GT_CONST",
@@ -8736,7 +8730,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "業主計價大於施工統計表 (640M)｜請核對跨期抽查單或補登4F/RF施工單",
-          "matDocRef": "09/01(300支×4M=1,200M)",
+          "matDocRef": "D11-E-1151107-01-PVC-E管.pdf",
           "constDocRef": "C08-LV-1150629、C08-LV-1150723、C10-LV-1150826"
         },
         {
@@ -8747,13 +8741,13 @@
           "contractQty": 403,
           "unitPrice": 33,
           "contractAmt": 13299,
-          "matQty": 0,
+          "matQty": 129,
           "constQty": 270,
           "ownerQty": 405,
-          "diffMatMinusConst": -270,
+          "diffMatMinusConst": -141,
           "diffConstMinusOwner": -135,
-          "diffMatMinusOwner": -405,
-          "matAmt": 0,
+          "diffMatMinusOwner": -276,
+          "matAmt": 4257,
           "constAmt": 8910,
           "ownerAmt": 13365,
           "primaryTag": "OWNER_GT_CONST",
@@ -8763,7 +8757,7 @@
             "CONST_GT_MAT"
           ],
           "statusText": "業主計價超契約 (+2M) 且大於施工統計表 (135M)",
-          "matDocRef": "-",
+          "matDocRef": "D11-E-1151001-1-PVC-E管.pdf",
           "constDocRef": "C08-LV-1150629、C10-F-1150812"
         },
         {
@@ -8774,13 +8768,13 @@
           "contractQty": 110,
           "unitPrice": 135,
           "contractAmt": 14850,
-          "matQty": 0,
+          "matQty": 110,
           "constQty": 68,
           "ownerQty": 89,
-          "diffMatMinusConst": -68,
+          "diffMatMinusConst": 42,
           "diffConstMinusOwner": -21,
-          "diffMatMinusOwner": -89,
-          "matAmt": 0,
+          "diffMatMinusOwner": 21,
+          "matAmt": 14850,
           "constAmt": 9180,
           "ownerAmt": 12015,
           "primaryTag": "OWNER_GT_CONST",
@@ -8789,7 +8783,7 @@
             "CONST_GT_MAT"
           ],
           "statusText": "業主計價大於施工統計表 (21M)｜請核對跨期抽查單或補登4F/RF施工單",
-          "matDocRef": "-",
+          "matDocRef": "D11-E-1150521-1-EMT管.pdf",
           "constDocRef": "C08-E-1150530、E-1150629-照明電氣管線設備工程1F頂版AB棟、C08-E-1150723"
         },
         {
@@ -8840,7 +8834,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "業主計價大於施工統計表 (120M)｜請核對跨期抽查單或補登4F/RF施工單",
-          "matDocRef": "1150313-D03-P-1150313-01-PVC管材",
+          "matDocRef": "D11-WP-1150720-01-不鏽鋼壓接管&PVC-B管.pdf",
           "constDocRef": "C08-P-1150423、C08-P-1150429、C08-P-1150530"
         },
         {
@@ -8892,7 +8886,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "業主計價大於施工統計表 (4M)｜請核對跨期抽查單或補登4F/RF施工單",
-          "matDocRef": "1150313-D03-P-1150313-01-PVC管材",
+          "matDocRef": "D11-WP-1150316-01-PVC管材.pdf",
           "constDocRef": "C08-P-1150320、C08-P-1150423、C08-P-1150429"
         },
         {
@@ -8917,7 +8911,7 @@
             "CONST_GT_MAT"
           ],
           "statusText": "施工與計價 (540M) 大於材料查驗登錄 (142M)｜請補歸檔材料查驗單",
-          "matDocRef": "1150313-D03-E-1150313-01-PVC管材",
+          "matDocRef": "D11-E-1150313-01-PVC管材.pdf",
           "constDocRef": "C08-LV-1150323、C08-LV-1150629"
         },
         {
@@ -8967,7 +8961,7 @@
             "CONST_GT_MAT"
           ],
           "statusText": "施工與計價 (55M) 大於材料查驗登錄 (20M)｜請補歸檔材料查驗單",
-          "matDocRef": "1150313-D03-E-1150313-01-PVC管材",
+          "matDocRef": "D11-E-1150313-01-PVC管材.pdf",
           "constDocRef": "C08-LV-1150629"
         },
         {
@@ -8978,13 +8972,13 @@
           "contractQty": 135,
           "unitPrice": 24,
           "contractAmt": 3240,
-          "matQty": 0,
+          "matQty": 135,
           "constQty": 100,
           "ownerQty": 100,
-          "diffMatMinusConst": -100,
+          "diffMatMinusConst": 35,
           "diffConstMinusOwner": 0,
-          "diffMatMinusOwner": -100,
-          "matAmt": 0,
+          "diffMatMinusOwner": 35,
+          "matAmt": 3240,
           "constAmt": 2400,
           "ownerAmt": 2400,
           "primaryTag": "CONST_GT_MAT",
@@ -8992,7 +8986,7 @@
             "CONST_GT_MAT"
           ],
           "statusText": "施工與計價 (100M) 大於材料查驗登錄 (0M)｜請補歸檔材料查驗單",
-          "matDocRef": "-",
+          "matDocRef": "D11-E-1150907-02-PVC管材4&6分.pdf",
           "constDocRef": "C08-LV-1150629"
         },
         {
@@ -9003,13 +8997,13 @@
           "contractQty": 31,
           "unitPrice": 33,
           "contractAmt": 1023,
-          "matQty": 0,
+          "matQty": 31,
           "constQty": 31,
           "ownerQty": 31,
-          "diffMatMinusConst": -31,
+          "diffMatMinusConst": 0,
           "diffConstMinusOwner": 0,
-          "diffMatMinusOwner": -31,
-          "matAmt": 0,
+          "diffMatMinusOwner": 0,
+          "matAmt": 1023,
           "constAmt": 1023,
           "ownerAmt": 1023,
           "primaryTag": "CONST_GT_MAT",
@@ -9017,7 +9011,7 @@
             "CONST_GT_MAT"
           ],
           "statusText": "施工與計價 (31M) 大於材料查驗登錄 (0M)｜請補歸檔材料查驗單",
-          "matDocRef": "-",
+          "matDocRef": "D11-E-1151001-1-PVC-E管.pdf",
           "constDocRef": "C08-LV-1150629"
         },
         {
@@ -9092,7 +9086,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "進場材料在庫待施作 (+620M)｜施工與業主計價一致 (280M)",
-          "matDocRef": "1150313-D03-P-1150313-01-PVC管材",
+          "matDocRef": "D11-WP-1151022-01-PVC(B)2吋3吋.pdf",
           "constDocRef": "C08-P-1150320、C08-P-1150423、C08-P-1150429"
         },
         {
@@ -9117,7 +9111,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "進場材料在庫待施作 (+204M)｜施工與業主計價一致 (100M)",
-          "matDocRef": "1150313-D03-P-1150313-01-PVC管材、1150416-D03-P-1150416-01-PVC 2吋4吋",
+          "matDocRef": "D11-WP-1151014-1-PVCBA管.pdf",
           "constDocRef": "C08-P-1150323、C08-P-1150423、C08-P-1150429"
         },
         {
@@ -9142,7 +9136,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "進場材料在庫待施作 (+420M)｜施工與業主計價一致 (100M)",
-          "matDocRef": "1150323-D03-P-1150323-01-2吋PVC(B)、1150416-D03-P-1150416-01-PVC 2吋4吋",
+          "matDocRef": "D11-WP-1151022-01-PVC(B)2吋3吋.pdf",
           "constDocRef": "C08-P-1150323、C08-P-1150423、C08-P-1150429"
         },
         {
@@ -9167,7 +9161,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "進場材料在庫待施作 (+200M)｜施工與業主計價一致 (100M)",
-          "matDocRef": "1150313-D03-P-1150313-01-PVC管材",
+          "matDocRef": "D11-WP-1151022-01-PVC(B)2吋3吋.pdf",
           "constDocRef": "C08-P-1150320、C08-P-1150423、C08-P-1150429"
         },
         {
@@ -9192,7 +9186,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "進場材料在庫待施作 (+160M)｜施工與業主計價一致 (64M)",
-          "matDocRef": "1150313-D03-P-1150313-01-PVC管材",
+          "matDocRef": "D11-WP-1151022-01-PVC(B)2吋3吋.pdf",
           "constDocRef": "C08-P-1150323、C08-P-1150423、C08-P-1150429"
         },
         {
@@ -9217,7 +9211,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "進場材料在庫待施作 (+336M)｜施工與業主計價一致 (20M)",
-          "matDocRef": "1150313-D03-P-1150313-01-PVC管材",
+          "matDocRef": "D11-WP-1151019-01-PVC(B)1吋半(A)2吋.pdf",
           "constDocRef": "C08-P-1150423、C08-P-1150429"
         },
         {
@@ -9242,7 +9236,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "進場材料在庫待施作 (+80M)｜施工與業主計價一致 (64M)",
-          "matDocRef": "1150313-D03-P-1150313-01-PVC管材",
+          "matDocRef": "D11-WP-1151019-01-PVC(B)1吋半(A)2吋.pdf",
           "constDocRef": "C08-P-1150423、C08-P-1150429"
         },
         {
@@ -9267,7 +9261,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "進場材料在庫待施作 (+92M)｜施工與業主計價一致 (8M)",
-          "matDocRef": "1150210-D03-E-1150210-01-避雷針及接地系統工程、1150210-D03-E-1150210-02-PVC-E管材料查驗",
+          "matDocRef": "D11-E-1150210-02-PVC管材.pdf",
           "constDocRef": "C08-E-1150227"
         },
         {
@@ -9292,7 +9286,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "進場材料在庫待施作 (+15M)｜施工與業主計價一致 (60M)",
-          "matDocRef": "1150313-D03-P-1150313-01-PVC管材",
+          "matDocRef": "D11-WP-1150316-01-PVC管材.pdf",
           "constDocRef": "C08-P-1150323、C08-P-1150423、C08-P-1150429"
         },
         {
@@ -9317,7 +9311,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "進場材料在庫待施作 (+46M)｜施工與業主計價一致 (30M)",
-          "matDocRef": "1150313-D03-P-1150313-01-PVC管材",
+          "matDocRef": "D11-WP-1151019-01-PVC(B)1吋半(A)2吋.pdf",
           "constDocRef": "C08-P-1150423、C08-P-1150429"
         },
         {
@@ -9342,7 +9336,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "進場材料在庫待施作 (+56M)｜施工與業主計價一致 (8M)",
-          "matDocRef": "1150313-D03-P-1150313-01-PVC管材",
+          "matDocRef": "D11-WP-1150316-01-PVC管材.pdf",
           "constDocRef": "C08-P-1150423、C08-P-1150429、C08-P-1150530"
         },
         {
@@ -9367,7 +9361,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "進場材料在庫待施作 (+64M)｜施工與業主計價一致 (16M)",
-          "matDocRef": "1150210-D03-E-1150210-01-避雷針及接地系統工程、1150210-D03-E-1150210-02-PVC-E管材料查驗",
+          "matDocRef": "D11-E-1150210-02-PVC管材.pdf",
           "constDocRef": "C08-E-1150227"
         },
         {
@@ -9392,7 +9386,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "進場材料在庫待施作 (+30M)｜施工與業主計價一致 (50M)",
-          "matDocRef": "1150223-D03-E-1150223-01-接地電線",
+          "matDocRef": "D11-E-1150223-01-接地電線.pdf",
           "constDocRef": "C08-E-1150227"
         },
         {
@@ -9403,13 +9397,13 @@
           "contractQty": 33200,
           "unitPrice": 47,
           "contractAmt": 1560400,
-          "matQty": 20800,
+          "matQty": 22800,
           "constQty": 0,
           "ownerQty": 0,
-          "diffMatMinusConst": 20800,
+          "diffMatMinusConst": 22800,
           "diffConstMinusOwner": 0,
-          "diffMatMinusOwner": 20800,
-          "matAmt": 977600,
+          "diffMatMinusOwner": 22800,
+          "matAmt": 1071600,
           "constAmt": 0,
           "ownerAmt": 0,
           "primaryTag": "MAT_PENDING_BOTH",
@@ -9417,7 +9411,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "材料已查驗進場 (20500M)｜待現場施工統計登錄與業主估驗計價",
-          "matDocRef": "伸泰出貨單11511100030 (5.5mm² 紅3卷=300M)",
+          "matDocRef": "D11-E-1151031-02 (22,500M) ＋ 11/11伸泰收貨單(300M)",
           "constDocRef": "-"
         },
         {
@@ -9428,13 +9422,13 @@
           "contractQty": 18500,
           "unitPrice": 26,
           "contractAmt": 481000,
-          "matQty": 16600,
+          "matQty": 18100,
           "constQty": 0,
           "ownerQty": 0,
-          "diffMatMinusConst": 16600,
+          "diffMatMinusConst": 18100,
           "diffConstMinusOwner": 0,
-          "diffMatMinusOwner": 16600,
-          "matAmt": 431600,
+          "diffMatMinusOwner": 18100,
+          "matAmt": 470600,
           "constAmt": 0,
           "ownerAmt": 0,
           "primaryTag": "MAT_PENDING_BOTH",
@@ -9442,7 +9436,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "材料已查驗進場 (13800M)｜待現場施工統計登錄與業主估驗計價",
-          "matDocRef": "伸泰出貨單11511100030 (2.0mm 28卷=2,800M)",
+          "matDocRef": "D11-E-1151031-02 (15,300M) ＋ 11/11伸泰收貨單(2,800M)",
           "constDocRef": "-"
         },
         {
@@ -9467,7 +9461,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "材料已查驗進場 (72M)｜待現場施工統計登錄與業主估驗計價",
-          "matDocRef": "10/30鋒剛收貨單202609290005進場12支×",
+          "matDocRef": "D11-WP-1151031-1-不銹鋼管材料.pdf",
           "constDocRef": "-"
         },
         {
@@ -9492,7 +9486,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "材料已查驗進場 (42M)｜待現場施工統計登錄與業主估驗計價",
-          "matDocRef": "10/30鋒剛收貨單202609290005進場7支×6",
+          "matDocRef": "D11-WP-1151031-1-不銹鋼管材料.pdf",
           "constDocRef": "-"
         },
         {
@@ -9517,7 +9511,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "材料已查驗進場 (30M)｜待現場施工統計登錄與業主估驗計價",
-          "matDocRef": "10/30鋒剛收貨單202609290005進場5支×6",
+          "matDocRef": "D11-WP-1151031-1-不銹鋼管材料.pdf",
           "constDocRef": "-"
         },
         {
@@ -9542,7 +9536,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "材料已查驗進場 (61M)｜待現場施工統計登錄與業主估驗計價",
-          "matDocRef": "03/20(37M)+後續(24M)=累積61M(餘15",
+          "matDocRef": "D11-WP-1151001-1-不鏽鋼管、PVCBA、閘閥、逆止閥.pdf",
           "constDocRef": "-"
         },
         {
@@ -9567,7 +9561,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "材料已查驗進場 (600M)｜待現場施工統計登錄與業主估驗計價",
-          "matDocRef": "09/07(200M×3卷=600M，餘809M)",
+          "matDocRef": "D11-F-1150907-01-電線電纜-HR1.6訊號線2.0.pdf",
           "constDocRef": "-"
         },
         {
@@ -9592,7 +9586,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "材料已查驗進場 (12M)｜待現場施工統計登錄與業主估驗計價",
-          "matDocRef": "10/30鋒剛收貨單202609290005進場2支×6",
+          "matDocRef": "D11-WP-1151031-1-不銹鋼管材料.pdf",
           "constDocRef": "-"
         },
         {
@@ -9617,7 +9611,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "材料已查驗進場 (65M)｜待現場施工統計登錄與業主估驗計價",
-          "matDocRef": "1150313-D03-P-1150313-01-PVC管材",
+          "matDocRef": "D11-WP-1150316-01-PVC管材.pdf",
           "constDocRef": "-"
         },
         {
@@ -9642,7 +9636,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "材料已查驗進場 (1只)｜待現場施工統計登錄與業主估驗計價",
-          "matDocRef": "09/02(1只，100%滿額)",
+          "matDocRef": "D11-WP-1150902-01-不鏽鋼閘閥&水錘吸收器.pdf",
           "constDocRef": "-"
         },
         {
@@ -9667,7 +9661,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "材料已查驗進場 (50M)｜待現場施工統計登錄與業主估驗計價",
-          "matDocRef": "1150223-D03-E-1150223-01-接地電線",
+          "matDocRef": "D11-E-1150223-01-接地電線.pdf",
           "constDocRef": "-"
         },
         {
@@ -9692,7 +9686,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "材料已查驗進場 (60M)｜待現場施工統計登錄與業主估驗計價",
-          "matDocRef": "1150320-D03-F-1150320-3吋消防管",
+          "matDocRef": "D11-F-1150320-1-鍍鋅鋼管.pdf",
           "constDocRef": "-"
         },
         {
@@ -9717,7 +9711,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "材料已查驗進場 (50M)｜待現場施工統計登錄與業主估驗計價",
-          "matDocRef": "1150223-D03-E-1150223-01-接地電線",
+          "matDocRef": "D11-E-1150223-01-接地電線.pdf",
           "constDocRef": "-"
         },
         {
@@ -9742,7 +9736,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "材料已查驗進場 (8只)｜待現場施工統計登錄與業主估驗計價",
-          "matDocRef": "09/02查驗及後續累計8只(合約11只，餘3只)",
+          "matDocRef": "D11-WP-1151001-1-不鏽鋼管、PVCBA、閘閥、逆止閥.pdf",
           "constDocRef": "-"
         },
         {
@@ -9767,7 +9761,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "材料已查驗進場 (2155M)｜待現場施工統計登錄與業主估驗計價",
-          "matDocRef": "09/07(1,200M)+09/18(955M)=累積",
+          "matDocRef": "D11-F-1150918-01-電線電纜HR1.6.pdf",
           "constDocRef": "-"
         },
         {
@@ -9792,7 +9786,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "材料已查驗進場 (1只)｜待現場施工統計登錄與業主估驗計價",
-          "matDocRef": "累計查驗1只(合約4只，餘3只)",
+          "matDocRef": "D11-WP-1151001-1-不鏽鋼管、PVCBA、閘閥、逆止閥.pdf",
           "constDocRef": "-"
         },
         {
@@ -9817,7 +9811,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "材料已查驗進場 (160M)｜待現場施工統計登錄與業主估驗計價",
-          "matDocRef": "1150611-D03-E-1150611-01-PVC(E)3分6分1吋半",
+          "matDocRef": "D11-E-1150611-01-PVC(E)3分6分1吋半.pdf",
           "constDocRef": "-"
         },
         {
@@ -9842,7 +9836,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "材料已查驗進場 (11M)｜待現場施工統計登錄與業主估驗計價",
-          "matDocRef": "03/20(進場48M：揚水管37M+壓力管11M，10",
+          "matDocRef": "D11-WP-1150320-01-不鏽鋼管.pdf",
           "constDocRef": "-"
         },
         {
@@ -9867,7 +9861,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "材料已查驗進場 (3只)｜待現場施工統計登錄與業主估驗計價",
-          "matDocRef": "累計查驗3只(合約4只，餘1只)",
+          "matDocRef": "D11-WP-1151001-1-不鏽鋼管、PVCBA、閘閥、逆止閥.pdf",
           "constDocRef": "-"
         },
         {
@@ -9892,7 +9886,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "材料已查驗進場 (1座)｜待現場施工統計登錄與業主估驗計價",
-          "matDocRef": "10/12(1座，100%滿額)",
+          "matDocRef": "D11-E-1151012-02-避雷針基礎座材料.pdf",
           "constDocRef": "-"
         },
         {
@@ -9917,7 +9911,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "材料已查驗進場 (28M)｜待現場施工統計登錄與業主估驗計價",
-          "matDocRef": "1150313-D03-P-1150313-01-PVC管材",
+          "matDocRef": "D11-WP-1150316-01-PVC管材.pdf",
           "constDocRef": "-"
         },
         {
@@ -9942,7 +9936,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "材料已查驗進場 (20M)｜待現場施工統計登錄與業主估驗計價",
-          "matDocRef": "1150313-D03-E-1150313-01-PVC管材",
+          "matDocRef": "D11-E-1150313-01-PVC管材.pdf",
           "constDocRef": "-"
         },
         {
@@ -9967,7 +9961,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "材料已查驗進場 (245M)｜待現場施工統計登錄與業主估驗計價",
-          "matDocRef": "09/18(245M，餘2,623M)",
+          "matDocRef": "D11-F-1150918-01-電線電纜HR1.6.pdf",
           "constDocRef": "-"
         },
         {
@@ -9992,7 +9986,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "材料已查驗進場 (20M)｜待現場施工統計登錄與業主估驗計價",
-          "matDocRef": "1150223-D03-E-1150223-01-接地電線",
+          "matDocRef": "D11-E-1150223-01-接地電線.pdf",
           "constDocRef": "-"
         },
         {
@@ -10017,7 +10011,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "材料已查驗進場 (10M)｜待現場施工統計登錄與業主估驗計價",
-          "matDocRef": "1150313-D03-E-1150313-01-PVC管材",
+          "matDocRef": "D11-E-1150313-01-PVC管材.pdf",
           "constDocRef": "-"
         },
         {
@@ -10042,7 +10036,7 @@
             "MAT_GT_CONST"
           ],
           "statusText": "材料已查驗進場 (6M)｜待現場施工統計登錄與業主估驗計價",
-          "matDocRef": "09/23(6M，100%滿額)",
+          "matDocRef": "D11-WP-1150923-01-不鏽鋼管1吋.pdf",
           "constDocRef": "-"
         },
         {
@@ -10065,7 +10059,7 @@
           "primaryTag": "THREE_WAY_MATCHED",
           "tags": [],
           "statusText": "材料查驗・施工數量・業主計價三方數量一致",
-          "matDocRef": "1150313-D03-E-1150313-01-PVC管材",
+          "matDocRef": "D11-E-1150313-01-PVC管材.pdf",
           "constDocRef": "C08-E-1150323"
         },
         {
@@ -10088,8 +10082,198 @@
           "primaryTag": "THREE_WAY_MATCHED",
           "tags": [],
           "statusText": "材料查驗・施工數量・業主計價三方數量一致",
-          "matDocRef": "1150210-D03-E-1150210-01-避雷針及接地系統工程、1150210-D03-E-1150210-02-PVC-E管材料查驗",
+          "matDocRef": "D11-E-1150210-01-接地銅棒.pdf",
           "constDocRef": "C08-E-1150227"
+        },
+        {
+          "boqCode": "壹.甲.三.2.(42)",
+          "discipline": "E",
+          "itemName": "600V XLPE電力電纜 4/C 8.0mm²",
+          "unit": "M",
+          "contractQty": 4610,
+          "unitPrice": 312,
+          "matQty": 2000,
+          "matAmt": 624000,
+          "constQty": 0,
+          "constAmt": 0,
+          "ownerQty": 0,
+          "ownerAmt": 0,
+          "diffMatMinusConst": 2000,
+          "diffConstMinusOwner": 0,
+          "diffMatMinusOwner": 2000,
+          "matDocRef": "伸泰出貨單11511100031 (XLPE 4/C 8.0mm² 1000M×2軸)",
+          "statusText": "已進場查驗待後續估驗"
+        },
+        {
+          "boqCode": "壹.甲.三.3.(3)",
+          "discipline": "E",
+          "itemName": "鋁製電纜托架(梯型直式線槽) W400×H100mm L3000mm",
+          "unit": "只",
+          "contractQty": 351,
+          "unitPrice": 1941,
+          "matQty": 81,
+          "matAmt": 157221,
+          "constQty": 0,
+          "constAmt": 0,
+          "ownerQty": 0,
+          "ownerAmt": 0,
+          "diffMatMinusConst": 81,
+          "diffConstMinusOwner": 0,
+          "diffMatMinusOwner": 81,
+          "matDocRef": "D11-E-1151108-1-動力線槽材料查驗.pdf",
+          "statusText": "已進場查驗待後續估驗"
+        },
+        {
+          "boqCode": "壹.甲.三.3.(4)",
+          "discipline": "E",
+          "itemName": "鋁製電纜托架 水平L形90°彎頭 W400×H100mm",
+          "unit": "只",
+          "contractQty": 4,
+          "unitPrice": 2766,
+          "matQty": 2,
+          "matAmt": 5532,
+          "constQty": 0,
+          "constAmt": 0,
+          "ownerQty": 0,
+          "ownerAmt": 0,
+          "diffMatMinusConst": 2,
+          "diffConstMinusOwner": 0,
+          "diffMatMinusOwner": 2,
+          "matDocRef": "D11-E-1151108-1-動力線槽材料查驗.pdf",
+          "statusText": "已進場查驗待後續估驗"
+        },
+        {
+          "boqCode": "壹.甲.三.3.(6)",
+          "discipline": "E",
+          "itemName": "鋁製電纜托架 水平T形彎頭 W400×H100mm",
+          "unit": "只",
+          "contractQty": 4,
+          "unitPrice": 3164,
+          "matQty": 2,
+          "matAmt": 6328,
+          "constQty": 0,
+          "constAmt": 0,
+          "ownerQty": 0,
+          "ownerAmt": 0,
+          "diffMatMinusConst": 2,
+          "diffConstMinusOwner": 0,
+          "diffMatMinusOwner": 2,
+          "matDocRef": "D11-E-1151108-1-動力線槽材料查驗.pdf",
+          "statusText": "已進場查驗待後續估驗"
+        },
+        {
+          "boqCode": "壹.甲.三.7.(1)",
+          "discipline": "LV",
+          "itemName": "鋁製電纜托架(梯型直式線槽) W300×H100mm L3000mm",
+          "unit": "M",
+          "contractQty": 447,
+          "unitPrice": 1564,
+          "matQty": 315,
+          "matAmt": 492660,
+          "constQty": 0,
+          "constAmt": 0,
+          "ownerQty": 0,
+          "ownerAmt": 0,
+          "diffMatMinusConst": 315,
+          "diffConstMinusOwner": 0,
+          "diffMatMinusOwner": 315,
+          "matDocRef": "D11-LV-1151108-1弱電線槽-弱電線槽材料查驗.pdf",
+          "statusText": "已進場查驗待後續估驗"
+        },
+        {
+          "boqCode": "壹.甲.三.7.(2)",
+          "discipline": "LV",
+          "itemName": "鋁製電纜托架 水平L形90°彎頭 W300×H100mm",
+          "unit": "只",
+          "contractQty": 4,
+          "unitPrice": 2176,
+          "matQty": 4,
+          "matAmt": 8704,
+          "constQty": 0,
+          "constAmt": 0,
+          "ownerQty": 0,
+          "ownerAmt": 0,
+          "diffMatMinusConst": 4,
+          "diffConstMinusOwner": 0,
+          "diffMatMinusOwner": 4,
+          "matDocRef": "D11-LV-1151108-1弱電線槽-弱電線槽材料查驗.pdf",
+          "statusText": "已進場查驗待後續估驗"
+        },
+        {
+          "boqCode": "壹.甲.三.7.(4)",
+          "discipline": "LV",
+          "itemName": "鋁製電纜托架 水平T形彎頭 W300×H100mm",
+          "unit": "只",
+          "contractQty": 8,
+          "unitPrice": 2574,
+          "matQty": 4,
+          "matAmt": 10296,
+          "constQty": 0,
+          "constAmt": 0,
+          "ownerQty": 0,
+          "ownerAmt": 0,
+          "diffMatMinusConst": 4,
+          "diffConstMinusOwner": 0,
+          "diffMatMinusOwner": 4,
+          "matDocRef": "D11-LV-1151108-1弱電線槽-弱電線槽材料查驗.pdf",
+          "statusText": "已進場查驗待後續估驗"
+        },
+        {
+          "boqCode": "壹.甲.三.12.(79).6",
+          "discipline": "WP",
+          "itemName": "SUS304不鏽鋼管壓接另件(彎頭/三通/接頭 101只)",
+          "unit": "式",
+          "contractQty": 1,
+          "unitPrice": 568934,
+          "matQty": 0.05,
+          "matAmt": 28447,
+          "constQty": 0,
+          "constAmt": 0,
+          "ownerQty": 0,
+          "ownerAmt": 0,
+          "diffMatMinusConst": 0.05,
+          "diffConstMinusOwner": 0,
+          "diffMatMinusOwner": 0.05,
+          "matDocRef": "D11-WP-1151029-1-不鏽鋼壓接另件.pdf",
+          "statusText": "已進場查驗待後續估驗"
+        },
+        {
+          "boqCode": "壹.甲.三.14.(2).4",
+          "discipline": "F",
+          "itemName": "滅火器埋入箱 黑鐵2.0mm (底箱 300×600×180mm)",
+          "unit": "只",
+          "contractQty": 16,
+          "unitPrice": 3500,
+          "matQty": 16,
+          "matAmt": 56000,
+          "constQty": 0,
+          "constAmt": 0,
+          "ownerQty": 0,
+          "ownerAmt": 0,
+          "diffMatMinusConst": 16,
+          "diffConstMinusOwner": 0,
+          "diffMatMinusOwner": 16,
+          "matDocRef": "D11-F-1151007-1-滅火器箱及消防底箱.pdf",
+          "statusText": "已進場查驗待後續估驗"
+        },
+        {
+          "boqCode": "壹.甲.三.14.(2).5",
+          "discipline": "F",
+          "itemName": "室內綜合消防栓箱併滅火器箱 (底箱 1220×950×180mm 先行預埋)",
+          "unit": "組",
+          "contractQty": 12,
+          "unitPrice": 25000,
+          "matQty": 12,
+          "matAmt": 300000,
+          "constQty": 0,
+          "constAmt": 0,
+          "ownerQty": 0,
+          "ownerAmt": 0,
+          "diffMatMinusConst": 12,
+          "diffConstMinusOwner": 0,
+          "diffMatMinusOwner": 12,
+          "matDocRef": "D11-F-1151007-1-滅火器箱及消防底箱.pdf",
+          "statusText": "已進場查驗待後續估驗"
         }
       ],
       "rawConstStatRows": [
