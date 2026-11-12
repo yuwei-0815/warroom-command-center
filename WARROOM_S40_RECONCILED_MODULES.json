@@ -13120,9 +13120,9 @@
     "version": "S7.0_100_PATTERNS_V211",
     "bimModelRevision": "REV.211",
     "bimStandaloneDriveFileId": "1M8pW0_648Qmcj82ZVT_5gZFQ6Hq5rpFz",
-    "botBSlimBytes": 4322074,
-    "masterBotBytes": 7466844,
-    "autoHotUpdateGsBytes": 7234853,
+    "botBSlimBytes": 4323385,
+    "masterBotBytes": 7490809,
+    "autoHotUpdateGsBytes": 7258818,
     "stagesCompleted": [
       "Stage 1: #008 Bot B Dead Code Stripping (-39.8% / -2.85MB) + #042 Historical Date Calibration Table + #087 Comment Hygiene",
       "Stage 2: #071/#099 GasDiagnosticRing + #083/#072 GasSheetGateway Memoization & 90.9MB Webhook Circuit-Breaker",

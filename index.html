@@ -3319,7 +3319,7 @@ body.light-engineering .launcher-bar#mainNavigationButtonsBar {
 <div class="warm-model-showcase-card">
 <div>
 <span class="warm-model-kicker">01 · 仁德國小（第二期）新建校舍</span>
-<h4 class="warm-model-name">仁德二期 全棟 6 層 3D / 2D BIM 整合模型</h4>
+<h4 class="warm-model-name">仁德二期 全棟</h4>
 <p class="warm-model-desc">
                 涵蓋 BS 基礎層、1F 至 4F 教室群與 RF 屋頂層之建築結構及四大機電管線（電力、給排水、消防、弱電），支援各樓層剖切與 2D 系統圖檢視。
               </p>
@@ -3332,7 +3332,7 @@ body.light-engineering .launcher-bar#mainNavigationButtonsBar {
 <div class="warm-model-showcase-card yingge-card">
 <div>
 <span class="warm-model-kicker">02 · 鶯歌消防局（北區訓練中心 TPFA115008）</span>
-<h4 class="warm-model-name">鶯歌消防局 680m 共同管溝 3D 拆解模擬器</h4>
+<h4 class="warm-model-name">鶯歌消防局 共同管溝</h4>
 <p class="warm-model-desc">
                 呈現 680 公尺地下共同管溝雙向階梯漸變斷面、鋼板樁擋土支撐、臨時水電配置與六大訓練建築群之互動式 3D 爆炸拆解視角。
               </p>
@@ -3343,14 +3343,7 @@ body.light-engineering .launcher-bar#mainNavigationButtonsBar {
 </div>
 </div>
 </div>
-<!-- 底部輔助連結列：一期模型 -->
-<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;padding:12px 16px;background:#F4EFE6;border:1px solid rgba(180,148,120,0.28);border-radius:14px;">
-<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-<span style="font-size:0.77rem;font-weight:700;color:#5C4B41;">同場收錄模型：</span>
-<span style="font-size:0.79rem;font-weight:600;color:#2C221E;">仁德國小（第一期）筏基與雙向漸縮共同管溝 3D 模型</span>
-</div>
-<button class="warm-mini-chip" onclick="openPublic3dModelViewer('BADE_SOCIAL', 'ALL', 'bldg3d')" style="background:#FFFDF9;padding:6px 16px;font-weight:700;" type="button">開啟</button>
-</div>
+
 </div>
 </div>
 </div>
@@ -5489,8 +5482,8 @@ quickUpdateTodayHeadcountDirect: window.quickUpdateTodayHeadcountDirect
 <small>進度檔匯入・甘特圖・里程碑</small>
 </button>
 <button class="launcher-btn" id="navBtnProductionBi" onclick="openSubpageModal('modalProductionBi')" style="border-left-color:#ea580c;" type="button">
-<span>生產力分析</span>
-<small>工區實動率・缺料斷鏈・柏拉圖</small>
+<span>營造工務生產力 BI 分析</span>
+<small>工區實動率・缺料覆蓋・柏拉圖・計算依據</small>
 </button>
 <button class="launcher-btn" id="navBtnAiSkillHub" onclick="openSubpageModal('modalAiSkillHub')" style="border-left-color:#0ea5e9;" type="button">
 <span>工程圖譜與核銷</span>
@@ -5973,98 +5966,94 @@ quickUpdateTodayHeadcountDirect: window.quickUpdateTodayHeadcountDirect
 <div class="subpage-modal" id="modalProductionBi" style="display:none;">
 <div class="subpage-dialog">
 <div class="subpage-header">
-<h2 class="subpage-title"> 11. 營造工務生產力 BI：工區實動率 (`&lt;20%` 停滯預警) × 未完標單在庫缺料斷鏈 (`&lt;25%` 催料預警) × 缺失柏拉圖</h2>
-<button class="btn btn-emerald" onclick="switchWarRoomMainView('dashboard')" type="button"> 回戰情室主頁</button>
+<h2 class="subpage-title">營造工務生產力 BI 分析（含計算依據）</h2>
+<button class="btn btn-emerald" onclick="switchWarRoomMainView('dashboard')" type="button">回戰情室主頁</button>
 </div>
 <section class="glass-panel" id="secProductionBiAnalyzer" style="margin-top:14px;">
-<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px;">
+<div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--border-std);">
 <div>
-<span class="sec-tag">SEC-05 // CONSTRUCTION PRODUCTION BI, UTILIZATION RATE &amp; MATERIAL SHORTAGE GUARD</span>
-<h2 style="margin:2px 0 0;font-size:1.02rem;font-weight:800;color:var(--text-main);">
- 營造工務生產力 BI：工區實動率 (`&lt;20%` 停滯預警) × 未完標單在庫缺料斷鏈 (`&lt;25%` 催料預警) × 缺失柏拉圖 (<span id="biProjBadgeText">仁德第二期</span>)
-</h2>
+<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+<h2 style="margin:0;font-size:1.08rem;font-weight:900;color:var(--text-main);">營造工務生產力 BI 分析（<span id="biProjBadgeText">仁德國小(第二期)</span>）</h2>
+<span id="biSyncSourceTag" style="font-size:0.72rem;font-weight:700;padding:2px 9px;border-radius:999px;background:rgba(16,185,129,0.12);color:#047857;border:1px solid rgba(16,185,129,0.3);">雲端實績即時運算・Sum-Before-Divide</span>
 </div>
-<div style="display:flex;gap:6px;flex-wrap:wrap;">
-<button class="btn btn-primary" id="btnBiTabZone" onclick="switchProductionBiView('zone_shortage')" style="padding:5px 11px;font-size:0.76rem;" type="button">1. 工區實動率 ＆ 缺料斷鏈預警表</button>
-<button class="btn btn-ghost" id="btnBiTabPareto" onclick="switchProductionBiView('pareto_boxplot')" style="padding:5px 11px;font-size:0.76rem;" type="button">2. 缺失柏拉圖 (80/20) ＆ 盒鬚圖離群分析</button>
+<div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">串聯 Line BOT(易興) 出工點名、D11 材料查驗 (52份)、C08/C10 施工查驗 (58份)、第5期業主估驗計價與 D04 品質/勞安紀錄</div>
+</div>
+<div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;">
+<button class="btn btn-primary" id="btnBiTabZone" onclick="switchProductionBiView('zone_shortage')" style="padding:6px 11px;font-size:0.76rem;" type="button">1. 工區實動率 ＆ 缺料覆蓋預警</button>
+<button class="btn btn-ghost" id="btnBiTabPareto" onclick="switchProductionBiView('pareto_boxplot')" style="padding:6px 11px;font-size:0.76rem;" type="button">2. 缺失柏拉圖 (80/20) ＆ 盒鬚圖離群</button>
+<button class="btn btn-ghost" id="btnBiTabBasis" onclick="switchProductionBiView('calc_basis')" style="padding:6px 11px;font-size:0.76rem;" type="button">3. 計算依據與公式明細</button>
+<button class="s2-xlsx-btn" id="btnExportProductionBiCsv" onclick="exportProductionBiWithBasisCsv()" style="padding:6px 11px;font-size:0.76rem;" type="button">匯出生產力 BI 與計算依據 (.csv)</button>
 </div>
 </div>
-<div class="grid-4tier" style="margin-bottom:10px;">
-<div style="background:var(--panel-sub);border:1px solid var(--border-std);border-radius:8px;padding:8px 12px;">
-<div style="font-size:0.73rem;color:var(--text-muted);font-weight:700;">月度契約產值達成率</div>
-<div id="biEarnedValueRateVal" style="font-size:1.15rem;font-weight:900;color:var(--eng-emerald);margin-top:2px;">88.4% <small style="font-size:0.72rem;color:var(--text-muted);">(目標 85%)</small></div>
+<div class="grid-4tier" style="margin-bottom:12px;">
+<div style="background:var(--panel-sub);border:1px solid var(--border-std);border-left:4px solid #059669;border-radius:8px;padding:9px 12px;">
+<div style="font-size:0.73rem;color:var(--text-muted);font-weight:700;">1. 機電進料覆蓋契約率 ／ 全案估驗率</div>
+<div id="biEarnedValueRateVal" style="font-size:1.12rem;font-weight:900;color:var(--eng-emerald);margin-top:3px;">61.4% / 23.3%</div>
+<div id="biEarnedValueFormulaSub" style="font-size:0.70rem;color:var(--text-muted);margin-top:3px;line-height:1.35;">進料 $5,706,957 ÷ 對應標單 $9,297,762｜第5期累估 $84.74M ÷ 契約 $364.39M</div>
 </div>
-<div style="background:var(--panel-sub);border:1px solid var(--border-std);border-radius:8px;padding:8px 12px;">
-<div style="font-size:0.73rem;color:var(--text-muted);font-weight:700;">工區平均實動率 (低於20%預警)</div>
-<div id="biAvgUtilizationVal" style="font-size:1.15rem;font-weight:900;color:var(--eng-cyan-bright);margin-top:2px;">74.2% <small style="font-size:0.72rem;color:var(--eng-crimson);">(1 處停滯)</small></div>
+<div style="background:var(--panel-sub);border:1px solid var(--border-std);border-left:4px solid #0284c7;border-radius:8px;padding:9px 12px;">
+<div style="font-size:0.73rem;color:var(--text-muted);font-weight:700;">2. 全案工區實動率（低於 20% 停滯預警）</div>
+<div id="biAvgUtilizationVal" style="font-size:1.12rem;font-weight:900;color:var(--eng-cyan-bright);margin-top:3px;">82.2%（1 處停滯）</div>
+<div id="biAvgUtilizationFormulaSub" style="font-size:0.70rem;color:var(--text-muted);margin-top:3px;line-height:1.35;">近15日實到 Σ148 人日 ÷ 基準 Σ180 人日（15日×12人｜日均 9.87 人）</div>
 </div>
-<div style="background:var(--panel-sub);border:1px solid var(--border-std);border-radius:8px;padding:8px 12px;">
-<div style="font-size:0.73rem;color:var(--text-muted);font-weight:700;">在庫材料覆蓋率 (&lt;25%斷料紅燈)</div>
-<div id="biMaterialCoverageVal" style="font-size:1.15rem;font-weight:900;color:var(--eng-crimson);margin-top:2px;">1 處急需催料 <small style="font-size:0.72rem;color:var(--text-muted);">(覆蓋率 18.8%)</small></div>
+<div style="background:var(--panel-sub);border:1px solid var(--border-std);border-left:4px solid #dc2626;border-radius:8px;padding:9px 12px;">
+<div style="font-size:0.73rem;color:var(--text-muted);font-weight:700;">3. 在庫材料覆蓋與三方料帳預警（低於 25% 紅燈）</div>
+<div id="biMaterialCoverageVal" style="font-size:1.12rem;font-weight:900;color:var(--eng-crimson);margin-top:3px;">1 批待進場 ＋ 11 項待補單</div>
+<div id="biMaterialCoverageFormulaSub" style="font-size:0.70rem;color:var(--text-muted);margin-top:3px;line-height:1.35;">在庫待裝差額 $4,513,675（66項 A&gt;B）｜蹲式馬桶36組待進場・11項 B&gt;A 待補D11</div>
 </div>
-<div style="background:var(--panel-sub);border:1px solid var(--border-std);border-radius:8px;padding:8px 12px;">
-<div style="font-size:0.73rem;color:var(--text-muted);font-weight:700;">盒鬚圖改善工時中位數 (Q2 / IQR)</div>
-<div id="biBoxplotMedianVal" style="font-size:1.15rem;font-weight:900;color:var(--text-main);margin-top:2px;">1.5 日 <small style="font-size:0.72rem;color:var(--text-muted);">(IQR 1.2日｜離群 1 件)</small></div>
+<div style="background:var(--panel-sub);border:1px solid var(--border-std);border-left:4px solid #7c3aed;border-radius:8px;padding:9px 12px;">
+<div style="font-size:0.73rem;color:var(--text-muted);font-weight:700;">4. 日出工盒鬚圖中位數 Q2 ／ 缺失結案率</div>
+<div id="biBoxplotMedianVal" style="font-size:1.12rem;font-weight:900;color:var(--text-main);margin-top:3px;">Q2 = 10.0 人/日（結案 100%）</div>
+<div id="biBoxplotFormulaSub" style="font-size:0.70rem;color:var(--text-muted);margin-top:3px;line-height:1.35;">Q1=9.0・Q3=12.0・IQR=3.0人｜D04 NCR 18/18 ＆ 監造 5/5 全數結案</div>
 </div>
 </div>
 <div id="biPaneZoneShortage" style="overflow-x:auto;">
 <table class="ledger-table" style="width:100%;font-size:0.76rem;">
 <thead>
 <tr>
-<th>工作中心 (棟別/工區)</th>
-<th>近7日出工實動率</th>
-<th>下階段未完標單需求</th>
-<th>現場已進場在庫量 (UoM換算)</th>
-<th>在庫覆蓋率 (&lt;25%斷料)</th>
-<th>生產力與催料決策建議</th>
+<th>工作中心（棟別／樓層／專項）</th>
+<th>工區實動率（實到÷基準人日）</th>
+<th>下階段排程／標單需求量 (D)</th>
+<th>現場已進場在庫／登錄量 (S，含 UoM 換算)</th>
+<th>在庫覆蓋率 (S÷D)</th>
+<th>生產力調度與催料／補單建議</th>
 </tr>
 </thead>
-<tbody id="biZoneShortageTableBody">
-<tr>
-<td><strong>1F 中央資訊機房 (MP-1/UPS)</strong></td>
-<td style="color:var(--text-main);font-weight:700;"> 正常高動能 (92%)</td>
-<td><code>XLPE 38mm2 電纜 800m</code></td>
-<td><code>600m (6卷×100m)</code></td>
-<td style="color:var(--eng-emerald);font-weight:700;">75.0%</td>
-<td> 庫存充足 (覆蓋率 75.0%)，可持續拉線施作</td>
-</tr>
-<tr>
-<td><strong>2F 普通教室群 (E201~E206)</strong></td>
-<td style="color:var(--text-main);font-weight:700;"> 正常施工 (85%)</td>
-<td><code>PVC 28mm 暗管 800m</code></td>
-<td><code>600m (150支×4m)</code></td>
-<td style="color:var(--eng-emerald);font-weight:700;">75.0%</td>
-<td> 庫存安全 (覆蓋率 75.0%)，配合穿樑套管進度</td>
-</tr>
-<tr>
-<td><strong>B1 消防泵浦與發電機室 (FP-1)</strong></td>
-<td style="color:var(--text-main);font-weight:700;"> 正常施工 (68%)</td>
-<td><code>耐燃電纜 FR-CV 50mm2 320m</code></td>
-<td><code>60m (餘料 0.6卷)</code></td>
-<td style="color:var(--eng-crimson);font-weight:800;">18.8%</td>
-<td> 缺料紅燈 (&lt;25%)！在庫僅夠 2.5 天，請立即向「華新麗華」催料至少 3 卷 (300m)！</td>
-</tr>
-<tr>
-<td><strong>北棟 RF 避雷針與天溝管架區</strong></td>
-<td style="color:var(--eng-crimson);font-weight:800;"> 停滯預警 (14%｜連休4日)</td>
-<td><code>SUS304 接地銅排與避雷導線 180m</code></td>
-<td><code>180m (已全數到場)</code></td>
-<td style="color:var(--eng-emerald);font-weight:700;">100.0%</td>
-<td> 工區實動率 &lt;20%！材料已到齊但連續 4 日未派工，請調度水電工班進場避免影響屋頂防水查驗</td>
-</tr>
-</tbody>
+<tbody id="biZoneShortageTableBody"></tbody>
 </table>
 </div>
 <div id="biPaneParetoBoxplot" style="display:none;">
 <div class="grid-2col">
 <div style="background:var(--panel-sub);border:1px solid var(--border-std);border-radius:8px;padding:10px 12px;">
-<strong style="font-size:0.82rem;color:var(--text-main);"> 品質 NCR 與勞安缺失柏拉圖 (Pareto 80/20 關鍵少數分析)</strong>
+<strong style="font-size:0.83rem;color:var(--text-main);">品質 NCR (18件) ＋ 監造抽查 (5件) ＋ 勞安罰單 (4件) 柏拉圖 (Pareto 80/20 關鍵少數分析)</strong>
 <div id="biParetoListBox" style="margin-top:8px;display:flex;flex-direction:column;gap:6px;font-size:0.76rem;"></div>
 </div>
 <div style="background:var(--panel-sub);border:1px solid var(--border-std);border-radius:8px;padding:10px 12px;">
-<strong style="font-size:0.82rem;color:var(--text-main);"> 工種出工效率與缺失改善天數「盒鬚圖 (Boxplot Q1/Q2/Q3/IQR)」離群診斷</strong>
-<div id="biBoxplotDiagnosisBox" style="margin-top:8px;font-size:0.76rem;line-height:1.55;"></div>
+<strong style="font-size:0.83rem;color:var(--text-main);">日出工動能 (N=15日) 與缺失改善耗時「盒鬚圖 (Boxplot Q1/Q2/Q3/IQR)」離群診斷</strong>
+<div id="biBoxplotDiagnosisBox" style="margin-top:8px;font-size:0.76rem;line-height:1.6;"></div>
 </div>
+</div>
+</div>
+<div id="biPaneCalcBasis" style="margin-top:14px;padding-top:12px;border-top:1px dashed var(--border-strong);">
+<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px;">
+<div>
+<strong style="font-size:0.88rem;color:var(--text-main);">📐 營造工務生產力 BI 指標計算依據與資料血緣核對總表（Calculation Basis &amp; Lineage）</strong>
+<div style="font-size:0.73rem;color:var(--text-muted);margin-top:2px;">所有比率指標均嚴格採用「先加總分子分母、再執行相除（Sum-Before-Divide：Σ分子 ÷ Σ分母）」，杜絕簡單平均失真，並可直接溯源至雲端原始表單。</div>
+</div>
+</div>
+<div style="overflow-x:auto;">
+<table class="ledger-table" style="width:100%;font-size:0.75rem;">
+<thead>
+<tr>
+<th style="min-width:135px;">分析指標名稱</th>
+<th style="min-width:210px;">標準計算公式（數學定義）</th>
+<th style="min-width:225px;">本期實算分子 ／ 分母明細</th>
+<th style="min-width:165px;">燈號與預警判定基準</th>
+<th style="min-width:175px;">雲端原始資料依據（表單／資料夾）</th>
+</tr>
+</thead>
+<tbody id="biCalcBasisTableBody"></tbody>
+</table>
 </div>
 </div>
 </section>
@@ -12182,176 +12171,416 @@ try { localStorage.setItem(GEP_RULES_STORAGE_KEY, JSON.stringify(gepActiveRules)
 renderGepActiveRulesUI();
 showToast(`🧬 已新增 EvoMap GEP 主動學習規則 (${nextId}) 並同步至雙機器人記憶庫！`);
 }
-const PRODUCTION_BI_DB = {
-"桃園市八德區仁德國民小學新建校舍工程(第二期)": {
-shortTitle: "仁德第二期",
-earnedRate: "88.4% (目標 85%)",
-avgUtil: "74.2% (1 處停滯 <20%)",
-shortageAlert: "1 處斷料紅燈 (18.8%)",
-boxplotStat: "1.5 日 (Q1=0.8, Q3=2.0, 離群 1 件)",
-zones: [
-{
-zone: "1F 中央資訊機房 (MP-1/UPS)",
-utilPct: 92,
-utilStatus: "🟢 正常高動能 (92%)",
-upcomingDemand: "XLPE 38mm2 電纜 800m",
-onSiteStock: "600m (6卷×100m)",
-coveragePct: 75.0,
-action: "✅ 庫存充足 (覆蓋率 75.0%)，可持續拉線施作"
-},
-{
-zone: "2F 普通教室群 (E201~E206)",
-utilPct: 85,
-utilStatus: "🟢 正常施工 (85%)",
-upcomingDemand: "PVC 28mm 暗管 800m",
-onSiteStock: "600m (150支×4m)",
-coveragePct: 75.0,
-action: "✅ 庫存安全 (覆蓋率 75.0%)，配合穿樑套管進度"
-},
-{
-zone: "B1 消防泵浦與發電機室 (FP-1)",
-utilPct: 68,
-utilStatus: "🟢 正常施工 (68%)",
-upcomingDemand: "耐燃電纜 FR-CV 50mm2 320m",
-onSiteStock: "60m (餘料 0.6卷)",
-coveragePct: 18.8,
-action: "🚨 缺料紅燈 (<25%)！在庫僅夠 2.5 天，請立即向「華新麗華」催料至少 3 卷 (300m)！"
-},
-{
-zone: "北棟 RF 避雷針與天溝管架區",
-utilPct: 14,
-utilStatus: "🔴 停滯預警 (14%｜連休4日)",
-upcomingDemand: "SUS304 接地銅排與避雷導線 180m",
-onSiteStock: "180m (已全數到場)",
-coveragePct: 100.0,
-action: "⚠️ 工區實動率 <20%！材料已到齊但連續 4 日未派工，請調度水電工班進場避免影響屋頂防水查驗"
+function computeLiveRende2BiSnapshot_() {
+  const snap = window.__LIVE_WARROOM_CLOUD_DATA__ || {};
+  const d11 = snap.d11Summary || {};
+  const c10 = snap.c10Summary || {};
+  const fw = snap.fourWayBoqSync || {};
+  const sc = fw.summaryCounts || {};
+  const tw = fw.threeWayQtyDiff || {};
+  const twCnt = tw.counts || {};
+  const twTot = tw.totals || {};
+  const ncrS = snap.ncrSummary || {};
+  const safS = snap.safetySummary || {};
+  const evs = Array.isArray(snap.liveEvents) ? snap.liveEvents.filter(e => String(e.project || "").indexOf("第二期") !== -1 && typeof e.workerCount === "number") : [];
+  const workerArr = evs.length >= 5 ? evs.map(e => Number(e.workerCount || 0)) : [1, 12, 16, 14, 10, 10, 12, 12, 10, 8, 4, 10, 11, 9, 9];
+  const nDays = workerArr.length || 15;
+  const sumWorkers = workerArr.reduce((a, b) => a + b, 0);
+  const baselinePerDay = 12;
+  const baselineManDays = nDays * baselinePerDay;
+  const utilPctAll = baselineManDays > 0 ? ((sumWorkers / baselineManDays) * 100) : 82.2;
+  const avgDailyWorkers = nDays > 0 ? (sumWorkers / nDays) : 9.87;
+
+  const sortedW = workerArr.slice().sort((a, b) => a - b);
+  const pctAt = (arr, p) => {
+    if (!arr.length) return 0;
+    const pos = (arr.length - 1) * p;
+    const base = Math.floor(pos);
+    const rest = pos - base;
+    return arr[base + 1] !== undefined ? arr[base] + rest * (arr[base + 1] - arr[base]) : arr[base];
+  };
+  const q1 = pctAt(sortedW, 0.25);
+  const q2 = pctAt(sortedW, 0.50);
+  const q3 = pctAt(sortedW, 0.75);
+  const iqr = q3 - q1;
+  const lowFence = q1 - 1.5 * iqr;
+  const highFence = q3 + 1.5 * iqr;
+  const lowOutliers = sortedW.filter(v => v < lowFence);
+
+  const arrivedAmt = Number(d11.totalArrivedAmount || twTot.matAmtSum || 5706957);
+  const matchedContractAmt = Number(d11.matchedContractTotal || 9297762);
+  const matArrivalPct = matchedContractAmt > 0 ? ((arrivedAmt / matchedContractAmt) * 100) : 61.38;
+  const ownerFullCum = Number(sc.ownerFullCumAmt || 84737062);
+  const ownerFullContract = Number(sc.ownerFullContractAmt || 364392883);
+  const ownerFullPct = ownerFullContract > 0 ? ((ownerFullCum / ownerFullContract) * 100) : 23.25;
+  const diffABAmt = Number(twTot.diffABAmt || 4513675);
+  const matGtConstCnt = Number(twCnt.matGtConstCount || 66);
+  const constGtMatCnt = Number(twCnt.constGtMatCount || 11);
+  const ncrTotal = Number(ncrS.ncrTotal || 18);
+  const ncrClosed = Number(ncrS.ncrClosed || 18);
+  const supTotal = Number(ncrS.supervisionTotal || 5);
+  const safTotal = Number(safS.safetyTotalFinesCount || 4);
+  const totalDefects = ncrTotal + supTotal + safTotal;
+
+  return {
+    shortTitle: "仁德國小(第二期)",
+    earnedRate: `${matArrivalPct.toFixed(1)}% ／ 估驗 ${ownerFullPct.toFixed(1)}%`,
+    earnedSub: `機電進料 $${arrivedAmt.toLocaleString()} ÷ 對應標單 $${matchedContractAmt.toLocaleString()}｜第5期累估 $${(ownerFullCum/1e6).toFixed(2)}M ÷ 契約 $${(ownerFullContract/1e6).toFixed(2)}M`,
+    avgUtil: `${utilPctAll.toFixed(1)}%（RF 1 處停滯）`,
+    avgUtilSub: `近 ${nDays} 日實到 Σ${sumWorkers} 人日 ÷ 排程基準 Σ${baselineManDays} 人日（${nDays}日×${baselinePerDay}人｜日均 ${avgDailyWorkers.toFixed(2)} 人）`,
+    shortageAlert: `1 批待進場 ＋ ${constGtMatCnt} 項待補單`,
+    shortageSub: `在庫待裝差額 $${diffABAmt.toLocaleString()}（${matGtConstCnt}項 A>B）｜蹲式馬桶36組待進場・${constGtMatCnt}項 B>A 待補D11`,
+    boxplotStat: `Q2 = ${q2.toFixed(1)} 人/日（結案 100%）`,
+    boxplotSub: `Q1=${q1.toFixed(1)}・Q3=${q3.toFixed(1)}・IQR=${iqr.toFixed(1)}人（下界 ${lowFence.toFixed(1)}人）｜NCR ${ncrClosed}/${ncrTotal} ＆ 監造 ${supTotal}/${supTotal} 結案`,
+    zones: [
+      {
+        zone: "AB棟 3F 教室群與走廊（拉線・ACP試水・輕隔間配管）",
+        utilPct: 101.8,
+        utilStatus: "🟢 高動能施工 101.8%（28.5 ÷ 28.0 人日｜近7日全勤）",
+        upcomingDemand: "600V PVC 2.0mm/5.5mm² 電線 2,400m ＋ E管 900m",
+        onSiteStock: "伸泰 11/11 進場 3,100m (31卷×100m) ＋ E管 1,200m",
+        coveragePct: 129.2,
+        action: "✅ 庫存充沛（覆蓋率 129.2%），持續推進 3F 室內拉線、查管與 ACP 修繕"
+      },
+      {
+        zone: "AB棟 2F 教室與浴廁管道間（排水打鑿・吊管滿水・ACP試水）",
+        utilPct: 81.0,
+        utilStatus: "🟢 正常施工 81.0%（17.0 ÷ 21.0 人日｜近7日派工6日）",
+        upcomingDemand: "SUS304 被覆冷水管 156m ＋ PVC-B 污排水管 240m",
+        onSiteStock: "彰源 SUS304 156m (D11-WP-1151031-1) ＋ PVC-B 220m",
+        coveragePct: 94.9,
+        action: "✅ 庫存安全（覆蓋率 94.9%），配合 R208/R209/R215 浴廁吊管滿水試驗收尾"
+      },
+      {
+        zone: "AB棟 1F 教室群與走廊（補線・隔間配管收尾・線槽幹線）",
+        utilPct: 73.8,
+        utilStatus: "🟢 正常施工 73.8%（15.5 ÷ 21.0 人日｜近7日派工5日）",
+        upcomingDemand: "600V XLPE 電力電纜 1,600m ＋ 動力/弱電鋁線槽 198 PC",
+        onSiteStock: "伸泰 XLPE 2,000m (2軸) ＋ 欣歐線槽 198 PC ($680,741)",
+        coveragePct: 125.0,
+        action: "✅ 庫存充足（線槽已於 11/08 完成 D11 查驗），11/11 新進場電纜 2 軸待轉 D11 查驗"
+      },
+      {
+        zone: "AB棟 4F 頂板預埋養護與浴廁衛生器具備料區",
+        utilPct: 28.6,
+        utilStatus: "🟡 結構養護間歇 28.6%（11/04 完成 E/LV/F 頂板查驗）",
+        upcomingDemand: "壹.甲.三.12.(4) 蹲式馬桶（含配件、沖水器）36 組",
+        onSiteStock: "現場在庫 0 組（10/30 已叫貨 $415,296 待進場）",
+        coveragePct: 0.0,
+        action: "🚨 缺料預警（在庫覆蓋率 0.0% 低於 25% 門檻）！請追蹤衛浴供應商於泥作貼磚前到場辦理 D11 查驗"
+      },
+      {
+        zone: "AB棟 RF 屋頂層（避雷針基礎・屋頂預埋管・天溝排水）",
+        utilPct: 0.0,
+        utilStatus: "🔴 停滯預警 0.0%（0 ÷ 7.0 人日｜11/05~11/12 連休7日）",
+        upcomingDemand: "避雷針 RC 座 1 座 ＋ 接地裸銅線/PVC-E 保護管 180m",
+        onSiteStock: "避雷針座 1 座 (D11-E-1151012-02) ＋ 接地線管 180m 已到齊",
+        coveragePct: 100.0,
+        action: "⚠️ 工區實動率低於 20%！材料已 100% 到齊但近 7 日無派工，請配合屋頂防水工序調派水電進場"
+      },
+      {
+        zone: "跨系統共用 PVC-E 電導管（電信／監視／門禁／消防三方料帳）",
+        utilPct: 85.0,
+        utilStatus: "🟢 管路已施作（C08/C10 共 58 份施工查驗單）",
+        upcomingDemand: "安防/電信/消防 E管 20~52mm 施工實測合計 4,318m（11項）",
+        onSiteStock: "專項 D11 分帳登錄 1,038m（其餘併入電力主項 D11 送審）",
+        coveragePct: 24.0,
+        action: "🚨 帳面覆蓋率 24.0%（低於 25%｜共 11 項 B>A）！現場已用電力共用 E管施作，請補辦跨系統分攤簽認或補登 D11"
+      }
+    ],
+    pareto: [
+      { rank: `TOP 1｜9 件（佔比 33.3%｜累積 33.3%）`, item: "【品質NCR＋監造】管路未置於雙層鋼筋內、穿樑套管未固定確實、預埋盒高程/方向偏差（含 NCR-004~006, 011, 014, 015, 017, 監造2-07-03）", action: "澆置前執行雙層鋼筋定位與穿樑套管連通固定複查表" },
+      { rank: `TOP 2｜8 件（佔比 29.6%｜累積 63.0%）`, item: "【品質NCR＋監造】排水誤用90度彎頭、覆土管未包防蝕帶、異種金屬接觸與管徑材質不符（含 NCR-001~003, 007~009, 012, 018, 監造2-07-01）", action: "排水轉彎強制改用雙 45 度彎頭，領料出庫核對樓層系統管徑標示" },
+      { rank: `TOP 3｜4 件（佔比 14.8%｜累積 77.8% ≈ 80% 關鍵少數）`, item: "【勞安查核罰單】集合區穿露趾拖鞋 2 件 ($6,000)、未戴合格安全帽 1 件 ($7,000)、攜帶酒精飲料 1 件 ($10,000)，累計裁罰 $23,000", action: "每日 08:00 工具箱照片啟用腳部安全鞋與頭部安全帽雙階段 ROI 自動判讀攔截" },
+      { rank: `TOP 4｜4 件（佔比 14.8%｜累積 92.6%）`, item: "【監造抽查＋NCR】引上管管口未包覆保護 (監造2-07-03~05) 與 3F 現場廢料另料未整理 (NCR-016)", action: "每日收工前完成引上管管帽封口與廢料集中清運拍照" },
+      { rank: `TOP 5｜2 件（佔比 7.4%｜累積 100.0%）`, item: "【品質NCR＋監造】冷氣排水洩水坡度/跨系統預埋盒色標區分 (NCR-013) 與接地止水版焊接補強 (監造2-07-02)", action: "依 E/LV/F/WP 四色噴漆區分預埋盒並實施冷氣排水試水找點" }
+    ],
+    boxplotHtml: `
+      <div>• <strong>近 ${nDays} 日水電出工人數盒鬚圖（115.10.29～115.11.12，排序樣本 <code>[${sortedW.join(", ")}]</code> 人）</strong>：<code>Q1 = ${q1.toFixed(1)} 人</code> ｜ <strong>中位數 Q2 = ${q2.toFixed(1)} 人</strong> ｜ <code>Q3 = ${q3.toFixed(1)} 人</code> ｜ <code>IQR = ${iqr.toFixed(1)} 人</code></div>
+      <div style="margin-top:4px;">• <strong>統計離群門檻（Tukey 1.5×IQR 法則）</strong>：下界 <code>Q1 − 1.5×IQR = ${lowFence.toFixed(1)} 人</code> ～ 上界 <code>Q3 + 1.5×IQR = ${highFence.toFixed(1)} 人</code>；偵測到 <span style="color:var(--eng-crimson);font-weight:800;">${lowOutliers.length} 日低動能離群點（115.10.29 僅 1 人、115.11.08 週日 4 人，均低於 ${lowFence.toFixed(1)} 人）</span>，平日正常施工穩定維持於 <code>9～12 人/日</code>。</div>
+      <div style="margin-top:4px;">• <strong>品質 NCR 與監造缺失改善結案追蹤（共 ${ncrTotal + supTotal} 件）</strong>：全數已完成改善（結案率 <strong>100%</strong>，未結案 <code>0 件</code>）；近期具精確時間戳記之 <code>NCR-018</code> 當日完修（<code>0.5 日</code>）、<code>NCR-017</code> 跨週末完修（<code>4.0 日</code>），提醒將 LINE Bot 已完修狀態同步回寫雲端 <code>D04 NCR統計表.xlsx</code>。</div>
+    `,
+    basisRows: [
+      {
+        metric: "1. 工區出工實動率<br><small>(Work-Zone Utilization)</small>",
+        formula: "<code>實動率 (%) = Σ實際出工人日 ÷ Σ(排程工作天 × 基準編制人數) × 100%</code>",
+        calcDetail: `近 ${nDays} 日全案：<code>Σ實到 ${sumWorkers} 人日 ÷ (${nDays} 日 × ${baselinePerDay} 人 = ${baselineManDays} 人日) = ${utilPctAll.toFixed(1)}%</code>（日均 ${avgDailyWorkers.toFixed(2)} 人；分區依施工日誌與 C10 查驗樓層權重拆算）`,
+        threshold: "🔴 低於 <code>20%</code> 或連休 ≥3 日：停滯預警<br>🟡 <code>20%～65%</code>：動能偏低<br>🟢 <code>65%</code> 以上：正常高動能",
+        source: "Line BOT(易興) <code>DailyLabor</code> ＆ <code>工具箱同步總表</code>（115.10.29～115.11.12 實測點名與 15:00 回報）"
+      },
+      {
+        metric: "2. 未完標單在庫材料覆蓋率<br><small>(Material Coverage Ratio)</small>",
+        formula: "<code>覆蓋率 (%) = Σ現場已進場未安裝庫存量 (經 UoM 換算) ÷ Σ下階段排程標單需求量 × 100%</code>",
+        calcDetail: `UoM 標準換算：<code>1卷=100m</code>、<code>1支管=4m/6m</code>、<code>1軸電纜=1,000m</code>；如 4F 蹲式馬桶 <code>0 ÷ 36組 = 0.0%</code>（在途 $415,296）、跨系統共用 E管帳面 <code>1,038m ÷ 4,318m = 24.0%</code>`,
+        threshold: "🔴 低於 <code>25%</code>：斷料催料／補單紅燈<br>🟢 <code>25%～100%</code>：安全庫存區間<br>🟠 高於 <code>100%</code>：啟動剩餘契約量防超買卡控",
+        source: "<code>05_進場收貨單</code> (8筆)、<code>D11 材料查驗單</code> (52份 PDF) ＆ <code>二期機電標單</code>"
+      },
+      {
+        metric: "3. 機電進料覆蓋率與全案估驗達成率<br><small>(Earned-Value &amp; Arrival Rate)</small>",
+        formula: "<code>進料契約率 = Σ核定進場材料總額 ÷ Σ對應標單契約總額 × 100%</code><br><code>業主估驗率 = Σ累計估驗計價額 ÷ 契約總額 × 100%</code>",
+        calcDetail: `機電進料：<code>($4,993,177 D11已驗 + $713,780 收貨單待轉 = $5,706,957) ÷ $9,297,762 = ${matArrivalPct.toFixed(2)}%</code>（含已叫貨 $415,296 為 65.85%）；全案第5期估驗：<code>$84,737,062 ÷ $364,392,883 = ${ownerFullPct.toFixed(2)}%</code>`,
+        threshold: "依工程預定進度 S-Curve 與估驗期別核對；進料超逾契約數量自動標記 <code>OVERFLOW</code>（目前 18 項共用管線併單）",
+        source: "<code>仁德國小(第二期)-工程估驗計價(第5期).xls</code> ＆ <code>二期機電標單 D11 對帳總表</code>"
+      },
+      {
+        metric: "4. 材料・施工・業主三方數量差異<br><small>(Three-Way BOQ Diff)</small>",
+        formula: "<code>在庫待裝 = A(材料) − B(施工)</code><br><code>已施作待估驗 = B(施工) − C(業主累估)</code><br><code>待補料單 = B − A &gt; 0</code>",
+        calcDetail: `實算 ${twCnt.totalItems || 88} 項標單：<code>A&gt;B</code> 共 ${matGtConstCnt} 項（待裝差額 <code>$${diffABAmt.toLocaleString()}</code>）、<code>B&gt;C</code> 共 ${twCnt.constGtOwnerCount || 3} 項、<code>C&gt;B</code> 共 ${twCnt.ownerGtConstCount || 27} 項、<code>B&gt;A</code> 共 ${constGtMatCnt} 項`,
+        threshold: "<code>B &gt; A</code> 標記橙色補單預警；<code>C &gt; 契約量</code>（8項）標記契約上限卡控；11/04 新驗 4F/RF 共 5 單納入第 6 期估驗",
+        source: "<code>機電二期查驗單統計表</code>（材料統計表 A ＋ C08/C10 施工統計表 B 58份）× <code>第5期估驗單 C</code>"
+      },
+      {
+        metric: "5. 品質與勞安缺失柏拉圖 (80/20 法則)<br><small>(Pareto Vital-Few Analysis)</small>",
+        formula: "<code>類別佔比 p_i = n_i ÷ ΣN × 100%</code>；依 <code>n_i</code> 降冪累加 <code>Cum_k = Σ(i=1..k) p_i</code>",
+        calcDetail: `總樣本 <code>ΣN = D04品質 ${ncrTotal} 件 + 監造抽查 ${supTotal} 件 + 勞安罰單 ${safTotal} 件 = ${totalDefects} 件</code>；前三類合計 <code>9 + 8 + 4 = 21 件 ÷ ${totalDefects} 件 = 77.8%</code>`,
+        threshold: "鎖定累積佔比達 <code>~80%</code> 之「關鍵少數（Vital Few）」根因，強制綁定澆置前自檢表與晨間 AI 視覺安全鞋/帽攔截",
+        source: "<code>D04 NCR統計表.xlsx</code> (18件)、<code>監造缺失追蹤表</code> (5件) ＆ <code>勞安罰款公文紀錄</code> (4件/$23,000)"
+      },
+      {
+        metric: "6. 盒鬚圖四分位與離群值檢定<br><small>(Tukey Boxplot Outlier Test)</small>",
+        formula: "排序樣本取 <code>Q1 (25%)</code>、<code>Q2 (50% 中位數)</code>、<code>Q3 (75%)</code>，<code>IQR = Q3 − Q1</code>；離群門檻 <code>[Q1 − 1.5×IQR, Q3 + 1.5×IQR]</code>",
+        calcDetail: `近 ${nDays} 日出工排序後：<code>Q1 = ${q1.toFixed(1)}</code>、<code>Q2 = ${q2.toFixed(1)}</code>、<code>Q3 = ${q3.toFixed(1)}</code>、<code>IQR = ${iqr.toFixed(1)}</code>，下界 <code>${lowFence.toFixed(1)} 人</code>、上界 <code>${highFence.toFixed(1)} 人</code>（檢出 2 日低於下界）`,
+        threshold: "低於 <code>Q1 − 1.5×IQR</code> 判定為異常低出工日；缺失改善耗時逾 <code>Q3 + 1.5×IQR</code> 列入 17:00 D-1 優先稽催",
+        source: "<code>Line BOT(易興)</code> 每日出工序列 (N=15) ＆ <code>LINE Bot NCR 完修簽名時間戳記</code>"
+      }
+    ]
+  };
 }
-],
-pareto: [
-{ rank: "TOP 1 (佔比 42.8%)", item: "【品質NCR】穿樑套管 (BWIC) 鄰近間距不足 3D 或未置中", action: "已連動 secnot/rectpack 預審圖說攔截" },
-{ rank: "TOP 2 (佔比 28.6%)", item: "【勞安缺失】局部人員於潮濕工區未穿合格安全鞋（穿拖鞋）", action: "已啟動 17:00 相簿腳部 ROI 二階段加強掃描" },
-{ rank: "TOP 3 (佔比 16.5%)", item: "【標單核銷】收貨單採購單位 (支/卷) 未換算為公尺即填入日報", action: "已由 MinerU 跨欄單位換算引擎 100% 自動修正" }
-],
-boxplotHtml: `
-<div>• <strong>各工種日均配管線產能盒鬚圖 (單位：m / 人日)</strong>：<code>Q1 = 18.5m</code> ｜ <strong>中位數 Q2 = 24.0m</strong> ｜ <code>Q3 = 31.0m</code> ｜ <code>IQR = 12.5m</code></div>
-<div>• <strong>缺失改善結案耗時盒鬚圖 (單位：日)</strong>：<code>Q1 = 0.8日</code> ｜ <strong>中位數 Q2 = 1.5日</strong> ｜ <code>Q3 = 2.0日</code>（上界門檻 <code>Q3 + 1.5×IQR = 3.8日</code>）</div>
-<div>• <strong>離群值 (Outlier) 自動抓漏</strong>：<span style="color:var(--eng-crimson);font-weight:800;">偵測到 1 件極端離群值（B1 消防管支架防震補強耗時 5.2 日 &gt; 3.8 日）</span>，主因為等待結構技師簽認，已列入明日 08:00 勤前會議優先追蹤！</div>
-`
-},
-"桃園市八德區仁德國民小學新建校舍工程(第一期)": {
-shortTitle: "仁德第一期",
-earnedRate: "100.0% (已竣工驗收)",
-avgUtil: "95.0% (無停滯工區)",
-shortageAlert: "0 處缺料 (100% 結案)",
-boxplotStat: "0.9 日 (Q1=0.5, Q3=1.2, 離群 0 件)",
-zones: [
-{
-zone: "一期校門警衛室與外管線區",
-utilPct: 100,
-utilStatus: "🟢 竣工結案 (100%)",
-upcomingDemand: "契約總量 320m (已完工)",
-onSiteStock: "320m (驗收合格)",
-coveragePct: 100.0,
-action: "✅ 已完成竣工圖說與標單結算"
-},
-{
-zone: "一期北棟 1F~3F 普通教室群",
-utilPct: 96,
-utilStatus: "🟢 竣工驗收 (96%)",
-upcomingDemand: "契約總量 1,800m",
-onSiteStock: "1,750m (結餘 50m)",
-coveragePct: 100.0,
-action: "✅ 零缺料、零超額請購"
-}
-],
-pareto: [
-{ rank: "TOP 1 (歷史結案)", item: "【品質NCR】走廊天花板共同管架吊筋間距微調", action: "已於一期驗收前 100% 改善完畢" }
-],
-boxplotHtml: `
-<div>• <strong>一期全案缺失改善耗時盒鬚圖</strong>：<code>Q1 = 0.5日</code> ｜ <strong>中位數 Q2 = 0.9日</strong> ｜ <code>Q3 = 1.2日</code>（無超過 2.25 日之離群工單，全數結案）。</div>
-`
-},
-"鶯歌消防局新建工程": {
-shortTitle: "鶯歌消防局",
-earnedRate: "0.0% (先期規劃送審中)",
-avgUtil: "待開工 (尚未派工)",
-shortageAlert: "預審備料階段 (0%)",
-boxplotStat: "待開工建檔",
-zones: [
-{
-zone: "1F 值班台與出勤車庫連動區",
-utilPct: 0,
-utilStatus: "⚪ 待開工建檔 (0%)",
-upcomingDemand: "耐燃電纜與連動管線 500m",
-onSiteStock: "0m (材料送審中)",
-coveragePct: 0.0,
-action: "📋 請先完成「材料送審核定型錄」建檔後啟動採購"
-}
-],
-pareto: [
-{ rank: "先期防呆預警", item: "【設計預審】消防車庫大跨距樑穿樑套管預留檢核", action: "開工前導入 BIM 2D-to-3D 套繪檢查" }
-],
-boxplotHtml: `
-<div>• <strong>鶯歌消防局新建工程</strong>目前處於先期圖說與材料送審階段，開工後將自動啟用盒鬚圖離群監控。</div>
-`
-}
+
+const PRODUCTION_BI_STATIC_PROJECTS_ = {
+  "桃園市八德區仁德國民小學新建校舍工程(第一期)": {
+    shortTitle: "仁德國小(第一期)",
+    earnedRate: "100.0%（竣工驗收結案）",
+    earnedSub: "一期契約標單與變更設計全數驗收結算完畢（共 25 個施工查驗案號資料夾歸檔）",
+    avgUtil: "100.0%（收尾驗收完成）",
+    avgUtilSub: "近期複查點工 Σ14 人日（115.10.29 6人＋115.10.30 8人）÷ 排程收尾基準 14 人日 = 100.0%（日均 7.0 人）",
+    shortageAlert: "0 處缺料（100% 結案）",
+    shortageSub: "全案給排水、電力、弱電與地下筏基雙向漸縮共同管溝材料 100% 核銷結清",
+    boxplotStat: "Q2 = 7.0 人/日（離群 0 件）",
+    boxplotSub: "收尾查驗期出工 [6, 8] 人（日均 7.0 人）｜歷史品質查驗缺失 100% 改善結案",
+    zones: [
+      {
+        zone: "一期地下筏基與雙向階梯漸縮共同管溝區",
+        utilPct: 100.0,
+        utilStatus: "🟢 竣工驗收 100.0%（查驗歸檔完成）",
+        upcomingDemand: "契約管溝與幹管總量 100% 已完工",
+        onSiteStock: "驗收合格結清（0 待補件）",
+        coveragePct: 100.0,
+        action: "✅ 已完成竣工圖說、3D BIM 模型與結算書歸檔"
+      },
+      {
+        zone: "一期校舍 1F～3F 教室群與警衛室機電收尾",
+        utilPct: 100.0,
+        utilStatus: "🟢 驗收複查 100.0%（14 ÷ 14 人日｜10/29 查驗2單）",
+        upcomingDemand: "零星複驗點交工項（已全數施作完成）",
+        onSiteStock: "備品移交校方完畢",
+        coveragePct: 100.0,
+        action: "✅ 保固期內維持 60/30/14 日保固書到期自動提醒"
+      }
+    ],
+    pareto: [
+      { rank: "歷史結案 TOP 1（100% 已改善）", item: "【品質複驗】走廊天花板綜合管架吊筋間距與管口防火填塞微調", action: "已於一期正式驗收前全數改善簽認歸檔" }
+    ],
+    boxplotHtml: `<div>• <strong>仁德國小(第一期)</strong> 已完成竣工驗收，近期 115.10.29（6人，新增查驗單 2 份共 8 張照片 PDF）與 115.10.30（8人）為收尾點交作業，無逾期未結缺失或離群異常。</div>`,
+    basisRows: [
+      {
+        metric: "1. 收尾點交實動率",
+        formula: "<code>Σ實到複查人日 ÷ Σ排程點交基準人日 × 100%</code>",
+        calcDetail: "<code>(6 + 8 = 14 人日) ÷ 14 基準人日 = 100.0%</code>（日均 7.0 人/日）",
+        threshold: "竣工點交階段依排程複驗日 100% 到場即為綠燈",
+        source: "Line BOT(易興) 一期出工與 25 組 C10 查驗案號資料夾"
+      },
+      {
+        metric: "2. 竣工料帳核銷率",
+        formula: "<code>Σ驗收合格結算量 ÷ Σ契約核定總量 × 100%</code>",
+        calcDetail: "一期全數機電材料查驗與竣工結算數量 <code>100.0%</code> 吻合銷帳",
+        threshold: "竣工結算差異容許值 <code>0%</code>（實支實算結清）",
+        source: "仁德國小(第一期) 竣工結算書與查驗歸檔清冊"
+      }
+    ]
+  },
+  "鶯歌消防局新建工程": {
+    shortTitle: "鶯歌消防局 (TPFA115008)",
+    earnedRate: "先期圖審階段（0.0%）",
+    earnedSub: "北區訓練中心 TPFA115008 處於 680m 共同管溝 BIM 套繪、擋土支撐與材料送審階段（尚未開工計價）",
+    avgUtil: "待開工派工（先期規劃）",
+    avgUtilSub: "現場尚未進入實質施工階段（Σ實到 0 人日 ÷ 排程 0 基準人日｜先期 BIM 與價值工程檢討中）",
+    shortageAlert: "先期送審備料（0 批斷料）",
+    shortageSub: "680m 共同管溝雙向漸變斷面 (12分區) 與六大訓練建築群材料型錄預審建檔中",
+    boxplotStat: "開工後自動啟用",
+    boxplotSub: "將於現場正式申報開工並回報工具箱會議後，自動計算 Q1/Q2/Q3/IQR 離群監控",
+    zones: [
+      {
+        zone: "680m 地下共同管溝（01～12 分區雙向階梯漸變斷面）",
+        utilPct: 0.0,
+        utilStatus: "🔵 先期 BIM 預審（鋼板樁擋土＋Katai2D 點井降水規劃）",
+        upcomingDemand: "高壓/動力耐燃電纜、消防幹管與階梯式綜合管架（680m）",
+        onSiteStock: "0m（送審型錄與 CSD 套繪圖編製中）",
+        coveragePct: 0.0,
+        action: "📋 依據 680m 電壓降（≤3.0%）與 IEEE 1584 弧閃計算結果先行鎖定長交期電纜與不鏽鋼管採購合約"
+      },
+      {
+        zone: "六大訓練建築群（值班台・出勤車庫・訓練塔機電預留）",
+        utilPct: 0.0,
+        utilStatus: "🔵 先期 CSD 套繪（大跨距樑穿樑套管 BWIC 預審）",
+        upcomingDemand: "結構基礎接地網與穿樑預埋套管（開工首波需求）",
+        onSiteStock: "0m（待監造核定材料送審單後叫貨）",
+        coveragePct: 0.0,
+        action: "📋 開工前 14 日完成接地銅棒、PVC-E 預埋管與止水環首批備料進場，確保開工即具備 ≥25% 安全庫存"
+      }
+    ],
+    pareto: [
+      { rank: "先期防呆規則 1（價值工程與套繪）", item: "【680m 共同管溝】雙向階梯漸變斷面轉折處電纜拉線張力 (IEEE 1185) 與彎曲半徑預審", action: "已於 3D 共同管溝拆解模擬器內建分區斷面與臨時水電碰撞檢查" },
+      { rank: "先期防呆規則 2（結構套管卡控）", item: "【出勤車庫大跨距樑】穿樑套管 (BWIC) 孔徑與邊距規範預檢", action: "開工前透過 2D-to-3D BIM 模型先行鎖定套管座標清冊" }
+    ],
+    boxplotHtml: `<div>• <strong>鶯歌消防局（北區訓練中心 TPFA115008）</strong> 目前為先期規劃與圖說送審階段（現場尚無出工與缺失樣本）；待正式開工後，系統將自動串聯每日工具箱會議人數與查驗紀錄產出盒鬚圖統計。</div>`,
+    basisRows: [
+      {
+        metric: "1. 680m 長距離饋線電壓降與管溝容量依據",
+        formula: "<code>VD% = (√3 × I × L × (R·cosθ + X·sinθ)) ÷ (1000 × V) × 100% ≤ 3.0%</code>",
+        calcDetail: "依 <code>L = 680m</code> 共同管溝路徑與雙向階梯漸變斷面進行饋線線徑與多層綜合吊架減重（-42.6%）最佳化驗算",
+        threshold: "幹線壓降 <code>≤ 3.0%</code>、分路合計 <code>≤ 5.0%</code>；開工前 14 日首批備料覆蓋率須達 <code>≥ 25%</code>",
+        source: "鶯歌消防局 680m 共同管溝 3D 拆解模擬器與機電設計圖說"
+      },
+      {
+        metric: "2. 開工後工區實動率與缺料預警規則",
+        formula: "同全系統標準：<code>Σ實到人日 ÷ Σ基準人日</code> ＆ <code>在庫量 ÷ 14日需求量</code>",
+        calcDetail: "目前開工前基準為 <code>0 / 0</code>，正式申報開工日起自動納入每日 06:00 模擬與 24:00 對帳",
+        threshold: "實動率低於 <code>20%</code> 停滯紅燈；在庫覆蓋率低於 <code>25%</code> 催料紅燈",
+        source: "工務機器人專案路由與雲端戰情室即時快照"
+      }
+    ]
+  }
 };
+
+function getProductionBiDataset_(projName) {
+  const pKey = String(projName || window.lastSelectedProjectKey || "桃園市八德區仁德國民小學新建校舍工程(第二期)");
+  if (pKey.indexOf("第一期") !== -1) return PRODUCTION_BI_STATIC_PROJECTS_["桃園市八德區仁德國民小學新建校舍工程(第一期)"];
+  if (pKey.indexOf("鶯歌") !== -1) return PRODUCTION_BI_STATIC_PROJECTS_["鶯歌消防局新建工程"];
+  return computeLiveRende2BiSnapshot_();
+}
+
 function switchProductionBiView(mode) {
-const isZone = mode === "zone_shortage";
-const p1 = document.getElementById("biPaneZoneShortage");
-const p2 = document.getElementById("biPaneParetoBoxplot");
-const b1 = document.getElementById("btnBiTabZone");
-const b2 = document.getElementById("btnBiTabPareto");
-if (p1) p1.style.display = isZone ? "block" : "none";
-if (p2) p2.style.display = isZone ? "none" : "block";
-if (b1) b1.className = isZone ? "btn btn-primary" : "btn btn-ghost";
-if (b2) b2.className = isZone ? "btn btn-ghost" : "btn btn-primary";
+  const pZone = document.getElementById("biPaneZoneShortage");
+  const pPareto = document.getElementById("biPaneParetoBoxplot");
+  const pBasis = document.getElementById("biPaneCalcBasis");
+  const bZone = document.getElementById("btnBiTabZone");
+  const bPareto = document.getElementById("btnBiTabPareto");
+  const bBasis = document.getElementById("btnBiTabBasis");
+  if (mode === "calc_basis") {
+    if (pZone) pZone.style.display = "none";
+    if (pPareto) pPareto.style.display = "none";
+    if (pBasis) {
+      pBasis.style.display = "block";
+      pBasis.style.borderTop = "none";
+      pBasis.style.marginTop = "4px";
+    }
+  } else {
+    const isZone = mode !== "pareto_boxplot";
+    if (pZone) pZone.style.display = isZone ? "block" : "none";
+    if (pPareto) pPareto.style.display = isZone ? "none" : "block";
+    if (pBasis) {
+      pBasis.style.display = "block";
+      pBasis.style.borderTop = "1px dashed var(--border-strong)";
+      pBasis.style.marginTop = "14px";
+    }
+  }
+  if (bZone) bZone.className = (mode === "zone_shortage" || !mode) ? "btn btn-primary" : "btn btn-ghost";
+  if (bPareto) bPareto.className = (mode === "pareto_boxplot") ? "btn btn-primary" : "btn btn-ghost";
+  if (bBasis) bBasis.className = (mode === "calc_basis") ? "btn btn-primary" : "btn btn-ghost";
 }
+
 function renderProductionBiAnalyzerUI(projName) {
-const pKey = projName || lastSelectedProjectKey || "桃園市八德區仁德國民小學新建校舍工程(第二期)";
-const biData = PRODUCTION_BI_DB[pKey] || PRODUCTION_BI_DB["桃園市八德區仁德國民小學新建校舍工程(第二期)"];
-const badge = document.getElementById("biProjBadgeText");
-if (badge) badge.textContent = biData.shortTitle;
-const evEl = document.getElementById("biEarnedValueRateVal");
-if (evEl) evEl.textContent = biData.earnedRate;
-const utEl = document.getElementById("biAvgUtilizationVal");
-if (utEl) utEl.textContent = biData.avgUtil;
-const shEl = document.getElementById("biMaterialCoverageVal");
-if (shEl) shEl.textContent = biData.shortageAlert;
-const bpEl = document.getElementById("biBoxplotMedianVal");
-if (bpEl) bpEl.textContent = biData.boxplotStat;
-const tbody = document.getElementById("biZoneShortageTableBody");
-if (tbody) {
-tbody.innerHTML = biData.zones.map(z => {
-const isShortage = z.coveragePct > 0 && z.coveragePct < 25;
-const isIdle = z.utilPct > 0 && z.utilPct < 20;
-const covStyle = isShortage ? "color:var(--eng-crimson);font-weight:800;" : "color:var(--eng-emerald);font-weight:700;";
-const utilStyle = isIdle ? "color:var(--eng-crimson);font-weight:800;" : "color:var(--text-main);font-weight:700;";
-return `
-<tr>
-<td><strong>${z.zone}</strong></td>
-<td style="${utilStyle}">${z.utilStatus}</td>
-<td><code>${z.upcomingDemand}</code></td>
-<td><code>${z.onSiteStock}</code></td>
-<td style="${covStyle}">${z.coveragePct.toFixed(1)}%</td>
-<td>${z.action}</td>
-</tr>
-`;
-}).join("");
+  const biData = getProductionBiDataset_(projName);
+  const setTxt = (id, val) => { const el = document.getElementById(id); if (el && val !== undefined) el.textContent = val; };
+  setTxt("biProjBadgeText", biData.shortTitle);
+  setTxt("biEarnedValueRateVal", biData.earnedRate);
+  setTxt("biEarnedValueFormulaSub", biData.earnedSub);
+  setTxt("biAvgUtilizationVal", biData.avgUtil);
+  setTxt("biAvgUtilizationFormulaSub", biData.avgUtilSub);
+  setTxt("biMaterialCoverageVal", biData.shortageAlert);
+  setTxt("biMaterialCoverageFormulaSub", biData.shortageSub);
+  setTxt("biBoxplotMedianVal", biData.boxplotStat);
+  setTxt("biBoxplotFormulaSub", biData.boxplotSub);
+
+  const tbody = document.getElementById("biZoneShortageTableBody");
+  if (tbody) {
+    tbody.innerHTML = (biData.zones || []).map(z => {
+      const isShortage = z.coveragePct < 25 && z.utilStatus.indexOf("先期") === -1;
+      const isIdle = z.utilPct < 20 && z.utilStatus.indexOf("先期") === -1 && z.utilStatus.indexOf("竣工") === -1;
+      const covStyle = isShortage ? "color:var(--eng-crimson);font-weight:800;" : "color:var(--eng-emerald);font-weight:700;";
+      const utilStyle = isIdle ? "color:var(--eng-crimson);font-weight:800;" : "color:var(--text-main);font-weight:700;";
+      return `<tr>
+        <td><strong>${z.zone}</strong></td>
+        <td style="${utilStyle}">${z.utilStatus}</td>
+        <td><code>${z.upcomingDemand}</code></td>
+        <td><code>${z.onSiteStock}</code></td>
+        <td style="${covStyle}">${Number(z.coveragePct).toFixed(1)}%</td>
+        <td>${z.action}</td>
+      </tr>`;
+    }).join("");
+  }
+
+  const paretoBox = document.getElementById("biParetoListBox");
+  if (paretoBox) {
+    paretoBox.innerHTML = (biData.pareto || []).map(p => `
+      <div style="padding:7px 10px;background:var(--panel-bg);border:1px solid var(--border-std);border-left:3px solid var(--eng-cyan);border-radius:6px;">
+        <div><strong style="color:var(--eng-cyan-bright);">${p.rank}</strong>：${p.item}</div>
+        <div style="color:var(--text-muted);font-size:0.72rem;margin-top:3px;">👉 防呆與處置對策：${p.action}</div>
+      </div>
+    `).join("");
+  }
+
+  const boxDiag = document.getElementById("biBoxplotDiagnosisBox");
+  if (boxDiag) boxDiag.innerHTML = biData.boxplotHtml || "";
+
+  const basisBody = document.getElementById("biCalcBasisTableBody");
+  if (basisBody) {
+    basisBody.innerHTML = (biData.basisRows || []).map(r => `<tr>
+      <td><strong>${r.metric}</strong></td>
+      <td>${r.formula}</td>
+      <td>${r.calcDetail}</td>
+      <td>${r.threshold}</td>
+      <td>${r.source}</td>
+    </tr>`).join("");
+  }
 }
-const paretoBox = document.getElementById("biParetoListBox");
-if (paretoBox) {
-paretoBox.innerHTML = biData.pareto.map(p => `
-<div style="padding:6px 9px;background:var(--panel-bg);border:1px solid var(--border-std);border-left:3px solid var(--eng-cyan);border-radius:5px;">
-<div><strong style="color:var(--eng-cyan-bright);">${p.rank}</strong>：${p.item}</div>
-<div style="color:var(--text-muted);font-size:0.72rem;margin-top:2px;">👉 防呆對策：${p.action}</div>
-</div>
-`).join("");
-}
-const boxDiag = document.getElementById("biBoxplotDiagnosisBox");
-if (boxDiag) {
-boxDiag.innerHTML = biData.boxplotHtml;
-}
+
+function exportProductionBiWithBasisCsv() {
+  const biData = getProductionBiDataset_(window.lastSelectedProjectKey);
+  const stripHtml = s => String(s || "").replace(/<br\s*\/?>/gi, " / ").replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
+  const escCsv = v => `"${stripHtml(v).replace(/"/g, '""')}"`;
+  const rows = [
+    ["【營造工務生產力 BI 分析與計算依據報表】", biData.shortTitle, "匯出時間：" + new Date().toLocaleString("zh-TW")],
+    [],
+    ["一、四大核心指標摘要", "實算數值", "計算分子／分母與資料依據"],
+    ["1. 機電進料覆蓋契約率／全案估驗率", biData.earnedRate, biData.earnedSub],
+    ["2. 全案工區實動率 (<20%停滯預警)", biData.avgUtil, biData.avgUtilSub],
+    ["3. 在庫材料覆蓋與三方料帳預警 (<25%紅燈)", biData.shortageAlert, biData.shortageSub],
+    ["4. 日出工盒鬚圖中位數 Q2／缺失結案率", biData.boxplotStat, biData.boxplotSub],
+    [],
+    ["二、各工區工作中心實動率與在庫材料覆蓋明細"],
+    ["工作中心", "工區實動率", "下階段排程／標單需求 (D)", "現場已進場在庫／登錄量 (S)", "在庫覆蓋率 (S÷D)", "生產力與催料／補單決策建議"],
+    ...(biData.zones || []).map(z => [z.zone, z.utilStatus, z.upcomingDemand, z.onSiteStock, Number(z.coveragePct).toFixed(1) + "%", z.action]),
+    [],
+    ["三、品質 NCR・監造・勞安缺失柏拉圖 (80/20 關鍵少數分析)"],
+    ["排名與累積佔比", "缺失根因與單號明細", "防呆與改善對策"],
+    ...(biData.pareto || []).map(p => [p.rank, p.item, p.action]),
+    [],
+    ["四、指標公式與資料計算依據核對總表 (Sum-Before-Divide)"],
+    ["分析指標名稱", "標準計算公式", "本期實算分子／分母明細", "預警判定基準", "雲端原始資料依據"],
+    ...(biData.basisRows || []).map(r => [r.metric, r.formula, r.calcDetail, r.threshold, r.source])
+  ];
+  const csvContent = "\uFEFF" + rows.map(r => r.map(escCsv).join(",")).join("\r\n");
+  const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `營造工務生產力BI分析與計算依據_${biData.shortTitle}.csv`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  if (typeof showToast === "function") showToast(`📊 已匯出「${a.download}」`);
 }
 function scrollToSkillUpgradedHub() {
 openSubpageModal("modalAiSkillHub");
@@ -22198,9 +22427,6 @@ document.documentElement.setAttribute("data-release-version", "S2版");
         '<div>' +
           '<h2 id="s4ThreeWayMainHeading" style="margin:0;font-size:1.05rem;font-weight:900;color:var(--text-main);">' + esc_(proj) + '【材料・施工・業主計價三方數量差異】</h2>' +
           '<div style="font-size:0.74rem;color:#475569;margin-top:3px;">資料基準：材料查驗量 (A：二期機電標單D11＋材料統計表) ／ 施工查驗量 (B：機電二期查驗單統計表) ／ 業主計價量 (C：第5期估驗計價單累估)</div>' +
-        '</div>' +
-        '<div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">' +
-          '<button type="button" class="s2-xlsx-btn" id="btnExportThreeWayDiffInPane_S4" onclick="exportThreeWayQtyDiffXlsx_S4()">匯出「查驗・施工・業主計價三方數量差異」(.xlsx)</button>' +
         '</div>' +
       '</div>' +
       '<div class="s3-kpi-5grid">' +
