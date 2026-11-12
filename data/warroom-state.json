@@ -2,7 +2,7 @@
   "ok": true,
   "version": "S3.5版_FAST_REALTIME_SYNC",
   "driveFingerprint": "S35F_950a69",
-  "syncedAt": "2026-11-12 14:34:00",
+  "syncedAt": "2026-11-12 14:45:12",
   "latestDate": "2026-11-12",
   "excelDriveFileId": "1sJiy0wDJAyDqJzBD39AX2PTbBiUWJNySX22APzI_7s8",
   "d11Summary": {
@@ -22,9 +22,7 @@
       "WP": 19,
       "LV": 1,
       "F": 4
-    },
-    "arrivedTotalAmt": 5706957,
-    "orderedPendingAmt": 415296
+    }
   },
   "ncrInProgress": 0,
   "ncrClosed": 18,
@@ -594,7 +592,8 @@
           "status": "已於115.10.31完成D11正式查驗 (銷帳轉正)",
           "fileUrl": "https://drive.google.com/file/d/1rrA-SUTXeYfEMzyJxTb60kzW5Hp3rpG_/view"
         }
-      ]
+      ],
+      "sheetRowCount": 10
     },
     "materialInspection": {
       "folderId": "1aTXDjGNBRkwuULae6C41ve9PYs5y1BAh",
@@ -5145,6 +5144,27 @@
       ]
     },
     "materialInspectionAll": {
+      "rootFolderId": "1aTXDjGNBRkwuULae6C41ve9PYs5y1BAh",
+      "rootFolderUrl": "https://drive.google.com/drive/folders/1aTXDjGNBRkwuULae6C41ve9PYs5y1BAh",
+      "deliveryFolderUrl": "https://drive.google.com/drive/folders/1UZYDvWLEp_PTZC7gEOqJnZBwF9Zz7IHV",
+      "subfolders": {
+        "E": {
+          "name": "電力與避雷接地 (E)",
+          "url": "https://drive.google.com/drive/folders/1K-DbsrdKf7ZrBpIkjKcbLqaGupe8gxgs"
+        },
+        "WP": {
+          "name": "給排水衛生設備 (WP)",
+          "url": "https://drive.google.com/drive/folders/1QlQgJnZKoO01h9nGFz6OInh6gGaGA_3-"
+        },
+        "LV": {
+          "name": "弱電與電信資訊 (LV)",
+          "url": "https://drive.google.com/drive/folders/1ZCQU8tKS-vkbCfq2IPYbgVCKryikTGKn"
+        },
+        "F": {
+          "name": "消防系統設備 (F)",
+          "url": "https://drive.google.com/drive/folders/1VqDp-_7MoTN91EvXea7m4CtVeTImIDjz"
+        }
+      },
       "totalPdfCount": 52,
       "countsBySystem": {
         "E": 28,
@@ -14412,17 +14432,5 @@
       "workDaysCount": 15,
       "dailyAvgWorkers": 10.3
     }
-  },
-  "c10Summary": {
-    "totalFilesSynced": 58,
-    "countsBySystem": {
-      "E": 17,
-      "WP": 16,
-      "LV": 12,
-      "F": 9,
-      "PA": 4
-    },
-    "rende1CaseFolderCount": 25,
-    "folderId": "1hCfZHP1e6RIkMVyfp2EEWKepgJFZRxD7"
   }
 }
