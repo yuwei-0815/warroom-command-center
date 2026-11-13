@@ -13129,5 +13129,15 @@
       "Stage 3: #047 ToolboxStateStore + #033 Parameter Object + #068/#073 30-Min TTL DialogStateMachine + #051/#060 Unified Lookup Router",
       "Stage 4: #078/#090 5-Module DRY Compiler + #100 20-Gate All-Features End-to-End Simulation Suite"
     ]
+  },
+  "s73OwnerBillingRelease": {
+    "version": "S7.3_LAST_SLOT_ENG_DROPDOWN_C10_OWNER_BILLING",
+    "navLastSlotButton": "工務專用 ▾ (業主計價 > 匯出 Excel)",
+    "billingBasis": "施工查驗(C08/C10)合格後始可計價",
+    "fillingBasis": "施工查驗後填寫對應材料數量",
+    "ownerBillingExcelFileId": "1dqJFs1fMg1hMuIYFSVAWmUjAG_BHlG5z",
+    "botBSlimBytes": 4240968,
+    "masterBotBytes": 7439359,
+    "autoHotUpdateGsBytes": 7230557
   }
 }
