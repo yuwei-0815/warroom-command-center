@@ -2,7 +2,7 @@
   "ok": true,
   "version": "S1版",
   "latestDate": "2026-11-13",
-  "syncedAt": "2026-11-14 00:02:36",
+  "syncedAt": "2026-11-14 00:16:43",
   "laborSummaryByProject": {
     "R2": {
       "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)",
@@ -509,7 +509,7 @@
       "note": "今日施作：2F補線 配管收尾、3F拉線、查管、2-3F ACP、排水修繕｜明日預計(10人)：2F水線補拉 補線 查管 消防系統補線、4F消防箱定位 4F走廊照明拉線 3F ACP  排水管修繕"
     }
   ],
-  "driveFingerprint": "YrKJytluQ7e_ubCWDX",
+  "driveFingerprint": "6pxdqVpsMKf5aY39P9",
   "excelDriveFileId": "1sJiy0wDJAyDqJzBD39AX2PTbBiUWJNySX22APzI_7s8",
   "sourceRegistry": {
     "gongwuyunUrl": "https://docs.google.com/spreadsheets/d/1sJiy0wDJAyDqJzBD39AX2PTbBiUWJNySX22APzI_7s8/edit",
@@ -1869,7 +1869,7 @@
       "cronExpressionUtc": "0 16 * * *",
       "triggerFunctionName": "cron2400FourWayBoqReconcileAndSync_S3",
       "last2400SyncedAt": "2026-11-12 00:03:53",
-      "lastRealtimeVerifiedAt": "2026-11-14 00:02:59",
+      "lastRealtimeVerifiedAt": "2026-11-14 00:17:05",
       "nextScheduledSync": "2026-11-14 24:00:00"
     },
     "summaryCounts": {
@@ -1954,6 +1954,38 @@
           "resultStatus": "抽查合格 (○)"
         },
         {
+          "docNo": "照片紀錄表_C08-F-1151104-1_B棟4F頂板及RF頂板預埋管_115.11.04",
+          "subfolder": "F",
+          "rocDate": "115.11.04",
+          "isoDate": "2026-11-04",
+          "floorZone": "4F頂板 / RF屋頂",
+          "workScope": "照片紀錄表_C08-F-1151104-1_B棟4F頂板及RF頂板預埋管_115.11.04",
+          "fileName": "照片紀錄表_C08-F-1151104-1_B棟4F頂板及RF頂板預埋管_115.11.04.pdf",
+          "fileId": "1WZ9lbJI65wyfOaYb-6wy8LFEHmkCVANN",
+          "fileUrl": "https://script.google.com/macros/s/AKfycbxRcVWuQzMEQWtGMd-PNqBr6ejcxjTvRLuxeRut38uwFFveHrPJDb6bbe3cRp4hkSXTsQ/exec?action=viewPdf&pdfId=1WZ9lbJI65wyfOaYb-6wy8LFEHmkCVANN",
+          "matchedBoqCode": "壹.甲.三.14.(1)~(3)",
+          "matchedBoqName": "消防系統設備工程 (火警PVC-E管、室內消防栓鍍鋅鋼管預埋)",
+          "boqAuditNote": "💡 第5期截止後新查驗 (B棟4F頂板/RF頂板消防管納入第6期計價)",
+          "billingFlag": "UNBILLED_READY",
+          "resultStatus": "抽查合格 (○)"
+        },
+        {
+          "docNo": "照片紀錄表_C08-E-1151104-1_B棟4F頂板及RF頂板預埋管_115.11.04",
+          "subfolder": "E",
+          "rocDate": "115.11.04",
+          "isoDate": "2026-11-04",
+          "floorZone": "4F頂板 / RF屋頂",
+          "workScope": "照片紀錄表_C08-E-1151104-1_B棟4F頂板及RF頂板預埋管_115.11.04",
+          "fileName": "照片紀錄表_C08-E-1151104-1_B棟4F頂板及RF頂板預埋管_115.11.04.pdf",
+          "fileId": "1Y8Fk47TOEjvVrOBLTYxD4gUuoUQoazg1",
+          "fileUrl": "https://script.google.com/macros/s/AKfycbxRcVWuQzMEQWtGMd-PNqBr6ejcxjTvRLuxeRut38uwFFveHrPJDb6bbe3cRp4hkSXTsQ/exec?action=viewPdf&pdfId=1Y8Fk47TOEjvVrOBLTYxD4gUuoUQoazg1",
+          "matchedBoqCode": "壹.甲.三.2.(54)~(68)",
+          "matchedBoqName": "照明電氣管線工程 (PVC-E管 16~100mm、EMT鋼管預埋與放樣)",
+          "boqAuditNote": "💡 第5期截止後新查驗 (RF頂板納入第6期業主計價)",
+          "billingFlag": "UNBILLED_READY",
+          "resultStatus": "抽查合格 (○)"
+        },
+        {
           "docNo": "C10-LV-1151104-1",
           "subfolder": "LV",
           "rocDate": "115.11.04",
@@ -1995,38 +2027,6 @@
           "fileName": "C10-E-1151104-1-B棟4F頂板及RF頂板.pdf",
           "fileId": "1zPEipf70M6lRYME7n0xc7dSCYjGBK9J6",
           "fileUrl": "https://script.google.com/macros/s/AKfycbxRcVWuQzMEQWtGMd-PNqBr6ejcxjTvRLuxeRut38uwFFveHrPJDb6bbe3cRp4hkSXTsQ/exec?action=viewPdf&pdfId=1zPEipf70M6lRYME7n0xc7dSCYjGBK9J6",
-          "matchedBoqCode": "壹.甲.三.2.(54)~(68)",
-          "matchedBoqName": "照明電氣管線工程 (PVC-E管 16~100mm、EMT鋼管預埋與放樣)",
-          "boqAuditNote": "💡 第5期截止後新查驗 (RF頂板納入第6期業主計價)",
-          "billingFlag": "UNBILLED_READY",
-          "resultStatus": "抽查合格 (○)"
-        },
-        {
-          "docNo": "照片紀錄表_C08-F-1151104-1_B棟4F頂板及RF頂板預埋管_115.11.04",
-          "subfolder": "F",
-          "rocDate": "115.11.04",
-          "isoDate": "2026-11-04",
-          "floorZone": "4F頂板 / RF屋頂",
-          "workScope": "照片紀錄表_C08-F-1151104-1_B棟4F頂板及RF頂板預埋管_115.11.04",
-          "fileName": "照片紀錄表_C08-F-1151104-1_B棟4F頂板及RF頂板預埋管_115.11.04.pdf",
-          "fileId": "1WZ9lbJI65wyfOaYb-6wy8LFEHmkCVANN",
-          "fileUrl": "https://script.google.com/macros/s/AKfycbxRcVWuQzMEQWtGMd-PNqBr6ejcxjTvRLuxeRut38uwFFveHrPJDb6bbe3cRp4hkSXTsQ/exec?action=viewPdf&pdfId=1WZ9lbJI65wyfOaYb-6wy8LFEHmkCVANN",
-          "matchedBoqCode": "壹.甲.三.14.(1)~(3)",
-          "matchedBoqName": "消防系統設備工程 (火警PVC-E管、室內消防栓鍍鋅鋼管預埋)",
-          "boqAuditNote": "💡 第5期截止後新查驗 (B棟4F頂板/RF頂板消防管納入第6期計價)",
-          "billingFlag": "UNBILLED_READY",
-          "resultStatus": "抽查合格 (○)"
-        },
-        {
-          "docNo": "照片紀錄表_C08-E-1151104-1_B棟4F頂板及RF頂板預埋管_115.11.04",
-          "subfolder": "E",
-          "rocDate": "115.11.04",
-          "isoDate": "2026-11-04",
-          "floorZone": "4F頂板 / RF屋頂",
-          "workScope": "照片紀錄表_C08-E-1151104-1_B棟4F頂板及RF頂板預埋管_115.11.04",
-          "fileName": "照片紀錄表_C08-E-1151104-1_B棟4F頂板及RF頂板預埋管_115.11.04.pdf",
-          "fileId": "1Y8Fk47TOEjvVrOBLTYxD4gUuoUQoazg1",
-          "fileUrl": "https://script.google.com/macros/s/AKfycbxRcVWuQzMEQWtGMd-PNqBr6ejcxjTvRLuxeRut38uwFFveHrPJDb6bbe3cRp4hkSXTsQ/exec?action=viewPdf&pdfId=1Y8Fk47TOEjvVrOBLTYxD4gUuoUQoazg1",
           "matchedBoqCode": "壹.甲.三.2.(54)~(68)",
           "matchedBoqName": "照明電氣管線工程 (PVC-E管 16~100mm、EMT鋼管預埋與放樣)",
           "boqAuditNote": "💡 第5期截止後新查驗 (RF頂板納入第6期業主計價)",
