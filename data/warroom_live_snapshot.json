@@ -1,8 +1,8 @@
 {
   "ok": true,
   "version": "S3.5版_FAST_REALTIME_SYNC",
-  "driveFingerprint": "S35F_639fcb88",
-  "syncedAt": "2026-11-13 17:43:48",
+  "driveFingerprint": "S35F_8d61a678",
+  "syncedAt": "2026-11-13 19:13:56",
   "latestDate": "2026-11-13",
   "excelDriveFileId": "1sJiy0wDJAyDqJzBD39AX2PTbBiUWJNySX22APzI_7s8",
   "d11Summary": {
@@ -512,9 +512,30 @@
     "deliverySlips": {
       "folderId": "1UZYDvWLEp_PTZC7gEOqJnZBwF9Zz7IHV",
       "folderUrl": "https://drive.google.com/drive/folders/1UZYDvWLEp_PTZC7gEOqJnZBwF9Zz7IHV",
-      "totalRecords": 17,
-      "totalCount": 17,
+      "totalRecords": 20,
+      "totalCount": 20,
       "records": [
+        {
+          "rocDate": "115.11.12",
+          "vendor": "暐琦事業股份有限公司",
+          "materialSpec": "南亞(灰)E(電導)管 (3/4\"x2.04M) (60支)",
+          "qtyText": "60支",
+          "fileUrl": "https://drive.google.com/drive/folders/1UZYDvWLEp_PTZC7gEOqJnZBwF9Zz7IHV"
+        },
+        {
+          "rocDate": "115.11.12",
+          "vendor": "暐琦事業股份有限公司",
+          "materialSpec": "南亞(灰)PVC-B排水管 (3/4\"x 3.0 4M) (20支)",
+          "qtyText": "20支",
+          "fileUrl": "https://drive.google.com/drive/folders/1UZYDvWLEp_PTZC7gEOqJnZBwF9Zz7IHV"
+        },
+        {
+          "rocDate": "115.11.12",
+          "vendor": "暐琦事業股份有限公司",
+          "materialSpec": "南亞(灰)PVC-B排水管 (1\"(25)x3.54M) (10支)",
+          "qtyText": "10支",
+          "fileUrl": "https://drive.google.com/drive/folders/1UZYDvWLEp_PTZC7gEOqJnZBwF9Zz7IHV"
+        },
         {
           "rocDate": "115.11.11",
           "vendor": "伸泰國際股份有限公司",
@@ -14512,7 +14533,7 @@
   },
   "dynamicSyncMetaS75": {
     "isDynamicS75": true,
-    "computedAt": "2026-11-13 17:44:01",
+    "computedAt": "2026-11-13 19:12:51",
     "d11LiveScanned": true,
     "c10LiveScanned": true,
     "boqSheetLiveRead": true,

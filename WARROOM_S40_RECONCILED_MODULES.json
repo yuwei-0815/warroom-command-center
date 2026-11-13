@@ -13136,9 +13136,9 @@
     "billingBasis": "施工查驗(C08/C10)合格後始可計價",
     "fillingBasis": "施工查驗後填寫對應材料數量",
     "ownerBillingExcelFileId": "1HAfF0OKDKsLsGhSo8r_yo3THvQRmPD_r",
-    "botBSlimBytes": 4221007,
-    "masterBotBytes": 7429800,
-    "autoHotUpdateGsBytes": 7093633
+    "botBSlimBytes": 4246437,
+    "masterBotBytes": 7417494,
+    "autoHotUpdateGsBytes": 7079182
   },
   "s74VisionAnd1113CalibrationRelease": {
     "version": "S7.4_VISION_V54_ORTHOGONAL_AND_1113_9WORKERS",
@@ -13179,8 +13179,21 @@
     "gongwuyun95MbDualBotCircuitBreaker": true,
     "yixingShipTableColumns": 7,
     "replyToPushAutoFallbackSec": 18,
-    "botBSlimBytes": 4221007,
-    "masterBotBytes": 7429800,
-    "autoHotUpdateGsBytes": 7093633
+    "botBSlimBytes": 4246437,
+    "masterBotBytes": 7417494,
+    "autoHotUpdateGsBytes": 7079182
+  },
+  "s77AllStepsSubsecondRelease": {
+    "version": "S7.7_ALL_STEPS_SUBSECOND_ZERO_LOCK_AND_SCOPE_BRIDGE",
+    "zeroScriptLockOnDialogSwitch": true,
+    "warmBootPropertiesRpcs": 0,
+    "crossIifeExportsBridged": true,
+    "s36GithubWebhookPushDecoupled": true,
+    "allMaterialMenuStepsIntercepted": true,
+    "bidOrderAndVendorReceiptReplyFirst": true,
+    "yixingFastSlipListReader": true,
+    "botBSlimBytes": 4246437,
+    "masterBotBytes": 7417494,
+    "autoHotUpdateGsBytes": 7079182
   }
 }
