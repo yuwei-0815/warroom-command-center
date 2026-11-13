@@ -13136,9 +13136,9 @@
     "billingBasis": "施工查驗(C08/C10)合格後始可計價",
     "fillingBasis": "施工查驗後填寫對應材料數量",
     "ownerBillingExcelFileId": "1HAfF0OKDKsLsGhSo8r_yo3THvQRmPD_r",
-    "botBSlimBytes": 4233239,
-    "masterBotBytes": 7444910,
-    "autoHotUpdateGsBytes": 7224406
+    "botBSlimBytes": 4221007,
+    "masterBotBytes": 7429800,
+    "autoHotUpdateGsBytes": 7093633
   },
   "s74VisionAnd1113CalibrationRelease": {
     "version": "S7.4_VISION_V54_ORTHOGONAL_AND_1113_9WORKERS",
@@ -13169,5 +13169,18 @@
       "Daily 24:00 (Four-Way Reconcile + Audit Push)",
       "Every 10m Precision Dispatcher Catch-up"
     ]
+  },
+  "s76VendorReceiptFastAndFsmRelease": {
+    "version": "S7.6_VENDOR_RECEIPT_ZERO_MISJUDGE_AND_SUB3S_FAST_REPLY",
+    "dialogFsmStatesWhitelisted": 28,
+    "photoQueueMutualExclusion": true,
+    "expandedReceiptClassifier": true,
+    "geminiWebhookCallsRemoved": true,
+    "gongwuyun95MbDualBotCircuitBreaker": true,
+    "yixingShipTableColumns": 7,
+    "replyToPushAutoFallbackSec": 18,
+    "botBSlimBytes": 4221007,
+    "masterBotBytes": 7429800,
+    "autoHotUpdateGsBytes": 7093633
   }
 }
