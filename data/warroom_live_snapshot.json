@@ -1,8 +1,8 @@
 {
   "ok": true,
   "version": "S3.5版_FAST_REALTIME_SYNC",
-  "driveFingerprint": "S35F_4ed84118",
-  "syncedAt": "2026-11-13 09:44:02",
+  "driveFingerprint": "S35F_639fcb88",
+  "syncedAt": "2026-11-13 16:24:31",
   "latestDate": "2026-11-13",
   "excelDriveFileId": "1sJiy0wDJAyDqJzBD39AX2PTbBiUWJNySX22APzI_7s8",
   "d11Summary": {
@@ -10,12 +10,14 @@
     "d11InspectedAmount": 4993177,
     "postReceiptAmount": 713780,
     "totalArrivedAmount": 5706957,
+    "arrivedTotalAmt": 5706957,
     "orderPendingAmount": 415296,
+    "orderedPendingAmt": 415296,
     "totalWithOrderAmount": 6122253,
     "matchedContractTotal": 9297762,
     "itemCount": 77,
     "arrivedItemCount": 76,
-    "fullItemCount": 22,
+    "fullItemCount": 40,
     "overflowItemCount": 18,
     "countsBySystem": {
       "E": 28,
@@ -23,8 +25,7 @@
       "LV": 1,
       "F": 4
     },
-    "arrivedTotalAmt": 5706957,
-    "orderedPendingAmt": 415296
+    "photoAppendixExcludedCount": 1
   },
   "ncrInProgress": 0,
   "ncrClosed": 18,
@@ -511,9 +512,72 @@
     "deliverySlips": {
       "folderId": "1UZYDvWLEp_PTZC7gEOqJnZBwF9Zz7IHV",
       "folderUrl": "https://drive.google.com/drive/folders/1UZYDvWLEp_PTZC7gEOqJnZBwF9Zz7IHV",
-      "totalRecords": 8,
-      "totalCount": 8,
+      "totalRecords": 17,
+      "totalCount": 17,
       "records": [
+        {
+          "rocDate": "115.11.11",
+          "vendor": "伸泰國際股份有限公司",
+          "materialSpec": "伸泰600V聚氯乙烯絕緣電線(IV) (2.0mm 絞線 100M/卷｜綠20卷、黃4卷、橘2卷、紅2卷) (2800M)",
+          "qtyText": "2800M",
+          "fileUrl": "https://drive.google.com/file/d/1Vr_sOgbErmtPPctnnSJETEw6PFA6Opqc/view?usp=drivesdk"
+        },
+        {
+          "rocDate": "115.11.11",
+          "vendor": "伸泰國際股份有限公司",
+          "materialSpec": "伸泰600V交連聚乙烯電力電纜(XLPE) (8.0mm² x 4C (黑)｜1000M×2軸) (2000M)",
+          "qtyText": "2000M",
+          "fileUrl": "https://drive.google.com/file/d/1kyCfeRPjsZsYyOIVHDTXVEeQOwjo9uzJ/view?usp=drivesdk"
+        },
+        {
+          "rocDate": "115.11.10",
+          "vendor": "伸泰電機工業股份有限公司",
+          "materialSpec": "600V PVC電線 2.0mm(2800M)、5.5mm²(300M)、XLPE 4/C 8.0mm²(2000M) (5100M)",
+          "qtyText": "5100M",
+          "fileUrl": "https://drive.google.com/file/d/1RXafQEjxu1JQFcR4q_pXVu1kg2Ed9M_s/view"
+        },
+        {
+          "rocDate": "115.11.05",
+          "vendor": "欣歐企業股份有限公司 (SENCO)",
+          "materialSpec": "(鋁製)(梯型)直式線槽及彎頭配件 (400Wx100Hx3000L & 300Wx100Hx3000L (含水平/垂直彎頭、連接片)) (198PC)",
+          "qtyText": "198PC",
+          "fileUrl": "https://drive.google.com/file/d/1YDCvh7adB-NtgW8XXLsbccFPMNf9ivew/view?usp=drivesdk"
+        },
+        {
+          "rocDate": "115.11.06",
+          "vendor": "暐琦事業股份有限公司",
+          "materialSpec": "南亞(灰)E(電導)管 (3/4\"x2.0 4M) (40支)",
+          "qtyText": "40支",
+          "fileUrl": "https://drive.google.com/file/d/10R4z9UTYzzvSB-nI7V2s_vShKvL_QQ6_/view?usp=drivesdk"
+        },
+        {
+          "rocDate": "115.11.02",
+          "vendor": "暐琦事業股份有限公司",
+          "materialSpec": "南亞(灰)E(電導)管 (3/4\"x 2.04M) (40支)",
+          "qtyText": "40支",
+          "fileUrl": "https://drive.google.com/file/d/1ukJlVwACsLXRW1ZdEwpII2hjNAxEKPIT/view?usp=drivesdk"
+        },
+        {
+          "rocDate": "115.11.02",
+          "vendor": "暐琦事業股份有限公司",
+          "materialSpec": "南亞(灰)PVC-B排水管 (3/4\"x 3.0 4M) (20支)",
+          "qtyText": "20支",
+          "fileUrl": "https://drive.google.com/file/d/1ukJlVwACsLXRW1ZdEwpII2hjNAxEKPIT/view?usp=drivesdk"
+        },
+        {
+          "rocDate": "115.10.29",
+          "vendor": "不鏽鋼管材供應商",
+          "materialSpec": "SUS304不鏽鋼管 Sch-20S (65mm~125mm) (156M)",
+          "qtyText": "156M",
+          "fileUrl": "https://drive.google.com/file/d/1ipHDh--vKGZu9Xuj26KSqmcqm9HNW5ea/view?usp=drivesdk"
+        },
+        {
+          "rocDate": "115.10.30",
+          "vendor": "衛浴設備供應商",
+          "materialSpec": "蹲式馬桶(含配件、按壓式沖水器) (36組)",
+          "qtyText": "36組",
+          "fileUrl": "https://drive.google.com/file/d/1o81tlYh0Jb42AVarTP9NhCHZEDnZB63I/view?usp=drivesdk"
+        },
         {
           "rocDate": "115.11.11",
           "isoDate": "2026-11-11",
@@ -1554,7 +1618,8 @@
         "LV": 12,
         "F": 9,
         "PA": 4
-      }
+      },
+      "latestOwnerValuationPeriodDrive": 5
     },
     "constructionInspection": {
       "subfolders": {
@@ -14100,15 +14165,15 @@
       "rules": [
         "符合勞安標準（無勞安缺失）"
       ],
-      "workerCount": 9,
+      "workerCount": 10,
       "toolboxWorkers": 9,
-      "report1500Workers": null,
+      "report1500Workers": 10,
       "photoBreakdown": "[5, 1, 3]",
-      "tomorrowPredictedWorkers": 0,
-      "tomorrowScope": "",
-      "workerTrades": "水電 9人 (工具箱點名 [5, 1, 3] 共3張｜標準回報：115.11.13 水電 *9)",
-      "badgeText": "晴 0mm・水電9人",
-      "note": "今日施作：2F補線 配管收尾、3F拉線、查管、2-3F ACP、排水修繕",
+      "tomorrowPredictedWorkers": 10,
+      "tomorrowScope": "2F水線補拉 補線 查管 消防系統補線、4F消防箱定位 4F走廊照明拉線 3F ACP  排水管修繕",
+      "workerTrades": "水電 10人 (15:00回報實到 10人｜晨間工具箱點名 9人 [5, 1, 3]｜明日預計 10人)",
+      "badgeText": "晴 0mm・水電10人",
+      "note": "今日施作：2F補線 配管收尾、3F拉線、查管、2-3F ACP、排水修繕｜明日預計(10人)：2F水線補拉 補線 查管 消防系統補線、4F消防箱定位 4F走廊照明拉線 3F ACP  排水管修繕",
       "__fromLiveCloudDb": true,
       "__isAutoRolloverToday": false
     },
@@ -14426,24 +14491,34 @@
       "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)",
       "latestDate": "2026-11-13",
       "latestRocDate": "115.11.13",
-      "todayWorkers": 9,
+      "todayWorkers": 10,
       "toolboxWorkers": 9,
-      "report1500Workers": null,
+      "report1500Workers": 10,
       "photoBreakdown": "[5, 1, 3]",
       "lastVerifiedDate": "2026-11-12",
       "lastVerifiedRocDate": "115.11.12",
       "lastVerifiedWorkers": 11,
-      "tomorrowPredictedWorkers": 0,
-      "tomorrowWorkScope": "",
+      "tomorrowPredictedWorkers": 10,
+      "tomorrowWorkScope": "2F水線補拉 補線 查管 消防系統補線、4F消防箱定位 4F走廊照明拉線 3F ACP  排水管修繕",
       "todayWorkScope": "2F補線 配管收尾、3F拉線、查管、2-3F ACP、排水修繕",
-      "todayBadgeText": "今日點名已同步",
-      "todayTradeTag": "水電 *9 ([5, 1, 3])",
-      "cumulativeWorkers": 166,
-      "currentMonthWorkers": 137,
+      "todayBadgeText": "15:00 實到已同步",
+      "todayTradeTag": "水電 *10 (15:00實到｜點名9人)",
+      "cumulativeWorkers": 167,
+      "currentMonthWorkers": 138,
       "currentMonthDays": 13,
       "workDaysCount": 16,
       "dailyAvgWorkers": 10.4
     }
+  },
+  "dynamicSyncMetaS75": {
+    "isDynamicS75": true,
+    "computedAt": "2026-11-13 16:25:22",
+    "d11LiveScanned": true,
+    "c10LiveScanned": true,
+    "boqSheetLiveRead": true,
+    "unenteredD11Docs": [],
+    "latestOwnerValPeriod": 5,
+    "latestOwnerValLabel": "第 5 期 (115.09.01~115.10.31)"
   },
   "c10Summary": {
     "totalFilesSynced": 58,
@@ -14454,6 +14529,8 @@
       "F": 9,
       "PA": 4
     },
+    "photoAppendixExcludedCount": 2,
+    "rawPdfCountInSubfolders": 87,
     "rende1CaseFolderCount": 25,
     "folderId": "1hCfZHP1e6RIkMVyfp2EEWKepgJFZRxD7"
   }
