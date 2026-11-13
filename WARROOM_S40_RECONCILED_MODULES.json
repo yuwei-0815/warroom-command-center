@@ -13136,8 +13136,26 @@
     "billingBasis": "施工查驗(C08/C10)合格後始可計價",
     "fillingBasis": "施工查驗後填寫對應材料數量",
     "ownerBillingExcelFileId": "1dqJFs1fMg1hMuIYFSVAWmUjAG_BHlG5z",
-    "botBSlimBytes": 4240968,
-    "masterBotBytes": 7439359,
-    "autoHotUpdateGsBytes": 7230557
+    "botBSlimBytes": 4248104,
+    "masterBotBytes": 7448061,
+    "autoHotUpdateGsBytes": 7238723
+  },
+  "s74VisionAnd1113CalibrationRelease": {
+    "version": "S7.4_VISION_V54_ORTHOGONAL_AND_1113_9WORKERS",
+    "calibratedDate": "115.11.13 (2026-11-13)",
+    "calibratedWorkers": 9,
+    "photoBreakdown": [
+      5,
+      1,
+      3
+    ],
+    "corpusRegressionGas": "58/58 (100%)",
+    "multiResPixelRegression": "260/260 (65 photos x 4 resolutions w200/w220/w240/w320, 0 regressions)",
+    "rulesAdded": [
+      "V54_R1: 左側窗邊強眩光吃帽＋中段黑頭燈帶逆光跨帽縫恢復 (3->5)",
+      "V54_R2: 寬幅霧面護目罩藍衣單人點名排除左側全黑門洞陰影 (2->1)",
+      "V54_R3: 藍網強逆光霧面護目罩與白帽3人並排恢復 (2->3)",
+      "V54_R4: 畫面最右緣(cx>=114)牆邊安全告示牌誤吸排除防呆 (-1)"
+    ]
   }
 }

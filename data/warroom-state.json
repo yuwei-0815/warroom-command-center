@@ -1,8 +1,8 @@
 {
   "ok": true,
   "version": "S3.5版_FAST_REALTIME_SYNC",
-  "driveFingerprint": "S35F_b8d98378",
-  "syncedAt": "2026-11-13 08:54:11",
+  "driveFingerprint": "S35F_4ed84118",
+  "syncedAt": "2026-11-13 09:44:02",
   "latestDate": "2026-11-13",
   "excelDriveFileId": "1sJiy0wDJAyDqJzBD39AX2PTbBiUWJNySX22APzI_7s8",
   "d11Summary": {
@@ -14100,14 +14100,14 @@
       "rules": [
         "符合勞安標準（無勞安缺失）"
       ],
-      "workerCount": 7,
-      "toolboxWorkers": 7,
+      "workerCount": 9,
+      "toolboxWorkers": 9,
       "report1500Workers": null,
-      "photoBreakdown": "[3, 2, 2]",
+      "photoBreakdown": "[5, 1, 3]",
       "tomorrowPredictedWorkers": 0,
       "tomorrowScope": "",
-      "workerTrades": "水電 7人 (工具箱點名 [3, 2, 2] 共3張｜標準回報：115.11.13 水電 *7)",
-      "badgeText": "晴 0mm・水電7人",
+      "workerTrades": "水電 9人 (工具箱點名 [5, 1, 3] 共3張｜標準回報：115.11.13 水電 *9)",
+      "badgeText": "晴 0mm・水電9人",
       "note": "今日施作：2F補線 配管收尾、3F拉線、查管、2-3F ACP、排水修繕",
       "__fromLiveCloudDb": true,
       "__isAutoRolloverToday": false
@@ -14426,10 +14426,10 @@
       "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)",
       "latestDate": "2026-11-13",
       "latestRocDate": "115.11.13",
-      "todayWorkers": 7,
-      "toolboxWorkers": 7,
+      "todayWorkers": 9,
+      "toolboxWorkers": 9,
       "report1500Workers": null,
-      "photoBreakdown": "[3, 2, 2]",
+      "photoBreakdown": "[5, 1, 3]",
       "lastVerifiedDate": "2026-11-12",
       "lastVerifiedRocDate": "115.11.12",
       "lastVerifiedWorkers": 11,
@@ -14437,12 +14437,12 @@
       "tomorrowWorkScope": "",
       "todayWorkScope": "2F補線 配管收尾、3F拉線、查管、2-3F ACP、排水修繕",
       "todayBadgeText": "今日點名已同步",
-      "todayTradeTag": "水電 *7 ([3, 2, 2])",
-      "cumulativeWorkers": 164,
-      "currentMonthWorkers": 135,
+      "todayTradeTag": "水電 *9 ([5, 1, 3])",
+      "cumulativeWorkers": 166,
+      "currentMonthWorkers": 137,
       "currentMonthDays": 13,
       "workDaysCount": 16,
-      "dailyAvgWorkers": 10.3
+      "dailyAvgWorkers": 10.4
     }
   },
   "c10Summary": {
