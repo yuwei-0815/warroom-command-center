@@ -13136,9 +13136,9 @@
     "billingBasis": "施工查驗(C08/C10)合格後始可計價",
     "fillingBasis": "施工查驗後填寫對應材料數量",
     "ownerBillingExcelFileId": "1HAfF0OKDKsLsGhSo8r_yo3THvQRmPD_r",
-    "botBSlimBytes": 4257284,
-    "masterBotBytes": 7428341,
-    "autoHotUpdateGsBytes": 7089166
+    "botBSlimBytes": 4262461,
+    "masterBotBytes": 7434661,
+    "autoHotUpdateGsBytes": 7095486
   },
   "s74VisionAnd1113CalibrationRelease": {
     "version": "S7.4_VISION_V54_ORTHOGONAL_AND_1113_9WORKERS",
@@ -13179,9 +13179,9 @@
     "gongwuyun95MbDualBotCircuitBreaker": true,
     "yixingShipTableColumns": 7,
     "replyToPushAutoFallbackSec": 18,
-    "botBSlimBytes": 4257284,
-    "masterBotBytes": 7428341,
-    "autoHotUpdateGsBytes": 7089166
+    "botBSlimBytes": 4262461,
+    "masterBotBytes": 7434661,
+    "autoHotUpdateGsBytes": 7095486
   },
   "s77AllStepsSubsecondRelease": {
     "version": "S7.7_ALL_STEPS_SUBSECOND_ZERO_LOCK_AND_SCOPE_BRIDGE",
@@ -13192,9 +13192,9 @@
     "allMaterialMenuStepsIntercepted": true,
     "bidOrderAndVendorReceiptReplyFirst": true,
     "yixingFastSlipListReader": true,
-    "botBSlimBytes": 4257284,
-    "masterBotBytes": 7428341,
-    "autoHotUpdateGsBytes": 7089166
+    "botBSlimBytes": 4262461,
+    "masterBotBytes": 7434661,
+    "autoHotUpdateGsBytes": 7095486
   },
   "s78CrossBotTokenAndCleanDiagRelease": {
     "version": "S7.8_ZERO_CROSS_TOKEN_AND_CLEAN_DIAG_V211",
@@ -13203,8 +13203,26 @@
     "autoLearnBidMapEmptyNegativeCacheSec": 21600,
     "heavySheetGuardExcludedFromErrorRing": true,
     "staleCachedHeavyGuardAutoPurged": true,
-    "botBSlimBytes": 4257284,
-    "masterBotBytes": 7428341,
-    "autoHotUpdateGsBytes": 7089166
+    "botBSlimBytes": 4262461,
+    "masterBotBytes": 7434661,
+    "autoHotUpdateGsBytes": 7095486
+  },
+  "s79VisionV55And1114CalibrationRelease": {
+    "version": "S7.9_VISION_V55_AND_1114_9WORKERS_V211",
+    "calibratedDate": "115.11.14 (2026-11-14)",
+    "calibratedWorkers": 9,
+    "photoBreakdown": [
+      5,
+      4
+    ],
+    "corpusRegressionGas": "60/60 (100%)",
+    "multiResPixelRegression": "328/328 (82 real photos x 4 resolutions w200/w220/w240/w320, 0 regressions)",
+    "rulesAdded": [
+      "V55_R1: 室內5人佇列黑頭燈帶切裂白帽(<12格)＋淺米色上衣搭深黑長褲立柱補回 (4->5)",
+      "V55_R2: 超廣角(gh<=60)紅圍籬鷹架逆光微仰角下移臉帶(y=18..24)4人立柱恢復＋排除背景大樓藍窗誤吸 (2->4)"
+    ],
+    "botBSlimBytes": 4262461,
+    "masterBotBytes": 7434661,
+    "autoHotUpdateGsBytes": 7095486
   }
 }
