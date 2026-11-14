@@ -3128,6 +3128,110 @@ body.light-engineering #modalLedgers table td {
   box-shadow: var(--material-shadow) !important;
 }
 
+
+/* ============================================================================
+ * S8.3 STRICT MONOCHROME UNIFICATION ACROSS ALL 16+ VIEWS (Zero Rainbow Slop)
+ * ============================================================================ */
+:root {
+  --eng-cyan: #17181c !important;
+  --eng-cyan-bright: #17181c !important;
+  --eng-accent: #17181c !important;
+  --eng-amber: #17181c !important;
+  --eng-orange: #17181c !important;
+  --eng-emerald: #17181c !important;
+  --eng-crimson: #17181c !important;
+}
+body.light-engineering,
+html[data-theme="dark"] body {
+  --eng-cyan: #ededed !important;
+  --eng-cyan-bright: #ededed !important;
+  --eng-accent: #ededed !important;
+  --eng-amber: #ededed !important;
+  --eng-orange: #ededed !important;
+  --eng-emerald: #ededed !important;
+  --eng-crimson: #ededed !important;
+}
+
+/* Unify All Secondary / Colored Button Classes to Neutral Capsules */
+.btn-emerald,
+.btn-amber,
+.btn-danger,
+.s2-xlsx-btn,
+header.top-bar > div:last-child .btn,
+#modalWeatherFull .subpage-header .btn,
+#modalDailyEntry .subpage-header .btn,
+#modalNcrSafety .subpage-header .btn,
+#modalMsProjectSchedule .subpage-header .btn,
+#modalProductionBi .subpage-header .btn,
+#modalDwgCatalog .subpage-header .btn,
+#modalProjectSetup .subpage-header .btn,
+#modalBotGroupConfig .subpage-header .btn,
+#modalAccountAuth .subpage-header .btn,
+#modalGithubDeploy .subpage-header .btn,
+#modalAiSkillHub .subpage-header .btn {
+  background: var(--chip-bg) !important;
+  color: var(--animate-text) !important;
+  border: none !important;
+  border-radius: 40px !important;
+  box-shadow: inset 0 0 0 1px var(--border-strong) !important;
+}
+@media (hover: hover) {
+  .btn-emerald:hover,
+  .btn-amber:hover,
+  .btn-danger:hover,
+  .s2-xlsx-btn:hover,
+  header.top-bar > div:last-child .btn:hover {
+    background: var(--chip-pressed) !important;
+    color: var(--text) !important;
+  }
+}
+
+/* Unify All Badges, Status Pills, Sync Tags & Calendar Pills to Neutral Monochrome */
+#homeKpiTodayBadge_V163,
+#homeCurveActiveProjBadge,
+#homeKpiSafetyBadge_V163,
+#liveCloudRealtimeBadge_V161,
+#v164DualSyncStatusPill,
+#homeMspSavedFileBadge_V168,
+#homeKpiNcrBadge_V163,
+#s72LastDataUpdatedBadge,
+#biSyncSourceTag,
+.pill,
+.badge,
+.status-pill,
+.pill-cyan,
+.pill-emerald,
+.pill-amber,
+.pill-crimson,
+.cal-pill,
+.event-pill {
+  background: var(--chip-bg) !important;
+  color: var(--text-muted) !important;
+  border: 1px solid var(--card-border) !important;
+  border-radius: 40px !important;
+  font-weight: 500 !important;
+  box-shadow: none !important;
+}
+
+/* Unify Hyperlinks Across All Tables & Subpages (No Bright Blue Underline Clutter) */
+a:not(.btn):not(.launcher-btn) {
+  color: var(--text) !important;
+  text-decoration-color: rgba(13, 13, 13, 0.25) !important;
+  text-underline-offset: 3px !important;
+  transition: color var(--duration-quick) var(--ease-smooth-out), text-decoration-color var(--duration-quick) var(--ease-smooth-out) !important;
+}
+body.light-engineering a:not(.btn):not(.launcher-btn) {
+  text-decoration-color: rgba(255, 255, 255, 0.30) !important;
+}
+a:not(.btn):not(.launcher-btn):hover {
+  text-decoration-color: var(--text) !important;
+}
+
+/* Header Divider Border Monochrome */
+#headerMergedProjSwitcherBar_S72 {
+  border-left: 1px solid var(--border-strong) !important;
+}
+
 /* Transitions.dev Mandatory Accessibility Guard */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -3286,26 +3390,7 @@ body.light-engineering #modalLedgers table td {
 </div>
 <div class="auth-overlay" id="authLoginOverlay" style="display:flex;">
 <!-- 翩翩起舞：暖陽絲綢流線背景 (Animated Silk Ribbons SVG) -->
-<div aria-hidden="true" class="prelogin-silk-canvas">
-<svg preserveaspectratio="none" viewbox="0 0 1440 900">
-<defs>
-<lineargradient id="warmSilkGrad1" x1="0%" x2="100%" y1="0%" y2="100%">
-<stop offset="0%" stop-color="#17181c" stop-opacity="0.18"></stop>
-<stop offset="50%" stop-color="#D48C46" stop-opacity="0.12"></stop>
-<stop offset="100%" stop-color="#4A7C59" stop-opacity="0.08"></stop>
-</lineargradient>
-<lineargradient id="warmSilkGrad2" x1="100%" x2="0%" y1="0%" y2="100%">
-<stop offset="0%" stop-color="#D48C46" stop-opacity="0.16"></stop>
-<stop offset="60%" stop-color="#17181c" stop-opacity="0.10"></stop>
-<stop offset="100%" stop-color="#fdfdfd" stop-opacity="0.0"></stop>
-</lineargradient>
-</defs>
-<path class="silk-wave-path-1" d="M-120,220 C240,80 520,380 880,210 C1180,70 1360,260 1560,180 L1560,920 L-120,920 Z" fill="url(#warmSilkGrad1)"></path>
-<path class="silk-wave-path-2" d="M-120,540 C310,360 640,670 1020,460 C1260,330 1410,490 1560,420 L1560,920 L-120,920 Z" fill="url(#warmSilkGrad2)"></path>
-<path class="silk-wave-path-1" d="M-80,180 C300,30 620,340 980,160 C1220,40 1390,210 1520,140" fill="none" stroke="rgba(200,100,70,0.22)" stroke-width="1.8"></path>
-<path class="silk-wave-path-2" d="M-80,480 C260,330 680,600 1060,400 C1290,280 1420,410 1520,360" fill="none" stroke="rgba(212,140,70,0.24)" stroke-dasharray="8,8" stroke-width="1.4"></path>
-</svg>
-</div>
+
 <div class="warm-auth-pavilion">
 <!-- 左欄：溫暖人文登入亭 -->
 <div class="auth-card">
@@ -4834,16 +4919,16 @@ window.renderWarRoomCalendar();
 return true;
 };
 window.WEATHER_METEO_MAP_V147 = {
-"2026-10-29": { tempAvg: "26.1°C", tempRange: "22.4°C ~ 28.5°C", apparent: "27.6°C", dew: "19.8°C", rh: "66%", pres: "1013.5 hPa", sun: "7.4 hr", uvi: "UVI 6 (高量級)", cloud: "2/10", vis: "18.5 km", windDir: "東北風 (NE)", avgWind: "1.6 m/s (1級)" },
-"2026-10-30": { tempAvg: "25.8°C", tempRange: "21.8°C ~ 28.0°C", apparent: "27.2°C", dew: "19.4°C", rh: "67%", pres: "1014.0 hPa", sun: "7.1 hr", uvi: "UVI 6 (高量級)", cloud: "3/10", vis: "17.0 km", windDir: "東北東風 (ENE)", avgWind: "1.8 m/s (2級)" },
-"2026-10-31": { tempAvg: "25.5°C", tempRange: "21.5°C ~ 27.6°C", apparent: "26.9°C", dew: "19.2°C", rh: "68%", pres: "1014.4 hPa", sun: "6.9 hr", uvi: "UVI 5 (中量級)", cloud: "3/10", vis: "16.5 km", windDir: "東北風 (NE)", avgWind: "1.7 m/s (2級)" },
-"2026-11-01": { tempAvg: "25.2°C", tempRange: "21.2°C ~ 27.1°C", apparent: "26.5°C", dew: "19.0°C", rh: "69%", pres: "1014.8 hPa", sun: "6.6 hr", uvi: "UVI 5 (中量級)", cloud: "3/10", vis: "16.0 km", windDir: "東北風 (NE)", avgWind: "1.6 m/s (1級)" },
-"2026-11-02": { tempAvg: "22.8°C", tempRange: "20.1°C ~ 24.5°C", apparent: "23.9°C", dew: "20.2°C", rh: "84%", pres: "1011.6 hPa", sun: "1.8 hr", uvi: "UVI 3 (中量級)", cloud: "8/10", vis: "9.5 km",  windDir: "東北風 (NE)", avgWind: "2.2 m/s (2級)" },
-"2026-11-03": { tempAvg: "24.6°C", tempRange: "20.8°C ~ 26.8°C", apparent: "25.9°C", dew: "18.8°C", rh: "70%", pres: "1013.9 hPa", sun: "6.4 hr", uvi: "UVI 5 (中量級)", cloud: "3/10", vis: "16.0 km", windDir: "東北東風 (ENE)", avgWind: "1.8 m/s (2級)" },
-"2026-11-04": { tempAvg: "25.0°C", tempRange: "21.0°C ~ 27.0°C", apparent: "26.3°C", dew: "18.9°C", rh: "68%", pres: "1014.5 hPa", sun: "6.7 hr", uvi: "UVI 5 (中量級)", cloud: "2/10", vis: "17.5 km", windDir: "東風 (E)", avgWind: "1.5 m/s (1級)" },
-"2026-11-05": { tempAvg: "25.3°C", tempRange: "21.1°C ~ 27.3°C", apparent: "26.6°C", dew: "19.0°C", rh: "67%", pres: "1014.3 hPa", sun: "6.8 hr", uvi: "UVI 5 (中量級)", cloud: "2/10", vis: "18.0 km", windDir: "東北東風 (ENE)", avgWind: "1.5 m/s (1級)" },
-"2026-11-06": { tempAvg: "25.4°C", tempRange: "21.0°C ~ 27.2°C", apparent: "26.8°C", dew: "19.1°C", rh: "68%", pres: "1014.2 hPa", sun: "6.8 hr", uvi: "UVI 5 (中量級)", cloud: "2/10", vis: "18.0 km", windDir: "東北東風 (ENE)", avgWind: "1.4 m/s (1級)" },
-"2026-11-07": { tempAvg: "25.6°C", tempRange: "21.2°C ~ 27.5°C", apparent: "27.0°C", dew: "19.2°C", rh: "67%", pres: "1014.4 hPa", sun: "7.0 hr", uvi: "UVI 5 (中量級)", cloud: "2/10", vis: "18.5 km", windDir: "東北東風 (ENE)", avgWind: "1.4 m/s (1級)" }
+"2026-10-29": { tempAvg:"26.1°C",tempRange:"22.4°C ~ 28.5°C",apparent:"27.6°C",dew:"19.8°C",rh:"66%",pres:"1013.5 hPa",sun:"7.4 hr",uvi:"UVI 6 (高量級)",cloud:"2/10",vis:"18.5 km",windDir:"東北風 (NE)",avgWind:"1.6 m/s (1級)" },
+"2026-10-30": { tempAvg:"25.8°C",tempRange:"21.8°C ~ 28.0°C",apparent:"27.2°C",dew:"19.4°C",rh:"67%",pres:"1014.0 hPa",sun:"7.1 hr",uvi:"UVI 6 (高量級)",cloud:"3/10",vis:"17.0 km",windDir:"東北東風 (ENE)",avgWind:"1.8 m/s (2級)" },
+"2026-10-31": { tempAvg:"25.5°C",tempRange:"21.5°C ~ 27.6°C",apparent:"26.9°C",dew:"19.2°C",rh:"68%",pres:"1014.4 hPa",sun:"6.9 hr",uvi:"UVI 5 (中量級)",cloud:"3/10",vis:"16.5 km",windDir:"東北風 (NE)",avgWind:"1.7 m/s (2級)" },
+"2026-11-01": { tempAvg:"25.2°C",tempRange:"21.2°C ~ 27.1°C",apparent:"26.5°C",dew:"19.0°C",rh:"69%",pres:"1014.8 hPa",sun:"6.6 hr",uvi:"UVI 5 (中量級)",cloud:"3/10",vis:"16.0 km",windDir:"東北風 (NE)",avgWind:"1.6 m/s (1級)" },
+"2026-11-02": { tempAvg:"22.8°C",tempRange:"20.1°C ~ 24.5°C",apparent:"23.9°C",dew:"20.2°C",rh:"84%",pres:"1011.6 hPa",sun:"1.8 hr",uvi:"UVI 3 (中量級)",cloud:"8/10",vis:"9.5 km",  windDir: "東北風 (NE)",avgWind:"2.2 m/s (2級)" },
+"2026-11-03": { tempAvg:"24.6°C",tempRange:"20.8°C ~ 26.8°C",apparent:"25.9°C",dew:"18.8°C",rh:"70%",pres:"1013.9 hPa",sun:"6.4 hr",uvi:"UVI 5 (中量級)",cloud:"3/10",vis:"16.0 km",windDir:"東北東風 (ENE)",avgWind:"1.8 m/s (2級)" },
+"2026-11-04": { tempAvg:"25.0°C",tempRange:"21.0°C ~ 27.0°C",apparent:"26.3°C",dew:"18.9°C",rh:"68%",pres:"1014.5 hPa",sun:"6.7 hr",uvi:"UVI 5 (中量級)",cloud:"2/10",vis:"17.5 km",windDir:"東風 (E)",avgWind:"1.5 m/s (1級)" },
+"2026-11-05": { tempAvg:"25.3°C",tempRange:"21.1°C ~ 27.3°C",apparent:"26.6°C",dew:"19.0°C",rh:"67%",pres:"1014.3 hPa",sun:"6.8 hr",uvi:"UVI 5 (中量級)",cloud:"2/10",vis:"18.0 km",windDir:"東北東風 (ENE)",avgWind:"1.5 m/s (1級)" },
+"2026-11-06": { tempAvg:"25.4°C",tempRange:"21.0°C ~ 27.2°C",apparent:"26.8°C",dew:"19.1°C",rh:"68%",pres:"1014.2 hPa",sun:"6.8 hr",uvi:"UVI 5 (中量級)",cloud:"2/10",vis:"18.0 km",windDir:"東北東風 (ENE)",avgWind:"1.4 m/s (1級)" },
+"2026-11-07": { tempAvg:"25.6°C",tempRange:"21.2°C ~ 27.5°C",apparent:"27.0°C",dew:"19.2°C",rh:"67%",pres:"1014.4 hPa",sun:"7.0 hr",uvi:"UVI 5 (中量級)",cloud:"2/10",vis:"18.5 km",windDir:"東北東風 (ENE)",avgWind:"1.4 m/s (1級)" }
 };
 window.weatherTabProjectFilter = "ALL";
 window.updateKpisAndAlertBanner = function(project, latestEv) {
@@ -5416,12 +5501,7 @@ quickUpdateTodayHeadcountDirect: window.quickUpdateTodayHeadcountDirect
 };
 })();
 </script>
-<div aria-hidden="true" class="warroom-ambient-silk-bg">
-<svg preserveaspectratio="none" viewbox="0 0 1440 900">
-<path class="silk-wave-path-1" d="M-100,160 C320,40 640,280 1020,140 C1260,50 1400,190 1540,120 L1540,900 L-100,900 Z" fill="rgba(200, 100, 70, 0.045)"></path>
-<path class="silk-wave-path-2" d="M-100,620 C280,480 720,740 1120,560 C1320,470 1440,590 1540,530 L1540,900 L-100,900 Z" fill="rgba(212, 140, 70, 0.045)"></path>
-</svg>
-</div><div class="container">
+<div class="container">
 <header class="glass-panel top-bar" style="gap:10px;">
 <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;flex:1 1 auto;">
 <h1 class="brand-title" style="margin:0;white-space:nowrap;">工務戰情室</h1><!--S72_MERGED_PROJ-->
@@ -13872,16 +13952,16 @@ try { SwitchLedgerView("flags", false); } catch (e) {}
 try { runHeavyDashboardInit_(); } catch (_eHeavyImmediate) {}
 }
 const WEATHER_METEO_ENRICH_MAP_V144 = {
-"2026-10-29": { tempAvg: "26.1°C", tempRange: "22.4°C ~ 28.5°C", apparent: "27.6°C", dew: "19.8°C", rh: "66%", pres: "1013.5 hPa", sun: "7.4 hr", uvi: "UVI 6 (高量級)", cloud: "2/10", vis: "18.5 km", windDir: "東北風 (NE)", avgWind: "1.6 m/s (1級)" },
-"2026-10-30": { tempAvg: "25.8°C", tempRange: "21.8°C ~ 28.0°C", apparent: "27.2°C", dew: "19.4°C", rh: "67%", pres: "1014.0 hPa", sun: "7.1 hr", uvi: "UVI 6 (高量級)", cloud: "3/10", vis: "17.0 km", windDir: "東北東風 (ENE)", avgWind: "1.8 m/s (2級)" },
-"2026-10-31": { tempAvg: "25.5°C", tempRange: "21.5°C ~ 27.6°C", apparent: "26.9°C", dew: "19.2°C", rh: "68%", pres: "1014.4 hPa", sun: "6.9 hr", uvi: "UVI 5 (中量級)", cloud: "3/10", vis: "16.5 km", windDir: "東北風 (NE)", avgWind: "1.7 m/s (2級)" },
-"2026-11-01": { tempAvg: "25.2°C", tempRange: "21.2°C ~ 27.1°C", apparent: "26.5°C", dew: "19.0°C", rh: "69%", pres: "1014.8 hPa", sun: "6.6 hr", uvi: "UVI 5 (中量級)", cloud: "3/10", vis: "16.0 km", windDir: "東北風 (NE)", avgWind: "1.6 m/s (1級)" },
-"2026-11-02": { tempAvg: "22.8°C", tempRange: "20.1°C ~ 24.5°C", apparent: "23.9°C", dew: "20.2°C", rh: "84%", pres: "1011.6 hPa", sun: "1.8 hr", uvi: "UVI 3 (中量級)", cloud: "8/10", vis: "9.5 km",  windDir: "東北風 (NE)", avgWind: "2.2 m/s (2級)" },
-"2026-11-03": { tempAvg: "24.6°C", tempRange: "20.8°C ~ 26.8°C", apparent: "25.9°C", dew: "18.8°C", rh: "70%", pres: "1013.9 hPa", sun: "6.4 hr", uvi: "UVI 5 (中量級)", cloud: "3/10", vis: "16.0 km", windDir: "東北東風 (ENE)", avgWind: "1.8 m/s (2級)" },
-"2026-11-04": { tempAvg: "25.0°C", tempRange: "21.0°C ~ 27.0°C", apparent: "26.3°C", dew: "18.9°C", rh: "68%", pres: "1014.5 hPa", sun: "6.7 hr", uvi: "UVI 5 (中量級)", cloud: "2/10", vis: "17.5 km", windDir: "東風 (E)", avgWind: "1.5 m/s (1級)" },
-"2026-11-05": { tempAvg: "25.3°C", tempRange: "21.1°C ~ 27.3°C", apparent: "26.6°C", dew: "19.0°C", rh: "67%", pres: "1014.3 hPa", sun: "6.8 hr", uvi: "UVI 5 (中量級)", cloud: "2/10", vis: "18.0 km", windDir: "東北東風 (ENE)", avgWind: "1.5 m/s (1級)" },
-"2026-11-06": { tempAvg: "25.4°C", tempRange: "21.0°C ~ 27.2°C", apparent: "26.8°C", dew: "19.1°C", rh: "68%", pres: "1014.2 hPa", sun: "6.8 hr", uvi: "UVI 5 (中量級)", cloud: "2/10", vis: "18.0 km", windDir: "東北東風 (ENE)", avgWind: "1.4 m/s (1級)" },
-"2026-11-07": { tempAvg: "25.6°C", tempRange: "21.2°C ~ 27.5°C", apparent: "27.0°C", dew: "19.2°C", rh: "67%", pres: "1014.4 hPa", sun: "7.0 hr", uvi: "UVI 5 (中量級)", cloud: "2/10", vis: "18.5 km", windDir: "東北東風 (ENE)", avgWind: "1.4 m/s (1級)" }
+"2026-10-29": { tempAvg:"26.1°C",tempRange:"22.4°C ~ 28.5°C",apparent:"27.6°C",dew:"19.8°C",rh:"66%",pres:"1013.5 hPa",sun:"7.4 hr",uvi:"UVI 6 (高量級)",cloud:"2/10",vis:"18.5 km",windDir:"東北風 (NE)",avgWind:"1.6 m/s (1級)" },
+"2026-10-30": { tempAvg:"25.8°C",tempRange:"21.8°C ~ 28.0°C",apparent:"27.2°C",dew:"19.4°C",rh:"67%",pres:"1014.0 hPa",sun:"7.1 hr",uvi:"UVI 6 (高量級)",cloud:"3/10",vis:"17.0 km",windDir:"東北東風 (ENE)",avgWind:"1.8 m/s (2級)" },
+"2026-10-31": { tempAvg:"25.5°C",tempRange:"21.5°C ~ 27.6°C",apparent:"26.9°C",dew:"19.2°C",rh:"68%",pres:"1014.4 hPa",sun:"6.9 hr",uvi:"UVI 5 (中量級)",cloud:"3/10",vis:"16.5 km",windDir:"東北風 (NE)",avgWind:"1.7 m/s (2級)" },
+"2026-11-01": { tempAvg:"25.2°C",tempRange:"21.2°C ~ 27.1°C",apparent:"26.5°C",dew:"19.0°C",rh:"69%",pres:"1014.8 hPa",sun:"6.6 hr",uvi:"UVI 5 (中量級)",cloud:"3/10",vis:"16.0 km",windDir:"東北風 (NE)",avgWind:"1.6 m/s (1級)" },
+"2026-11-02": { tempAvg:"22.8°C",tempRange:"20.1°C ~ 24.5°C",apparent:"23.9°C",dew:"20.2°C",rh:"84%",pres:"1011.6 hPa",sun:"1.8 hr",uvi:"UVI 3 (中量級)",cloud:"8/10",vis:"9.5 km",  windDir: "東北風 (NE)",avgWind:"2.2 m/s (2級)" },
+"2026-11-03": { tempAvg:"24.6°C",tempRange:"20.8°C ~ 26.8°C",apparent:"25.9°C",dew:"18.8°C",rh:"70%",pres:"1013.9 hPa",sun:"6.4 hr",uvi:"UVI 5 (中量級)",cloud:"3/10",vis:"16.0 km",windDir:"東北東風 (ENE)",avgWind:"1.8 m/s (2級)" },
+"2026-11-04": { tempAvg:"25.0°C",tempRange:"21.0°C ~ 27.0°C",apparent:"26.3°C",dew:"18.9°C",rh:"68%",pres:"1014.5 hPa",sun:"6.7 hr",uvi:"UVI 5 (中量級)",cloud:"2/10",vis:"17.5 km",windDir:"東風 (E)",avgWind:"1.5 m/s (1級)" },
+"2026-11-05": { tempAvg:"25.3°C",tempRange:"21.1°C ~ 27.3°C",apparent:"26.6°C",dew:"19.0°C",rh:"67%",pres:"1014.3 hPa",sun:"6.8 hr",uvi:"UVI 5 (中量級)",cloud:"2/10",vis:"18.0 km",windDir:"東北東風 (ENE)",avgWind:"1.5 m/s (1級)" },
+"2026-11-06": { tempAvg:"25.4°C",tempRange:"21.0°C ~ 27.2°C",apparent:"26.8°C",dew:"19.1°C",rh:"68%",pres:"1014.2 hPa",sun:"6.8 hr",uvi:"UVI 5 (中量級)",cloud:"2/10",vis:"18.0 km",windDir:"東北東風 (ENE)",avgWind:"1.4 m/s (1級)" },
+"2026-11-07": { tempAvg:"25.6°C",tempRange:"21.2°C ~ 27.5°C",apparent:"27.0°C",dew:"19.2°C",rh:"67%",pres:"1014.4 hPa",sun:"7.0 hr",uvi:"UVI 5 (中量級)",cloud:"2/10",vis:"18.5 km",windDir:"東北東風 (ENE)",avgWind:"1.4 m/s (1級)" }
 };
 function selectWeatherFocusDate(dateStr) {
 selectedDateStr = dateStr;
@@ -14640,7 +14720,7 @@ var focusEv = weatherList.filter(function(e) { return e.date === selDate && (!fo
 || weatherList.filter(function(e) { return e.date === selDate; })[0]
 || weatherList[0]
 || { date: "2026-11-07", rocDate: "115.11.07", project: activeProj, stationId: "C0C700", stationName: "八德觀測站", stationDistKm: 0.61, weatherState: "晴", rain24h: 0.0, rain1h: 0.0, windMs: 2.3, beaufort: 2, eligible: false, extDays: 0.0 };
-var mInfo = (window.WEATHER_METEO_MAP_V147 && window.WEATHER_METEO_MAP_V147[focusEv.date]) || { tempAvg: "25.6°C", tempRange: "21.2°C ~ 27.5°C", apparent: "27.0°C", dew: "19.2°C", rh: "67%", pres: "1014.4 hPa", sun: "7.0 hr", uvi: "UVI 5 (中量級)", cloud: "2/10", vis: "18.5 km", windDir: "東北東風 (ENE)", avgWind: "1.4 m/s (1級)" };
+var mInfo = (window.WEATHER_METEO_MAP_V147 && window.WEATHER_METEO_MAP_V147[focusEv.date]) || { tempAvg:"25.6°C",tempRange:"21.2°C ~ 27.5°C",apparent:"27.0°C",dew:"19.2°C",rh:"67%",pres:"1014.4 hPa",sun:"7.0 hr",uvi:"UVI 5 (中量級)",cloud:"2/10",vis:"18.5 km",windDir:"東北東風 (ENE)",avgWind:"1.4 m/s (1級)" };
 var setTxt = function(id, v) { var el = document.getElementById(id); if (el) el.textContent = v; };
 setTxt("weatherFullProjTitle", window.formatCleanProjectDisplay_(focusEv.project || activeProj));
 setTxt("weatherFullFocusDate", focusEv.date + " / " + (focusEv.rocDate || ""));
@@ -20276,19 +20356,7 @@ window.__RENDE1_BUILTIN_BIM_HTML_V186__ = {"html": "<!DOCTYPE html>\n<html lang=
   function warmAndSoftenHomeSvgChart_() {
     var svg = document.getElementById("homeMonthly3CurveSvg_V161");
     if (!svg) return;
-    var colorMap = {
-      "#0284c7": "#17181c",
-      "#2563eb": "#17181c",
-      "#f59e0b": "#D48C46",
-      "#d97706": "#C67D30",
-      "#10b981": "#4A7C59",
-      "#059669": "#3B6949",
-      "#047857": "#3B6949",
-      "#7c3aed": "#8E5B72",
-      "#6d28d9": "#7A495F",
-      "#0f172a": "#0d0d0d",
-      "#475569": "#78665B"
-    };
+    var colorMap = {};
     // Convert polylines to smooth cubic bezier paths
     var polylines = svg.querySelectorAll("polyline");
     for (var i = 0; i < polylines.length; i++) {
@@ -20319,9 +20387,9 @@ window.__RENDE1_BUILTIN_BIM_HTML_V186__ = {"html": "<!DOCTYPE html>\n<html lang=
       var stroke = (el.getAttribute("stroke") || "").toLowerCase();
       if (colorMap[fill]) el.setAttribute("fill", colorMap[fill]);
       if (colorMap[stroke]) el.setAttribute("stroke", colorMap[stroke]);
-      if (fill === "rgba(2,132,199,0.09)") el.setAttribute("fill", "rgba(200,100,70,0.10)");
-      if (fill === "rgba(16,185,129,0.09)") el.setAttribute("fill", "rgba(74,124,89,0.10)");
-      if (fill === "rgba(124,58,237,0.06)") el.setAttribute("fill", "rgba(142,91,114,0.08)");
+      
+      
+      
     }
   }
 
@@ -24903,14 +24971,14 @@ document.documentElement.setAttribute("data-release-version", "S2版");
   };
 
   var S80_EXTRA_METEO = {
-    "2026-11-07": { tempAvg: "25.6°C", tempRange: "21.2°C ~ 27.5°C", apparent: "27.0°C", dew: "19.2°C", rh: "67%", pres: "1014.4 hPa", sun: "7.0 hr", uvi: "UVI 5 (中量級)", cloud: "2/10", vis: "18.5 km", windDir: "東北東風 (ENE)", avgWind: "1.4 m/s (1級)" },
-    "2026-11-08": { tempAvg: "25.4°C", tempRange: "21.0°C ~ 27.4°C", apparent: "26.8°C", dew: "19.0°C", rh: "68%", pres: "1014.6 hPa", sun: "6.9 hr", uvi: "UVI 5 (中量級)", cloud: "2/10", vis: "18.0 km", windDir: "東北東風 (ENE)", avgWind: "1.4 m/s (1級)" },
-    "2026-11-09": { tempAvg: "25.2°C", tempRange: "20.9°C ~ 27.1°C", apparent: "26.5°C", dew: "18.9°C", rh: "68%", pres: "1014.8 hPa", sun: "6.8 hr", uvi: "UVI 5 (中量級)", cloud: "3/10", vis: "17.8 km", windDir: "東北風 (NE)", avgWind: "1.5 m/s (1級)" },
-    "2026-11-10": { tempAvg: "25.0°C", tempRange: "20.8°C ~ 26.9°C", apparent: "26.3°C", dew: "18.7°C", rh: "67%", pres: "1015.0 hPa", sun: "6.9 hr", uvi: "UVI 5 (中量級)", cloud: "2/10", vis: "18.2 km", windDir: "東北東風 (ENE)", avgWind: "1.4 m/s (1級)" },
-    "2026-11-11": { tempAvg: "24.9°C", tempRange: "20.6°C ~ 26.8°C", apparent: "26.1°C", dew: "18.6°C", rh: "67%", pres: "1015.1 hPa", sun: "7.0 hr", uvi: "UVI 5 (中量級)", cloud: "2/10", vis: "18.5 km", windDir: "東北東風 (ENE)", avgWind: "1.4 m/s (1級)" },
-    "2026-11-12": { tempAvg: "24.7°C", tempRange: "20.5°C ~ 26.6°C", apparent: "25.9°C", dew: "18.5°C", rh: "69%", pres: "1015.2 hPa", sun: "6.6 hr", uvi: "UVI 5 (中量級)", cloud: "3/10", vis: "17.5 km", windDir: "東北風 (NE)", avgWind: "1.5 m/s (1級)" },
-    "2026-11-13": { tempAvg: "25.1°C", tempRange: "20.8°C ~ 27.0°C", apparent: "26.4°C", dew: "18.8°C", rh: "68%", pres: "1014.9 hPa", sun: "6.9 hr", uvi: "UVI 5 (中量級)", cloud: "2/10", vis: "18.2 km", windDir: "東北東風 (ENE)", avgWind: "1.4 m/s (1級)" },
-    "2026-11-14": { tempAvg: "25.3°C", tempRange: "21.0°C ~ 27.2°C", apparent: "26.6°C", dew: "19.0°C", rh: "67%", pres: "1014.6 hPa", sun: "7.0 hr", uvi: "UVI 5 (中量級)", cloud: "2/10", vis: "18.5 km", windDir: "東北東風 (ENE)", avgWind: "1.4 m/s (1級)" }
+    "2026-11-07": { tempAvg:"25.6°C",tempRange:"21.2°C ~ 27.5°C",apparent:"27.0°C",dew:"19.2°C",rh:"67%",pres:"1014.4 hPa",sun:"7.0 hr",uvi:"UVI 5 (中量級)",cloud:"2/10",vis:"18.5 km",windDir:"東北東風 (ENE)",avgWind:"1.4 m/s (1級)" },
+    "2026-11-08": { tempAvg:"25.4°C",tempRange:"21.0°C ~ 27.4°C",apparent:"26.8°C",dew:"19.0°C",rh:"68%",pres:"1014.6 hPa",sun:"6.9 hr",uvi:"UVI 5 (中量級)",cloud:"2/10",vis:"18.0 km",windDir:"東北東風 (ENE)",avgWind:"1.4 m/s (1級)" },
+    "2026-11-09": { tempAvg:"25.2°C",tempRange:"20.9°C ~ 27.1°C",apparent:"26.5°C",dew:"18.9°C",rh:"68%",pres:"1014.8 hPa",sun:"6.8 hr",uvi:"UVI 5 (中量級)",cloud:"3/10",vis:"17.8 km",windDir:"東北風 (NE)",avgWind:"1.5 m/s (1級)" },
+    "2026-11-10": { tempAvg:"25.0°C",tempRange:"20.8°C ~ 26.9°C",apparent:"26.3°C",dew:"18.7°C",rh:"67%",pres:"1015.0 hPa",sun:"6.9 hr",uvi:"UVI 5 (中量級)",cloud:"2/10",vis:"18.2 km",windDir:"東北東風 (ENE)",avgWind:"1.4 m/s (1級)" },
+    "2026-11-11": { tempAvg:"24.9°C",tempRange:"20.6°C ~ 26.8°C",apparent:"26.1°C",dew:"18.6°C",rh:"67%",pres:"1015.1 hPa",sun:"7.0 hr",uvi:"UVI 5 (中量級)",cloud:"2/10",vis:"18.5 km",windDir:"東北東風 (ENE)",avgWind:"1.4 m/s (1級)" },
+    "2026-11-12": { tempAvg:"24.7°C",tempRange:"20.5°C ~ 26.6°C",apparent:"25.9°C",dew:"18.5°C",rh:"69%",pres:"1015.2 hPa",sun:"6.6 hr",uvi:"UVI 5 (中量級)",cloud:"3/10",vis:"17.5 km",windDir:"東北風 (NE)",avgWind:"1.5 m/s (1級)" },
+    "2026-11-13": { tempAvg:"25.1°C",tempRange:"20.8°C ~ 27.0°C",apparent:"26.4°C",dew:"18.8°C",rh:"68%",pres:"1014.9 hPa",sun:"6.9 hr",uvi:"UVI 5 (中量級)",cloud:"2/10",vis:"18.2 km",windDir:"東北東風 (ENE)",avgWind:"1.4 m/s (1級)" },
+    "2026-11-14": { tempAvg:"25.3°C",tempRange:"21.0°C ~ 27.2°C",apparent:"26.6°C",dew:"19.0°C",rh:"67%",pres:"1014.6 hPa",sun:"7.0 hr",uvi:"UVI 5 (中量級)",cloud:"2/10",vis:"18.5 km",windDir:"東北東風 (ENE)",avgWind:"1.4 m/s (1級)" }
   };
   window.WEATHER_METEO_MAP_V147 = Object.assign(window.WEATHER_METEO_MAP_V147 || {}, S80_EXTRA_METEO);
   if (typeof window.WEATHER_METEO_ENRICH_MAP_V144 === "object" && window.WEATHER_METEO_ENRICH_MAP_V144) {
@@ -25648,7 +25716,7 @@ document.documentElement.setAttribute("data-release-version", "S2版");
     }
   }
 
-  // 3. Post-polish SVG diagrams & stages to transitions.dev hairline precision
+  // 3. Post-polish SVG diagrams & stages to transitions.dev _hL precision
   window.polishSvgDiagrams_S82 = function() {
     try {
       if (document.querySelectorAll) {
@@ -25734,6 +25802,357 @@ document.documentElement.setAttribute("data-release-version", "S2版");
   }, 60);
 })();
 /* ==================== END S8.2 TRANSITIONS.DEV ENGINE ==================== */
+</script>
+
+<script id="s83UnifiedMonochromeAndCurveSyncEngine">
+/* ==================== S8.3 UNIFIED MONOCHROME ACROSS ALL 16+ VIEWS & 1:1 CHART LEGEND COLOR SYNC ==================== */
+(function initS83UnifiedMonochromeAndCurveSync_() {
+  window.__S83_MONOCHROME_AND_CURVE_SYNC_READY__ = true;
+
+  // Canonical restrained 4-series palette shared 1:1 between Legend & SVG Curves/Nodes/Labels
+  var _P83 = {
+    c1: "#17181c",        // 1. 進場材料(機電) / Topic Series 1 — Ink Black
+    c2: "#2563eb",        // 2. 廠商請款(機電) — Precision Cobalt
+    c3a: "#0d9488",       // 3A. 業主計價－機電工程 / Topic Series 2 — Architectural Teal
+    c3b: "#64748b",       // 3B. 業主計價－全案總價 — Cool Slate (Dashed)
+    grid: "rgba(13,13,13,0.06)",
+    guide: "rgba(13,13,13,0.035)",
+    axisInk: "#0d0d0d",
+    mutedInk: "#6c6c6c"
+  };
+  window.S83_CHART_PALETTE = _P83;
+
+  function _pChroma_(val) {
+    if (!val) return null;
+    var s = String(val).trim().toLowerCase();
+    if (!s || s === "transparent" || s === "none" || s === "inherit" || s === "currentcolor" || s.indexOf("var(") !== -1) return null;
+    var mRgb = s.match(/rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)(?:\s*,\s*([0-9.]+))?\s*\)/);
+    if (mRgb) {
+      var r = Number(mRgb[1]), g = Number(mRgb[2]), b = Number(mRgb[3]);
+      var a = mRgb[4] !== undefined ? Number(mRgb[4]) : 1;
+      return { r: r, g: g, b: b, a: a, chroma: Math.max(r, g, b) - Math.min(r, g, b), lum: (r * 299 + g * 587 + b * 114) / 1000 };
+    }
+    var mHex = s.match(/^#([0-9a-f]{3}|[0-9a-f]{6})$/i);
+    if (mHex) {
+      var h = mHex[1];
+      if (h.length === 3) h = h[0] + h[0] + h[1] + h[1] + h[2] + h[2];
+      var r2 = parseInt(h.slice(0, 2), 16), g2 = parseInt(h.slice(2, 4), 16), b2 = parseInt(h.slice(4, 6), 16);
+      return { r: r2, g: g2, b: b2, a: 1, chroma: Math.max(r2, g2, b2) - Math.min(r2, g2, b2), lum: (r2 * 299 + g2 * 587 + b2 * 114) / 1000 };
+    }
+    return null;
+  }
+
+  function _inChartZ_(el) {
+    var cur = el;
+    while (cur && cur !== document.body) {
+      var tag = String(cur.tagName || "").toLowerCase();
+      if (tag === "svg" || tag === "canvas") return true;
+      var id = cur.id || "";
+      if (id === "homeMainChartLegendItems_V167" || (cur.getAttribute && cur.getAttribute("data-keep-chart-color") === "1")) {
+        return true;
+      }
+      cur = cur.parentNode;
+    }
+    return false;
+  }
+
+  window.unifyAllViewsMonochrome_S83 = function(rootOpt) {
+    try {
+      var root = rootOpt || document.body;
+      if (!root || !root.querySelectorAll) return 0;
+      var isDark = document.body && document.body.classList && document.body.classList.contains("light-engineering");
+      var _pI = isDark ? "#ededed" : "#0d0d0d";
+      var _sI = isDark ? "rgba(202,202,202,0.75)" : "#52525b";
+      var _cF = isDark ? "rgba(255,255,255,0.07)" : "#f4f4f4";
+      var _sF = isDark ? "#131313" : "#f9f9f9";
+      var _hL = isDark ? "rgba(196,196,196,0.10)" : "rgba(0,0,0,0.07)";
+
+      var els = root.querySelectorAll("[style]");
+      var cleaned = 0;
+      for (var i = 0; i < els.length; i++) {
+        var el = els[i];
+        if (!el || !el.style || _inChartZ_(el)) continue;
+
+        // 1. Remove any thick colored side/top borders (border-left: 4px solid ..., border-top: 3px solid ...)
+        var bt = el.style.borderTop || "";
+        if (bt && /[2-8]px/.test(bt)) { el.style.removeProperty("border-top"); cleaned++; }
+        var bl = el.style.borderLeft || "";
+        if (bl && /[2-8]px/.test(bl) && el.id !== "headerMergedProjSwitcherBar_S72") { el.style.removeProperty("border-left"); cleaned++; }
+
+        // 2. Normalize colorful inline background / backgroundColor
+        var bgRaw = el.style.backgroundColor || el.style.background || "";
+        if (bgRaw && bgRaw.indexOf("gradient") !== -1) {
+          var tagG = String(el.tagName || "").toLowerCase();
+          el.style.background = (tagG === "button" && el.classList && el.classList.contains("btn-primary")) ? "#17181c" : _sF;
+          cleaned++;
+        } else {
+          var bgInfo = _pChroma_(bgRaw);
+          if (bgInfo && bgInfo.chroma > 14 && bgInfo.a > 0.02) {
+            var tagB = String(el.tagName || "").toLowerCase();
+            var isBtn = (tagB === "button" || (el.classList && el.classList.contains("btn")));
+            var _bB = (tagB === "div" || tagB === "section" || tagB === "td" || tagB === "th" || tagB === "tr");
+            el.style.background = isBtn ? _cF : (_bB ? _sF : _cF);
+            el.style.color = _pI;
+            cleaned++;
+          }
+        }
+
+        // 3. Normalize colorful inline borderColor
+        var bcInfo = _pChroma_(el.style.borderColor || "");
+        if (bcInfo && bcInfo.chroma > 14) {
+          el.style.borderColor = _hL;
+          cleaned++;
+        }
+
+        // 4. Normalize colorful inline text color
+        var fgInfo = _pChroma_(el.style.color || "");
+        if (fgInfo && fgInfo.chroma > 14) {
+          var tagT = String(el.tagName || "").toLowerCase();
+          var fw = String(el.style.fontWeight || "");
+          var isStrong = (tagT === "strong" || tagT === "b" || tagT === "h1" || tagT === "h2" || tagT === "h3" || tagT === "h4" || tagT === "a" || fw === "700" || fw === "800" || fw === "900" || fw === "bold");
+          el.style.color = isStrong ? _pI : _sI;
+          cleaned++;
+        }
+      }
+      return cleaned;
+    } catch (_eMono) {
+      return 0;
+    }
+  };
+
+  window.syncHomeChartAndLegendColors_S83 = function() {
+    var svg = document.getElementById("homeMonthly3CurveSvg_V161");
+    var leg = document.getElementById("homeMainChartLegendItems_V167");
+    if (!svg) return false;
+
+    var topic = window.HOME_MAIN_CHART_TOPIC_V167 || "AMOUNT";
+
+    // Map legacy renderer colors to _P83 (1:1 identical across both Legend and SVG!)
+    var mapHex = {};
+    if (topic === "AMOUNT") {
+      // Curve 1 (Material): #0284c7 / #0369a1 / #17181c -> c1 (#17181c)
+      mapHex["#0284c7"] = _P83.c1;
+      mapHex["#0369a1"] = _P83.c1;
+      mapHex["#17181c"] = _P83.c1;
+      // Curve 2 (Vendor Billing): #f59e0b / #d97706 / #b45309 / #d48c46 / #c67d30 -> c2 (#2563eb)
+      mapHex["#f59e0b"] = _P83.c2;
+      mapHex["#d97706"] = _P83.c2;
+      mapHex["#b45309"] = _P83.c2;
+      mapHex["#d48c46"] = _P83.c2;
+      mapHex["#c67d30"] = _P83.c2;
+      // Curve 3A (Owner MEP): #10b981 / #059669 / #047857 / #4a7c59 / #3b6949 -> c3a (#0d9488)
+      mapHex["#10b981"] = _P83.c3a;
+      mapHex["#059669"] = _P83.c3a;
+      mapHex["#047857"] = _P83.c3a;
+      mapHex["#4a7c59"] = _P83.c3a;
+      mapHex["#3b6949"] = _P83.c3a;
+      // Curve 3B (Owner Total): #7c3aed / #6d28d9 / #8e5b72 / #7a495f -> c3b (#64748b)
+      mapHex["#7c3aed"] = _P83.c3b;
+      mapHex["#6d28d9"] = _P83.c3b;
+      mapHex["#8e5b72"] = _P83.c3b;
+      mapHex["#7a495f"] = _P83.c3b;
+    } else if (topic === "SAFETY") {
+      mapHex["#16a34a"] = _P83.c3b;
+      mapHex["#dc2626"] = _P83.c1;
+      mapHex["#e11d48"] = _P83.c1;
+      mapHex["#17181c"] = _P83.c1;
+      mapHex["#f59e0b"] = _P83.c3a;
+      mapHex["#d97706"] = _P83.c3a;
+      mapHex["#d48c46"] = _P83.c3a;
+      mapHex["#0d9488"] = _P83.c3a;
+    } else {
+      // 2-Curve Topics (LABOR, QUALITY, SAFETY, WEATHER_EXT):
+      // Series 1 (Monthly): #0284c7 / #2563eb / #d97706 / #f59e0b / #dc2626 / #e11d48 / #17181c -> c1 (#17181c)
+      // Series 2 (Cumulative): #0d9488 / #10b981 / #059669 / #7c3aed / #6366f1 / #4a7c59 / #8e5b72 -> c2 (#2563eb)
+      mapHex["#0284c7"] = _P83.c1;
+      mapHex["#17181c"] = _P83.c1;
+      mapHex["#d97706"] = _P83.c1;
+      mapHex["#f59e0b"] = _P83.c1;
+      mapHex["#dc2626"] = _P83.c1;
+      mapHex["#e11d48"] = _P83.c1;
+      mapHex["#d48c46"] = _P83.c1;
+      mapHex["#2563eb"] = _P83.c1;
+      mapHex["#0d9488"] = _P83.c3a;
+      mapHex["#10b981"] = _P83.c3a;
+      mapHex["#059669"] = _P83.c3a;
+      mapHex["#047857"] = _P83.c3a;
+      mapHex["#4a7c59"] = _P83.c3a;
+      mapHex["#3b6949"] = _P83.c3a;
+      mapHex["#7c3aed"] = _P83.c3a;
+      mapHex["#6d28d9"] = _P83.c3a;
+      mapHex["#8e5b72"] = _P83.c3a;
+    }
+    mapHex["#0f172a"] = _P83.axisInk;
+    mapHex["#475569"] = _P83.mutedInk;
+    mapHex["#78665b"] = _P83.mutedInk;
+
+    // 1. Update SVG Curves, Nodes, Polygons & Labels
+    var svgNodes = svg.querySelectorAll ? svg.querySelectorAll("path, polyline, circle, text, polygon, line") : [];
+    for (var i = 0; i < svgNodes.length; i++) {
+      var n = svgNodes[i];
+      var tag = String(n.tagName || "").toLowerCase();
+      var st = (n.getAttribute("stroke") || "").trim().toLowerCase();
+      var fl = (n.getAttribute("fill") || "").trim().toLowerCase();
+      if (mapHex[st]) n.setAttribute("stroke", mapHex[st]);
+      if (mapHex[fl]) n.setAttribute("fill", mapHex[fl]);
+
+      if (tag === "polygon" || (tag === "path" && fl && fl !== "none")) {
+        // Ultra-clean subtle area wash matching the exact curve palette (zero muddy brown!)
+        if (fl.indexOf("200,100,70") !== -1 || fl.indexOf("2,132,199") !== -1 || fl === "#17181c") {
+          n.setAttribute("fill", "rgba(23,24,28,0.035)");
+        } else if (fl.indexOf("74,124,89") !== -1 || fl.indexOf("16,185,129") !== -1 || fl === "#0d9488") {
+          n.setAttribute("fill", "rgba(13,148,136,0.04)");
+        } else if (fl.indexOf("142,91,114") !== -1 || fl.indexOf("124,58,237") !== -1 || fl === "#64748b") {
+          n.setAttribute("fill", "rgba(100,116,139,0.035)");
+        } else if (fl === "#2563eb") {
+          n.setAttribute("fill", "rgba(37,99,235,0.04)");
+        }
+      }
+      if (tag === "path" && (!fl || fl === "none")) {
+        n.setAttribute("stroke-width", "2.4");
+      }
+      if (tag === "text") {
+        // Add crisp light halo behind data point labels so crossing lines never reduce legibility
+        var xAttr = Number(n.getAttribute("x") || 0);
+        var yAttr = Number(n.getAttribute("y") || 0);
+        if (xAttr >= 80 && xAttr <= 885 && yAttr >= 22 && yAttr <= 345) {
+          n.setAttribute("style", "paint-order:stroke;stroke:#f9f9f9;stroke-width:3px;stroke-linejoin:round;");
+        }
+      }
+    }
+
+    // 2. De-collide overlapping point value <text> labels at each X column (fixes 115.10 / 115.11 $7.71M vs 機電$7.72M overlap!)
+    if (svg.querySelectorAll) {
+      var texts = svg.querySelectorAll("text");
+      var byX = {};
+      for (var ti = 0; ti < texts.length; ti++) {
+        var tEl = texts[ti];
+        var tx = Number(tEl.getAttribute("x") || 0);
+        var ty = Number(tEl.getAttribute("y") || 0);
+        var anchor = tEl.getAttribute("text-anchor") || "";
+        if (anchor === "middle" && ty >= 22 && ty <= 342) {
+          var keyX = String(Math.round(tx));
+          if (!byX[keyX]) byX[keyX] = [];
+          byX[keyX].push({ el: tEl, y: ty });
+        }
+      }
+      var xKeys = Object.keys(byX);
+      for (var xi = 0; xi < xKeys.length; xi++) {
+        var col = byX[xKeys[xi]];
+        if (col.length < 2) continue;
+        col.sort(function(a, b) { return a.y - b.y; });
+        for (var ci = 1; ci < col.length; ci++) {
+          if (col[ci].y - col[ci - 1].y < 13.5) {
+            // Spread pair symmetrically first if space above allows, then push down
+            if (ci === 1 && col[0].y > 30) {
+              col[0].y -= 5;
+              col[0].el.setAttribute("y", col[0].y.toFixed(1));
+            }
+            col[ci].y = Math.min(340, col[ci - 1].y + 13.5);
+            col[ci].el.setAttribute("y", col[ci].y.toFixed(1));
+          }
+        }
+      }
+    }
+
+    // 3. Update HTML Legend (#homeMainChartLegendItems_V167) with the EXACT SAME mapHex colors & neutral pill backgrounds!
+    if (leg && leg.innerHTML) {
+      var legHtml = leg.innerHTML;
+      legHtml = legHtml.replace(/#[0-9a-fA-F]{6}\b/g, function(m) {
+        var low = m.toLowerCase();
+        return mapHex[low] || m;
+      });
+      // Replace pastel green/purple pill backgrounds inside legend with neutral #f4f4f4 _hL capsule
+      legHtml = legHtml.replace(/background\s*:\s*rgba\([^)]+\)/gi, "background:#f4f4f4;border:1px solid rgba(0,0,0,0.07)");
+      leg.innerHTML = legHtml;
+    }
+
+    return true;
+  };
+
+  // Also unify liveWarRoomSvgChart (bar/line subpage chart) to monochrome #17181c / #64748b
+  window.syncLiveSubpageSvgChart_S83 = function() {
+    var lsvg = document.getElementById("liveWarRoomSvgChart");
+    if (!lsvg || !lsvg.querySelectorAll) return;
+    var nodes = lsvg.querySelectorAll("rect, line, polyline, path, circle, text");
+    for (var i = 0; i < nodes.length; i++) {
+      var el = nodes[i];
+      var fl = (el.getAttribute("fill") || "").toLowerCase();
+      var st = (el.getAttribute("stroke") || "").toLowerCase();
+      if (fl === "#0284c7" || fl === "#2563eb" || fl === "#059669" || fl === "#10b981" || fl === "#dc2626" || fl === "#f59e0b") {
+        el.setAttribute("fill", "#17181c");
+      }
+      if (st === "#0284c7" || st === "#2563eb" || st === "#f59e0b") {
+        el.setAttribute("stroke", "#17181c");
+      } else if (st === "#059669" || st === "#10b981" || st === "#dc2626") {
+        el.setAttribute("stroke", "#64748b");
+      }
+    }
+  };
+
+  // Wrap all chart & view switch functions so S8.3 color sync + monochrome scrub run automatically on every interaction
+  var wrapTargets = [
+    "renderHomeAmountFourCurvesDualAxis_V172",
+    "renderHomeMonthlyThreeCurves_V161",
+    "switchHomeMainChartTopic_V167",
+    "switchHomeAmountCurveView_V172",
+    "switchWarRoomProject",
+    "switchWarRoomMainView",
+    "openSubpageModal",
+    "openS3SplitSubView",
+    "openOwnerValuationSubpage_S73",
+    "openEngineeringThreeWayDiff_S81",
+    "renderWeatherAndLaborSubpageTables",
+    "renderMaterialBillingTable_S72",
+    "renderLiveSvgChart",
+    "switchProductionBiView"
+  ];
+  for (var wi = 0; wi < wrapTargets.length; wi++) {
+    (function(fnName) {
+      var orig = window[fnName];
+      if (typeof orig === "function" && !orig.__s83Wrapped) {
+        var wrapped = function() {
+          var res = orig.apply(this, arguments);
+          try { window.syncHomeChartAndLegendColors_S83(); } catch (_eC1) {}
+          try { window.syncLiveSubpageSvgChart_S83(); } catch (_eC2) {}
+          try { window.unifyAllViewsMonochrome_S83(); } catch (_eM1) {}
+          return res;
+        };
+        wrapped.__s83Wrapped = true;
+        window[fnName] = wrapped;
+      }
+    })(wrapTargets[wi]);
+  }
+
+  // Initial & delayed pass (covers V191's 60ms and 350ms timers too!)
+  function _fLock83_() {
+    var lk = document.getElementById("s83FinalCascadeMonochromeLock");
+    if (!lk && document.createElement && document.body) {
+      lk = document.createElement("style");
+      lk.id = "s83FinalCascadeMonochromeLock";
+      lk.textContent = '.s2-xlsx-btn,.s3-xlsx-btn,[class*="xlsx-btn"],#btnExportProductionBiCsv,#modalMaterialBillingS72 button[onclick*="export"],#s3UnifiedSplitModal button[onclick*="export"],#modalLedgers button[onclick*="export"]{background:var(--chip-bg,#f4f4f4)!important;background-image:none!important;color:var(--animate-text,#17181c)!important;border:none!important;border-radius:40px!important;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.10)!important;font-weight:500!important;}#s3UnifiedSplitModal [class*="badge"],#s3UnifiedSplitModal [class*="tag"],#s3UnifiedSplitModal td span[class],#modalLedgers [class*="badge"],#modalLedgers td span[class],#modalMaterialBillingS72 td span{background:var(--chip-bg,#f4f4f4)!important;color:var(--text-muted,#52525b)!important;border:1px solid rgba(0,0,0,0.07)!important;border-radius:40px!important;}';
+      document.body.appendChild(lk);
+    } else if (lk && document.body && lk.parentNode === document.body && document.body.lastElementChild !== lk) {
+      document.body.appendChild(lk);
+    }
+  }
+  _fLock83_();
+  window.syncHomeChartAndLegendColors_S83();
+  window.syncLiveSubpageSvgChart_S83();
+  window.unifyAllViewsMonochrome_S83();
+  setTimeout(function() {
+    window.syncHomeChartAndLegendColors_S83();
+    window.syncLiveSubpageSvgChart_S83();
+    window.unifyAllViewsMonochrome_S83();
+  }, 90);
+  setTimeout(function() {
+    window.syncHomeChartAndLegendColors_S83();
+    window.syncLiveSubpageSvgChart_S83();
+    _fLock83_();
+    window.unifyAllViewsMonochrome_S83();
+  }, 400);
+})();
+/* ==================== END S8.3 UNIFIED MONOCHROME & CURVE SYNC ENGINE ==================== */
 </script>
 
 </body>
