@@ -13285,7 +13285,7 @@
     "autoHotUpdateGsBytes": 7140683
   },
   "s84Rende1ProposalsAndBoqRelease": {
-    "version": "S8.6_RENDE1_ANALYTICS_EAC_AND_PENDING_RFI_V222",
+    "version": "S8.6_REV_B_P4_BASELINE_SEPARATED_V223",
     "proposal6ApprovedLetter": "115/07/08 桃工新務字第1150026523號函",
     "proposals1To10TotalContractNet": 63058681,
     "proposals1To10TotalDirectNet": 55908780,
@@ -13311,8 +13311,15 @@
     "mepOwnerEstimatedNetScale": 8984265,
     "mepSubcontractEipSignedGrossInc": 3761730,
     "mepSubcontractUnbilledEstP50Inc": 10189409,
-    "mepSubcontractTotalEstAddGrossP50Inc": 13951139,
-    "mepOverallEacNetProfitInc": 39343881,
-    "mepOverallEacNetMarginPct": 29.43
+    "mepSubcontractTotalEstAddGrossP50Inc": 14036953,
+    "mepOverallEacNetProfitInc": 38760386,
+    "mepOverallEacNetMarginPct": 29.0,
+    "adjustedAllBidInc": 502701424,
+    "adjustedMepBidUntaxed": 107552928,
+    "adjustedMepMainSubcontractInc": 78579876,
+    "proposalsExclP4AllConfirmedNetInc": 75960255,
+    "proposalsExclP4MepConfirmedNetUntaxed": 18725928,
+    "allEstimatedNetAdditionExclP4Inc": 84198314,
+    "mepOwnerEstimatedNetScaleExclP4": 21885839
   }
 }
