@@ -5427,42 +5427,6 @@ quickUpdateTodayHeadcountDirect: window.quickUpdateTodayHeadcountDirect
 <span>案名與測站</span>
 <small>設定案名地址與最近接收站</small>
 </button>
-<div class="s3-nav-dd-wrap" id="navDropdownBillingWrap">
-<button aria-expanded="false" aria-haspopup="true" class="launcher-btn s3-nav-dd-btn" id="navBtnBillingDropdown" onclick="toggleWarRoomNavDropdown_S3('navDropdownBillingMenu', event)" style="border-left-color:#d97706;width:100%;height:100%;" type="button">
-<span style="display:flex;align-items:center;justify-content:space-between;gap:4px;width:100%;"><span>請款</span><span class="s3-caret">▾</span></span>
-<small id="navSubBillingLabel">業主計價・廠商計價</small>
-</button>
-<div class="s3-nav-dd-menu" id="navDropdownBillingMenu" role="menu">
-<button class="s3-nav-dd-item" id="navMenuItemOwnerVal" onclick="openS3SplitSubView('owner_valuation')" role="menuitem" type="button">
-<strong>業主計價</strong>
-<span>歷期估驗計價標單比對</span>
-</button>
-<button class="s3-nav-dd-item" id="navMenuItemVendorBill" onclick="openS3SplitSubView('vendor_billing')" role="menuitem" type="button">
-<strong>廠商計價</strong>
-<span>履約廠商計價標單比對</span>
-</button>
-</div>
-</div>
-<div class="s3-nav-dd-wrap" id="navDropdownInspectionWrap">
-<button aria-expanded="false" aria-haspopup="true" class="launcher-btn s3-nav-dd-btn" id="navBtnInspectionDropdown" onclick="toggleWarRoomNavDropdown_S3('navDropdownInspectionMenu', event)" style="border-left-color:#059669;width:100%;height:100%;" type="button">
-<span style="display:flex;align-items:center;justify-content:space-between;gap:4px;width:100%;"><span>查驗</span><span class="s3-caret">▾</span></span>
-<small id="navSubInspectionLabel">材料查驗・施工查驗</small>
-</button>
-<div class="s3-nav-dd-menu" id="navDropdownInspectionMenu" role="menu">
-<button class="s3-nav-dd-item" id="navMenuItemMatInsp" onclick="openS3SplitSubView('material_inspection')" role="menuitem" type="button">
-<strong>材料</strong>
-<span>材料查驗與出貨單標單比對</span>
-</button>
-<button class="s3-nav-dd-item" id="navMenuItemConstInsp" onclick="openS3SplitSubView('construction_inspection')" role="menuitem" type="button">
-<strong>施工</strong>
-<span>施工查驗清冊與標單比對</span>
-</button>
-<button class="s3-nav-dd-item" id="navMenuItemThreeWayDiff" onclick="openS3SplitSubView('three_way_diff')" role="menuitem" type="button">
-<strong>三方數量差異比對</strong>
-<span>材料查驗・施工數量・業主計價比對與匯出</span>
-</button>
-</div>
-</div>
 <button id="navBtnLedgers" onclick="openS3SplitSubView('material_inspection')" style="display:none !important;" type="button"></button>
 <button class="launcher-btn" id="navBtnNcrSafety" onclick="openSubpageModal('modalNcrSafety')" style="border-left-color:var(--eng-crimson);" type="button">
 <span>品質與勞安</span>
@@ -5499,12 +5463,44 @@ quickUpdateTodayHeadcountDirect: window.quickUpdateTodayHeadcountDirect
 <button class="launcher-btn" id="navBtnSixGrid" onclick="openSubpageModal('modalSixGrid')" style="display:none !important;" type="button">
 <span>工務快速指令面板</span>
 </button>
+<div class="s3-nav-dd-wrap" id="navDropdownBillingWrap">
+<button aria-expanded="false" aria-haspopup="true" class="launcher-btn s3-nav-dd-btn" id="navBtnBillingDropdown" onclick="toggleWarRoomNavDropdown_S3('navDropdownBillingMenu', event)" style="border-left-color:#d97706;width:100%;height:100%;" type="button">
+<span style="display:flex;align-items:center;justify-content:space-between;gap:4px;width:100%;"><span>請款</span><span class="s3-caret">▾</span></span>
+<small id="navSubBillingLabel">業主計價・廠商計價</small>
+</button>
+<div class="s3-nav-dd-menu" id="navDropdownBillingMenu" role="menu">
+<button class="s3-nav-dd-item" id="navMenuItemOwnerVal" onclick="openS3SplitSubView('owner_valuation')" role="menuitem" type="button">
+<strong>業主計價</strong>
+<span>歷期估驗計價標單比對</span>
+</button>
+<button class="s3-nav-dd-item" id="navMenuItemVendorBill" onclick="openS3SplitSubView('vendor_billing')" role="menuitem" type="button">
+<strong>廠商計價</strong>
+<span>履約廠商計價標單比對</span>
+</button>
+</div>
+</div>
+<div class="s3-nav-dd-wrap" id="navDropdownInspectionWrap">
+<button aria-expanded="false" aria-haspopup="true" class="launcher-btn s3-nav-dd-btn" id="navBtnInspectionDropdown" onclick="toggleWarRoomNavDropdown_S3('navDropdownInspectionMenu', event)" style="border-left-color:#059669;width:100%;height:100%;" type="button">
+<span style="display:flex;align-items:center;justify-content:space-between;gap:4px;width:100%;"><span>查驗</span><span class="s3-caret">▾</span></span>
+<small id="navSubInspectionLabel">材料查驗・施工查驗</small>
+</button>
+<div class="s3-nav-dd-menu" id="navDropdownInspectionMenu" role="menu">
+<button class="s3-nav-dd-item" id="navMenuItemMatInsp" onclick="openS3SplitSubView('material_inspection')" role="menuitem" type="button">
+<strong>材料</strong>
+<span>材料查驗與出貨單標單比對</span>
+</button>
+<button class="s3-nav-dd-item" id="navMenuItemConstInsp" onclick="openS3SplitSubView('construction_inspection')" role="menuitem" type="button">
+<strong>施工</strong>
+<span>施工查驗清冊與標單比對</span>
+</button>
+</div>
+</div>
 <div class="s3-nav-dd-wrap" id="navDropdownValuationWrap" data-eng-only="1">
 <button aria-expanded="false" aria-haspopup="true" class="launcher-btn s3-nav-dd-btn" id="navBtnValuationDropdown" onclick="toggleWarRoomNavDropdown_S3('navDropdownValuationMenu', event)" style="border-left-color:#b45309;width:100%;height:100%;" type="button">
 <span style="display:flex;align-items:center;justify-content:space-between;gap:4px;width:100%;"><span>工務專用</span><span class="s3-caret">▾</span></span>
-<small id="navSubValuationLabel">業主計價 ▸ 匯出 Excel</small>
+<small id="navSubValuationLabel">業主計價 ▸ 匯出 Excel・三方比對</small>
 </button>
-<div class="s3-nav-dd-menu" id="navDropdownValuationMenu" role="menu" style="right:0;left:auto;min-width:252px;overflow:visible !important;">
+<div class="s3-nav-dd-menu" id="navDropdownValuationMenu" role="menu" style="right:0;left:auto;min-width:256px;overflow:visible !important;">
 <nav class="s80-val-sub-wrap" id="navSubWrapOwnerValuation" onmouseenter="if(window.alignOwnerValuationFlyout_S80)window.alignOwnerValuationFlyout_S80(this);">
 <button aria-haspopup="true" class="s3-nav-dd-item" id="navMenuItemUnbilledMatReg" onclick="openMaterialBillingSubpage_S72('UNBILLED')" role="menuitem" type="button">
 <strong style="display:flex;align-items:center;justify-content:space-between;width:100%;"><span>業主計價 ▸</span></strong>
@@ -5518,6 +5514,18 @@ quickUpdateTodayHeadcountDirect: window.quickUpdateTodayHeadcountDirect
 <button class="s3-nav-dd-item" id="navMenuItemScanSyncMatBilling" onclick="closeAllWarRoomNavDropdowns_S3(true);openMaterialBillingSubpage_S72('UNBILLED');scanNewD11AndSyncMaterialBilling_S72();" role="menuitem" type="button">
 <strong>掃描新增施工查驗檔並同步填寫 Excel</strong>
 <span>掃描 C08/C10 施工查驗夾 ▸ 自動寫入對應材料數量</span>
+</button>
+</menu>
+</nav>
+<nav class="s80-val-sub-wrap" id="navSubWrapThreeWayDiff" onmouseenter="if(window.alignOwnerValuationFlyout_S80)window.alignOwnerValuationFlyout_S80(this);">
+<button aria-haspopup="true" class="s3-nav-dd-item" id="navMenuItemThreeWayDiff" onclick="openEngineeringThreeWayDiff_S81()" role="menuitem" type="button">
+<strong style="display:flex;align-items:center;justify-content:space-between;width:100%;"><span>三方數量比對差異 ▸</span></strong>
+<span>材料查驗・施工數量・業主計價比對分頁</span>
+</button>
+<menu class="s80-val-flyout" id="navFlyoutThreeWayDiff" role="menu">
+<button class="s3-nav-dd-item" id="navMenuItemExportThreeWayXlsx_S81" onclick="closeAllWarRoomNavDropdowns_S3(true);exportThreeWayQtyDiffXlsx_S4();" role="menuitem" style="border-left:3px solid #0f766e;background:rgba(15,118,110,0.06);" type="button">
+<strong>↳ 匯出三方差異 Excel</strong>
+<span>下載《查驗施工與業主計價三方數量差異比較.xlsx》</span>
 </button>
 </menu>
 </nav>
@@ -6376,6 +6384,9 @@ quickUpdateTodayHeadcountDirect: window.quickUpdateTodayHeadcountDirect
 </button>
 <button class="btn btn-ghost" onclick="quickSimulate('torrential')" style="padding:5px 10px;font-size:0.75rem;border-color:#fca5a5;color:#b91c1c;" type="button">
 模擬「豪雨 152mm 達標展延警示」
+</button>
+<button class="btn btn-emerald" id="btnResetWeatherSimulation_S81" onclick="resetWeatherSimulation_S81()" style="padding:5px 11px;font-size:0.75rem;font-weight:800;" title="一鍵清除颱風／豪雨模擬數據，還原真實觀測紀錄" type="button">
+↺ 復歸真實觀測
 </button>
 <button class="btn btn-primary" onclick="exportWarRoomCsv()" style="padding:5px 10px;font-size:0.75rem;" type="button">
 ⬇ 匯出完整氣象與展延依據 CSV
@@ -15407,8 +15418,6 @@ window.addEventListener("DOMContentLoaded", function() {
       "navBtnDashboard",
       "navBtnDailyEntry",
       "navBtnWeatherFull",
-      "navDropdownBillingWrap",
-      "navDropdownInspectionWrap",
       "navBtnLedgers",
       "navBtnNcrSafety",
       "navBtnMsProject",
@@ -15421,6 +15430,8 @@ window.addEventListener("DOMContentLoaded", function() {
       "navBtnGithubDeploy",
       "navBtnAiSkillHub",
       "navBtnSixGrid",
+      "navDropdownBillingWrap",
+      "navDropdownInspectionWrap",
       "navDropdownValuationWrap",
     ];
     for (var i = 0; i < preferredOrder.length; i++) {
@@ -21780,8 +21791,6 @@ document.documentElement.setAttribute("data-release-version", "S2版");
       "navBtnDashboard",
       "navBtnDailyEntry",
       "navBtnWeatherFull",
-      "navDropdownBillingWrap",
-      "navDropdownInspectionWrap",
       "navBtnLedgers",
       "navBtnNcrSafety",
       "navBtnMsProject",
@@ -21794,6 +21803,8 @@ document.documentElement.setAttribute("data-release-version", "S2版");
       "navBtnGithubDeploy",
       "navBtnAiSkillHub",
       "navBtnSixGrid",
+      "navDropdownBillingWrap",
+      "navDropdownInspectionWrap",
       "navDropdownValuationWrap",
     ];
     var presentEls = [];
@@ -25210,6 +25221,313 @@ document.documentElement.setAttribute("data-release-version", "S2版");
     try { window.enforceCleanHomeKpis_S80(); } catch (_eT2) {}
     try { window.renderWeatherAndLaborSubpageTables(); } catch (_eT3) {}
   }, 80);
+})();
+</script>
+
+
+<script id="s81ThreeWayWeatherResetAndNavEngine">
+(function initS81ThreeWayWeatherResetAndNavEngine_() {
+  window.__S81_UPGRADE_READY__ = true;
+
+  // 1. Upgrade alignOwnerValuationFlyout_S80 so EVERY .s80-val-sub-wrap (`業主計價 ▸` & `三方數量比對差異 ▸`) aligns its own .s80-val-flyout!
+  window.alignOwnerValuationFlyout_S80 = function(wrapEl) {
+    try {
+      var el = wrapEl || document.getElementById("navSubWrapOwnerValuation");
+      if (!el || typeof el.querySelector !== "function" || typeof el.getBoundingClientRect !== "function") return;
+      var fly = el.querySelector(".s80-val-flyout");
+      if (!fly) return;
+      var rect = el.getBoundingClientRect();
+      var vw = window.innerWidth || 1280;
+      if (rect.right + 280 > vw && rect.left > 280) fly.classList.add("flip-left");
+      else fly.classList.remove("flip-left");
+    } catch (_eFly81) {}
+  };
+
+  // Also ensure `請款 ▾` & `查驗 ▾` dropdown menus never clip off right viewport edge now that they sit right before `工務專用 ▾`!
+  var _origToggleDd81 = window.toggleWarRoomNavDropdown_S3;
+  if (typeof _origToggleDd81 === "function" && !_origToggleDd81.__s81Wrapped) {
+    var _wrappedToggleDd81 = function(menuId, ev) {
+      var r = _origToggleDd81.apply(this, arguments);
+      try {
+        var menuEl = document.getElementById(menuId);
+        if (menuEl && menuEl.parentNode && typeof menuEl.parentNode.getBoundingClientRect === "function") {
+          var wRect = menuEl.parentNode.getBoundingClientRect();
+          var vw = window.innerWidth || 1280;
+          if (wRect.left + 265 > vw) {
+            menuEl.style.right = "0";
+            menuEl.style.left = "auto";
+          } else if (menuId !== "navDropdownValuationMenu") {
+            menuEl.style.left = "0";
+            menuEl.style.right = "auto";
+          }
+        }
+      } catch (_ePos81) {}
+      return r;
+    };
+    _wrappedToggleDd81.__s81Wrapped = true;
+    window.toggleWarRoomNavDropdown_S3 = _wrappedToggleDd81;
+  }
+
+  // 2. Enforce exact trailing order: `... -> 請款 (navDropdownBillingWrap) -> 查驗 (navDropdownInspectionWrap) -> 工務專用 (navDropdownValuationWrap)`
+  window.enforceTrailingThreeDropdownsOrder_S81 = function() {
+    var navBar = document.getElementById("mainNavigationButtonsBar");
+    if (!navBar) return;
+    var tailIds = ["navDropdownBillingWrap", "navDropdownInspectionWrap", "navDropdownValuationWrap"];
+    for (var i = 0; i < tailIds.length; i++) {
+      var el = document.getElementById(tailIds[i]);
+      if (el && el.parentNode === navBar) {
+        navBar.appendChild(el);
+      }
+    }
+  };
+
+  var _origEnforceNav81 = window.enforceDashboardFirstNavOrder_S3_;
+  if (typeof _origEnforceNav81 === "function" && !_origEnforceNav81.__s81Wrapped) {
+    var _wrappedEnforceNav81 = function() {
+      var res = _origEnforceNav81.apply(this, arguments);
+      window.enforceTrailingThreeDropdownsOrder_S81();
+      return res;
+    };
+    _wrappedEnforceNav81.__s81Wrapped = true;
+    window.enforceDashboardFirstNavOrder_S3_ = _wrappedEnforceNav81;
+  }
+
+  // 3. Move `三方數量比對差異` strictly under `工務專用 ▾` subpage routing
+  window.openEngineeringThreeWayDiff_S81 = function() {
+    if (typeof window.isEngineeringOrAdminUser_S72_ === "function" && !window.isEngineeringOrAdminUser_S72_()) {
+      if (typeof window.showToast === "function") window.showToast("🔒 「工務專用 ▸ 三方數量比對差異」僅限工務所與管理員存取！");
+      return false;
+    }
+    if (typeof window.openS3SplitSubView === "function") {
+      return window.openS3SplitSubView("three_way_diff");
+    }
+    return false;
+  };
+
+  function syncThreeWaySubpageChrome_S81_(mode) {
+    try {
+      // Remove any residual #navMenuItemThreeWayDiff inside #navDropdownInspectionMenu if ever re-created
+      var inspMenu = document.getElementById("navDropdownInspectionMenu");
+      if (inspMenu) {
+        var stray = inspMenu.querySelector("#navMenuItemThreeWayDiff");
+        if (stray && stray.parentNode === inspMenu) stray.parentNode.removeChild(stray);
+      }
+      // In #s3FourWayTopControlBar: hide `三方數量差異比對` pill on 請款/查驗 pages; on `three_way_diff`, hide 請款/查驗 pills so it's a clean 工務專用 subpage!
+      var adjWrap = document.getElementById("s4IndependentThreeWayBesideConst");
+      var is3Way = (mode === "three_way_diff");
+      if (adjWrap) {
+        adjWrap.style.display = is3Way ? "inline-flex" : "none";
+      }
+      ["owner_valuation", "vendor_billing", "material_inspection", "construction_inspection"].forEach(function(mKey) {
+        var p = document.getElementById("s3Pill_" + mKey);
+        if (p) p.style.display = is3Way ? "none" : "";
+      });
+      if (is3Way) {
+        if (typeof window.highlightActiveNavBtn === "function") {
+          window.highlightActiveNavBtn("navBtnValuationDropdown");
+        }
+        var subInsp = document.getElementById("navSubInspectionLabel");
+        if (subInsp) subInsp.textContent = "材料查驗・施工查驗";
+        var subVal = document.getElementById("navSubValuationLabel");
+        if (subVal) subVal.textContent = "業主計價 ▸ 匯出 Excel・目前：三方比對";
+      } else {
+        var subValReset = document.getElementById("navSubValuationLabel");
+        if (subValReset) subValReset.textContent = "業主計價 ▸ 匯出 Excel・三方比對";
+      }
+    } catch (_eTw81) {}
+  }
+
+  var _origOpenS3Split = window.openS3SplitSubView;
+  if (typeof _origOpenS3Split === "function" && !_origOpenS3Split.__s81Wrapped) {
+    var _wrappedOpenS3Split = function(mode) {
+      if (mode === "three_way_diff" && typeof window.isEngineeringOrAdminUser_S72_ === "function" && !window.isEngineeringOrAdminUser_S72_()) {
+        if (typeof window.showToast === "function") window.showToast("🔒 「工務專用 ▸ 三方數量比對差異」僅限工務所與管理員存取！");
+        return false;
+      }
+      var res = _origOpenS3Split.apply(this, arguments);
+      syncThreeWaySubpageChrome_S81_(mode || "owner_valuation");
+      return res;
+    };
+    _wrappedOpenS3Split.__s81Wrapped = true;
+    window.openS3SplitSubView = _wrappedOpenS3Split;
+  }
+
+  var _origRenderS3Fw = window.renderS3FourWayPanels_;
+  if (typeof _origRenderS3Fw === "function" && !_origRenderS3Fw.__s81Wrapped) {
+    var _wrappedRenderS3Fw = function() {
+      var r = _origRenderS3Fw.apply(this, arguments);
+      var paneW = document.getElementById("ledgerPaneWeather");
+      var curMode = (paneW && paneW.getAttribute("data-s3-subview")) || "owner_valuation";
+      syncThreeWaySubpageChrome_S81_(curMode);
+      return r;
+    };
+    _wrappedRenderS3Fw.__s81Wrapped = true;
+    window.renderS3FourWayPanels_ = _wrappedRenderS3Fw;
+  }
+
+  // 4. Weather Simulation Baseline Snapshot & 1-Click Reset (`resetWeatherSimulation_S81`)
+  var S81_VERIFIED_REAL_BASELINES = {
+    "2026-11-06|桃園市八德區仁德國民小學新建校舍工程(第二期)": {
+      date: "2026-11-06", rocDate: "115.11.06", project: "桃園市八德區仁德國民小學新建校舍工程(第二期)",
+      addr: "桃園市八德區仁德國小二期工區", stationId: "C0C700", stationName: "八德觀測站", stationDistKm: 0.61,
+      weatherState: "晴", workerCount: 10, workerTrades: "水電 10人 (工具箱點名 [4,1,3,2] 共4張｜標準回報：115.11.06 水電 *10)",
+      materialItem: "進場收貨單 1 張：暐琦事業 出貨單115111572（廠商出貨日期 115.11.06）南亞(灰)E(電導)管 3/4\"×2.0 4M 進場 40 支 (160M)",
+      category: "MATERIAL_DELIVERY", rain24h: 0.0, rain1h: 0.0, windMs: 2.5, beaufort: 2,
+      eligible: false, extDays: 0.0, badgeText: "進料40支・水電10人", pillClass: "pill-emerald",
+      rules: ["符合勞安標準（無勞安缺失）"], note: "2-3F ACP修改、1F補線、3F拉線、3F輕隔間配管",
+      __fromLiveCloudDb: true, __isAutoRolloverToday: false
+    },
+    "2026-11-14|桃園市八德區仁德國民小學新建校舍工程(第二期)": {
+      date: "2026-11-14", rocDate: "115.11.14", project: "桃園市八德區仁德國民小學新建校舍工程(第二期)",
+      addr: "桃園市八德區豐德路", stationId: "C0C700", stationName: "八德觀測站", stationDistKm: 0.61,
+      weatherState: "晴", workerCount: 9, toolboxWorkers: 9, photoBreakdown: "[5,4]", trade: "水電",
+      workerTrades: "水電 9人 (工具箱點名 [5,4] 共2張｜標準回報：115.11.14 水電 *9)",
+      materialItem: "無", category: "WEATHER_EXTENSION", rain24h: 0.0, rain1h: 0.0, windMs: 2.0, beaufort: 2,
+      eligible: false, extDays: 0.0, badgeText: "晴 0mm・水電9人", pillClass: "pill-emerald",
+      rules: ["符合勞安標準（無勞安缺失）"],
+      note: "晨間工具箱會議點名校正 [5,4]=9人（V5.5 室內黑頭燈帶切裂白帽米色上衣補回＋超廣角紅圍籬下移臉帶排除背景藍窗｜較昨日預計10人少1人）",
+      __fromLiveCloudDb: true, __isAutoRolloverToday: false
+    }
+  };
+
+  window.__S81_PRE_SIM_MAP__ = window.__S81_PRE_SIM_MAP__ || {};
+
+  function isSimulatedWeatherRecord_S81_(ev) {
+    if (!ev || typeof ev !== "object") return false;
+    if (ev.__isSimulatedWeather_S81) return true;
+    var nt = String(ev.note || "");
+    var wt = String(ev.workerTrades || "");
+    if (Number(ev.rain24h) === 152 && Number(ev.rain1h) === 54) return true;
+    if (nt.indexOf("實測豪雨 152mm") !== -1 || wt.indexOf("颱風停班停課防災停工") !== -1) return true;
+    return false;
+  }
+
+  function snapshotCleanEventsBeforeSim_S81_() {
+    var arr = (typeof window.getEffectiveWarRoomEvents_ === "function") ? window.getEffectiveWarRoomEvents_() : (window.warRoomEvents || []);
+    if (!Array.isArray(arr)) return;
+    for (var i = 0; i < arr.length; i++) {
+      var e = arr[i];
+      if (!e || !e.date || !e.project) continue;
+      var k = e.date + "|" + e.project;
+      if (!window.__S81_PRE_SIM_MAP__[k] && !isSimulatedWeatherRecord_S81_(e)) {
+        window.__S81_PRE_SIM_MAP__[k] = JSON.parse(JSON.stringify(e));
+      }
+    }
+  }
+  snapshotCleanEventsBeforeSim_S81_();
+
+  var _prevQuickSim80 = window.quickSimulate;
+  window.quickSimulate = function(type) {
+    snapshotCleanEventsBeforeSim_S81_();
+    var targetDt = (type === "torrential") ? "2026-11-06" : (window.selectedDateStr || "2026-11-14");
+    var r = (typeof _prevQuickSim80 === "function") ? _prevQuickSim80.apply(this, arguments) : null;
+    try {
+      var arr = (typeof window.getEffectiveWarRoomEvents_ === "function") ? window.getEffectiveWarRoomEvents_() : (window.warRoomEvents || []);
+      for (var i = 0; i < arr.length; i++) {
+        if (arr[i] && arr[i].date === targetDt && isSimulatedWeatherRecord_S81_(arr[i])) {
+          arr[i].__isSimulatedWeather_S81 = true;
+        }
+      }
+      window.selectedDateStr = targetDt;
+      if (typeof window.renderWeatherAndLaborSubpageTables === "function") window.renderWeatherAndLaborSubpageTables();
+    } catch (_eSimFlag) {}
+    return r;
+  };
+
+  window.resetWeatherSimulation_S81 = function() {
+    var activeProj = (typeof window.getEffectiveActiveProj_ === "function") ? window.getEffectiveActiveProj_() : "桃園市八德區仁德國民小學新建校舍工程(第二期)";
+    var restoredCount = 0;
+
+    function restoreArray_(list) {
+      if (!Array.isArray(list)) return;
+      for (var i = list.length - 1; i >= 0; i--) {
+        var ev = list[i];
+        if (!ev || !isSimulatedWeatherRecord_S81_(ev)) continue;
+        var key = ev.date + "|" + ev.project;
+        var cleanOrig = window.__S81_PRE_SIM_MAP__[key] || S81_VERIFIED_REAL_BASELINES[key] || null;
+        if (cleanOrig) {
+          list[i] = JSON.parse(JSON.stringify(cleanOrig));
+          if (typeof window.normalizeWeatherEvent_S80 === "function") window.normalizeWeatherEvent_S80(list[i]);
+        } else {
+          // Generic clean restore if simulated on an arbitrary date/project
+          var isYG = String(ev.project || "").indexOf("鶯歌") !== -1;
+          ev.weatherState = "晴";
+          ev.rain24h = 0.0;
+          ev.rain1h = 0.0;
+          ev.windMs = 2.1;
+          ev.beaufort = 2;
+          ev.eligible = false;
+          ev.extDays = 0.0;
+          ev.typhoonSuspension = "NONE";
+          ev.__typhoonSuspended_S80 = false;
+          ev.__isSimulatedWeather_S81 = false;
+          ev.stationId = isYG ? "C0AD40" : "C0C700";
+          ev.stationName = isYG ? "鶯歌觀測站" : "八德觀測站";
+          ev.rules = ["符合勞安標準（無勞安缺失）"];
+          ev.note = "";
+          ev.pillClass = "pill-cyan";
+          ev.badgeText = "晴 0mm";
+        }
+        restoredCount++;
+      }
+    }
+
+    restoreArray_(window.warRoomEvents);
+    restoreArray_(window.__EARLY_EVENTS_FALLBACK__);
+    if (window.__LIVE_WARROOM_CLOUD_DATA__ && Array.isArray(window.__LIVE_WARROOM_CLOUD_DATA__.liveEvents)) {
+      restoreArray_(window.__LIVE_WARROOM_CLOUD_DATA__.liveEvents);
+    }
+
+    // Reset weather entry form fields to clean real defaults
+    var setVal = function(id, v) { var el = document.getElementById(id); if (el) el.value = v; };
+    var latestIso = (window.__LIVE_WARROOM_CLOUD_DATA__ && window.__LIVE_WARROOM_CLOUD_DATA__.latestDate) || "2026-11-14";
+    window.selectedDateStr = latestIso;
+    try { if (typeof selectedDateStr !== "undefined") selectedDateStr = latestIso; } catch (_eSd) {}
+    setVal("logDateInput", latestIso);
+    setVal("weatherLogDateInput", latestIso);
+    setVal("weatherStateSelect", " 晴");
+    setVal("rain24hInput", "0.0");
+    setVal("rain1hInput", "0.0");
+    setVal("windMsInput", "2.0");
+    setVal("impactNoteInput", "");
+
+    var banner = document.getElementById("extAlertBanner");
+    if (banner && banner.classList) banner.classList.remove("active");
+
+    if (typeof window.saveStateToStorage === "function") {
+      try { window.saveStateToStorage(); } catch (_eSv) {}
+    }
+    if (typeof window.updateKpisAndAlertBanner === "function") {
+      try { window.updateKpisAndAlertBanner(activeProj); } catch (_eK) {}
+    }
+    if (typeof window.renderWeatherAndLaborSubpageTables === "function") {
+      try { window.renderWeatherAndLaborSubpageTables(activeProj, activeProj); } catch (_eWf) {}
+    }
+    if (typeof window.renderWarRoomCalendar === "function") {
+      try { window.renderWarRoomCalendar(); } catch (_eCal) {}
+    }
+    if (typeof window.renderLiveSvgChart === "function") {
+      try { window.renderLiveSvgChart(); } catch (_eSvg) {}
+    }
+    if (typeof window.renderHomeFourCoreKpis_V163 === "function") {
+      try { window.renderHomeFourCoreKpis_V163(activeProj); } catch (_eHk) {}
+    }
+    if (typeof window.showToast === "function") {
+      window.showToast(restoredCount > 0
+        ? "↺ 已復歸真實氣象觀測資料（已還原模擬項目並同步更新圖表與日曆）！"
+        : "↺ 目前即為真實氣象觀測資料狀態（焦點日已切回最新觀測日 " + latestIso + "）！");
+    }
+    return { ok: true, restoredCount: restoredCount, focusDate: latestIso };
+  };
+
+  // Run initial layout & chrome sync
+  window.enforceTrailingThreeDropdownsOrder_S81();
+  syncThreeWaySubpageChrome_S81_("owner_valuation");
+  setTimeout(function() {
+    window.enforceTrailingThreeDropdownsOrder_S81();
+    var paneW = document.getElementById("ledgerPaneWeather");
+    syncThreeWaySubpageChrome_S81_((paneW && paneW.getAttribute("data-s3-subview")) || "owner_valuation");
+  }, 60);
 })();
 </script>
 

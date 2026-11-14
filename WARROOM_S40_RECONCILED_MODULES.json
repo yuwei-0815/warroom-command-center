@@ -13136,9 +13136,9 @@
     "billingBasis": "施工查驗(C08/C10)合格後始可計價",
     "fillingBasis": "施工查驗後填寫對應材料數量",
     "ownerBillingExcelFileId": "1HAfF0OKDKsLsGhSo8r_yo3THvQRmPD_r",
-    "botBSlimBytes": 4266372,
-    "masterBotBytes": 7447508,
-    "autoHotUpdateGsBytes": 7108333
+    "botBSlimBytes": 4263770,
+    "masterBotBytes": 7445749,
+    "autoHotUpdateGsBytes": 7106574
   },
   "s74VisionAnd1113CalibrationRelease": {
     "version": "S7.4_VISION_V54_ORTHOGONAL_AND_1113_9WORKERS",
@@ -13179,9 +13179,9 @@
     "gongwuyun95MbDualBotCircuitBreaker": true,
     "yixingShipTableColumns": 7,
     "replyToPushAutoFallbackSec": 18,
-    "botBSlimBytes": 4266372,
-    "masterBotBytes": 7447508,
-    "autoHotUpdateGsBytes": 7108333
+    "botBSlimBytes": 4263770,
+    "masterBotBytes": 7445749,
+    "autoHotUpdateGsBytes": 7106574
   },
   "s77AllStepsSubsecondRelease": {
     "version": "S7.7_ALL_STEPS_SUBSECOND_ZERO_LOCK_AND_SCOPE_BRIDGE",
@@ -13192,9 +13192,9 @@
     "allMaterialMenuStepsIntercepted": true,
     "bidOrderAndVendorReceiptReplyFirst": true,
     "yixingFastSlipListReader": true,
-    "botBSlimBytes": 4266372,
-    "masterBotBytes": 7447508,
-    "autoHotUpdateGsBytes": 7108333
+    "botBSlimBytes": 4263770,
+    "masterBotBytes": 7445749,
+    "autoHotUpdateGsBytes": 7106574
   },
   "s78CrossBotTokenAndCleanDiagRelease": {
     "version": "S7.8_ZERO_CROSS_TOKEN_AND_CLEAN_DIAG_V211",
@@ -13203,9 +13203,9 @@
     "autoLearnBidMapEmptyNegativeCacheSec": 21600,
     "heavySheetGuardExcludedFromErrorRing": true,
     "staleCachedHeavyGuardAutoPurged": true,
-    "botBSlimBytes": 4266372,
-    "masterBotBytes": 7447508,
-    "autoHotUpdateGsBytes": 7108333
+    "botBSlimBytes": 4263770,
+    "masterBotBytes": 7445749,
+    "autoHotUpdateGsBytes": 7106574
   },
   "s79VisionV55And1114CalibrationRelease": {
     "version": "S7.9_VISION_V55_AND_1114_9WORKERS_V211",
@@ -13221,9 +13221,9 @@
       "V55_R1: 室內5人佇列黑頭燈帶切裂白帽(<12格)＋淺米色上衣搭深黑長褲立柱補回 (4->5)",
       "V55_R2: 超廣角(gh<=60)紅圍籬鷹架逆光微仰角下移臉帶(y=18..24)4人立柱恢復＋排除背景大樓藍窗誤吸 (2->4)"
     ],
-    "botBSlimBytes": 4266372,
-    "masterBotBytes": 7447508,
-    "autoHotUpdateGsBytes": 7108333
+    "botBSlimBytes": 4263770,
+    "masterBotBytes": 7445749,
+    "autoHotUpdateGsBytes": 7106574
   },
   "s80WarRoomFourFixesAndTyphoonRelease": {
     "version": "S8.0_WARROOM_UI4_AND_TYPHOON_SUSPENSION_V212",
@@ -13231,8 +13231,17 @@
     "fix2DynamicProjectOwnerBillingHeaderAndLastUpdatedDate": true,
     "fix3MonthlyCumCleanAndQualityNoTable412": true,
     "fix4WeatherUndefinedHealedAndTyphoonWorkClassSuspension": true,
-    "botBSlimBytes": 4266372,
-    "masterBotBytes": 7447508,
-    "autoHotUpdateGsBytes": 7108333
+    "botBSlimBytes": 4263770,
+    "masterBotBytes": 7445749,
+    "autoHotUpdateGsBytes": 7106574
+  },
+  "s81ThreeWayNavAndWeatherResetRelease": {
+    "version": "S8.1_ENG_3WAY_WEATHER_RESET_AND_NAV_ORDER_V213",
+    "threeWayDiffMovedToEngDropdown": true,
+    "weatherSimulationResetButtonAdded": true,
+    "billingAndInspectionMovedBeforeEngZone": true,
+    "botBSlimBytes": 4263770,
+    "masterBotBytes": 7445749,
+    "autoHotUpdateGsBytes": 7106574
   }
 }
