@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-14T23:59:00+08:00",
+  "updatedAt": "2026-11-15T12:00:00+08:00",
   "fingerprint": "S65_V211|1Sdb5S:77ITEMS_5706957|D11_SUB(E:28,WP:19,LV:1,F:4=52)|C10_SUB(E:17,WP:16,LV:12,F:9,PA:4=58)",
   "d11Summary": {
     "totalFilesSynced": 52,
@@ -13285,7 +13285,7 @@
     "autoHotUpdateGsBytes": 7140683
   },
   "s84Rende1ProposalsAndBoqRelease": {
-    "version": "S8.6_REV_B_P4_BASELINE_SEPARATED_V223",
+    "version": "S8.8_CONTRACT_CHANGE_DROPDOWN_ALL_MEP_REVENUE_XLSX",
     "proposal6ApprovedLetter": "115/07/08 桃工新務字第1150026523號函",
     "proposals1To10TotalContractNet": 63058681,
     "proposals1To10TotalDirectNet": 55908780,
@@ -13303,23 +13303,36 @@
     "eipVoucherCount": 118,
     "nativeExcelExportEnabled": true,
     "botBSlimBytes": 4154683,
-    "masterBotBytes": 7445057,
+    "masterBotBytes": 7449919,
     "autoHotUpdateGsBytes": 7150470,
-    "allEstimatedNetAdditionInc": 71296740,
+    "allEstimatedNetAdditionInc": 82873671,
     "allEstimatedAfterTotalInc": 586899738,
     "mepOwnerEstimatedGrossScale": 27845025,
-    "mepOwnerEstimatedNetScale": 8984265,
+    "mepOwnerEstimatedNetScale": 20561197,
     "mepSubcontractEipSignedGrossInc": 3761730,
     "mepSubcontractUnbilledEstP50Inc": 10189409,
-    "mepSubcontractTotalEstAddGrossP50Inc": 14036953,
-    "mepOverallEacNetProfitInc": 38760386,
-    "mepOverallEacNetMarginPct": 29.0,
-    "adjustedAllBidInc": 502701424,
-    "adjustedMepBidUntaxed": 107552928,
-    "adjustedMepMainSubcontractInc": 78579876,
+    "mepSubcontractTotalEstAddGrossP50Inc": 13590080,
+    "mepOverallEacNetProfitInc": 36868873,
+    "mepOverallEacNetMarginPct": 27.58,
+    "adjustedAllBidInc": 504026067,
+    "adjustedMepBidUntaxed": 108748723,
+    "adjustedMepMainSubcontractInc": 80918262,
     "proposalsExclP4AllConfirmedNetInc": 75960255,
     "proposalsExclP4MepConfirmedNetUntaxed": 18725928,
     "allEstimatedNetAdditionExclP4Inc": 84198314,
-    "mepOwnerEstimatedNetScaleExclP4": 21885839
+    "mepOwnerEstimatedNetScaleExclP4": 21885839,
+    "p4ContractDeductionMepUntaxed": -10450852,
+    "p4ChangeOrderMepUntaxed": -1195795,
+    "proposalsAllConfirmedNetInc": 74635612,
+    "proposalsMepConfirmedNetUntaxed": 17530133,
+    "navDropdownId": "navDropdownContractChangeWrap",
+    "subItems": [
+      "全案追加減 (ALL_CHG)",
+      "機電追加減 (MEP_CHG)",
+      "機電營收 (MEP_REV)",
+      "匯出Excel (.xlsx)"
+    ],
+    "adjustedMepBidInc": 114186159,
+    "mepEstimatedRevenueInc": 133675446
   }
 }
