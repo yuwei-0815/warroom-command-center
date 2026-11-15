@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-15T12:00:00+08:00",
+  "updatedAt": "2026-11-15T14:20:00+08:00",
   "fingerprint": "S65_V211|1Sdb5S:77ITEMS_5706957|D11_SUB(E:28,WP:19,LV:1,F:4=52)|C10_SUB(E:17,WP:16,LV:12,F:9,PA:4=58)",
   "d11Summary": {
     "totalFilesSynced": 52,
@@ -13285,7 +13285,7 @@
     "autoHotUpdateGsBytes": 7140683
   },
   "s84Rende1ProposalsAndBoqRelease": {
-    "version": "S8.8_CONTRACT_CHANGE_DROPDOWN_ALL_MEP_REVENUE_XLSX",
+    "version": "S8.9_SETTLEMENT_ISOLATED_VIEWS_AND_OFFICIAL_BOQ",
     "proposal6ApprovedLetter": "115/07/08 桃工新務字第1150026523號函",
     "proposals1To10TotalContractNet": 63058681,
     "proposals1To10TotalDirectNet": 55908780,
@@ -13303,7 +13303,7 @@
     "eipVoucherCount": 118,
     "nativeExcelExportEnabled": true,
     "botBSlimBytes": 4154683,
-    "masterBotBytes": 7449919,
+    "masterBotBytes": 7448782,
     "autoHotUpdateGsBytes": 7150470,
     "allEstimatedNetAdditionInc": 82873671,
     "allEstimatedAfterTotalInc": 586899738,
@@ -13312,8 +13312,8 @@
     "mepSubcontractEipSignedGrossInc": 3761730,
     "mepSubcontractUnbilledEstP50Inc": 10189409,
     "mepSubcontractTotalEstAddGrossP50Inc": 13590080,
-    "mepOverallEacNetProfitInc": 36868873,
-    "mepOverallEacNetMarginPct": 27.58,
+    "mepOverallEacNetProfitInc": 37823510,
+    "mepOverallEacNetMarginPct": 28.29,
     "adjustedAllBidInc": 504026067,
     "adjustedMepBidUntaxed": 108748723,
     "adjustedMepMainSubcontractInc": 80918262,
@@ -13333,6 +13333,18 @@
       "匯出Excel (.xlsx)"
     ],
     "adjustedMepBidInc": 114186159,
-    "mepEstimatedRevenueInc": 133675446
+    "mepEstimatedRevenueInc": 133675446,
+    "navTitle": "結算 ▾",
+    "subViews": [
+      "全案追加減 (ALL_CHG)",
+      "機電追加減 (MEP_CHG)",
+      "全案營收 (ALL_REV)",
+      "機電營收 (MEP_REV)"
+    ],
+    "allProjectAttributedExpensesNetInc": 954637,
+    "lianduiDeductVendorInc": 216170,
+    "lianduiProjectCostInc": 141908,
+    "mepTotalCostEacInc": 95851936,
+    "revisedMepBoqTotalUntaxed": 126278856
   }
 }
