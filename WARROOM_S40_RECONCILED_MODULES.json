@@ -13303,7 +13303,7 @@
     "eipVoucherCount": 118,
     "nativeExcelExportEnabled": true,
     "botBSlimBytes": 4154683,
-    "masterBotBytes": 7448782,
+    "masterBotBytes": 7471657,
     "autoHotUpdateGsBytes": 7150470,
     "allEstimatedNetAdditionInc": 82873671,
     "allEstimatedAfterTotalInc": 586899738,
@@ -13312,8 +13312,8 @@
     "mepSubcontractEipSignedGrossInc": 3761730,
     "mepSubcontractUnbilledEstP50Inc": 10189409,
     "mepSubcontractTotalEstAddGrossP50Inc": 13590080,
-    "mepOverallEacNetProfitInc": 37823510,
-    "mepOverallEacNetMarginPct": 28.29,
+    "mepOverallEacNetProfitInc": 35904971,
+    "mepOverallEacNetMarginPct": 27.03,
     "adjustedAllBidInc": 504026067,
     "adjustedMepBidUntaxed": 108748723,
     "adjustedMepMainSubcontractInc": 80918262,
@@ -13344,7 +13344,7 @@
     "allProjectAttributedExpensesNetInc": 954637,
     "lianduiDeductVendorInc": 216170,
     "lianduiProjectCostInc": 141908,
-    "mepTotalCostEacInc": 95851936,
+    "mepTotalCostEacInc": 96930475,
     "revisedMepBoqTotalUntaxed": 126278856
   }
 }
