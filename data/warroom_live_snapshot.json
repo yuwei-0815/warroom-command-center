@@ -1,28 +1,28 @@
 {
   "ok": true,
   "version": "S1版",
-  "latestDate": "2026-11-15",
-  "syncedAt": "2026-11-16 00:05:49",
+  "latestDate": "2026-11-16",
+  "syncedAt": "2026-11-16 08:54:06",
   "laborSummaryByProject": {
     "R2": {
       "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)",
-      "latestDate": "2026-11-15",
-      "latestRocDate": "115.11.15",
-      "todayWorkers": 12,
-      "toolboxWorkers": 12,
+      "latestDate": "2026-11-16",
+      "latestRocDate": "115.11.16",
+      "todayWorkers": 7,
+      "toolboxWorkers": 7,
       "report1500Workers": null,
-      "photoBreakdown": "[3,1,1,4,1,2]",
+      "photoBreakdown": "[3,1,3]",
       "tomorrowPredictedWorkers": 0,
       "tomorrowWorkScope": "待今日 15:00 回報明日範圍",
-      "todayWorkScope": "無｜明日預計(0人)：待今日 15:00 回報明日範圍",
+      "todayWorkScope": "待今日 15:00 回報明日範圍｜明日預計(0人)：待今日 15:00 回報明日範圍",
       "todayBadgeText": "工具箱點名已同步",
-      "todayTradeTag": "水電 *12 ([3,1,1,4,1,2])",
-      "todaySubText": "115.11.15 15:00實到 12 人（晨間工具箱 12 人 [3,1,1,4,1,2]）｜今日施作：無｜明日預計(0人)：待今日 15:00 回報明日範圍",
-      "cumulativeWorkers": 189,
-      "currentMonthWorkers": 160,
-      "currentMonthDays": 15,
-      "workDaysCount": 18,
-      "dailyAvgWorkers": 10.5
+      "todayTradeTag": "水電 *7 ([3,1,3])",
+      "todaySubText": "115.11.16 15:00實到 7 人（晨間工具箱 7 人 [3,1,3]）｜今日施作：待今日 15:00 回報明日範圍｜明日預計(0人)：待今日 15:00 回報明日範圍",
+      "cumulativeWorkers": 196,
+      "currentMonthWorkers": 167,
+      "currentMonthDays": 16,
+      "workDaysCount": 19,
+      "dailyAvgWorkers": 10.3
     }
   },
   "latestRocDate": "115.11.16",
@@ -567,9 +567,39 @@
       "workerTrades": "水電 12人 (工具箱點名 [3,1,1,4,1,2] 共0張)",
       "badgeText": "晴 0mm・水電12人",
       "note": "今日施作：無｜明日預計(0人)：待今日 15:00 回報明日範圍"
+    },
+    {
+      "date": "2026-11-16",
+      "rocDate": "115.11.16",
+      "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)",
+      "addr": "桃園市八德區豐德路",
+      "stationId": "C0C700",
+      "stationName": "八德觀測站",
+      "stationDistKm": 0.61,
+      "weatherState": "晴",
+      "category": "WEATHER_EXTENSION",
+      "rain24h": 0,
+      "rain1h": 0,
+      "windMs": 2,
+      "beaufort": 2,
+      "eligible": false,
+      "extDays": 0,
+      "pillClass": "pill-emerald",
+      "rules": [
+        "符合勞安標準（無勞安缺失）"
+      ],
+      "workerCount": 7,
+      "toolboxWorkers": 7,
+      "report1500Workers": null,
+      "photoBreakdown": "[3,1,3]",
+      "tomorrowPredictedWorkers": 0,
+      "tomorrowScope": "待今日 15:00 回報明日範圍",
+      "workerTrades": "水電 7人 (工具箱點名 [3,1,3] 共0張)",
+      "badgeText": "晴 0mm・水電7人",
+      "note": "今日施作：待今日 15:00 回報明日範圍｜明日預計(0人)：待今日 15:00 回報明日範圍"
     }
   ],
-  "driveFingerprint": "I5r_atUIfjfiewSM41",
+  "driveFingerprint": "ssrqrzYE4lfV6ve9l7",
   "excelDriveFileId": "1sJiy0wDJAyDqJzBD39AX2PTbBiUWJNySX22APzI_7s8",
   "sourceRegistry": {
     "gongwuyunUrl": "https://docs.google.com/spreadsheets/d/1sJiy0wDJAyDqJzBD39AX2PTbBiUWJNySX22APzI_7s8/edit",
@@ -901,9 +931,53 @@
     "deliverySlips": {
       "folderId": "1UZYDvWLEp_PTZC7gEOqJnZBwF9Zz7IHV",
       "folderUrl": "https://drive.google.com/drive/folders/1UZYDvWLEp_PTZC7gEOqJnZBwF9Zz7IHV",
-      "totalFilesInFolder": 11,
-      "totalRecords": 14,
+      "totalFilesInFolder": 12,
+      "totalRecords": 18,
       "records": [
+        {
+          "rocDate": "115.11.16",
+          "isoDate": "2026-11-16",
+          "vendor": "工務標單叫貨",
+          "materialSpec": "標單材料項目 (壹.甲.三.14.(2))",
+          "qtyText": "1組",
+          "sourceType": "LINE Bot 出貨單雲端總表",
+          "fileName": "115.11.16_出貨單歸檔",
+          "fileUrl": "https://drive.google.com/drive/folders/1UZYDvWLEp_PTZC7gEOqJnZBwF9Zz7IHV",
+          "status": "已歸檔連動標單"
+        },
+        {
+          "rocDate": "115.11.16",
+          "isoDate": "2026-11-16",
+          "vendor": "工務標單叫貨",
+          "materialSpec": "標單材料項目 (壹.甲.三.14.(2).11)",
+          "qtyText": "1組",
+          "sourceType": "LINE Bot 出貨單雲端總表",
+          "fileName": "115.11.16_出貨單歸檔",
+          "fileUrl": "https://drive.google.com/drive/folders/1UZYDvWLEp_PTZC7gEOqJnZBwF9Zz7IHV",
+          "status": "已歸檔連動標單"
+        },
+        {
+          "rocDate": "115.11.16",
+          "isoDate": "2026-11-16",
+          "vendor": "工務標單叫貨",
+          "materialSpec": "出貨單-仁德國小(第二期)室內消防栓設備系統工程|B1| 2F3F| 4FRF垂直產品，預塗裝鍍鋅鋼管 CNS 6445 SGP 3\" 產品，預塗裝鍍鋅鋼管 CNS 6445 SGP 1 1/2\"201101105220267227.0005354038.000 (壹.甲.三.14.(2).12)",
+          "qtyText": "1M",
+          "sourceType": "LINE Bot 出貨單雲端總表",
+          "fileName": "115.11.16_出貨單歸檔",
+          "fileUrl": "https://drive.google.com/drive/folders/1UZYDvWLEp_PTZC7gEOqJnZBwF9Zz7IHV",
+          "status": "已歸檔連動標單"
+        },
+        {
+          "rocDate": "2026-11-16",
+          "isoDate": "2026-11-16",
+          "vendor": "伸泰電機 / 機電材料商",
+          "materialSpec": "115.11.16_出貨單_仁德國小(第二期)_壹.甲.三.14.(2)",
+          "qtyText": "詳影像單據(已連動標單)",
+          "sourceType": "雲端硬碟\\出貨單",
+          "fileName": "115.11.16_出貨單_仁德國小(第二期)_壹.甲.三.14.(2).jpg",
+          "fileUrl": "https://drive.google.com/file/d/17-bzllsgMM4r2c-cwNd2UoBiM_xVb9yz/view",
+          "status": "雲端硬碟即時偵測"
+        },
         {
           "rocDate": "115.11.12",
           "isoDate": "2026-11-12",
@@ -1929,7 +2003,7 @@
       "cronExpressionUtc": "0 16 * * *",
       "triggerFunctionName": "cron2400FourWayBoqReconcileAndSync_S3",
       "last2400SyncedAt": "2026-11-12 00:03:53",
-      "lastRealtimeVerifiedAt": "2026-11-16 00:06:07",
+      "lastRealtimeVerifiedAt": "2026-11-16 08:54:28",
       "nextScheduledSync": "2026-11-16 24:00:00"
     },
     "summaryCounts": {
