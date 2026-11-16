@@ -1,8 +1,8 @@
 {
   "ok": true,
   "version": "S3.5版_FAST_REALTIME_SYNC",
-  "driveFingerprint": "S35F_b6b72997",
-  "syncedAt": "2026-11-16 16:31:09",
+  "driveFingerprint": "S35F_d50bd2bf",
+  "syncedAt": "2026-11-16 17:13:48",
   "latestDate": "2026-11-16",
   "excelDriveFileId": "1sJiy0wDJAyDqJzBD39AX2PTbBiUWJNySX22APzI_7s8",
   "d11Summary": {
@@ -518,8 +518,8 @@
         {
           "rocDate": "115.11.16",
           "vendor": "工務標單叫貨",
-          "materialSpec": "產品,明鏡 1000mm(L)x1000mm(H)x5mm (已自動比對標單) (1116組)",
-          "qtyText": "1116組",
+          "materialSpec": "產品，明鏡 1000mm(L)x1000mm(H)x5mm ((十八).10｜修正:900mm(L)x1000mm(H)｜有貨就出) (6組)",
+          "qtyText": "6組",
           "fileUrl": "https://drive.google.com/drive/folders/1UZYDvWLEp_PTZC7gEOqJnZBwF9Zz7IHV"
         },
         {
@@ -15354,7 +15354,7 @@
   },
   "dynamicSyncMetaS75": {
     "isDynamicS75": true,
-    "computedAt": "2026-11-16 16:29:17",
+    "computedAt": "2026-11-16 17:13:34",
     "d11LiveScanned": true,
     "c10LiveScanned": true,
     "boqSheetLiveRead": true,
