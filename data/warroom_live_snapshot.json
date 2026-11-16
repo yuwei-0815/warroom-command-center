@@ -2,7 +2,7 @@
   "ok": true,
   "version": "S1版",
   "latestDate": "2026-11-16",
-  "syncedAt": "2026-11-16 08:54:06",
+  "syncedAt": "2026-11-16 09:04:35",
   "laborSummaryByProject": {
     "R2": {
       "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)",
@@ -599,7 +599,7 @@
       "note": "今日施作：待今日 15:00 回報明日範圍｜明日預計(0人)：待今日 15:00 回報明日範圍"
     }
   ],
-  "driveFingerprint": "ssrqrzYE4lfV6ve9l7",
+  "driveFingerprint": "56tWuIaRX0Rk12bd0Q",
   "excelDriveFileId": "1sJiy0wDJAyDqJzBD39AX2PTbBiUWJNySX22APzI_7s8",
   "sourceRegistry": {
     "gongwuyunUrl": "https://docs.google.com/spreadsheets/d/1sJiy0wDJAyDqJzBD39AX2PTbBiUWJNySX22APzI_7s8/edit",
@@ -931,8 +931,8 @@
     "deliverySlips": {
       "folderId": "1UZYDvWLEp_PTZC7gEOqJnZBwF9Zz7IHV",
       "folderUrl": "https://drive.google.com/drive/folders/1UZYDvWLEp_PTZC7gEOqJnZBwF9Zz7IHV",
-      "totalFilesInFolder": 12,
-      "totalRecords": 18,
+      "totalFilesInFolder": 13,
+      "totalRecords": 25,
       "records": [
         {
           "rocDate": "115.11.16",
@@ -966,6 +966,83 @@
           "fileName": "115.11.16_出貨單歸檔",
           "fileUrl": "https://drive.google.com/drive/folders/1UZYDvWLEp_PTZC7gEOqJnZBwF9Zz7IHV",
           "status": "已歸檔連動標單"
+        },
+        {
+          "rocDate": "115.11.16",
+          "isoDate": "2026-11-16",
+          "vendor": "工務標單叫貨",
+          "materialSpec": "標單材料項目 (壹.甲.三.14.(1))",
+          "qtyText": "1組",
+          "sourceType": "LINE Bot 出貨單雲端總表",
+          "fileName": "115.11.16_出貨單歸檔",
+          "fileUrl": "https://drive.google.com/drive/folders/1UZYDvWLEp_PTZC7gEOqJnZBwF9Zz7IHV",
+          "status": "已歸檔連動標單"
+        },
+        {
+          "rocDate": "115.11.16",
+          "isoDate": "2026-11-16",
+          "vendor": "工務標單叫貨",
+          "materialSpec": "標單材料項目 (壹.甲.三.14.(1).11)",
+          "qtyText": "1組",
+          "sourceType": "LINE Bot 出貨單雲端總表",
+          "fileName": "115.11.16_出貨單歸檔",
+          "fileUrl": "https://drive.google.com/drive/folders/1UZYDvWLEp_PTZC7gEOqJnZBwF9Zz7IHV",
+          "status": "已歸檔連動標單"
+        },
+        {
+          "rocDate": "115.11.16",
+          "isoDate": "2026-11-16",
+          "vendor": "工務標單叫貨",
+          "materialSpec": "標單材料項目 (壹.甲.三.14.(3))",
+          "qtyText": "1組",
+          "sourceType": "LINE Bot 出貨單雲端總表",
+          "fileName": "115.11.16_出貨單歸檔",
+          "fileUrl": "https://drive.google.com/drive/folders/1UZYDvWLEp_PTZC7gEOqJnZBwF9Zz7IHV",
+          "status": "已歸檔連動標單"
+        },
+        {
+          "rocDate": "115.11.16",
+          "isoDate": "2026-11-16",
+          "vendor": "工務標單叫貨",
+          "materialSpec": "壹.甲.三.2出貨單-仁德國小(第二期)| 出貨數量火警自動警報設備系統工程產品，耐熱對紋銅網信號隔離線2.0mm2x2C 緊急廣播設備系統工程產品，耐熱線380°C15分鐘1.6mm 照明電氣管線設備工程200 黃 100M白 100M (壹.甲.三.14.(3).15)",
+          "qtyText": "400M",
+          "sourceType": "LINE Bot 出貨單雲端總表",
+          "fileName": "115.11.16_出貨單歸檔",
+          "fileUrl": "https://drive.google.com/drive/folders/1UZYDvWLEp_PTZC7gEOqJnZBwF9Zz7IHV",
+          "status": "已歸檔連動標單"
+        },
+        {
+          "rocDate": "115.11.16",
+          "isoDate": "2026-11-16",
+          "vendor": "工務標單叫貨",
+          "materialSpec": "產品，電線及電纜，600V聚氯乙烯絕緣電 線，絞線，2.0φ (壹.甲.三.2.(29))",
+          "qtyText": "300M",
+          "sourceType": "LINE Bot 出貨單雲端總表",
+          "fileName": "115.11.16_出貨單歸檔",
+          "fileUrl": "https://drive.google.com/drive/folders/1UZYDvWLEp_PTZC7gEOqJnZBwF9Zz7IHV",
+          "status": "已歸檔連動標單"
+        },
+        {
+          "rocDate": "115.11.16",
+          "isoDate": "2026-11-16",
+          "vendor": "工務標單叫貨",
+          "materialSpec": "產品，電線及電纜，600V聚氯乙烯絕緣電 線，絞線，5.5mm2 (壹.甲.三.2.(30))",
+          "qtyText": "1600M",
+          "sourceType": "LINE Bot 出貨單雲端總表",
+          "fileName": "115.11.16_出貨單歸檔",
+          "fileUrl": "https://drive.google.com/drive/folders/1UZYDvWLEp_PTZC7gEOqJnZBwF9Zz7IHV",
+          "status": "已歸檔連動標單"
+        },
+        {
+          "rocDate": "2026-11-16",
+          "isoDate": "2026-11-16",
+          "vendor": "伸泰電機 / 機電材料商",
+          "materialSpec": "115.11.16_出貨單_仁德國小(第二期)_壹.甲.三.14.(1)",
+          "qtyText": "詳影像單據(已連動標單)",
+          "sourceType": "雲端硬碟\\出貨單",
+          "fileName": "115.11.16_出貨單_仁德國小(第二期)_壹.甲.三.14.(1).jpg",
+          "fileUrl": "https://drive.google.com/file/d/1M9TGXkGww5F4QB9h6mQS0bdtqnufNixB/view",
+          "status": "雲端硬碟即時偵測"
         },
         {
           "rocDate": "2026-11-16",
@@ -2003,7 +2080,7 @@
       "cronExpressionUtc": "0 16 * * *",
       "triggerFunctionName": "cron2400FourWayBoqReconcileAndSync_S3",
       "last2400SyncedAt": "2026-11-12 00:03:53",
-      "lastRealtimeVerifiedAt": "2026-11-16 08:54:28",
+      "lastRealtimeVerifiedAt": "2026-11-16 09:04:53",
       "nextScheduledSync": "2026-11-16 24:00:00"
     },
     "summaryCounts": {
