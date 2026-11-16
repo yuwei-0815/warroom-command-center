@@ -24653,7 +24653,7 @@ document.documentElement.setAttribute("data-release-version", "S2版");
       s.excelSourcesRealtime.deliverySlips={folderId:"1UZYDvWLEp_PTZC7gEOqJnZBwF9Zz7IHV",folderUrl:"https://drive.google.com/drive/folders/1UZYDvWLEp_PTZC7gEOqJnZBwF9Zz7IHV",totalRecords:S64_DELIV_RECS.length,totalCount:S64_DELIV_RECS.length,records:S64_DELIV_RECS};
     }
     var S64_MAT_LATEST=S64_MAT_RECS.map(function(r){return{docNo:r.docNo,system:r.subfolder,subfolder:r.subfolder,rocDate:r.rocDate,isoDate:r.isoDate,fileName:r.fileName,amountText:r.matchedBoqName,fileUrl:r.fileUrl};});
-    if(!hasDynD11||!s.excelSourcesRealtime.materialInspection){
+    if((!hasDynD11&&(!s.excelSourcesRealtime.materialInspection||!Array.isArray(s.excelSourcesRealtime.materialInspection.latestPdfs)||!s.excelSourcesRealtime.materialInspection.latestPdfs.length))||!s.excelSourcesRealtime.materialInspection){
       s.excelSourcesRealtime.materialInspection={folderId:"1aTXDjGNBRkwuULae6C41ve9PYs5y1BAh",folderUrl:"https://drive.google.com/drive/folders/1aTXDjGNBRkwuULae6C41ve9PYs5y1BAh",totalPdfCount:s.d11Summary.totalFilesSynced,countsBySystem:s.d11Summary.countsBySystem,latestPdfs:S64_MAT_LATEST};
     }
     if(s.fourWayBoqSync){
@@ -24663,7 +24663,7 @@ document.documentElement.setAttribute("data-release-version", "S2版");
         s.fourWayBoqSync.summaryCounts.materialWithOrderTotalAmt=s.d11Summary.totalWithOrderAmount;
         s.fourWayBoqSync.summaryCounts.constructionInspectionPdfCount=s.c10Summary.totalFilesSynced;
       }
-      if(!hasDynD11||!s.fourWayBoqSync.materialInspectionAll){
+      if((!hasDynD11&&(!s.fourWayBoqSync.materialInspectionAll||!Array.isArray(s.fourWayBoqSync.materialInspectionAll.records)||!s.fourWayBoqSync.materialInspectionAll.records.length))||!s.fourWayBoqSync.materialInspectionAll){
         s.fourWayBoqSync.materialInspectionAll={totalPdfCount:s.d11Summary.totalFilesSynced,countsBySystem:s.d11Summary.countsBySystem,records:S64_MAT_RECS};
       }
     }
@@ -26050,11 +26050,25 @@ function renderChartsOverview_(){
     
     '<button class="btn" type="button" onclick="switchWarRoomMainView(\'dashboard\')" style="background:#f4f4f4;color:#17181c;border-radius:40px;padding:6px 12px;font-size:0.78rem;">回戰情室</button>';
 
+  var hk=(D&&D.hotKpis)||{};
+  var kRevTotal=hk.confirmedRevisedTotal!=null?hk.confirmedRevisedTotal:578661679;
+  var kRevPct=hk.confirmedRevisedTotalPct||"+14.81%";
+  var kBaseTotal=hk.afterP4TotalBase!=null?hk.afterP4TotalBase:504026067;
+  var kNetAddTotal=hk.confirmedTotalNetAdd!=null?hk.confirmedTotalNetAdd:74635612;
+  var kMepBoq=hk.confirmedMepBoqUntaxed!=null?hk.confirmedMepBoqUntaxed:126278856;
+  var kMepTaxed=hk.confirmedMepBoqTaxed!=null?hk.confirmedMepBoqTaxed:132592799;
+  var kMepPct=hk.confirmedMepBoqPct||"+16.12%";
+  var kEipPaid=hk.eipNetPaidTotal!=null?hk.eipNetPaidTotal:92597489;
+  var kEipVcnt=hk.eipVendorCount!=null?hk.eipVendorCount:62;
+  var kEacPnl=hk.eacMepNetPnlTaxed!=null?hk.eacMepNetPnlTaxed:35904971;
+  var kEacMargin=hk.eacMepMarginPct||"27.03%";
+  var kEacRev=hk.eacMepRevTaxed!=null?hk.eacMepRevTaxed:132835446;
+  var kEacCost=hk.eacMepTotalCostTaxed!=null?hk.eacMepTotalCostTaxed:96930475;
   document.getElementById("s89KpiRow").innerHTML=
-    kpiCard_("1. 全案確定變更後總額 (含臨水電)","NT$ 578,661,679","(+14.81%)","扣追減基準 504,026,067 ＋ 1–10號確定淨追加 +74,635,612")+
-    kpiCard_("2. 機電修正後標單總額 (未稅)","NT$ 126,278,856","(+16.12%)","含5%稅 132,592,799｜扣追減 108.75M ＋ 確定淨追加 +17.53M")+
-    kpiCard_("3. EIP 已簽核廠商實質淨支出","NT$ 92,597,489","(62家歸戶)","機電調整後帳面支出 86,023,586 ＋ 追減待扣 5.62M ＋ 全案工務 954,637")+
-    kpiCard_("4. 機電結算預估實質淨盈餘 (EAC)","+NT$ 35,904,971","(27.03%)","預估總營收 132,835,446 － 預估總成本 96,930,475（臨水電歸全案）");
+    kpiCard_("1. 全案確定變更後總額 (含臨水電)","NT$ "+fmtN_(kRevTotal),"("+kRevPct+")","扣追減基準 "+fmtN_(kBaseTotal)+" ＋ 確定淨追加 +"+fmtN_(kNetAddTotal))+
+    kpiCard_("2. 機電修正後標單總額 (未稅)","NT$ "+fmtN_(kMepBoq),"("+kMepPct+")","含5%稅 "+fmtN_(kMepTaxed)+"｜扣追減 108.75M ＋ 確定淨追加 +"+fmtN_(hk.confirmedMepNetAddUntaxed!=null?hk.confirmedMepNetAddUntaxed:17530133))+
+    kpiCard_("3. EIP 已簽核廠商實質淨支出","NT$ "+fmtN_(kEipPaid),"("+kEipVcnt+"家歸戶)","機電調整後帳面支出 86,023,586 ＋ 追減待扣 5.62M ＋ 全案工務 "+fmtN_(hk.allProjSiteExpNet!=null?hk.allProjSiteExpNet:954637))+
+    kpiCard_("4. 機電結算預估實質淨盈餘 (EAC)","+NT$ "+fmtN_(kEacPnl),"("+kEacMargin+")","預估總營收 "+fmtN_(kEacRev)+" － 預估總成本 "+fmtN_(kEacCost)+"（臨水電歸全案）");
 
   // --- CHART 1: 全案 vs 機電 四階段規模對比柱狀圖 (SVG Grouped Column, 單位: 百萬元) ---
   var c1Stages=[
@@ -26673,6 +26687,40 @@ window.exportSettlementXlsx_S89=function(modeOpt){
 };
 window.exportContractChangeXlsx_S88=window.exportSettlementXlsx_S89;
 window.exportRende1ProposalsAndBoqXlsx_S84=window.exportRevisedMepBoqXlsx_S89;
+window.applyRende1SettlementHotPatch_S95=function(patchObj){
+  if(!patchObj||typeof patchObj!=="object")return Promise.resolve(D);
+  return ensureData_().then(function(){
+    if(!D)return null;
+    if(patchObj.updatedTime)D.updatedTime=patchObj.updatedTime;
+    if(patchObj.hotKpis&&typeof patchObj.hotKpis==="object"){
+      D.hotKpis=Object.assign({},D.hotKpis||{},patchObj.hotKpis);
+    }
+    var arrKeys=["base","pSum","sys22","sysNames","boqRows","items","allRev","allExpSum","allExpSlips","mepPnl","liandui14","mepEip","vTopAdj","vTopBk","eipAddRank","eipAddExtra"];
+    arrKeys.forEach(function(k){
+      if(Array.isArray(patchObj[k])&&patchObj[k].length>0){
+        D[k]=patchObj[k];
+      }
+    });
+    window.__S84_RENDE1_PROPOSALS_DB__=D;
+    var md=document.getElementById("modalRende1ProposalsS84");
+    var pkNow=(typeof window.classifyProjKey_S91_==="function")?window.classifyProjKey_S91_():"R2";
+    if(md&&pkNow==="R1"&&window.getComputedStyle(md).display!=="none"&&md.offsetHeight>0){
+      renderActiveSettlementView_();
+    }
+    return D;
+  });
+};
+window.reRenderActiveSettlementView_S95=function(){
+  return ensureData_().then(function(){
+    var md=document.getElementById("modalRende1ProposalsS84");
+    if(md&&window.getComputedStyle(md).display!=="none"&&md.offsetHeight>0){
+      var pkNow=(typeof window.classifyProjKey_S91_==="function")?window.classifyProjKey_S91_():"R2";
+      if(pkNow==="R1")renderActiveSettlementView_();
+      else if(typeof window.openSettlementView_S89==="function")window.openSettlementView_S89(_curView);
+    }
+    return true;
+  });
+};
 })();
 </script>
 
@@ -27651,6 +27699,888 @@ window.exportRende1ProposalsAndBoqXlsx_S84=window.exportRevisedMepBoqXlsx_S89;
     sweepDomInspectionAnchors_S94();
   });
   document.addEventListener("click", function(){ setTimeout(sweepDomInspectionAnchors_S94, 40); }, true);
+})();
+</script>
+<script id="s95UniversalHotUpdateEngine">
+/* ==================== S9.5 UNIVERSAL END-TO-END CLOUD HOT-UPDATE BUS (ALL PROJECTS & ALL 15 MODULES) ==================== */
+(function initS95UniversalHotUpdateEngine_() {
+  if (window.__S95_UNIVERSAL_HOT_UPDATE_READY__) return;
+  window.__S95_UNIVERSAL_HOT_UPDATE_READY__ = true;
+  window.__WARROOM_UI_SHELL_VERSION__ = "S9.5_UNIVERSAL_HOT_UPDATE";
+
+  var PROJ_R1 = "桃園市八德區仁德國民小學新建校舍工程(第一期)";
+  var PROJ_R2 = "桃園市八德區仁德國民小學新建校舍工程(第二期)";
+  var PROJ_BX = "北訓中心新建工程";
+
+  // Seed default Project Isolated Ledgers (matches WARROOM_S40_RECONCILED_MODULES.json SSOT 1:1)
+  window.__PROJECT_ISOLATED_LEDGERS_S95__ = window.__PROJECT_ISOLATED_LEDGERS_S95__ || {
+    R1: {
+      projectTitle: "仁德國小(第一期)",
+      fullProjectName: PROJ_R1,
+      ownerValuation: {
+        origContract: 515602998,
+        contractNo: "(114)新建工字第2號",
+        afterP4Base: 504026067,
+        p4DeductNote: "扣除 13/15/16/17 節契約追減 -11,576,931",
+        revisedTotalContract: 578661679,
+        netAddNote: "確定發包淨追加 +74,635,612 (+14.81%)",
+        revisedMepBoqUntaxed: 126278856,
+        mepAddNote: "扣追減基準 108,748,723 ＋ 機電淨追加 +17,530,133"
+      },
+      vendorBilling: {
+        eipNetPaidTaxed: 92597489,
+        vendorCountNote: "全案 62 家廠商歸戶實績（含5%稅）",
+        mepSubMainPlusAdd: 84642572,
+        mepSubDetailNote: "主約 80,918,262 ＋ 已出單追加減 +3,724,310",
+        mepDirectMatAndMisc: 1381014,
+        lianduiSplitNote: "聯隊本工程使用 141,908（代叫扣款 216,170 淨0）",
+        allProjSiteExp: 954637,
+        allProjSiteExpNote: "點工款 753,375 ＋ 發電機租用 176,062 ＋ 汽車美容 25,200"
+      },
+      materialInspection: {
+        pdfCountLabel: "3 份 PDF",
+        latestDocNote: "通風設備－全熱交換機 D03-AC-01-1151102-1",
+        bidOrderCountLabel: "3 筆 (13 組)",
+        bidOrderNote: "R2687明鏡6組・R2739防震軟管3組・R2792閘閥4組",
+        recentArrivedAmt: 305000,
+        recentArrivedNote: "115.11 收尾換裝與驗收備品批次",
+        passRate: "100%",
+        records: [
+          { rocDate: "115.11.16", code: "一期標單 R2687", name: "除霧明鏡（出貨單簽收核銷）", qtyText: "6 組", status: "已核銷", fileUrl: "https://docs.google.com/spreadsheets/d/16jkvv1FcLQaqLkHlgqiPYGEKIwIbOS2rb0vJSFK-xMA/edit" },
+          { rocDate: "115.11.02", code: "D03-AC-01-1151102-1", name: "通風設備－全熱交換機組進場查驗", qtyText: "4 張照片 PDF", status: "合格歸檔", fileUrl: "https://drive.google.com/drive/folders/1_2kBn-TkrPNNCzXV45qkrUzjUi0QmShO" },
+          { rocDate: "115.11.02", code: "一期標單 R2739", name: "不銹鋼防震軟管", qtyText: "3 組", status: "已核銷", fileUrl: "https://docs.google.com/spreadsheets/d/16jkvv1FcLQaqLkHlgqiPYGEKIwIbOS2rb0vJSFK-xMA/edit" },
+          { rocDate: "115.11.02", code: "一期標單 R2792", name: "不銹鋼閘閥", qtyText: "4 組", status: "已核銷", fileUrl: "https://docs.google.com/spreadsheets/d/16jkvv1FcLQaqLkHlgqiPYGEKIwIbOS2rb0vJSFK-xMA/edit" }
+        ]
+      },
+      constructionInspection: {
+        batchCountLabel: "110 案資料夾",
+        batchSubNote: "含收尾戶外活動中心配管與現場查驗",
+        openNcrLabel: "0 件",
+        openNcrNote: "全案竣工驗收查驗單 100% 合格歸檔",
+        safetyFineLabel: "0 件",
+        safetyFineNote: "一期收尾階段零違規紀錄",
+        summaryNote: "115.10.29～115.11.16 收尾查驗紀錄：一樓戶外活動中心機電配管查驗與設備試運轉全數合格歸檔（獨立於仁德二期 C08/C10 查驗資料夾）。",
+        records: []
+      },
+      threeWayDiff: {
+        revisedMepBoqUntaxed: 126278856,
+        gapLvFeeder: 5557323,
+        gapPlumbing: 2272625,
+        gapProp9Fix: 662213
+      }
+    },
+    R2: {
+      projectTitle: "仁德國小(第二期)",
+      fullProjectName: PROJ_R2,
+      settlementSummary: {
+        fullContractAmt: 364392883,
+        fullContractSub: "直接工程費 313,043,724 ＋ 間接費 51,349,159",
+        mepContractAmt: 77544261,
+        mepContractSub: "15 大機電分項系統契約基準",
+        latestPeriodNo: 5,
+        ownerFullCumAmt: 84737062,
+        ownerFullPct: 23.25,
+        ownerMepCumAmt: 7715654,
+        ownerMepPct: 9.95,
+        vendorActiveCount: 21,
+        vendorContractTotal: 39045499,
+        vendorCompletedTotal: 5159463
+      }
+    },
+    BX: {
+      projectTitle: "北訓中心",
+      fullProjectName: PROJ_BX,
+      projectCodeNo: "TPFA115008",
+      stageLabel: "先期圖審與管溝規劃",
+      ownerValuationAmt: 0,
+      ownerPeriodLabel: "先期圖審階段",
+      ownerNote: "目前處於先期設計圖說審查與 680m 共同管溝規劃階段，尚未進入工程估驗計價期別；一旦雲端上傳估驗計價單將自動熱更新呈現。",
+      vendorBillingAmt: 0,
+      vendorStageLabel: "先期採購準備",
+      vendorCount: 0,
+      vendorNote: "目前尚無分包廠商請款單據（獨立於仁德一期、二期廠商帳冊）；雲端新增請款單後自動熱更新。",
+      materialInspectionCount: 0,
+      materialBatchLabel: "0 批",
+      materialArrivedAmt: 0,
+      materialNote: "現場尚未開工進料；已完成共同管溝管架、電力管與給排水管線先期 BIM 數量檢核。開工進料後自動同步顯示。",
+      materialRecords: [],
+      constructionInspectionCount: 0,
+      constructionBatchLabel: "0 筆",
+      constructionNote: "預定共同管溝工序：開挖 ➔ PC 澆置 ➔ 管架安裝 ➔ 電力管線 ➔ CLSM 澆置 ➔ 弱電管線 ➔ 給水系統高程對齊。",
+      constructionRecords: [],
+      threeWayDiffCount: 0,
+      threeWayNote: "待正式開工進料與首期施工查驗建檔後，系統將自動啟動北訓中心專屬三方數量比對。",
+      settlementNetAddAmt: 0,
+      settlementNote: "北訓中心目前處於先期設計圖審與西側 680m 共同管溝規劃階段，尚無工程結算或變更追加減資料（已徹底隔離仁德一、二期資料）。"
+    }
+  };
+
+  function fmtN95_(n) {
+    return Math.round(Number(n || 0)).toLocaleString("en-US");
+  }
+  function esc95_(s) {
+    return String(s == null ? "" : s)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+  function deepMergeObj95_(target, src) {
+    if (!src || typeof src !== "object") return target;
+    if (!target || typeof target !== "object") target = {};
+    Object.keys(src).forEach(function(k) {
+      var sv = src[k];
+      if (Array.isArray(sv)) {
+        target[k] = sv.slice();
+      } else if (sv && typeof sv === "object") {
+        target[k] = deepMergeObj95_(target[k] || {}, sv);
+      } else if (sv !== undefined) {
+        target[k] = sv;
+      }
+    });
+    return target;
+  }
+
+  // 1. Dynamic Sync of Owner Valuation Maps -> Monthly Curves + `#ownerValuationSummaryPanel_V172` DOM!
+  function syncOwnerValuationDomAndCurves_S95_(snap) {
+    if (snap && snap.ownerValuationByProject && typeof snap.ownerValuationByProject === "object") {
+      window.OWNER_VALUATION_BY_PROJECT_V172 = window.OWNER_VALUATION_BY_PROJECT_V172 || {};
+      Object.keys(snap.ownerValuationByProject).forEach(function(pkName) {
+        var normName = /北訓|北區訓練|鶯歌/i.test(pkName) ? PROJ_BX : (/第一期|仁德一期/i.test(pkName) ? PROJ_R1 : PROJ_R2);
+        window.OWNER_VALUATION_BY_PROJECT_V172[normName] = deepMergeObj95_(
+          window.OWNER_VALUATION_BY_PROJECT_V172[normName] || {},
+          snap.ownerValuationByProject[pkName]
+        );
+      });
+    }
+    if (snap && snap.monthlyCurvesByProject && typeof snap.monthlyCurvesByProject === "object") {
+      window.MONTHLY_CURVES_BY_PROJECT_V161 = window.MONTHLY_CURVES_BY_PROJECT_V161 || {};
+      Object.keys(snap.monthlyCurvesByProject).forEach(function(pkName) {
+        var normName = /北訓|北區訓練|鶯歌/i.test(pkName) ? PROJ_BX : (/第一期|仁德一期/i.test(pkName) ? PROJ_R1 : PROJ_R2);
+        window.MONTHLY_CURVES_BY_PROJECT_V161[normName] = deepMergeObj95_(
+          window.MONTHLY_CURVES_BY_PROJECT_V161[normName] || {},
+          snap.monthlyCurvesByProject[pkName]
+        );
+      });
+    }
+    // Propagate OWNER_VALUATION_BY_PROJECT_V172 into MONTHLY_CURVES_BY_PROJECT_V161
+    if (window.OWNER_VALUATION_BY_PROJECT_V172 && window.MONTHLY_CURVES_BY_PROJECT_V161) {
+      [PROJ_R2, PROJ_R1, PROJ_BX].forEach(function(pKey) {
+        var ov = window.OWNER_VALUATION_BY_PROJECT_V172[pKey];
+        var mc = window.MONTHLY_CURVES_BY_PROJECT_V161[pKey];
+        if (ov && mc) {
+          if (Array.isArray(ov.months) && ov.months.length) mc.months = ov.months.slice();
+          if (Array.isArray(ov.ownerMepMonthly) && ov.ownerMepMonthly.length) {
+            mc.ownerValMepMonthly = ov.ownerMepMonthly.slice();
+            mc.ownerValMonthly = ov.ownerMepMonthly.slice();
+          }
+          if (Array.isArray(ov.ownerMepCumulative) && ov.ownerMepCumulative.length) {
+            mc.ownerValMepCumulative = ov.ownerMepCumulative.slice();
+            mc.ownerValCumulative = ov.ownerMepCumulative.slice();
+          }
+          if (Array.isArray(ov.ownerTotalMonthly) && ov.ownerTotalMonthly.length) {
+            mc.ownerValTotalMonthly = ov.ownerTotalMonthly.slice();
+          }
+          if (Array.isArray(ov.ownerTotalCumulative) && ov.ownerTotalCumulative.length) {
+            mc.ownerValTotalCumulative = ov.ownerTotalCumulative.slice();
+          }
+          if (ov.totalContractAmount != null) mc.totalContractAmount = ov.totalContractAmount;
+          if (ov.mepContractAmount != null) mc.mepContractAmount = ov.mepContractAmount;
+        }
+      });
+      if (window.MONTHLY_CURVES_BY_PROJECT_V161[PROJ_BX]) {
+        window.MONTHLY_CURVES_BY_PROJECT_V161["鶯歌消防局新建工程"] = window.MONTHLY_CURVES_BY_PROJECT_V161[PROJ_BX];
+      }
+      if (window.OWNER_VALUATION_BY_PROJECT_V172[PROJ_BX]) {
+        window.OWNER_VALUATION_BY_PROJECT_V172["鶯歌消防局新建工程"] = window.OWNER_VALUATION_BY_PROJECT_V172[PROJ_BX];
+      }
+    }
+
+    // Dynamically update `#ownerValuationSummaryPanel_V172` KPI boxes & period table for Rende Phase 2!
+    var ov2 = (window.OWNER_VALUATION_BY_PROJECT_V172 && window.OWNER_VALUATION_BY_PROJECT_V172[PROJ_R2]) || null;
+    var sc2 = (snap && snap.fourWayBoqSync && snap.fourWayBoqSync.summaryCounts) || {};
+    if (ov2) {
+      var pNo = Number(ov2.latestPeriodNo || sc2.ownerPeriodLatest || 5);
+      var totContract = Number(ov2.totalContractAmount || sc2.ownerFullContractAmt || 364392883);
+      var totCum = Number(ov2.latestTotalCumulative || sc2.ownerFullCumAmt || 84737062);
+      var totWithIdx = Number(ov2.latestTotalWithPriceAdjCumulative || sc2.ownerFullCumWithIndexAmt || totCum);
+      var totPct = totContract > 0 ? ((totCum / totContract) * 100).toFixed(2) : "0.00";
+      var mepContract = Number(ov2.mepContractAmount || sc2.ownerMepContractAmt || 77517622);
+      var mepCum = Number(ov2.latestMepCumulative || sc2.ownerMepCumAmt || 7715654);
+      var mepPct = mepContract > 0 ? ((mepCum / mepContract) * 100).toFixed(2) : "0.00";
+
+      // Sync R2 settlement summary mirror
+      if (window.__PROJECT_ISOLATED_LEDGERS_S95__ && window.__PROJECT_ISOLATED_LEDGERS_S95__.R2) {
+        var r2s = window.__PROJECT_ISOLATED_LEDGERS_S95__.R2.settlementSummary;
+        r2s.latestPeriodNo = pNo;
+        r2s.fullContractAmt = totContract;
+        r2s.ownerFullCumAmt = totCum;
+        r2s.ownerFullPct = Number(totPct);
+        r2s.ownerMepCumAmt = mepCum;
+        r2s.ownerMepPct = Number(mepPct);
+        if (sc2.vendorActiveCount != null) r2s.vendorActiveCount = sc2.vendorActiveCount;
+        if (sc2.vendorContractTotal != null) r2s.vendorContractTotal = sc2.vendorContractTotal;
+        if (sc2.vendorCompletedTotal != null) r2s.vendorCompletedTotal = sc2.vendorCompletedTotal;
+      }
+
+      var ovPanels = document.querySelectorAll('[id="ownerValuationSummaryPanel_V172"]');
+      for (var opi = 0; opi < ovPanels.length; opi++) {
+        var ovPanel = ovPanels[opi];
+        var kpiCards = ovPanel.querySelectorAll(".grid-4tier > div");
+        if (kpiCards.length >= 4) {
+          kpiCards[0].innerHTML =
+            '<div style="font-size:0.73rem;color:#52525b;font-weight:700;">全案契約總價（壹 發包工程費）</div>' +
+            '<div style="font-size:1.18rem;font-weight:800;color:#0d0d0d;font-family:monospace;margin-top:2px;">NT$ ' + fmtN95_(totContract) + '</div>' +
+            '<div style="font-size:0.71rem;color:#64748b;margin-top:2px;">直接工程費 $' + fmtN95_(ov2.directEngineeringContractAmount || 313043724) + '＋間接費 $' + fmtN95_(ov2.indirectEngineeringContractAmount || 51349159) + '</div>';
+          kpiCards[1].innerHTML =
+            '<div style="font-size:0.73rem;color:#52525b;font-weight:700;">業主計價－全案總價累計（至第' + pNo + '期）</div>' +
+            '<div style="font-size:1.18rem;font-weight:800;color:#0d0d0d;font-family:monospace;margin-top:2px;">NT$ ' + fmtN95_(totCum) + ' <small style="font-size:0.74rem;">(' + totPct + '%)</small></div>' +
+            '<div style="font-size:0.71rem;color:#64748b;margin-top:2px;">含累計物調款總計 <strong>NT$ ' + fmtN95_(totWithIdx) + '</strong></div>';
+          kpiCards[2].innerHTML =
+            '<div style="font-size:0.73rem;color:#52525b;font-weight:700;">機電工程合約總價（壹.甲.三 直接工程費）</div>' +
+            '<div style="font-size:1.18rem;font-weight:800;color:#0d0d0d;font-family:monospace;margin-top:2px;">NT$ ' + fmtN95_(mepContract) + '</div>' +
+            '<div style="font-size:0.71rem;color:#64748b;margin-top:2px;">涵蓋 15 大機電分項系統（電氣/給排水/消防/弱電/空調）</div>';
+          kpiCards[3].innerHTML =
+            '<div style="font-size:0.73rem;color:#52525b;font-weight:700;">業主計價－機電工程累計（至第' + pNo + '期）</div>' +
+            '<div style="font-size:1.18rem;font-weight:800;color:#0d0d0d;font-family:monospace;margin-top:2px;">NT$ ' + fmtN95_(mepCum) + ' <small style="font-size:0.74rem;">(' + mepPct + '%)</small></div>' +
+            '<div style="font-size:0.71rem;color:#64748b;margin-top:2px;">最新核定計價區間：' + esc95_(ov2.latestPeriodLabel || ("第 " + pNo + " 期")) + '</div>';
+        }
+        // If cloud provides dynamic `periodRows`, hot-render the period valuation table tbody!
+        if (Array.isArray(ov2.periodRows) && ov2.periodRows.length > 0) {
+          var ovTbody = ovPanel.querySelector("table tbody");
+          if (ovTbody) {
+            ovTbody.innerHTML = ov2.periodRows.map(function(pr) {
+              return '<tr style="border-bottom:1px solid #e4e4e7;">' +
+                '<td style="padding:7px 10px;text-align:left;font-weight:700;">' + esc95_(pr.periodLabel || "") + '</td>' +
+                '<td style="padding:7px 10px;font-family:monospace;">NT$ ' + fmtN95_(pr.fullCurr || 0) + '</td>' +
+                '<td style="padding:7px 10px;font-family:monospace;font-weight:700;">NT$ ' + fmtN95_(pr.fullCum || 0) + ' (' + esc95_(pr.fullPct || "") + ')</td>' +
+                '<td style="padding:7px 10px;font-family:monospace;">NT$ ' + fmtN95_(pr.mepCurr || 0) + '</td>' +
+                '<td style="padding:7px 10px;font-family:monospace;font-weight:700;">NT$ ' + fmtN95_(pr.mepCum || 0) + ' (' + esc95_(pr.mepPct || "") + ')</td>' +
+                '<td style="padding:7px 10px;text-align:left;">' + esc95_(pr.status || "已估驗") + '</td>' +
+              '</tr>';
+            }).join("");
+          }
+        }
+      }
+    }
+  }
+
+  // 2. Dynamic Sync of Vendor Billing (`window.VENDOR_BILLING_BY_PROJECT_V161`) across ALL 3 Projects!
+  function rebuildVendorBillingDomIfDynamic_S95_(snap) {
+    if (!snap || !snap.vendorBillingByProject || typeof snap.vendorBillingByProject !== "object") return;
+    window.VENDOR_BILLING_BY_PROJECT_V161 = window.VENDOR_BILLING_BY_PROJECT_V161 || {};
+    Object.keys(snap.vendorBillingByProject).forEach(function(pkName) {
+      var arr = snap.vendorBillingByProject[pkName];
+      if (!Array.isArray(arr)) return;
+      var normName = /北訓|北區訓練|鶯歌/i.test(pkName) ? PROJ_BX : (/第一期|仁德一期/i.test(pkName) ? PROJ_R1 : PROJ_R2);
+      window.VENDOR_BILLING_BY_PROJECT_V161[normName] = arr;
+      if (normName === PROJ_R2 && arr.length > 0) {
+        // Dynamically rebuild `_PHASE2_VENDOR_TBODY_HTML_V161_` & `_PHASE2_VENDOR_KPI_HTML_V161_` so new R2 vendor bills hot-render!
+        var activeRows = arr.filter(function(r) { return r && r.category !== "TERMINATED"; });
+        var sumContract = activeRows.reduce(function(s, r) { return s + Number(r.contractUntaxed || 0); }, 0);
+        var sumEst = activeRows.reduce(function(s, r) { return s + Number(r.cumUntaxed || 0); }, 0);
+        var sumClaimed = activeRows.reduce(function(s, r) { return s + Number(r.totalClaimedUntaxed || 0); }, 0);
+        var estPct = sumContract > 0 ? ((sumEst / sumContract) * 100).toFixed(2) : "0.00";
+        var clmPct = sumContract > 0 ? ((sumClaimed / sumContract) * 100).toFixed(2) : "0.00";
+
+        window._PHASE2_VENDOR_KPI_HTML_V161_ =
+          '<div style="background:#f9f9f9;border:1px solid rgba(0,0,0,0.08);border-radius:10px;padding:10px 14px;">' +
+            '<div style="font-size:0.75rem;color:#52525b;font-weight:700;">1. 現任履約廠商合約總額 (' + activeRows.length + '家・未稅)</div>' +
+            '<div style="font-size:1.24rem;font-weight:800;color:#0d0d0d;margin-top:3px;font-family:monospace;">NT$ ' + fmtN95_(sumContract) + '</div>' +
+            '<div style="font-size:0.72rem;color:#71717a;margin-top:3px;">雲端請款單熱更新即時彙總</div>' +
+          '</div>' +
+          '<div style="background:#f9f9f9;border:1px solid rgba(0,0,0,0.08);border-radius:10px;padding:10px 14px;">' +
+            '<div style="font-size:0.75rem;color:#52525b;font-weight:700;">2. 廠商累計估驗完成金額 (未稅)</div>' +
+            '<div style="font-size:1.24rem;font-weight:800;color:#0d0d0d;margin-top:3px;font-family:monospace;">NT$ ' + fmtN95_(sumEst) + ' <small style="font-size:0.76rem;">(' + estPct + '%)</small></div>' +
+            '<div style="font-size:0.72rem;color:#71717a;margin-top:3px;">不含預付款純估驗實績</div>' +
+          '</div>' +
+          '<div style="background:#f9f9f9;border:1px solid rgba(0,0,0,0.08);border-radius:10px;padding:10px 14px;">' +
+            '<div style="font-size:0.75rem;color:#52525b;font-weight:700;">3. 廠商累計請款總額 (含預付・未稅)</div>' +
+            '<div style="font-size:1.24rem;font-weight:800;color:#0d0d0d;margin-top:3px;font-family:monospace;">NT$ ' + fmtN95_(sumClaimed) + ' <small style="font-size:0.76rem;">(' + clmPct + '%)</small></div>' +
+            '<div style="font-size:0.72rem;color:#71717a;margin-top:3px;">同步雲端 60-機電相關/廠商請款資料</div>' +
+          '</div>';
+
+        window._PHASE2_VENDOR_TBODY_HTML_V161_ = arr.map(function(v, idx) {
+          var pdfLink = v.pdfId
+            ? ('<a href="https://drive.google.com/file/d/' + esc95_(v.pdfId) + '/view" target="_blank" rel="noopener" style="color:#0d0d0d;text-decoration:underline;font-weight:600;">開啟請款單</a>')
+            : esc95_(v.status || "");
+          return '<tr data-cat="' + esc95_(v.category || "MAIN_CONTRACT") + '" style="border-bottom:1px solid rgba(0,0,0,0.06);">' +
+            '<td style="padding:7px 8px;text-align:center;">' + (v.seq || (idx + 1)) + '</td>' +
+            '<td style="padding:7px 8px;font-weight:700;">' + esc95_(v.vendorName || "") + '</td>' +
+            '<td style="padding:7px 8px;">' + esc95_(v.contractItem || "") + '</td>' +
+            '<td style="padding:7px 8px;text-align:right;font-family:monospace;">' + fmtN95_(v.contractUntaxed || 0) + '</td>' +
+            '<td style="padding:7px 8px;">' + esc95_(v.latestPeriod || "") + '</td>' +
+            '<td style="padding:7px 8px;text-align:right;font-family:monospace;">' + fmtN95_(v.currUntaxed || 0) + '</td>' +
+            '<td style="padding:7px 8px;text-align:right;font-family:monospace;">' + fmtN95_(v.cumUntaxed || 0) + '</td>' +
+            '<td style="padding:7px 8px;text-align:right;font-family:monospace;">' + fmtN95_(v.advanceUntaxed || 0) + '</td>' +
+            '<td style="padding:7px 8px;text-align:right;font-family:monospace;font-weight:700;">' + fmtN95_(v.totalClaimedUntaxed || 0) + '</td>' +
+            '<td style="padding:7px 8px;">估驗 ' + Number(v.estPct || 0).toFixed(2) + '%｜總請款 ' + Number(v.totalClaimedPct || 0).toFixed(2) + '%</td>' +
+            '<td style="padding:7px 8px;">' + pdfLink + '</td>' +
+          '</tr>';
+        }).join("");
+        // Clear cached R2 vendor HTML in S91 if R2 is currently active or cached
+        var vbSec = document.getElementById("secVendorMonthlyBillingSync");
+        if (vbSec && (vbSec.getAttribute("data-s91-proj") || "R2") === "R2") {
+          var tb158 = document.getElementById("vendorBillingTableBody_V158");
+          var kp161 = document.getElementById("vendorBillingKpiGrid_V161");
+          if (tb158) tb158.innerHTML = window._PHASE2_VENDOR_TBODY_HTML_V161_;
+          if (kp161) kp161.innerHTML = window._PHASE2_VENDOR_KPI_HTML_V161_;
+        }
+      }
+    });
+  }
+
+  // 3. Upgrade `renderProjectIsolatedS3Panes_S91_` & `openSettlementView_S89` so R1, R2, and BX read live data from `__PROJECT_ISOLATED_LEDGERS_S95__`!
+  function cardBox95_(title, val, sub) {
+    return '<div class="s3-kpi-box" style="cursor:default;border:1px solid rgba(0,0,0,0.08);border-radius:14px;padding:12px 14px;background:#f9f9f9;">' +
+      '<div style="font-size:0.74rem;color:#52525b;font-weight:600;">' + esc95_(title) + '</div>' +
+      '<div style="font-size:1.12rem;font-weight:800;color:#0d0d0d;font-family:monospace;margin:4px 0 2px;">' + esc95_(val) + '</div>' +
+      '<div style="font-size:0.71rem;color:#71717a;">' + esc95_(sub) + '</div></div>';
+  }
+
+  var _origRenderIsolatedS91 = window.renderProjectIsolatedS3Panes_S91_;
+  window.renderProjectIsolatedS3Panes_S91_ = function(pkOpt) {
+    var pk = pkOpt || (typeof window.classifyProjKey_S91_ === "function" ? window.classifyProjKey_S91_() : "R2");
+    if (typeof _origRenderIsolatedS91 === "function") {
+      _origRenderIsolatedS91(pk);
+    }
+    var ledgers = window.__PROJECT_ISOLATED_LEDGERS_S95__ || {};
+
+    if (pk === "R1" && ledgers.R1) {
+      var L1 = ledgers.R1;
+      var ov1 = L1.ownerValuation || {};
+      var vb1 = L1.vendorBilling || {};
+      var mi1 = L1.materialInspection || {};
+      var ci1 = L1.constructionInspection || {};
+      var tw1 = L1.threeWayDiff || {};
+
+      var pOv = document.getElementById("s3OwnerValuationBoqCard");
+      if (pOv) {
+        pOv.innerHTML =
+          '<div style="padding:6px 4px;">' +
+          '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px;">' +
+          '<h3 style="margin:0;font-size:1.04rem;color:#0d0d0d;">仁德國小(第一期)【業主計價與變更設計契約總表】</h3>' +
+          '<button type="button" class="btn btn-primary" onclick="openSettlementView_S89(\'MEP_CHG\')" style="padding:5px 12px;font-size:0.76rem;">前往結算 ▸ 檢視 22 大機電系統與修正後標單</button></div>' +
+          '<div class="s3-kpi-5grid">' +
+          cardBox95_("1. 原契約得標總價", "NT$ " + fmtN95_(ov1.origContract || 515602998), "契約案號：" + (ov1.contractNo || "(114)新建工字第2號")) +
+          cardBox95_("2. 扣第4號契約追減後基準", "NT$ " + fmtN95_(ov1.afterP4Base || 504026067), ov1.p4DeductNote || "扣除 13/15/16/17 節契約追減") +
+          cardBox95_("3. 確定變更後全案總價", "NT$ " + fmtN95_(ov1.revisedTotalContract || 578661679), ov1.netAddNote || "確定發包淨追加 +74,635,612") +
+          cardBox95_("4. 修正後機電標單總額 (未稅)", "NT$ " + fmtN95_(ov1.revisedMepBoqUntaxed || 126278856), ov1.mepAddNote || "扣追減基準 ＋ 機電淨追加") +
+          '</div>' +
+          '<div style="font-size:0.8rem;color:#3f3f46;line-height:1.6;padding:10px 12px;background:#f9f9f9;border:1px solid rgba(0,0,0,0.08);border-radius:10px;">' +
+          '• <strong>雲端熱更新連動</strong>：本頁即時同步雲端《一期標單》與變更設計核定帳冊，並與仁德第二期估驗數值完全隔離。</div></div>';
+      }
+
+      var pVb = document.getElementById("secVendorMonthlyBillingSync");
+      if (pVb) {
+        pVb.innerHTML =
+          '<div class="glass-panel" style="padding:16px 18px;">' +
+          '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px;">' +
+          '<h3 style="margin:0;font-size:1.04rem;color:#0d0d0d;">仁德國小(第一期)【廠商計價與 EIP 簽核歸戶總覽】</h3>' +
+          '<button type="button" class="btn btn-primary" onclick="openSettlementView_S89(\'MEP_REV\')" style="padding:5px 12px;font-size:0.76rem;">前往結算 ▸ 機電營收與廠商明細</button></div>' +
+          '<div class="s3-kpi-5grid">' +
+          cardBox95_("1. EIP 已簽核廠商實質淨支出", "NT$ " + fmtN95_(vb1.eipNetPaidTaxed || 92597489), vb1.vendorCountNote || "全案廠商歸戶實績") +
+          cardBox95_("2. 機電小包調整後主約＋追加減", "NT$ " + fmtN95_(vb1.mepSubMainPlusAdd || 84642572), vb1.mepSubDetailNote || "主約 ＋ 已出單追加減") +
+          cardBox95_("3. 本工程機電購料與規費雜支", "NT$ " + fmtN95_(vb1.mepDirectMatAndMisc || 1381014), vb1.lianduiSplitNote || "含聯隊本工程使用拆分") +
+          cardBox95_("4. 歸屬全案工務支出淨額", "NT$ " + fmtN95_(vb1.allProjSiteExp || 954637), vb1.allProjSiteExpNote || "點工款＋發電機租用＋汽車美容") +
+          '</div></div>';
+      }
+
+      var pMi = document.getElementById("secMaterialInspectionClean_S3");
+      if (pMi) {
+        var r1MatRows = Array.isArray(mi1.records) ? mi1.records : [];
+        var r1Tr = r1MatRows.map(function(r) {
+          var stHtml = r.fileUrl
+            ? ('<a href="' + esc95_(r.fileUrl) + '" target="_blank" rel="noopener" style="color:#0d0d0d;text-decoration:underline;font-weight:600;">' + esc95_(r.status || "開啟單據") + '</a>')
+            : esc95_(r.status || "已核銷");
+          return '<tr style="border-bottom:1px solid #e4e4e7;">' +
+            '<td style="padding:8px;">' + esc95_(r.rocDate || "") + '</td>' +
+            '<td style="padding:8px;font-family:monospace;">' + esc95_(r.code || "") + '</td>' +
+            '<td style="padding:8px;">' + esc95_(r.name || "") + '</td>' +
+            '<td style="padding:8px;text-align:right;font-family:monospace;">' + esc95_(r.qtyText || "") + '</td>' +
+            '<td style="padding:8px;">' + stHtml + '</td></tr>';
+        }).join("");
+        pMi.innerHTML =
+          '<div style="padding:6px 4px;">' +
+          '<h3 style="margin:0 0 12px;font-size:1.04rem;color:#0d0d0d;">仁德國小(第一期)【材料進場查驗與標單叫貨紀錄】</h3>' +
+          '<div class="s3-kpi-5grid">' +
+          cardBox95_("1. 近期材料查驗歸檔", mi1.pdfCountLabel || "3 份 PDF", mi1.latestDocNote || "") +
+          cardBox95_("2. 一期標單叫貨核銷", mi1.bidOrderCountLabel || (r1MatRows.length + " 筆"), mi1.bidOrderNote || "") +
+          cardBox95_("3. 近期進場核銷金額", "NT$ " + fmtN95_(mi1.recentArrivedAmt || 305000), mi1.recentArrivedNote || "") +
+          cardBox95_("4. 查驗合格率", mi1.passRate || "100%", "雲端《一期標單》與查驗夾即時同步") +
+          '</div>' +
+          '<table style="width:100%;border-collapse:collapse;font-size:0.8rem;">' +
+          '<thead><tr style="background:#f4f4f5;text-align:left;"><th style="padding:8px;">日期</th><th style="padding:8px;">單號 / 標單項次</th><th style="padding:8px;">材料品項名稱</th><th style="padding:8px;text-align:right;">數量</th><th style="padding:8px;">狀態 / 連結</th></tr></thead>' +
+          '<tbody>' + r1Tr + '</tbody></table></div>';
+      }
+
+      var pCi = document.getElementById("secConstructionInspection_S3");
+      if (pCi) {
+        pCi.innerHTML =
+          '<div style="padding:6px 4px;">' +
+          '<h3 style="margin:0 0 12px;font-size:1.04rem;color:#0d0d0d;">仁德國小(第一期)【施工自主查驗清冊】</h3>' +
+          '<div class="s3-kpi-5grid">' +
+          cardBox95_("1. 竣工與收尾查驗歸檔", ci1.batchCountLabel || "110 案資料夾", ci1.batchSubNote || "") +
+          cardBox95_("2. 品質缺失未結案件", ci1.openNcrLabel || "0 件", ci1.openNcrNote || "") +
+          cardBox95_("3. 勞安違規罰單", ci1.safetyFineLabel || "0 件", ci1.safetyFineNote || "") +
+          '</div>' +
+          '<div style="font-size:0.8rem;color:#3f3f46;padding:10px 12px;background:#f9f9f9;border:1px solid rgba(0,0,0,0.08);border-radius:10px;">' +
+          '• ' + esc95_(ci1.summaryNote || "") + '</div></div>';
+      }
+
+      var pTw = document.getElementById("secThreeWayQtyDiff_S4");
+      if (pTw) {
+        pTw.innerHTML =
+          '<div style="padding:6px 4px;">' +
+          '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px;">' +
+          '<h3 style="margin:0;font-size:1.04rem;color:#0d0d0d;">仁德國小(第一期)【變更後標單規模 vs EIP 已簽核出單差異檢核】</h3>' +
+          '<button type="button" class="btn btn-primary" onclick="openSettlementView_S89(\'CHARTS\')" style="padding:5px 12px;font-size:0.76rem;">開啟一期結算五大圖表與追加排行</button></div>' +
+          '<div class="s3-kpi-5grid">' +
+          cardBox95_("1. 修正後機電標單 (未稅)", "NT$ " + fmtN95_(tw1.revisedMepBoqUntaxed || 126278856), "官方 22 大機電分項系統核定總額") +
+          cardBox95_("2. 低壓幹線與五管未出單缺口", "+NT$ " + fmtN95_(tw1.gapLvFeeder || 5557323), "第6號五管圖審/第8號MP移設/第10號電纜待出單") +
+          cardBox95_("3. 給排水與雨水管真實缺口", "+NT$ " + fmtN95_(tw1.gapPlumbing || 2272625), "已獨立拆分大瀚汙水設備毛額 1,454,250") +
+          cardBox95_("4. 第9號原表公式漏加補正", "+NT$ " + fmtN95_(tw1.gapProp9Fix || 662213), "甲種圍籬 180M 與帆布實質確定發包補正") +
+          '</div></div>';
+      }
+      return;
+    }
+
+    if (pk === "BX" && ledgers.BX) {
+      var LB = ledgers.BX;
+      var codeTag = LB.projectCodeNo || "TPFA115008";
+      var schedEl = document.getElementById("s3SyncScheduleStatusText");
+      if (schedEl) {
+        schedEl.innerHTML = '<strong>目前檢視專案：北訓中心 (' + esc95_(codeTag) + ')</strong>｜階段：' + esc95_(LB.stageLabel || "先期圖審") + '（雲端即時熱更新已綁定・與仁德一二期完全隔離）';
+      }
+      var bxMap = {
+        s3OwnerValuationBoqCard: {
+          title: "北訓中心 (" + codeTag + ")【業主計價總覽】",
+          stage: LB.ownerPeriodLabel || LB.stageLabel || "先期圖審階段",
+          metric: "NT$ " + fmtN95_(LB.ownerValuationAmt || 0),
+          note: LB.ownerNote || "",
+          rows: []
+        },
+        secVendorMonthlyBillingSync: {
+          title: "北訓中心 (" + codeTag + ")【廠商計價總覽】",
+          stage: LB.vendorStageLabel || "先期採購準備",
+          metric: "NT$ " + fmtN95_(LB.vendorBillingAmt || 0) + (LB.vendorCount ? (" (" + LB.vendorCount + "家)") : ""),
+          note: LB.vendorNote || "",
+          rows: Array.isArray(window.VENDOR_BILLING_BY_PROJECT_V161 && window.VENDOR_BILLING_BY_PROJECT_V161[PROJ_BX]) ? window.VENDOR_BILLING_BY_PROJECT_V161[PROJ_BX] : []
+        },
+        secMaterialInspectionClean_S3: {
+          title: "北訓中心 (" + codeTag + ")【材料進場查驗】",
+          stage: (LB.materialInspectionCount || 0) + " 份查驗單",
+          metric: LB.materialArrivedAmt > 0 ? ("NT$ " + fmtN95_(LB.materialArrivedAmt)) : (LB.materialBatchLabel || "0 批"),
+          note: (Number(LB.materialInspectionCount || 0) > 0 && String(LB.materialNote || "").indexOf("尚未開工") !== -1) ? ("已從雲端即時同步北訓中心材料進場查驗共 " + LB.materialInspectionCount + " 份單據（獨立於仁德一、二期帳冊）。") : (LB.materialNote || ""),
+          rows: Array.isArray(LB.materialRecords) ? LB.materialRecords : []
+        },
+        secConstructionInspection_S3: {
+          title: "北訓中心 (" + codeTag + ")【施工自主查驗】",
+          stage: (LB.constructionInspectionCount || 0) + " 份查驗單",
+          metric: LB.constructionBatchLabel || ((LB.constructionInspectionCount || 0) + " 筆"),
+          note: LB.constructionNote || "",
+          rows: Array.isArray(LB.constructionRecords) ? LB.constructionRecords : []
+        },
+        secThreeWayQtyDiff_S4: {
+          title: "北訓中心 (" + codeTag + ")【材料・施工・業主計價三方數量比對】",
+          stage: (LB.threeWayDiffCount || 0) + " 項差異",
+          metric: (LB.threeWayDiffCount || 0) + " 項",
+          note: LB.threeWayNote || "",
+          rows: []
+        }
+      };
+      Object.keys(bxMap).forEach(function(id) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        var sp = bxMap[id];
+        var tblHtml = "";
+        if (sp.rows && sp.rows.length > 0) {
+          tblHtml = '<table style="width:100%;border-collapse:collapse;font-size:0.8rem;margin-top:12px;">' +
+            '<thead><tr style="background:#f4f4f5;text-align:left;"><th style="padding:8px;">日期 / 期別</th><th style="padding:8px;">單號 / 廠商</th><th style="padding:8px;">內容摘要</th><th style="padding:8px;text-align:right;">數量 / 金額</th><th style="padding:8px;">狀態</th></tr></thead><tbody>' +
+            sp.rows.map(function(r) {
+              var dt = r.rocDate || r.latestPeriod || "";
+              var cd = r.docNo || r.code || r.vendorName || "";
+              var nm = r.name || r.workScope || r.contractItem || "";
+              var qt = r.qtyText || (r.totalClaimedUntaxed != null ? ("NT$ " + fmtN95_(r.totalClaimedUntaxed)) : "");
+              var st = r.fileUrl ? ('<a href="' + esc95_(r.fileUrl) + '" target="_blank" rel="noopener" style="color:#0d0d0d !important;text-decoration:underline;font-weight:600;display:inline !important;">' + esc95_(r.status || "開啟單據") + '</a>') : esc95_(r.status || "已建檔");
+              return '<tr style="border-bottom:1px solid #e4e4e7;"><td style="padding:8px;">' + esc95_(dt) + '</td><td style="padding:8px;font-family:monospace;">' + esc95_(cd) + '</td><td style="padding:8px;">' + esc95_(nm) + '</td><td style="padding:8px;text-align:right;font-family:monospace;">' + esc95_(qt) + '</td><td style="padding:8px;">' + st + '</td></tr>';
+            }).join("") + '</tbody></table>';
+        }
+        el.innerHTML =
+          '<div style="padding:8px 6px;">' +
+          '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px;">' +
+          '<h3 style="margin:0;font-size:1.04rem;color:#0d0d0d;">' + esc95_(sp.title) + '</h3>' +
+          '<button type="button" class="btn btn-ghost" onclick="openPublic3dModelViewer(\'YINGGE_FIRE\')" style="padding:5px 12px;font-size:0.76rem;">開啟北訓中心 680m 共同管溝 3D 模型</button></div>' +
+          '<div class="s3-kpi-5grid">' +
+          cardBox95_("1. 當前執行階段", sp.stage, "北訓中心專案獨立帳冊") +
+          cardBox95_("2. 累計登錄金額 / 筆數", sp.metric, "雲端熱更新即時連動") +
+          cardBox95_("3. 氣象觀測站綁定", "C0AD40 鶯歌觀測站", "新北市鶯歌區工址即時連動") +
+          '</div>' +
+          '<div style="font-size:0.81rem;color:#3f3f46;line-height:1.65;padding:12px 14px;background:#f9f9f9;border:1px solid rgba(0,0,0,0.08);border-radius:10px;">' +
+          '• ' + esc95_(sp.note) + '</div>' + tblHtml + '</div>';
+      });
+    }
+  };
+
+  // Also upgrade `#s91NonR1SettlementPanel` inside `openSettlementView_S89` so R2 & BX Settlement cards dynamically reflect hot-updated cloud numbers!
+  var _prevOpenSettle95 = window.openSettlementView_S89;
+  if (typeof _prevOpenSettle95 === "function" && !_prevOpenSettle95.__s95Wrapped) {
+    var _wOpenSettle95 = function(viewOpt, forceR1Opt) {
+      var res = _prevOpenSettle95.apply(this, arguments);
+      var pk = (typeof window.classifyProjKey_S91_ === "function") ? window.classifyProjKey_S91_() : "R2";
+      var nonR1Box = document.getElementById("s91NonR1SettlementPanel");
+      if (nonR1Box && pk !== "R1") {
+        var ledgers = window.__PROJECT_ISOLATED_LEDGERS_S95__ || {};
+        if (pk === "R2" && ledgers.R2 && ledgers.R2.settlementSummary) {
+          var s2 = ledgers.R2.settlementSummary;
+          nonR1Box.innerHTML =
+            '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:14px;">' +
+              '<h2 style="margin:0;font-size:1.15rem;color:#0d0d0d;font-weight:800;">結算 — 仁德國小(第二期) 契約規模與估驗執行概況</h2>' +
+              '<button type="button" class="btn btn-primary" onclick="openSettlementView_S89(\'CHARTS\', true)" style="padding:6px 14px;font-size:0.78rem;">切換至「仁德第一期」檢視 1–10 號提議單結算總表</button>' +
+            '</div>' +
+            '<div class="s89-kpi-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-bottom:14px;">' +
+              '<div class="glass-panel" style="padding:14px 16px;"><div style="font-size:0.75rem;color:#52525b;font-weight:600;">1. 二期全案契約總價</div><div style="font-size:1.18rem;font-weight:800;color:#0d0d0d;font-family:monospace;margin:4px 0;">NT$ ' + fmtN95_(s2.fullContractAmt || 364392883) + '</div><div style="font-size:0.72rem;color:#71717a;">' + esc95_(s2.fullContractSub || "") + '</div></div>' +
+              '<div class="glass-panel" style="padding:14px 16px;"><div style="font-size:0.75rem;color:#52525b;font-weight:600;">2. 二期機電工程契約總額</div><div style="font-size:1.18rem;font-weight:800;color:#0d0d0d;font-family:monospace;margin:4px 0;">NT$ ' + fmtN95_(s2.mepContractAmt || 77544261) + '</div><div style="font-size:0.72rem;color:#71717a;">' + esc95_(s2.mepContractSub || "") + '</div></div>' +
+              '<div class="glass-panel" style="padding:14px 16px;"><div style="font-size:0.75rem;color:#52525b;font-weight:600;">3. 截至第 ' + (s2.latestPeriodNo || 5) + ' 期業主累計估驗</div><div style="font-size:1.18rem;font-weight:800;color:#0d0d0d;font-family:monospace;margin:4px 0;">NT$ ' + fmtN95_(s2.ownerFullCumAmt || 84737062) + '</div><div style="font-size:0.72rem;color:#71717a;">全案估驗率 ' + Number(s2.ownerFullPct || 23.25).toFixed(2) + '%｜機電累估 NT$ ' + fmtN95_(s2.ownerMepCumAmt || 7715654) + ' (' + Number(s2.ownerMepPct || 9.95).toFixed(2) + '%)</div></div>' +
+              '<div class="glass-panel" style="padding:14px 16px;"><div style="font-size:0.75rem;color:#52525b;font-weight:600;">4. 二期現任履約廠商總額</div><div style="font-size:1.18rem;font-weight:800;color:#0d0d0d;font-family:monospace;margin:4px 0;">NT$ ' + fmtN95_(s2.vendorContractTotal || 39045499) + '</div><div style="font-size:0.72rem;color:#71717a;">' + (s2.vendorActiveCount || 21) + ' 家專業分包商（累計估驗 NT$ ' + fmtN95_(s2.vendorCompletedTotal || 5159463) + '）</div></div>' +
+            '</div>' +
+            '<div class="glass-panel" style="padding:16px 18px;">' +
+              '<div style="font-size:0.88rem;font-weight:700;color:#0d0d0d;margin-bottom:8px;">仁德國小(第二期) 施工中契約變更與雲端熱更新說明</div>' +
+              '<div style="font-size:0.81rem;color:#3f3f46;line-height:1.7;">' +
+                '• 目前選取專案為<strong>仁德國小(第二期)</strong>（進度至第 ' + (s2.latestPeriodNo || 5) + ' 期估驗計價），本卡已串聯雲端業主請款與廠商計價即時熱更新。<br/>' +
+                '• 如需檢視或匯出<strong>仁德第一期</strong>之《全案追加減》、《機電追加減》、《全案／機電營收》及《修正後機電標單 (.xlsx)》，請點選右上角按鈕切換至「仁德第一期」。' +
+              '</div>' +
+            '</div>';
+        } else if (pk === "BX" && ledgers.BX) {
+          var bxS = ledgers.BX;
+          nonR1Box.innerHTML =
+            '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:14px;">' +
+              '<h2 style="margin:0;font-size:1.15rem;color:#0d0d0d;font-weight:800;">結算 — 北訓中心 (' + esc95_(bxS.projectCodeNo || "TPFA115008") + ') ' + esc95_(bxS.stageLabel || "先期圖審階段") + '</h2>' +
+              '<button type="button" class="btn btn-primary" onclick="openSettlementView_S89(\'CHARTS\', true)" style="padding:6px 14px;font-size:0.78rem;">切換至「仁德第一期」檢視結算總表</button>' +
+            '</div>' +
+            '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-bottom:14px;">' +
+              '<div class="glass-panel" style="padding:14px 16px;"><div style="font-size:0.75rem;color:#52525b;font-weight:600;">1. 專案執行階段</div><div style="font-size:1.14rem;font-weight:800;color:#0d0d0d;margin:4px 0;">' + esc95_(bxS.stageLabel || "先期圖審與管溝規劃") + '</div><div style="font-size:0.72rem;color:#71717a;">北訓中心新建工程 (' + esc95_(bxS.projectCodeNo || "TPFA115008") + ')</div></div>' +
+              '<div class="glass-panel" style="padding:14px 16px;"><div style="font-size:0.75rem;color:#52525b;font-weight:600;">2. 核定追加減累計</div><div style="font-size:1.18rem;font-weight:800;color:#0d0d0d;font-family:monospace;margin:4px 0;">NT$ ' + fmtN95_(bxS.settlementNetAddAmt || 0) + '</div><div style="font-size:0.72rem;color:#71717a;">雲端熱更新即時連動</div></div>' +
+              '<div class="glass-panel" style="padding:14px 16px;"><div style="font-size:0.75rem;color:#52525b;font-weight:600;">3. 廠商計價與支出累計</div><div style="font-size:1.18rem;font-weight:800;color:#0d0d0d;font-family:monospace;margin:4px 0;">NT$ ' + fmtN95_(bxS.vendorBillingAmt || 0) + '</div><div style="font-size:0.72rem;color:#71717a;">與仁德一期、二期帳冊完全獨立</div></div>' +
+            '</div>' +
+            '<div class="glass-panel" style="padding:16px 18px;font-size:0.82rem;color:#3f3f46;line-height:1.7;">• ' + esc95_(bxS.settlementNote || "") + '</div>';
+        }
+      }
+      return res;
+    };
+    _wOpenSettle95.__s95Wrapped = true;
+    window.openSettlementView_S89 = _wOpenSettle95;
+  }
+
+  // 4. Universal Snapshot Applicator: wires EVERY War Room module to `applyS2RealtimeSnapshot_`!
+  window.applyUniversalHotUpdate_S95_ = function(snap, channelName, forceOpt) {
+    if (!snap || typeof snap !== "object") return false;
+    // Sanitize inspection PDFs first so photo-paste PDFs never leak from cloud payloads
+    if (typeof window.sanitizeInspectionObjTree_S94 === "function") {
+      try { window.sanitizeInspectionObjTree_S94(snap); } catch (_eSan95) {}
+    }
+
+    // Merge projectIsolatedLedgers if present
+    if (snap.projectIsolatedLedgers && typeof snap.projectIsolatedLedgers === "object") {
+      window.__PROJECT_ISOLATED_LEDGERS_S95__ = deepMergeObj95_(
+        window.__PROJECT_ISOLATED_LEDGERS_S95__ || {},
+        snap.projectIsolatedLedgers
+      );
+    }
+
+    // Merge D11 BOQ Audit DB (`__RENDE2_D11_BOQ_AUDIT_DB_V139__`)
+    if (snap.d11Db && typeof snap.d11Db === "object") {
+      window.__RENDE2_D11_BOQ_AUDIT_DB_V139__ = Object.assign({}, window.__RENDE2_D11_BOQ_AUDIT_DB_V139__ || {}, snap.d11Db);
+    } else if (snap.d11Summary && window.__RENDE2_D11_BOQ_AUDIT_DB_V139__) {
+      Object.assign(window.__RENDE2_D11_BOQ_AUDIT_DB_V139__, {
+        totalFilesSynced: snap.d11Summary.totalFilesSynced,
+        folderCounts: snap.d11Summary.countsBySystem || window.__RENDE2_D11_BOQ_AUDIT_DB_V139__.folderCounts,
+        d11InspectedAmount: snap.d11Summary.d11InspectedAmount,
+        postReceiptAmount: snap.d11Summary.postReceiptAmount,
+        totalArrivedAmount: snap.d11Summary.totalArrivedAmount,
+        orderPendingAmount: snap.d11Summary.orderPendingAmount,
+        totalWithOrderAmount: snap.d11Summary.totalWithOrderAmount,
+        itemCount: snap.d11Summary.itemCount || window.__RENDE2_D11_BOQ_AUDIT_DB_V139__.itemCount
+      });
+    }
+
+    // Merge C10 Owner Billing Register (`__S73_OWNER_BILLING_REGISTER__` & `__S72_MAT_BILLING_REGISTER__`)
+    if (snap.materialBillingRegister && typeof snap.materialBillingRegister === "object") {
+      window.__S73_OWNER_BILLING_REGISTER__ = snap.materialBillingRegister;
+      window.__S72_MAT_BILLING_REGISTER__ = snap.materialBillingRegister;
+    }
+
+    // Sync Owner Valuation, Monthly Curves, and Vendor Billing across all 3 projects
+    syncOwnerValuationDomAndCurves_S95_(snap);
+    rebuildVendorBillingDomIfDynamic_S95_(snap);
+
+    // Apply Rende Phase 1 Settlement Hot-Patch (`rende1SettlementHotPatch`) if present
+    if (snap.rende1SettlementHotPatch && typeof window.applyRende1SettlementHotPatch_S95 === "function") {
+      try { window.applyRende1SettlementHotPatch_S95(snap.rende1SettlementHotPatch); } catch (_eR1H) {}
+    }
+
+    // Re-render ALL active & background War Room views cleanly!
+    var activeProjName = (typeof window.getEffectiveActiveProj_ === "function")
+      ? window.getEffectiveActiveProj_()
+      : (window.activeProj || PROJ_R2);
+    var pk = (typeof window.classifyProjKey_S91_ === "function") ? window.classifyProjKey_S91_(activeProjName) : "R2";
+
+    // (a) Home Dual-Axis 4-Curves / Active Topic Chart + Monochrome Legend Sync
+    if (typeof window.renderHomeAmountFourCurvesDualAxis_V172 === "function" && (window.HOME_MAIN_CHART_TOPIC_V167 || "AMOUNT") === "AMOUNT") {
+      try { window.renderHomeAmountFourCurvesDualAxis_V172(activeProjName); } catch (_eC4) {}
+    } else if (typeof window.switchHomeMainChartTopic_V167 === "function" && window.HOME_MAIN_CHART_TOPIC_V167) {
+      try { window.switchHomeMainChartTopic_V167(window.HOME_MAIN_CHART_TOPIC_V167); } catch (_eCT) {}
+    }
+    if (typeof window.syncHomeChartAndLegendColors_S83 === "function") {
+      try { window.syncHomeChartAndLegendColors_S83(); } catch (_eL83) {}
+    }
+
+    // (b) S3 Four-Way Panels (`請款 ▾`, `查驗 ▾`, `工務專用 ▾ 三方差異`) + D11 BOQ Table + S91 Project Isolation
+    if (pk === "R2" && typeof window.renderS3FourWayPanels_ === "function") {
+      try { window.renderS3FourWayPanels_(true); } catch (_eS3) {}
+    } else {
+      window.renderProjectIsolatedS3Panes_S91_(pk);
+    }
+    if (typeof window.renderVendorBillingByProject_V161 === "function" && pk === "R2") {
+      try { window.renderVendorBillingByProject_V161(activeProjName); } catch (_eVB) {}
+    }
+    if (typeof window.filterD11BoqTable_V139 === "function" && pk === "R2") {
+      try { window.filterD11BoqTable_V139(); } catch (_eBoq) {}
+    }
+    if (typeof window.renderMaterialBillingTable_S72 === "function") {
+      try { window.renderMaterialBillingTable_S72(); } catch (_eS72) {}
+    }
+
+    // (c) Weather & Safety / Quality Subpage Tables
+    if (typeof window.renderWeatherAndLaborSubpageTables === "function") {
+      try { window.renderWeatherAndLaborSubpageTables(); } catch (_eWL) {}
+    }
+
+    // (d) Production BI Modal (if open or initialized, update dynamic counts & re-render)
+    var biModal = document.getElementById("modalProductionBi");
+    if (biModal) {
+      var d11Cnt = (snap.d11Summary && snap.d11Summary.totalFilesSynced) || 52;
+      var c10Cnt = (snap.c10Summary && snap.c10Summary.totalFilesSynced) || 59;
+      var pLatest = (window.__PROJECT_ISOLATED_LEDGERS_S95__.R2 && window.__PROJECT_ISOLATED_LEDGERS_S95__.R2.settlementSummary.latestPeriodNo) || 5;
+      if (pk === "R2") {
+        var pTags = biModal.querySelectorAll("p, div");
+        for (var bi = 0; bi < pTags.length; bi++) {
+          var bel = pTags[bi];
+          if (bel.children.length === 0 && /串聯\s*Line\s*BOT/.test(bel.textContent || "")) {
+            bel.textContent = "雲端實績即時運算・串聯 Line BOT(易興) 出工點名、D11 材料查驗 (" + d11Cnt + "份)、C08/C10 施工查驗 (" + c10Cnt + "份)、第" + pLatest + "期業主估驗計價與 D04 品質/勞安紀錄";
+            break;
+          }
+        }
+      }
+      if (window.getComputedStyle(biModal).display !== "none" && typeof window.renderProductionBiAnalyzerUI === "function") {
+        try { window.renderProductionBiAnalyzerUI(activeProjName); } catch (_eBi) {}
+      }
+    }
+
+    // (e) Settlement View (`結算 ▾`) if currently visible
+    if (typeof window.reRenderActiveSettlementView_S95 === "function") {
+      try { window.reRenderActiveSettlementView_S95(); } catch (_eStl) {}
+    }
+
+    // (f) Keep update time badge clean (HH:MM time-only per user rule!)
+    var rawTime = String(snap.syncedAt || "");
+    var mHm = rawTime.match(/(\d{2}:\d{2})/);
+    var timeOnly = mHm ? mHm[1] : new Date().toTimeString().slice(0, 5);
+    var pillTxt = document.getElementById("liveCloudRealtimeBadge_V161");
+    if (pillTxt) pillTxt.textContent = timeOnly;
+    var gPill = (document.getElementById("githubSyncStatusSubtext") && document.getElementById("githubSyncStatusSubtext").nextElementSibling);
+    if (gPill && gPill.innerHTML) {
+      gPill.innerHTML = gPill.innerHTML.replace(/(?:11\d\.\d{1,2}\.\d{1,2}|202\d[-/.]\d{1,2}[-/.]\d{1,2})\s+/g, "");
+    }
+
+    if (typeof window.unifyAllViewsMonochrome_S83 === "function") {
+      try { window.unifyAllViewsMonochrome_S83(); } catch (_eMono95) {}
+    }
+    return true;
+  };
+
+  var _origUpdPill35 = window.updateUnifiedSyncStatusPill_S35_;
+  if (typeof _origUpdPill35 === "function" && !_origUpdPill35.__s95Wrapped) {
+    var _wUpdPill35 = function() {
+      var r = _origUpdPill35.apply(this, arguments);
+      var gp = (document.getElementById("githubSyncStatusSubtext") && document.getElementById("githubSyncStatusSubtext").nextElementSibling);
+      if (gp && gp.innerHTML) {
+        gp.innerHTML = gp.innerHTML.replace(/(?:11\d\.\d{1,2}\.\d{1,2}|202\d[-/.]\d{1,2}[-/.]\d{1,2})\s+/g, "");
+      }
+      return r;
+    };
+    _wUpdPill35.__s95Wrapped = true;
+    window.updateUnifiedSyncStatusPill_S35_ = _wUpdPill35;
+  }
+
+  // Hook `applyS2RealtimeSnapshot_` so every 15s background poll & manual sync runs `applyUniversalHotUpdate_S95_`!
+  var _origApplyS2_95 = window.applyS2RealtimeSnapshot_;
+  if (typeof _origApplyS2_95 === "function" && !_origApplyS2_95.__s95Wrapped) {
+    var _wApplyS2_95 = function(snap, channelName, forceRenderOpt) {
+      if (snap && typeof snap === "object") {
+        // Ensure R2 S64 caches inside S91 don't overwrite fresh R2 DOM with stale startup HTML!
+        var r2Ids = ["s3OwnerValuationBoqCard", "secVendorMonthlyBillingSync", "secMaterialInspectionClean_S3", "secConstructionInspection_S3", "secThreeWayQtyDiff_S4"];
+        var pkBefore = (typeof window.classifyProjKey_S91_ === "function") ? window.classifyProjKey_S91_() : "R2";
+        if (pkBefore !== "R2" && typeof window.switchWarRoomProject === "function") {
+          // Keep user's current project selected while updating underlying data stores cleanly
+          var r0 = _origApplyS2_95.call(this, snap, channelName, true);
+          window.applyUniversalHotUpdate_S95_(snap, channelName, true);
+          return r0;
+        }
+      }
+      var res = _origApplyS2_95.call(this, snap, channelName, forceRenderOpt);
+      window.applyUniversalHotUpdate_S95_(snap, channelName, forceRenderOpt);
+      return res;
+    };
+    _wApplyS2_95.__s95Wrapped = true;
+    window.applyS2RealtimeSnapshot_ = _wApplyS2_95;
+  }
+
+  // Also fetch `./WARROOM_S40_RECONCILED_MODULES.json` on GitHub Pages / HTTP origins as a fast secondary hot-patch channel!
+  window.pollReconciledModulesJson_S95 = function(forceOpt) {
+    if (!window.location || window.location.protocol === "file:" || window.location.protocol === "about:") return Promise.resolve(false);
+    var url = "./WARROOM_S40_RECONCILED_MODULES.json?t=" + Date.now();
+    return fetch(url, { method: "GET", cache: "no-store" })
+      .then(function(r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+      .then(function(modJson) {
+        if (!modJson || typeof modJson !== "object") return false;
+        var curSnap = window.__LIVE_WARROOM_CLOUD_DATA__ || { ok: true };
+        var merged = Object.assign({}, curSnap, modJson, { ok: true, driveFingerprint: modJson.fingerprint || modJson.updatedAt });
+        window.__LIVE_WARROOM_CLOUD_DATA__ = merged;
+        return window.applyUniversalHotUpdate_S95_(merged, "GitHub Pages 對帳模組熱同步", Boolean(forceOpt));
+      })
+      .catch(function() { return false; });
+  };
+
+  // 5. Unified One-Click Full-Site Hot-Update Action (`runUniversalHotUpdate_S95` + `triggerWarRoomHotUpdateNow`)
+  var _origTriggerBimHot = window.triggerWarRoomHotUpdateNow;
+  window.runUniversalHotUpdate_S95 = function(showToastOpt) {
+    var btn = document.getElementById("s95HotUpdateTriggerBtn");
+    if (btn) { btn.style.opacity = "0.65"; btn.textContent = "同步中…"; }
+    var p1 = (typeof window.pollRealtimeWarRoom_S2 === "function")
+      ? window.pollRealtimeWarRoom_S2(true)
+      : Promise.resolve(false);
+    var p2 = window.pollReconciledModulesJson_S95(true);
+    // If 3D BIM viewer is currently open, also refresh 3D BIM model metadata!
+    var bimModal = document.getElementById("public3dViewerOverlay");
+    if (bimModal && window.getComputedStyle(bimModal).display !== "none" && typeof _origTriggerBimHot === "function") {
+      try { _origTriggerBimHot(); } catch (_eBimH) {}
+    }
+    return Promise.all([p1, p2]).then(function(results) {
+      if (btn) { btn.style.opacity = "1"; btn.textContent = "熱更新"; }
+      if (showToastOpt && typeof window.showToast === "function") {
+        window.showToast("已完成全站雲端熱更新（含三案帳冊、查驗單、計價與結算數據）");
+      }
+      return Boolean(results[0] || results[1]);
+    });
+  };
+  window.triggerWarRoomHotUpdateNow = function() {
+    if (typeof _origTriggerBimHot === "function") {
+      try { _origTriggerBimHot(); } catch (_eB0) {}
+    }
+    return window.runUniversalHotUpdate_S95(true);
+  };
+
+  function syncProductionBiLiveSubtitle_S95_(pkOpt) {
+    var pk = pkOpt || ((typeof window.classifyProjKey_S91_ === "function") ? window.classifyProjKey_S91_() : "R2");
+    var biModal = document.getElementById("modalProductionBi");
+    if (!biModal || pk !== "R2") return;
+    var snap = window.__LIVE_WARROOM_CLOUD_DATA__ || {};
+    var d11Cnt = (snap.d11Summary && snap.d11Summary.totalFilesSynced) || 52;
+    var c10Cnt = (snap.c10Summary && snap.c10Summary.totalFilesSynced) || 59;
+    var pLatest = (window.__PROJECT_ISOLATED_LEDGERS_S95__ && window.__PROJECT_ISOLATED_LEDGERS_S95__.R2 && window.__PROJECT_ISOLATED_LEDGERS_S95__.R2.settlementSummary.latestPeriodNo) || 5;
+    var pTags = biModal.querySelectorAll("p, div");
+    for (var bi = 0; bi < pTags.length; bi++) {
+      var bel = pTags[bi];
+      if (bel.children.length === 0 && /串聯\s*Line\s*BOT/.test(bel.textContent || "")) {
+        bel.textContent = "雲端實績即時運算・串聯 Line BOT(易興) 出工點名、D11 材料查驗 (" + d11Cnt + "份)、C08/C10 施工查驗 (" + c10Cnt + "份)、第" + pLatest + "期業主估驗計價與 D04 品質/勞安紀錄";
+        break;
+      }
+    }
+  }
+
+  // Wrap `openS3SplitSubView` and `switchWarRoomProject` AFTER S91 so S91 closure never overwrites S9.5 hot-updated DOM!
+  var _prevOpenS3_95 = window.openS3SplitSubView;
+  if (typeof _prevOpenS3_95 === "function" && !_prevOpenS3_95.__s95Wrapped) {
+    var _wOpenS3_95 = function(mode) {
+      var r = _prevOpenS3_95.apply(this, arguments);
+      var pk = (typeof window.classifyProjKey_S91_ === "function") ? window.classifyProjKey_S91_() : "R2";
+      if (pk === "R2") {
+        syncOwnerValuationDomAndCurves_S95_(window.__LIVE_WARROOM_CLOUD_DATA__ || {});
+      } else {
+        window.renderProjectIsolatedS3Panes_S91_(pk);
+      }
+      if (typeof window.unifyAllViewsMonochrome_S83 === "function") {
+        try { window.unifyAllViewsMonochrome_S83(); } catch (_eM95a) {}
+      }
+      return r;
+    };
+    _wOpenS3_95.__s95Wrapped = true;
+    window.openS3SplitSubView = _wOpenS3_95;
+  }
+
+  var _prevSwitchProj_95 = window.switchWarRoomProject;
+  if (typeof _prevSwitchProj_95 === "function" && !_prevSwitchProj_95.__s95Wrapped) {
+    var _wSwitchProj_95 = function(projName) {
+      var r = _prevSwitchProj_95.apply(this, arguments);
+      var pk = (typeof window.classifyProjKey_S91_ === "function") ? window.classifyProjKey_S91_(projName) : "R2";
+      syncProductionBiLiveSubtitle_S95_(pk);
+      if (pk === "R2") {
+        syncOwnerValuationDomAndCurves_S95_(window.__LIVE_WARROOM_CLOUD_DATA__ || {});
+      } else {
+        window.renderProjectIsolatedS3Panes_S91_(pk);
+      }
+      if (typeof window.unifyAllViewsMonochrome_S83 === "function") {
+        try { window.unifyAllViewsMonochrome_S83(); } catch (_eM95b) {}
+      }
+      return r;
+    };
+    _wSwitchProj_95.__s95Wrapped = true;
+    window.switchWarRoomProject = _wSwitchProj_95;
+  }
+
+  // Mount a clean monochrome `熱更新` pill button next to the top header station/time area (post-login header only!)
+  function mountHeaderHotUpdateButton_S95_() {
+    var st95 = document.getElementById("s95MonochromePolishStyle");
+    if (!st95 && document.head) {
+      st95 = document.createElement("style");
+      st95.id = "s95MonochromePolishStyle";
+      st95.textContent = ".s3-sync-bar{background:#f9f9f9!important;border:1px solid rgba(0,0,0,0.08)!important;border-left:1px solid rgba(0,0,0,0.08)!important;}";
+      document.head.appendChild(st95);
+    }
+    var gPill0 = (document.getElementById("githubSyncStatusSubtext") && document.getElementById("githubSyncStatusSubtext").nextElementSibling);
+    if (gPill0 && gPill0.innerHTML) {
+      gPill0.innerHTML = gPill0.innerHTML.replace(/(?:11\d\.\d{1,2}\.\d{1,2}|202\d[-/.]\d{1,2}[-/.]\d{1,2})\s+/g, "");
+    }
+    if (document.getElementById("s95HotUpdateTriggerBtn")) return;
+    var subEl = document.getElementById("githubSyncStatusSubtext");
+    if (subEl && subEl.parentNode) {
+      var wrap = subEl.parentNode;
+      var btn = document.createElement("button");
+      btn.id = "s95HotUpdateTriggerBtn";
+      btn.type = "button";
+      btn.className = "btn btn-ghost";
+      btn.title = "立即從雲端熱更新全部專案數據、查驗單、計價、結算與 3D 模型";
+      btn.style.cssText = "padding:3px 10px;font-size:0.72rem;border-radius:40px;margin-left:6px;background:#f4f4f4;color:#17181c;border:1px solid rgba(0,0,0,0.10);cursor:pointer;font-weight:600;";
+      btn.textContent = "熱更新";
+      btn.addEventListener("click", function() { window.runUniversalHotUpdate_S95(true); });
+      wrap.appendChild(btn);
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", function() {
+      mountHeaderHotUpdateButton_S95_();
+      if (window.__LIVE_WARROOM_CLOUD_DATA__) {
+        window.applyUniversalHotUpdate_S95_(window.__LIVE_WARROOM_CLOUD_DATA__, "初始載入", false);
+      }
+    });
+  } else {
+    mountHeaderHotUpdateButton_S95_();
+    if (window.__LIVE_WARROOM_CLOUD_DATA__) {
+      window.applyUniversalHotUpdate_S95_(window.__LIVE_WARROOM_CLOUD_DATA__, "初始載入", false);
+    }
+  }
 })();
 </script>
 </body>
