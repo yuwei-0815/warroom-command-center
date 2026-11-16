@@ -1,8 +1,8 @@
 {
   "ok": true,
   "version": "S3.5版_FAST_REALTIME_SYNC",
-  "driveFingerprint": "S35F_65b9d56f",
-  "syncedAt": "2026-11-16 10:34:01",
+  "driveFingerprint": "S35F_aa2095c8",
+  "syncedAt": "2026-11-16 13:50:19",
   "latestDate": "2026-11-16",
   "excelDriveFileId": "1sJiy0wDJAyDqJzBD39AX2PTbBiUWJNySX22APzI_7s8",
   "d11Summary": {
@@ -15000,14 +15000,14 @@
       "rules": [
         "符合勞安標準（無勞安缺失）"
       ],
-      "workerCount": 7,
-      "toolboxWorkers": 7,
+      "workerCount": 8,
+      "toolboxWorkers": 8,
       "report1500Workers": null,
-      "photoBreakdown": "[3, 1, 3]",
+      "photoBreakdown": "[4, 1, 3]",
       "tomorrowPredictedWorkers": 0,
       "tomorrowScope": "",
-      "workerTrades": "水電 7人 (工具箱點名 [3, 1, 3] 共3張｜標準回報：115.11.16 水電 *7)",
-      "badgeText": "晴 0mm・水電7人",
+      "workerTrades": "水電 8人 (工具箱點名 [4, 1, 3] 共3張｜標準回報：115.11.16 水電 *8)",
+      "badgeText": "晴 0mm・水電8人",
       "note": "今日施作：1F補線 2F 3F 排水管打鑿配管 3F ACP修繕 3F查管路及修改敗管",
       "__fromLiveCloudDb": true,
       "__isAutoRolloverToday": false
@@ -15326,10 +15326,10 @@
       "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)",
       "latestDate": "2026-11-16",
       "latestRocDate": "115.11.16",
-      "todayWorkers": 7,
-      "toolboxWorkers": 7,
+      "todayWorkers": 8,
+      "toolboxWorkers": 8,
       "report1500Workers": null,
-      "photoBreakdown": "[3, 1, 3]",
+      "photoBreakdown": "[4, 1, 3]",
       "lastVerifiedDate": "2026-11-15",
       "lastVerifiedRocDate": "115.11.15",
       "lastVerifiedWorkers": 12,
@@ -15337,17 +15337,17 @@
       "tomorrowWorkScope": "",
       "todayWorkScope": "1F補線 2F 3F 排水管打鑿配管 3F ACP修繕 3F查管路及修改敗管",
       "todayBadgeText": "今日點名已同步",
-      "todayTradeTag": "水電 *7 ([3, 1, 3])",
-      "cumulativeWorkers": 196,
-      "currentMonthWorkers": 167,
+      "todayTradeTag": "水電 *8 ([4, 1, 3])",
+      "cumulativeWorkers": 197,
+      "currentMonthWorkers": 168,
       "currentMonthDays": 16,
       "workDaysCount": 19,
-      "dailyAvgWorkers": 10.3
+      "dailyAvgWorkers": 10.4
     }
   },
   "dynamicSyncMetaS75": {
     "isDynamicS75": true,
-    "computedAt": "2026-11-16 10:34:11",
+    "computedAt": "2026-11-16 13:50:33",
     "d11LiveScanned": true,
     "c10LiveScanned": true,
     "boqSheetLiveRead": true,

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-15T14:20:00+08:00",
+  "updatedAt": "2026-11-16T11:28:00+08:00",
   "fingerprint": "S65_V211|1Sdb5S:77ITEMS_5706957|D11_SUB(E:28,WP:19,LV:1,F:4=52)|C10_SUB(E:17,WP:16,LV:12,F:9,PA:4=58)",
   "d11Summary": {
     "totalFilesSynced": 52,
@@ -13346,5 +13346,25 @@
     "lianduiProjectCostInc": 141908,
     "mepTotalCostEacInc": 96930475,
     "revisedMepBoqTotalUntaxed": 126278856
+  },
+  "s91ProjectIsolationAndBeixunRelease": {
+    "version": "S9.1_STRICT_PROJECT_ISOLATION_AND_BEIXUN_RENAME",
+    "renamedProject3": "北訓中心新建工程 (北訓中心)",
+    "toolbox1116Corrected": {
+      "date": "115.11.16",
+      "totalWorkers": 8,
+      "photoCounts": [
+        4,
+        1,
+        3
+      ]
+    },
+    "bidSlipV2Fixes": [
+      "HierarchicalHeaderFilter",
+      "ColumnFirstOcrAlignment",
+      "PipeFractionGuard",
+      "HandwrittenCallOffConversion",
+      "ReplyBeforeDriveCreate"
+    ]
   }
 }
