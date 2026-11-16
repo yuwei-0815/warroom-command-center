@@ -5663,9 +5663,6 @@ quickUpdateTodayHeadcountDirect: window.quickUpdateTodayHeadcountDirect
 <strong style="display:flex;align-items:center;justify-content:space-between;width:100%;"><span>機電追加減 ▸</span></strong>
 </button>
 <menu class="s80-val-flyout" id="navFlyoutContractMepChg" role="menu">
-<button class="s3-nav-dd-item" onclick="closeAllWarRoomNavDropdowns_S3(true);exportRevisedMepBoqXlsx_S89();" role="menuitem" type="button">
-<strong>↳ 匯出修正後機電標單 (.xlsx)</strong>
-</button>
 <button class="s3-nav-dd-item" onclick="closeAllWarRoomNavDropdowns_S3(true);exportSettlementXlsx_S89('MEP_CHG');" role="menuitem" type="button">
 <strong>↳ 匯出機電追加減統計 Excel</strong>
 </button>
@@ -5694,9 +5691,6 @@ quickUpdateTodayHeadcountDirect: window.quickUpdateTodayHeadcountDirect
 </button>
 </menu>
 </nav>
-<button class="s3-nav-dd-item" id="navMenuItemExportRevisedBoqDirect" onclick="closeAllWarRoomNavDropdowns_S3(true);exportRevisedMepBoqXlsx_S89();" role="menuitem" style="border-top:1px solid rgba(0,0,0,0.08);" type="button">
-<strong>↳ 匯出修正後機電標單 (.xlsx)</strong>
-</button>
 </div>
 </div>
 
@@ -25958,7 +25952,7 @@ function renderChartsOverview_(){
     '<button class="btn" type="button" onclick="openSettlementView_S89(\'MEP_CHG\')" style="background:#f4f4f4;color:#17181c;border-radius:40px;padding:6px 12px;font-size:0.78rem;">機電追加減</button>'+
     '<button class="btn" type="button" onclick="openSettlementView_S89(\'ALL_REV\')" style="background:#f4f4f4;color:#17181c;border-radius:40px;padding:6px 12px;font-size:0.78rem;">全案營收</button>'+
     '<button class="btn" type="button" onclick="openSettlementView_S89(\'MEP_REV\')" style="background:#f4f4f4;color:#17181c;border-radius:40px;padding:6px 12px;font-size:0.78rem;">機電營收</button>'+
-    '<button class="btn s2-xlsx-btn" type="button" onclick="exportRevisedMepBoqXlsx_S89()" style="background:#17181c;color:#ffffff;border-radius:40px;padding:6px 14px;font-size:0.78rem;font-weight:600;">匯出修正後機電標單 (.xlsx)</button>'+
+    
     '<button class="btn" type="button" onclick="switchWarRoomMainView(\'dashboard\')" style="background:#f4f4f4;color:#17181c;border-radius:40px;padding:6px 12px;font-size:0.78rem;">回戰情室</button>';
 
   document.getElementById("s89KpiRow").innerHTML=
@@ -26132,7 +26126,6 @@ function renderMepChg_(){
   document.getElementById("s89SettlementMainTitle").textContent="結算 — 機電追加減";
   document.getElementById("s89HeaderActions").innerHTML=
     '<button class="btn" type="button" onclick="openSettlementView_S89(\'CHARTS\')" style="background:#f4f4f4;color:#17181c;border-radius:40px;padding:6px 14px;font-size:0.8rem;">結算圖表總覽</button>'+
-    '<button class="btn s2-xlsx-btn" type="button" onclick="exportRevisedMepBoqXlsx_S89()" style="background:#17181c;color:#ffffff;border-radius:40px;padding:6px 14px;font-size:0.8rem;font-weight:600;">匯出修正後機電標單 (.xlsx)</button>'+
     '<button class="btn s2-xlsx-btn" type="button" onclick="exportSettlementXlsx_S89(\'MEP_CHG\')" style="background:#f4f4f4;color:#17181c;border-radius:40px;padding:6px 14px;font-size:0.8rem;">匯出機電追加減 Excel</button>'+
     '<button class="btn" type="button" onclick="switchWarRoomMainView(\'dashboard\')" style="background:#f4f4f4;color:#17181c;border-radius:40px;padding:6px 14px;font-size:0.8rem;">回戰情室</button>';
   document.getElementById("s89KpiRow").innerHTML=
@@ -26845,7 +26838,7 @@ window.exportRende1ProposalsAndBoqXlsx_S84=window.exportRevisedMepBoqXlsx_S89;
           '</div>' +
           '<div style="font-size:0.8rem;color:#3f3f46;line-height:1.6;padding:10px 12px;background:#f8fafc;border:1px solid #e4e4e7;border-radius:8px;">' +
           '• <strong>專案數據隔離說明</strong>：本頁僅顯示<strong>仁德國小(第一期)</strong>契約與業主結算資料，已徹底隔離仁德第二期估驗數值。<br/>' +
-          '• 如需匯出桃園市政府新建工程處 7 欄標準格式《修正後機電標單 (.xlsx)》，請點選上方導覽列「<strong>結算 ▾ ➔ 匯出修正後機電標單</strong>」。</div></div>';
+          '• 如需匯出桃園市政府新建工程處 7 欄標準格式《修正後機電標單 (.xlsx)》，請點選上方導覽列「<strong>結算 ▾ ➔ 機電營收</strong>」內之匯出修正後機電標單按鈕。</div></div>';
       }
       var pVb = document.getElementById("secVendorMonthlyBillingSync");
       if (pVb) {
@@ -26971,6 +26964,13 @@ window.exportRende1ProposalsAndBoqXlsx_S84=window.exportRevisedMepBoqXlsx_S89;
       }
       if (typeof window.closeAllWarRoomNavDropdowns_S3 === "function") window.closeAllWarRoomNavDropdowns_S3(true);
       if (typeof window.switchWarRoomMainView === "function") window.switchWarRoomMainView("modalRende1ProposalsS84");
+      var nb = document.getElementById("mainNavigationButtonsBar");
+      if (modalEl && nb && nb.parentNode && modalEl.parentNode !== nb.parentNode) {
+        nb.parentNode.insertBefore(modalEl, nb.nextSibling);
+      }
+      if (modalEl) { modalEl.style.display = "block"; modalEl.classList.add("open"); }
+      var dashHome = document.getElementById("mainDashboardHomeView");
+      if (dashHome) dashHome.style.display = "none";
       if (typeof window.highlightActiveNavBtn === "function") window.highlightActiveNavBtn("navBtnContractChangeDropdown");
       if (modalEl) {
         Array.prototype.forEach.call(modalEl.children, function(ch) {
@@ -26979,7 +26979,8 @@ window.exportRende1ProposalsAndBoqXlsx_S84=window.exportRevisedMepBoqXlsx_S89;
         if (!nonR1Box) {
           nonR1Box = document.createElement("div");
           nonR1Box.id = "s91NonR1SettlementPanel";
-          nonR1Box.style.cssText = "padding:8px 4px;";
+          nonR1Box.className = "subpage-dialog";
+          nonR1Box.style.cssText = "width:100%;max-width:1280px;margin:0 auto;box-sizing:border-box;background:#ffffff;border:1px solid rgba(0,0,0,0.08);border-radius:24px;padding:20px 22px;box-shadow:0 1px 3px rgba(0,0,0,0.03);";
           modalEl.appendChild(nonR1Box);
         }
         nonR1Box.style.display = "block";
