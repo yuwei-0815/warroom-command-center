@@ -29256,5 +29256,195 @@ window.reRenderActiveSettlementView_S95=function(){
   }
 })();
 </script>
+<script id="s99FullScreenPdfSignatureStudio">
+/* ==================== S9.9 WAR ROOM FULL-VIEWPORT (100vw x 100dvh) PDF SIGNATURE WINDOW ==================== */
+(function initS99WarRoomFullScreenPdfSig_() {
+  if (window.__S99_FULLSCREEN_PDF_SIG_READY__) return;
+  window.__S99_FULLSCREEN_PDF_SIG_READY__ = true;
+  window.__WARROOM_UI_SHELL_VERSION__ = "S9.9_FULLSCREEN_PDF_SIG_AND_CLEAN_NCR";
+
+  function ensureFullScreenSigDom_S99_() {
+    if (document.getElementById("warroomFullScreenPdfSigModal_S99")) return;
+
+    // Also upgrade existing `#directPdfViewerModal_V191` container to full-bleed 100vw x 100dvh when opened, and add `✍️ 開啟滿版簽名視窗` button to its header!
+    var pdfModal = document.getElementById("directPdfViewerModal_V191");
+    if (pdfModal) {
+      pdfModal.style.padding = "0";
+      var innerCard = pdfModal.firstElementChild;
+      if (innerCard) {
+        innerCard.style.width = "100vw";
+        innerCard.style.maxWidth = "100vw";
+        innerCard.style.height = "100dvh";
+        innerCard.style.maxHeight = "100dvh";
+        innerCard.style.borderRadius = "0";
+      }
+      var newTabBtn = document.getElementById("directPdfModalNewTabBtn_V191");
+      if (newTabBtn && newTabBtn.parentNode && !document.getElementById("btnWarroomOpenFullSig_S99")) {
+        var sigBtn = document.createElement("button");
+        sigBtn.type = "button";
+        sigBtn.id = "btnWarroomOpenFullSig_S99";
+        sigBtn.textContent = "✍️ 滿版簽名視窗";
+        sigBtn.style.cssText = "background:#17181c;color:#ffffff;border:1px solid #3f3f46;padding:6px 12px;border-radius:6px;font-size:12.5px;font-weight:700;cursor:pointer;";
+        sigBtn.addEventListener("click", function() {
+          var ttl = (document.getElementById("directPdfModalTitle_V191") || {}).textContent || "PDF 文件簽名";
+          window.openFullScreenPdfSigModal_S99(ttl);
+        });
+        newTabBtn.parentNode.insertBefore(sigBtn, newTabBtn);
+      }
+    }
+
+    var modal = document.createElement("div");
+    modal.id = "warroomFullScreenPdfSigModal_S99";
+    modal.style.cssText = "position:fixed;inset:0;top:0;left:0;right:0;bottom:0;width:100vw;height:100vh;height:100dvh;background:#17181c;z-index:100020;display:none;flex-direction:column;margin:0;padding:0;overflow:hidden;";
+    modal.innerHTML =
+      '<div style="flex:0 0 auto;min-height:52px;padding:8px 16px;background:#17181c;color:#ffffff;border-bottom:1px solid #3f3f46;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;">' +
+        '<div style="display:flex;align-items:center;gap:10px;">' +
+          '<strong id="wrSigTitle_S99" style="font-size:15px;font-weight:800;">✍️ PDF 滿版手寫簽名視窗</strong>' +
+          '<span style="font-size:12px;color:#a1a1aa;">100% 滿版觸控手寫區・自動裁切白邊等比例輸出</span>' +
+        '</div>' +
+        '<div style="display:flex;align-items:center;gap:6px;">' +
+          '<button type="button" class="wr-sig-pen-btn" data-w="2.2" onclick="setWarRoomSigPenWidth_S99(2.2, this)" style="background:#27272a;color:#e4e4e7;border:1px solid #52525b;padding:5px 10px;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;">細字</button>' +
+          '<button type="button" class="wr-sig-pen-btn" data-w="3.8" onclick="setWarRoomSigPenWidth_S99(3.8, this)" style="background:#ffffff;color:#09090b;border:1px solid #ffffff;padding:5px 10px;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;">標準</button>' +
+          '<button type="button" class="wr-sig-pen-btn" data-w="5.8" onclick="setWarRoomSigPenWidth_S99(5.8, this)" style="background:#27272a;color:#e4e4e7;border:1px solid #52525b;padding:5px 10px;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;">粗筆</button>' +
+          '<button type="button" onclick="closeFullScreenPdfSigModal_S99()" style="background:#27272a;color:#ffffff;border:1px solid #52525b;padding:6px 12px;border-radius:6px;font-size:13px;font-weight:700;cursor:pointer;">✕</button>' +
+        '</div>' +
+      '</div>' +
+      '<div id="wrSigPadWrap_S99" style="flex:1 1 auto;width:100%;min-height:0;background:#ffffff;position:relative;overflow:hidden;touch-action:none;">' +
+        '<div id="wrSigGuide_S99" style="position:absolute;inset:0;pointer-events:none;display:flex;flex-direction:column;align-items:center;justify-content:center;">' +
+          '<div style="font-size:18px;font-weight:700;color:rgba(113,113,122,0.35);letter-spacing:0.08em;">請在此滿版空白區域手寫簽名</div>' +
+          '<div style="width:82%;border-bottom:2px dashed rgba(161,161,170,0.45);margin-top:36px;"></div>' +
+        '</div>' +
+        '<canvas id="wrSigCanvas_S99" style="width:100%;height:100%;display:block;cursor:crosshair;touch-action:none;position:relative;z-index:2;"></canvas>' +
+      '</div>' +
+      '<div style="flex:0 0 auto;min-height:60px;padding:10px 16px;background:#17181c;border-top:1px solid #3f3f46;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;">' +
+        '<button type="button" onclick="clearWarRoomSigCanvas_S99()" style="background:#3f3f46;color:#ffffff;border:none;padding:9px 18px;border-radius:8px;font-size:13.5px;font-weight:700;cursor:pointer;">🗑️ 清除重簽</button>' +
+        '<div style="display:flex;gap:10px;align-items:center;">' +
+          '<button type="button" onclick="closeFullScreenPdfSigModal_S99()" style="background:#27272a;color:#e4e4e7;border:1px solid #52525b;padding:9px 16px;border-radius:8px;font-size:13.5px;font-weight:700;cursor:pointer;">取消</button>' +
+          '<button type="button" id="btnSaveWrSig_S99" onclick="confirmWarRoomSignature_S99()" style="background:#ffffff;color:#09090b;border:none;padding:9px 22px;border-radius:8px;font-size:14px;font-weight:800;cursor:pointer;">💾 下載透明簽名檔 ／ 套用簽名</button>' +
+        '</div>' +
+      '</div>';
+    document.body.appendChild(modal);
+
+    var cvs = document.getElementById("wrSigCanvas_S99");
+    var ctx = cvs.getContext("2d", { willReadFrequently: true });
+    var drawing = false, hasInk = false, penW = 3.8, prevPt = null;
+
+    function syncStyle() {
+      var dpr = Math.min(window.devicePixelRatio || 1, 3);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.lineWidth = penW;
+      ctx.lineCap = "round";
+      ctx.lineJoin = "round";
+      ctx.strokeStyle = "#000000";
+    }
+    window.resizeWarRoomSigCanvas_S99 = function(keep) {
+      var wrap = document.getElementById("wrSigPadWrap_S99");
+      if (!wrap) return;
+      var r = wrap.getBoundingClientRect();
+      var w = Math.max(300, Math.floor(r.width || window.innerWidth));
+      var h = Math.max(200, Math.floor(r.height || (window.innerHeight - 112)));
+      var dpr = Math.min(window.devicePixelRatio || 1, 3);
+      var bak = null;
+      if (keep && hasInk && cvs.width > 0 && cvs.height > 0) {
+        bak = document.createElement("canvas");
+        bak.width = cvs.width; bak.height = cvs.height;
+        bak.getContext("2d").drawImage(cvs, 0, 0);
+      }
+      cvs.width = Math.round(w * dpr);
+      cvs.height = Math.round(h * dpr);
+      syncStyle();
+      if (bak) {
+        ctx.save(); ctx.setTransform(1,0,0,1,0,0); ctx.drawImage(bak, 0, 0, cvs.width, cvs.height); ctx.restore();
+      }
+    };
+    window.setWarRoomSigPenWidth_S99 = function(w, btn) {
+      penW = Number(w) || 3.8;
+      var bs = document.querySelectorAll(".wr-sig-pen-btn");
+      for (var i = 0; i < bs.length; i++) {
+        bs[i].style.background = "#27272a"; bs[i].style.color = "#e4e4e7"; bs[i].style.borderColor = "#52525b";
+      }
+      if (btn) { btn.style.background = "#ffffff"; btn.style.color = "#09090b"; btn.style.borderColor = "#ffffff"; }
+      syncStyle();
+    };
+    window.clearWarRoomSigCanvas_S99 = function() {
+      ctx.save(); ctx.setTransform(1,0,0,1,0,0); ctx.clearRect(0, 0, cvs.width, cvs.height); ctx.restore();
+      hasInk = false;
+      var g = document.getElementById("wrSigGuide_S99");
+      if (g) g.style.opacity = "1";
+    };
+    function pos(e) {
+      var r = cvs.getBoundingClientRect();
+      var cx = (e.touches && e.touches[0]) ? e.touches[0].clientX : e.clientX;
+      var cy = (e.touches && e.touches[0]) ? e.touches[0].clientY : e.clientY;
+      return { x: cx - r.left, y: cy - r.top };
+    }
+    cvs.addEventListener("mousedown", function(e) {
+      drawing = true; hasInk = true; prevPt = pos(e);
+      var g = document.getElementById("wrSigGuide_S99"); if (g) g.style.opacity = "0.14";
+      ctx.beginPath(); ctx.moveTo(prevPt.x, prevPt.y); ctx.lineTo(prevPt.x + 0.1, prevPt.y + 0.1); ctx.stroke();
+    });
+    cvs.addEventListener("mousemove", function(e) {
+      if (!drawing || !prevPt) return;
+      var p = pos(e); var mx = (prevPt.x + p.x) / 2, my = (prevPt.y + p.y) / 2;
+      ctx.quadraticCurveTo(prevPt.x, prevPt.y, mx, my); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(mx, my); prevPt = p;
+    });
+    window.addEventListener("mouseup", function() { drawing = false; prevPt = null; });
+    cvs.addEventListener("touchstart", function(e) {
+      e.preventDefault(); drawing = true; hasInk = true; prevPt = pos(e);
+      var g = document.getElementById("wrSigGuide_S99"); if (g) g.style.opacity = "0.14";
+      ctx.beginPath(); ctx.moveTo(prevPt.x, prevPt.y); ctx.lineTo(prevPt.x + 0.1, prevPt.y + 0.1); ctx.stroke();
+    }, { passive: false });
+    cvs.addEventListener("touchmove", function(e) {
+      e.preventDefault(); if (!drawing || !prevPt) return;
+      var p = pos(e); var mx = (prevPt.x + p.x) / 2, my = (prevPt.y + p.y) / 2;
+      ctx.quadraticCurveTo(prevPt.x, prevPt.y, mx, my); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(mx, my); prevPt = p;
+    }, { passive: false });
+    cvs.addEventListener("touchend", function(e) { e.preventDefault(); drawing = false; prevPt = null; }, { passive: false });
+    window.addEventListener("resize", function() {
+      if (modal.style.display === "flex") window.resizeWarRoomSigCanvas_S99(true);
+    });
+    window.confirmWarRoomSignature_S99 = function() {
+      if (!hasInk) {
+        if (typeof window.showToast === "function") window.showToast("請先於滿版空白區域手寫簽名");
+        return;
+      }
+      var dataUrl = cvs.toDataURL("image/png");
+      var a = document.createElement("a");
+      a.href = dataUrl;
+      a.download = "手寫簽名_滿版匯出.png";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      if (typeof window.showToast === "function") window.showToast("已匯出高解析手寫簽名檔（線上開啟雲端 PDF 簽名將直接寫入雲端檔案）");
+      window.closeFullScreenPdfSigModal_S99();
+    };
+  }
+
+  window.openFullScreenPdfSigModal_S99 = function(titleOpt) {
+    ensureFullScreenSigDom_S99_();
+    var m = document.getElementById("warroomFullScreenPdfSigModal_S99");
+    var t = document.getElementById("wrSigTitle_S99");
+    if (t && titleOpt) t.textContent = "✍️ " + titleOpt + "（滿版簽名視窗）";
+    document.body.style.overflow = "hidden";
+    m.style.display = "flex";
+    window.resizeWarRoomSigCanvas_S99(false);
+    window.clearWarRoomSigCanvas_S99();
+  };
+
+  window.closeFullScreenPdfSigModal_S99 = function() {
+    var m = document.getElementById("warroomFullScreenPdfSigModal_S99");
+    if (m) m.style.display = "none";
+    document.body.style.overflow = "";
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", ensureFullScreenSigDom_S99_);
+  } else {
+    ensureFullScreenSigDom_S99_();
+  }
+})();
+</script>
 </body>
 </html>
