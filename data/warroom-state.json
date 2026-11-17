@@ -2,7 +2,7 @@
   "ok": true,
   "version": "S1版",
   "latestDate": "2026-11-17",
-  "syncedAt": "2026-11-18 00:15:16",
+  "syncedAt": "2026-11-18 06:44:09",
   "laborSummaryByProject": {
     "R2": {
       "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)",
@@ -629,7 +629,7 @@
       "note": "今日施作：待今日 15:00 回報明日範圍｜明日預計(0人)：待今日 15:00 回報明日範圍"
     }
   ],
-  "driveFingerprint": "nCa9DPmG97X6ERPpXN",
+  "driveFingerprint": "JZCtQ3w-jB0Fk0qgPg",
   "excelDriveFileId": "1sJiy0wDJAyDqJzBD39AX2PTbBiUWJNySX22APzI_7s8",
   "sourceRegistry": {
     "gongwuyunUrl": "https://docs.google.com/spreadsheets/d/1sJiy0wDJAyDqJzBD39AX2PTbBiUWJNySX22APzI_7s8/edit",
@@ -4329,17 +4329,17 @@
       "cronExpressionUtc": "0 16 * * *",
       "triggerFunctionName": "cron2400FourWayBoqReconcileAndSync_S3",
       "last2400SyncedAt": "2026-11-12 00:03:53",
-      "lastRealtimeVerifiedAt": "2026-11-18 00:15:46",
+      "lastRealtimeVerifiedAt": "2026-11-18 06:44:33",
       "nextScheduledSync": "2026-11-18 24:00:00"
     },
     "summaryCounts": {
       "ownerPeriodLatest": 5,
       "ownerFullContractAmt": 364392883,
-      "ownerFullCumAmt": 84737062,
-      "ownerFullCumWithIndexAmt": 86788385,
+      "ownerFullCumAmt": 102066968,
+      "ownerFullCumWithIndexAmt": 104426214,
       "ownerMepContractAmt": 77517622,
-      "ownerMepCumAmt": 7715654,
-      "ownerMepOverContractItemCount": 9,
+      "ownerMepCumAmt": 5115409,
+      "ownerMepOverContractItemCount": 0,
       "ownerMepUnbilledArrivedItemCount": 26,
       "vendorActiveCount": 21,
       "vendorContractTotal": 39045499,
