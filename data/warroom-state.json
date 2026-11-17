@@ -2,7 +2,7 @@
   "ok": true,
   "version": "S1版",
   "latestDate": "2026-11-17",
-  "syncedAt": "2026-11-18 00:07:02",
+  "syncedAt": "2026-11-18 00:15:16",
   "laborSummaryByProject": {
     "R2": {
       "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)",
@@ -629,7 +629,7 @@
       "note": "今日施作：待今日 15:00 回報明日範圍｜明日預計(0人)：待今日 15:00 回報明日範圍"
     }
   ],
-  "driveFingerprint": "lVJe0YDXMfUSN-1xv7",
+  "driveFingerprint": "nCa9DPmG97X6ERPpXN",
   "excelDriveFileId": "1sJiy0wDJAyDqJzBD39AX2PTbBiUWJNySX22APzI_7s8",
   "sourceRegistry": {
     "gongwuyunUrl": "https://docs.google.com/spreadsheets/d/1sJiy0wDJAyDqJzBD39AX2PTbBiUWJNySX22APzI_7s8/edit",
@@ -1260,11 +1260,11 @@
       "sheetUrl": "https://docs.google.com/spreadsheets/d/1Sdb5S15VRUvJliMI4J_khC1hMLXGuwLGNi_JOLp82eI/edit",
       "folderId": "1aTXDjGNBRkwuULae6C41ve9PYs5y1BAh",
       "folderUrl": "https://drive.google.com/drive/folders/1aTXDjGNBRkwuULae6C41ve9PYs5y1BAh",
-      "totalPdfCount": 72,
+      "totalPdfCount": 77,
       "countsBySystem": {
         "E": 45,
-        "WP": 21,
-        "F": 4,
+        "WP": 25,
+        "F": 5,
         "LV": 2,
         "OTHER": 0
       },
@@ -4329,7 +4329,7 @@
       "cronExpressionUtc": "0 16 * * *",
       "triggerFunctionName": "cron2400FourWayBoqReconcileAndSync_S3",
       "last2400SyncedAt": "2026-11-12 00:03:53",
-      "lastRealtimeVerifiedAt": "2026-11-18 00:07:35",
+      "lastRealtimeVerifiedAt": "2026-11-18 00:15:46",
       "nextScheduledSync": "2026-11-18 24:00:00"
     },
     "summaryCounts": {
@@ -4346,7 +4346,7 @@
       "vendorCompletedTotal": 5159463,
       "vendorBilledInclDepositTotal": 7709481,
       "vendorPendingSignoffCount": 8,
-      "materialInspectionPdfCount": 72,
+      "materialInspectionPdfCount": 77,
       "materialArrivedTotalAmt": 4398112,
       "materialWithOrderTotalAmt": 4813408,
       "constructionInspectionPdfCount": 88,
