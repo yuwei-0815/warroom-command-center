@@ -6851,7 +6851,7 @@ quickUpdateTodayHeadcountDirect: window.quickUpdateTodayHeadcountDirect
 <section class="glass-panel amber-top" id="secVendorMonthlyBillingSync" style="margin-top:14px;border-top:3px solid #f59e0b;">
 <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:12px;">
 <div>
-<span class="sec-tag">SEC-04A // MONTHLY LAST-DAY NAS TO GOOGLE DRIVE VENDOR BILLING AUTO-SYNC &amp; PROPORTION LEDGER (S1版 LIVE)</span>
+<span class="sec-tag">SEC-04A // DAILY 24:00 NAS × GOOGLE DRIVE VENDOR BILLING 3-TUPLE SYNC (FILENAME × MODTIME × SIZE)</span>
 <h2 style="margin:3px 0 0;font-size:1.06rem;font-weight:900;color:var(--text-main);display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
 <span id="s3VendorBillingMainHeadingSpan">仁德國小(第二期)【廠商計價】</span>
 <span id="vendorBillingCurrentProjectBadge_V167" style="display:none !important;background:rgba(2,132,199,0.12);color:#0369a1;border:1px solid rgba(2,132,199,0.35);padding:2px 10px;border-radius:999px;font-size:0.82rem;font-weight:900;">
@@ -6859,14 +6859,14 @@ quickUpdateTodayHeadcountDirect: window.quickUpdateTodayHeadcountDirect
         </span>
 </h2>
 <div id="vendorBillingPathsDesc_V167" style="display:none !important;font-size:0.77rem;color:var(--text-muted);margin-top:4px;line-height:1.5;">
-        ‧ <strong>本案 NAS 來源路徑</strong>：<code id="vbNasPathCode_V167">\\dogreatnas.synology.me\元順營造-仁德二期\60-機電相關\廠商請款資料</code><br/>
-        ‧ <strong>本案雲端目標路徑</strong>：<code id="vbDrivePathCode_V167">雲端硬碟 LINE BOT / 仁德2 / 60-機電相關 / 廠商請款資料</code><span id="vbSyncDetailSpan_V167">（已同步 <code>115.01</code> ~ <code>115.10</code> 共 9 個月份資料夾、26 份請款單 PDF）</span><br/>
-        ‧ <strong>專案檢視說明</strong>：此表僅顯示<strong>首頁目前點選之本案請款資料</strong>（如需觀看他案，請於首頁上方點選不同專案切換）；系統於每月最後一日 23:30 / 24:00 自動執行 NAS ↔ 雲端硬碟增量同步。
+        ‧ <strong>本案 NAS 來源路徑</strong>：<code id="vbNasPathCode_V167">\\dogreatnas.synology.me\元順工程-仁德二期\60-機電相關\廠商請款資料</code><br/>
+        ‧ <strong>本案雲端目標路徑</strong>：<code id="vbDrivePathCode_V167">雲端硬碟\LINE BOT\01-仁德國小(第二期)\60-機電相關\廠商請款資料</code><span id="vbSyncDetailSpan_V167">（已三維比對 <code>115.01</code> ~ <code>115.10</code> 及 <code>00-待簽核請款單</code> 共 42 份請款單 PDF・43.78 MB）</span><br/>
+        ‧ <strong>專案檢視說明</strong>：此表僅顯示<strong>首頁目前點選之本案請款資料</strong>（如需觀看他案，請於首頁上方點選不同專案切換）；系統於每日 24:00 自動執行 NAS ↔ 雲端硬碟「檔案名稱 × 修改日期 × 檔案大小」三維比對同步並即時更新戰情室。
       </div>
 </div>
 <div style="display:flex;gap:6px;flex-wrap:wrap;">
 <a class="btn btn-amber" href="https://drive.google.com/drive/folders/1GdwccNDwPL9X1JZFgxODseQifHessr4M" id="btnOpenProjectBillingDrive_V167" style="text-decoration:none;padding:6px 12px;font-size:0.76rem;" target="_blank"> 開啟 /linebot/仁德2/60-機電相關/廠商請款資料</a>
-<a class="btn btn-emerald" href="https://docs.google.com/spreadsheets/d/1sJiy0wDJAyDqJzBD39AX2PTbBiUWJNySX22APzI_7s8/edit" style="text-decoration:none;padding:6px 12px;font-size:0.76rem;" target="_blank"> 開啟 工務云 (廠商請款月底同步紀錄)</a>
+<a class="btn btn-emerald" href="https://docs.google.com/spreadsheets/d/1sJiy0wDJAyDqJzBD39AX2PTbBiUWJNySX22APzI_7s8/edit" style="text-decoration:none;padding:6px 12px;font-size:0.76rem;" target="_blank"> 開啟 工務云 (廠商請款 24:00 三維同步紀錄)</a>
 </div>
 </div>
 <div id="vendorBillingProjectSwitchBar_V161" style="display:none !important;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px;padding:9px 12px;background:rgba(2,132,199,0.08);border:1px solid rgba(2,132,199,0.3);border-radius:8px;">
@@ -6883,7 +6883,7 @@ quickUpdateTodayHeadcountDirect: window.quickUpdateTodayHeadcountDirect
       </button>
 </div>
 <div id="vendorBillingProjActiveSummary_V161" style="font-size:0.76rem;font-weight:800;color:#0369a1;">
-      目前顯示：仁德第二期（NAS：<code>\\dogreatnas.synology.me\元順營造-仁德二期\60-機電相關\廠商請款資料</code>）
+      目前顯示：仁德第二期（NAS：<code>\\dogreatnas.synology.me\元順工程-仁德二期\60-機電相關\廠商請款資料</code>）
     </div>
 </div>
 <div id="ownerValuationSummaryPanel_V172" style="background:linear-gradient(135deg,#f5f3ff 0%,#ecfdf5 100%);border:1px solid #c4b5fd;border-left:5px solid #7c3aed;border-radius:10px;padding:12px 16px;margin-bottom:14px;">
@@ -7010,7 +7010,7 @@ quickUpdateTodayHeadcountDirect: window.quickUpdateTodayHeadcountDirect
 <div style="background:var(--panel-sub);border:1px solid rgba(56,189,248,0.4);border-radius:10px;padding:10px 14px;">
 <div style="font-size:0.75rem;color:var(--text-muted);font-weight:700;"> 4. 累計已開發票總額 (含稅 5%)</div>
 <div style="font-size:1.28rem;font-weight:900;color:var(--eng-cyan-bright);margin-top:3px;font-family:monospace;">NT$ 8,094,957</div>
-<div style="font-size:0.72rem;color:var(--text-muted);margin-top:3px;">含大琦訂金發票全案累計 NT$ 10,404,957｜每月最後一日自動同步</div>
+<div style="font-size:0.72rem;color:var(--text-muted);margin-top:3px;">含大琦訂金發票全案累計 NT$ 10,404,957｜每日 24:00 三維比對更新</div>
 </div>
 </div>
 <div id="vendorBillingFilterRowWrap_V167" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px;">
@@ -8230,7 +8230,7 @@ quickUpdateTodayHeadcountDirect: window.quickUpdateTodayHeadcountDirect
 </div>
 </div>
 <div id="daily0600SimResultBox" style="font-size:0.77rem;line-height:1.55;color:var(--text-main);background:var(--input-bg);border:1px solid var(--border-std);border-radius:6px;padding:10px 12px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;">
- [排程已啟用] 每日早上 06:00 自動執行 `cron0600DailyFullSystemSimulationTest` 模擬運行雙機與戰情室全部 12 大功能模組（工具箱點名、15:00出工、17:00會議預警、19:00相簿下載與NAS備份、19冊核定材料、75空間、55配電盤、全棟6層3D/2D模型與三案切換、四頁NCR簽名、MinerU標單三方核銷、FalkorDB圖譜、外部純粹帳密登入閘門）。今日 06:00 模擬運行狀態：12 / 12 模組 ALL_PASSED (耗時 18ms)。
+ [排程已啟用] 每日早上 06:00 自動執行 `cron0600DailyFullSystemSimulationTest` 模擬運行雙機與戰情室全部 12 大功能模組（工具箱點名、15:00出工、17:00會議預警、24:00統一排程(相簿下載+廠商請款三維同步)、19冊核定材料、75空間、55配電盤、全棟6層3D/2D模型與三案切換、四頁NCR簽名、MinerU標單三方核銷、FalkorDB圖譜、外部純粹帳密登入閘門）。今日 06:00 模擬運行狀態：12 / 12 模組 ALL_PASSED (耗時 18ms)。
 </div>
 </div>
 <div id="botSubPaneSingle" style="display:block;">
@@ -8305,7 +8305,7 @@ quickUpdateTodayHeadcountDirect: window.quickUpdateTodayHeadcountDirect
 </div>
 <details class="warroom-details" style="margin-bottom:10px;">
 <summary style="font-size:0.86rem;font-weight:700;cursor:pointer;">
- 進階修正此 BOT 參數（代號 / 層級 / API 網址 / 08:00~19:00 排程）＆ 戰情室遠端誤判回滾（人數 / 勞安 / OCR / 標單）
+ 進階修正此 BOT 參數（代號 / 層級 / API 網址 / 08:00~24:00 排程）＆ 戰情室遠端誤判回滾（人數 / 勞安 / OCR / 標單）
 </summary>
 <div style="margin-top:12px;">
 <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px;">
@@ -8320,7 +8320,7 @@ quickUpdateTodayHeadcountDirect: window.quickUpdateTodayHeadcountDirect
 遠端重設 GAS 排程 (?action=setupTriggers)
 </button>
 <button class="btn btn-emerald" onclick="triggerRemoteGasAction('nasSync')" style="padding:5px 11px;font-size:0.75rem;" type="button">
-立即觸發 19:00 NAS 鏡像備份 (?action=nasSync)
+立即觸發 24:00 相簿＆廠商請款三維同步 (?action=vendorBillingNasDiffS98)
 </button>
 <button class="btn btn-ghost" onclick="openSelectedBotSpreadsheet()" style="padding:5px 11px;font-size:0.75rem;" type="button">
 開啟此 BOT 雲端試算表
@@ -8358,7 +8358,7 @@ quickUpdateTodayHeadcountDirect: window.quickUpdateTodayHeadcountDirect
 </div>
 <div class="field-group">
 <label>定時排程時間修正</label>
-<input id="editBotSchedulesInput" oninput="onEditBotConfigField()" type="text" value="08:00 / 09:00 / 15:00 / 19:00"/>
+<input id="editBotSchedulesInput" oninput="onEditBotConfigField()" type="text" value="08:00 / 09:00 / 15:00 / 24:00 (統一排程)"/>
 </div>
 <div class="field-group">
 <label>Synology NAS 備份路徑</label>
@@ -8759,7 +8759,7 @@ B. 新增／修正 BIGBOSS ＆ 機器人B 之 OCR 錯字與標單綁定規則
         </div>
         <div class="field-group">
           <label>定時推播排程時間</label>
-          <input id="s60SchedulesInput" type="text" value="08:00 / 09:00 / 15:00 / 19:00"/>
+          <input id="s60SchedulesInput" type="text" value="08:00 / 09:00 / 15:00 / 24:00 (統一排程)"/>
         </div>
         <div class="field-group">
           <label>預設推播群組 ID（入群說話亦會自動捕獲）</label>
@@ -10507,7 +10507,7 @@ botCode: "BOT_B",
 botName: "機器人B (云水電｜仁德二期專機 V5.9/V14)",
 project: "桃園市八德區仁德國民小學新建校舍工程(第二期)",
 targetGroup: "仁德二期機電主群 (C108736ec8ad2cad7132a7eb41b42036e)",
-mode: "第二級工務所權限 (工具箱點名 + 勞安雙階段ROI罰單 + 表4-12四頁NCR簽名 + 19:00相簿下載與NAS鏡像)",
+mode: "第二級工務所權限 (工具箱點名 + 勞安雙階段ROI罰單 + 表4-12四頁NCR簽名 + 24:00相簿下載與NAS鏡像統一排程)",
 webhookUrl: "https://script.google.com/macros/s/AKfycbzfGpWGZDSN8fNaR0Gd2csGFBzCvXImcIAok_6RhklbGlDS-2gWSZM-gJskRnPWu8OVwA/exec",
 scriptId: "1f7vOjYqyOoQnRawA6ZXBw0R0mcAXHBAt1y-xnoPcaaexiCbWL22AoFoY",
 spreadsheetId: "1sEut2NPfeCBiq-jjdVFuTI_nv-ZXK7z_TZMJOPc2e0s",
@@ -10770,7 +10770,7 @@ webhook: `https://script.google.com/macros/s/AKfycb_${newBotCode}_V15_STANDARD/e
 scriptId: `SCRIPT_ID_${newBotCode}`,
 deploymentId: `DEPLOY_ID_${newBotCode}`,
 spreadsheetId: "1sJiy0wDJAyDqJzBD39AX2PTbBiUWJNySX22APzI_7s8",
-schedules: "08:00 / 09:00 / 15:00 / 19:00",
+schedules: "08:00 / 09:00 / 15:00 / 24:00 (統一排程)",
 nasPath: `\\dogreatnas.synology.me\元順營造\${proj} (packages/${newBotCode.toLowerCase()})`,
 group1Name: `群組一：${proj} 現場施工回報群`,
 group1Enabled: true,
@@ -10857,7 +10857,7 @@ webhook: "https://script.google.com/macros/s/AKfycbxRcVWuQzMEQWtGMd-PNqBr6ejcxjT
 scriptId: "12V0H-iZb41I147ZMwpfX3UkUfPlUn5A-kYA7zCDcD74BWbx2jA0kfEry",
 deploymentId: "AKfycbxRcVWuQzMEQWtGMd-PNqBr6ejcxjTvRLuxeRut38uwFFveHrPJDb6bbe3cRp4hkSXTsQ",
 spreadsheetId: "1sJiy0wDJAyDqJzBD39AX2PTbBiUWJNySX22APzI_7s8",
-schedules: "06:00 (全系統模擬運行測試) / 08:00 / 09:00 / 15:00 / 17:00 (D-1預警) / 19:00 (NAS鏡像)",
+schedules: "06:00 (全系統模擬運行測試) / 08:00 / 09:00 / 15:00 / 17:00 (D-1預警) / 24:00 (相簿＋D11/C10＋廠商請款三維同步)",
 nasPath: "\\\\dogreatnas.synology.me\\元順營造-仁德二期\\60-機電相關 (packages/master_bot)",
 group1Name: "群組一：仁德二期機電施工主群 (C108736ec8ad2cad7132a7eb41b42036e)",
 group1Enabled: true,
@@ -10877,7 +10877,7 @@ webhook: "https://script.google.com/macros/s/AKfycbzfGpWGZDSN8fNaR0Gd2csGFBzCvXI
 scriptId: "1f7vOjYqyOoQnRawA6ZXBw0R0mcAXHBAt1y-xnoPcaaexiCbWL22AoFoY",
 deploymentId: "AKfycbzfGpWGZDSN8fNaR0Gd2csGFBzCvXImcIAok_6RhklbGlDS-2gWSZM-gJskRnPWu8OVwA",
 spreadsheetId: "1sEut2NPfeCBiq-jjdVFuTI_nv-ZXK7z_TZMJOPc2e0s",
-schedules: "06:00 (全系統模擬運行測試) / 08:00 / 09:00 / 15:00 / 19:00 (當日相簿下載與NAS備份 ✅已執行完畢｜不開啟戰情室)",
+schedules: "06:00 (全系統模擬運行測試) / 08:00 / 09:00 / 15:00 / 24:00 (統一排程：當日相簿下載與NAS備份｜原19:00已取消)",
 nasPath: "\\\\dogreatnas.synology.me\\元順營造-仁德二期\\60-機電相關 (packages/bot_b_rende2)",
 group1Name: "群組一：仁德二期云水電工具箱與現場回報群 (C108736ec8ad2cad7132a7eb41b42036e)",
 group1Enabled: true,
@@ -10897,7 +10897,7 @@ webhook: "https://script.google.com/macros/s/AKfycb_BOT_F_YINGGE_FIRE_V14_STANDA
 scriptId: "SCRIPT_ID_BOT_F_YINGGE_FIRE_V14",
 deploymentId: "AKfycb_BOT_F_YINGGE_FIRE_V14_STANDARD",
 spreadsheetId: "1sJiy0wDJAyDqJzBD39AX2PTbBiUWJNySX22APzI_7s8",
-schedules: "06:00 (全系統模擬運行測試) / 08:00 / 09:00 / 15:00 / 17:00 (D-1預警) / 19:00 (當日相簿下載與NAS備份 ✅已執行完畢｜不開啟戰情室)",
+schedules: "06:00 (全系統模擬運行測試) / 08:00 / 09:00 / 15:00 / 17:00 (D-1預警) / 24:00 (統一排程：當日相簿下載與NAS備份｜原19:00已取消)",
 nasPath: "\\dogreatnas.synology.me\元順營造-北訓中心\60-機電相關 (packages/bot_f_yingge)",
 group1Name: "群組一：北訓中心工具箱點名與現場施工回報群 (LOCKED_PROJECT_3)",
 group1Enabled: true,
@@ -12901,7 +12901,7 @@ const simSteps = [
 "SIM-01 [雙機金鑰與雲端試算表連線] MASTER_BOT / BOT_B Token 與雙試算表 (工務云 / Line BOT 易興) 讀寫模擬：PASS",
 "SIM-02 [08:00/08:30/12:00 工具箱點名與雙階段 ROI 勞安判讀] 4張工具箱照 [5,4,1,2]=12人 ＆ 30筆歷史語料零誤判模擬：PASS",
 "SIM-03 [15:00 每日出工與施工範圍四行範本比對] 今日12人/明日預計14人 自動核對與同步模擬：PASS",
-"SIM-04 [19:00 當日相簿自動下載、前一日複核 & NAS 備份] 嚴格排除 .xlsx/.pdf 非照片列＋完成備份後寫鎖模擬：PASS",
+"SIM-04 [24:00 統一排程：當日相簿下載、前一日複核 & 廠商請款三維比對] 嚴格排除 .xlsx/.pdf 非照片列＋完成備份後寫鎖模擬：PASS",
 "SIM-05 [仁德二期 19 冊核定版材料兩階段對話 & 0.1s PDF 直覽] 防群組誤觸鎖定＋01~19冊型錄秒開模擬：PASS",
 "SIM-06 [全棟 75 處空間 × 55 座配電盤 × A2 平面圖導引] 警衛室 / N106 / 1PB / EMP / UPS 檢索模擬：PASS",
 "SIM-07 [戰情室整合仁德二期全棟 6 層 3D/2D 模型 & 三案切換] BS~RF 六層、V112 屋突水箱 340cm 高程鏈與仁德一/二期、北訓中心三案切換模擬：PASS",
@@ -15257,7 +15257,7 @@ window.renderWarRoomCalendar();
 
 
 /* ==================== V161 HOME MONTHLY 3-CURVE CHART, PROJECT-SEPARATED VENDOR BILLING & REALTIME CLOUD SYNC ==================== */
-window.MONTHLY_CURVES_BY_PROJECT_V161 = {"桃園市八德區仁德國民小學新建校舍工程(第二期)": {"projectCode": "RENDE_2", "projectShort": "仁德第二期", "nasBillingPath": "\\\\dogreatnas.synology.me\\元順營造-仁德二期\\60-機電相關\\廠商請款資料", "driveBillingFolderId": "1GdwccNDwPL9X1JZFgxODseQifHessr4M", "driveBillingPath": "雲端硬碟 LINE BOT / 仁德2 / 60-機電相關 / 廠商請款資料", "months": ["115.01", "115.02", "115.03", "115.04", "115.05", "115.06", "115.07", "115.08", "115.09", "115.10", "115.11"], "materialMonthly": [0, 65551, 312407, 415923, 165214, 54417, 49573, 485847, 984587, 1169254, 695339], "vendorBillMonthly": [1000000, 65551, 312407, 421113, 245214, 75216, 49573, 2087502, 1376390, 2076515, 0], "ownerValMonthly": [null, null, null, null, null, null, null, null, null, null, null], "materialCumulative": [0, 65551, 377958, 793881, 959095, 1013512, 1063085, 1548932, 2533519, 3702773, 4398112], "vendorBillCumulative": [1000000, 1065551, 1377958, 1799071, 2044285, 2119501, 2169074, 4256576, 5632966, 7709481, 7709481], "ownerValCumulative": [null, null, null, null, null, null, null, null, null, null, null], "terminatedNote": "另原大包大琦實業(115/07/01解約)於 115.02 領取 10% 訂金 NT$ 2,200,000 (未稅) 獨立列管待結算扣回"}, "桃園市八德區仁德國民小學新建校舍工程(第一期)": {"projectCode": "RENDE_1", "projectShort": "仁德第一期", "nasBillingPath": "\\\\dogreatnas.synology.me\\元順營造-仁德一期\\60-機電相關\\廠商請款資料", "driveBillingFolderId": "1_2kBn-TkrPNNCzXV45qkrUzjUi0QmShO", "driveBillingPath": "雲端硬碟 LINE BOT / 仁德1 / 60-機電相關 / 廠商請款資料", "months": ["115.01", "115.02", "115.03", "115.04", "115.05", "115.06", "115.07", "115.08", "115.09", "115.10", "115.11"], "materialMonthly": [0, 0, 0, 0, 0, 0, 0, 0, 0, 120000, 185000], "vendorBillMonthly": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "ownerValMonthly": [null, null, null, null, null, null, null, null, null, null, null], "materialCumulative": [0, 0, 0, 0, 0, 0, 0, 0, 0, 120000, 305000], "vendorBillCumulative": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "ownerValCumulative": [null, null, null, null, null, null, null, null, null, null, null], "terminatedNote": "第一期廠商請款資料夾 (1_2kBn-TkrPNNCzXV45qkrUzjUi0QmShO) 已獨立建置，與第二期資料完全分開，待月底自 NAS 同步或新增"}, "北訓中心新建工程": {"projectCode": "YINGGE", "projectShort": "北訓中心", "nasBillingPath": "\\\\dogreatnas.synology.me\\元順營造-北訓中心\\60-機電相關\\廠商請款資料", "driveBillingFolderId": "1Xoo2k5C-Lc-Ek0F9BJ9q2blB7CP6UEjO", "driveBillingPath": "雲端硬碟 / 北訓中心案 / 廠商請款資料", "months": ["115.01", "115.02", "115.03", "115.04", "115.05", "115.06", "115.07", "115.08", "115.09", "115.10", "115.11"], "materialMonthly": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "vendorBillMonthly": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "ownerValMonthly": [null, null, null, null, null, null, null, null, null, null, null], "materialCumulative": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "vendorBillCumulative": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "ownerValCumulative": [null, null, null, null, null, null, null, null, null, null, null], "terminatedNote": "先期規劃與圖說審查階段（尚無進場材料與請款紀錄）"}};
+window.MONTHLY_CURVES_BY_PROJECT_V161 = {"桃園市八德區仁德國民小學新建校舍工程(第二期)": {"projectCode": "RENDE_2", "projectShort": "仁德第二期", "nasBillingPath": "\\\\dogreatnas.synology.me\\元順營造-仁德二期\\60-機電相關\\廠商請款資料", "driveBillingFolderId": "1GdwccNDwPL9X1JZFgxODseQifHessr4M", "driveBillingPath": "雲端硬碟\LINE BOT\01-仁德國小(第二期)\60-機電相關\廠商請款資料", "months": ["115.01", "115.02", "115.03", "115.04", "115.05", "115.06", "115.07", "115.08", "115.09", "115.10", "115.11"], "materialMonthly": [0, 65551, 312407, 415923, 165214, 54417, 49573, 485847, 984587, 1169254, 695339], "vendorBillMonthly": [1000000, 65551, 312407, 421113, 245214, 75216, 49573, 2087502, 1376390, 2076515, 0], "ownerValMonthly": [null, null, null, null, null, null, null, null, null, null, null], "materialCumulative": [0, 65551, 377958, 793881, 959095, 1013512, 1063085, 1548932, 2533519, 3702773, 4398112], "vendorBillCumulative": [1000000, 1065551, 1377958, 1799071, 2044285, 2119501, 2169074, 4256576, 5632966, 7709481, 7709481], "ownerValCumulative": [null, null, null, null, null, null, null, null, null, null, null], "terminatedNote": "另原大包大琦實業(115/07/01解約)於 115.02 領取 10% 訂金 NT$ 2,200,000 (未稅) 獨立列管待結算扣回"}, "桃園市八德區仁德國民小學新建校舍工程(第一期)": {"projectCode": "RENDE_1", "projectShort": "仁德第一期", "nasBillingPath": "\\\\dogreatnas.synology.me\\元順營造-仁德一期\\60-機電相關\\廠商請款資料", "driveBillingFolderId": "1_2kBn-TkrPNNCzXV45qkrUzjUi0QmShO", "driveBillingPath": "雲端硬碟 LINE BOT / 仁德1 / 60-機電相關 / 廠商請款資料", "months": ["115.01", "115.02", "115.03", "115.04", "115.05", "115.06", "115.07", "115.08", "115.09", "115.10", "115.11"], "materialMonthly": [0, 0, 0, 0, 0, 0, 0, 0, 0, 120000, 185000], "vendorBillMonthly": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "ownerValMonthly": [null, null, null, null, null, null, null, null, null, null, null], "materialCumulative": [0, 0, 0, 0, 0, 0, 0, 0, 0, 120000, 305000], "vendorBillCumulative": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "ownerValCumulative": [null, null, null, null, null, null, null, null, null, null, null], "terminatedNote": "第一期廠商請款資料夾 (1_2kBn-TkrPNNCzXV45qkrUzjUi0QmShO) 已獨立建置，與第二期資料完全分開，待月底自 NAS 同步或新增"}, "北訓中心新建工程": {"projectCode": "YINGGE", "projectShort": "北訓中心", "nasBillingPath": "\\\\dogreatnas.synology.me\\元順營造-北訓中心\\60-機電相關\\廠商請款資料", "driveBillingFolderId": "1Xoo2k5C-Lc-Ek0F9BJ9q2blB7CP6UEjO", "driveBillingPath": "雲端硬碟 / 北訓中心案 / 廠商請款資料", "months": ["115.01", "115.02", "115.03", "115.04", "115.05", "115.06", "115.07", "115.08", "115.09", "115.10", "115.11"], "materialMonthly": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "vendorBillMonthly": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "ownerValMonthly": [null, null, null, null, null, null, null, null, null, null, null], "materialCumulative": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "vendorBillCumulative": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "ownerValCumulative": [null, null, null, null, null, null, null, null, null, null, null], "terminatedNote": "先期規劃與圖說審查階段（尚無進場材料與請款紀錄）"}};
 window.VENDOR_BILLING_BY_PROJECT_V161 = {
   "桃園市八德區仁德國民小學新建校舍工程(第二期)": [{"seq": 1, "category": "MAIN_CONTRACT", "vendorId": "60311741", "vendorName": "易興機電工程有限公司", "shortName": "易興機電", "contractItem": "H1141104-0 機電工程 (現任主承攬商)", "contractUntaxed": 19500000, "contractTaxed": 20475000, "latestPeriod": "115.10 (第0002期｜115/10/21)", "prevUntaxed": 877500, "currUntaxed": 1287000, "cumUntaxed": 2164500, "advanceUntaxed": 0, "totalClaimedUntaxed": 2164500, "cumTaxedInvoice": 2272725, "cumNetPaidTaxed": 2261361, "estPct": 11.1, "totalClaimedPct": 11.1, "historySummary": "115.09(第1期 $877,500 / 4.50%) → 115.10(第2期 $1,287,000 / 累計 $2,164,500 / 11.10%)", "pdfId": "16CUqBMDiZN-is3IixdU-kx0lIrblOw5s", "pdfName": "11510-機電工程(易興).pdf", "status": "履約計價中", "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)", "projectCode": "RENDE_2"}, {"seq": 2, "category": "MAIN_CONTRACT", "vendorId": "12738855", "vendorName": "伸泰國際股份有限公司", "shortName": "伸泰國際", "contractItem": "H1141104-012 電線及電纜材料", "contractUntaxed": 5010000, "contractTaxed": 5260500, "latestPeriod": "115.10 (第0005期｜115/10/25)", "prevUntaxed": 490475, "currUntaxed": 452360, "cumUntaxed": 942835, "advanceUntaxed": 1000000, "totalClaimedUntaxed": 1942835, "cumTaxedInvoice": 2039977, "cumNetPaidTaxed": 2039977, "estPct": 18.82, "totalClaimedPct": 38.78, "historySummary": "115.01(訂金 $1,000,000) → 115.02($56,595) → 115.08($127,400) → 115.09($306,480) → 115.10(第5期 $452,360 / 估驗累計 $942,835 [18.82%]｜含預付 $1,942,835 [38.78%])", "pdfId": "1Vfz2w4NN8_6Y0md0dgm1l7vb-YDFJrbz", "pdfName": "11510-電線及電纜材料(伸泰).pdf", "status": "履約計價中", "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)", "projectCode": "RENDE_2"}, {"seq": 3, "category": "MAIN_CONTRACT", "vendorId": "12652097", "vendorName": "英威康科技股份有限公司", "shortName": "英威康科技", "contractItem": "H1141104-052 弱電設備", "contractUntaxed": 5600000, "contractTaxed": 5880000, "latestPeriod": "115.08 (第0001期訂金｜115/08/25)", "prevUntaxed": 0, "currUntaxed": 0, "cumUntaxed": 0, "advanceUntaxed": 1120000, "totalClaimedUntaxed": 1120000, "cumTaxedInvoice": 1176000, "cumNetPaidTaxed": 1176000, "estPct": 0.0, "totalClaimedPct": 20.0, "historySummary": "115.08(第1期 20%訂金款 $1,120,000 未稅 / 含稅 $1,176,000 / 20.00%)", "pdfId": "19mjNZoGNMWmuaI1mo7ZccPPVWfuRUO4G", "pdfName": "115.08-弱電(英威康)-訂金款.pdf", "status": "已領訂金20%", "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)", "projectCode": "RENDE_2"}, {"seq": 4, "category": "MAIN_CONTRACT", "vendorId": "28485053", "vendorName": "明進機電有限公司", "shortName": "明進機電", "contractItem": "H1141104-028 配電盤及二線式設備", "contractUntaxed": 3380952, "contractTaxed": 3550000, "latestPeriod": "115.09 (第0002期｜115/09/23)", "prevUntaxed": 0, "currUntaxed": 72000, "cumUntaxed": 72000, "advanceUntaxed": 330895, "totalClaimedUntaxed": 402895, "cumTaxedInvoice": 423040, "cumNetPaidTaxed": 415480, "estPct": 2.13, "totalClaimedPct": 11.92, "historySummary": "115.08(第1期 10%訂金 $338,095) → 115.09(第2期 估驗 $72,000 [2.13%]｜含預付累計 $402,895 [11.92%])", "pdfId": "15qHQiC0LPI7CPWUKuUVgCZFKDtxSyP--", "pdfName": "11509-配電盤及二線式設備(明進).pdf", "status": "履約計價中", "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)", "projectCode": "RENDE_2"}, {"seq": 5, "category": "MAIN_CONTRACT", "vendorId": "80551574", "vendorName": "禾昌消防有限公司", "shortName": "禾昌消防", "contractItem": "H1141104-040 消防設備", "contractUntaxed": 2050000, "contractTaxed": 2152500, "latestPeriod": "115.10 (第0001期｜115/10/27)", "prevUntaxed": 0, "currUntaxed": 129600, "cumUntaxed": 129600, "advanceUntaxed": 0, "totalClaimedUntaxed": 129600, "cumTaxedInvoice": 136080, "cumNetPaidTaxed": 122472, "estPct": 6.32, "totalClaimedPct": 6.32, "historySummary": "115.10(第1期 消防栓箱/滅火器箱 $129,600 未稅 / 含稅發票 $136,080 / 6.32%)", "pdfId": "1ZCj8dd9v_DBhS4SrIk2s688ReVfjLbi_", "pdfName": "11510-消防設備(禾昌).pdf", "status": "履約計價中", "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)", "projectCode": "RENDE_2"}, {"seq": 6, "category": "MAIN_CONTRACT", "vendorId": "97437628", "vendorName": "暐琦事業股份有限公司", "shortName": "暐琦事業", "contractItem": "H1141104-026 PVC管材料", "contractUntaxed": 802786, "contractTaxed": 842925, "latestPeriod": "115.10 (第0008期｜115/10/12)", "prevUntaxed": 416741, "currUntaxed": 72171, "cumUntaxed": 488912, "advanceUntaxed": 0, "totalClaimedUntaxed": 488912, "cumTaxedInvoice": 513358, "cumNetPaidTaxed": 513358, "estPct": 60.9, "totalClaimedPct": 60.9, "historySummary": "115.03($248,000) → 115.04($62,461) → 115.06($37,469) → 115.09($44,295) → 115.10(第8期 $72,171 / 累計 $488,912 / 60.90%)", "pdfId": "1oK4Jq0rUSjNTJcUveiplF2C6H5gl5pna", "pdfName": "11510-PVC管材料(暐琦).pdf", "status": "履約計價中", "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)", "projectCode": "RENDE_2"}, {"seq": 7, "category": "MAIN_CONTRACT", "vendorId": "29166845", "vendorName": "大瀚興業有限公司", "shortName": "大瀚興業", "contractItem": "H1141104-031 FRP預鑄式污水處理設施設備", "contractUntaxed": 800000, "contractTaxed": 840000, "latestPeriod": "115.05 (第0001期訂金｜115/05/11)", "prevUntaxed": 0, "currUntaxed": 0, "cumUntaxed": 0, "advanceUntaxed": 80000, "totalClaimedUntaxed": 80000, "cumTaxedInvoice": 84000, "cumNetPaidTaxed": 84000, "estPct": 0.0, "totalClaimedPct": 10.0, "historySummary": "115.05(第1期 10%訂金款 $80,000 未稅 / 含稅 $84,000 / 10.00%)", "pdfId": "1r8Q0em3Rky-4Zl8PcrJp80wmDkH7pt57", "pdfName": "115.05-FRP訂金-大瀚.pdf", "status": "已領訂金10%", "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)", "projectCode": "RENDE_2"}, {"seq": 8, "category": "MAIN_CONTRACT", "vendorId": "89157784", "vendorName": "鋒剛實業股份有限公司富剛分公司", "shortName": "鋒剛實業", "contractItem": "H1141104-027 鋼管材料", "contractUntaxed": 585767, "contractTaxed": 615055, "latestPeriod": "115.10 (第0006期｜115/10/21)", "prevUntaxed": 214103, "currUntaxed": 22752, "cumUntaxed": 236855, "advanceUntaxed": 0, "totalClaimedUntaxed": 236855, "cumTaxedInvoice": 248699, "cumNetPaidTaxed": 248699, "estPct": 40.44, "totalClaimedPct": 40.44, "historySummary": "115.04($57,281) → 115.05($72,405) → 115.08($35,904) → 115.09($18,940) → 115.10(第6期 $22,752 / 累計 $236,855 / 40.44%)", "pdfId": "1Z7oOTZQGmdGo0hLfFxdAx2xLO4BHJr5p", "pdfName": "11510-鋼管材料(鋒剛).pdf", "status": "履約計價中", "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)", "projectCode": "RENDE_2"}, {"seq": 9, "category": "MAIN_CONTRACT", "vendorId": "60350785", "vendorName": "奕華不銹鋼品股份有限公司", "shortName": "奕華不銹鋼", "contractItem": "H1141104-035 不銹鋼閥+特殊閥設備", "contractUntaxed": 207988, "contractTaxed": 218387, "latestPeriod": "115.10 (第0004期｜115/10/21)", "prevUntaxed": 42660, "currUntaxed": 26000, "cumUntaxed": 68660, "advanceUntaxed": 13933, "totalClaimedUntaxed": 82593, "cumTaxedInvoice": 86722, "cumNetPaidTaxed": 86722, "estPct": 33.01, "totalClaimedPct": 39.71, "historySummary": "115.06(訂金 $20,799) → 115.09(第3期 $28,030 / 累計 $42,660) → 115.10(第4期 $26,000 / 估驗累計 $68,660 [33.01%]｜含預付 $82,593 [39.71%])", "pdfId": "1VBw0hnSRDQFrQjC1FiJH5cZ2IbIJ6OcP", "pdfName": "11510-不銹鋼閥+特殊閥設備(奕華).pdf", "status": "履約計價中", "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)", "projectCode": "RENDE_2"}, {"seq": 10, "category": "MAIN_CONTRACT", "vendorId": "84289961", "vendorName": "萬蕙昇股份有限公司", "shortName": "萬蕙昇", "contractItem": "H1141104-034 鑄鐵閥+防震軟管設備", "contractUntaxed": 51905, "contractTaxed": 54500, "latestPeriod": "115.04 (第0001期訂金｜115/04/27)", "prevUntaxed": 0, "currUntaxed": 0, "cumUntaxed": 0, "advanceUntaxed": 5190, "totalClaimedUntaxed": 5190, "cumTaxedInvoice": 5450, "cumNetPaidTaxed": 5450, "estPct": 0.0, "totalClaimedPct": 10.0, "historySummary": "115.04(第1期 10%訂金款 $5,190 未稅 / 含稅 $5,450 / 10.00%)", "pdfId": "1R7uagSa4pxPzr8VKQQJxaQJBYTAy848d", "pdfName": "115.04 閥,防震軟管(萬蕙昇) 訂金款.pdf", "status": "已領訂金10%", "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)", "projectCode": "RENDE_2"}, {"seq": 11, "category": "TEMP_PURCHASE", "vendorId": "90162119", "vendorName": "昇材科技有限公司", "shortName": "昇材科技", "contractItem": "零星採購 H0301 機電點工 (98工+代墊大琦34工)", "contractUntaxed": 462000, "contractTaxed": 485100, "latestPeriod": "115.08 (第0001期｜115/08/12)", "prevUntaxed": 0, "currUntaxed": 462000, "cumUntaxed": 462000, "advanceUntaxed": 0, "totalClaimedUntaxed": 462000, "cumTaxedInvoice": 485100, "cumNetPaidTaxed": 485100, "estPct": 100.0, "totalClaimedPct": 100.0, "historySummary": "115.08(第1期 7月點工98工 $343,000 + 代墊大琦6月點工34工 $119,000 = 未稅 $462,000 / 含稅 $485,100 / 100.00%)", "pdfId": "1WyoSNIf24PjPLm6d4goJhF3OfonOSTUb", "pdfName": "11508 昇材點工.pdf", "status": "100%請款結算", "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)", "projectCode": "RENDE_2"}, {"seq": 12, "category": "TEMP_PURCHASE", "vendorId": "53551571", "vendorName": "暄程科技有限公司", "shortName": "暄程科技", "contractItem": "H1141104-036 臨時電、配電盤", "contractUntaxed": 270000, "contractTaxed": 283500, "latestPeriod": "115.04 (第0001期結算｜115/04/21)", "prevUntaxed": 0, "currUntaxed": 270000, "cumUntaxed": 270000, "advanceUntaxed": 0, "totalClaimedUntaxed": 270000, "cumTaxedInvoice": 283500, "cumNetPaidTaxed": 283500, "estPct": 100.0, "totalClaimedPct": 100.0, "historySummary": "115.04(第1期 臨時電配電盤10組結算 $270,000 未稅 / 含稅 $283,500 / 100.00%)", "pdfId": "1IZOjnH37BZ03GVOM4iMGz-ksiF6p7v6p", "pdfName": "115.04 臨時配電盤(暄程).pdf", "status": "100%請款結算", "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)", "projectCode": "RENDE_2"}, {"seq": 13, "category": "TEMP_PURCHASE", "vendorId": "13094959", "vendorName": "錩發企業有限公司", "shortName": "錩發企業", "contractItem": "零星採購 A0507 臨時水電電纜 (PVC 3.5mm²x3C、22mm²x4C)", "contractUntaxed": 92809, "contractTaxed": 97449, "latestPeriod": "115.05 (第0001期｜115/05/25)", "prevUntaxed": 0, "currUntaxed": 92809, "cumUntaxed": 92809, "advanceUntaxed": 0, "totalClaimedUntaxed": 92809, "cumTaxedInvoice": 97449, "cumNetPaidTaxed": 97449, "estPct": 100.0, "totalClaimedPct": 100.0, "historySummary": "115.05(第1期 臨時水電電纜 $92,809 未稅 / 含稅 $97,449 / 100.00%)", "pdfId": "1thMdpbfQwnFJdx4YXCLWVRuqgOBesk69", "pdfName": "11505 臨時水電(錩發).pdf", "status": "100%請款結算", "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)", "projectCode": "RENDE_2"}, {"seq": 14, "category": "TEMP_PURCHASE", "vendorId": "70666886", "vendorName": "銓旺機電工程有限公司", "shortName": "銓旺機電", "contractItem": "零星採購 B0101/028 新設工務所網路與電源點工及粉體塗裝管", "contractUntaxed": 85700, "contractTaxed": 89985, "latestPeriod": "115.10 (第0002期｜115/10/20)", "prevUntaxed": 24000, "currUntaxed": 61700, "cumUntaxed": 85700, "advanceUntaxed": 0, "totalClaimedUntaxed": 85700, "cumTaxedInvoice": 89985, "cumNetPaidTaxed": 89985, "estPct": 100.0, "totalClaimedPct": 100.0, "historySummary": "前期($24,000) → 115.10(第2期 $61,700 / 累計未稅 $85,700 / 含稅 $89,985 / 100.00%)", "pdfId": "1XkSa-0DkBCGNLFMCz5J4Daa93EZUglFu", "pdfName": "11510-新設工務所新增網路及電源(銓旺).pdf", "status": "100%請款結算", "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)", "projectCode": "RENDE_2"}, {"seq": 15, "category": "TEMP_PURCHASE", "vendorId": "28318772", "vendorName": "聯隊水電材料有限公司", "shortName": "聯隊水電", "contractItem": "零星採購 B0101/028 臨時水電材料與五金另料", "contractUntaxed": 46048, "contractTaxed": 48350, "latestPeriod": "115.10 (第0004期｜115/10/15)", "prevUntaxed": 17469, "currUntaxed": 28579, "cumUntaxed": 46048, "advanceUntaxed": 0, "totalClaimedUntaxed": 46048, "cumTaxedInvoice": 48350, "cumNetPaidTaxed": 48350, "estPct": 100.0, "totalClaimedPct": 100.0, "historySummary": "115.06($2,318) → 115.08($11,303) → 115.09($3,848) → 115.10(第4期 $28,579 / 累計未稅 $46,048 / 含稅 $48,350 / 100.00%)", "pdfId": "1Kz_kEgGVh_XDJJ3Ptqq5w-tSE8_ayxCw", "pdfName": "11510-臨時水電材料(聯隊).pdf", "status": "100%請款結算", "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)", "projectCode": "RENDE_2"}, {"seq": 16, "category": "TEMP_PURCHASE", "vendorId": "12744224", "vendorName": "倍士特有限公司", "shortName": "倍士特", "contractItem": "零星採購 臨時水電恆壓變頻式加壓泵浦機組", "contractUntaxed": 42857, "contractTaxed": 45000, "latestPeriod": "115.03 (第0001期｜115/03/25)", "prevUntaxed": 0, "currUntaxed": 42857, "cumUntaxed": 42857, "advanceUntaxed": 0, "totalClaimedUntaxed": 42857, "cumTaxedInvoice": 45000, "cumNetPaidTaxed": 45000, "estPct": 100.0, "totalClaimedPct": 100.0, "historySummary": "115.03(第1期 恆壓變頻泵浦 $42,857 未稅 / 含稅 $45,000 / 100.00%)", "pdfId": "1Xjx3H1mCkcbl5vclukC_EzlcU8HrPVlV", "pdfName": "115.03 臨時電-泵浦(倍士特).pdf", "status": "100%請款結算", "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)", "projectCode": "RENDE_2"}, {"seq": 17, "category": "TEMP_PURCHASE", "vendorId": "23028655", "vendorName": "富笙電機有限公司", "shortName": "富笙電機", "contractItem": "零星採購 1700301001 臨時水電變壓器 TR 3φ 20KVA", "contractUntaxed": 22381, "contractTaxed": 23500, "latestPeriod": "115.04 (第0001期｜115/04/25)", "prevUntaxed": 0, "currUntaxed": 22381, "cumUntaxed": 22381, "advanceUntaxed": 0, "totalClaimedUntaxed": 22381, "cumTaxedInvoice": 23500, "cumNetPaidTaxed": 23500, "estPct": 100.0, "totalClaimedPct": 100.0, "historySummary": "115.04(第1期 臨時水電變壓器 $22,381 未稅 / 含稅 $23,500 / 100.00%)", "pdfId": "19Tru2H1PTzwt6xswEzn5bAXYJb2XhlyB", "pdfName": "11504 富笙電機.pdf", "status": "100%請款結算", "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)", "projectCode": "RENDE_2"}, {"seq": 18, "category": "TEMP_PURCHASE", "vendorId": "22905183", "vendorName": "達鋐電線電纜有限公司", "shortName": "達鋐電纜", "contractItem": "零星採購 臨時水電用合機PVC電纜 8mm²x4C", "contractUntaxed": 19160, "contractTaxed": 20118, "latestPeriod": "115.03 (第0001期｜115/03/25)", "prevUntaxed": 0, "currUntaxed": 19160, "cumUntaxed": 19160, "advanceUntaxed": 0, "totalClaimedUntaxed": 19160, "cumTaxedInvoice": 20118, "cumNetPaidTaxed": 20118, "estPct": 100.0, "totalClaimedPct": 100.0, "historySummary": "115.03(第1期 臨時水電PVC電纜 $19,160 未稅 / 含稅 $20,118 / 100.00%)", "pdfId": "1i5ofa_LuDemtzICy21uuHZ1XilcuhOcl", "pdfName": "115.03 臨時水電-電線(達鋐).pdf", "status": "100%請款結算", "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)", "projectCode": "RENDE_2"}, {"seq": 19, "category": "TEMP_PURCHASE", "vendorId": "97494009", "vendorName": "洛基企業有限公司", "shortName": "洛基企業", "contractItem": "零星採購 接地銅棒 3/4\"x3000mm 及代買止水板", "contractUntaxed": 8956, "contractTaxed": 9404, "latestPeriod": "115.02 (第0001期｜115/02/24)", "prevUntaxed": 0, "currUntaxed": 8956, "cumUntaxed": 8956, "advanceUntaxed": 0, "totalClaimedUntaxed": 8956, "cumTaxedInvoice": 9404, "cumNetPaidTaxed": 9404, "estPct": 100.0, "totalClaimedPct": 100.0, "historySummary": "115.02(第1期 接地銅棒含運 $7,250 + 代買大琦止水板 $1,706 = 未稅 $8,956 / 含稅 $9,404 / 100.00%)", "pdfId": "1YgE5XzNAqgHcLDSAhtH1Ak8Kw78GLGCO", "pdfName": "115.02 - 洛基-機電材料 接地棒.pdf", "status": "100%請款結算", "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)", "projectCode": "RENDE_2"}, {"seq": 20, "category": "TEMP_PURCHASE", "vendorId": "35843371", "vendorName": "中興水塔股份有限公司", "shortName": "中興水塔", "contractItem": "零星採購 臨時水電洗車台 SUS304#3000型附架水塔", "contractUntaxed": 3800, "contractTaxed": 3990, "latestPeriod": "115.04 (第0001期｜115/04/24)", "prevUntaxed": 0, "currUntaxed": 3800, "cumUntaxed": 3800, "advanceUntaxed": 0, "totalClaimedUntaxed": 3800, "cumTaxedInvoice": 3990, "cumNetPaidTaxed": 3990, "estPct": 100.0, "totalClaimedPct": 100.0, "historySummary": "115.04(第1期 洗車台水塔 $3,800 未稅 / 含稅 $3,990 / 100.00%)", "pdfId": "1xrU2k6S0m6KEgvc6p5C6qsPpF_wuEo6j", "pdfName": "11504 中興水塔.pdf", "status": "100%請款結算", "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)", "projectCode": "RENDE_2"}, {"seq": 21, "category": "TEMP_PURCHASE", "vendorId": "29160814", "vendorName": "瑞瑀水電材料有限公司", "shortName": "瑞瑀水電", "contractItem": "零星採購 臨時水電數字型水錶 3/4\" 及電子表", "contractUntaxed": 2390, "contractTaxed": 2510, "latestPeriod": "115.03 (第0001期｜115/03/30)", "prevUntaxed": 0, "currUntaxed": 2390, "cumUntaxed": 2390, "advanceUntaxed": 0, "totalClaimedUntaxed": 2390, "cumTaxedInvoice": 2510, "cumNetPaidTaxed": 2510, "estPct": 100.0, "totalClaimedPct": 100.0, "historySummary": "115.03(第1期 水錶與電子表 $2,390 未稅 / 含稅 $2,510 / 100.00%)", "pdfId": "14Bsd90zCncWJ1cDvtGq54ntQcDbWdOs7", "pdfName": "115.03 臨時水電-水錶(瑞瑀).pdf", "status": "100%請款結算", "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)", "projectCode": "RENDE_2"}, {"seq": 22, "category": "TERMINATED", "vendorId": "53352279", "vendorName": "大琦實業股份有限公司 (115/07/01解約)", "shortName": "大琦實業(已解約)", "contractItem": "H1141104-0 原機電工程大包 (115/07/01協議解約由易興接手)", "contractUntaxed": 22000000, "contractTaxed": 23100000, "latestPeriod": "115.02 (第0001期訂金｜115/03/06)", "prevUntaxed": 0, "currUntaxed": 0, "cumUntaxed": 0, "advanceUntaxed": 2200000, "totalClaimedUntaxed": 2200000, "cumTaxedInvoice": 2310000, "cumNetPaidTaxed": 2310000, "estPct": 0.0, "totalClaimedPct": 10.0, "historySummary": "115.02(第1期 10%訂金 $2,200,000 未稅 / 含稅 $2,310,000；115/07/01協議解約，待扣回代買止水板$1,706及6月點工$119,000)", "pdfId": "1Wz3IFPIVP-vCQG6IQm_oSUev0ERB6EEV", "pdfName": "115.02大琦-機電大包訂金.pdf", "status": "已解約待扣回結算", "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)", "projectCode": "RENDE_2"}],
   "桃園市八德區仁德國民小學新建校舍工程(第一期)": [],
@@ -16753,8 +16753,8 @@ window.__V167_FIVE_UPGRADES_READY__ = true;
 
     if (isR2) {
       if (nasCodeEl) nasCodeEl.textContent = "\\\\dogreatnas.synology.me\\元順營造-仁德二期\\60-機電相關\\廠商請款資料";
-      if (drvCodeEl) drvCodeEl.textContent = "雲端硬碟 LINE BOT / 仁德2 / 60-機電相關 / 廠商請款資料";
-      if (syncSpanEl) syncSpanEl.innerHTML = "（已同步 <code>115.01</code> ~ <code>115.10</code> 共 9 個月份資料夾、26 份請款單 PDF）";
+      if (drvCodeEl) drvCodeEl.textContent = "雲端硬碟\LINE BOT\01-仁德國小(第二期)\60-機電相關\廠商請款資料";
+      if (syncSpanEl) syncSpanEl.innerHTML = "（已三維比對 <code>115.01</code> ~ <code>115.10</code> 及 <code>00-待簽核請款單</code> 共 42 份請款單 PDF・43.78 MB）";
       if (openBtnEl) {
         openBtnEl.href = "https://drive.google.com/drive/folders/1GdwccNDwPL9X1JZFgxODseQifHessr4M";
         openBtnEl.textContent = "📂 開啟 /linebot/仁德2/60-機電相關/廠商請款資料";
@@ -28940,5 +28940,321 @@ window.reRenderActiveSettlementView_S95=function(){
 })();
 </script>
 
+<script id="s98Unified2400AndVendor3TupleEngine">
+/* ==================== S9.8 UNIFIED 24:00 SCHEDULE & VENDOR BILLING 3-TUPLE (FILENAME × MODTIME × SIZE) ENGINE ==================== */
+(function initS98Unified2400AndVendor3Tuple_() {
+  if (window.__S98_VENDOR_3TUPLE_READY__) return;
+  window.__S98_VENDOR_3TUPLE_READY__ = true;
+  window.__WARROOM_UI_SHELL_VERSION__ = "S9.8_UNIFIED_2400_VENDOR_3TUPLE";
+
+  var DEFAULT_S98_3TUPLE_DATA_ = {"schemaVersion":"S9.8_VENDOR_BILLING_NAS_DRIVE_3TUPLE_SYNC","scheduleMode":"DAILY_2400_UNIFIED_SCHEDULE","cancelledLegacySchedule":"19:00 當日相簿自動下載、前一日完整性複核 & NAS 備份回報（已取消並統一併入 24:00 排程）","nasPath":"\\\\dogreatnas.synology.me\\元順工程-仁德二期\\60-機電相關\\廠商請款資料","drivePath":"雲端硬碟\\LINE BOT\\01-仁德國小(第二期)\\60-機電相關\\廠商請款資料","driveFolderId":"1GdwccNDwPL9X1JZFgxODseQifHessr4M","driveFolderUrl":"https://drive.google.com/drive/folders/1GdwccNDwPL9X1JZFgxODseQifHessr4M","pendingFolderId":"1IB8SPE_4eZoGmBnpauL5O5fg6VrtcPFO","pendingFolderUrl":"https://drive.google.com/drive/folders/1IB8SPE_4eZoGmBnpauL5O5fg6VrtcPFO","checkedAt":"2026-11-17 12:15:00","checkedTimeHm":"12:15","compareDimensions":["檔案名稱 (fileName)","修改日期 (modifiedTime)","檔案大小 (sizeBytes)"],"totalFiles":42,"monthlySignedCount":38,"pendingSignoffCount":4,"matched3TupleCount":42,"sizeMismatchCount":0,"modTimeDiffCount":0,"onlyOnNasCount":0,"onlyOnDriveCount":0,"anomalyCount":0,"totalBytes":45910209,"totalMbText":"43.78 MB","subfolders":[{"subFolder":"00-待簽核請款單","folderId":"1IB8SPE_4eZoGmBnpauL5O5fg6VrtcPFO","fileCount":4,"totalBytes":5829814},{"subFolder":"115.01","folderId":"146uvmYh2BsVm_sXZkIYz2BvPEi_cPzGG","fileCount":1,"totalBytes":553105},{"subFolder":"115.02","folderId":"1anfexmJZM7X3N9i6z__ahvYC9QQFrcgV","fileCount":3,"totalBytes":2183587},{"subFolder":"115.03","folderId":"1-1iN0l9q893kH97mPZDOQMhgJdRHZXub","fileCount":5,"totalBytes":2459816},{"subFolder":"115.04","folderId":"1RDrr4cBKfKiJ6YDSKTNDqM-AFsxwg5gC","fileCount":6,"totalBytes":10515356},{"subFolder":"115.05","folderId":"1275-52cDt9W4HXUpwDU10b58vvMJtHqy","fileCount":3,"totalBytes":4221452},{"subFolder":"115.06","folderId":"1HKsWXICCFDJUFSGlgVFrCqwQPVHZQlI4","fileCount":2,"totalBytes":4461556},{"subFolder":"115.08","folderId":"1nuFcQ_yM3Pmg2tz5jIp2KkbnC1A_CFCn","fileCount":3,"totalBytes":2455291},{"subFolder":"115.09","folderId":"1MNvKGJrnWYDbCviWIn9lsFH3VSXntReA","fileCount":7,"totalBytes":4794360},{"subFolder":"115.10","folderId":"1AI08h5GmpdIocte9VcVrRkh6lx6WnecP","fileCount":8,"totalBytes":8435872}],"files":[{"relKey":"00-待簽核請款單/(待簽)11506-臨時水電材料(聯隊).pdf","subFolder":"00-待簽核請款單","subFolderId":"1IB8SPE_4eZoGmBnpauL5O5fg6VrtcPFO","fileName":"(待簽)11506-臨時水電材料(聯隊).pdf","fileId":"1zMD0C69qehiQ0NGUNap34kbN64NP9dtz","driveSizeBytes":2721577,"nasSizeBytes":2721577,"sizeDeltaBytes":0,"driveModifiedTaipei":"2026-11-08 12:29:57","nasModifiedTaipei":"2026-11-08 12:29:57","driveModifiedMs":1794112197511,"nasModifiedMs":1794112197511,"timeDeltaSec":0,"isPendingSignoff":true,"syncStatus":"MATCHED_3TUPLE","syncStatusLabel":"三維一致（檔名×修改日期×檔案大小相符）","fileUrl":"https://drive.google.com/file/d/1zMD0C69qehiQ0NGUNap34kbN64NP9dtz/view?usp=drivesdk"},{"relKey":"00-待簽核請款單/(待簽)11508-臨時水電材料(聯隊).pdf","subFolder":"00-待簽核請款單","subFolderId":"1IB8SPE_4eZoGmBnpauL5O5fg6VrtcPFO","fileName":"(待簽)11508-臨時水電材料(聯隊).pdf","fileId":"1uqLiWPu7bvi4y0bLvl8DTxhoJRmNrzEh","driveSizeBytes":910922,"nasSizeBytes":910922,"sizeDeltaBytes":0,"driveModifiedTaipei":"2026-11-08 12:29:58","nasModifiedTaipei":"2026-11-08 12:29:58","driveModifiedMs":1794112198168,"nasModifiedMs":1794112198168,"timeDeltaSec":0,"isPendingSignoff":true,"syncStatus":"MATCHED_3TUPLE","syncStatusLabel":"三維一致（檔名×修改日期×檔案大小相符）","fileUrl":"https://drive.google.com/file/d/1uqLiWPu7bvi4y0bLvl8DTxhoJRmNrzEh/view?usp=drivesdk"},{"relKey":"00-待簽核請款單/(待簽)11508-鋼管材料(鋒剛).pdf","subFolder":"00-待簽核請款單","subFolderId":"1IB8SPE_4eZoGmBnpauL5O5fg6VrtcPFO","fileName":"(待簽)11508-鋼管材料(鋒剛).pdf","fileId":"1FqKWsd9-5N8uN7NmBF99Zl4B-94q_0zX","driveSizeBytes":801888,"nasSizeBytes":801888,"sizeDeltaBytes":0,"driveModifiedTaipei":"2026-11-08 12:29:58","nasModifiedTaipei":"2026-11-08 12:29:58","driveModifiedMs":1794112198499,"nasModifiedMs":1794112198499,"timeDeltaSec":0,"isPendingSignoff":true,"syncStatus":"MATCHED_3TUPLE","syncStatusLabel":"三維一致（檔名×修改日期×檔案大小相符）","fileUrl":"https://drive.google.com/file/d/1FqKWsd9-5N8uN7NmBF99Zl4B-94q_0zX/view?usp=drivesdk"},{"relKey":"00-待簽核請款單/(待簽)11508-電線及電纜材料(伸泰).pdf","subFolder":"00-待簽核請款單","subFolderId":"1IB8SPE_4eZoGmBnpauL5O5fg6VrtcPFO","fileName":"(待簽)11508-電線及電纜材料(伸泰).pdf","fileId":"1yvHB_Hpt9EVE7A5dLhELbzDvglTvWvqB","driveSizeBytes":1395427,"nasSizeBytes":1395427,"sizeDeltaBytes":0,"driveModifiedTaipei":"2026-11-08 12:29:57","nasModifiedTaipei":"2026-11-08 12:29:57","driveModifiedMs":1794112197757,"nasModifiedMs":1794112197757,"timeDeltaSec":0,"isPendingSignoff":true,"syncStatus":"MATCHED_3TUPLE","syncStatusLabel":"三維一致（檔名×修改日期×檔案大小相符）","fileUrl":"https://drive.google.com/file/d/1yvHB_Hpt9EVE7A5dLhELbzDvglTvWvqB/view?usp=drivesdk"},{"relKey":"115.10/11510-PVC管材料(暐琦).pdf","subFolder":"115.10","subFolderId":"1AI08h5GmpdIocte9VcVrRkh6lx6WnecP","fileName":"11510-PVC管材料(暐琦).pdf","fileId":"1oK4Jq0rUSjNTJcUveiplF2C6H5gl5pna","driveSizeBytes":790858,"nasSizeBytes":790858,"sizeDeltaBytes":0,"driveModifiedTaipei":"2026-11-06 17:35:34","nasModifiedTaipei":"2026-11-06 17:35:34","driveModifiedMs":1793957734777,"nasModifiedMs":1793957734777,"timeDeltaSec":0,"isPendingSignoff":false,"syncStatus":"MATCHED_3TUPLE","syncStatusLabel":"三維一致（檔名×修改日期×檔案大小相符）","fileUrl":"https://drive.google.com/file/d/1oK4Jq0rUSjNTJcUveiplF2C6H5gl5pna/view?usp=drivesdk"},{"relKey":"115.10/11510-不銹鋼閥+特殊閥設備(奕華).pdf","subFolder":"115.10","subFolderId":"1AI08h5GmpdIocte9VcVrRkh6lx6WnecP","fileName":"11510-不銹鋼閥+特殊閥設備(奕華).pdf","fileId":"1VBw0hnSRDQFrQjC1FiJH5cZ2IbIJ6OcP","driveSizeBytes":340945,"nasSizeBytes":340945,"sizeDeltaBytes":0,"driveModifiedTaipei":"2026-11-06 17:35:34","nasModifiedTaipei":"2026-11-06 17:35:34","driveModifiedMs":1793957734516,"nasModifiedMs":1793957734516,"timeDeltaSec":0,"isPendingSignoff":false,"syncStatus":"MATCHED_3TUPLE","syncStatusLabel":"三維一致（檔名×修改日期×檔案大小相符）","fileUrl":"https://drive.google.com/file/d/1VBw0hnSRDQFrQjC1FiJH5cZ2IbIJ6OcP/view?usp=drivesdk"},{"relKey":"115.10/11510-新設工務所新增網路及電源(銓旺).pdf","subFolder":"115.10","subFolderId":"1AI08h5GmpdIocte9VcVrRkh6lx6WnecP","fileName":"11510-新設工務所新增網路及電源(銓旺).pdf","fileId":"1XkSa-0DkBCGNLFMCz5J4Daa93EZUglFu","driveSizeBytes":545013,"nasSizeBytes":545013,"sizeDeltaBytes":0,"driveModifiedTaipei":"2026-11-06 17:35:35","nasModifiedTaipei":"2026-11-06 17:35:35","driveModifiedMs":1793957735714,"nasModifiedMs":1793957735714,"timeDeltaSec":0,"isPendingSignoff":false,"syncStatus":"MATCHED_3TUPLE","syncStatusLabel":"三維一致（檔名×修改日期×檔案大小相符）","fileUrl":"https://drive.google.com/file/d/1XkSa-0DkBCGNLFMCz5J4Daa93EZUglFu/view?usp=drivesdk"},{"relKey":"115.10/11510-機電工程(易興).pdf","subFolder":"115.10","subFolderId":"1AI08h5GmpdIocte9VcVrRkh6lx6WnecP","fileName":"11510-機電工程(易興).pdf","fileId":"16CUqBMDiZN-is3IixdU-kx0lIrblOw5s","driveSizeBytes":3182286,"nasSizeBytes":3182286,"sizeDeltaBytes":0,"driveModifiedTaipei":"2026-11-06 17:35:33","nasModifiedTaipei":"2026-11-06 17:35:33","driveModifiedMs":1793957733986,"nasModifiedMs":1793957733986,"timeDeltaSec":0,"isPendingSignoff":false,"syncStatus":"MATCHED_3TUPLE","syncStatusLabel":"三維一致（檔名×修改日期×檔案大小相符）","fileUrl":"https://drive.google.com/file/d/16CUqBMDiZN-is3IixdU-kx0lIrblOw5s/view?usp=drivesdk"},{"relKey":"115.10/11510-消防設備(禾昌).pdf","subFolder":"115.10","subFolderId":"1AI08h5GmpdIocte9VcVrRkh6lx6WnecP","fileName":"11510-消防設備(禾昌).pdf","fileId":"1ZCj8dd9v_DBhS4SrIk2s688ReVfjLbi_","driveSizeBytes":1240628,"nasSizeBytes":1240628,"sizeDeltaBytes":0,"driveModifiedTaipei":"2026-11-06 17:35:35","nasModifiedTaipei":"2026-11-06 17:35:35","driveModifiedMs":1793957735030,"nasModifiedMs":1793957735030,"timeDeltaSec":0,"isPendingSignoff":false,"syncStatus":"MATCHED_3TUPLE","syncStatusLabel":"三維一致（檔名×修改日期×檔案大小相符）","fileUrl":"https://drive.google.com/file/d/1ZCj8dd9v_DBhS4SrIk2s688ReVfjLbi_/view?usp=drivesdk"},{"relKey":"115.10/11510-臨時水電材料(聯隊).pdf","subFolder":"115.10","subFolderId":"1AI08h5GmpdIocte9VcVrRkh6lx6WnecP","fileName":"11510-臨時水電材料(聯隊).pdf","fileId":"1Kz_kEgGVh_XDJJ3Ptqq5w-tSE8_ayxCw","driveSizeBytes":1134514,"nasSizeBytes":1134514,"sizeDeltaBytes":0,"driveModifiedTaipei":"2026-11-06 17:35:34","nasModifiedTaipei":"2026-11-06 17:35:34","driveModifiedMs":1793957734076,"nasModifiedMs":1793957734076,"timeDeltaSec":0,"isPendingSignoff":false,"syncStatus":"MATCHED_3TUPLE","syncStatusLabel":"三維一致（檔名×修改日期×檔案大小相符）","fileUrl":"https://drive.google.com/file/d/1Kz_kEgGVh_XDJJ3Ptqq5w-tSE8_ayxCw/view?usp=drivesdk"},{"relKey":"115.10/11510-鋼管材料(鋒剛).pdf","subFolder":"115.10","subFolderId":"1AI08h5GmpdIocte9VcVrRkh6lx6WnecP","fileName":"11510-鋼管材料(鋒剛).pdf","fileId":"1Z7oOTZQGmdGo0hLfFxdAx2xLO4BHJr5p","driveSizeBytes":464888,"nasSizeBytes":464888,"sizeDeltaBytes":0,"driveModifiedTaipei":"2026-11-06 17:35:35","nasModifiedTaipei":"2026-11-06 17:35:35","driveModifiedMs":1793957735789,"nasModifiedMs":1793957735789,"timeDeltaSec":0,"isPendingSignoff":false,"syncStatus":"MATCHED_3TUPLE","syncStatusLabel":"三維一致（檔名×修改日期×檔案大小相符）","fileUrl":"https://drive.google.com/file/d/1Z7oOTZQGmdGo0hLfFxdAx2xLO4BHJr5p/view?usp=drivesdk"},{"relKey":"115.10/11510-電線及電纜材料(伸泰).pdf","subFolder":"115.10","subFolderId":"1AI08h5GmpdIocte9VcVrRkh6lx6WnecP","fileName":"11510-電線及電纜材料(伸泰).pdf","fileId":"1Vfz2w4NN8_6Y0md0dgm1l7vb-YDFJrbz","driveSizeBytes":736740,"nasSizeBytes":736740,"sizeDeltaBytes":0,"driveModifiedTaipei":"2026-11-06 17:35:34","nasModifiedTaipei":"2026-11-06 17:35:34","driveModifiedMs":1793957734855,"nasModifiedMs":1793957734855,"timeDeltaSec":0,"isPendingSignoff":false,"syncStatus":"MATCHED_3TUPLE","syncStatusLabel":"三維一致（檔名×修改日期×檔案大小相符）","fileUrl":"https://drive.google.com/file/d/1Vfz2w4NN8_6Y0md0dgm1l7vb-YDFJrbz/view?usp=drivesdk"},{"relKey":"115.09/11509-PVC管材料(暐琦).pdf","subFolder":"115.09","subFolderId":"1MNvKGJrnWYDbCviWIn9lsFH3VSXntReA","fileName":"11509-PVC管材料(暐琦).pdf","fileId":"1uhQZ3B8pIwH7t6WhbqdEk5DWq12nLboz","driveSizeBytes":561408,"nasSizeBytes":561408,"sizeDeltaBytes":0,"driveModifiedTaipei":"2026-11-06 17:35:32","nasModifiedTaipei":"2026-11-06 17:35:32","driveModifiedMs":1793957732147,"nasModifiedMs":1793957732147,"timeDeltaSec":0,"isPendingSignoff":false,"syncStatus":"MATCHED_3TUPLE","syncStatusLabel":"三維一致（檔名×修改日期×檔案大小相符）","fileUrl":"https://drive.google.com/file/d/1uhQZ3B8pIwH7t6WhbqdEk5DWq12nLboz/view?usp=drivesdk"},{"relKey":"115.09/11509-不銹鋼閥+特殊閥(奕華).pdf","subFolder":"115.09","subFolderId":"1MNvKGJrnWYDbCviWIn9lsFH3VSXntReA","fileName":"11509-不銹鋼閥+特殊閥(奕華).pdf","fileId":"1otS4MOp7NxcbSly0Hgzo4KRXi77uvXig","driveSizeBytes":225114,"nasSizeBytes":225114,"sizeDeltaBytes":0,"driveModifiedTaipei":"2026-11-06 17:35:32","nasModifiedTaipei":"2026-11-06 17:35:32","driveModifiedMs":1793957732502,"nasModifiedMs":1793957732502,"timeDeltaSec":0,"isPendingSignoff":false,"syncStatus":"MATCHED_3TUPLE","syncStatusLabel":"三維一致（檔名×修改日期×檔案大小相符）","fileUrl":"https://drive.google.com/file/d/1otS4MOp7NxcbSly0Hgzo4KRXi77uvXig/view?usp=drivesdk"},{"relKey":"115.09/11509-機電工程(易興).pdf","subFolder":"115.09","subFolderId":"1MNvKGJrnWYDbCviWIn9lsFH3VSXntReA","fileName":"11509-機電工程(易興).pdf","fileId":"1sCvG3f87AAiGjAOY3HTy-b4bpWLHdVyC","driveSizeBytes":1347683,"nasSizeBytes":1347683,"sizeDeltaBytes":0,"driveModifiedTaipei":"2026-11-06 17:35:33","nasModifiedTaipei":"2026-11-06 17:35:33","driveModifiedMs":1793957733195,"nasModifiedMs":1793957733195,"timeDeltaSec":0,"isPendingSignoff":false,"syncStatus":"MATCHED_3TUPLE","syncStatusLabel":"三維一致（檔名×修改日期×檔案大小相符）","fileUrl":"https://drive.google.com/file/d/1sCvG3f87AAiGjAOY3HTy-b4bpWLHdVyC/view?usp=drivesdk"},{"relKey":"115.09/11509-臨時水電材料(聯隊).pdf","subFolder":"115.09","subFolderId":"1MNvKGJrnWYDbCviWIn9lsFH3VSXntReA","fileName":"11509-臨時水電材料(聯隊).pdf","fileId":"1O2EmvrXBH8V-WMqcqoaTe43vNtnUYKU-","driveSizeBytes":427818,"nasSizeBytes":427818,"sizeDeltaBytes":0,"driveModifiedTaipei":"2026-11-06 17:35:33","nasModifiedTaipei":"2026-11-06 17:35:33","driveModifiedMs":1793957733271,"nasModifiedMs":1793957733271,"timeDeltaSec":0,"isPendingSignoff":false,"syncStatus":"MATCHED_3TUPLE","syncStatusLabel":"三維一致（檔名×修改日期×檔案大小相符）","fileUrl":"https://drive.google.com/file/d/1O2EmvrXBH8V-WMqcqoaTe43vNtnUYKU-/view?usp=drivesdk"},{"relKey":"115.09/11509-配電盤及二線式設備(明進).pdf","subFolder":"115.09","subFolderId":"1MNvKGJrnWYDbCviWIn9lsFH3VSXntReA","fileName":"11509-配電盤及二線式設備(明進).pdf","fileId":"15qHQiC0LPI7CPWUKuUVgCZFKDtxSyP--","driveSizeBytes":759272,"nasSizeBytes":759272,"sizeDeltaBytes":0,"driveModifiedTaipei":"2026-11-06 17:35:33","nasModifiedTaipei":"2026-11-06 17:35:33","driveModifiedMs":1793957733452,"nasModifiedMs":1793957733452,"timeDeltaSec":0,"isPendingSignoff":false,"syncStatus":"MATCHED_3TUPLE","syncStatusLabel":"三維一致（檔名×修改日期×檔案大小相符）","fileUrl":"https://drive.google.com/file/d/15qHQiC0LPI7CPWUKuUVgCZFKDtxSyP--/view?usp=drivesdk"},{"relKey":"115.09/11509-鋼管材料(鋒剛).pdf","subFolder":"115.09","subFolderId":"1MNvKGJrnWYDbCviWIn9lsFH3VSXntReA","fileName":"11509-鋼管材料(鋒剛).pdf","fileId":"1QhjEH1WyMJyh1QLutYn1Bn5bO45sNoZh","driveSizeBytes":355926,"nasSizeBytes":355926,"sizeDeltaBytes":0,"driveModifiedTaipei":"2026-11-06 17:35:33","nasModifiedTaipei":"2026-11-06 17:35:33","driveModifiedMs":1793957733358,"nasModifiedMs":1793957733358,"timeDeltaSec":0,"isPendingSignoff":false,"syncStatus":"MATCHED_3TUPLE","syncStatusLabel":"三維一致（檔名×修改日期×檔案大小相符）","fileUrl":"https://drive.google.com/file/d/1QhjEH1WyMJyh1QLutYn1Bn5bO45sNoZh/view?usp=drivesdk"},{"relKey":"115.09/11509-電線及電纜材料(伸泰).pdf","subFolder":"115.09","subFolderId":"1MNvKGJrnWYDbCviWIn9lsFH3VSXntReA","fileName":"11509-電線及電纜材料(伸泰).pdf","fileId":"1i-iYPnuJ4a5ieECXNFJrA2GzWTf_keli","driveSizeBytes":1117139,"nasSizeBytes":1117139,"sizeDeltaBytes":0,"driveModifiedTaipei":"2026-11-06 17:35:33","nasModifiedTaipei":"2026-11-06 17:35:33","driveModifiedMs":1793957733544,"nasModifiedMs":1793957733544,"timeDeltaSec":0,"isPendingSignoff":false,"syncStatus":"MATCHED_3TUPLE","syncStatusLabel":"三維一致（檔名×修改日期×檔案大小相符）","fileUrl":"https://drive.google.com/file/d/1i-iYPnuJ4a5ieECXNFJrA2GzWTf_keli/view?usp=drivesdk"},{"relKey":"115.08/11508-弱電設備訂金(英威康).pdf","subFolder":"115.08","subFolderId":"1nuFcQ_yM3Pmg2tz5jIp2KkbnC1A_CFCn","fileName":"11508-弱電設備訂金(英威康).pdf","fileId":"19mjNZoGNMWmuaI1mo7ZccPPVWfuRUO4G","driveSizeBytes":667109,"nasSizeBytes":667109,"sizeDeltaBytes":0,"driveModifiedTaipei":"2026-11-08 08:50:58","nasModifiedTaipei":"2026-11-08 08:50:58","driveModifiedMs":1794099058979,"nasModifiedMs":1794099058979,"timeDeltaSec":0,"isPendingSignoff":false,"syncStatus":"MATCHED_3TUPLE","syncStatusLabel":"三維一致（檔名×修改日期×檔案大小相符）","fileUrl":"https://drive.google.com/file/d/19mjNZoGNMWmuaI1mo7ZccPPVWfuRUO4G/view?usp=drivesdk"},{"relKey":"115.08/11508-機電點工(昇材).pdf","subFolder":"115.08","subFolderId":"1nuFcQ_yM3Pmg2tz5jIp2KkbnC1A_CFCn","fileName":"11508-機電點工(昇材).pdf","fileId":"1WyoSNIf24PjPLm6d4goJhF3OfonOSTUb","driveSizeBytes":1151509,"nasSizeBytes":1151509,"sizeDeltaBytes":0,"driveModifiedTaipei":"2026-11-08 08:50:59","nasModifiedTaipei":"2026-11-08 08:50:59","driveModifiedMs":1794099059431,"nasModifiedMs":1794099059431,"timeDeltaSec":0,"isPendingSignoff":false,"syncStatus":"MATCHED_3TUPLE","syncStatusLabel":"三維一致（檔名×修改日期×檔案大小相符）","fileUrl":"https://drive.google.com/file/d/1WyoSNIf24PjPLm6d4goJhF3OfonOSTUb/view?usp=drivesdk"},{"relKey":"115.08/11508-配電盤訂金(明進).pdf","subFolder":"115.08","subFolderId":"1nuFcQ_yM3Pmg2tz5jIp2KkbnC1A_CFCn","fileName":"11508-配電盤訂金(明進).pdf","fileId":"1_t9ae7gw30dt_mZj7_Wn5_IQ_fNFNiDU","driveSizeBytes":636673,"nasSizeBytes":636673,"sizeDeltaBytes":0,"driveModifiedTaipei":"2026-11-08 08:50:58","nasModifiedTaipei":"2026-11-08 08:50:58","driveModifiedMs":1794099058752,"nasModifiedMs":1794099058752,"timeDeltaSec":0,"isPendingSignoff":false,"syncStatus":"MATCHED_3TUPLE","syncStatusLabel":"三維一致（檔名×修改日期×檔案大小相符）","fileUrl":"https://drive.google.com/file/d/1_t9ae7gw30dt_mZj7_Wn5_IQ_fNFNiDU/view?usp=drivesdk"},{"relKey":"115.06/11506-PVC管材料(暐琦).pdf","subFolder":"115.06","subFolderId":"1HKsWXICCFDJUFSGlgVFrCqwQPVHZQlI4","fileName":"11506-PVC管材料(暐琦).pdf","fileId":"1o0fzOilHEdeZM1gYUxXMJ5rVPSoassqh","driveSizeBytes":3787876,"nasSizeBytes":3787876,"sizeDeltaBytes":0,"driveModifiedTaipei":"2026-11-08 08:50:58","nasModifiedTaipei":"2026-11-08 08:50:58","driveModifiedMs":1794099058193,"nasModifiedMs":1794099058193,"timeDeltaSec":0,"isPendingSignoff":false,"syncStatus":"MATCHED_3TUPLE","syncStatusLabel":"三維一致（檔名×修改日期×檔案大小相符）","fileUrl":"https://drive.google.com/file/d/1o0fzOilHEdeZM1gYUxXMJ5rVPSoassqh/view?usp=drivesdk"},{"relKey":"115.06/11506-不銹鋼閥訂金(奕華).pdf","subFolder":"115.06","subFolderId":"1HKsWXICCFDJUFSGlgVFrCqwQPVHZQlI4","fileName":"11506-不銹鋼閥訂金(奕華).pdf","fileId":"1jwMWgfaAvGi3qIUBOBskcol51wyChWEU","driveSizeBytes":673680,"nasSizeBytes":673680,"sizeDeltaBytes":0,"driveModifiedTaipei":"2026-11-08 08:50:57","nasModifiedTaipei":"2026-11-08 08:50:57","driveModifiedMs":1794099057773,"nasModifiedMs":1794099057773,"timeDeltaSec":0,"isPendingSignoff":false,"syncStatus":"MATCHED_3TUPLE","syncStatusLabel":"三維一致（檔名×修改日期×檔案大小相符）","fileUrl":"https://drive.google.com/file/d/1jwMWgfaAvGi3qIUBOBskcol51wyChWEU/view?usp=drivesdk"},{"relKey":"115.05/11505-FRP污水設備訂金(大瀚).pdf","subFolder":"115.05","subFolderId":"1275-52cDt9W4HXUpwDU10b58vvMJtHqy","fileName":"11505-FRP污水設備訂金(大瀚).pdf","fileId":"1r8Q0em3Rky-4Zl8PcrJp80wmDkH7pt57","driveSizeBytes":672359,"nasSizeBytes":672359,"sizeDeltaBytes":0,"driveModifiedTaipei":"2026-11-08 08:50:56","nasModifiedTaipei":"2026-11-08 08:50:56","driveModifiedMs":1794099056547,"nasModifiedMs":1794099056547,"timeDeltaSec":0,"isPendingSignoff":false,"syncStatus":"MATCHED_3TUPLE","syncStatusLabel":"三維一致（檔名×修改日期×檔案大小相符）","fileUrl":"https://drive.google.com/file/d/1r8Q0em3Rky-4Zl8PcrJp80wmDkH7pt57/view?usp=drivesdk"},{"relKey":"115.05/11505-臨時水電電纜(錩發).pdf","subFolder":"115.05","subFolderId":"1275-52cDt9W4HXUpwDU10b58vvMJtHqy","fileName":"11505-臨時水電電纜(錩發).pdf","fileId":"1thMdpbfQwnFJdx4YXCLWVRuqgOBesk69","driveSizeBytes":753194,"nasSizeBytes":753194,"sizeDeltaBytes":0,"driveModifiedTaipei":"2026-11-08 08:50:56","nasModifiedTaipei":"2026-11-08 08:50:56","driveModifiedMs":1794099056960,"nasModifiedMs":1794099056960,"timeDeltaSec":0,"isPendingSignoff":false,"syncStatus":"MATCHED_3TUPLE","syncStatusLabel":"三維一致（檔名×修改日期×檔案大小相符）","fileUrl":"https://drive.google.com/file/d/1thMdpbfQwnFJdx4YXCLWVRuqgOBesk69/view?usp=drivesdk"},{"relKey":"115.05/11505-鋼管材料(鋒剛).pdf","subFolder":"115.05","subFolderId":"1275-52cDt9W4HXUpwDU10b58vvMJtHqy","fileName":"11505-鋼管材料(鋒剛).pdf","fileId":"1uMQqFdIlck3aENKVRe9ULcMiA0cq29hz","driveSizeBytes":2795899,"nasSizeBytes":2795899,"sizeDeltaBytes":0,"driveModifiedTaipei":"2026-11-08 08:50:58","nasModifiedTaipei":"2026-11-08 08:50:58","driveModifiedMs":1794099058275,"nasModifiedMs":1794099058275,"timeDeltaSec":0,"isPendingSignoff":false,"syncStatus":"MATCHED_3TUPLE","syncStatusLabel":"三維一致（檔名×修改日期×檔案大小相符）","fileUrl":"https://drive.google.com/file/d/1uMQqFdIlck3aENKVRe9ULcMiA0cq29hz/view?usp=drivesdk"},{"relKey":"115.04/115.04 閥,防震軟管(萬蕙昇) 訂金款.pdf","subFolder":"115.04","subFolderId":"1RDrr4cBKfKiJ6YDSKTNDqM-AFsxwg5gC","fileName":"115.04 閥,防震軟管(萬蕙昇) 訂金款.pdf","fileId":"1R7uagSa4pxPzr8VKQQJxaQJBYTAy848d","driveSizeBytes":348079,"nasSizeBytes":348079,"sizeDeltaBytes":0,"driveModifiedTaipei":"2026-11-06 17:35:39","nasModifiedTaipei":"2026-11-06 17:35:39","driveModifiedMs":1793957739103,"nasModifiedMs":1793957739103,"timeDeltaSec":0,"isPendingSignoff":false,"syncStatus":"MATCHED_3TUPLE","syncStatusLabel":"三維一致（檔名×修改日期×檔案大小相符）","fileUrl":"https://drive.google.com/file/d/1R7uagSa4pxPzr8VKQQJxaQJBYTAy848d/view?usp=drivesdk"},{"relKey":"115.04/11504-PVC管材料(暐琦).pdf","subFolder":"115.04","subFolderId":"1RDrr4cBKfKiJ6YDSKTNDqM-AFsxwg5gC","fileName":"11504-PVC管材料(暐琦).pdf","fileId":"1o_k5fp7VCAViruFGHvKaDScavNIFcyI_","driveSizeBytes":1045728,"nasSizeBytes":1045728,"sizeDeltaBytes":0,"driveModifiedTaipei":"2026-11-08 08:50:54","nasModifiedTaipei":"2026-11-08 08:50:54","driveModifiedMs":1794099054898,"nasModifiedMs":1794099054898,"timeDeltaSec":0,"isPendingSignoff":false,"syncStatus":"MATCHED_3TUPLE","syncStatusLabel":"三維一致（檔名×修改日期×檔案大小相符）","fileUrl":"https://drive.google.com/file/d/1o_k5fp7VCAViruFGHvKaDScavNIFcyI_/view?usp=drivesdk"},{"relKey":"115.04/11504-臨時水電水塔(中興水塔).pdf","subFolder":"115.04","subFolderId":"1RDrr4cBKfKiJ6YDSKTNDqM-AFsxwg5gC","fileName":"11504-臨時水電水塔(中興水塔).pdf","fileId":"1xrU2k6S0m6KEgvc6p5C6qsPpF_wuEo6j","driveSizeBytes":2324370,"nasSizeBytes":2324370,"sizeDeltaBytes":0,"driveModifiedTaipei":"2026-11-08 08:50:55","nasModifiedTaipei":"2026-11-08 08:50:55","driveModifiedMs":1794099055451,"nasModifiedMs":1794099055451,"timeDeltaSec":0,"isPendingSignoff":false,"syncStatus":"MATCHED_3TUPLE","syncStatusLabel":"三維一致（檔名×修改日期×檔案大小相符）","fileUrl":"https://drive.google.com/file/d/1xrU2k6S0m6KEgvc6p5C6qsPpF_wuEo6j/view?usp=drivesdk"},{"relKey":"115.04/11504-臨時水電變壓器(富笙電機).pdf","subFolder":"115.04","subFolderId":"1RDrr4cBKfKiJ6YDSKTNDqM-AFsxwg5gC","fileName":"11504-臨時水電變壓器(富笙電機).pdf","fileId":"19Tru2H1PTzwt6xswEzn5bAXYJb2XhlyB","driveSizeBytes":1746708,"nasSizeBytes":1746708,"sizeDeltaBytes":0,"driveModifiedTaipei":"2026-11-08 08:50:56","nasModifiedTaipei":"2026-11-08 08:50:56","driveModifiedMs":1794099056035,"nasModifiedMs":1794099056035,"timeDeltaSec":0,"isPendingSignoff":false,"syncStatus":"MATCHED_3TUPLE","syncStatusLabel":"三維一致（檔名×修改日期×檔案大小相符）","fileUrl":"https://drive.google.com/file/d/19Tru2H1PTzwt6xswEzn5bAXYJb2XhlyB/view?usp=drivesdk"},{"relKey":"115.04/11504-臨時配電盤(暄程).pdf","subFolder":"115.04","subFolderId":"1RDrr4cBKfKiJ6YDSKTNDqM-AFsxwg5gC","fileName":"11504-臨時配電盤(暄程).pdf","fileId":"1IZOjnH37BZ03GVOM4iMGz-ksiF6p7v6p","driveSizeBytes":1993825,"nasSizeBytes":1993825,"sizeDeltaBytes":0,"driveModifiedTaipei":"2026-11-08 08:50:56","nasModifiedTaipei":"2026-11-08 08:50:56","driveModifiedMs":1794099056385,"nasModifiedMs":1794099056385,"timeDeltaSec":0,"isPendingSignoff":false,"syncStatus":"MATCHED_3TUPLE","syncStatusLabel":"三維一致（檔名×修改日期×檔案大小相符）","fileUrl":"https://drive.google.com/file/d/1IZOjnH37BZ03GVOM4iMGz-ksiF6p7v6p/view?usp=drivesdk"},{"relKey":"115.04/11504-鋼管材料(鋒剛).pdf","subFolder":"115.04","subFolderId":"1RDrr4cBKfKiJ6YDSKTNDqM-AFsxwg5gC","fileName":"11504-鋼管材料(鋒剛).pdf","fileId":"1OTmFYTvlDhaKIL74ZyNIeDtlo93CgjOr","driveSizeBytes":3056646,"nasSizeBytes":3056646,"sizeDeltaBytes":0,"driveModifiedTaipei":"2026-11-08 08:50:56","nasModifiedTaipei":"2026-11-08 08:50:56","driveModifiedMs":1794099056532,"nasModifiedMs":1794099056532,"timeDeltaSec":0,"isPendingSignoff":false,"syncStatus":"MATCHED_3TUPLE","syncStatusLabel":"三維一致（檔名×修改日期×檔案大小相符）","fileUrl":"https://drive.google.com/file/d/1OTmFYTvlDhaKIL74ZyNIeDtlo93CgjOr/view?usp=drivesdk"},{"relKey":"115.03/11503-PVC管材料_第1期(暐琦).pdf","subFolder":"115.03","subFolderId":"1-1iN0l9q893kH97mPZDOQMhgJdRHZXub","fileName":"11503-PVC管材料_第1期(暐琦).pdf","fileId":"1G7teroaapAEN9PME2ZmTtcITWPFRdDWy","driveSizeBytes":587328,"nasSizeBytes":587328,"sizeDeltaBytes":0,"driveModifiedTaipei":"2026-11-08 08:50:52","nasModifiedTaipei":"2026-11-08 08:50:52","driveModifiedMs":1794099052628,"nasModifiedMs":1794099052628,"timeDeltaSec":0,"isPendingSignoff":false,"syncStatus":"MATCHED_3TUPLE","syncStatusLabel":"三維一致（檔名×修改日期×檔案大小相符）","fileUrl":"https://drive.google.com/file/d/1G7teroaapAEN9PME2ZmTtcITWPFRdDWy/view?usp=drivesdk"},{"relKey":"115.03/11503-PVC管材料_第2期(暐琦).pdf","subFolder":"115.03","subFolderId":"1-1iN0l9q893kH97mPZDOQMhgJdRHZXub","fileName":"11503-PVC管材料_第2期(暐琦).pdf","fileId":"1L6BjtvZjM3gMtN_7yVpRDg0_IherrQrL","driveSizeBytes":982429,"nasSizeBytes":982429,"sizeDeltaBytes":0,"driveModifiedTaipei":"2026-11-08 08:50:52","nasModifiedTaipei":"2026-11-08 08:50:52","driveModifiedMs":1794099052982,"nasModifiedMs":1794099052982,"timeDeltaSec":0,"isPendingSignoff":false,"syncStatus":"MATCHED_3TUPLE","syncStatusLabel":"三維一致（檔名×修改日期×檔案大小相符）","fileUrl":"https://drive.google.com/file/d/1L6BjtvZjM3gMtN_7yVpRDg0_IherrQrL/view?usp=drivesdk"},{"relKey":"115.03/11503-臨時水電水錶(瑞瑀).pdf","subFolder":"115.03","subFolderId":"1-1iN0l9q893kH97mPZDOQMhgJdRHZXub","fileName":"11503-臨時水電水錶(瑞瑀).pdf","fileId":"14Bsd90zCncWJ1cDvtGq54ntQcDbWdOs7","driveSizeBytes":210576,"nasSizeBytes":210576,"sizeDeltaBytes":0,"driveModifiedTaipei":"2026-11-08 08:50:54","nasModifiedTaipei":"2026-11-08 08:50:54","driveModifiedMs":1794099054207,"nasModifiedMs":1794099054207,"timeDeltaSec":0,"isPendingSignoff":false,"syncStatus":"MATCHED_3TUPLE","syncStatusLabel":"三維一致（檔名×修改日期×檔案大小相符）","fileUrl":"https://drive.google.com/file/d/14Bsd90zCncWJ1cDvtGq54ntQcDbWdOs7/view?usp=drivesdk"},{"relKey":"115.03/11503-臨時水電泵浦(倍士特).pdf","subFolder":"115.03","subFolderId":"1-1iN0l9q893kH97mPZDOQMhgJdRHZXub","fileName":"11503-臨時水電泵浦(倍士特).pdf","fileId":"1Xjx3H1mCkcbl5vclukC_EzlcU8HrPVlV","driveSizeBytes":330007,"nasSizeBytes":330007,"sizeDeltaBytes":0,"driveModifiedTaipei":"2026-11-08 08:50:54","nasModifiedTaipei":"2026-11-08 08:50:54","driveModifiedMs":1794099054128,"nasModifiedMs":1794099054128,"timeDeltaSec":0,"isPendingSignoff":false,"syncStatus":"MATCHED_3TUPLE","syncStatusLabel":"三維一致（檔名×修改日期×檔案大小相符）","fileUrl":"https://drive.google.com/file/d/1Xjx3H1mCkcbl5vclukC_EzlcU8HrPVlV/view?usp=drivesdk"},{"relKey":"115.03/11503-臨時水電電線(達鋐).pdf","subFolder":"115.03","subFolderId":"1-1iN0l9q893kH97mPZDOQMhgJdRHZXub","fileName":"11503-臨時水電電線(達鋐).pdf","fileId":"1i5ofa_LuDemtzICy21uuHZ1XilcuhOcl","driveSizeBytes":349476,"nasSizeBytes":349476,"sizeDeltaBytes":0,"driveModifiedTaipei":"2026-11-08 08:50:53","nasModifiedTaipei":"2026-11-08 08:50:53","driveModifiedMs":1794099053652,"nasModifiedMs":1794099053652,"timeDeltaSec":0,"isPendingSignoff":false,"syncStatus":"MATCHED_3TUPLE","syncStatusLabel":"三維一致（檔名×修改日期×檔案大小相符）","fileUrl":"https://drive.google.com/file/d/1i5ofa_LuDemtzICy21uuHZ1XilcuhOcl/view?usp=drivesdk"},{"relKey":"115.02/115.02 - 洛基-機電材料 接地棒.pdf","subFolder":"115.02","subFolderId":"1anfexmJZM7X3N9i6z__ahvYC9QQFrcgV","fileName":"115.02 - 洛基-機電材料 接地棒.pdf","fileId":"1YgE5XzNAqgHcLDSAhtH1Ak8Kw78GLGCO","driveSizeBytes":412751,"nasSizeBytes":412751,"sizeDeltaBytes":0,"driveModifiedTaipei":"2026-11-06 17:35:36","nasModifiedTaipei":"2026-11-06 17:35:36","driveModifiedMs":1793957736777,"nasModifiedMs":1793957736777,"timeDeltaSec":0,"isPendingSignoff":false,"syncStatus":"MATCHED_3TUPLE","syncStatusLabel":"三維一致（檔名×修改日期×檔案大小相符）","fileUrl":"https://drive.google.com/file/d/1YgE5XzNAqgHcLDSAhtH1Ak8Kw78GLGCO/view?usp=drivesdk"},{"relKey":"115.02/115.02大琦-機電大包訂金.pdf","subFolder":"115.02","subFolderId":"1anfexmJZM7X3N9i6z__ahvYC9QQFrcgV","fileName":"115.02大琦-機電大包訂金.pdf","fileId":"1Wz3IFPIVP-vCQG6IQm_oSUev0ERB6EEV","driveSizeBytes":575976,"nasSizeBytes":575976,"sizeDeltaBytes":0,"driveModifiedTaipei":"2026-11-06 17:35:36","nasModifiedTaipei":"2026-11-06 17:35:36","driveModifiedMs":1793957736689,"nasModifiedMs":1793957736689,"timeDeltaSec":0,"isPendingSignoff":false,"syncStatus":"MATCHED_3TUPLE","syncStatusLabel":"三維一致（檔名×修改日期×檔案大小相符）","fileUrl":"https://drive.google.com/file/d/1Wz3IFPIVP-vCQG6IQm_oSUev0ERB6EEV/view?usp=drivesdk"},{"relKey":"115.02/11502-電線及電纜材料(伸泰).pdf","subFolder":"115.02","subFolderId":"1anfexmJZM7X3N9i6z__ahvYC9QQFrcgV","fileName":"11502-電線及電纜材料(伸泰).pdf","fileId":"1rqOzO_OE34QI0UVuVvpxKwfD6t8JhBYZ","driveSizeBytes":1194860,"nasSizeBytes":1194860,"sizeDeltaBytes":0,"driveModifiedTaipei":"2026-11-08 08:50:53","nasModifiedTaipei":"2026-11-08 08:50:53","driveModifiedMs":1794099053178,"nasModifiedMs":1794099053178,"timeDeltaSec":0,"isPendingSignoff":false,"syncStatus":"MATCHED_3TUPLE","syncStatusLabel":"三維一致（檔名×修改日期×檔案大小相符）","fileUrl":"https://drive.google.com/file/d/1rqOzO_OE34QI0UVuVvpxKwfD6t8JhBYZ/view?usp=drivesdk"},{"relKey":"115.01/11501-電線及電纜訂金(伸泰).pdf","subFolder":"115.01","subFolderId":"146uvmYh2BsVm_sXZkIYz2BvPEi_cPzGG","fileName":"11501-電線及電纜訂金(伸泰).pdf","fileId":"1IUiB5jV1EC27MEKFOuZvZVZJvDdqml2-","driveSizeBytes":553105,"nasSizeBytes":553105,"sizeDeltaBytes":0,"driveModifiedTaipei":"2026-11-08 08:50:52","nasModifiedTaipei":"2026-11-08 08:50:52","driveModifiedMs":1794099052854,"nasModifiedMs":1794099052854,"timeDeltaSec":0,"isPendingSignoff":false,"syncStatus":"MATCHED_3TUPLE","syncStatusLabel":"三維一致（檔名×修改日期×檔案大小相符）","fileUrl":"https://drive.google.com/file/d/1IUiB5jV1EC27MEKFOuZvZVZJvDdqml2-/view?usp=drivesdk"}]};
+  window.__VENDOR_BILLING_NAS_SYNC_S98__ = window.__VENDOR_BILLING_NAS_SYNC_S98__ || DEFAULT_S98_3TUPLE_DATA_;
+  var _curS98Filter = "ALL";
+
+  function esc98_(s) {
+    return String(s == null ? "" : s)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+  function fmtInt98_(n) {
+    return Math.round(Number(n || 0)).toLocaleString("en-US");
+  }
+  function fmtBytes98_(b) {
+    var n = Number(b || 0);
+    if (n >= 1048576) return (n / 1048576).toFixed(2) + " MB (" + fmtInt98_(n) + " B)";
+    if (n >= 1024) return (n / 1024).toFixed(1) + " KB (" + fmtInt98_(n) + " B)";
+    return fmtInt98_(n) + " B";
+  }
+
+  window.renderVendorBillingThreeTuplePanel_S98 = function(dataOpt) {
+    var pk = (typeof window.classifyProjKey_S91_ === "function") ? window.classifyProjKey_S91_() : "R2";
+    var vbSec = document.getElementById("secVendorMonthlyBillingSync");
+    if (!vbSec) return;
+    var existing = document.getElementById("vendorBillingNas3TuplePanel_S98");
+    if (pk !== "R2") {
+      if (existing && existing.parentNode) existing.parentNode.removeChild(existing);
+      return;
+    }
+
+    var d = dataOpt || window.__VENDOR_BILLING_NAS_SYNC_S98__ || DEFAULT_S98_3TUPLE_DATA_;
+    window.__VENDOR_BILLING_NAS_SYNC_S98__ = d;
+    var files = Array.isArray(d.files) ? d.files : [];
+    var totalFiles = Number(d.totalFiles != null ? d.totalFiles : files.length);
+    var matchedCnt = Number(d.matched3TupleCount != null ? d.matched3TupleCount : files.filter(function(x) { return x.syncStatus === "MATCHED_3TUPLE"; }).length);
+    var pendingCnt = Number(d.pendingSignoffCount != null ? d.pendingSignoffCount : files.filter(function(x) { return x.isPendingSignoff; }).length);
+    var anomalyCnt = Number(d.anomalyCount != null ? d.anomalyCount : Math.max(0, totalFiles - matchedCnt));
+    var totalBytes = Number(d.totalBytes || files.reduce(function(s, x) { return s + Number(x.driveSizeBytes || x.nasSizeBytes || 0); }, 0));
+    var mbStr = (totalBytes / 1048576).toFixed(2) + " MB";
+    var rawHm = String(d.checkedTimeHm || d.checkedAt || "24:00");
+    var mHm = rawHm.match(/(\d{2}:\d{2})/);
+    var timeHm = mHm ? mHm[1] : "24:00";
+
+    if (!existing) {
+      existing = document.createElement("div");
+      existing.id = "vendorBillingNas3TuplePanel_S98";
+      existing.style.cssText = "background:#f9f9f9;border:1px solid rgba(0,0,0,0.09);border-radius:12px;padding:14px 16px;margin-bottom:14px;";
+      var kpiAnchor = document.getElementById("vendorBillingKpiGrid_V161");
+      if (kpiAnchor && kpiAnchor.parentNode === vbSec) {
+        vbSec.insertBefore(existing, kpiAnchor);
+      } else {
+        vbSec.insertBefore(existing, vbSec.firstChild);
+      }
+    }
+    existing.style.display = "block";
+
+    existing.innerHTML =
+      '<div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:10px;">' +
+        '<div>' +
+          '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">' +
+            '<strong style="font-size:0.94rem;color:#0d0d0d;font-weight:800;">NAS × 雲端硬碟《廠商請款資料》每日 24:00 三維同步比對（檔名 × 修改日期 × 檔案大小）</strong>' +
+            '<span style="background:#17181c;color:#ffffff;padding:2px 9px;border-radius:999px;font-size:0.71rem;font-weight:700;">原 19:00 排程已取消・統一 24:00 排程｜更新 ' + esc98_(timeHm) + '</span>' +
+          '</div>' +
+          '<div style="font-size:0.73rem;color:#52525b;margin-top:4px;line-height:1.55;">' +
+            '• <strong>NAS 來源</strong>：<code>' + esc98_(d.nasPath || "\\\\dogreatnas.synology.me\\元順工程-仁德二期\\60-機電相關\\廠商請款資料") + '</code><br/>' +
+            '• <strong>雲端目標</strong>：<code>' + esc98_(d.drivePath || "雲端硬碟\\LINE BOT\\01-仁德國小(第二期)\\60-機電相關\\廠商請款資料") + '</code>（每日 24:00 比對後自動更新戰情室廠商計價與檔案清冊）' +
+          '</div>' +
+        '</div>' +
+        '<div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">' +
+          '<button type="button" class="btn btn-ghost" onclick="runLiveVendorBilling3TupleAudit_S98()" style="padding:5px 11px;font-size:0.74rem;font-weight:700;">立即執行三維比對並更新戰情室</button>' +
+          '<button type="button" class="btn btn-primary" onclick="exportVendorBilling3TupleXlsx_S98()" style="padding:5px 11px;font-size:0.74rem;font-weight:700;">匯出三維比對清冊 (.xlsx)</button>' +
+        '</div>' +
+      '</div>' +
+      '<div class="grid-4tier" style="margin-bottom:10px;">' +
+        '<div onclick="filterVendor3TupleTable_S98(\'ALL\')" style="cursor:pointer;background:#ffffff;border:1px solid rgba(0,0,0,0.08);border-radius:10px;padding:9px 12px;">' +
+          '<div style="font-size:0.72rem;color:#52525b;font-weight:700;">1. 統一排程與比對總檔數</div>' +
+          '<div style="font-size:1.14rem;font-weight:800;color:#0d0d0d;font-family:monospace;margin-top:2px;">' + totalFiles + ' 份 PDF <small style="font-size:0.72rem;">(' + esc98_(mbStr) + ')</small></div>' +
+          '<div style="font-size:0.7rem;color:#71717a;margin-top:2px;">每日 24:00 自動執行（19:00 相簿排程已併入）</div>' +
+        '</div>' +
+        '<div onclick="filterVendor3TupleTable_S98(\'MATCHED\')" style="cursor:pointer;background:#ffffff;border:1px solid rgba(0,0,0,0.08);border-radius:10px;padding:9px 12px;">' +
+          '<div style="font-size:0.72rem;color:#52525b;font-weight:700;">2. 檔名×修改日期×大小一致</div>' +
+          '<div style="font-size:1.14rem;font-weight:800;color:#0d0d0d;font-family:monospace;margin-top:2px;">' + matchedCnt + ' / ' + totalFiles + ' 份</div>' +
+          '<div style="font-size:0.7rem;color:#71717a;margin-top:2px;">總位元組 ' + fmtInt98_(totalBytes) + ' Bytes 逐檔核對</div>' +
+        '</div>' +
+        '<div onclick="filterVendor3TupleTable_S98(\'PENDING\')" style="cursor:pointer;background:#ffffff;border:1px solid rgba(0,0,0,0.08);border-radius:10px;padding:9px 12px;">' +
+          '<div style="font-size:0.72rem;color:#52525b;font-weight:700;">3. 月份已簽核 ／ 待簽核請款單</div>' +
+          '<div style="font-size:1.14rem;font-weight:800;color:#0d0d0d;font-family:monospace;margin-top:2px;">' + (totalFiles - pendingCnt) + ' 份 ／ 待簽 ' + pendingCnt + ' 份</div>' +
+          '<div style="font-size:0.7rem;color:#71717a;margin-top:2px;">涵蓋 115.01～115.10 月份夾與 00-待簽核請款單</div>' +
+        '</div>' +
+        '<div onclick="filterVendor3TupleTable_S98(\'ANOMALY\')" style="cursor:pointer;background:#ffffff;border:1px solid rgba(0,0,0,0.08);border-radius:10px;padding:9px 12px;">' +
+          '<div style="font-size:0.72rem;color:#52525b;font-weight:700;">4. 修改日或檔案大小差異數</div>' +
+          '<div style="font-size:1.14rem;font-weight:800;color:' + (anomalyCnt > 0 ? '#b91c1c' : '#0d0d0d') + ';font-family:monospace;margin-top:2px;">' + anomalyCnt + ' 份差異</div>' +
+          '<div style="font-size:0.7rem;color:#71717a;margin-top:2px;">大小不符 ' + Number(d.sizeMismatchCount || 0) + '・日期差異 ' + Number(d.modTimeDiffCount || 0) + '・單邊缺檔 ' + (Number(d.onlyOnNasCount || 0) + Number(d.onlyOnDriveCount || 0)) + '</div>' +
+        '</div>' +
+      '</div>' +
+      '<details class="warroom-details">' +
+        '<summary>展開檢視《廠商請款資料》NAS × 雲端硬碟逐檔「檔案名稱 × 修改日期 × 檔案大小」三維比對明細（共 ' + totalFiles + ' 份）</summary>' +
+        '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin:8px 0;">' +
+          '<div style="display:flex;gap:6px;flex-wrap:wrap;" id="s98Vendor3TupleFilterBar">' +
+            '<button type="button" class="btn btn-primary" data-s98f="ALL" onclick="filterVendor3TupleTable_S98(\'ALL\')" style="padding:4px 10px;font-size:0.73rem;">全部檔案 (' + totalFiles + ')</button>' +
+            '<button type="button" class="btn btn-ghost" data-s98f="MATCHED" onclick="filterVendor3TupleTable_S98(\'MATCHED\')" style="padding:4px 10px;font-size:0.73rem;">三維一致 (' + matchedCnt + ')</button>' +
+            '<button type="button" class="btn btn-ghost" data-s98f="PENDING" onclick="filterVendor3TupleTable_S98(\'PENDING\')" style="padding:4px 10px;font-size:0.73rem;">00-待簽核 (' + pendingCnt + ')</button>' +
+            '<button type="button" class="btn btn-ghost" data-s98f="ANOMALY" onclick="filterVendor3TupleTable_S98(\'ANOMALY\')" style="padding:4px 10px;font-size:0.73rem;">差異／待同步 (' + anomalyCnt + ')</button>' +
+          '</div>' +
+          '<input type="text" id="s98Vendor3TupleSearchInput" oninput="filterVendor3TupleTable_S98()" placeholder="搜尋月份子夾、廠商檔名、修改日期或大小..." style="padding:5px 10px;border-radius:6px;border:1px solid rgba(0,0,0,0.14);font-size:0.74rem;min-width:220px;background:#ffffff;color:#0d0d0d;" />' +
+        '</div>' +
+        '<div style="max-height:360px;overflow:auto;border:1px solid rgba(0,0,0,0.08);border-radius:8px;background:#ffffff;">' +
+          '<table class="ledger-table" style="width:100%;font-size:0.73rem;margin:0;">' +
+            '<thead style="position:sticky;top:0;z-index:2;background:#f4f4f5;">' +
+              '<tr>' +
+                '<th>子資料夾</th>' +
+                '<th>檔案名稱</th>' +
+                '<th>雲端修改日期</th>' +
+                '<th>NAS 修改日期</th>' +
+                '<th style="text-align:right;">雲端檔案大小</th>' +
+                '<th style="text-align:right;">NAS 檔案大小</th>' +
+                '<th>三維比對狀態</th>' +
+                '<th>請款單連結</th>' +
+              '</tr>' +
+            '</thead>' +
+            '<tbody id="s98Vendor3TupleTbody"></tbody>' +
+          '</table>' +
+        '</div>' +
+      '</details>';
+
+    window.filterVendor3TupleTable_S98(_curS98Filter);
+  };
+
+  window.filterVendor3TupleTable_S98 = function(filtOpt) {
+    if (filtOpt) _curS98Filter = filtOpt;
+    var d = window.__VENDOR_BILLING_NAS_SYNC_S98__ || DEFAULT_S98_3TUPLE_DATA_;
+    var files = Array.isArray(d.files) ? d.files : [];
+    var tbody = document.getElementById("s98Vendor3TupleTbody");
+    if (!tbody) return;
+    var q = String((document.getElementById("s98Vendor3TupleSearchInput") || {}).value || "").trim().toLowerCase();
+
+    var btns = document.querySelectorAll("#s98Vendor3TupleFilterBar button[data-s98f]");
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].style.outline = (btns[i].getAttribute("data-s98f") === _curS98Filter) ? "2px solid #0d0d0d" : "none";
+    }
+
+    var rows = files.filter(function(f) {
+      if (_curS98Filter === "MATCHED" && f.syncStatus !== "MATCHED_3TUPLE") return false;
+      if (_curS98Filter === "PENDING" && !f.isPendingSignoff) return false;
+      if (_curS98Filter === "ANOMALY" && f.syncStatus === "MATCHED_3TUPLE") return false;
+      if (q) {
+        var hay = (f.subFolder + " " + f.fileName + " " + (f.driveModifiedTaipei || "") + " " + (f.driveSizeBytes || "") + " " + (f.syncStatusLabel || "")).toLowerCase();
+        if (hay.indexOf(q) === -1) return false;
+      }
+      return true;
+    });
+
+    if (!rows.length) {
+      tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:14px;color:#71717a;">目前篩選條件下無符合之請款檔案紀錄</td></tr>';
+      return;
+    }
+
+    tbody.innerHTML = rows.map(function(f) {
+      var isOk = f.syncStatus === "MATCHED_3TUPLE";
+      var stStyle = isOk ? "color:#0d0d0d;font-weight:700;" : "color:#b91c1c;font-weight:800;";
+      var linkHtml = f.fileUrl
+        ? ('<a href="' + esc98_(f.fileUrl) + '" target="_blank" rel="noopener" style="color:#0d0d0d;text-decoration:underline;font-weight:700;">開啟 PDF</a>')
+        : "-";
+      return '<tr style="border-bottom:1px solid #e4e4e7;">' +
+        '<td style="font-family:monospace;font-weight:700;">' + esc98_(f.subFolder || "") + '</td>' +
+        '<td style="font-weight:700;">' + esc98_(f.fileName || "") + '</td>' +
+        '<td style="font-family:monospace;">' + esc98_(f.driveModifiedTaipei || "-") + '</td>' +
+        '<td style="font-family:monospace;">' + esc98_(f.nasModifiedTaipei || "-") + '</td>' +
+        '<td style="text-align:right;font-family:monospace;">' + (f.driveSizeBytes != null ? fmtBytes98_(f.driveSizeBytes) : "-") + '</td>' +
+        '<td style="text-align:right;font-family:monospace;">' + (f.nasSizeBytes != null ? fmtBytes98_(f.nasSizeBytes) : "-") + '</td>' +
+        '<td style="' + stStyle + '">' + esc98_(f.syncStatusLabel || f.syncStatus || "") + '</td>' +
+        '<td>' + linkHtml + '</td>' +
+      '</tr>';
+    }).join("");
+  };
+
+  window.exportVendorBilling3TupleXlsx_S98 = function() {
+    if (typeof window.exportSheetsToNativeXlsx_S2 !== "function") return null;
+    var d = window.__VENDOR_BILLING_NAS_SYNC_S98__ || DEFAULT_S98_3TUPLE_DATA_;
+    var files = Array.isArray(d.files) ? d.files : [];
+    var subs = Array.isArray(d.subfolders) ? d.subfolders : [];
+    var s1 = [
+      ["仁德國小(第二期) — 廠商請款資料 NAS × 雲端硬碟 每日 24:00 三維同步比對彙總表（S9.8）"],
+      ["NAS 來源路徑", d.nasPath || ""],
+      ["雲端硬碟路徑", d.drivePath || ""],
+      ["排程模式", "每日 24:00 統一排程（原 19:00 相簿排程已取消併入）"],
+      ["最近檢核時間", d.checkedAt || ""],
+      [],
+      ["子資料夾名稱", "雲端資料夾 ID", "檔案數", "總位元組 (Bytes)", "容量 (MB)"]
+    ];
+    for (var i = 0; i < subs.length; i++) {
+      var sf = subs[i];
+      s1.push([sf.subFolder, sf.folderId, sf.fileCount, sf.totalBytes, Number((Number(sf.totalBytes || 0) / 1048576).toFixed(3))]);
+    }
+    s1.push(["TOTAL", d.driveFolderId || "", d.totalFiles || files.length, d.totalBytes || 0, Number((Number(d.totalBytes || 0) / 1048576).toFixed(3))]);
+
+    var s2 = [
+      ["子資料夾", "檔案名稱", "雲端修改日期(Asia/Taipei)", "NAS修改日期(Asia/Taipei)", "時間差(秒)", "雲端檔案大小(Bytes)", "NAS檔案大小(Bytes)", "大小差(Bytes)", "三維比對狀態代碼", "三維比對結論", "雲端檔案連結"]
+    ].concat(files.map(function(f) {
+      return [
+        f.subFolder, f.fileName, f.driveModifiedTaipei || "-", f.nasModifiedTaipei || "-",
+        Number(f.timeDeltaSec || 0),
+        f.driveSizeBytes != null ? f.driveSizeBytes : "",
+        f.nasSizeBytes != null ? f.nasSizeBytes : "",
+        Number(f.sizeDeltaBytes || 0),
+        f.syncStatus, f.syncStatusLabel, f.fileUrl || ""
+      ];
+    }));
+    return window.exportSheetsToNativeXlsx_S2("仁德二期_廠商請款NAS雲端三維比對清冊_S98.xlsx", [
+      { name: "01_子資料夾彙總", rows: s1 },
+      { name: "02_逐檔三維比對明細", rows: s2 }
+    ]);
+  };
+
+  window.runLiveVendorBilling3TupleAudit_S98 = function() {
+    if (typeof window.showToast === "function") {
+      window.showToast("正在向雲端執行《廠商請款資料》檔名×修改日期×檔案大小三維比對並熱更新戰情室…");
+    }
+    var gasBase = "https://script.google.com/macros/s/AKfycbxRcVWuQzMEQWtGMd-PNqBr6ejcxjTvRLuxeRut38uwFFveHrPJDb6bbe3cRp4hkSXTsQ/exec";
+    return fetch(gasBase + "?action=vendorBillingNasDiffS98&force=1&t=" + Date.now(), { method: "GET", cache: "no-store" })
+      .then(function(r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+      .then(function(res) {
+        if (res && res.ok && Array.isArray(res.files)) {
+          window.__VENDOR_BILLING_NAS_SYNC_S98__ = res;
+          window.renderVendorBillingThreeTuplePanel_S98(res);
+          if (typeof window.runUniversalHotUpdate_S95 === "function") window.runUniversalHotUpdate_S95(false);
+          if (typeof window.showToast === "function") {
+            window.showToast("已完成廠商請款三維比對（" + res.matched3TupleCount + "/" + res.totalFiles + " 一致）並同步更新戰情室！");
+          }
+          return true;
+        }
+        return false;
+      })
+      .catch(function() {
+        window.renderVendorBillingThreeTuplePanel_S98(window.__VENDOR_BILLING_NAS_SYNC_S98__);
+        if (typeof window.showToast === "function") {
+          window.showToast("已載入最新快取之 42 份《廠商請款資料》三維比對基準（離線預覽模式）");
+        }
+        return false;
+      });
+  };
+
+  // Hook into `applyS2RealtimeSnapshot_`, `applyUniversalHotUpdate_S95_`, `openS3SplitSubView`, and `switchWarRoomProject`
+  var _prevApplyS2_98 = window.applyS2RealtimeSnapshot_;
+  if (typeof _prevApplyS2_98 === "function" && !_prevApplyS2_98.__s98Wrapped) {
+    var _wApplyS2_98 = function(snap, channelName, forceOpt) {
+      if (snap && snap.vendorBillingNasSyncS98 && typeof snap.vendorBillingNasSyncS98 === "object") {
+        window.__VENDOR_BILLING_NAS_SYNC_S98__ = snap.vendorBillingNasSyncS98;
+      }
+      var r = _prevApplyS2_98.apply(this, arguments);
+      window.renderVendorBillingThreeTuplePanel_S98(window.__VENDOR_BILLING_NAS_SYNC_S98__);
+      return r;
+    };
+    _wApplyS2_98.__s98Wrapped = true;
+    window.applyS2RealtimeSnapshot_ = _wApplyS2_98;
+  }
+  var _prevApplyHot95 = window.applyUniversalHotUpdate_S95_;
+  if (typeof _prevApplyHot95 === "function" && !_prevApplyHot95.__s98Wrapped) {
+    var _wApplyHot98 = function(snap, channelName, forceOpt) {
+      if (snap && snap.vendorBillingNasSyncS98 && typeof snap.vendorBillingNasSyncS98 === "object") {
+        window.__VENDOR_BILLING_NAS_SYNC_S98__ = snap.vendorBillingNasSyncS98;
+      }
+      var r = _prevApplyHot95.apply(this, arguments);
+      window.renderVendorBillingThreeTuplePanel_S98(window.__VENDOR_BILLING_NAS_SYNC_S98__);
+      return r;
+    };
+    _wApplyHot98.__s98Wrapped = true;
+    window.applyUniversalHotUpdate_S95_ = _wApplyHot98;
+  }
+
+  var _prevOpenS3_98 = window.openS3SplitSubView;
+  if (typeof _prevOpenS3_98 === "function" && !_prevOpenS3_98.__s98Wrapped) {
+    var _wOpenS3_98 = function(mode) {
+      var r = _prevOpenS3_98.apply(this, arguments);
+      window.renderVendorBillingThreeTuplePanel_S98(window.__VENDOR_BILLING_NAS_SYNC_S98__);
+      return r;
+    };
+    _wOpenS3_98.__s98Wrapped = true;
+    window.openS3SplitSubView = _wOpenS3_98;
+  }
+
+  var _prevSwitch98 = window.switchWarRoomProject;
+  if (typeof _prevSwitch98 === "function" && !_prevSwitch98.__s98Wrapped) {
+    var _wSwitch98 = function(projName) {
+      var r = _prevSwitch98.apply(this, arguments);
+      window.renderVendorBillingThreeTuplePanel_S98(window.__VENDOR_BILLING_NAS_SYNC_S98__);
+      return r;
+    };
+    _wSwitch98.__s98Wrapped = true;
+    window.switchWarRoomProject = _wSwitch98;
+  }
+
+  // Redirect legacy `triggerManualBotNasSync` button in Bot Admin panel to S9.8 24:00 Unified Audit
+  if (typeof window.triggerManualBotNasSync === "function") {
+    window.triggerManualBotNasSync = function() {
+      return window.runLiveVendorBilling3TupleAudit_S98();
+    };
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", function() {
+      window.renderVendorBillingThreeTuplePanel_S98(window.__VENDOR_BILLING_NAS_SYNC_S98__);
+    });
+  } else {
+    window.renderVendorBillingThreeTuplePanel_S98(window.__VENDOR_BILLING_NAS_SYNC_S98__);
+  }
+})();
+</script>
 </body>
 </html>

@@ -1,8 +1,8 @@
 {
   "ok": true,
   "version": "S3.5版_FAST_REALTIME_SYNC",
-  "driveFingerprint": "S35F_193353f0",
-  "syncedAt": "2026-11-17 11:25:18",
+  "driveFingerprint": "S35F_84a7d705",
+  "syncedAt": "2026-11-17 15:36:58",
   "latestDate": "2026-11-17",
   "excelDriveFileId": "1sJiy0wDJAyDqJzBD39AX2PTbBiUWJNySX22APzI_7s8",
   "d11Summary": {
@@ -27,14 +27,14 @@
     },
     "photoAppendixExcludedCount": 1
   },
-  "ncrInProgress": 0,
+  "ncrInProgress": 1,
   "ncrClosed": 18,
-  "ncrClosureRate": 100,
+  "ncrClosureRate": 95,
   "ncrSummary": {
-    "ncrTotal": 18,
+    "ncrTotal": 19,
     "ncrClosed": 18,
-    "ncrInProgress": 0,
-    "ncrClosureRate": 100,
+    "ncrInProgress": 1,
+    "ncrClosureRate": 95,
     "latestNcrNo": "NCR-018",
     "inProgressNumbers": [],
     "supervisionTotal": 5,
@@ -1697,6 +1697,9 @@
       },
       "threeWayCleanItemCount": 81,
       "p6ImmediateBillableAmt": 1089094,
+      "vendorBillingPdfCount": 42,
+      "vendorBillingMatched3TupleCount": 42,
+      "vendorBillingTotalBytes": 45910209,
       "latestOwnerValuationPeriodDrive": 5
     },
     "constructionInspection": {
@@ -14252,7 +14255,7 @@
   },
   "dynamicSyncMetaS75": {
     "isDynamicS75": true,
-    "computedAt": "2026-11-17 11:22:33",
+    "computedAt": "2026-11-17 15:37:09",
     "d11LiveScanned": true,
     "c10LiveScanned": true,
     "boqSheetLiveRead": true,
