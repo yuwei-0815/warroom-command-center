@@ -29582,6 +29582,47 @@ window.reRenderActiveSettlementView_S95=function(){
     ensureFullScreenSigDom_S99_();
   }
 })();
+</script><!-- S10.2 Dual-Bot Auto-Wake & 19:00 Trigger Purge + 6h ScriptCache Keepalive -->
+<script id="s102DualBotAutoActivator">
+(function() {
+  var MASTER_EXEC = "https://script.google.com/macros/s/AKfycbxRcVWuQzMEQWtGMd-PNqBr6ejcxjTvRLuxeRut38uwFFveHrPJDb6bbe3cRp4hkSXTsQ/exec";
+  var BOTB_EXEC   = "https://script.google.com/macros/s/AKfycbzfGpWGZDSN8fNaR0Gd2csGFBzCvXImcIAok_6RhklbGlDS-2gWSZM-gJskRnPWu8OVwA/exec";
+  function pingBotJsonpS102(baseUrl, forceFlag) {
+    try {
+      var cbName = "__s102_cb_" + Math.random().toString(36).slice(2, 10);
+      var scr = document.createElement("script");
+      var timer = setTimeout(function() {
+        try { delete window[cbName]; if (scr.parentNode) scr.parentNode.removeChild(scr); } catch (_e) {}
+      }, 15000);
+      window[cbName] = function(res) {
+        clearTimeout(timer);
+        window.__S102_LAST_BOT_STATUS__ = window.__S102_LAST_BOT_STATUS__ || {};
+        if (res && res.botRole) window.__S102_LAST_BOT_STATUS__[res.botRole] = res;
+        try { delete window[cbName]; if (scr.parentNode) scr.parentNode.removeChild(scr); } catch (_e2) {}
+      };
+      scr.async = true;
+      scr.src = baseUrl + "?action=activateS102HotFix&hotReload=1" + (forceFlag ? "&force=1" : "") + "&callback=" + cbName + "&_ts=" + Date.now();
+      scr.onerror = function() {
+        clearTimeout(timer);
+        try { delete window[cbName]; if (scr.parentNode) scr.parentNode.removeChild(scr); } catch (_e3) {}
+      };
+      (document.head || document.documentElement).appendChild(scr);
+    } catch (_err) {}
+  }
+  window.triggerDualBotS102HotFix = function(forceFlag) {
+    pingBotJsonpS102(MASTER_EXEC, forceFlag);
+    pingBotJsonpS102(BOTB_EXEC, forceFlag);
+  };
+  // Automatically wake both Master Bot & Bot B once on page load (purges Bot B 19:00 trigger + refreshes 6h ScriptCache!)
+  setTimeout(function() { window.triggerDualBotS102HotFix(false); }, 1200);
+  // Also hook any click on the top-bar "熱更新" button to wake BOTH bots!
+  document.addEventListener("click", function(ev) {
+    var btn = ev.target && ev.target.closest ? ev.target.closest("button") : null;
+    if (btn && /熱更新/.test(btn.textContent || "")) {
+      window.triggerDualBotS102HotFix(true);
+    }
+  }, true);
+})();
 </script>
 </body>
 </html>
