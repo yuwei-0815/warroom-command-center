@@ -2,7 +2,7 @@
   "ok": true,
   "version": "S3.5版_FAST_REALTIME_SYNC",
   "driveFingerprint": "S35F_cf70c778",
-  "syncedAt": "2026-11-18 09:04:33",
+  "syncedAt": "2026-11-18 13:45:53",
   "latestDate": "2026-11-18",
   "excelDriveFileId": "1sJiy0wDJAyDqJzBD39AX2PTbBiUWJNySX22APzI_7s8",
   "d11Summary": {
@@ -16115,7 +16115,7 @@
   },
   "dynamicSyncMetaS75": {
     "isDynamicS75": true,
-    "computedAt": "2026-11-18 09:04:42",
+    "computedAt": "2026-11-18 13:45:47",
     "d11LiveScanned": true,
     "c10LiveScanned": true,
     "boqSheetLiveRead": true,
