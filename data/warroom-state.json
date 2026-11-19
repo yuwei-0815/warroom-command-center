@@ -2,7 +2,7 @@
   "ok": true,
   "version": "S3.5版_FAST_REALTIME_SYNC",
   "driveFingerprint": "S35F_2e91e8c0",
-  "syncedAt": "2026-11-19 23:06:35",
+  "syncedAt": "2026-11-19 23:10:33",
   "latestDate": "2026-11-19",
   "excelDriveFileId": "1sJiy0wDJAyDqJzBD39AX2PTbBiUWJNySX22APzI_7s8",
   "d11Summary": {
@@ -2110,9 +2110,9 @@
       "cronExpressionTaipei": "0 0 * * * (每日 24:00 / 00:00 Asia/Taipei)",
       "cronExpressionUtc": "0 16 * * *",
       "triggerFunctionName": "cron2400FourWayBoqReconcileAndSync_S3",
-      "last2400SyncedAt": "2026-11-12 00:01:24",
-      "lastRealtimeVerifiedAt": "2026-11-19 23:04:00",
-      "nextScheduledSync": "2026-11-10 24:00:00"
+      "last2400SyncedAt": "2026-11-19 00:35:47",
+      "lastRealtimeVerifiedAt": "2026-11-19 22:58:00",
+      "nextScheduledSync": "2026-11-20 00:00:00"
     },
     "summaryCounts": {
       "ownerPeriodLatest": 5,
@@ -2141,8 +2141,8 @@
       },
       "threeWayCleanItemCount": 82,
       "p6ImmediateBillableAmt": 1159284,
-      "vendorBillingPdfCount": 42,
-      "vendorBillingMatched3TupleCount": 42,
+      "vendorBillingPdfCount": 77,
+      "vendorBillingMatched3TupleCount": 77,
       "vendorBillingTotalBytes": 45910209,
       "latestOwnerValuationPeriodDrive": 5
     },
@@ -3627,7 +3627,7 @@
           "contractQty": 40,
           "unitPrice": 987,
           "contractAmt": 39480,
-          "matArrivedQty": null,
+          "matArrivedQty": 0,
           "matArrivedAmt": null,
           "constInspectedQty": 40,
           "ownerP1to3Qty": 40,
@@ -3837,7 +3837,7 @@
           "contractQty": 1,
           "unitPrice": 8598,
           "contractAmt": 8598,
-          "matArrivedQty": null,
+          "matArrivedQty": 0,
           "matArrivedAmt": null,
           "constInspectedQty": 1,
           "ownerP1to3Qty": 0,
@@ -4215,7 +4215,7 @@
           "contractQty": 1782,
           "unitPrice": 24,
           "contractAmt": 42768,
-          "matArrivedQty": 250,
+          "matArrivedQty": 410,
           "matArrivedAmt": 6000,
           "constInspectedQty": 1316,
           "ownerP1to3Qty": 300,
@@ -4320,7 +4320,7 @@
           "contractQty": 1188,
           "unitPrice": 24,
           "contractAmt": 28512,
-          "matArrivedQty": 257,
+          "matArrivedQty": 337,
           "matArrivedAmt": 6168,
           "constInspectedQty": 1188,
           "ownerP1to3Qty": 560,
@@ -4446,7 +4446,7 @@
           "contractQty": 2088,
           "unitPrice": 24,
           "contractAmt": 50112,
-          "matArrivedQty": 560,
+          "matArrivedQty": 640,
           "matArrivedAmt": 13440,
           "constInspectedQty": 1927,
           "ownerP1to3Qty": 440,
@@ -4866,7 +4866,7 @@
           "contractQty": 85,
           "unitPrice": 342,
           "contractAmt": 29070,
-          "matArrivedQty": null,
+          "matArrivedQty": 0,
           "matArrivedAmt": null,
           "constInspectedQty": 10,
           "ownerP1to3Qty": 0,
@@ -5979,7 +5979,7 @@
           "contractQty": 114,
           "unitPrice": 70,
           "contractAmt": 7980,
-          "matArrivedQty": null,
+          "matArrivedQty": 0,
           "matArrivedAmt": null,
           "constInspectedQty": 8,
           "ownerP1to3Qty": 8,
@@ -6084,7 +6084,7 @@
           "contractQty": 3298,
           "unitPrice": 12,
           "contractAmt": 39576,
-          "matArrivedQty": null,
+          "matArrivedQty": 0,
           "matArrivedAmt": null,
           "constInspectedQty": 1360,
           "ownerP1to3Qty": 0,
@@ -9173,15 +9173,15 @@
       ]
     },
     "threeWayQtyDiff": {
-      "engineVersion": "S10.12_VISION_V58_AND_1119_7WORKERS",
-      "generatedAt": "2026-11-18 15:20:00",
-      "excelFileId": "1fSL0Cbbu4gsMzjU13FLyFM3apvLzNmfO",
-      "excelFileUrl": "https://drive.google.com/file/d/1fSL0Cbbu4gsMzjU13FLyFM3apvLzNmfO/view?usp=drivesdk",
-      "diffWorkbookFileId": "1ZDci5tf51lncjBKqpA5rTSawszPMgOqJ",
-      "diffWorkbookFileUrl": "https://drive.google.com/file/d/1ZDci5tf51lncjBKqpA5rTSawszPMgOqJ/view?usp=drivesdk",
+      "engineVersion": "S10.20_LV_CONDUIT_8_20_9_14_10_10_TRUE_CERT_SYNC",
+      "generatedAt": "2026-11-19 22:58:00",
+      "excelFileId": "1ss-oZS9S8OVrdPV3ACo9ilzPBVRUBaso",
+      "excelFileUrl": "https://drive.google.com/file/d/1ss-oZS9S8OVrdPV3ACo9ilzPBVRUBaso/view?usp=drivesdk",
+      "diffWorkbookFileId": "1o07UfyOzY1LpTXtYv8FGph3srgF0Iald",
+      "diffWorkbookFileUrl": "https://drive.google.com/file/d/1o07UfyOzY1LpTXtYv8FGph3srgF0Iald/view?usp=drivesdk",
       "sources": {
-        "matSource": "《D11-00_材料數量統計表_標單格式防呆版(115.11.18).xlsx》與全量 54 份監造簽認 D11 查驗單 PDF",
-        "constSource": "《C10-00_施工數量統計表_標單格式防呆版(115.11.18).xlsx》與全量 59 份監造簽認 C08/C10 查驗單 PDF（實測明細 193 筆）",
+        "matSource": "《D11-00_材料數量統計表_標單格式防呆版(115.11.19).xlsx》與全量 54 份監造簽認 D11 查驗單 PDF",
+        "constSource": "《C10-00_施工數量統計表_標單格式防呆版(115.11.19).xlsx》與全量 59 份監造簽認 C08/C10 查驗單 PDF（實測明細 197 筆）",
         "ownerSource": "正式提送版《仁德國小(第二期)-工程估驗計價(第1~5期).xls》（機電累計 NT$ 5,115,409；純材料子項 NT$ 1,140,492）"
       },
       "counts": {
@@ -9198,7 +9198,7 @@
         "ownerGtMatCount": 8,
         "lockedMissingD11Count": 12,
         "ownerOverContractCount": 0,
-        "voClaim3PctCount": 6,
+        "voClaim3PctCount": 7,
         "matchedAllThreeCount": 3,
         "d11OnlyLockedCount": 29,
         "excludedParentRowCount": 8
@@ -9261,23 +9261,23 @@
           "constPdfCount": 12,
           "itemCount": 10,
           "contractQtySum": 17007,
-          "matQtySum": 9716,
-          "constQtySum": 15738,
-          "unbilledConstQtySum": 4669,
+          "matQtySum": 10036,
+          "constQtySum": 16318,
+          "unbilledConstQtySum": 5249,
           "ownerQtySum": 11069,
           "contractAmtSum": 1185916,
-          "matAmtSum": 439832,
-          "constAmtSum": 447688,
+          "matAmtSum": 447512,
+          "constAmtSum": 461608,
           "ownerAmtSum": 322936,
           "p6ImmediateBillableAmt": 17904,
-          "p6LockedMissingD11Amt": 80904,
-          "voClaim3PctAmt": 25634,
-          "diffABSum": -6022,
-          "diffBCSum": 4669,
-          "diffACSum": -1353,
-          "diffABAmt": -7856,
-          "diffBCAmt": 124752,
-          "diffACAmt": 116896
+          "p6LockedMissingD11Amt": 92088,
+          "voClaim3PctAmt": 27086,
+          "diffABSum": -6282,
+          "diffBCSum": 5249,
+          "diffACSum": -1033,
+          "diffABAmt": -14096,
+          "diffBCAmt": 138672,
+          "diffACAmt": 124576
         },
         {
           "disc": "F",
@@ -9333,8 +9333,8 @@
       "totals": {
         "matPdfCount": 54,
         "constPdfCount": 59,
-        "quantifiedConstFormCount": 61,
-        "vendorBillingPdfCount": 42,
+        "quantifiedConstFormCount": 63,
+        "vendorBillingPdfCount": 77,
         "itemCount": 82,
         "excludedParentRowCount": 8,
         "excludedParentAmtSum": 1013746,
@@ -9343,24 +9343,24 @@
         "ownerP5TotalMepAmt": 5115409,
         "ownerP5CurrMepAmt": 0,
         "contractQtySum": 112924,
-        "matQtySum": 84966,
-        "constQtySum": 65794,
-        "unbilledConstQtySum": 35736,
+        "matQtySum": 85286,
+        "constQtySum": 66374,
+        "unbilledConstQtySum": 36316,
         "ownerQtySum": 30062,
         "contractAmtSum": 8478393,
-        "matAmtSum": 5406681,
-        "constAmtSum": 2546963,
+        "matAmtSum": 5414361,
+        "constAmtSum": 2560883,
         "ownerAmtSum": 1140492,
         "p6ImmediateBillableAmt": 1159284,
-        "p6LockedMissingD11Amt": 160516,
-        "voClaim3PctAmt": 78899,
-        "ownerP5FittingAndLaborAmt": 3974917,
-        "diffABSum": 19172,
-        "diffBCSum": 35732,
-        "diffACSum": 54904,
-        "diffABAmt": 2859718,
-        "diffBCAmt": 1406471,
-        "diffACAmt": 4266189
+        "p6LockedMissingD11Amt": 171700,
+        "voClaim3PctAmt": 80351,
+        "diffABSum": 18912,
+        "diffBCSum": 36312,
+        "diffACSum": 55224,
+        "diffABAmt": 2853478,
+        "diffBCAmt": 1420391,
+        "diffACAmt": 4273869,
+        "ownerP5FittingAndLaborAmt": 3974917
       },
       "dataCompleteness": {
         "checkedAt": "2026-11-18 08:12:00",
@@ -9377,17 +9377,17 @@
           {
             "docNo": "C10-00 統計表",
             "rocDate": "115.11.18",
-            "fileName": "C10-00_施工數量統計表_標單格式防呆版(115.11.18).xlsx",
-            "fileId": "1LBjSNgN75oRFvd3hL8sJbmHjbUFf8RBw",
-            "fileUrl": "https://drive.google.com/file/d/1LBjSNgN75oRFvd3hL8sJbmHjbUFf8RBw/view?usp=drivesdk",
+            "fileName": "C10-00_施工數量統計表_標單格式防呆版(115.11.19).xlsx",
+            "fileId": "1plba3TYjAitFMN-V-9NUl08aIe8pI8ER",
+            "fileUrl": "https://drive.google.com/file/d/1plba3TYjAitFMN-V-9NUl08aIe8pI8ER/view?usp=drivesdk",
             "impact": "逐筆對齊簽認累積數量表：修正第4期誤標第5期、補回前期已驗緩估差額（共 84 筆未計價佇列），校正廣播管 11.(17)=3,072M、耐熱線 14.(3).15=1,360M 等 17 項施工量，並抓出官方統計表 EMT E39 誤植 770M(實為77M) 等 5 處筆誤"
           },
           {
             "docNo": "D11-00 統計表",
             "rocDate": "115.11.18",
-            "fileName": "D11-00_材料數量統計表_標單格式防呆版(115.11.18).xlsx",
-            "fileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
-            "fileUrl": "https://drive.google.com/file/d/1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV/view?usp=drivesdk",
+            "fileName": "D11-00_材料數量統計表_標單格式防呆版(115.11.19).xlsx",
+            "fileId": "10UbbZUMWOjZrA9MMTaQY-XyeoDQ0rOds",
+            "fileUrl": "https://drive.google.com/file/d/10UbbZUMWOjZrA9MMTaQY-XyeoDQ0rOds/view?usp=drivesdk",
             "impact": "依 11/07 蓋章《PVC管材統整表》剔除弱電共管重複加計（監視 250M、門禁 257M、求救 560M、廣播 2,645M、電信28mm 526M），校正弱電線槽 7.(1)=105(註記105支×3M=315M)、滅火器箱 16 只，82 項純材料總額校正為 NT$ 5,406,681"
           }
         ],
@@ -9599,7 +9599,7 @@
           ],
           "statusText": "施工高於業主計價 (+20M)｜合規滿足 材料≥施工>業主計價，第6期可請 +20M (NT$ 2,360)",
           "matDocRef": "D11-E-1150223-01-接地電線.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "1151029-C10-E-1151029-1-AB",
           "latestConstFid": "18NOCOld49jZswjZc3dsSbKSAbKisug_O"
         },
@@ -9678,9 +9678,9 @@
             "CONST_GT_OWNER",
             "VO_CLAIM_3PCT"
           ],
-          "statusText": "異常：施工高於材料 (-550M)｜前期第1~4期已估驗 10176M，待補跨系統D11歸戶平衡",
+          "statusText": "異常：施工高於材料 (-550M)｜前期第1~4期已估驗 10176M，待補跨系統D11歸戶平衡；另施工超103%門檻可追加 205M (NT$ 4,100)",
           "matDocRef": "D11-E-1150818-01-PVC(E)4分1吋.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "1150923-C10-E-1150923-01-4、1151007-C10-E-1151007-1-AB、1151104-C10-E-1151104-1-B棟",
           "latestConstFid": "1zPEipf70M6lRYME7n0xc7dSCYjGBK9J6"
         },
@@ -9720,7 +9720,7 @@
           ],
           "statusText": "施工高於業主計價 (+480M)｜合規滿足 材料≥施工>業主計價，第6期可請 +480M (NT$ 11,520)",
           "matDocRef": "D11-E-1150326-01-PVC管材6分.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "1150629-E-1150629-照明電氣管線設備、1150723-C08-E-1150723-1-AB、1150812-C10-E-1150812-1-AB",
           "latestConstFid": "1B3QCvFgbTzpEVvi86-CMXau4XxcoVXT1"
         },
@@ -9763,7 +9763,7 @@
           ],
           "statusText": "施工高於業主計價 (+200M)｜合規滿足 材料≥施工>業主計價，第6期可請 +160M (NT$ 7,520)",
           "matDocRef": "D11-E-1150818-01-PVC(E)4分1吋.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "1150629-E-1150629-照明電氣管線設備、1150723-C08-E-1150723-1-AB、1150812-C10-E-1150812-1-AB",
           "latestConstFid": "1B3QCvFgbTzpEVvi86-CMXau4XxcoVXT1"
         },
@@ -9803,7 +9803,7 @@
           ],
           "statusText": "僅D11材料進場 (10M) 尚未施工查驗｜依規未完成C10施工查驗不可計價",
           "matDocRef": "D11-E-1150313-01-PVC管材.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "尚無C10施工查驗",
           "latestConstFid": ""
         },
@@ -9843,7 +9843,7 @@
           ],
           "statusText": "僅D11材料進場 (20M) 尚未施工查驗｜依規未完成C10施工查驗不可計價",
           "matDocRef": "D11-E-1150313-01-PVC管材.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "尚無C10施工查驗",
           "latestConstFid": ""
         },
@@ -9881,7 +9881,7 @@
           ],
           "statusText": "三方100%完全吻合 (80M)｜材料進場、施工查驗與第1~4期業主估驗全數一致",
           "matDocRef": "D11-E-1150313-01-PVC管材.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "1150323-C08-E-1150323-01-一",
           "latestConstFid": "1B3QCvFgbTzpEVvi86-CMXau4XxcoVXT1"
         },
@@ -9922,7 +9922,7 @@
           ],
           "statusText": "異常：施工高於材料 (-348M)｜材料高於業主計價 (+25M)，第6期僅放行有D11支撐之 +25M (NT$ 2,750)，超材料 348M (NT$ 38,280) 鎖定待補D11／共管歸戶",
           "matDocRef": "D11-E-1150901-01-EMT 31.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "1150911-C10-E-1150911-01-4、1150923-C10-E-1150923-01-4、1151007-C10-E-1151007-1-AB",
           "latestConstFid": "10h5e0S3maTfoZdqV5Qhj7NLQcRF2cR4X"
         },
@@ -9964,7 +9964,7 @@
           ],
           "statusText": "施工高於業主計價 (+9M)｜合規滿足 材料≥施工>業主計價，第6期可請 +9M (NT$ 1,215)",
           "matDocRef": "D11-E-1150521-1-EMT管.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "1150812-C10-E-1150812-1-AB、1150826-C10-E-1150826-1-AB、1150911-C10-E-1150911-01-4",
           "latestConstFid": "1E51--ECC0R1bs-PgR32xDDB28T7kWgKH"
         },
@@ -10002,7 +10002,7 @@
           ],
           "statusText": "異常：施工高於材料 (-40M)｜前期第1~4期已估驗 40M，待補跨系統D11歸戶平衡",
           "matDocRef": "-",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "1150629-E-1150629-照明電氣管線設備",
           "latestConstFid": "1B3QCvFgbTzpEVvi86-CMXau4XxcoVXT1"
         },
@@ -10082,7 +10082,7 @@
           ],
           "statusText": "僅D11材料進場 (2只) 尚未施工查驗｜依規未完成C10施工查驗不可計價",
           "matDocRef": "D11-E-1151108-1-鋁製線槽.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "尚無C10施工查驗",
           "latestConstFid": ""
         },
@@ -10122,7 +10122,7 @@
           ],
           "statusText": "僅D11材料進場 (2只) 尚未施工查驗｜依規未完成C10施工查驗不可計價",
           "matDocRef": "D11-E-1151108-1-鋁製線槽.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "尚無C10施工查驗",
           "latestConstFid": ""
         },
@@ -10161,8 +10161,8 @@
             "MAT_PENDING_BOTH"
           ],
           "statusText": "僅D11材料進場 (1組) 尚未施工查驗｜依規未完成C10施工查驗不可計價",
-          "matDocRef": "D11-00標單格式防呆版(115.11.18).xlsx（避雷針支撐架 1組；C10登載於4.(4)基礎台1座）",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matDocRef": "D11-00數量統計表115.11.12.xlsx（避雷針支撐架 1組；C10登載於4.(4)基礎台1座）",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "尚無C10施工查驗",
           "latestConstFid": ""
         },
@@ -10199,9 +10199,9 @@
             "CONST_GT_OWNER",
             "LOCKED_BY_MAT"
           ],
-          "statusText": "異常：施工高於材料 (-1座)｜未計價施工量 1座 (NT$ 8,598) 因缺D11／跨系統共管尚未歸戶鎖定緩請",
+          "statusText": "異常：施工高於材料 (-1座)｜契約內未計價施工量 1座 (NT$ 8,598) 因缺D11／跨系統共管尚未歸戶鎖定緩請",
           "matDocRef": "尚無D11登載（進場單登載於4.(3)支撐架1組，待歸戶對齊）",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "1151104-C10-E-1151104-1-B棟",
           "latestConstFid": "1zPEipf70M6lRYME7n0xc7dSCYjGBK9J6"
         },
@@ -10240,7 +10240,7 @@
           ],
           "statusText": "合規：已完成施工 16M 均已於第1~4期估驗｜現場尚有庫存餘料 +64M 待後續施工",
           "matDocRef": "D11-E-1150210-02-PVC管材.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "1150227-C08-E-1150227-1-避雷",
           "latestConstFid": "1B3QCvFgbTzpEVvi86-CMXau4XxcoVXT1"
         },
@@ -10282,7 +10282,7 @@
           ],
           "statusText": "施工高於業主計價 (+30M)｜合規滿足 材料≥施工>業主計價，第6期可請 +30M (NT$ 3,300)",
           "matDocRef": "D11-E-1150210-02-PVC管材.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "1150227-C08-E-1150227-1-避雷、1151104-C10-E-1151104-1-B棟",
           "latestConstFid": "1zPEipf70M6lRYME7n0xc7dSCYjGBK9J6"
         },
@@ -10322,7 +10322,7 @@
           ],
           "statusText": "僅D11材料進場 (50M) 尚未施工查驗｜依規未完成C10施工查驗不可計價",
           "matDocRef": "D11-E-1150223-01-接地電線.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "尚無C10施工查驗",
           "latestConstFid": ""
         },
@@ -10361,7 +10361,7 @@
           ],
           "statusText": "合規：已完成施工 50M 均已於第1~4期估驗｜現場尚有庫存餘料 +30M 待後續施工",
           "matDocRef": "D11-E-1150223-01-接地電線.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "1150227-C08-E-1150227-1-避雷",
           "latestConstFid": "1B3QCvFgbTzpEVvi86-CMXau4XxcoVXT1"
         },
@@ -10400,9 +10400,9 @@
             "CONST_GT_OWNER",
             "VO_CLAIM_3PCT"
           ],
-          "statusText": "異常：施工高於材料 (-50M)｜前期第1~4期已估驗 0M，待補跨系統D11歸戶平衡",
+          "statusText": "異常：施工高於材料 (-50M)｜前期第1~4期已估驗 0M，待補跨系統D11歸戶平衡；另施工超103%門檻可追加 69.1M (NT$ 45,122)",
           "matDocRef": "D11-E-1150223-01-接地電線.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "1151104-C10-E-1151104-1-B棟、1150227-C08-E-1150227-1-接地",
           "latestConstFid": "1OtR_zs2AlsHlKWMHU7d_Vpw5Gv8UBejx"
         },
@@ -10440,7 +10440,7 @@
           ],
           "statusText": "三方100%完全吻合 (10支)｜材料進場、施工查驗與第1~4期業主估驗全數一致",
           "matDocRef": "D11-E-1150210-01-接地銅棒.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "1150227-C08-E-1150227-1-避雷",
           "latestConstFid": "1B3QCvFgbTzpEVvi86-CMXau4XxcoVXT1"
         },
@@ -10519,7 +10519,7 @@
             "CONST_GT_OWNER",
             "VO_CLAIM_3PCT"
           ],
-          "statusText": "異常：施工高於材料 (-246M)｜前期第1~4期已估驗 220M，待補跨系統D11歸戶平衡",
+          "statusText": "異常：施工高於材料 (-246M)｜前期第1~4期已估驗 220M，待補跨系統D11歸戶平衡；另施工超103%門檻可追加 545.4M (NT$ 25,634)",
           "matDocRef": "D11-E-1151107-01.pdf P7簽認《PVC管材統整表》累積 526M",
           "matFileId": "1KJG9eTUXOPUnjnkKscyAWPTPFS9qLttu",
           "constDocRef": "1150826-C10-LV-1150826-01-、1150929-C10-E-1150929-01-1、1151104-C10-LV-1151104-1-B",
@@ -10559,9 +10559,9 @@
           ],
           "statusText": "異常：施工高於材料 (-35M)｜前期第1~4期已估驗 55M，待補跨系統D11歸戶平衡",
           "matDocRef": "D11-E-1150313-01-PVC管材.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "1150629-C08-LV-1150629-1-弱",
-          "latestConstFid": ""
+          "latestConstFid": "1eJP5jJrh_i_xZpewALubR85Iq0e_U8Rz"
         },
         {
           "shortCode": "5.(21)",
@@ -10597,9 +10597,9 @@
           ],
           "statusText": "異常：施工高於材料 (-398M)｜前期第1~4期已估驗 540M，待補跨系統D11歸戶平衡",
           "matDocRef": "D11-E-1150313-01-PVC管材.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "1150323-C08-LV-1150323-01-、1150629-C08-LV-1150629-1-弱",
-          "latestConstFid": ""
+          "latestConstFid": "1eJP5jJrh_i_xZpewALubR85Iq0e_U8Rz"
         },
         {
           "shortCode": "7.(1)",
@@ -10677,7 +10677,7 @@
           ],
           "statusText": "僅D11材料進場 (4只) 尚未施工查驗｜依規未完成C10施工查驗不可計價",
           "matDocRef": "D11-LV-1151108-1-鋁製線槽.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "尚無C10施工查驗",
           "latestConstFid": ""
         },
@@ -10717,7 +10717,7 @@
           ],
           "statusText": "僅D11材料進場 (4只) 尚未施工查驗｜依規未完成C10施工查驗不可計價",
           "matDocRef": "D11-LV-1151108-1-鋁製線槽.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "尚無C10施工查驗",
           "latestConstFid": ""
         },
@@ -10730,36 +10730,37 @@
           "contractQty": 1782,
           "unitPrice": 24,
           "contractAmt": 42768,
-          "matQty": 250,
-          "constQty": 1316,
-          "unbilledConstQty": 356,
+          "matQty": 410,
+          "constQty": 1896,
+          "unbilledConstQty": 936,
           "ownerQty": 960,
-          "diffMatMinusConst": -1066,
-          "diffConstMinusOwner": 356,
-          "diffMatMinusOwner": -710,
-          "matAmt": 6000,
-          "constAmt": 31584,
+          "diffMatMinusConst": -1486,
+          "diffConstMinusOwner": 936,
+          "diffMatMinusOwner": -550,
+          "matAmt": 9840,
+          "constAmt": 45504,
           "ownerAmt": 23040,
-          "diffBCAmt": 8544,
-          "diffACAmt": -17040,
+          "diffBCAmt": 22464,
+          "diffACAmt": -13200,
           "p6ImmediateBillableQty": 0,
           "p6ImmediateBillableAmt": 0,
-          "p6LockedMissingD11Qty": 356,
-          "p6LockedMissingD11Amt": 8544,
-          "voClaim3PctQty": 0,
-          "voClaim3PctAmt": 0,
+          "p6LockedMissingD11Qty": 822,
+          "p6LockedMissingD11Amt": 19728,
+          "voClaim3PctQty": 60.5,
+          "voClaim3PctAmt": 1452,
           "primaryTag": "CONST_GT_MAT",
           "tags": [
             "OWNER_GT_MAT",
             "CONST_GT_MAT",
             "CONST_GT_OWNER",
-            "LOCKED_BY_MAT"
+            "LOCKED_BY_MAT",
+            "VO_CLAIM_3PCT"
           ],
-          "statusText": "異常：施工高於材料 (-1066M)｜未計價施工量 356M (NT$ 8,544) 因缺D11／跨系統共管尚未歸戶鎖定緩請",
-          "matDocRef": "D11-E-1151107-01.pdf P7簽認《PVC管材統整表》累積 250M",
-          "matFileId": "1KJG9eTUXOPUnjnkKscyAWPTPFS9qLttu",
-          "constDocRef": "1150812-C10-LV-1150812-1-A、1150826-C10-LV-1150826-01-、1150911-C10-LV-1150911-01-",
-          "latestConstFid": "1KnH6an_uLmTa567_LSDheDT7bRSSQEHe"
+          "statusText": "異常：施工高於材料 (-1486M)｜契約內未計價施工量 822M (NT$ 19,728) 因缺D11／跨系統共管尚未歸戶鎖定緩請；另施工超103%門檻可追加 60.5M (NT$ 1,452)",
+          "matDocRef": "D11-E-1151031-01(80M)＋D11-E-1151107-01 P7統整表(160M)校正真實累積 410M",
+          "matFileId": "1g8Q7Xaf8H-0jOph8I3IWsaY9VSm487GS",
+          "constDocRef": "1150923-C10-LV-1150923-1-A、1151007-C10-LV-1151007-1-A、1151104-C10-LV-1151104-1-B",
+          "latestConstFid": "1eKQgrbkRRjhsbNJ_R_7VudCq8kTCq9f6"
         },
         {
           "shortCode": "9.(14)",
@@ -10770,18 +10771,18 @@
           "contractQty": 1188,
           "unitPrice": 24,
           "contractAmt": 28512,
-          "matQty": 257,
+          "matQty": 337,
           "constQty": 1188,
           "unbilledConstQty": 76,
           "ownerQty": 1112,
-          "diffMatMinusConst": -931,
+          "diffMatMinusConst": -851,
           "diffConstMinusOwner": 76,
-          "diffMatMinusOwner": -855,
-          "matAmt": 6168,
+          "diffMatMinusOwner": -775,
+          "matAmt": 8088,
           "constAmt": 28512,
           "ownerAmt": 26688,
           "diffBCAmt": 1824,
-          "diffACAmt": -20520,
+          "diffACAmt": -18600,
           "p6ImmediateBillableQty": 0,
           "p6ImmediateBillableAmt": 0,
           "p6LockedMissingD11Qty": 76,
@@ -10795,11 +10796,11 @@
             "CONST_GT_OWNER",
             "LOCKED_BY_MAT"
           ],
-          "statusText": "異常：施工高於材料 (-931M)｜未計價施工量 76M (NT$ 1,824) 因缺D11／跨系統共管尚未歸戶鎖定緩請",
-          "matDocRef": "D11-E-1151107-01.pdf P7簽認《PVC管材統整表》累積 257M",
-          "matFileId": "1KJG9eTUXOPUnjnkKscyAWPTPFS9qLttu",
+          "statusText": "異常：施工高於材料 (-851M)｜契約內未計價施工量 76M (NT$ 1,824) 因缺D11／跨系統共管尚未歸戶鎖定緩請",
+          "matDocRef": "D11-E-1151031-01(80M)＋D11-E-1151107-01 P7統整表(80M)校正真實累積 337M",
+          "matFileId": "1g8Q7Xaf8H-0jOph8I3IWsaY9VSm487GS",
           "constDocRef": "1150826-C10-LV-1150826-1-A、1150911-C10-LV-1150911-01-、1150923-C10-LV-1150923-1-A",
-          "latestConstFid": "1_VcTyZXUGxZkAiNx_rU3n_Fo_zqlmCGl"
+          "latestConstFid": "13vWHk1OgeCNIEhuGGIatVwCZ4_xhNDvc"
         },
         {
           "shortCode": "10.(10)",
@@ -10810,18 +10811,18 @@
           "contractQty": 2088,
           "unitPrice": 24,
           "contractAmt": 50112,
-          "matQty": 560,
+          "matQty": 640,
           "constQty": 1927,
           "unbilledConstQty": 847,
           "ownerQty": 1080,
-          "diffMatMinusConst": -1367,
+          "diffMatMinusConst": -1287,
           "diffConstMinusOwner": 847,
-          "diffMatMinusOwner": -520,
-          "matAmt": 13440,
+          "diffMatMinusOwner": -440,
+          "matAmt": 15360,
           "constAmt": 46248,
           "ownerAmt": 25920,
           "diffBCAmt": 20328,
-          "diffACAmt": -12480,
+          "diffACAmt": -10560,
           "p6ImmediateBillableQty": 0,
           "p6ImmediateBillableAmt": 0,
           "p6LockedMissingD11Qty": 847,
@@ -10835,9 +10836,9 @@
             "CONST_GT_OWNER",
             "LOCKED_BY_MAT"
           ],
-          "statusText": "異常：施工高於材料 (-1367M)｜未計價施工量 847M (NT$ 20,328) 因缺D11／跨系統共管尚未歸戶鎖定緩請",
-          "matDocRef": "D11-E-1151107-01.pdf P7簽認《PVC管材統整表》累積 560M",
-          "matFileId": "1KJG9eTUXOPUnjnkKscyAWPTPFS9qLttu",
+          "statusText": "異常：施工高於材料 (-1287M)｜契約內未計價施工量 847M (NT$ 20,328) 因缺D11／跨系統共管尚未歸戶鎖定緩請",
+          "matDocRef": "D11-E-1151031-01(160M)＋D11-E-1151107-01 P7統整表(80M)校正真實累積 640M",
+          "matFileId": "1g8Q7Xaf8H-0jOph8I3IWsaY9VSm487GS",
           "constDocRef": "1150923-C10-LV-1150923-1-A、1151007-C10-LV-1151007-1-A、1151104-C10-LV-1151104-1-B",
           "latestConstFid": "1eKQgrbkRRjhsbNJ_R_7VudCq8kTCq9f6"
         },
@@ -10918,9 +10919,9 @@
           ],
           "statusText": "施工高於業主計價 (+35M)｜合規滿足 材料≥施工>業主計價，第6期可請 +35M (NT$ 840)",
           "matDocRef": "D11-E-1150907-02-PVC管材4&6分.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "1150629-C08-LV-1150629-1-弱、1151007-C10-LV-1151007-1-A",
-          "latestConstFid": "1RAkH38QBiKowQKKO_I-0VTzem20h0n6Y"
+          "latestConstFid": "1zy4ZfE2OmxT7UgIgb7XMl7x4MY_ntdmS"
         },
         {
           "shortCode": "11.(19)",
@@ -10958,7 +10959,7 @@
           ],
           "statusText": "僅D11材料進場 (160M) 尚未施工查驗｜依規未完成C10施工查驗不可計價",
           "matDocRef": "D11-E-1150611-01-PVC(E)3分6分1吋半.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "尚無C10施工查驗",
           "latestConstFid": ""
         },
@@ -10998,7 +10999,7 @@
           ],
           "statusText": "僅D11材料進場 (8只) 尚未施工查驗｜依規未完成C10施工查驗不可計價",
           "matDocRef": "D11-WP-1151001-1-不鏽鋼管、PVCBA、閘閥、逆止閥.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "尚無C10施工查驗",
           "latestConstFid": ""
         },
@@ -11038,7 +11039,7 @@
           ],
           "statusText": "僅D11材料進場 (1只) 尚未施工查驗｜依規未完成C10施工查驗不可計價",
           "matDocRef": "D11-WP-1151001-1-不鏽鋼管、PVCBA、閘閥、逆止閥.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "尚無C10施工查驗",
           "latestConstFid": ""
         },
@@ -11078,7 +11079,7 @@
           ],
           "statusText": "僅D11材料進場 (3只) 尚未施工查驗｜依規未完成C10施工查驗不可計價",
           "matDocRef": "D11-WP-1151001-1-不鏽鋼管、PVCBA、閘閥、逆止閥.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "尚無C10施工查驗",
           "latestConstFid": ""
         },
@@ -11118,7 +11119,7 @@
           ],
           "statusText": "僅D11材料進場 (1只) 尚未施工查驗｜依規未完成C10施工查驗不可計價",
           "matDocRef": "D11-WP-1150902-01-不鏽鋼閘閥&水錘吸收器.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "尚無C10施工查驗",
           "latestConstFid": ""
         },
@@ -11157,7 +11158,7 @@
           ],
           "statusText": "合規：已完成施工 394M 均已於第1~4期估驗｜現場尚有庫存餘料 +152M 待後續施工",
           "matDocRef": "D11-WP-1150720-01-不鏽鋼壓接管&PVC-B管.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "1150723-C08-WP-1150723-1-A、1150812-C10-WP-1150812-1-A、1150826-C10-WP-1150826-1-A",
           "latestConstFid": ""
         },
@@ -11199,7 +11200,7 @@
           ],
           "statusText": "施工高於業主計價 (+80M)｜合規滿足 材料≥施工>業主計價，第6期可請 +80M (NT$ 10,080)",
           "matDocRef": "D11-WP-1150720-01-不鏽鋼壓接管&PVC-B管.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "1150911-C10-WP-1150911-01-、1150923-C10-WP-1150923-01-、1151110-C10-WP-1151110-1-1",
           "latestConstFid": "1NswQ3d7ftMTy5btjm_1ud9VJwKhrYWuc"
         },
@@ -11241,7 +11242,7 @@
           ],
           "statusText": "施工高於業主計價 (+26M)｜合規滿足 材料≥施工>業主計價，第6期可請 +26M (NT$ 4,290)",
           "matDocRef": "D11-WP-1150923-01-不鏽鋼管1吋.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "1150911-C10-WP-1150911-01-、1150923-C10-WP-1150923-01-、1151110-C10-WP-1151110-1-1",
           "latestConstFid": "1NswQ3d7ftMTy5btjm_1ud9VJwKhrYWuc"
         },
@@ -11283,7 +11284,7 @@
           ],
           "statusText": "施工高於業主計價 (+27M)｜合規滿足 材料≥施工>業主計價，第6期可請 +27M (NT$ 8,046)",
           "matDocRef": "D11-WP-1150804-01-不鏽鋼管1吋半.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "1150911-C10-WP-1150911-01-、1150923-C10-WP-1150923-01-、1151110-C10-WP-1151110-1-1",
           "latestConstFid": "1NswQ3d7ftMTy5btjm_1ud9VJwKhrYWuc"
         },
@@ -11320,9 +11321,9 @@
             "CONST_GT_OWNER",
             "LOCKED_BY_MAT"
           ],
-          "statusText": "異常：施工高於材料 (-10M)｜未計價施工量 10M (NT$ 3,420) 因缺D11／跨系統共管尚未歸戶鎖定緩請",
+          "statusText": "異常：施工高於材料 (-10M)｜契約內未計價施工量 10M (NT$ 3,420) 因缺D11／跨系統共管尚未歸戶鎖定緩請",
           "matDocRef": "待由不鏽鋼管進場批單補拆項歸戶",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "1151110-C10-WP-1151110-1-1",
           "latestConstFid": "1NswQ3d7ftMTy5btjm_1ud9VJwKhrYWuc"
         },
@@ -11364,7 +11365,7 @@
           ],
           "statusText": "施工高於業主計價 (+3M)｜合規滿足 材料≥施工>業主計價，第6期可請 +3M (NT$ 4,167)",
           "matDocRef": "D11-WP-1151031-1-不銹鋼管材料.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "1151110-C10-WP-1151110-1-1",
           "latestConstFid": "1NswQ3d7ftMTy5btjm_1ud9VJwKhrYWuc"
         },
@@ -11404,7 +11405,7 @@
           ],
           "statusText": "僅D11材料進場 (42M) 尚未施工查驗｜依規未完成C10施工查驗不可計價",
           "matDocRef": "D11-WP-1151031-1-不銹鋼管材料.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "尚無C10施工查驗",
           "latestConstFid": ""
         },
@@ -11444,7 +11445,7 @@
           ],
           "statusText": "僅D11材料進場 (30M) 尚未施工查驗｜依規未完成C10施工查驗不可計價",
           "matDocRef": "D11-WP-1151031-1-不銹鋼管材料.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "尚無C10施工查驗",
           "latestConstFid": ""
         },
@@ -11484,7 +11485,7 @@
           ],
           "statusText": "僅D11材料進場 (12M) 尚未施工查驗｜依規未完成C10施工查驗不可計價",
           "matDocRef": "D11-WP-1151031-1-不銹鋼管材料.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "尚無C10施工查驗",
           "latestConstFid": ""
         },
@@ -11524,7 +11525,7 @@
           ],
           "statusText": "僅D11材料進場 (61M) 尚未施工查驗｜依規未完成C10施工查驗不可計價",
           "matDocRef": "D11-WP-1151001-1-不鏽鋼管、PVCBA、閘閥、逆止閥.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "尚無C10施工查驗",
           "latestConstFid": ""
         },
@@ -11564,7 +11565,7 @@
           ],
           "statusText": "僅D11材料進場 (6M) 尚未施工查驗｜依規未完成C10施工查驗不可計價",
           "matDocRef": "D11-WP-1150923-01-不鏽鋼管1吋.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "尚無C10施工查驗",
           "latestConstFid": ""
         },
@@ -11603,7 +11604,7 @@
           ],
           "statusText": "合規：已完成施工 8M 均已於第1~4期估驗｜現場尚有庫存餘料 +56M 待後續施工",
           "matDocRef": "D11-WP-1150316-01-PVC管材.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "1150423-C08-P-1150423-1-給排、1150530-C08-P-1150530-1-給排",
           "latestConstFid": ""
         },
@@ -11645,7 +11646,7 @@
           ],
           "statusText": "施工高於業主計價 (+42M)｜合規滿足 材料≥施工>業主計價，第6期可請 +42M (NT$ 5,166)",
           "matDocRef": "D11-WP-1151022-01-PVC(B)2吋3吋.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "1151017-C10-WP-1151017-01-、1151019-C10-WP-1151019-01-、1151029-C10-WP-1151029-1-A",
           "latestConstFid": "1JOLL92-HAX1ax03Csi6_y3AdKEkRhqdB"
         },
@@ -11687,7 +11688,7 @@
           ],
           "statusText": "施工高於業主計價 (+50M)｜合規滿足 材料≥施工>業主計價，第6期可請 +50M (NT$ 12,050)",
           "matDocRef": "D11-WP-1151022-01-PVC(B)2吋3吋.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "1150423-C08-P-1150423-1-給排、1151017-C10-WP-1151017-01-、1151019-C10-WP-1151019-01-",
           "latestConstFid": "1W_0qDPJ4aXSF-LlqFXywHpVBjjyuN_2c"
         },
@@ -11729,7 +11730,7 @@
           ],
           "statusText": "施工高於業主計價 (+86M)｜合規滿足 材料≥施工>業主計價，第6期可請 +86M (NT$ 32,164)",
           "matDocRef": "D11-WP-1151014-1-PVCBA管.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "1151017-C10-WP-1151017-01-、1151019-C10-WP-1151019-01-、1151029-C10-WP-1151029-1-A",
           "latestConstFid": "1JOLL92-HAX1ax03Csi6_y3AdKEkRhqdB"
         },
@@ -11768,7 +11769,7 @@
           ],
           "statusText": "合規：已完成施工 60M 均已於第1~4期估驗｜現場尚有庫存餘料 +15M 待後續施工",
           "matDocRef": "D11-WP-1150316-01-PVC管材.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "1150323-C08-P-1150323-01-汙、1150423-C08-P-1150423-1-給排",
           "latestConstFid": ""
         },
@@ -11808,7 +11809,7 @@
           ],
           "statusText": "僅D11材料進場 (65M) 尚未施工查驗｜依規未完成C10施工查驗不可計價",
           "matDocRef": "D11-WP-1150316-01-PVC管材.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "尚無C10施工查驗",
           "latestConstFid": ""
         },
@@ -11850,7 +11851,7 @@
           ],
           "statusText": "施工高於業主計價 (+58M)｜合規滿足 材料≥施工>業主計價，第6期可請 +58M (NT$ 7,482)",
           "matDocRef": "D11-WP-1151022-01-PVC(B)2吋3吋.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "1150423-C08-P-1150423-1-給排、1151017-C10-WP-1151017-01-、1151029-C10-WP-1151029-1-A",
           "latestConstFid": "1JOLL92-HAX1ax03Csi6_y3AdKEkRhqdB"
         },
@@ -11892,7 +11893,7 @@
           ],
           "statusText": "施工高於業主計價 (+38M)｜合規滿足 材料≥施工>業主計價，第6期可請 +38M (NT$ 8,968)",
           "matDocRef": "D11-WP-1151022-01-PVC(B)2吋3吋.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "1151017-C10-WP-1151017-01-、1151019-C10-WP-1151019-01-、1151029-C10-WP-1151029-1-A",
           "latestConstFid": "1JOLL92-HAX1ax03Csi6_y3AdKEkRhqdB"
         },
@@ -11931,7 +11932,7 @@
           ],
           "statusText": "異常：業主計價高於施工 (-4M)｜第3期核定估驗 74M 高於C10統計表 70M（疑似115/04/29查驗單漏登4M）",
           "matDocRef": "D11-WP-1150316-01-PVC管材.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "1150320-C08-P-1150320-01-給、1150423-C08-P-1150423-1-給排",
           "latestConstFid": ""
         },
@@ -12055,9 +12056,9 @@
             "CONST_GT_OWNER",
             "VO_CLAIM_3PCT"
           ],
-          "statusText": "契約內已100%估驗滿額 (64M)｜施工超契約 +18M，超3%門檻可追加 16.1M (NT$ 2,077)",
+          "statusText": "契約內已100%估驗滿額 (64M)｜施工超契約 +18.0M，超3%門檻可追加 16.1M (NT$ 2,077)",
           "matDocRef": "D11-WP-1151019-01-PVC(B)1吋半(A)2吋.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "1150423-C08-P-1150423-1-給排、1151029-C10-WP-1151029-1-A",
           "latestConstFid": "1JOLL92-HAX1ax03Csi6_y3AdKEkRhqdB"
         },
@@ -12099,7 +12100,7 @@
           ],
           "statusText": "施工高於業主計價 (+72M)｜合規滿足 材料≥施工>業主計價，第6期可請 +72M (NT$ 4,320)",
           "matDocRef": "D11-WP-1151019-01-PVC(B)1吋半(A)2吋.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "1151017-C10-WP-1151017-01-、1151019-C10-WP-1151019-01-、1151029-C10-WP-1151029-1-A",
           "latestConstFid": "1JOLL92-HAX1ax03Csi6_y3AdKEkRhqdB"
         },
@@ -12141,7 +12142,7 @@
           ],
           "statusText": "施工高於業主計價 (+4M)｜合規滿足 材料≥施工>業主計價，第6期可請 +4M (NT$ 532)",
           "matDocRef": "D11-WP-1151019-01-PVC(B)1吋半(A)2吋.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "1150423-C08-P-1150423-1-給排、1151019-C10-WP-1151019-01-",
           "latestConstFid": "1W_0qDPJ4aXSF-LlqFXywHpVBjjyuN_2c"
         },
@@ -12181,7 +12182,7 @@
           ],
           "statusText": "僅D11材料進場 (28M) 尚未施工查驗｜依規未完成C10施工查驗不可計價",
           "matDocRef": "D11-WP-1150316-01-PVC管材.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "尚無C10施工查驗",
           "latestConstFid": ""
         },
@@ -12221,7 +12222,7 @@
           ],
           "statusText": "僅D11材料進場 (11M) 尚未施工查驗｜依規未完成C10施工查驗不可計價",
           "matDocRef": "D11-WP-1150320-01-不鏽鋼管.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "尚無C10施工查驗",
           "latestConstFid": ""
         },
@@ -12263,7 +12264,7 @@
           ],
           "statusText": "施工高於業主計價 (+300M)｜合規滿足 材料≥施工>業主計價，第6期可請 +300M (NT$ 30,000)",
           "matDocRef": "D11-F-1150907-01-電線電纜-HR1.6訊號線2.0.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "1151104-C10-F-1151104-1-B棟",
           "latestConstFid": "1nbsMfTardXFQnK7aHdXLRcY3IWg4Mh4F"
         },
@@ -12303,7 +12304,7 @@
           ],
           "statusText": "僅D11材料進場 (2155M) 尚未施工查驗｜依規未完成C10施工查驗不可計價",
           "matDocRef": "D11-F-1150918-01-電線電纜HR1.6.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "尚無C10施工查驗",
           "latestConstFid": ""
         },
@@ -12344,7 +12345,7 @@
           ],
           "statusText": "異常：施工高於材料 (-210M)｜材料高於業主計價 (+670M)，第6期僅放行有D11支撐之 +670M (NT$ 11,390)，超材料 199M (NT$ 3,383) 鎖定待補D11／共管歸戶",
           "matDocRef": "D11-E-1151001-1-PVC-E管.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "1150812-C10-F-1150812-1-AB、1151007-C10-F-1151007-1-AB、1151104-C10-F-1151104-1-B棟",
           "latestConstFid": "1nbsMfTardXFQnK7aHdXLRcY3IWg4Mh4F"
         },
@@ -12383,9 +12384,9 @@
           ],
           "statusText": "合規：已完成施工 270M 均已於第1~4期估驗｜現場尚有庫存餘料 +133M 待後續施工",
           "matDocRef": "D11-E-1151107-01-PVC-E管.pdf（第7頁監造簽認累積403M，100%滿額）",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "1150629-C08-LV-1150629-1-弱、1150812-C10-F-1150812-1-AB",
-          "latestConstFid": ""
+          "latestConstFid": "1eJP5jJrh_i_xZpewALubR85Iq0e_U8Rz"
         },
         {
           "shortCode": "14.(2).4",
@@ -12503,7 +12504,7 @@
           ],
           "statusText": "僅D11材料進場 (60M) 尚未施工查驗｜依規未完成C10施工查驗不可計價",
           "matDocRef": "D11-F-1150320-1-鍍鋅鋼管.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "尚無C10施工查驗",
           "latestConstFid": ""
         },
@@ -12543,7 +12544,7 @@
           ],
           "statusText": "僅D11材料進場 (245M) 尚未施工查驗｜依規未完成C10施工查驗不可計價",
           "matDocRef": "D11-F-1150918-01-電線電纜HR1.6.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "尚無C10施工查驗",
           "latestConstFid": ""
         },
@@ -12581,9 +12582,9 @@
             "CONST_GT_OWNER",
             "LOCKED_BY_MAT"
           ],
-          "statusText": "異常：施工高於材料 (-63M)｜未計價施工量 48M (NT$ 816) 因缺D11／跨系統共管尚未歸戶鎖定緩請",
+          "statusText": "異常：施工高於材料 (-63M)｜契約內未計價施工量 48M (NT$ 816) 因缺D11／跨系統共管尚未歸戶鎖定緩請",
           "matDocRef": "D11-E-1151107-01-PVC-E管.pdf（第8頁監造簽認累積300M）",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "1150629-C08-LV-1150629-1-弱、1150812-C10-F-1150812-1-AB、1150911-C10-F-1150911-01-4",
           "latestConstFid": "1fSFBsBHBtx3VflFt4QOie_abGxH0Xd6J"
         },
@@ -12621,9 +12622,9 @@
           ],
           "statusText": "異常：施工高於材料 (-8M)｜前期第1~4期已估驗 8M，待補跨系統D11歸戶平衡",
           "matDocRef": "-",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "1150629-C08-LV-1150629-1-弱",
-          "latestConstFid": ""
+          "latestConstFid": "1eJP5jJrh_i_xZpewALubR85Iq0e_U8Rz"
         },
         {
           "shortCode": "14.(3).15",
@@ -12658,9 +12659,9 @@
             "CONST_GT_OWNER",
             "LOCKED_BY_MAT"
           ],
-          "statusText": "異常：施工高於材料 (-1360M)｜未計價施工量 1360M (NT$ 16,320) 因缺D11／跨系統共管尚未歸戶鎖定緩請",
+          "statusText": "異常：施工高於材料 (-1360M)｜契約內未計價施工量 1360M (NT$ 16,320) 因缺D11／跨系統共管尚未歸戶鎖定緩請",
           "matDocRef": "D11進場2,400M掛於火警14.(1).14(2,155M)及室內栓14.(2).15(245M)，本項待跨子系統歸戶",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "1151104-C10-F-1151104-1-緊急",
           "latestConstFid": "1saJxTzrOBswP23PrFj3vqUvvajqngxXp"
         },
@@ -12698,9 +12699,9 @@
           ],
           "statusText": "三方100%完全吻合 (18M)｜材料進場、施工查驗與第1~4期業主估驗全數一致",
           "matDocRef": "D11-E-1151107-01-PVC-E管.pdf（第8頁監造簽認累積18M，100%滿額）",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "1150629-C08-LV-1150629-1-弱",
-          "latestConstFid": ""
+          "latestConstFid": "1eJP5jJrh_i_xZpewALubR85Iq0e_U8Rz"
         },
         {
           "shortCode": "14.(3).18",
@@ -12739,7 +12740,7 @@
           ],
           "statusText": "異常：施工高於材料 (-17M)｜材料高於業主計價 (+234M)，第6期僅放行有D11支撐之 +234M (NT$ 3,510)，超材料 17M (NT$ 255) 鎖定待補D11／共管歸戶",
           "matDocRef": "D11-E-1151001-1-PVC-E管.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "1150812-C10-F-1150812-1-AB、1150819-C10-F-1150819-01-3、1150918-C10-F-1150918-01-4",
           "latestConstFid": "1eCqYrkOIDkAUPMvfWFOlU5dqTejrhP21"
         },
@@ -12776,9 +12777,9 @@
             "CONST_GT_OWNER",
             "VO_CLAIM_3PCT"
           ],
-          "statusText": "異常：施工高於材料 (-36M)｜前期第1~4期已估驗 31M，待補跨系統D11歸戶平衡",
+          "statusText": "異常：施工高於材料 (-36M)｜前期第1~4期已估驗 31M，待補跨系統D11歸戶平衡；另施工超103%門檻可追加 35.1M (NT$ 1,158)",
           "matDocRef": "D11-E-1151001-1-PVC-E管.pdf",
-          "matFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
+          "matFileId": "11OIS0yBRZN2O6dsWQL-heydswYLg0Z4L",
           "constDocRef": "1150629-C08-LV-1150629-1-弱、1150929-C10-E-1150929-01-1",
           "latestConstFid": "1OhOlWTOb1nbI7ZNPjJYERXTEAdOjpsiG"
         }
@@ -12878,7 +12879,7 @@
           "newB": 0,
           "oldC": 0,
           "newC": 0,
-          "rootCause": "前序漏列品項（已依官方115.11.12統計表與簽認PDF補入）"
+          "rootCause": "前序漏列品項（已依官方統計表與簽認PDF補入）"
         },
         {
           "boqCode": "壹.甲.三.4.(4)",
@@ -12894,7 +12895,7 @@
           "newB": 1,
           "oldC": 0,
           "newC": 0,
-          "rootCause": "【材料查驗A】前序(1.0)重複加計或未依11/07蓋章PVC統整表/11.12統計表分攤，校正為真實簽認量 0"
+          "rootCause": "【材料查驗A】前序(1.0)重複加計或未依11/07蓋章PVC統整表分攤，校正為真實簽認量 0"
         },
         {
           "boqCode": "壹.甲.三.4.(10)",
@@ -12942,7 +12943,7 @@
           "newB": 772,
           "oldC": 352,
           "newC": 220,
-          "rootCause": "【業主計價C】前序誤讀9/30舊草稿將第4期(132.0M)重複加計2次；正式第5期機電本期為0，真實累計=220；【施工查驗B】前序拆單推估(694.0)與監造簽認累積表(772)差 78.0M，已依簽認PDF與C10統計表校正；【材料查驗A】前序(960.0)重複加計或未依11/07蓋章PVC統整表/11.12統計表分攤，校正為真實簽認量 526"
+          "rootCause": "【業主計價C】前序誤讀9/30舊草稿將第4期(132.0M)重複加計2次；正式第5期機電本期為0，真實累計=220；【施工查驗B】前序拆單推估(694.0)與監造簽認累積表(772)差 78.0M，已依簽認PDF與C10統計表校正；【材料查驗A】前序(960.0)重複加計或未依11/07蓋章PVC統整表分攤，校正為真實簽認量 526"
         },
         {
           "boqCode": "壹.甲.三.7.(1)",
@@ -12958,7 +12959,7 @@
           "newB": 0,
           "oldC": 0,
           "newC": 0,
-          "rootCause": "【材料查驗A】前序(315.0)重複加計或未依11/07蓋章PVC統整表/11.12統計表分攤，校正為真實簽認量 105"
+          "rootCause": "【材料查驗A】前序(315.0)重複加計或未依11/07蓋章PVC統整表分攤，校正為真實簽認量 105"
         },
         {
           "boqCode": "壹.甲.三.8.(20)",
@@ -12969,12 +12970,12 @@
           "contractQty": 1782,
           "unitPrice": 24,
           "oldA": 410,
-          "newA": 250,
+          "newA": 410,
           "oldB": 1696,
-          "newB": 1316,
+          "newB": 1896,
           "oldC": 1620,
           "newC": 960,
-          "rootCause": "【業主計價C】前序誤讀9/30舊草稿將第4期(660.0M)重複加計2次；正式第5期機電本期為0，真實累計=960；【施工查驗B】前序拆單推估(1696.0)與監造簽認累積表(1316)差 -380.0M，已依簽認PDF與C10統計表校正；【材料查驗A】前序(410.0)重複加計或未依11/07蓋章PVC統整表/11.12統計表分攤，校正為真實簽認量 250"
+          "rootCause": "【S10.20真實簽認校正】D11補登10/31(80M)並修復11/07《PVC管材統整》跨頁漏連動(160M)，合格材料A校正為410M；C10逐筆核對全部9張監造核章簽認單(補登05/30 200M、09/23 90M、10/07 126M、11/04 100M並修正09/11湊數236M->300M)，施工B校正為1,896M(已估960M+未估936M)"
         },
         {
           "boqCode": "壹.甲.三.9.(14)",
@@ -12985,12 +12986,12 @@
           "contractQty": 1188,
           "unitPrice": 24,
           "oldA": 337,
-          "newA": 257,
+          "newA": 337,
           "oldB": 1258,
           "newB": 1188,
           "oldC": 1664,
           "newC": 1112,
-          "rootCause": "【業主計價C】前序誤讀9/30舊草稿將第4期(552.0M)重複加計2次；正式第5期機電本期為0，真實累計=1112；【施工查驗B】前序拆單推估(1258.0)與監造簽認累積表(1188)差 -70.0M，已依簽認PDF與C10統計表校正；【材料查驗A】前序(337.0)重複加計或未依11/07蓋章PVC統整表/11.12統計表分攤，校正為真實簽認量 257"
+          "rootCause": "【S10.20真實簽認校正】修復11/07 D11-E-1151107-01 P7《PVC管材統整》本次進場80M跨分頁漏連動(257M+80M)，合格材料A校正為337M；第5期業主累計維持1,112M"
         },
         {
           "boqCode": "壹.甲.三.10.(10)",
@@ -13001,12 +13002,12 @@
           "contractQty": 2088,
           "unitPrice": 24,
           "oldA": 1440,
-          "newA": 560,
+          "newA": 640,
           "oldB": 1817,
           "newB": 1927,
           "oldC": 1720,
           "newC": 1080,
-          "rootCause": "【業主計價C】前序誤讀9/30舊草稿將第4期(640.0M)重複加計2次；正式第5期機電本期為0，真實累計=1080；【施工查驗B】前序拆單推估(1817.0)與監造簽認累積表(1927)差 110.0M，已依簽認PDF與C10統計表校正；【材料查驗A】前序(1440.0)重複加計或未依11/07蓋章PVC統整表/11.12統計表分攤，校正為真實簽認量 560"
+          "rootCause": "【S10.20真實簽認校正】補登10/31(160M)並修復11/07 D11-E-1151107-01 P7《PVC管材統整》本次進場80M跨分頁漏連動(560M+80M)，合格材料A校正為640M；C10施工累計1,927M、第5期業主累計1,080M"
         },
         {
           "boqCode": "壹.甲.三.11.(17)",
@@ -13022,7 +13023,7 @@
           "newB": 3072,
           "oldC": 2128,
           "newC": 1546,
-          "rootCause": "【業主計價C】前序誤讀9/30舊草稿將第4期(582.0M)重複加計2次；正式第5期機電本期為0，真實累計=1546；【施工查驗B】前序拆單推估(2061.0)與監造簽認累積表(3072)差 1011.0M，已依簽認PDF與C10統計表校正；【材料查驗A】前序(3145.0)重複加計或未依11/07蓋章PVC統整表/11.12統計表分攤，校正為真實簽認量 2645"
+          "rootCause": "【業主計價C】前序誤讀9/30舊草稿將第4期(582.0M)重複加計2次；正式第5期機電本期為0，真實累計=1546；【施工查驗B】前序拆單推估(2061.0)與監造簽認累積表(3072)差 1011.0M，已依簽認PDF與C10統計表校正；【材料查驗A】前序(3145.0)重複加計或未依11/07蓋章PVC統整表分攤，校正為真實簽認量 2645"
         },
         {
           "boqCode": "壹.甲.三.12.(79).1",
@@ -13182,7 +13183,7 @@
           "newB": 1360,
           "oldC": 0,
           "newC": 0,
-          "rootCause": "前序漏列品項（已依官方115.11.12統計表與簽認PDF補入）"
+          "rootCause": "前序漏列品項（已依官方統計表與簽認PDF補入）"
         },
         {
           "boqCode": "壹.甲.三.14.(3).18",
@@ -13211,7 +13212,7 @@
           16,
           "避雷接地",
           "已計價(第2期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
           1,
@@ -13222,7 +13223,7 @@
           8,
           "避雷接地",
           "已計價(第2期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
           1,
@@ -13233,7 +13234,7 @@
           50,
           "避雷接地",
           "已計價(第2期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
           1,
@@ -13244,7 +13245,7 @@
           10,
           "避雷接地",
           "已計價(第2期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
           2,
@@ -13255,7 +13256,7 @@
           30,
           "PVC雨水管",
           "已計價(第2期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
           2,
@@ -13266,7 +13267,7 @@
           60,
           "PVC雨水管",
           "已計價(第2期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
           2,
@@ -13277,7 +13278,7 @@
           40,
           "PVC雨水管",
           "已計價(第2期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
           3,
@@ -13288,7 +13289,7 @@
           80,
           "照明電氣",
           "已計價(第2期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
           4,
@@ -13299,7 +13300,7 @@
           12,
           "PVC污水管",
           "已計價(第2期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
           4,
@@ -13310,7 +13311,7 @@
           12,
           "PVC污水管",
           "已計價(第2期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
           4,
@@ -13321,7 +13322,7 @@
           12,
           "PVC污水管",
           "已計價(第2期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
           4,
@@ -13332,7 +13333,7 @@
           30,
           "PVC污水管",
           "已計價(第2期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
           5,
@@ -13343,7 +13344,7 @@
           142,
           "電信資訊",
           "已計價(第2期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
           6,
@@ -13354,7 +13355,7 @@
           4,
           "PVC污水管",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
           6,
@@ -13365,7 +13366,7 @@
           88,
           "PVC污水管",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
           6,
@@ -13376,7 +13377,7 @@
           52,
           "PVC污水管",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
           6,
@@ -13387,7 +13388,7 @@
           88,
           "PVC污水管",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
           6,
@@ -13398,7 +13399,7 @@
           30,
           "PVC污水管",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
           6,
@@ -13409,7 +13410,7 @@
           250,
           "PVC雨水管",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
           6,
@@ -13420,7 +13421,7 @@
           40,
           "PVC雨水管",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
           6,
@@ -13431,7 +13432,7 @@
           30,
           "PVC雨水管",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
           6,
@@ -13442,7 +13443,7 @@
           50,
           "PVC空調排水",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
           6,
@@ -13453,7 +13454,7 @@
           12,
           "PVC空調排水",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
           6,
@@ -13464,7 +13465,7 @@
           64,
           "PVC空調排水",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
           6,
@@ -13475,7 +13476,7 @@
           20,
           "PVC透氣管",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
           6,
@@ -13486,7 +13487,7 @@
           30,
           "PVC透氣管",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
           7,
@@ -13497,7 +13498,7 @@
           50,
           "PVC空調排水",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
           8,
@@ -13508,7 +13509,7 @@
           2875,
           "照明電氣",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
           8,
@@ -13519,7 +13520,7 @@
           300,
           "照明電氣",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
           9,
@@ -13530,7 +13531,7 @@
           2655,
           "電信資訊",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
           10,
@@ -13541,7 +13542,7 @@
           180,
           "消防-緊急廣播",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
           11,
@@ -13552,7 +13553,7 @@
           90,
           "不鏽鋼給水管",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
           11,
@@ -13563,7 +13564,7 @@
           30,
           "不鏽鋼給水管",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
           11,
@@ -13574,7 +13575,7 @@
           30,
           "不鏽鋼給水管",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
           11,
@@ -13585,7 +13586,7 @@
           30,
           "不鏽鋼給水管",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
           11,
@@ -13596,7 +13597,7 @@
           4,
           "PVC污水管",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
           11,
@@ -13607,7 +13608,7 @@
           44,
           "PVC空調排水",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
           11,
@@ -13618,7 +13619,7 @@
           88,
           "PVC空調排水",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
           12,
@@ -13629,7 +13630,7 @@
           608,
           "照明電氣",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
           12,
@@ -13640,7 +13641,7 @@
           20,
           "照明電氣",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
           12,
@@ -13651,7 +13652,7 @@
           51,
           "照明電氣",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
           12,
@@ -13662,7 +13663,7 @@
           15,
           "照明電氣",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
           13,
@@ -13673,10 +13674,21 @@
           240,
           "門禁系統",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
           14,
+          "1150530-C08-LV-1150530-1-1F牆面A&B棟預埋配管(電信-第3期漏登未估)",
+          "壹.甲.三.8.(20)",
+          "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱20mm",
+          1782,
+          200,
+          "安全監視",
+          "未計價",
+          "依115.11.19全量9單簽認實算校正"
+        ],
+        [
+          15,
           "1150530-C08-PA-1150530-1-業務教學廣播系統1F版AB棟",
           "壹.甲.三.11.(17)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱16mm",
@@ -13684,10 +13696,10 @@
           224,
           "業務廣播",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          15,
+          16,
           "1150629-E-1150629-照明電氣管線設備工程1F頂版AB棟",
           "壹.甲.三.2.(54)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱16mm",
@@ -13695,10 +13707,10 @@
           2922,
           "照明電氣",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          15,
+          16,
           "1150629-E-1150629-照明電氣管線設備工程1F頂版AB棟",
           "壹.甲.三.2.(55)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱20mm",
@@ -13706,10 +13718,10 @@
           400,
           "照明電氣",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          15,
+          16,
           "1150629-E-1150629-照明電氣管線設備工程1F頂版AB棟",
           "壹.甲.三.2.(56)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱28mm",
@@ -13717,10 +13729,10 @@
           400,
           "照明電氣",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          15,
+          16,
           "1150629-E-1150629-照明電氣管線設備工程1F頂版AB棟",
           "壹.甲.三.2.(63)",
           "產品，導線管，電線用鋼管，無螺紋，稱呼E31",
@@ -13728,10 +13740,10 @@
           144,
           "照明電氣",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          15,
+          16,
           "1150629-E-1150629-照明電氣管線設備工程1F頂版AB棟",
           "壹.甲.三.2.(64)",
           "產品，導線管，電線用鋼管，無螺紋，稱呼E39",
@@ -13739,10 +13751,10 @@
           32,
           "照明電氣",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          15,
+          16,
           "1150629-E-1150629-照明電氣管線設備工程1F頂版AB棟",
           "壹.甲.三.2.(68)",
           "產品，導線管，電線用鋼管，厚管，稱呼G104",
@@ -13750,10 +13762,10 @@
           40,
           "照明電氣",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          16,
+          17,
           "1150629-C08-LV-1150629-1-弱電系統設備工程1F頂版AB棟",
           "壹.甲.三.5.(18)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱20mm",
@@ -13761,10 +13773,10 @@
           3495,
           "電信資訊",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          16,
+          17,
           "1150629-C08-LV-1150629-1-弱電系統設備工程1F頂版AB棟",
           "壹.甲.三.5.(19)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱28mm",
@@ -13772,10 +13784,10 @@
           88,
           "電信資訊",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          16,
+          17,
           "1150629-C08-LV-1150629-1-弱電系統設備工程1F頂版AB棟",
           "壹.甲.三.5.(20)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱41mm",
@@ -13783,10 +13795,10 @@
           55,
           "電信資訊",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          16,
+          17,
           "1150629-C08-LV-1150629-1-弱電系統設備工程1F頂版AB棟",
           "壹.甲.三.5.(21)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱52mm",
@@ -13794,10 +13806,10 @@
           398,
           "電信資訊",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          16,
+          17,
           "1150629-C08-LV-1150629-1-弱電系統設備工程1F頂版AB棟",
           "壹.甲.三.8.(20)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱20mm",
@@ -13805,10 +13817,10 @@
           300,
           "安全監視",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依115.11.19全量9單簽認實算校正"
         ],
         [
-          16,
+          17,
           "1150629-C08-LV-1150629-1-弱電系統設備工程1F頂版AB棟",
           "壹.甲.三.9.(14)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱20mm",
@@ -13816,10 +13828,10 @@
           320,
           "門禁系統",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          16,
+          17,
           "1150629-C08-LV-1150629-1-弱電系統設備工程1F頂版AB棟",
           "壹.甲.三.10.(10)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱20mm",
@@ -13827,10 +13839,10 @@
           440,
           "緊急求救",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          16,
+          17,
           "1150629-C08-LV-1150629-1-弱電系統設備工程1F頂版AB棟",
           "壹.甲.三.11.(17)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱16mm",
@@ -13838,10 +13850,10 @@
           740,
           "業務廣播",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          16,
+          17,
           "1150629-C08-LV-1150629-1-弱電系統設備工程1F頂版AB棟",
           "壹.甲.三.11.(18)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱20mm",
@@ -13849,10 +13861,10 @@
           100,
           "業務廣播",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          16,
+          17,
           "1150629-C08-LV-1150629-1-弱電系統設備工程1F頂版AB棟",
           "壹.甲.三.14.(1).17",
           "產品，PVC管 20mm(3/4\")(E管)",
@@ -13860,10 +13872,10 @@
           390,
           "消防-火警",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          16,
+          17,
           "1150629-C08-LV-1150629-1-弱電系統設備工程1F頂版AB棟",
           "壹.甲.三.14.(1).18",
           "產品，PVC管 28mm(1\")(E管)",
@@ -13871,10 +13883,10 @@
           135,
           "消防-火警",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          16,
+          17,
           "1150629-C08-LV-1150629-1-弱電系統設備工程1F頂版AB棟",
           "壹.甲.三.14.(2).17",
           "產品，PVC管 20mm(3/4\")(E管)",
@@ -13882,10 +13894,10 @@
           291,
           "消防-室內栓",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          16,
+          17,
           "1150629-C08-LV-1150629-1-弱電系統設備工程1F頂版AB棟",
           "壹.甲.三.14.(2).18",
           "產品，PVC管 50mm(2\")(排水管)",
@@ -13893,10 +13905,10 @@
           8,
           "消防-室內栓",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          16,
+          17,
           "1150629-C08-LV-1150629-1-弱電系統設備工程1F頂版AB棟",
           "壹.甲.三.14.(3).17",
           "產品，PVC管 20mm(3/4\")(E管)",
@@ -13904,10 +13916,10 @@
           18,
           "消防-緊急廣播",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          16,
+          17,
           "1150629-C08-LV-1150629-1-弱電系統設備工程1F頂版AB棟",
           "壹.甲.三.14.(3).18",
           "產品，PVC管 16mm(1/2\")(E管)",
@@ -13915,10 +13927,10 @@
           350,
           "消防-緊急廣播",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          16,
+          17,
           "1150629-C08-LV-1150629-1-弱電系統設備工程1F頂版AB棟",
           "壹.甲.三.14.(3).19",
           "產品，PVC管 28mm(1\")(E管)",
@@ -13926,10 +13938,10 @@
           31,
           "消防-緊急廣播",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          17,
+          18,
           "1150629-C08-WP-1150629-1-給排水設備工程1F頂版AB棟",
           "壹.甲.三.12.(79).1",
           "產品，自來水用鋼管，不鏽鋼管，標稱管徑15mm",
@@ -13937,10 +13949,10 @@
           20,
           "不鏽鋼給水管",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          17,
+          18,
           "1150629-C08-WP-1150629-1-給排水設備工程1F頂版AB棟",
           "壹.甲.三.12.(79).2",
           "產品，自來水用鋼管，不鏽鋼管，標稱管徑20mm",
@@ -13948,10 +13960,10 @@
           6,
           "不鏽鋼給水管",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          17,
+          18,
           "1150629-C08-WP-1150629-1-給排水設備工程1F頂版AB棟",
           "壹.甲.三.12.(87).1",
           "產品，聚氯乙烯管(B管厚管)，標稱20mm",
@@ -13959,10 +13971,10 @@
           40,
           "PVC空調排水",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          17,
+          18,
           "1150629-C08-WP-1150629-1-給排水設備工程1F頂版AB棟",
           "壹.甲.三.12.(87).2",
           "產品，聚氯乙烯管(B管厚管)，標稱25mm",
@@ -13970,10 +13982,10 @@
           20,
           "PVC空調排水",
           "已計價(第3期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          18,
+          19,
           "1150723-C08-E-1150723-1-AB棟2F牆面埋配管(電氣)",
           "壹.甲.三.2.(54)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱16mm",
@@ -13981,10 +13993,10 @@
           1420,
           "照明電氣",
           "已計價(第4期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          19,
+          20,
           "1150723-C08-E-1150723-1-AB棟2F牆面埋配管(電氣)(前期緩估留存)",
           "壹.甲.三.2.(55)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱20mm",
@@ -13992,10 +14004,10 @@
           300,
           "照明電氣",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          18,
+          19,
           "1150723-C08-E-1150723-1-AB棟2F牆面埋配管(電氣)",
           "壹.甲.三.2.(56)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱28mm",
@@ -14003,10 +14015,10 @@
           200,
           "照明電氣",
           "已計價(第4期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          18,
+          19,
           "1150723-C08-E-1150723-1-AB棟2F牆面埋配管(電氣)",
           "壹.甲.三.2.(63)",
           "產品，導線管，電線用鋼管，無螺紋，稱呼E31",
@@ -14014,10 +14026,10 @@
           72,
           "照明電氣",
           "已計價(第4期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          18,
+          19,
           "1150723-C08-E-1150723-1-AB棟2F牆面埋配管(電氣)",
           "壹.甲.三.2.(64)",
           "產品，導線管，電線用鋼管，無螺紋，稱呼E39",
@@ -14025,10 +14037,10 @@
           3,
           "照明電氣",
           "已計價(第4期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          20,
+          21,
           "1150715-C08-F-1150715-01-AB棟柱預埋管(消防)",
           "壹.甲.三.14.(3).18",
           "產品，PVC管 16mm(1/2\")(E管)",
@@ -14036,10 +14048,10 @@
           296,
           "消防-緊急廣播",
           "已計價(第4期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          21,
+          22,
           "1150723-C08-LV-1150723-1-AB棟2F牆面埋配管(弱電)",
           "壹.甲.三.10.(10)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱20mm",
@@ -14047,10 +14059,10 @@
           200,
           "緊急求救",
           "已計價(第4期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          21,
+          22,
           "1150723-C08-LV-1150723-1-AB棟2F牆面埋配管(弱電)",
           "壹.甲.三.9.(14)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱20mm",
@@ -14058,10 +14070,10 @@
           162,
           "門禁系統",
           "已計價(第4期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          21,
+          22,
           "1150723-C08-LV-1150723-1-AB棟2F牆面埋配管(弱電)",
           "壹.甲.三.8.(20)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱20mm",
@@ -14069,10 +14081,10 @@
           80,
           "安全監視",
           "已計價(第4期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依115.11.19全量9單簽認實算校正"
         ],
         [
-          21,
+          22,
           "1150723-C08-LV-1150723-1-AB棟2F牆面埋配管(弱電)",
           "壹.甲.三.5.(18)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱20mm",
@@ -14080,10 +14092,10 @@
           476,
           "電信資訊",
           "已計價(第4期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          21,
+          22,
           "1150723-C08-LV-1150723-1-AB棟2F牆面埋配管(弱電)",
           "壹.甲.三.5.(19)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱28mm",
@@ -14091,10 +14103,10 @@
           132,
           "電信資訊",
           "已計價(第4期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          22,
+          23,
           "1150723-C08-LV-1150723-1-AB棟2F牆面埋配管(弱電)(前期緩估留存)",
           "壹.甲.三.5.(19)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱28mm",
@@ -14102,10 +14114,10 @@
           168,
           "電信資訊",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          23,
+          24,
           "1150723-C08-PA-1150723-1-AB棟2F牆面埋配管(業務廣播)",
           "壹.甲.三.11.(17)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱16mm",
@@ -14113,10 +14125,10 @@
           291,
           "業務廣播",
           "已計價(第4期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          24,
+          25,
           "1150723-C08-WP-1150723-1-AB棟2F牆面埋配管(給排水)",
           "壹.甲.三.12.(79).1",
           "產品，自來水用鋼管，不鏽鋼管，標稱管徑15mm",
@@ -14124,10 +14136,10 @@
           120,
           "不鏽鋼給水管",
           "已計價(第4期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          24,
+          25,
           "1150723-C08-WP-1150723-1-AB棟2F牆面埋配管(給排水)",
           "壹.甲.三.12.(79).2",
           "產品，自來水用鋼管，不鏽鋼管，標稱管徑20mm",
@@ -14135,10 +14147,10 @@
           60,
           "不鏽鋼給水管",
           "已計價(第4期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          24,
+          25,
           "1150723-C08-WP-1150723-1-AB棟2F牆面埋配管(給排水)",
           "壹.甲.三.12.(79).3",
           "產品，自來水用鋼管，不鏽鋼管，標稱管徑25mm",
@@ -14146,10 +14158,10 @@
           60,
           "不鏽鋼給水管",
           "已計價(第4期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          24,
+          25,
           "1150723-C08-WP-1150723-1-AB棟2F牆面埋配管(給排水)",
           "壹.甲.三.12.(79).4",
           "產品，自來水用鋼管，不鏽鋼管，標稱管徑40mm",
@@ -14157,10 +14169,10 @@
           60,
           "不鏽鋼給水管",
           "已計價(第4期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          24,
+          25,
           "1150723-C08-WP-1150723-1-AB棟2F牆面埋配管(給排水)",
           "壹.甲.三.12.(87).1",
           "產品，聚氯乙烯管(B管厚管)，標稱20mm",
@@ -14168,10 +14180,10 @@
           40,
           "PVC空調排水",
           "已計價(第4期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          25,
+          26,
           "1150723-C08-WP-1150723-1-AB棟2F牆面埋配管(給排水)(前期緩估留存)",
           "壹.甲.三.12.(87).1",
           "產品，聚氯乙烯管(B管厚管)，標稱20mm",
@@ -14179,10 +14191,10 @@
           50,
           "PVC空調排水",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          24,
+          25,
           "1150723-C08-WP-1150723-1-AB棟2F牆面埋配管(給排水)",
           "壹.甲.三.12.(87).2",
           "產品，聚氯乙烯管(B管厚管)，標稱25mm",
@@ -14190,10 +14202,10 @@
           120,
           "PVC空調排水",
           "已計價(第4期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          26,
+          27,
           "1150812-C10-E-1150812-1-AB棟3F版面預埋管(照明電氣)",
           "壹.甲.三.2.(54)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱16mm",
@@ -14201,10 +14213,10 @@
           2000,
           "照明電氣",
           "已計價(第4期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          27,
+          28,
           "1150812-C10-E-1150812-1-AB棟3F版面預埋管(照明電氣)(前期緩估留存)",
           "壹.甲.三.2.(55)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱20mm",
@@ -14212,10 +14224,10 @@
           180,
           "照明電氣",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          27,
+          28,
           "1150812-C10-E-1150812-1-AB棟3F版面預埋管(照明電氣)(前期緩估留存)",
           "壹.甲.三.2.(56)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱28mm",
@@ -14223,10 +14235,10 @@
           200,
           "照明電氣",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          26,
+          27,
           "1150812-C10-E-1150812-1-AB棟3F版面預埋管(照明電氣)",
           "壹.甲.三.2.(63)",
           "產品，導線管，電線用鋼管，無螺紋，稱呼E31",
@@ -14234,10 +14246,10 @@
           220,
           "照明電氣",
           "已計價(第4期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          26,
+          27,
           "1150812-C10-E-1150812-1-AB棟3F版面預埋管(照明電氣)",
           "壹.甲.三.2.(64)",
           "產品，導線管，電線用鋼管，無螺紋，稱呼E39",
@@ -14245,10 +14257,10 @@
           9,
           "照明電氣",
           "已計價(第4期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          28,
+          29,
           "1150812-C10-F-1150812-1-AB棟3F版面預埋管(消防系統)",
           "壹.甲.三.14.(1).17",
           "產品，PVC管 20mm(3/4\")(E管)",
@@ -14256,10 +14268,10 @@
           540,
           "消防-火警",
           "已計價(第4期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          28,
+          29,
           "1150812-C10-F-1150812-1-AB棟3F版面預埋管(消防系統)",
           "壹.甲.三.14.(1).18",
           "產品，PVC管 28mm(1\")(E管)",
@@ -14267,10 +14279,10 @@
           135,
           "消防-火警",
           "已計價(第4期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          28,
+          29,
           "1150812-C10-F-1150812-1-AB棟3F版面預埋管(消防系統)",
           "壹.甲.三.14.(2).17",
           "產品，PVC管 20mm(3/4\")(E管)",
@@ -14278,10 +14290,10 @@
           24,
           "消防-室內栓",
           "已計價(第4期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          28,
+          29,
           "1150812-C10-F-1150812-1-AB棟3F版面預埋管(消防系統)",
           "壹.甲.三.14.(3).18",
           "產品，PVC管 16mm(1/2\")(E管)",
@@ -14289,10 +14301,10 @@
           380,
           "消防-緊急廣播",
           "已計價(第4期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          29,
+          30,
           "1150812-C10-WP-1150812-1-AB棟3F版面預埋管(給排水設備)",
           "壹.甲.三.12.(79).1",
           "產品，自來水用鋼管，不鏽鋼管，標稱管徑15mm",
@@ -14300,10 +14312,10 @@
           20,
           "不鏽鋼給水管",
           "已計價(第4期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          29,
+          30,
           "1150812-C10-WP-1150812-1-AB棟3F版面預埋管(給排水設備)",
           "壹.甲.三.12.(79).2",
           "產品，自來水用鋼管，不鏽鋼管，標稱管徑20mm",
@@ -14311,10 +14323,10 @@
           6,
           "不鏽鋼給水管",
           "已計價(第4期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          29,
+          30,
           "1150812-C10-WP-1150812-1-AB棟3F版面預埋管(給排水設備)",
           "壹.甲.三.12.(79).3",
           "產品，自來水用鋼管，不鏽鋼管，標稱管徑25mm",
@@ -14322,10 +14334,10 @@
           6,
           "不鏽鋼給水管",
           "已計價(第4期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          30,
+          31,
           "1150812-C10-LV-1150812-1-AB棟3F版面預埋管(弱電設備)",
           "壹.甲.三.9.(14)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱20mm",
@@ -14333,10 +14345,10 @@
           320,
           "門禁系統",
           "已計價(第4期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          30,
+          31,
           "1150812-C10-LV-1150812-1-AB棟3F版面預埋管(弱電設備)",
           "壹.甲.三.8.(20)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱20mm",
@@ -14344,10 +14356,10 @@
           580,
           "安全監視",
           "已計價(第4期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依115.11.19全量9單簽認實算校正"
         ],
         [
-          30,
+          31,
           "1150812-C10-LV-1150812-1-AB棟3F版面預埋管(弱電設備)",
           "壹.甲.三.5.(18)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱20mm",
@@ -14355,10 +14367,10 @@
           476,
           "電信資訊",
           "已計價(第4期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          31,
+          32,
           "1150812-C10-LV-1150812-1-AB棟3F版面預埋管(弱電設備)(前期緩估留存)",
           "壹.甲.三.5.(19)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱28mm",
@@ -14366,10 +14378,10 @@
           90,
           "電信資訊",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          32,
+          33,
           "1150826-C10-PA-1150826-1-AB棟3F牆面預埋管(業務廣播設備)",
           "壹.甲.三.11.(17)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱16mm",
@@ -14377,10 +14389,10 @@
           291,
           "業務廣播",
           "已計價(第4期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          33,
+          34,
           "1150826-C10-WP-1150826-1-AB棟3F牆面預埋管(給排水設備)",
           "壹.甲.三.12.(79).1",
           "產品，自來水用鋼管，不鏽鋼管，標稱管徑15mm",
@@ -14388,10 +14400,10 @@
           144,
           "不鏽鋼給水管",
           "已計價(第4期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          33,
+          34,
           "1150826-C10-WP-1150826-1-AB棟3F牆面預埋管(給排水設備)",
           "壹.甲.三.12.(79).2",
           "產品，自來水用鋼管，不鏽鋼管，標稱管徑20mm",
@@ -14399,10 +14411,10 @@
           12,
           "不鏽鋼給水管",
           "已計價(第4期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          33,
+          34,
           "1150826-C10-WP-1150826-1-AB棟3F牆面預埋管(給排水設備)",
           "壹.甲.三.12.(79).3",
           "產品，自來水用鋼管，不鏽鋼管，標稱管徑25mm",
@@ -14410,10 +14422,10 @@
           36,
           "不鏽鋼給水管",
           "已計價(第4期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          34,
+          35,
           "1150826-C10-LV-1150826-1-AB棟3F牆面預埋管(弱電設備)",
           "壹.甲.三.10.(10)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱20mm",
@@ -14421,10 +14433,10 @@
           440,
           "緊急求救",
           "已計價(第4期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          34,
+          35,
           "1150826-C10-LV-1150826-1-AB棟3F牆面預埋管(弱電設備)",
           "壹.甲.三.9.(14)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱20mm",
@@ -14432,10 +14444,10 @@
           70,
           "門禁系統",
           "已計價(第4期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          35,
+          36,
           "1150826-C10-E-1150826-1-AB棟3F牆面預埋管(電氣設備)",
           "壹.甲.三.2.(54)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱16mm",
@@ -14443,10 +14455,10 @@
           351,
           "照明電氣",
           "已計價(第4期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          35,
+          36,
           "1150826-C10-E-1150826-1-AB棟3F牆面預埋管(電氣設備)",
           "壹.甲.三.2.(63)",
           "產品，導線管，電線用鋼管，無螺紋，稱呼E31",
@@ -14454,10 +14466,10 @@
           220,
           "照明電氣",
           "已計價(第4期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          35,
+          36,
           "1150826-C10-E-1150826-1-AB棟3F牆面預埋管(電氣設備)",
           "壹.甲.三.2.(64)",
           "產品，導線管，電線用鋼管，無螺紋，稱呼E39",
@@ -14465,10 +14477,10 @@
           9,
           "照明電氣",
           "已計價(第4期)",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          36,
+          37,
           "1150819-C10-F-1150819-01-3F柱配管",
           "壹.甲.三.14.(3).18",
           "產品，PVC管 16mm(1/2\")(E管)",
@@ -14476,21 +14488,21 @@
           134,
           "消防-緊急廣播",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          37,
-          "1150826-C10-LV-1150826-01-3F牆面A&B棟預埋配管(電信-第5期漏登頁)",
+          38,
+          "1150826-C10-LV-1150826-01-3F牆面A&B棟預埋配管(電信)",
           "壹.甲.三.8.(20)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱20mm",
           1782,
           120,
           "安全監視",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依115.11.19全量9單簽認實算校正"
         ],
         [
-          37,
+          39,
           "1150826-C10-LV-1150826-01-3F牆面A&B棟預埋配管(電信-第5期漏登頁)",
           "壹.甲.三.5.(18)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱20mm",
@@ -14498,10 +14510,10 @@
           296,
           "電信資訊",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          37,
+          39,
           "1150826-C10-LV-1150826-01-3F牆面A&B棟預埋配管(電信-第5期漏登頁)",
           "壹.甲.三.5.(19)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱28mm",
@@ -14509,10 +14521,10 @@
           24,
           "電信資訊",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          38,
+          40,
           "1150911-C10-E-1150911-01-4F版面預埋配管",
           "壹.甲.三.2.(54)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱16mm",
@@ -14520,10 +14532,10 @@
           800,
           "照明電氣",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          38,
+          40,
           "1150911-C10-E-1150911-01-4F版面預埋配管",
           "壹.甲.三.2.(63)",
           "產品，導線管，電線用鋼管，無螺紋，稱呼E31",
@@ -14531,10 +14543,10 @@
           156,
           "照明電氣",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          38,
+          40,
           "1150911-C10-E-1150911-01-4F版面預埋配管",
           "壹.甲.三.2.(64)",
           "產品，導線管，電線用鋼管，無螺紋，稱呼E39",
@@ -14542,10 +14554,10 @@
           9,
           "照明電氣",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          39,
+          41,
           "1150911-C10-F-1150911-01-4F版面消防預埋配管",
           "壹.甲.三.14.(2).17",
           "產品，PVC管 20mm(3/4\")(E管)",
@@ -14553,10 +14565,10 @@
           48,
           "消防-室內栓",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          40,
+          42,
           "1150911-C10-LV-1150911-01-4F版面A&B棟預埋配管(電信)",
           "壹.甲.三.11.(17)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱16mm",
@@ -14564,10 +14576,10 @@
           200,
           "業務廣播",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          40,
+          42,
           "1150911-C10-LV-1150911-01-4F版面A&B棟預埋配管(電信)",
           "壹.甲.三.5.(18)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱20mm",
@@ -14575,21 +14587,21 @@
           1500,
           "電信資訊",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          40,
+          42,
           "1150911-C10-LV-1150911-01-4F版面A&B棟預埋配管(電信)",
           "壹.甲.三.8.(20)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱20mm",
           1782,
-          236,
+          300,
           "安全監視",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依115.11.19全量9單簽認實算校正"
         ],
         [
-          40,
+          42,
           "1150911-C10-LV-1150911-01-4F版面A&B棟預埋配管(電信)",
           "壹.甲.三.9.(14)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱20mm",
@@ -14597,10 +14609,10 @@
           48,
           "門禁系統",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          40,
+          42,
           "1150911-C10-LV-1150911-01-4F版面A&B棟預埋配管(電信)",
           "壹.甲.三.10.(10)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱20mm",
@@ -14608,10 +14620,10 @@
           440,
           "緊急求救",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          41,
+          43,
           "1150911-C10-WP-1150911-01-4F版面A&B棟預埋配管(給排水)",
           "壹.甲.三.12.(79).2",
           "產品，自來水用鋼管，不鏽鋼管，標稱管徑20mm",
@@ -14619,10 +14631,10 @@
           20,
           "不鏽鋼給水管",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          41,
+          43,
           "1150911-C10-WP-1150911-01-4F版面A&B棟預埋配管(給排水)",
           "壹.甲.三.12.(79).3",
           "產品，自來水用鋼管，不鏽鋼管，標稱管徑25mm",
@@ -14630,10 +14642,10 @@
           10,
           "不鏽鋼給水管",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          41,
+          43,
           "1150911-C10-WP-1150911-01-4F版面A&B棟預埋配管(給排水)",
           "壹.甲.三.12.(79).4",
           "產品，自來水用鋼管，不鏽鋼管，標稱管徑40mm",
@@ -14641,10 +14653,10 @@
           6,
           "不鏽鋼給水管",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          41,
+          43,
           "1150911-C10-WP-1150911-01-4F版面A&B棟預埋配管(給排水)",
           "壹.甲.三.12.(87).2",
           "產品，聚氯乙烯管(B管厚管)，標稱25mm",
@@ -14652,10 +14664,10 @@
           25,
           "PVC空調排水",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          42,
+          44,
           "1150918-C10-F-1150918-01-4F柱配管",
           "壹.甲.三.14.(3).18",
           "產品，PVC管 16mm(1/2\")(E管)",
@@ -14663,10 +14675,10 @@
           117,
           "消防-緊急廣播",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          43,
+          45,
           "1150923-C10-E-1150923-01-4F牆面A&B棟預埋配管(電氣)",
           "壹.甲.三.2.(54)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱16mm",
@@ -14674,10 +14686,10 @@
           524,
           "照明電氣",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          43,
+          45,
           "1150923-C10-E-1150923-01-4F牆面A&B棟預埋配管(電氣)",
           "壹.甲.三.2.(63)",
           "產品，導線管，電線用鋼管，無螺紋，稱呼E31",
@@ -14685,10 +14697,10 @@
           86,
           "照明電氣",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          44,
+          46,
           "1150923-C10-LV-1150923-1-AB棟4F牆面預埋管(弱電)",
           "壹.甲.三.5.(18)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱20mm",
@@ -14696,10 +14708,21 @@
           212,
           "電信資訊",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          44,
+          46,
+          "1150923-C10-LV-1150923-1-AB棟4F牆面預埋管(弱電)",
+          "壹.甲.三.8.(20)",
+          "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱20mm",
+          1782,
+          90,
+          "安全監視",
+          "未計價",
+          "依115.11.19全量9單簽認實算校正"
+        ],
+        [
+          46,
           "1150923-C10-LV-1150923-1-AB棟4F牆面預埋管(弱電)",
           "壹.甲.三.9.(14)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱20mm",
@@ -14707,10 +14730,10 @@
           28,
           "門禁系統",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          44,
+          46,
           "1150923-C10-LV-1150923-1-AB棟4F牆面預埋管(弱電)",
           "壹.甲.三.10.(10)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱20mm",
@@ -14718,10 +14741,10 @@
           120,
           "緊急求救",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          45,
+          47,
           "1150923-C10-PA-1150923-01-4F牆面A&B棟預埋配管(業務廣播)",
           "壹.甲.三.11.(17)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱16mm",
@@ -14729,10 +14752,10 @@
           200,
           "業務廣播",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          46,
+          48,
           "1150923-C10-WP-1150923-01-4F牆面A&B棟預埋配管(給排水)",
           "壹.甲.三.12.(79).2",
           "產品，自來水用鋼管，不鏽鋼管，標稱管徑20mm",
@@ -14740,10 +14763,10 @@
           20,
           "不鏽鋼給水管",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          46,
+          48,
           "1150923-C10-WP-1150923-01-4F牆面A&B棟預埋配管(給排水)",
           "壹.甲.三.12.(79).3",
           "產品，自來水用鋼管，不鏽鋼管，標稱管徑25mm",
@@ -14751,10 +14774,10 @@
           10,
           "不鏽鋼給水管",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          46,
+          48,
           "1150923-C10-WP-1150923-01-4F牆面A&B棟預埋配管(給排水)",
           "壹.甲.三.12.(79).4",
           "產品，自來水用鋼管，不鏽鋼管，標稱管徑40mm",
@@ -14762,10 +14785,10 @@
           6,
           "不鏽鋼給水管",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          46,
+          48,
           "1150923-C10-WP-1150923-01-4F牆面A&B棟預埋配管(給排水)",
           "壹.甲.三.12.(87).2",
           "產品，聚氯乙烯管(B管厚管)，標稱25mm",
@@ -14773,10 +14796,10 @@
           25,
           "PVC空調排水",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          47,
+          49,
           "1150929-C10-E-1150929-01-1F預埋景觀電信消防管路",
           "壹.甲.三.5.(19)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱28mm",
@@ -14784,10 +14807,10 @@
           192,
           "電信資訊",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          47,
+          49,
           "1150929-C10-E-1150929-01-1F預埋景觀電信消防管路",
           "壹.甲.三.14.(3).19",
           "產品，PVC管 28mm(1\")(E管)",
@@ -14795,10 +14818,10 @@
           36,
           "消防-緊急廣播",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          48,
+          50,
           "1151007-C10-E-1151007-1-AB棟屋頂版面預埋管(電氣)",
           "壹.甲.三.2.(54)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱16mm",
@@ -14806,10 +14829,10 @@
           335,
           "照明電氣",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          48,
+          50,
           "1151007-C10-E-1151007-1-AB棟屋頂版面預埋管(電氣)",
           "壹.甲.三.2.(63)",
           "產品，導線管，電線用鋼管，無螺紋，稱呼E31",
@@ -14817,10 +14840,10 @@
           131,
           "照明電氣",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          49,
+          51,
           "1151007-C10-F-1151007-1-AB棟屋頂版面預埋管(消防設備)",
           "壹.甲.三.14.(1).17",
           "產品，PVC管 20mm(3/4\")(E管)",
@@ -14828,10 +14851,10 @@
           430,
           "消防-火警",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          50,
+          52,
           "1151007-C10-LV-1151007-1-AB棟屋頂版面預埋管(弱電)",
           "壹.甲.三.5.(18)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱20mm",
@@ -14839,10 +14862,21 @@
           462,
           "電信資訊",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          50,
+          52,
+          "1151007-C10-LV-1151007-1-AB棟屋頂版面預埋管(弱電)",
+          "壹.甲.三.8.(20)",
+          "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱20mm",
+          1782,
+          126,
+          "安全監視",
+          "未計價",
+          "依115.11.19全量9單簽認實算校正"
+        ],
+        [
+          52,
           "1151007-C10-LV-1151007-1-AB棟屋頂版面預埋管(弱電)",
           "壹.甲.三.10.(10)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱20mm",
@@ -14850,10 +14884,10 @@
           77,
           "緊急求救",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          50,
+          52,
           "1151007-C10-LV-1151007-1-AB棟屋頂版面預埋管(弱電)",
           "壹.甲.三.11.(17)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱16mm",
@@ -14861,10 +14895,10 @@
           115,
           "業務廣播",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          50,
+          52,
           "1151007-C10-LV-1151007-1-AB棟屋頂版面預埋管(弱電)",
           "壹.甲.三.11.(18)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱20mm",
@@ -14872,10 +14906,10 @@
           35,
           "業務廣播",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          51,
+          53,
           "1151017-C10-WP-1151017-01-2F廁所吊管滿水試驗(R214&R215)",
           "壹.甲.三.12.(85).2",
           "產品，硬質聚氯乙烯塑膠管(B管橘紅色)，標稱50mm",
@@ -14883,10 +14917,10 @@
           6,
           "PVC污水管",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          51,
+          53,
           "1151017-C10-WP-1151017-01-2F廁所吊管滿水試驗(R214&R215)",
           "壹.甲.三.12.(85).3",
           "產品，硬質聚氯乙烯塑膠管(B管橘紅色)，標稱75mm",
@@ -14894,10 +14928,10 @@
           31,
           "PVC污水管",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          51,
+          53,
           "1151017-C10-WP-1151017-01-2F廁所吊管滿水試驗(R214&R215)",
           "壹.甲.三.12.(85).4",
           "產品，硬質聚氯乙烯塑膠管(B管橘紅色)，標稱100mm",
@@ -14905,10 +14939,10 @@
           26,
           "PVC污水管",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          51,
+          53,
           "1151017-C10-WP-1151017-01-2F廁所吊管滿水試驗(R214&R215)",
           "壹.甲.三.12.(86).1",
           "產品，聚氯乙烯管(B管厚管)，標稱50mm",
@@ -14916,10 +14950,10 @@
           4,
           "PVC雨水管",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          51,
+          53,
           "1151017-C10-WP-1151017-01-2F廁所吊管滿水試驗(R214&R215)",
           "壹.甲.三.12.(86).2",
           "產品，聚氯乙烯管(B管厚管)，標稱75mm",
@@ -14927,10 +14961,10 @@
           4,
           "PVC雨水管",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          51,
+          53,
           "1151017-C10-WP-1151017-01-2F廁所吊管滿水試驗(R214&R215)",
           "壹.甲.三.12.(88).1",
           "產品，聚氯乙烯管(A管薄管)，標稱50mm",
@@ -14938,10 +14972,10 @@
           26,
           "PVC透氣管",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          52,
+          54,
           "1151019-C10-WP-1151019-01-2F廁所吊管滿水試驗(R208&R209)",
           "壹.甲.三.12.(85).2",
           "產品，硬質聚氯乙烯塑膠管(B管橘紅色)，標稱50mm",
@@ -14949,10 +14983,10 @@
           12,
           "PVC污水管",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          52,
+          54,
           "1151019-C10-WP-1151019-01-2F廁所吊管滿水試驗(R208&R209)",
           "壹.甲.三.12.(85).3",
           "產品，硬質聚氯乙烯塑膠管(B管橘紅色)，標稱75mm",
@@ -14960,10 +14994,10 @@
           19,
           "PVC污水管",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          52,
+          54,
           "1151019-C10-WP-1151019-01-2F廁所吊管滿水試驗(R208&R209)",
           "壹.甲.三.12.(85).4",
           "產品，硬質聚氯乙烯塑膠管(B管橘紅色)，標稱100mm",
@@ -14971,10 +15005,10 @@
           30,
           "PVC污水管",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          52,
+          54,
           "1151019-C10-WP-1151019-01-2F廁所吊管滿水試驗(R208&R209)",
           "壹.甲.三.12.(86).2",
           "產品，聚氯乙烯管(B管厚管)，標稱75mm",
@@ -14982,10 +15016,10 @@
           4,
           "PVC雨水管",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          52,
+          54,
           "1151019-C10-WP-1151019-01-2F廁所吊管滿水試驗(R208&R209)",
           "壹.甲.三.12.(88).1",
           "產品，聚氯乙烯管(A管薄管)，標稱50mm",
@@ -14993,10 +15027,10 @@
           22,
           "PVC透氣管",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          52,
+          54,
           "1151019-C10-WP-1151019-01-2F廁所吊管滿水試驗(R208&R209)",
           "壹.甲.三.12.(88).2",
           "產品，聚氯乙烯管(A管薄管)，標稱75mm",
@@ -15004,10 +15038,10 @@
           4,
           "PVC透氣管",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          53,
+          55,
           "1151029-C10-E-1151029-1-AB棟設備拉線(電氣)",
           "壹.甲.三.2.(29)",
           "產品，電線及電纜，600V聚氯乙烯絕緣電線，絞線，2.0φ",
@@ -15015,10 +15049,10 @@
           8600,
           "照明電氣",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          53,
+          55,
           "1151029-C10-E-1151029-1-AB棟設備拉線(電氣)",
           "壹.甲.三.2.(30)",
           "產品，電線及電纜，600V聚氯乙烯絕緣電線，絞線，5.5mm2",
@@ -15026,10 +15060,10 @@
           14300,
           "照明電氣",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          53,
+          55,
           "1151029-C10-E-1151029-1-AB棟設備拉線(電氣)",
           "壹.甲.三.2.(32)",
           "產品，電線及電纜，600V聚氯乙烯絕緣電線，絞線，14mm2",
@@ -15037,10 +15071,10 @@
           20,
           "照明電氣",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          54,
+          56,
           "1151029-C10-WP-1151029-1-AB棟1-3F管道間配管與滿水試驗(給排水設備)",
           "壹.甲.三.12.(85).2",
           "產品，硬質聚氯乙烯塑膠管(B管橘紅色)，標稱50mm",
@@ -15048,10 +15082,10 @@
           24,
           "PVC污水管",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          54,
+          56,
           "1151029-C10-WP-1151029-1-AB棟1-3F管道間配管與滿水試驗(給排水設備)",
           "壹.甲.三.12.(85).4",
           "產品，硬質聚氯乙烯塑膠管(B管橘紅色)，標稱100mm",
@@ -15059,10 +15093,10 @@
           30,
           "PVC污水管",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          54,
+          56,
           "1151029-C10-WP-1151029-1-AB棟1-3F管道間配管與滿水試驗(給排水設備)",
           "壹.甲.三.12.(86).1",
           "產品，聚氯乙烯管(B管厚管)，標稱50mm",
@@ -15070,10 +15104,10 @@
           54,
           "PVC雨水管",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          54,
+          56,
           "1151029-C10-WP-1151029-1-AB棟1-3F管道間配管與滿水試驗(給排水設備)",
           "壹.甲.三.12.(86).2",
           "產品，聚氯乙烯管(B管厚管)，標稱75mm",
@@ -15081,10 +15115,10 @@
           30,
           "PVC雨水管",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          54,
+          56,
           "1151029-C10-WP-1151029-1-AB棟1-3F管道間配管與滿水試驗(給排水設備)",
           "壹.甲.三.12.(87).2",
           "產品，聚氯乙烯管(B管厚管)，標稱25mm",
@@ -15092,10 +15126,10 @@
           30,
           "PVC空調排水",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          54,
+          56,
           "1151029-C10-WP-1151029-1-AB棟1-3F管道間配管與滿水試驗(給排水設備)",
           "壹.甲.三.12.(87).3",
           "產品，聚氯乙烯管(B管厚管)，標稱40mm",
@@ -15103,10 +15137,10 @@
           18,
           "PVC空調排水",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          54,
+          56,
           "1151029-C10-WP-1151029-1-AB棟1-3F管道間配管與滿水試驗(給排水設備)",
           "壹.甲.三.12.(88).1",
           "產品，聚氯乙烯管(A管薄管)，標稱50mm",
@@ -15114,10 +15148,10 @@
           24,
           "PVC透氣管",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          55,
+          57,
           "1151104-C10-E-1151104-1-B棟4F頂板及RF頂板",
           "壹.甲.三.4.(4)",
           "產品，基礎台，RC基礎台及基礎螺栓",
@@ -15125,10 +15159,10 @@
           1,
           "避雷接地",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          55,
+          57,
           "1151104-C10-E-1151104-1-B棟4F頂板及RF頂板",
           "壹.甲.三.4.(6)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱28mm",
@@ -15136,10 +15170,10 @@
           30,
           "避雷接地",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          55,
+          57,
           "1151104-C10-E-1151104-1-B棟4F頂板及RF頂板",
           "壹.甲.三.4.(10)",
           "裸銅線(BCW) 60mm2",
@@ -15147,10 +15181,10 @@
           50,
           "避雷接地",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          55,
+          57,
           "1151104-C10-E-1151104-1-B棟4F頂板及RF頂板",
           "壹.甲.三.2.(54)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱16mm",
@@ -15158,10 +15192,10 @@
           215,
           "照明電氣",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          56,
+          58,
           "1151104-C10-F-1151104-1-B棟4F頂板及RF頂板",
           "壹.甲.三.14.(1).11",
           "產品，耐熱對絞銅網信號隔離線2.0mm2x 2C",
@@ -15169,10 +15203,10 @@
           300,
           "消防-火警",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          56,
+          58,
           "1151104-C10-F-1151104-1-B棟4F頂板及RF頂板",
           "壹.甲.三.14.(1).17",
           "產品，PVC管 20mm(3/4\")(E管)",
@@ -15180,10 +15214,10 @@
           450,
           "消防-火警",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          57,
+          59,
           "1151104-C10-LV-1151104-1-B棟4F頂板及RF頂板",
           "壹.甲.三.5.(18)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱20mm",
@@ -15191,10 +15225,10 @@
           150,
           "電信資訊",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          57,
+          59,
           "1151104-C10-LV-1151104-1-B棟4F頂板及RF頂板",
           "壹.甲.三.10.(10)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱20mm",
@@ -15202,10 +15236,10 @@
           100,
           "緊急求救",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          58,
+          60,
           "1151110-C10-WP-1151110-1-1F廁所空間給水配管及試壓施工查驗",
           "壹.甲.三.12.(79).2",
           "產品，自來水用鋼管，不鏽鋼管，標稱管徑20mm",
@@ -15213,10 +15247,10 @@
           40,
           "不鏽鋼給水管",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          58,
+          60,
           "1151110-C10-WP-1151110-1-1F廁所空間給水配管及試壓施工查驗",
           "壹.甲.三.12.(79).3",
           "產品，自來水用鋼管，不鏽鋼管，標稱管徑25mm",
@@ -15224,10 +15258,10 @@
           6,
           "不鏽鋼給水管",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          58,
+          60,
           "1151110-C10-WP-1151110-1-1F廁所空間給水配管及試壓施工查驗",
           "壹.甲.三.12.(79).4",
           "產品，自來水用鋼管，不鏽鋼管，標稱管徑40mm",
@@ -15235,10 +15269,10 @@
           15,
           "不鏽鋼給水管",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          58,
+          60,
           "1151110-C10-WP-1151110-1-1F廁所空間給水配管及試壓施工查驗",
           "壹.甲.三.12.(79).5",
           "產品，自來水用鋼管，不鏽鋼管，標稱管徑50mm",
@@ -15246,10 +15280,10 @@
           10,
           "不鏽鋼給水管",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          58,
+          60,
           "1151110-C10-WP-1151110-1-1F廁所空間給水配管及試壓施工查驗",
           "壹.甲.三.12.(80).1",
           "產品，不銹鋼管及管件，標稱厚度Sch-20S，材質種類304，標稱管徑65mm",
@@ -15257,10 +15291,10 @@
           3,
           "不鏽鋼給水管",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          59,
+          61,
           "1150227-C08-E-1150227-1-接地裸銅線前期簽認累積(避雷接地)",
           "壹.甲.三.4.(10)",
           "裸銅線(BCW) 60mm2",
@@ -15268,10 +15302,10 @@
           50,
           "避雷接地",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          57,
+          59,
           "1151104-C10-LV-1151104-1-B棟4F頂板及RF頂板",
           "壹.甲.三.5.(18)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱20mm",
@@ -15279,10 +15313,10 @@
           218,
           "電信資訊",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          57,
+          59,
           "1151104-C10-LV-1151104-1-B棟4F頂板及RF頂板",
           "壹.甲.三.5.(19)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱28mm",
@@ -15290,10 +15324,21 @@
           78,
           "電信資訊",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          57,
+          59,
+          "1151104-C10-LV-1151104-1-B棟4F頂板及RF頂板",
+          "壹.甲.三.8.(20)",
+          "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱20mm",
+          1782,
+          100,
+          "安全監視",
+          "未計價",
+          "依115.11.19全量9單簽認實算校正"
+        ],
+        [
+          59,
           "1151104-C10-LV-1151104-1-B棟4F頂板及RF頂板",
           "壹.甲.三.10.(10)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱20mm",
@@ -15301,10 +15346,10 @@
           110,
           "緊急求救",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          60,
+          62,
           "1150923-C10-PA-1150923-01-1~4F牆面預埋配管簽認累積差額校正(業務廣播)",
           "壹.甲.三.11.(17)",
           "產品，導線管，硬質聚氯乙烯塑膠管，E管，標稱16mm",
@@ -15312,10 +15357,10 @@
           1011,
           "業務廣播",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ],
         [
-          61,
+          63,
           "1151104-C10-F-1151104-1-緊急廣播耐熱線簽認累積(消防設備)",
           "壹.甲.三.14.(3).15",
           "產品，耐熱線 380℃ 15分鐘 1.6mm",
@@ -15323,21 +15368,21 @@
           1360,
           "消防-緊急廣播",
           "未計價",
-          "依C10簽認單與官方統計表實測登載"
+          "依C10簽認單與官方統計表核定"
         ]
       ],
-      "c10FoolproofFileId": "1LBjSNgN75oRFvd3hL8sJbmHjbUFf8RBw",
-      "c10FoolproofViewUrl": "https://drive.google.com/file/d/1LBjSNgN75oRFvd3hL8sJbmHjbUFf8RBw/view?usp=drivesdk",
-      "c10FoolproofDownloadUrl": "https://drive.google.com/uc?export=download&id=1LBjSNgN75oRFvd3hL8sJbmHjbUFf8RBw",
-      "d11FoolproofFileId": "1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
-      "d11FoolproofViewUrl": "https://drive.google.com/file/d/1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV/view?usp=drivesdk",
-      "d11FoolproofDownloadUrl": "https://drive.google.com/uc?export=download&id=1T-SyHK-cAPXo0yr3kaVRwmAqTbpqL_MV",
-      "diffWorkbookDownloadUrl": "https://drive.google.com/uc?export=download&id=1ZDci5tf51lncjBKqpA5rTSawszPMgOqJ",
+      "c10FoolproofFileId": "1plba3TYjAitFMN-V-9NUl08aIe8pI8ER",
+      "c10FoolproofViewUrl": "https://drive.google.com/file/d/1plba3TYjAitFMN-V-9NUl08aIe8pI8ER/view?usp=drivesdk",
+      "c10FoolproofDownloadUrl": "https://drive.google.com/uc?export=download&id=1plba3TYjAitFMN-V-9NUl08aIe8pI8ER",
+      "d11FoolproofFileId": "10UbbZUMWOjZrA9MMTaQY-XyeoDQ0rOds",
+      "d11FoolproofViewUrl": "https://drive.google.com/file/d/10UbbZUMWOjZrA9MMTaQY-XyeoDQ0rOds/view?usp=drivesdk",
+      "d11FoolproofDownloadUrl": "https://drive.google.com/uc?export=download&id=10UbbZUMWOjZrA9MMTaQY-XyeoDQ0rOds",
+      "diffWorkbookDownloadUrl": "https://drive.google.com/uc?export=download&id=1o07UfyOzY1LpTXtYv8FGph3srgF0Iald",
       "exportMode": "DIRECT_EXCEL_DOWNLOAD"
     },
     "schedule": {
       "last2400SyncedAt": "2026-11-19 00:35:47",
-      "lastRealtimeVerifiedAt": "2026-11-19 19:22:00",
+      "lastRealtimeVerifiedAt": "2026-11-19 22:58:00",
       "nextScheduledSync": "2026-11-20 00:00:00"
     }
   },
@@ -16398,7 +16443,7 @@
   },
   "dynamicSyncMetaS75": {
     "isDynamicS75": true,
-    "computedAt": "2026-11-19 23:04:00",
+    "computedAt": "2026-11-19 23:10:55",
     "d11LiveScanned": true,
     "c10LiveScanned": true,
     "boqSheetLiveRead": true,
