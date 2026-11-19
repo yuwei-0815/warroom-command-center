@@ -1,8 +1,8 @@
 {
   "ok": true,
   "version": "S3.5版_FAST_REALTIME_SYNC",
-  "driveFingerprint": "S35F_6c1d6498",
-  "syncedAt": "2026-11-19 17:51:38",
+  "driveFingerprint": "S35F_2e91e8c0",
+  "syncedAt": "2026-11-19 20:25:22",
   "latestDate": "2026-11-19",
   "excelDriveFileId": "1sJiy0wDJAyDqJzBD39AX2PTbBiUWJNySX22APzI_7s8",
   "d11Summary": {
@@ -15336,8 +15336,9 @@
       "exportMode": "DIRECT_EXCEL_DOWNLOAD"
     },
     "schedule": {
-      "last2400SyncedAt": "2026-11-18 00:16:10",
-      "lastRealtimeVerifiedAt": "2026-11-18 15:20:00"
+      "last2400SyncedAt": "2026-11-19 00:35:47",
+      "lastRealtimeVerifiedAt": "2026-11-19 19:22:00",
+      "nextScheduledSync": "2026-11-20 00:00:00"
     }
   },
   "liveEvents": [
@@ -16050,15 +16051,15 @@
       "rules": [
         "符合勞安標準（無勞安缺失）"
       ],
-      "workerCount": 7,
+      "workerCount": 10,
       "toolboxWorkers": 7,
-      "report1500Workers": null,
+      "report1500Workers": 10,
       "photoBreakdown": "[4, 3]",
-      "tomorrowPredictedWorkers": 0,
-      "tomorrowScope": "",
-      "workerTrades": "水電 7人 (工具箱點名 [4, 3] 共2張｜標準回報：115.11.19 水電 *7)",
-      "badgeText": "晴 0mm・水電7人",
-      "note": "今日施作：隔間配管缺失改善、3F電氣系統二次側拉線、3FA棟廁所吊管、2F弱電探管、消防感知系統拉線",
+      "tomorrowPredictedWorkers": 12,
+      "tomorrowScope": "隔間配管缺失改善、3F電氣系統二次側拉線、3FA棟廁所吊管、2F弱電探管、消防感知系統拉線",
+      "workerTrades": "水電 10人 (15:00回報實到 10人｜晨間工具箱點名 7人 [4, 3]｜明日預計 12人)",
+      "badgeText": "晴 0mm・水電10人",
+      "note": "今日施作：隔間配管缺失改善、3F電氣系統二次側拉線、3FA棟廁所吊管、2F弱電探管、消防感知系統拉線｜明日預計(12人)：隔間配管缺失改善、3F電氣系統二次側拉線、3FA棟廁所吊管、2F弱電探管、消防感知系統拉線",
       "__fromLiveCloudDb": true,
       "__isAutoRolloverToday": false
     },
@@ -16376,28 +16377,28 @@
       "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)",
       "latestDate": "2026-11-19",
       "latestRocDate": "115.11.19",
-      "todayWorkers": 7,
+      "todayWorkers": 10,
       "toolboxWorkers": 7,
-      "report1500Workers": null,
+      "report1500Workers": 10,
       "photoBreakdown": "[4, 3]",
       "lastVerifiedDate": "2026-11-18",
       "lastVerifiedRocDate": "115.11.18",
       "lastVerifiedWorkers": 10,
-      "tomorrowPredictedWorkers": 0,
-      "tomorrowWorkScope": "",
+      "tomorrowPredictedWorkers": 12,
+      "tomorrowWorkScope": "隔間配管缺失改善、3F電氣系統二次側拉線、3FA棟廁所吊管、2F弱電探管、消防感知系統拉線",
       "todayWorkScope": "隔間配管缺失改善、3F電氣系統二次側拉線、3FA棟廁所吊管、2F弱電探管、消防感知系統拉線",
-      "todayBadgeText": "今日點名已同步",
-      "todayTradeTag": "水電 *7 ([4, 3])",
-      "cumulativeWorkers": 220,
-      "currentMonthWorkers": 191,
+      "todayBadgeText": "15:00 實到已同步",
+      "todayTradeTag": "水電 *10 (15:00實到｜點名7人)",
+      "cumulativeWorkers": 223,
+      "currentMonthWorkers": 194,
       "currentMonthDays": 19,
       "workDaysCount": 22,
-      "dailyAvgWorkers": 10
+      "dailyAvgWorkers": 10.1
     }
   },
   "dynamicSyncMetaS75": {
     "isDynamicS75": true,
-    "computedAt": "2026-11-19 17:51:48",
+    "computedAt": "2026-11-19 20:25:20",
     "d11LiveScanned": true,
     "c10LiveScanned": true,
     "boqSheetLiveRead": true,
