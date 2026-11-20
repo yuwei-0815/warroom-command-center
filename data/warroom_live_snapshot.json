@@ -2,7 +2,7 @@
   "ok": true,
   "version": "S1版",
   "latestDate": "2026-11-20",
-  "syncedAt": "2026-11-21 00:07:04",
+  "syncedAt": "2026-11-21 07:14:39",
   "laborSummaryByProject": {
     "R2": {
       "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)",
@@ -719,7 +719,7 @@
       "note": "今日施作：隔間配管缺失改善、3F電氣系統二次側拉線、3FA棟廁所吊管、2F弱電探管、消防感知系統拉線｜明日預計(9人)：3F電氣系統二次側拉線、3FA棟廁所吊管、滿水測試、2F弱電探管 補線 4F廁所排水修改"
     }
   ],
-  "driveFingerprint": "By4ec5f5H8Hp2RGz3L",
+  "driveFingerprint": "w6YR_nBZTMSrBA6u_W",
   "excelDriveFileId": "1sJiy0wDJAyDqJzBD39AX2PTbBiUWJNySX22APzI_7s8",
   "sourceRegistry": {
     "gongwuyunUrl": "https://docs.google.com/spreadsheets/d/1sJiy0wDJAyDqJzBD39AX2PTbBiUWJNySX22APzI_7s8/edit",
@@ -4441,7 +4441,7 @@
       "cronExpressionUtc": "0 16 * * *",
       "triggerFunctionName": "cron2400FourWayBoqReconcileAndSync_S3",
       "last2400SyncedAt": "2026-11-12 00:03:53",
-      "lastRealtimeVerifiedAt": "2026-11-21 00:07:31",
+      "lastRealtimeVerifiedAt": "2026-11-21 07:15:16",
       "nextScheduledSync": "2026-11-21 24:00:00"
     },
     "summaryCounts": {
