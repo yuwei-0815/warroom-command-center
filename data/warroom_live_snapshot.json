@@ -1,8 +1,8 @@
 {
   "ok": true,
   "version": "S3.5版_FAST_REALTIME_SYNC",
-  "driveFingerprint": "S35F_9c509307",
-  "syncedAt": "2026-11-20 10:55:20",
+  "driveFingerprint": "S35F_50cddf2c",
+  "syncedAt": "2026-11-20 13:14:25",
   "latestDate": "2026-11-20",
   "excelDriveFileId": "1sJiy0wDJAyDqJzBD39AX2PTbBiUWJNySX22APzI_7s8",
   "d11Summary": {
@@ -27,14 +27,14 @@
     },
     "photoAppendixExcludedCount": 1
   },
-  "ncrInProgress": 1,
-  "ncrClosed": 18,
-  "ncrClosureRate": 95,
+  "ncrInProgress": 0,
+  "ncrClosed": 19,
+  "ncrClosureRate": 100,
   "ncrSummary": {
     "ncrTotal": 19,
-    "ncrClosed": 18,
-    "ncrInProgress": 1,
-    "ncrClosureRate": 95,
+    "ncrClosed": 19,
+    "ncrInProgress": 0,
+    "ncrClosureRate": 100,
     "latestNcrNo": "NCR-019",
     "inProgressNumbers": [
       "#019"
@@ -19328,7 +19328,7 @@
   },
   "dynamicSyncMetaS75": {
     "isDynamicS75": true,
-    "computedAt": "2026-11-20 10:55:34",
+    "computedAt": "2026-11-20 13:12:35",
     "d11LiveScanned": true,
     "c10LiveScanned": true,
     "boqSheetLiveRead": true,
