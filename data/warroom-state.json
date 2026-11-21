@@ -2,7 +2,7 @@
   "ok": true,
   "version": "S3.5版_FAST_REALTIME_SYNC",
   "driveFingerprint": "S35F_fe81ed64",
-  "syncedAt": "2026-11-21 10:19:22",
+  "syncedAt": "2026-11-21 11:33:52",
   "latestDate": "2026-11-21",
   "excelDriveFileId": "1sJiy0wDJAyDqJzBD39AX2PTbBiUWJNySX22APzI_7s8",
   "d11Summary": {
@@ -4524,7 +4524,7 @@
       "cronExpressionUtc": "0 16 * * *",
       "triggerFunctionName": "cron2400FourWayBoqReconcileAndSync_S3",
       "last2400SyncedAt": "2026-11-21 00:08:23",
-      "lastRealtimeVerifiedAt": "2026-11-21 09:48:00",
+      "lastRealtimeVerifiedAt": "2026-11-21 11:22:00",
       "nextScheduledSync": "2026-11-22 00:00:00"
     },
     "summaryCounts": {
@@ -18264,7 +18264,7 @@
     },
     "schedule": {
       "last2400SyncedAt": "2026-11-19 00:35:47",
-      "lastRealtimeVerifiedAt": "2026-11-21 09:48:00",
+      "lastRealtimeVerifiedAt": "2026-11-21 11:22:00",
       "nextScheduledSync": "2026-11-20 00:00:00"
     }
   },
@@ -19389,7 +19389,7 @@
   },
   "dynamicSyncMetaS75": {
     "isDynamicS75": true,
-    "computedAt": "2026-11-21 10:19:24",
+    "computedAt": "2026-11-21 11:34:02",
     "d11LiveScanned": true,
     "c10LiveScanned": true,
     "boqSheetLiveRead": true,
