@@ -2,7 +2,7 @@
   "ok": true,
   "version": "S1版",
   "latestDate": "2026-11-23",
-  "syncedAt": "2026-11-23 18:54:13",
+  "syncedAt": "2026-11-24 00:03:15",
   "laborSummaryByProject": {
     "R2": {
       "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)",
@@ -25,7 +25,7 @@
       "dailyAvgWorkers": 9.9
     }
   },
-  "latestRocDate": "115.11.23",
+  "latestRocDate": "115.11.24",
   "liveEvents": [
     {
       "date": "2026-10-29",
@@ -809,7 +809,7 @@
       "note": "今日施作：3F電氣系統二次側拉線、3FA棟廁所吊管、滿水測試、2F弱電探管 4F廁所排水配管修改、隔間缺失改善｜明日預計(13人)：3F電氣系統二次側拉線、3FA棟廁所吊管、滿水測試缺失改善 、2F弱電探管 4F廁所排水配管修改、隔間缺失改善"
     }
   ],
-  "driveFingerprint": "khVr2wFu3iVwMHlNi7",
+  "driveFingerprint": "VwaG18sVCFJL24fiSS",
   "excelDriveFileId": "1sJiy0wDJAyDqJzBD39AX2PTbBiUWJNySX22APzI_7s8",
   "sourceRegistry": {
     "gongwuyunUrl": "https://docs.google.com/spreadsheets/d/1sJiy0wDJAyDqJzBD39AX2PTbBiUWJNySX22APzI_7s8/edit",
@@ -1605,15 +1605,55 @@
       "sheetUrl": "https://docs.google.com/spreadsheets/d/1Sdb5S15VRUvJliMI4J_khC1hMLXGuwLGNi_JOLp82eI/edit",
       "folderId": "1aTXDjGNBRkwuULae6C41ve9PYs5y1BAh",
       "folderUrl": "https://drive.google.com/drive/folders/1aTXDjGNBRkwuULae6C41ve9PYs5y1BAh",
-      "totalPdfCount": 77,
+      "totalPdfCount": 81,
       "countsBySystem": {
-        "E": 45,
-        "WP": 25,
+        "E": 47,
+        "WP": 26,
         "F": 5,
-        "LV": 2,
+        "LV": 3,
         "OTHER": 0
       },
       "latestPdfs": [
+        {
+          "docNo": "D11-E-1151120-01-PVC-E管",
+          "system": "E",
+          "rocDate": "115.11.20",
+          "isoDate": "2026-11-20",
+          "fileName": "D11-E-1151120-01-PVC-E管.pdf",
+          "subfolder": "E",
+          "fileUrl": "https://drive.google.com/file/d/1NYAbkVSSMBl3_yhkN2ZwHdQjHyk2n7cj/view",
+          "updatedAt": "2026-11-23 15:54:33"
+        },
+        {
+          "docNo": "D11-LV-1151117-01-控制電纜",
+          "system": "LV",
+          "rocDate": "115.11.17",
+          "isoDate": "2026-11-17",
+          "fileName": "D11-LV-1151117-01-控制電纜.pdf",
+          "subfolder": "LV",
+          "fileUrl": "https://drive.google.com/file/d/1JgPjIZ0a8lwHlETDxndRtJLXXU_YiXSo/view",
+          "updatedAt": "2026-11-23 15:51:36"
+        },
+        {
+          "docNo": "D11-WP-1151117-1-不鏽鋼管",
+          "system": "WP",
+          "rocDate": "115.11.17",
+          "isoDate": "2026-11-17",
+          "fileName": "D11-WP-1151117-1-不鏽鋼管.pdf",
+          "subfolder": "WP",
+          "fileUrl": "https://drive.google.com/file/d/1noMu4ddHUoYk37SzCPd6H-EgnA6WCb9c/view",
+          "updatedAt": "2026-11-23 15:50:16"
+        },
+        {
+          "docNo": "D11-E-1151113-01-PVC-E管",
+          "system": "E",
+          "rocDate": "115.11.13",
+          "isoDate": "2026-11-13",
+          "fileName": "D11-E-1151113-01-PVC-E管.pdf",
+          "subfolder": "E",
+          "fileUrl": "https://drive.google.com/file/d/1pcAEePBp2jmOjbs2pECQXO3P_doxV97g/view",
+          "updatedAt": "2026-11-23 15:53:22"
+        },
         {
           "docNo": "D11-WP-1151113-01-PVC-B管",
           "system": "WP",
@@ -1823,46 +1863,6 @@
           "subfolder": "E",
           "fileUrl": "https://drive.google.com/file/d/1jFEEbhDwASOyIaGHhWo7Yr0ygYrVqhug/view",
           "updatedAt": "2026-11-13 00:00:59"
-        },
-        {
-          "docNo": "D11-F-1151007-1-滅火器箱及消防底箱",
-          "system": "F",
-          "rocDate": "115.10.07",
-          "isoDate": "2026-10-07",
-          "fileName": "D11-F-1151007-1-滅火器箱及消防底箱.pdf",
-          "subfolder": "F",
-          "fileUrl": "https://drive.google.com/file/d/1IlVbl4GMndQGOoWFdEvHo_JRuo2IhN5P/view",
-          "updatedAt": "2026-11-09 15:09:25"
-        },
-        {
-          "docNo": "D11-WP-1151001-1-不鏽鋼管、PVCBA、閘閥、逆止閥",
-          "system": "WP",
-          "rocDate": "115.10.01",
-          "isoDate": "2026-10-01",
-          "fileName": "D11-WP-1151001-1-不鏽鋼管、PVCBA、閘閥、逆止閥.pdf",
-          "subfolder": "WP",
-          "fileUrl": "https://drive.google.com/file/d/1t5oNafXo8xhF9fJP_SBFtD1BJq4vBrGr/view",
-          "updatedAt": "2026-11-19 00:00:18"
-        },
-        {
-          "docNo": "D11-E-1151001-1-PVC-E管",
-          "system": "E",
-          "rocDate": "115.10.01",
-          "isoDate": "2026-10-01",
-          "fileName": "D11-E-1151001-1-PVC-E管.pdf",
-          "subfolder": "E",
-          "fileUrl": "https://drive.google.com/file/d/1D23-omddmnJcWQlbOb8Ko6eOYqAEMwP7/view",
-          "updatedAt": "2026-11-09 14:55:35"
-        },
-        {
-          "docNo": "D11-E-1150924-01-電線電纜-5.5",
-          "system": "E",
-          "rocDate": "115.09.24",
-          "isoDate": "2026-09-24",
-          "fileName": "D11-E-1150924-01-電線電纜-5.5.pdf",
-          "subfolder": "E",
-          "fileUrl": "https://drive.google.com/file/d/12MnglOB1-waVsMV_18H0p2QwGgpBhA6a/view",
-          "updatedAt": "2026-11-13 00:00:58"
         }
       ],
       "extraExcelItems": [],
@@ -4674,8 +4674,8 @@
       "cronExpressionUtc": "0 16 * * *",
       "triggerFunctionName": "cron2400FourWayBoqReconcileAndSync_S3",
       "last2400SyncedAt": "2026-11-23 06:06:06",
-      "lastRealtimeVerifiedAt": "2026-11-23 18:54:48",
-      "nextScheduledSync": "2026-11-23 24:00:00"
+      "lastRealtimeVerifiedAt": "2026-11-24 00:03:50",
+      "nextScheduledSync": "2026-11-24 24:00:00"
     },
     "summaryCounts": {
       "ownerPeriodLatest": 5,
@@ -4691,13 +4691,13 @@
       "vendorCompletedTotal": 5159463,
       "vendorBilledInclDepositTotal": 7709481,
       "vendorPendingSignoffCount": 8,
-      "materialInspectionPdfCount": 77,
+      "materialInspectionPdfCount": 81,
       "materialArrivedTotalAmt": 4398112,
       "materialWithOrderTotalAmt": 4813408,
-      "constructionInspectionPdfCount": 88,
+      "constructionInspectionPdfCount": 89,
       "constructionCountsBySystem": {
         "E": 26,
-        "WP": 26,
+        "WP": 27,
         "LV": 18,
         "F": 14,
         "PA": 4
@@ -4733,15 +4733,31 @@
           "url": "https://drive.google.com/drive/folders/1qzlro6HyIiKkSZhdHAAxXQ2iZQWSj2tf"
         }
       },
-      "totalPdfCount": 88,
+      "totalPdfCount": 89,
       "countsBySystem": {
         "E": 26,
-        "WP": 26,
+        "WP": 27,
         "LV": 18,
         "F": 14,
         "PA": 4
       },
       "records": [
+        {
+          "docNo": "C10-WP-1151120-1",
+          "subfolder": "WP",
+          "rocDate": "115.11.20",
+          "isoDate": "2026-11-20",
+          "floorZone": "AB棟 3F",
+          "workScope": "AB棟3F廁所空間排水配管及滿水施工查驗",
+          "fileName": "C10-WP-1151120-1-AB棟3F廁所空間排水配管及滿水施工查驗.pdf",
+          "fileId": "1PzBzwTgrQSVKYn45pgc58EoI8VVT9zCK",
+          "fileUrl": "https://script.google.com/macros/s/AKfycbxRcVWuQzMEQWtGMd-PNqBr6ejcxjTvRLuxeRut38uwFFveHrPJDb6bbe3cRp4hkSXTsQ/exec?action=viewPdf&pdfId=1PzBzwTgrQSVKYn45pgc58EoI8VVT9zCK",
+          "matchedBoqCode": "壹.甲.三.12.(65)~(87)",
+          "matchedBoqName": "給排水衛生設備 (PVC-B厚管、SUS304被覆冷熱水管版牆預埋)",
+          "boqAuditNote": "✅ 已對應標單計價 (業主P5給排水累估 $2,216,800)",
+          "billingFlag": "MATCHED",
+          "resultStatus": "抽查合格 (○)"
+        },
         {
           "docNo": "C10-WP-1151110-1",
           "subfolder": "WP",
@@ -4756,38 +4772,6 @@
           "matchedBoqName": "給排水衛生設備 (PVC-B厚管、SUS304被覆冷熱水管版牆預埋)",
           "boqAuditNote": "✅ 已對應標單計價 (業主P5給排水累估 $2,216,800)",
           "billingFlag": "MATCHED",
-          "resultStatus": "抽查合格 (○)"
-        },
-        {
-          "docNo": "照片紀錄表_C08-F-1151104-1_B棟4F頂板及RF頂板預埋管_115.11.04",
-          "subfolder": "F",
-          "rocDate": "115.11.04",
-          "isoDate": "2026-11-04",
-          "floorZone": "4F頂板 / RF屋頂",
-          "workScope": "照片紀錄表_C08-F-1151104-1_B棟4F頂板及RF頂板預埋管_115.11.04",
-          "fileName": "照片紀錄表_C08-F-1151104-1_B棟4F頂板及RF頂板預埋管_115.11.04.pdf",
-          "fileId": "1WZ9lbJI65wyfOaYb-6wy8LFEHmkCVANN",
-          "fileUrl": "https://script.google.com/macros/s/AKfycbxRcVWuQzMEQWtGMd-PNqBr6ejcxjTvRLuxeRut38uwFFveHrPJDb6bbe3cRp4hkSXTsQ/exec?action=viewPdf&pdfId=1WZ9lbJI65wyfOaYb-6wy8LFEHmkCVANN",
-          "matchedBoqCode": "壹.甲.三.14.(1)~(3)",
-          "matchedBoqName": "消防系統設備工程 (火警PVC-E管、室內消防栓鍍鋅鋼管預埋)",
-          "boqAuditNote": "💡 第5期截止後新查驗 (B棟4F頂板/RF頂板消防管納入第6期計價)",
-          "billingFlag": "UNBILLED_READY",
-          "resultStatus": "抽查合格 (○)"
-        },
-        {
-          "docNo": "照片紀錄表_C08-E-1151104-1_B棟4F頂板及RF頂板預埋管_115.11.04",
-          "subfolder": "E",
-          "rocDate": "115.11.04",
-          "isoDate": "2026-11-04",
-          "floorZone": "4F頂板 / RF屋頂",
-          "workScope": "照片紀錄表_C08-E-1151104-1_B棟4F頂板及RF頂板預埋管_115.11.04",
-          "fileName": "照片紀錄表_C08-E-1151104-1_B棟4F頂板及RF頂板預埋管_115.11.04.pdf",
-          "fileId": "1Y8Fk47TOEjvVrOBLTYxD4gUuoUQoazg1",
-          "fileUrl": "https://script.google.com/macros/s/AKfycbxRcVWuQzMEQWtGMd-PNqBr6ejcxjTvRLuxeRut38uwFFveHrPJDb6bbe3cRp4hkSXTsQ/exec?action=viewPdf&pdfId=1Y8Fk47TOEjvVrOBLTYxD4gUuoUQoazg1",
-          "matchedBoqCode": "壹.甲.三.2.(54)~(68)",
-          "matchedBoqName": "照明電氣管線工程 (PVC-E管 16~100mm、EMT鋼管預埋與放樣)",
-          "boqAuditNote": "💡 第5期截止後新查驗 (RF頂板納入第6期業主計價)",
-          "billingFlag": "UNBILLED_READY",
           "resultStatus": "抽查合格 (○)"
         },
         {
@@ -4832,6 +4816,38 @@
           "fileName": "C10-E-1151104-1-B棟4F頂板及RF頂板.pdf",
           "fileId": "1zPEipf70M6lRYME7n0xc7dSCYjGBK9J6",
           "fileUrl": "https://script.google.com/macros/s/AKfycbxRcVWuQzMEQWtGMd-PNqBr6ejcxjTvRLuxeRut38uwFFveHrPJDb6bbe3cRp4hkSXTsQ/exec?action=viewPdf&pdfId=1zPEipf70M6lRYME7n0xc7dSCYjGBK9J6",
+          "matchedBoqCode": "壹.甲.三.2.(54)~(68)",
+          "matchedBoqName": "照明電氣管線工程 (PVC-E管 16~100mm、EMT鋼管預埋與放樣)",
+          "boqAuditNote": "💡 第5期截止後新查驗 (RF頂板納入第6期業主計價)",
+          "billingFlag": "UNBILLED_READY",
+          "resultStatus": "抽查合格 (○)"
+        },
+        {
+          "docNo": "照片紀錄表_C08-F-1151104-1_B棟4F頂板及RF頂板預埋管_115.11.04",
+          "subfolder": "F",
+          "rocDate": "115.11.04",
+          "isoDate": "2026-11-04",
+          "floorZone": "4F頂板 / RF屋頂",
+          "workScope": "照片紀錄表_C08-F-1151104-1_B棟4F頂板及RF頂板預埋管_115.11.04",
+          "fileName": "照片紀錄表_C08-F-1151104-1_B棟4F頂板及RF頂板預埋管_115.11.04.pdf",
+          "fileId": "1WZ9lbJI65wyfOaYb-6wy8LFEHmkCVANN",
+          "fileUrl": "https://script.google.com/macros/s/AKfycbxRcVWuQzMEQWtGMd-PNqBr6ejcxjTvRLuxeRut38uwFFveHrPJDb6bbe3cRp4hkSXTsQ/exec?action=viewPdf&pdfId=1WZ9lbJI65wyfOaYb-6wy8LFEHmkCVANN",
+          "matchedBoqCode": "壹.甲.三.14.(1)~(3)",
+          "matchedBoqName": "消防系統設備工程 (火警PVC-E管、室內消防栓鍍鋅鋼管預埋)",
+          "boqAuditNote": "💡 第5期截止後新查驗 (B棟4F頂板/RF頂板消防管納入第6期計價)",
+          "billingFlag": "UNBILLED_READY",
+          "resultStatus": "抽查合格 (○)"
+        },
+        {
+          "docNo": "照片紀錄表_C08-E-1151104-1_B棟4F頂板及RF頂板預埋管_115.11.04",
+          "subfolder": "E",
+          "rocDate": "115.11.04",
+          "isoDate": "2026-11-04",
+          "floorZone": "4F頂板 / RF屋頂",
+          "workScope": "照片紀錄表_C08-E-1151104-1_B棟4F頂板及RF頂板預埋管_115.11.04",
+          "fileName": "照片紀錄表_C08-E-1151104-1_B棟4F頂板及RF頂板預埋管_115.11.04.pdf",
+          "fileId": "1Y8Fk47TOEjvVrOBLTYxD4gUuoUQoazg1",
+          "fileUrl": "https://script.google.com/macros/s/AKfycbxRcVWuQzMEQWtGMd-PNqBr6ejcxjTvRLuxeRut38uwFFveHrPJDb6bbe3cRp4hkSXTsQ/exec?action=viewPdf&pdfId=1Y8Fk47TOEjvVrOBLTYxD4gUuoUQoazg1",
           "matchedBoqCode": "壹.甲.三.2.(54)~(68)",
           "matchedBoqName": "照明電氣管線工程 (PVC-E管 16~100mm、EMT鋼管預埋與放樣)",
           "boqAuditNote": "💡 第5期截止後新查驗 (RF頂板納入第6期業主計價)",
