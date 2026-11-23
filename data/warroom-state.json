@@ -2,7 +2,7 @@
   "ok": true,
   "version": "S1版",
   "latestDate": "2026-11-23",
-  "syncedAt": "2026-11-24 00:04:32",
+  "syncedAt": "2026-11-24 00:06:27",
   "laborSummaryByProject": {
     "R2": {
       "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)",
@@ -4674,7 +4674,7 @@
       "cronExpressionUtc": "0 16 * * *",
       "triggerFunctionName": "cron2400FourWayBoqReconcileAndSync_S3",
       "last2400SyncedAt": "2026-11-23 06:06:06",
-      "lastRealtimeVerifiedAt": "2026-11-24 00:05:08",
+      "lastRealtimeVerifiedAt": "2026-11-24 00:06:53",
       "nextScheduledSync": "2026-11-24 24:00:00"
     },
     "summaryCounts": {
