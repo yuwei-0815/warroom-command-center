@@ -1,8 +1,8 @@
 {
   "ok": true,
   "version": "S3.5版_FAST_REALTIME_SYNC",
-  "driveFingerprint": "S35F_5bac4c94",
-  "syncedAt": "2026-11-25 13:58:17",
+  "driveFingerprint": "S35F_bf51d448",
+  "syncedAt": "2026-11-25 18:26:53",
   "latestDate": "2026-11-25",
   "excelDriveFileId": "1sJiy0wDJAyDqJzBD39AX2PTbBiUWJNySX22APzI_7s8",
   "d11Summary": {
@@ -4708,7 +4708,7 @@
       "cronExpressionUtc": "0 16 * * *",
       "triggerFunctionName": "cron2400FourWayBoqReconcileAndSync_S3",
       "last2400SyncedAt": "2026-11-24 00:02:00",
-      "lastRealtimeVerifiedAt": "2026-11-25 09:28:00",
+      "lastRealtimeVerifiedAt": "2026-11-25 17:18:00",
       "nextScheduledSync": "2026-11-26 00:00:00"
     },
     "summaryCounts": {
@@ -18512,7 +18512,7 @@
     },
     "schedule": {
       "last2400SyncedAt": "2026-11-19 00:35:47",
-      "lastRealtimeVerifiedAt": "2026-11-25 09:28:00",
+      "lastRealtimeVerifiedAt": "2026-11-25 17:18:00",
       "nextScheduledSync": "2026-11-20 00:00:00"
     }
   },
@@ -19418,15 +19418,15 @@
       "rules": [
         "符合勞安標準（無勞安缺失）"
       ],
-      "workerCount": 10,
+      "workerCount": 11,
       "toolboxWorkers": 10,
-      "report1500Workers": null,
+      "report1500Workers": 11,
       "photoBreakdown": "[6, 4]",
-      "tomorrowPredictedWorkers": 0,
-      "tomorrowScope": "",
-      "workerTrades": "水電 10人 (工具箱點名 [6, 4] 共2張｜標準回報：115.11.25 水電 *10)",
-      "badgeText": "晴 0mm・水電10人",
-      "note": "今日施作：3F電氣系統二次側拉線、3FA棟廁所吊管、2F弱電探管 4F廁所排水配管修改、管道間隔間配管 、4F敗管處理",
+      "tomorrowPredictedWorkers": 11,
+      "tomorrowScope": "3F電氣系統二次側拉線、3FA棟廁所吊管、2F弱電探管 4F廁所排水配管修改、管道間隔間配管 、4F敗管處理",
+      "workerTrades": "水電 11人 (15:00回報實到 11人｜晨間工具箱點名 10人 [6, 4]｜明日預計 11人)",
+      "badgeText": "晴 0mm・水電11人",
+      "note": "今日施作：3F電氣系統二次側拉線、3FA棟廁所吊管、2F弱電探管 4F廁所排水配管修改、管道間隔間配管 、4F敗管處理｜明日預計(11人)：3F電氣系統二次側拉線、3FA棟廁所吊管、2F弱電探管 4F廁所排水配管修改、管道間隔間配管 、4F敗管處理",
       "__fromLiveCloudDb": true,
       "__isAutoRolloverToday": false
     },
@@ -19744,20 +19744,20 @@
       "project": "桃園市八德區仁德國民小學新建校舍工程(第二期)",
       "latestDate": "2026-11-25",
       "latestRocDate": "115.11.25",
-      "todayWorkers": 10,
+      "todayWorkers": 11,
       "toolboxWorkers": 10,
-      "report1500Workers": null,
+      "report1500Workers": 11,
       "photoBreakdown": "[6, 4]",
       "lastVerifiedDate": "2026-11-24",
       "lastVerifiedRocDate": "115.11.24",
       "lastVerifiedWorkers": 12,
-      "tomorrowPredictedWorkers": 0,
-      "tomorrowWorkScope": "",
+      "tomorrowPredictedWorkers": 11,
+      "tomorrowWorkScope": "3F電氣系統二次側拉線、3FA棟廁所吊管、2F弱電探管 4F廁所排水配管修改、管道間隔間配管 、4F敗管處理",
       "todayWorkScope": "3F電氣系統二次側拉線、3FA棟廁所吊管、2F弱電探管 4F廁所排水配管修改、管道間隔間配管 、4F敗管處理",
-      "todayBadgeText": "今日點名已同步",
-      "todayTradeTag": "水電 *10 ([6, 4])",
-      "cumulativeWorkers": 280,
-      "currentMonthWorkers": 251,
+      "todayBadgeText": "15:00 實到已同步",
+      "todayTradeTag": "水電 *11 (15:00實到｜點名10人)",
+      "cumulativeWorkers": 281,
+      "currentMonthWorkers": 252,
       "currentMonthDays": 25,
       "workDaysCount": 28,
       "dailyAvgWorkers": 10
@@ -19765,7 +19765,7 @@
   },
   "dynamicSyncMetaS75": {
     "isDynamicS75": true,
-    "computedAt": "2026-11-25 13:57:39",
+    "computedAt": "2026-11-25 18:26:24",
     "d11LiveScanned": true,
     "c10LiveScanned": true,
     "boqSheetLiveRead": true,
