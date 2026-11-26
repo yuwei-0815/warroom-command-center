@@ -2,7 +2,7 @@
   "ok": true,
   "version": "S3.5版_FAST_REALTIME_SYNC",
   "driveFingerprint": "S35F_92504e88",
-  "syncedAt": "2026-11-27 07:55:33",
+  "syncedAt": "2026-11-27 07:59:38",
   "latestDate": "2026-11-26",
   "excelDriveFileId": "1sJiy0wDJAyDqJzBD39AX2PTbBiUWJNySX22APzI_7s8",
   "d11Summary": {
@@ -528,8 +528,8 @@
     "deliverySlips": {
       "folderId": "1UZYDvWLEp_PTZC7gEOqJnZBwF9Zz7IHV",
       "folderUrl": "https://drive.google.com/drive/folders/1UZYDvWLEp_PTZC7gEOqJnZBwF9Zz7IHV",
-      "totalRecords": 38,
-      "totalCount": 38,
+      "totalRecords": 39,
+      "totalCount": 39,
       "records": [
         {
           "rocDate": "115.11.20",
@@ -706,8 +706,8 @@
           "docCategory": "VENDOR_RECEIPT",
           "categoryLabel": "廠商收貨",
           "vendor": "伸泰國際股份有限公司",
-          "materialSpec": "伸泰耐熱電線(HR-CV 380℃) (1.6mm x 1C (200M/卷))",
-          "qtyText": "800M",
+          "materialSpec": "伸泰耐熱電線(HR-CV 380℃) (1.6mm×1C｜黃200M＋白200M｜單號11511250020)",
+          "qtyText": "400M",
           "status": "已收貨簽收（待轉D11查驗）",
           "fileUrl": "https://script.google.com/macros/s/AKfycbxRcVWuQzMEQWtGMd-PNqBr6ejcxjTvRLuxeRut38uwFFveHrPJDb6bbe3cRp4hkSXTsQ/exec?action=viewPdf&pdfId=1_xtMeA3fHuHpm5Z_pHY1CBGkXQ6WktV2"
         },
@@ -718,7 +718,7 @@
           "docCategory": "VENDOR_RECEIPT",
           "categoryLabel": "廠商收貨",
           "vendor": "伸泰國際股份有限公司",
-          "materialSpec": "伸泰600V聚氯乙烯絕緣電線(IV) (2.0mm 單線 (100M/卷))",
+          "materialSpec": "伸泰600V聚氯乙烯絕緣電線(IV) (2.0mm單線｜綠200M＋棕100M｜單號11511250019)",
           "qtyText": "300M",
           "status": "已收貨簽收（待轉D11查驗）",
           "fileUrl": "https://script.google.com/macros/s/AKfycbxRcVWuQzMEQWtGMd-PNqBr6ejcxjTvRLuxeRut38uwFFveHrPJDb6bbe3cRp4hkSXTsQ/exec?action=viewPdf&pdfId=1_xtMeA3fHuHpm5Z_pHY1CBGkXQ6WktV2"
@@ -730,8 +730,20 @@
           "docCategory": "VENDOR_RECEIPT",
           "categoryLabel": "廠商收貨",
           "vendor": "伸泰國際股份有限公司",
-          "materialSpec": "伸泰600V聚氯乙烯絕緣電線(IV) (5.5mm2 絞線 (100M/卷))",
+          "materialSpec": "伸泰600V聚氯乙烯絕緣電線(IV) (5.5mm²絞線｜紅500M＋白1200M＋藍100M｜單號11511250019)",
           "qtyText": "1800M",
+          "status": "已收貨簽收（待轉D11查驗）",
+          "fileUrl": "https://script.google.com/macros/s/AKfycbxRcVWuQzMEQWtGMd-PNqBr6ejcxjTvRLuxeRut38uwFFveHrPJDb6bbe3cRp4hkSXTsQ/exec?action=viewPdf&pdfId=1_xtMeA3fHuHpm5Z_pHY1CBGkXQ6WktV2"
+        },
+        {
+          "rocDate": "115.11.25",
+          "projectPhase": "R2",
+          "phaseLabel": "仁德二期",
+          "docCategory": "VENDOR_RECEIPT",
+          "categoryLabel": "廠商收貨",
+          "vendor": "伸泰國際股份有限公司",
+          "materialSpec": "伸泰耐熱電纜(HR-380℃鋁箔+銅網) (2.0mm²×2C｜200M×2｜單號11511250020)",
+          "qtyText": "400M",
           "status": "已收貨簽收（待轉D11查驗）",
           "fileUrl": "https://script.google.com/macros/s/AKfycbxRcVWuQzMEQWtGMd-PNqBr6ejcxjTvRLuxeRut38uwFFveHrPJDb6bbe3cRp4hkSXTsQ/exec?action=viewPdf&pdfId=1_xtMeA3fHuHpm5Z_pHY1CBGkXQ6WktV2"
         },
@@ -19833,7 +19845,7 @@
   },
   "dynamicSyncMetaS75": {
     "isDynamicS75": true,
-    "computedAt": "2026-11-27 07:55:16",
+    "computedAt": "2026-11-27 07:59:48",
     "d11LiveScanned": true,
     "c10LiveScanned": true,
     "boqSheetLiveRead": true,
