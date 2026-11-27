@@ -1,4 +1,4 @@
-# ==============================================================================
+﻿# ==============================================================================
 # S9.9 Daily 24:00 Schedule: Synology NAS <-> Google Drive Vendor Billing 3-Tuple Sync
 # Dimensions: (1) File Name  (2) Modified Time (<=2s)  (3) File Size (Bytes)
 # Saved with UTF-8 BOM + CRLF + ExecutionPolicy/302-Redirect Safe Wrapper for Windows 10
