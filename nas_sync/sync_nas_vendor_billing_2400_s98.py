@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-S9.8 每日 24:00 自動排程：Synology NAS ↔ Google 雲端硬碟《廠商請款資料》三維比對與戰情室更新腳本 (Python 跨平台版)
+S9.8 每日 24:00 自動排程：Synology NAS ↔ Google 雲端硬碟《廠商請款資料》三維比對與戰情室更新程式 (Python 跨平台版)
 比對維度：檔案名稱 (subFolder/fileName) + 修改日期 (st_mtime) + 檔案大小 (st_size)
 """
 import base64
